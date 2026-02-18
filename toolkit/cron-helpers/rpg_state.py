@@ -30,12 +30,15 @@ Usage:
 
 import argparse
 import json
+import logging
 import os
 import re
 import sys
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 # Static content — in the repo, COPY'd into the Docker image at /app/rpg/
 _CONTENT_DIR = os.environ.get("RPG_CONTENT_DIR", "/app/rpg")
@@ -176,7 +179,7 @@ _SAFE_SLUG = re.compile(r'^[a-zA-Z0-9_\-]+$')
 def _validate_slug(value: str, label: str) -> str:
     """Reject path traversal and special characters in path-forming inputs."""
     if not _SAFE_SLUG.match(value):
-        print(f"ERROR: Invalid {label}: {value!r}", file=sys.stderr)
+        logger.error(f"ERROR: Invalid {label}: {value!r}")
         sys.exit(1)
     return value
 
@@ -308,7 +311,7 @@ def cmd_init(args: argparse.Namespace) -> None:
     _validate_slug(args.adventure, "adventure name")
     adventure_file = os.path.join(ADVENTURES_DIR, f"{args.adventure}.md")
     if not os.path.exists(adventure_file):
-        print(f"ERROR: Adventure file not found: {adventure_file}", file=sys.stderr)
+        logger.error(f"ERROR: Adventure file not found: {adventure_file}")
         sys.exit(1)
 
     now = datetime.now(timezone.utc).isoformat()
@@ -381,12 +384,12 @@ def cmd_init(args: argparse.Namespace) -> None:
                 "bot_controlled": True,
                 "gear": char.get("gear", []),
             }
-            print(f"  Bot PC: {char_name} ({char.get('species_class', '?')})")
+            logger.info(f"  Bot PC: {char_name} ({char.get('species_class', '?')})")
 
     _save_state(state)
-    print(f"Session {session_id} initialized for adventure: {args.adventure}")
+    logger.info(f"Session {session_id} initialized for adventure: {args.adventure}")
     if state["players"]:
-        print(f"  {len(state['players'])} bot-controlled PCs ready for viewer takeover")
+        logger.info(f"  {len(state['players'])} bot-controlled PCs ready for viewer takeover")
 
 
 def cmd_join(args: argparse.Namespace) -> None:
@@ -397,7 +400,7 @@ def cmd_join(args: argparse.Namespace) -> None:
     """
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session. Run 'init' first.", file=sys.stderr)
+        logger.error("ERROR: No active session. Run 'init' first.")
         sys.exit(1)
 
     viewer = args.viewer.lower()[:_MAX_VIEWER]
@@ -417,7 +420,7 @@ def cmd_join(args: argparse.Namespace) -> None:
             "bot_controlled": True,
         }
         del state["players"][viewer]
-        print(f"  {old_char} released back to bot control")
+        logger.info(f"  {old_char} released back to bot control")
 
     # Check if the requested character is already claimed
     for v, p in state.get("players", {}).items():
@@ -425,10 +428,10 @@ def cmd_join(args: argparse.Namespace) -> None:
             if p.get("bot_controlled"):
                 # Bot is running this PC — viewer takes over
                 del state["players"][v]
-                print(f"  Transferring {character} from bot to {viewer}")
+                logger.info(f"  Transferring {character} from bot to {viewer}")
                 break
             else:
-                print(f"ERROR: {character} is already claimed by {v}", file=sys.stderr)
+                logger.error(f"ERROR: {character} is already claimed by {v}")
                 sys.exit(1)
 
     # Load or create player character file
@@ -465,7 +468,7 @@ def cmd_join(args: argparse.Namespace) -> None:
         "status": "active",
     }
     _save_state(state)
-    print(f"{viewer} joined as {character}")
+    logger.info(f"{viewer} joined as {character}")
 
 
 def cmd_leave(args: argparse.Namespace) -> None:
@@ -490,9 +493,9 @@ def cmd_leave(args: argparse.Namespace) -> None:
         del state["players"][viewer]
         # Keep initiative position — bot plays the character's combat turn
         _save_state(state)
-        print(f"{viewer} released {char} back to bot control")
+        logger.info(f"{viewer} released {char} back to bot control")
     else:
-        print(f"{viewer} is not in the session")
+        logger.info(f"{viewer} is not in the session")
 
 
 def cmd_wound(args: argparse.Namespace) -> None:
@@ -502,7 +505,7 @@ def cmd_wound(args: argparse.Namespace) -> None:
     level = args.level
 
     if level < 0 or level >= len(WOUND_LEVELS):
-        print(f"ERROR: Wound level must be 0-{len(WOUND_LEVELS)-1}", file=sys.stderr)
+        logger.error(f"ERROR: Wound level must be 0-{len(WOUND_LEVELS)-1}")
         sys.exit(1)
 
     # Check players first
@@ -510,7 +513,7 @@ def cmd_wound(args: argparse.Namespace) -> None:
         if pdata.get("character") == character:
             pdata["wound_level"] = level
             _save_state(state)
-            print(f"{character} wound level: {WOUND_LEVELS[level]}")
+            logger.info(f"{character} wound level: {WOUND_LEVELS[level]}")
             return
 
     # Check NPCs
@@ -518,7 +521,7 @@ def cmd_wound(args: argparse.Namespace) -> None:
     if slug in state.get("npcs", {}):
         state["npcs"][slug]["wound_level"] = level
         _save_state(state)
-        print(f"NPC {character} wound level: {WOUND_LEVELS[level]}")
+        logger.info(f"NPC {character} wound level: {WOUND_LEVELS[level]}")
         return
 
     # Add as new NPC
@@ -528,7 +531,7 @@ def cmd_wound(args: argparse.Namespace) -> None:
         "status": "dead" if level >= 5 else "active",
     }
     _save_state(state)
-    print(f"NPC {character} added with wound level: {WOUND_LEVELS[level]}")
+    logger.info(f"NPC {character} added with wound level: {WOUND_LEVELS[level]}")
 
 
 def cmd_initiative(args: argparse.Namespace) -> None:
@@ -549,7 +552,7 @@ def cmd_initiative(args: argparse.Namespace) -> None:
         state["camera"] = {"x": centroid[0], "y": centroid[1], "zoom": 2.5, "target": "combat"}
     _save_state(state)
     timeout = state["session"].get("turn_timeout_secs", 120)
-    print(f"Combat started! Initiative: {' > '.join(characters)} ({timeout}s per turn)")
+    logger.info(f"Combat started! Initiative: {' > '.join(characters)} ({timeout}s per turn)")
 
 
 def cmd_next_turn(args: argparse.Namespace) -> None:
@@ -558,7 +561,7 @@ def cmd_next_turn(args: argparse.Namespace) -> None:
     order = state.get("initiative_order", [])
 
     if not order:
-        print("No initiative order set. Use 'initiative' first.")
+        logger.info("No initiative order set. Use 'initiative' first.")
         return
 
     # Reset skips for the character who just took their turn
@@ -573,7 +576,7 @@ def cmd_next_turn(args: argparse.Namespace) -> None:
     # If we rotated back to the start, increment round
     if state["initiative_order"][0] == order[0]:
         state["session"]["round"] = state["session"].get("round", 1) + 1
-        print(f"Round {state['session']['round']}!")
+        logger.info(f"Round {state['session']['round']}!")
 
     # Reset turn timer
     state["session"]["turn_started_at"] = datetime.now(timezone.utc).isoformat()
@@ -584,7 +587,7 @@ def cmd_next_turn(args: argparse.Namespace) -> None:
     _auto_switch_map_for_character(state, current)
 
     _save_state(state)
-    print(f"Turn: {current}")
+    logger.info(f"Turn: {current}")
 
 
 def cmd_end_combat(args: argparse.Namespace) -> None:
@@ -604,7 +607,7 @@ def cmd_end_combat(args: argparse.Namespace) -> None:
         h = (state.get("map") or {}).get("height", 1080)
         state["camera"] = {"x": w // 2, "y": h // 2, "zoom": 1.0, "target": "overview"}
     _save_state(state)
-    print("Combat ended.")
+    logger.info("Combat ended.")
 
 
 def cmd_award_cp(args: argparse.Namespace) -> None:
@@ -617,10 +620,10 @@ def cmd_award_cp(args: argparse.Namespace) -> None:
         if pdata.get("character") == character:
             pdata["character_points"] = pdata.get("character_points", 0) + points
             _save_state(state)
-            print(f"{character} awarded {points} CP (total: {pdata['character_points']})")
+            logger.info(f"{character} awarded {points} CP (total: {pdata['character_points']})")
             return
 
-    print(f"ERROR: Character {character} not found in session", file=sys.stderr)
+    logger.error(f"ERROR: Character {character} not found in session")
     sys.exit(1)
 
 
@@ -634,14 +637,14 @@ def cmd_spend_cp(args: argparse.Namespace) -> None:
         if pdata.get("character") == character:
             current = pdata.get("character_points", 0)
             if current < cost:
-                print(f"ERROR: {character} has {current} CP, needs {cost}", file=sys.stderr)
+                logger.error(f"ERROR: {character} has {current} CP, needs {cost}")
                 sys.exit(1)
             pdata["character_points"] = current - cost
             _save_state(state)
-            print(f"{character} spent {cost} CP (remaining: {pdata['character_points']})")
+            logger.info(f"{character} spent {cost} CP (remaining: {pdata['character_points']})")
             return
 
-    print(f"ERROR: Character {character} not found in session", file=sys.stderr)
+    logger.error(f"ERROR: Character {character} not found in session")
     sys.exit(1)
 
 
@@ -655,14 +658,14 @@ def cmd_spend_fp(args: argparse.Namespace) -> None:
         if pdata.get("character") == character:
             current = pdata.get("force_points", 0)
             if current < cost:
-                print(f"ERROR: {character} has {current} FP, needs {cost}", file=sys.stderr)
+                logger.error(f"ERROR: {character} has {current} FP, needs {cost}")
                 sys.exit(1)
             pdata["force_points"] = current - cost
             _save_state(state)
-            print(f"{character} spent {cost} FP (remaining: {pdata['force_points']})")
+            logger.info(f"{character} spent {cost} FP (remaining: {pdata['force_points']})")
             return
 
-    print(f"ERROR: Character {character} not found in session", file=sys.stderr)
+    logger.error(f"ERROR: Character {character} not found in session")
     sys.exit(1)
 
 
@@ -670,7 +673,7 @@ def cmd_update_scene(args: argparse.Namespace) -> None:
     """Update the current scene description."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     if args.act is not None:
@@ -694,18 +697,18 @@ def cmd_update_scene(args: argparse.Namespace) -> None:
         try:
             state["closing_crawl"] = json.loads(args.closing_crawl)
         except json.JSONDecodeError as e:
-            print(f"ERROR: Invalid closing crawl JSON: {e}", file=sys.stderr)
+            logger.error(f"ERROR: Invalid closing crawl JSON: {e}")
             sys.exit(1)
 
     _save_state(state)
-    print(f"Scene updated: Act {state['session']['act']} - {state['session']['scene']}")
+    logger.info(f"Scene updated: Act {state['session']['act']} - {state['session']['scene']}")
 
 
 def cmd_set_map(args: argparse.Namespace) -> None:
     """Set the current map image and optionally reset token positions."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     _validate_map_filename(args.image, "map image")
@@ -723,14 +726,14 @@ def cmd_set_map(args: argparse.Namespace) -> None:
     h = state["map"]["height"]
     state["camera"] = {"x": w // 2, "y": h // 2, "zoom": 1.0, "target": "overview"}
     _save_state(state)
-    print(f"Map set: {args.name or args.image} ({state['map']['width']}x{state['map']['height']})")
+    logger.info(f"Map set: {args.name or args.image} ({state['map']['width']}x{state['map']['height']})")
 
 
 def cmd_move_token(args: argparse.Namespace) -> None:
     """Place or move a character token on the map."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     name = args.character
@@ -744,24 +747,24 @@ def cmd_move_token(args: argparse.Namespace) -> None:
     x, y = args.x, args.y
     if args.position:
         if not terrain:
-            print(f"WARNING: No terrain data for '{map_image}', cannot resolve position '{args.position}'", file=sys.stderr)
+            logger.warning(f"WARNING: No terrain data for '{map_image}', cannot resolve position '{args.position}'")
             sys.exit(1)
         resolved = _resolve_position(terrain, args.position)
         if not resolved:
             available = sorted(terrain.get("positions", {}).keys())
-            print(f"ERROR: Unknown position '{args.position}'. Available: {', '.join(available)}", file=sys.stderr)
+            logger.error(f"ERROR: Unknown position '{args.position}'. Available: {', '.join(available)}")
             sys.exit(1)
         x, y = resolved
-        print(f"Position '{args.position}' -> ({x}, {y})")
+        logger.info(f"Position '{args.position}' -> ({x}, {y})")
     elif x is not None and y is not None:
         # Validate raw coordinates against obstacles
         if terrain:
             valid, sx, sy, obs_id = _validate_position(terrain, x, y)
             if not valid:
-                print(f"WARNING: ({x},{y}) inside obstacle '{obs_id}', snapping to ({sx},{sy})")
+                logger.warning(f"WARNING: ({x},{y}) inside obstacle '{obs_id}', snapping to ({sx},{sy})")
                 x, y = sx, sy
     else:
-        print("ERROR: Provide --position or --x and --y", file=sys.stderr)
+        logger.error("ERROR: Provide --position or --x and --y")
         sys.exit(1)
 
     # Validate movement distance if --max-distance is set
@@ -773,7 +776,7 @@ def cmd_move_token(args: argparse.Namespace) -> None:
             dy = y - old["y"]
             dist = int((dx * dx + dy * dy) ** 0.5)
             if dist > args.max_distance:
-                print(f"BLOCKED: {name} can't move {dist}px (max {args.max_distance}px)")
+                logger.warning(f"BLOCKED: {name} can't move {dist}px (max {args.max_distance}px)")
                 sys.exit(1)
 
     # Determine token type and color
@@ -801,7 +804,7 @@ def cmd_move_token(args: argparse.Namespace) -> None:
     _update_camera_for_party(state)
     _save_state(state)
     vis = "hidden" if args.hidden else "visible"
-    print(f"Token {name} -> ({x}, {y}) [{vis}]")
+    logger.info(f"Token {name} -> ({x}, {y}) [{vis}]")
 
 
 def cmd_remove_token(args: argparse.Namespace) -> None:
@@ -812,9 +815,9 @@ def cmd_remove_token(args: argparse.Namespace) -> None:
     if slug in tokens:
         del tokens[slug]
         _save_state(state)
-        print(f"Token removed: {args.character}")
+        logger.info(f"Token removed: {args.character}")
     else:
-        print(f"Token not found: {args.character}")
+        logger.info(f"Token not found: {args.character}")
 
 
 def cmd_switch_scene(args: argparse.Namespace) -> None:
@@ -825,7 +828,7 @@ def cmd_switch_scene(args: argparse.Namespace) -> None:
     """
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     old_map = (state.get("map") or {}).get("image", "(none)")
@@ -839,7 +842,7 @@ def cmd_switch_scene(args: argparse.Namespace) -> None:
         "height": args.height or (terrain or {}).get("height", 900),
     }
     _save_state(state)
-    print(f"Scene switch: {old_map} → {args.map} ({state['map']['name']})")
+    logger.info(f"Scene switch: {old_map} → {args.map} ({state['map']['name']})")
 
 
 def cmd_transfer_token(args: argparse.Namespace) -> None:
@@ -851,14 +854,14 @@ def cmd_transfer_token(args: argparse.Namespace) -> None:
     """
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     slug = _slugify(args.character)
     tokens = state.get("tokens", {})
     token = tokens.get(slug)
     if not token:
-        print(f"ERROR: No token for '{args.character}'", file=sys.stderr)
+        logger.error(f"ERROR: No token for '{args.character}'")
         sys.exit(1)
 
     source_map = token.get("map_id", "")
@@ -891,7 +894,7 @@ def cmd_transfer_token(args: argparse.Namespace) -> None:
                 landing_pos = best_conn["position"]
 
     if not landing_pos:
-        print(f"ERROR: No --position given and no connection from '{source_map}' to '{target_map}'", file=sys.stderr)
+        logger.error(f"ERROR: No --position given and no connection from '{source_map}' to '{target_map}'")
         sys.exit(1)
 
     # Resolve the landing position on the target map's terrain
@@ -902,10 +905,10 @@ def cmd_transfer_token(args: argparse.Namespace) -> None:
             x, y = resolved
         else:
             available = sorted(target_terrain.get("positions", {}).keys())
-            print(f"ERROR: Unknown position '{landing_pos}' on {target_map}. Available: {', '.join(available)}", file=sys.stderr)
+            logger.error(f"ERROR: Unknown position '{landing_pos}' on {target_map}. Available: {', '.join(available)}")
             sys.exit(1)
     else:
-        print(f"ERROR: No terrain data for '{target_map}'", file=sys.stderr)
+        logger.error(f"ERROR: No terrain data for '{target_map}'")
         sys.exit(1)
 
     # Update the token
@@ -914,7 +917,7 @@ def cmd_transfer_token(args: argparse.Namespace) -> None:
     token["y"] = y
     token["map_id"] = target_map
     _save_state(state)
-    print(f"{args.character}: {source_map} {old_pos} → {target_map} ({landing_pos}: {x},{y})")
+    logger.info(f"{args.character}: {source_map} {old_pos} → {target_map} ({landing_pos}: {x},{y})")
 
 
 def _auto_switch_map_for_character(state: dict, character: str) -> None:
@@ -933,7 +936,7 @@ def _auto_switch_map_for_character(state: dict, character: str) -> None:
             "width": (terrain or {}).get("width", 1200),
             "height": (terrain or {}).get("height", 900),
         }
-        print(f"  MAP SWITCH: {current_map} → {token_map} (following {character})")
+        logger.info(f"  MAP SWITCH: {current_map} → {token_map} (following {character})")
 
 
 def cmd_list_positions(args: argparse.Namespace) -> None:
@@ -941,37 +944,37 @@ def cmd_list_positions(args: argparse.Namespace) -> None:
     state = _load_state()
     map_image = (state.get("map") or {}).get("image", "")
     if not map_image:
-        print("ERROR: No map set. Use set-map first.", file=sys.stderr)
+        logger.error("ERROR: No map set. Use set-map first.")
         sys.exit(1)
     terrain = _load_terrain(map_image)
     if not terrain:
-        print(f"No terrain data for '{map_image}'")
+        logger.info(f"No terrain data for '{map_image}'")
         return
     positions = terrain.get("positions", {})
     zones = terrain.get("zones", {})
     # Show positions grouped by zone
     shown = set()
     for zone_name, zone in sorted(zones.items()):
-        print(f"\n{zone_name}: {zone.get('desc', '')}")
+        logger.info(f"\n{zone_name}: {zone.get('desc', '')}")
         for pname in zone.get("positions", []):
             pos = positions.get(pname)
             if pos:
-                print(f"  {pname:25s} ({pos['x']:4d},{pos['y']:4d})  {pos.get('desc', '')}")
+                logger.info(f"  {pname:25s} ({pos['x']:4d},{pos['y']:4d})  {pos.get('desc', '')}")
                 shown.add(pname)
     # Show any positions not in a zone
     ungrouped = sorted(set(positions.keys()) - shown)
     if ungrouped:
-        print("\nother:")
+        logger.info("\nother:")
         for pname in ungrouped:
             pos = positions[pname]
-            print(f"  {pname:25s} ({pos['x']:4d},{pos['y']:4d})  {pos.get('desc', '')}")
+            logger.info(f"  {pname:25s} ({pos['x']:4d},{pos['y']:4d})  {pos.get('desc', '')}")
 
 
 def cmd_set_camera(args: argparse.Namespace) -> None:
     """Set camera position and zoom for the overlay pan/zoom engine."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     camera = state.get("camera", {"x": 960, "y": 540, "zoom": 1.0, "target": "overview"})
@@ -981,23 +984,23 @@ def cmd_set_camera(args: argparse.Namespace) -> None:
         centroid = _compute_party_centroid(state)
         if centroid:
             camera["x"], camera["y"] = centroid
-            print(f"Camera following party at ({camera['x']}, {camera['y']})")
+            logger.info(f"Camera following party at ({camera['x']}, {camera['y']})")
         else:
-            print("WARNING: No PC tokens visible, camera centered on map")
+            logger.warning("WARNING: No PC tokens visible, camera centered on map")
     elif args.position:
         map_image = (state.get("map") or {}).get("image", "")
         terrain = _load_terrain(map_image) if map_image else None
         if not terrain:
-            print(f"ERROR: No terrain for '{map_image}'", file=sys.stderr)
+            logger.error(f"ERROR: No terrain for '{map_image}'")
             sys.exit(1)
         resolved = _resolve_position(terrain, args.position)
         if not resolved:
             available = sorted(terrain.get("positions", {}).keys())
-            print(f"ERROR: Unknown position '{args.position}'. Available: {', '.join(available[:20])}", file=sys.stderr)
+            logger.error(f"ERROR: Unknown position '{args.position}'. Available: {', '.join(available[:20])}")
             sys.exit(1)
         camera["x"], camera["y"] = resolved
         camera["target"] = args.position
-        print(f"Camera -> {args.position} ({camera['x']}, {camera['y']})")
+        logger.info(f"Camera -> {args.position} ({camera['x']}, {camera['y']})")
     elif args.preset:
         map_image = (state.get("map") or {}).get("image", "")
         terrain = _load_terrain(map_image) if map_image else None
@@ -1005,24 +1008,24 @@ def cmd_set_camera(args: argparse.Namespace) -> None:
         preset = presets.get(args.preset)
         if not preset:
             available = sorted(presets.keys()) if presets else ["(none)"]
-            print(f"ERROR: Unknown preset '{args.preset}'. Available: {', '.join(available)}", file=sys.stderr)
+            logger.error(f"ERROR: Unknown preset '{args.preset}'. Available: {', '.join(available)}")
             sys.exit(1)
         camera["x"] = preset["x"]
         camera["y"] = preset["y"]
         camera["zoom"] = preset.get("zoom", camera.get("zoom", 1.0))
         camera["target"] = args.preset
-        print(f"Camera preset '{args.preset}' -> ({camera['x']},{camera['y']}) zoom {camera['zoom']}")
+        logger.info(f"Camera preset '{args.preset}' -> ({camera['x']},{camera['y']}) zoom {camera['zoom']}")
     elif args.x is not None and args.y is not None:
         camera["x"] = args.x
         camera["y"] = args.y
         camera["target"] = "manual"
-        print(f"Camera -> ({camera['x']}, {camera['y']})")
+        logger.info(f"Camera -> ({camera['x']}, {camera['y']})")
 
     if args.zoom is not None:
         camera["zoom"] = max(0.5, min(5.0, args.zoom))
         if not args.follow_party and not args.position and not args.preset and args.x is None:
             # Zoom-only change
-            print(f"Camera zoom -> {camera['zoom']}")
+            logger.info(f"Camera zoom -> {camera['zoom']}")
 
     state["camera"] = camera
     _save_state(state)
@@ -1069,7 +1072,7 @@ def cmd_map_legend(args: argparse.Namespace) -> None:
 
     legend = _MAP_LEGENDS.get(map_image)
     if not legend:
-        print(f"[{map_name}] No legend available for this map.")
+        logger.info(f"[{map_name}] No legend available for this map.")
         return
 
     lines = [f"[{map_name}]"]
@@ -1079,14 +1082,14 @@ def cmd_map_legend(args: argparse.Namespace) -> None:
         else:
             lines.append(f"  • {desc}")
     lines.append("★ = Your destination")
-    print("\n".join(lines))
+    logger.info("\n".join(lines))
 
 
 def cmd_set_crawl(args: argparse.Namespace) -> None:
     """Set the opening crawl text for the Star Wars D6 (West End Games) intro."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     crawl = state.get("crawl", {})
@@ -1104,7 +1107,7 @@ def cmd_set_crawl(args: argparse.Namespace) -> None:
 
     state["crawl"] = crawl
     _save_state(state)
-    print(f"Crawl set: {crawl.get('episodeTitle', crawl.get('title', 'Star Wars D6'))}")
+    logger.info(f"Crawl set: {crawl.get('episodeTitle', crawl.get('title', 'Star Wars D6'))}")
 
 
 def _find_character_file(character: str) -> dict | None:
@@ -1135,16 +1138,16 @@ def cmd_sheet(args: argparse.Namespace) -> None:
     if not character and args.viewer:
         character = _find_viewer_character(state, args.viewer)
         if not character:
-            print(f"ERROR: Viewer '{args.viewer}' has no character in this session.", file=sys.stderr)
+            logger.error(f"ERROR: Viewer '{args.viewer}' has no character in this session.")
             sys.exit(1)
 
     if not character:
-        print("ERROR: Provide --character or --viewer", file=sys.stderr)
+        logger.error("ERROR: Provide --character or --viewer")
         sys.exit(1)
 
     char_data = _find_character_file(character)
     if not char_data:
-        print(f"ERROR: No character file for '{character}'", file=sys.stderr)
+        logger.error(f"ERROR: No character file for '{character}'")
         sys.exit(1)
 
     # Get live session data (wound level, CP, etc.)
@@ -1158,29 +1161,29 @@ def cmd_sheet(args: argparse.Namespace) -> None:
     cp = session_info.get("character_points", char_data.get("character_points", 5))
     fp = session_info.get("force_points", char_data.get("force_points", 1))
 
-    print(f"=== {char_data['name']} ===")
+    logger.info(f"=== {char_data['name']} ===")
     if char_data.get("species_class"):
-        print(f"  {char_data['species_class']}")
-    print(f"  Health: {WOUND_LEVELS[wl]} | CP: {cp} | FP: {fp}")
+        logger.info(f"  {char_data['species_class']}")
+    logger.info(f"  Health: {WOUND_LEVELS[wl]} | CP: {cp} | FP: {fp}")
 
     attrs = char_data.get("attributes", {})
     if attrs:
-        print("\nAttributes:")
+        logger.info("\nAttributes:")
         for attr, dice in attrs.items():
-            print(f"  {attr}: {dice}")
+            logger.info(f"  {attr}: {dice}")
 
     skills = char_data.get("skills", {})
     if skills:
-        print("\nSkills:")
+        logger.info("\nSkills:")
         for skill, dice in skills.items():
-            print(f"  {skill}: {dice}")
+            logger.info(f"  {skill}: {dice}")
 
     gear = char_data.get("gear", [])
     if gear:
-        print(f"\nGear: {', '.join(gear)}")
+        logger.info(f"\nGear: {', '.join(gear)}")
 
     if char_data.get("background"):
-        print(f"\nBackground: {char_data['background']}")
+        logger.info(f"\nBackground: {char_data['background']}")
 
 
 def cmd_skill_check(args: argparse.Namespace) -> None:
@@ -1196,16 +1199,16 @@ def cmd_skill_check(args: argparse.Namespace) -> None:
     if not character and args.viewer:
         character = _find_viewer_character(state, args.viewer)
         if not character:
-            print(f"ERROR: Viewer '{args.viewer}' has no character.", file=sys.stderr)
+            logger.error(f"ERROR: Viewer '{args.viewer}' has no character.")
             sys.exit(1)
 
     if not character:
-        print("ERROR: Provide --character or --viewer", file=sys.stderr)
+        logger.error("ERROR: Provide --character or --viewer")
         sys.exit(1)
 
     char_data = _find_character_file(character)
     if not char_data:
-        print(f"ERROR: No character file for '{character}'", file=sys.stderr)
+        logger.error(f"ERROR: No character file for '{character}'")
         sys.exit(1)
 
     skill_name = args.skill.strip()
@@ -1215,7 +1218,7 @@ def cmd_skill_check(args: argparse.Namespace) -> None:
     skills = char_data.get("skills", {})
     for sk, dice in skills.items():
         if sk.lower() == skill_lower:
-            print(json.dumps({
+            logger.info(json.dumps({
                 "character": character,
                 "skill": sk,
                 "dice": dice,
@@ -1227,7 +1230,7 @@ def cmd_skill_check(args: argparse.Namespace) -> None:
     attrs = char_data.get("attributes", {})
     for attr, dice in attrs.items():
         if attr.lower() == skill_lower:
-            print(json.dumps({
+            logger.info(json.dumps({
                 "character": character,
                 "skill": attr,
                 "dice": dice,
@@ -1238,7 +1241,7 @@ def cmd_skill_check(args: argparse.Namespace) -> None:
     # Fuzzy match: check if skill_lower is a substring
     for sk, dice in {**skills, **attrs}.items():
         if skill_lower in sk.lower() or sk.lower() in skill_lower:
-            print(json.dumps({
+            logger.info(json.dumps({
                 "character": character,
                 "skill": sk,
                 "dice": dice,
@@ -1249,8 +1252,8 @@ def cmd_skill_check(args: argparse.Namespace) -> None:
 
     # Not found — list available skills
     available = list(skills.keys()) + list(attrs.keys())
-    print(f"ERROR: '{skill_name}' not found for {character}.", file=sys.stderr)
-    print(f"Available: {', '.join(available)}", file=sys.stderr)
+    logger.error(f"ERROR: '{skill_name}' not found for {character}.")
+    logger.error(f"Available: {', '.join(available)}")
     sys.exit(1)
 
 
@@ -1265,27 +1268,27 @@ def cmd_log_action(args: argparse.Namespace) -> None:
     """
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     viewer = args.viewer.lower()
     character = _find_viewer_character(state, viewer)
     if not character:
-        print(f"ERROR: Viewer '{viewer}' has no character.", file=sys.stderr)
+        logger.error(f"ERROR: Viewer '{viewer}' has no character.")
         sys.exit(1)
 
     mode = state.get("session", {}).get("mode", "rp")
 
     # Cutscene mode: no player actions allowed
     if mode == "cutscene":
-        print(f"BLOCKED: The GM is narrating — please wait.")
+        logger.warning(f"BLOCKED: The GM is narrating — please wait.")
         sys.exit(1)
 
     # Combat mode: validate it's this character's turn
     if mode == "combat" and state.get("combat_active"):
         order = state.get("initiative_order", [])
         if order and order[0] != character:
-            print(f"BLOCKED: Not your turn — it's {order[0]}'s turn.")
+            logger.warning(f"BLOCKED: Not your turn — it's {order[0]}'s turn.")
             sys.exit(1)
 
     now = datetime.now(timezone.utc).isoformat()
@@ -1312,14 +1315,14 @@ def cmd_log_action(args: argparse.Namespace) -> None:
     log.append(action)
 
     _save_state(state)
-    print(json.dumps(action))
+    logger.info(json.dumps(action))
 
 
 def cmd_log_dice(args: argparse.Namespace) -> None:
     """Log a dice roll result to game state for overlay SFX + popup."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
 
     success_val = None
@@ -1341,20 +1344,20 @@ def cmd_log_dice(args: argparse.Namespace) -> None:
     if len(log) > 20:
         state["dice_log"] = log[-20:]
     _save_state(state)
-    print(json.dumps(entry))
+    logger.info(json.dumps(entry))
 
 
 def cmd_set_mode(args: argparse.Namespace) -> None:
     """Set the game mode: rp (free-form), combat (strict turns), cutscene (GM only)."""
     state = _load_state()
     if not state.get("session"):
-        print("ERROR: No active session.", file=sys.stderr)
+        logger.error("ERROR: No active session.")
         sys.exit(1)
     state["session"]["mode"] = args.mode
     if args.mode == "combat" and not state.get("combat_active"):
-        print("WARNING: Combat mode set but no initiative order. Use 'initiative' to start combat.")
+        logger.warning("WARNING: Combat mode set but no initiative order. Use 'initiative' to start combat.")
     _save_state(state)
-    print(f"Mode: {args.mode}")
+    logger.info(f"Mode: {args.mode}")
 
 
 def cmd_check_timer(args: argparse.Namespace) -> None:
@@ -1364,7 +1367,7 @@ def cmd_check_timer(args: argparse.Namespace) -> None:
     order = state.get("initiative_order", [])
 
     if not state.get("combat_active") or not order:
-        print(json.dumps({"combat_active": False, "expired": False}))
+        logger.info(json.dumps({"combat_active": False, "expired": False}))
         return
 
     turn_started = session.get("turn_started_at")
@@ -1372,7 +1375,7 @@ def cmd_check_timer(args: argparse.Namespace) -> None:
     current = order[0]
 
     if not turn_started:
-        print(json.dumps({
+        logger.info(json.dumps({
             "combat_active": True, "current_character": current,
             "expired": False, "remaining_secs": timeout,
         }))
@@ -1382,7 +1385,7 @@ def cmd_check_timer(args: argparse.Namespace) -> None:
     elapsed = (datetime.now(timezone.utc) - started).total_seconds()
     remaining = max(0, timeout - elapsed)
 
-    print(json.dumps({
+    logger.info(json.dumps({
         "combat_active": True,
         "current_character": current,
         "turn_started_at": turn_started,
@@ -1404,21 +1407,21 @@ def cmd_auto_advance(args: argparse.Namespace) -> None:
     order = state.get("initiative_order", [])
 
     if not state.get("combat_active") or not order:
-        print(json.dumps({"action": "none", "reason": "not in combat"}))
+        logger.info(json.dumps({"action": "none", "reason": "not in combat"}))
         return
 
     turn_started = session.get("turn_started_at")
     timeout = session.get("turn_timeout_secs", 120)
 
     if not turn_started:
-        print(json.dumps({"action": "none", "reason": "no timer set"}))
+        logger.info(json.dumps({"action": "none", "reason": "no timer set"}))
         return
 
     started = datetime.fromisoformat(turn_started)
     elapsed = (datetime.now(timezone.utc) - started).total_seconds()
 
     if elapsed < timeout:
-        print(json.dumps({
+        logger.info(json.dumps({
             "action": "none", "reason": "timer not expired",
             "remaining_secs": round(timeout - elapsed),
         }))
@@ -1462,7 +1465,7 @@ def cmd_auto_advance(args: argparse.Namespace) -> None:
         "became_afk": became_afk,
         "next_character": next_up,
     }
-    print(json.dumps(result))
+    logger.info(json.dumps(result))
 
 
 def cmd_check_idle(args: argparse.Namespace) -> None:
@@ -1481,7 +1484,7 @@ def cmd_check_idle(args: argparse.Namespace) -> None:
                 "bot_controlled": p.get("bot_controlled", False),
                 "last_action_at": p.get("last_action_at"),
             })
-    print(json.dumps(issues))
+    logger.info(json.dumps(issues))
 
 
 def cmd_activity_summary(args: argparse.Namespace) -> None:
@@ -1505,14 +1508,14 @@ def cmd_activity_summary(args: argparse.Namespace) -> None:
             counts[char]["actions"] += 1
             counts[char]["last_action"] = entry.get("timestamp")
 
-    print(json.dumps(counts, indent=2))
+    logger.info(json.dumps(counts, indent=2))
 
 
 def cmd_end_session(args: argparse.Namespace) -> None:
     """End the current session. Only persist to player files if --canon."""
     state = _load_state()
     if not state.get("session"):
-        print("No active session to end.")
+        logger.info("No active session to end.")
         return
 
     is_canon = getattr(args, "canon", False)
@@ -1556,50 +1559,50 @@ def cmd_end_session(args: argparse.Namespace) -> None:
             f.write("## Recap\n\n_TODO: Write session recap_\n")
 
     if is_canon:
-        print(f"Session ended (CANON). Player files updated. Recap: {recap_file}")
+        logger.info(f"Session ended (CANON). Player files updated. Recap: {recap_file}")
     else:
-        print(f"Session ended ({canon_label}). Player files unchanged. Recap: {recap_file}")
+        logger.info(f"Session ended ({canon_label}). Player files unchanged. Recap: {recap_file}")
 
 
 def cmd_status(args: argparse.Namespace) -> None:
     """Print current game state summary."""
     state = _load_state()
     if not state.get("session"):
-        print("No active session.")
+        logger.info("No active session.")
         return
 
     s = state["session"]
-    print(f"Session: {s['id']} ({s['status']})")
-    print(f"Adventure: {s['adventure']}")
-    print(f"Scene: Act {s['act']} - {s['scene']}")
+    logger.info(f"Session: {s['id']} ({s['status']})")
+    logger.info(f"Adventure: {s['adventure']}")
+    logger.info(f"Scene: Act {s['act']} - {s['scene']}")
 
     if state.get("narration"):
         narr = state["narration"][:100]
-        print(f"Narration: {narr}{'...' if len(state['narration']) > 100 else ''}")
+        logger.info(f"Narration: {narr}{'...' if len(state['narration']) > 100 else ''}")
 
     players = state.get("players", {})
     if players:
-        print(f"\nPlayers ({len(players)}):")
+        logger.info(f"\nPlayers ({len(players)}):")
         for viewer, p in players.items():
             wl = WOUND_LEVELS[p.get("wound_level", 0)]
             cp = p.get("character_points", 0)
-            print(f"  {p['character']} ({viewer}) - {wl}, {cp} CP")
+            logger.info(f"  {p['character']} ({viewer}) - {wl}, {cp} CP")
 
     npcs = state.get("npcs", {})
     active_npcs = {k: v for k, v in npcs.items() if v.get("status") != "dead"}
     if active_npcs:
-        print(f"\nActive NPCs ({len(active_npcs)}):")
+        logger.info(f"\nActive NPCs ({len(active_npcs)}):")
         for slug, npc in active_npcs.items():
             wl = WOUND_LEVELS[npc.get("wound_level", 0)]
-            print(f"  {npc['name']} - {wl}")
+            logger.info(f"  {npc['name']} - {wl}")
 
     mode = s.get("mode", "rp")
-    print(f"Mode: {mode}")
+    logger.info(f"Mode: {mode}")
 
     if state.get("combat_active"):
         order = state.get("initiative_order", [])
         rnd = s.get("round", 0)
-        print(f"\nCombat Round {rnd}: {' > '.join(order)}")
+        logger.info(f"\nCombat Round {rnd}: {' > '.join(order)}")
         if order:
             turn_started = s.get("turn_started_at")
             timeout = s.get("turn_timeout_secs", 120)
@@ -1609,13 +1612,13 @@ def cmd_status(args: argparse.Namespace) -> None:
                 elapsed = (datetime.now(timezone.utc) - started).total_seconds()
                 remaining = max(0, timeout - elapsed)
                 timer_info = f" ({round(remaining)}s remaining)"
-            print(f"Current turn: {order[0]}{timer_info}")
+            logger.info(f"Current turn: {order[0]}{timer_info}")
 
     # Show idle/afk players
     for viewer, p in state.get("players", {}).items():
         if p.get("status") in ("idle", "afk"):
-            print(f"  WARNING: {p.get('character', '?')} is {p['status']} "
-                  f"({p.get('consecutive_skips', 0)} skips)")
+            logger.warning(f"  WARNING: {p.get('character', '?')} is {p['status']} "
+                           f"({p.get('consecutive_skips', 0)} skips)")
 
 
 # ── CLI ──────────────────────────────────────────────────────────────────────
@@ -1804,4 +1807,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
     main()

@@ -11,13 +11,39 @@ Usage:
 
 import argparse
 import json
+import logging
 import pathlib
 import random
 import signal
 import time
 from datetime import datetime
 
+logger = logging.getLogger(__name__)
+
 from module_loader import ModuleData, find_module
+# ── In-memory cache for game-state.json (invalidated after run_rpg_cmd) ──
+_state_cache: dict | None = None
+_STATE_PATH = "/home/node/.clawdbot/rpg/state/game-state.json"
+
+
+def _read_game_state() -> dict:
+    """Return cached game state, loading from disk only on first call or after invalidation."""
+    global _state_cache
+    if _state_cache is None:
+        try:
+            with open(_STATE_PATH) as f:
+                _state_cache = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            _state_cache = {}
+    return _state_cache
+
+
+def _invalidate_state_cache() -> None:
+    """Clear the game state cache (call after any run_rpg_cmd that mutates state)."""
+    global _state_cache
+    _state_cache = None
+
+
 from rpg_bot_common import (
     ACT_MAPS,
     ACT_MAP_TERRAIN,
@@ -55,13 +81,8 @@ def _log_dice_to_state(char: str, skill: str, result: dict) -> None:
 
 
 def _get_wound_level(character_name: str) -> int:
-    """Read a character's current wound level from game-state.json."""
-    state_path = "/home/node/.clawdbot/rpg/state/game-state.json"
-    try:
-        with open(state_path) as f:
-            state = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return 0
+    """Read a character's current wound level from cached game state."""
+    state = _read_game_state()
     for v, p in state.get("players", {}).items():
         if p.get("character") == character_name:
             return p.get("wound_level", 0)
@@ -73,11 +94,8 @@ def _get_wound_level(character_name: str) -> int:
 
 def _apply_wound(character_name: str, levels: int = 1) -> None:
     """Escalate wound level for a character after a combat hit."""
-    state_path = "/home/node/.clawdbot/rpg/state/game-state.json"
-    try:
-        with open(state_path) as f:
-            state = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
+    state = _read_game_state()
+    if not state:
         return
     current = 0
     # Check players
@@ -93,7 +111,8 @@ def _apply_wound(character_name: str, levels: int = 1) -> None:
     new_level = min(current + levels, 5)
     if new_level > current:
         run_rpg_cmd(["wound", "--character", character_name, "--level", str(new_level)])
-        print(f"  [wound] {character_name}: {current} -> {new_level}", flush=True)
+        _invalidate_state_cache()
+        logger.info(f"  [wound] {character_name}: {current} -> {new_level}")
 
 
 def _heal_wound(character_name: str, levels: int = 1) -> None:
@@ -102,7 +121,8 @@ def _heal_wound(character_name: str, levels: int = 1) -> None:
     new_level = max(current - levels, 0)
     if new_level < current:
         run_rpg_cmd(["wound", "--character", character_name, "--level", str(new_level)])
-        print(f"  [heal] {character_name}: {current} -> {new_level}", flush=True)
+        _invalidate_state_cache()
+        logger.info(f"  [heal] {character_name}: {current} -> {new_level}")
 
 
 # Characters that have the First Aid skill (fallback when no module loaded)
@@ -649,7 +669,7 @@ _running = True
 
 def _signal_handler(sig, frame):
     global _running
-    print("\nInterrupted — ending session gracefully...", flush=True)
+    logger.info("\nInterrupted — ending session gracefully...")
     _running = False
 
 
@@ -658,20 +678,20 @@ def _init_session(adventure: str, transcript: TranscriptLogger):
     global _module
     _module = find_module(adventure)
     if _module:
-        print(f"=== LOADED MODULE: {_module.name} ({_module.slug}) ===", flush=True)
+        logger.info(f"=== LOADED MODULE: {_module.name} ({_module.slug}) ===")
     else:
-        print("=== NO MODULE JSON FOUND — using hardcoded fallback ===", flush=True)
+        logger.info("=== NO MODULE JSON FOUND — using hardcoded fallback ===")
 
-    print("=== INITIALIZING SESSION ===", flush=True)
+    logger.info("=== INITIALIZING SESSION ===")
     out = run_rpg_cmd(["init", "--adventure", adventure, "--auto-join-bots"])
-    print(f"  init: {out}", flush=True)
+    logger.info(f"  init: {out}")
     # Log persistent wound state (wounds carry over from last canon session)
     pregens = _module.pregens if _module else PREGENS
     for char in pregens:
         wl = _get_wound_level(char)
         if wl > 0:
-            print(f"  {char} starts wounded (level {wl})", flush=True)
-    print("  PCs loaded with persistent state", flush=True)
+            logger.info(f"  {char} starts wounded (level {wl})")
+    logger.info("  PCs loaded with persistent state")
     transcript.log_session_event("init", {"adventure": adventure, "auto_join_bots": True})
 
 
@@ -682,7 +702,7 @@ def _auto_place_tokens(act_num: int):
                  if _module else ACT_STARTING_POSITIONS.get(act_num, {}))
     for char, pos in positions.items():
         out = run_rpg_cmd(["move-token", "--character", char, "--position", pos])
-        print(f"  TOKEN: {char} -> {pos} ({out})", flush=True)
+        logger.info(f"  TOKEN: {char} -> {pos} ({out})")
 
     # Place NPCs (and vehicles)
     npcs = (_module.npc_starting_positions.get(act_num, {})
@@ -696,7 +716,7 @@ def _auto_place_tokens(act_num: int):
             cmd.append("--hidden")
         out = run_rpg_cmd(cmd)
         vis = " [hidden]" if hidden else ""
-        print(f"  NPC: {npc} -> {pos} ({color}){vis} ({out})", flush=True)
+        logger.info(f"  NPC: {npc} -> {pos} ({color}){vis} ({out})")
 
 
 def _set_act_map(act_num: int, transcript: TranscriptLogger):
@@ -712,7 +732,7 @@ def _set_act_map(act_num: int, transcript: TranscriptLogger):
     if terrain_file:
         cmd.extend(["--terrain", terrain_file])
     out = run_rpg_cmd(cmd)
-    print(f"  map: {map_name} ({map_image}) -> {out}", flush=True)
+    logger.info(f"  map: {map_name} ({map_image}) -> {out}")
     transcript.log_scene_change(act_num, map_name, map_image)
     _auto_place_tokens(act_num)
 
@@ -723,11 +743,11 @@ def _set_act_map(act_num: int, transcript: TranscriptLogger):
     if act_num == 3:
         # Docking bay is small — overview shows everything without cropping
         run_rpg_cmd(["set-camera", "--follow-party", "--zoom", "1.0"])
-        print("  camera: overview zoom=1.0 (full bay visible)", flush=True)
+        logger.info("  camera: overview zoom=1.0 (full bay visible)")
     else:
         # Acts 1-2: zoom in and pan with the party
         run_rpg_cmd(["set-camera", "--follow-party", "--zoom", "2.0"])
-        print("  camera: follow-party zoom=2.0", flush=True)
+        logger.info("  camera: follow-party zoom=2.0")
 
 
 def _maybe_auto_transfer(char_name: str, position_name: str):
@@ -760,7 +780,7 @@ def _maybe_auto_transfer(char_name: str, position_name: str):
 
     conn = connections[position_name]
     target_map = conn["map"]
-    print(f"  [auto-transfer] {char_name}: {position_name} -> {target_map}", flush=True)
+    logger.info(f"  [auto-transfer] {char_name}: {position_name} -> {target_map}")
     run_rpg_cmd(["transfer-token", "--character", char_name,
                   "--to-map", target_map])
     run_rpg_cmd(["switch-scene", "--map", target_map])
@@ -874,7 +894,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     pregens = _module.pregens if _module else PREGENS
     able_chars = [c for c in pregens if _get_wound_level(c) < 4]
     if not able_chars:
-        print("  [WARNING] All PCs incapacitated!", flush=True)
+        logger.warning("  [WARNING] All PCs incapacitated!")
         return dice_strings, positions, pc_position_map, "normal"
     num_actions = random.randint(1, 2)
     chars = random.sample(able_chars, min(num_actions, len(able_chars)))
@@ -911,7 +931,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
             "--type", action_type, "--text", text,
         ])
         label = "[CLIMAX]" if is_climax else "[sim]"
-        print(f"  {label} {char} {action_type}: {text}", flush=True)
+        logger.info(f"  {label} {char} {action_type}: {text}")
         transcript.log_player_action("bot", char, action_type, text)
         logged_actions.append({"text": text})
 
@@ -921,12 +941,12 @@ def _simulate_player_actions(act_num: int, turn_num: int,
         if move_to:
             move_penalty, max_dist = _compute_move_penalty(char, move_to)
             if move_penalty >= 3:
-                print(f"  [BLOCKED] {char} can't reach {move_to} (too far to sprint)", flush=True)
+                logger.info(f"  [BLOCKED] {char} can't reach {move_to} (too far to sprint)")
                 move_to = None  # Skip the move
                 move_penalty = 0
             elif move_penalty > 0:
                 tier = _MOVE_TIER_LABELS.get(move_penalty, "?")
-                print(f"  [{tier}] {char} -> {move_to} (-{move_penalty}D)", flush=True)
+                logger.info(f"  [{tier}] {char} -> {move_to} (-{move_penalty}D)")
 
         # Move token if this action has a position hint
         if move_to:
@@ -934,7 +954,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
             if max_dist > 0:
                 move_cmd += ["--max-distance", str(max_dist)]
             run_rpg_cmd(move_cmd)
-            print(f"  [move] {char} -> {move_to}", flush=True)
+            logger.info(f"  [move] {char} -> {move_to}")
             positions.append(move_to)
             pc_position_map[char] = move_to
 
@@ -950,7 +970,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                     for npc_name in npc_names:
                         if npc_name not in moved_npcs:
                             run_rpg_cmd(["move-token", "--character", npc_name, "--position", move_to])
-                            print(f"  [move-npc] {npc_name} -> {move_to} (follows {char})", flush=True)
+                            logger.info(f"  [move-npc] {npc_name} -> {move_to} (follows {char})")
                             moved_npcs.add(npc_name)
 
         # Spend CP/FP during climax for dramatic dice boost
@@ -961,12 +981,12 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 out = run_rpg_cmd(["spend-fp", "--character", char])
                 if "spent" in out:
                     cp_spent = True
-                    print(f"  [spend-fp] {char}: {out}", flush=True)
+                    logger.info(f"  [spend-fp] {char}: {out}")
             else:
                 out = run_rpg_cmd(["spend-cp", "--character", char])
                 if "spent" in out:
                     cp_spent = True
-                    print(f"  [spend-cp] {char}: {out}", flush=True)
+                    logger.info(f"  [spend-cp] {char}: {out}")
 
         # Pre-roll skill check if this action has one
         if skill:
@@ -978,7 +998,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 if cp_spent:
                     detail += " [DOUBLED — CP/FP spent!]"
                 dice_strings.append(detail)
-                print(f"  [dice] {detail}", flush=True)
+                logger.info(f"  [dice] {detail}")
                 # Apply wound on successful Blaster/Brawling/Lightsaber hits
                 if skill in ("Blaster", "Brawling", "Lightsaber") and result.get("success"):
                     opponent = _pick_combat_opponent(act_num, text)
@@ -987,7 +1007,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 if (skill == "Starship Repair" and result.get("success")
                         and pacer is not None):
                     pacer.ship_repaired = True
-                    print(f"  [OBJECTIVE] Ship repaired by {char}!", flush=True)
+                    logger.info(f"  [OBJECTIVE] Ship repaired by {char}!")
                 # Healing: successful First Aid reduces ally wound level
                 if skill == "First Aid" and result.get("success"):
                     # Find the wounded ally from the action text
@@ -1021,7 +1041,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 f"— {'HIT!' if hit else 'MISS'}"
             )
             dice_strings.append(detail)
-            print(f"  [npc-attack] {detail}", flush=True)
+            logger.info(f"  [npc-attack] {detail}")
             if hit:
                 _apply_wound(target, 1)
 
@@ -1030,7 +1050,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
 
     action_class = _classify_actions(logged_actions)
     if action_class == "explore":
-        print(f"  [classify] EXPLORE — off-script action detected", flush=True)
+        logger.info(f"  [classify] EXPLORE — off-script action detected")
     return dice_strings, positions, pc_position_map, action_class
 
 
@@ -1048,7 +1068,7 @@ def _move_npcs_dry_run(act_num: int, turn_num: int) -> None:
             if _get_wound_level(npc_name) >= 4:
                 continue
             run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
-            print(f"  [npc-react] {npc_name} {reaction}s -> {dest}", flush=True)
+            logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
 
     # Ambient NPC routes (civilians cycle through positions on non-combat turns)
     ambient_routes = _module.npc_ambient_routes if _module else NPC_AMBIENT_ROUTES
@@ -1071,7 +1091,7 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
         since_action: Action-log index — only show actions after this so the
             GM doesn't repeat narration from previous turns.
     """
-    print(f"\n--- Act {act_num}, Turn {turn_num} ---", flush=True)
+    logger.info(f"\n--- Act {act_num}, Turn {turn_num} ---")
 
     # Show thinking
     run_rpg_cmd(["update-scene", "--narration",
@@ -1080,7 +1100,7 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
     act_times = _module.act_times if _module else None
     state, context = build_context(since_action=since_action, act_times=act_times)
     if state is None:
-        print(f"  ERROR: {context}", flush=True)
+        logger.error(f"  ERROR: {context}")
         transcript.log_session_event("error", {"message": context})
         return ""
 
@@ -1109,18 +1129,18 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
     ]
 
     t0 = time.time()
-    print(f"  Sending to Ollama...", flush=True)
+    logger.info(f"  Sending to Ollama...")
 
     try:
         response = chat(messages)
     except Exception as e:
-        print(f"  ERROR calling Ollama: {e}", flush=True)
+        logger.error(f"  ERROR calling Ollama: {e}")
         transcript.log_session_event("error", {"message": str(e)})
         return ""
 
     elapsed = time.time() - t0
     msg = response.get("message", {})
-    print(f"  Response in {elapsed:.0f}s", flush=True)
+    logger.info(f"  Response in {elapsed:.0f}s")
 
     text, narration_from_tool = process_response(msg, messages, transcript)
 
@@ -1129,9 +1149,9 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
     transcript.log_narration(act_num, turn_num, narration, text)
 
     if narration and narration != "(no narration)":
-        print(f"  GM: {narration[:100]}...", flush=True)
+        logger.info(f"  GM: {narration[:100]}...")
     else:
-        print(f"  (no text response)", flush=True)
+        logger.info(f"  (no text response)")
 
     return text
 
@@ -1156,7 +1176,7 @@ def _run_join_prompt(transcript: TranscriptLogger):
     char_list = ", ".join(available)
     msg = f"Characters available: {char_list}. Type !join [name] to play!"
     run_rpg_cmd(["update-scene", "--narration", msg])
-    print(f"  JOIN PROMPT: {msg}", flush=True)
+    logger.info(f"  JOIN PROMPT: {msg}")
     transcript.log_join_prompt(available)
 
 
@@ -1166,7 +1186,7 @@ def _run_poll(poll: dict, transcript: TranscriptLogger, wait_secs: int = 5):
     options = poll["options"]
 
     run_rpg_cmd(["update-scene", "--narration", question])
-    print(f"  POLL: {question}", flush=True)
+    logger.info(f"  POLL: {question}")
     transcript.log_feedback_poll(question, options)
 
     # Wait for responses (short for dry run, longer for live)
@@ -1185,7 +1205,7 @@ def _run_poll(poll: dict, transcript: TranscriptLogger, wait_secs: int = 5):
     else:
         result_msg = "Poll results: no responses"
     run_rpg_cmd(["update-scene", "--narration", result_msg])
-    print(f"  POLL RESULT: {simulated} -> {result_msg}", flush=True)
+    logger.info(f"  POLL RESULT: {simulated} -> {result_msg}")
 
 
 def _end_session(transcript: TranscriptLogger):
@@ -1193,18 +1213,18 @@ def _end_session(transcript: TranscriptLogger):
     participation = transcript.calculate_participation()
     is_canon = participation["is_canon"]
     label = "CANON" if is_canon else "non-canon"
-    print(f"\n  Participation: {participation['real_actions']}/{participation['total_actions']} "
-          f"real ({participation['ratio']:.0%}) -> {label}", flush=True)
+    logger.info(f"\n  Participation: {participation['real_actions']}/{participation['total_actions']} "
+                f"real ({participation['ratio']:.0%}) -> {label}")
     transcript.log_session_event("participation", participation)
 
     canon_flag = "--canon" if is_canon else "--no-canon"
     out = run_rpg_cmd(["end-session", canon_flag])
-    print(f"  end-session: {out}", flush=True)
+    logger.info(f"  end-session: {out}")
     transcript.log_session_event("end", {"canon": is_canon})
 
     md_path = transcript.save_markdown()
-    print(f"  Transcript saved: {transcript.jsonl_path}", flush=True)
-    print(f"  Markdown saved:   {md_path}", flush=True)
+    logger.info(f"  Transcript saved: {transcript.jsonl_path}")
+    logger.info(f"  Markdown saved:   {md_path}")
     transcript.close()
     return md_path
 
@@ -1259,13 +1279,13 @@ def _write_closing_crawl(transcript: TranscriptLogger):
         state["closing_crawl"] = crawl_data
         with open(state_path, "w") as f:
             json.dump(state, f, indent=2)
-        print(f"\n  === CLOSING CRAWL ===", flush=True)
-        print(f"  {crawl_data['subtitle']} — {crawl_data['episodeTitle']}", flush=True)
+        logger.info(f"\n  === CLOSING CRAWL ===")
+        logger.info(f"  {crawl_data['subtitle']} — {crawl_data['episodeTitle']}")
         for p in paragraphs:
-            print(f"  {p}", flush=True)
-        print(f"  ======================\n", flush=True)
+            logger.info(f"  {p}")
+        logger.info(f"  ======================\n")
     except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"  WARNING: Could not write closing crawl: {e}", flush=True)
+        logger.warning(f"  WARNING: Could not write closing crawl: {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -1277,7 +1297,7 @@ def run_dry_session(adventure: str):
     session_id = f"session-{datetime.now().strftime('%Y-%m-%d-%H%M%S')}"
     transcript = TranscriptLogger(session_id)
 
-    print(f"=== DRY RUN: {adventure} (objective-based pacing) ===\n", flush=True)
+    logger.info(f"=== DRY RUN: {adventure} (objective-based pacing) ===\n")
     transcript.log_session_event("start", {
         "mode": "dry-run",
         "adventure": adventure,
@@ -1293,9 +1313,9 @@ def run_dry_session(adventure: str):
         if not _running:
             break
 
-        print(f"\n{'='*40}", flush=True)
-        print(f"=== ACT {act_num} ===", flush=True)
-        print(f"{'='*40}\n", flush=True)
+        logger.info(f"\n{'='*40}")
+        logger.info(f"=== ACT {act_num} ===")
+        logger.info(f"{'='*40}\n")
 
         # Set map and update scene
         _set_act_map(act_num, transcript)
@@ -1355,14 +1375,13 @@ def run_dry_session(adventure: str):
                 aboard = pacer._all_surviving_aboard()
                 act3_extra = (f" repaired={pacer.ship_repaired}"
                               f" all_aboard={aboard}")
-            print(f"  [pacer] turn={pacer.turn} visited={sorted(pacer.visited)} "
-                  f"exit={pacer.reached_exit} climax_next={pacer.is_climax}"
-                  f"{act3_extra}",
-                  flush=True)
+            logger.debug(f"  [pacer] turn={pacer.turn} visited={sorted(pacer.visited)} "
+                        f"exit={pacer.reached_exit} climax_next={pacer.is_climax}"
+                        f"{act3_extra}")
 
         # Log act summary
-        print(f"\n  ACT {act_num} COMPLETE: {pacer.turn} turns, "
-              f"visited={sorted(pacer.visited)}", flush=True)
+        logger.info(f"\n  ACT {act_num} COMPLETE: {pacer.turn} turns, "
+                    f"visited={sorted(pacer.visited)}")
         transcript.log_session_event("act_end", {
             "act": act_num,
             "turns": pacer.turn,
@@ -1385,15 +1404,15 @@ def run_dry_session(adventure: str):
     md_path = _end_session(transcript)
     _write_closing_crawl(transcript)
 
-    print(f"\n{'='*40}", flush=True)
-    print(f"=== DRY RUN COMPLETE ===", flush=True)
-    print(f"  Total GM turns: {total_turns}", flush=True)
-    print(f"  Transcript events: {len(transcript.events)}", flush=True)
-    print(f"  Markdown: {md_path}", flush=True)
-    print(f"{'='*40}\n", flush=True)
+    logger.info(f"\n{'='*40}")
+    logger.info(f"=== DRY RUN COMPLETE ===")
+    logger.info(f"  Total GM turns: {total_turns}")
+    logger.info(f"  Transcript events: {len(transcript.events)}")
+    logger.info(f"  Markdown: {md_path}")
+    logger.info(f"{'='*40}\n")
 
     # Final state
-    print(run_rpg_cmd(["status"]), flush=True)
+    logger.info(run_rpg_cmd(["status"]))
     return md_path
 
 
@@ -1496,7 +1515,7 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
                     f"— {'HIT!' if hit else 'MISS'}"
                 )
                 dice_strings.append(detail)
-                print(f"  [dice-live] {detail}", flush=True)
+                logger.info(f"  [dice-live] {detail}")
                 if hit:
                     _apply_wound(opponent, 1)
                 cs = _module.char_stats if _module else CHAR_STATS
@@ -1516,11 +1535,11 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
                                               char_stats=cs)
                 if "error" not in result:
                     dice_strings.append(result["detail"])
-                    print(f"  [dice-live] {result['detail']}", flush=True)
+                    logger.info(f"  [dice-live] {result['detail']}")
                     if (skill == "Starship Repair" and result.get("success")
                             and pacer is not None):
                         pacer.ship_repaired = True
-                        print(f"  [OBJECTIVE] Ship repaired by {char}!", flush=True)
+                        logger.info(f"  [OBJECTIVE] Ship repaired by {char}!")
                     transcript.log_dice_roll(
                         char, skill,
                         cs.get(char, {}).get(skill, DEFAULT_DICE),
@@ -1579,7 +1598,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
             "log-action", "--viewer", "bot",
             "--type", action_type, "--text", text,
         ])
-        print(f"  [bot-live] {char} {action_type}: {text}", flush=True)
+        logger.info(f"  [bot-live] {char} {action_type}: {text}")
         transcript.log_player_action("bot", char, action_type, text)
 
         # Compute movement penalty if moving
@@ -1588,19 +1607,19 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
         if move_to:
             move_penalty, max_dist = _compute_move_penalty(char, move_to)
             if move_penalty >= 3:
-                print(f"  [BLOCKED] {char} can't reach {move_to} (too far to sprint)", flush=True)
+                logger.info(f"  [BLOCKED] {char} can't reach {move_to} (too far to sprint)")
                 move_to = None
                 move_penalty = 0
             elif move_penalty > 0:
                 tier = _MOVE_TIER_LABELS.get(move_penalty, "?")
-                print(f"  [{tier}] {char} -> {move_to} (-{move_penalty}D)", flush=True)
+                logger.info(f"  [{tier}] {char} -> {move_to} (-{move_penalty}D)")
 
         if move_to:
             move_cmd = ["move-token", "--character", char, "--position", move_to]
             if max_dist > 0:
                 move_cmd += ["--max-distance", str(max_dist)]
             run_rpg_cmd(move_cmd)
-            print(f"  [move] {char} -> {move_to}", flush=True)
+            logger.info(f"  [move] {char} -> {move_to}")
             positions.append(move_to)
 
             # Auto-transfer if this position is a map connection exit
@@ -1615,7 +1634,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                     for npc_name in npc_names:
                         if npc_name not in moved_npcs:
                             run_rpg_cmd(["move-token", "--character", npc_name, "--position", move_to])
-                            print(f"  [move-npc] {npc_name} -> {move_to}", flush=True)
+                            logger.info(f"  [move-npc] {npc_name} -> {move_to}")
                             moved_npcs.add(npc_name)
 
         if skill:
@@ -1624,10 +1643,10 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                                           penalty=move_penalty, char_stats=char_stats)
             if "error" not in result:
                 dice_strings.append(result["detail"])
-                print(f"  [dice-bot] {result['detail']}", flush=True)
+                logger.info(f"  [dice-bot] {result['detail']}")
                 if skill == "Starship Repair" and result.get("success"):
                     pacer.ship_repaired = True
-                    print(f"  [OBJECTIVE] Ship repaired by {char}!", flush=True)
+                    logger.info(f"  [OBJECTIVE] Ship repaired by {char}!")
                 dice_code = dice_override or char_stats.get(char, {}).get(skill, DEFAULT_DICE)
                 transcript.log_dice_roll(
                     char, skill, dice_code,
@@ -1646,7 +1665,7 @@ def run_live_session(adventure: str):
     session_id = f"session-{datetime.now().strftime('%Y-%m-%d-%H%M%S')}"
     transcript = TranscriptLogger(session_id)
 
-    print(f"=== LIVE SESSION: {adventure} ===\n", flush=True)
+    logger.info(f"=== LIVE SESSION: {adventure} ===\n")
     transcript.log_session_event("start", {
         "mode": "live",
         "adventure": adventure,
@@ -1685,8 +1704,8 @@ def run_live_session(adventure: str):
     _run_join_prompt(transcript)
     last_gm_time = time.time()
 
-    print(f"\n  Entering live polling loop (every {poll_interval}s)...", flush=True)
-    print(f"  Ctrl+C to end session.\n", flush=True)
+    logger.info(f"\n  Entering live polling loop (every {poll_interval}s)...")
+    logger.info(f"  Ctrl+C to end session.\n")
 
     while _running:
         time.sleep(poll_interval)
@@ -1694,7 +1713,7 @@ def run_live_session(adventure: str):
         # Read current state
         state, context = build_context(adventure)
         if state is None:
-            print(f"  ERROR: {context}", flush=True)
+            logger.error(f"  ERROR: {context}")
             continue
 
         session = state.get("session", {})
@@ -1708,7 +1727,7 @@ def run_live_session(adventure: str):
             turn_num = 0
             roam_index.clear()
             npcs_reacted = False
-            print(f"\n  ACT CHANGE -> Act {act_num}", flush=True)
+            logger.info(f"\n  ACT CHANGE -> Act {act_num}")
             _set_act_map(act_num, transcript)
             run_rpg_cmd(["set-mode", "--mode", "cutscene"])
             transcript.log_mode_change("cutscene", f"Act {act_num} opening")
@@ -1732,7 +1751,7 @@ def run_live_session(adventure: str):
                 reactions = combat_react.get(current_act, {})
                 for npc_name, (reaction, dest) in reactions.items():
                     run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
-                    print(f"  [npc-react] {npc_name} {reaction}s -> {dest}", flush=True)
+                    logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
                 npcs_reacted = True
             elif not is_combat:
                 # Peaceful — ambient roaming
@@ -1757,7 +1776,7 @@ def run_live_session(adventure: str):
                 timer = json.loads(timer_status)
                 if timer.get("expired"):
                     run_rpg_cmd(["auto-advance"])
-                    print(f"  >> AUTO-ADVANCE (timer expired)", flush=True)
+                    logger.info(f"  >> AUTO-ADVANCE (timer expired)")
             except (json.JSONDecodeError, ValueError):
                 pass
 
@@ -1780,8 +1799,7 @@ def run_live_session(adventure: str):
                 f"{a.get('character', '?')} {a.get('type', 'do')}s: {a.get('text', '...')}"
                 for a in new_actions
             )
-            print(f"  New actions ({new_count - last_action_count}): {action_summary[:100]}",
-                  flush=True)
+            logger.info(f"  New actions ({new_count - last_action_count}): {action_summary[:100]}")
 
             # Roll dice for any combat/skill actions from real players
             dice_strings = _roll_dice_for_player_actions(
@@ -1794,7 +1812,7 @@ def run_live_session(adventure: str):
             action_class = _classify_actions(new_actions)
             if action_class == "explore":
                 extra = _EXPLORE_KICK
-                print(f"  [classify] EXPLORE — off-script action detected", flush=True)
+                logger.info(f"  [classify] EXPLORE — off-script action detected")
             else:
                 extra = "Respond to the recent player actions."
             extra += "\n" + pacer.pacing_hint()
@@ -1811,13 +1829,12 @@ def run_live_session(adventure: str):
                 last_action_count = new_count
         elif new_count > last_action_count:
             wait_remaining = int(min_turn_cooldown - time_since_last)
-            print(f"  New actions queued, cooldown {wait_remaining}s remaining", flush=True)
+            logger.info(f"  New actions queued, cooldown {wait_remaining}s remaining")
 
             # Auto-advance act if objectives met
             if pacer.should_end_act() and act_num < 3:
                 next_act = act_num + 1
-                print(f"  [pacer] Objectives met — advancing to Act {next_act}",
-                      flush=True)
+                logger.info(f"  [pacer] Objectives met — advancing to Act {next_act}")
                 run_rpg_cmd(["update-scene", "--act", str(next_act)])
 
         # Idle check: prompt quiet players (only after cooldown + idle threshold)
@@ -1838,7 +1855,7 @@ def run_live_session(adventure: str):
 
         # Check if session ended externally
         if session.get("status") == "ended":
-            print(f"\n  Session ended externally.", flush=True)
+            logger.info(f"\n  Session ended externally.")
             break
 
     # End session
@@ -1846,8 +1863,8 @@ def run_live_session(adventure: str):
         _run_poll(POST_SESSION_POLL, transcript, wait_secs=45)
     md_path = _end_session(transcript)
 
-    print(f"\n=== LIVE SESSION COMPLETE ===", flush=True)
-    print(f"  Transcript: {md_path}", flush=True)
+    logger.info(f"\n=== LIVE SESSION COMPLETE ===")
+    logger.info(f"  Transcript: {md_path}")
     return md_path
 
 
@@ -1876,4 +1893,5 @@ def main():
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
     main()

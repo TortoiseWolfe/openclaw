@@ -54,9 +54,8 @@ services:
     depends_on:
       - ollama
       - mcp-gateway
-    dns:
-      - 8.8.8.8
-      - 8.8.4.4
+    security_opt:
+      - "no-new-privileges:true"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
@@ -129,6 +128,9 @@ services:
     build:
       context: ./remotion
       dockerfile: Dockerfile
+    init: true
+    security_opt:
+      - "no-new-privileges:true"
     environment:
       REMOTION_DIR: /app
       RENDERS_DIR: /renders

@@ -9,11 +9,14 @@ All file reads are best-effort — missing files produce helpful notes, not cras
 """
 
 import json
+import logging
 import os
 import re
 import sys
 from datetime import date
 from glob import glob
+
+logger = logging.getLogger(__name__)
 
 
 def find_repo_root():
@@ -27,7 +30,7 @@ def find_repo_root():
 
 REPO = find_repo_root()
 if REPO is None:
-    print("ERROR: Could not find repo root")
+    logger.error("ERROR: Could not find repo root")
     sys.exit(1)
 
 DATA = os.path.join(REPO, "trading-data")
@@ -54,7 +57,7 @@ def load_text(path):
 
 def print_header():
     today = date.today().isoformat()
-    print(f"""
+    logger.info(f"""
 ================================================================================
   MOLTBOT TRADING SYSTEM — WALKTHROUGH
   {today}
@@ -67,7 +70,7 @@ def print_header():
 
 
 def print_infrastructure():
-    print("""
+    logger.info("""
 == 1. INFRASTRUCTURE ============================================================
 
   Everything runs in Docker on WSL2 (Debian). Four services:
@@ -102,7 +105,7 @@ def print_infrastructure():
 def print_watchlist():
     wl = load_json(os.path.join(CONFIG, "watchlist.json"))
     if wl is None:
-        print("  (watchlist.json not found)\n")
+        logger.info("  (watchlist.json not found)\n")
         return
 
     forex = [a["symbol"] for a in wl.get("forex", [])]
@@ -115,7 +118,7 @@ def print_watchlist():
     rr = rules.get("rr_ratio", 0)
     max_pos = rules.get("max_positions", {}).get("global", 0)
 
-    print(f"""
+    logger.info(f"""
 == 2. WHAT WE'RE TRACKING ======================================================
 
   {total} assets across 3 classes, checked every weekday at 9:00 AM ET.
@@ -135,7 +138,7 @@ def print_watchlist():
 
 
 def print_pipeline():
-    print("""
+    logger.info("""
 == 3. DAILY PIPELINE (Mon-Fri) =================================================
 
   Every weekday, 6 cron jobs run in sequence:
@@ -151,14 +154,14 @@ def print_pipeline():
     if sample and sample.get("candles"):
         last = sample["candles"][-1]
         updated = sample.get("lastUpdated", "?")[:10]
-        print(f"  │   Example: EURUSD latest candle ({last['date']}):")
-        print(f"  │     Open: {last['o']:.5f}  High: {last['h']:.5f}  "
+        logger.info(f"  │   Example: EURUSD latest candle ({last['date']}):")
+        logger.info(f"  │     Open: {last['o']:.5f}  High: {last['h']:.5f}  "
               f"Low: {last['l']:.5f}  Close: {last['c']:.5f}")
-        print(f"  │     (data as of {updated})")
+        logger.info(f"  │     (data as of {updated})")
     else:
-        print("  │   (no candle data collected yet)")
+        logger.info("  │   (no candle data collected yet)")
 
-    print("""  │
+    logger.info("""  │
   8:35 AM ── Supplementary Data Pull ──────────────────────────────────
   │          Rotating schedule: earnings dates, company overviews,
   │          intraday forex. 9 API calls/day on a weekday rotation.
@@ -172,11 +175,11 @@ def print_pipeline():
         if sample_e:
             sym = os.path.basename(earnings_files[0]).replace("-earnings.json", "")
             nxt = sample_e.get("next_earnings_date", "unknown")
-            print(f"  │   Example: {sym} next earnings: {nxt}")
+            logger.info(f"  │   Example: {sym} next earnings: {nxt}")
     if not earnings_files and not overview_files:
-        print("  │   (no supplementary data collected yet)")
+        logger.info("  │   (no supplementary data collected yet)")
 
-    print("""  │
+    logger.info("""  │
   8:45 AM ── News Sentiment ───────────────────────────────────────────
   │          Alpha Vantage NEWS_SENTIMENT API (3 batched calls)
   │          Scores: -1.0 (bearish) to +1.0 (bullish)
@@ -187,15 +190,15 @@ def print_pipeline():
     sent = load_json(os.path.join(DATA, "data", "news", f"sentiment-{today_str}.json"))
     if sent and sent.get("market_summary"):
         ms = sent["market_summary"]
-        print(f"  │   Today's market: {ms.get('overall_label', '?')} "
+        logger.info(f"  │   Today's market: {ms.get('overall_label', '?')} "
               f"(score: {ms.get('overall_sentiment', 0):.3f})")
         if ms.get("most_bullish"):
-            print(f"  │   Most bullish: {ms['most_bullish']}  |  "
+            logger.info(f"  │   Most bullish: {ms['most_bullish']}  |  "
                   f"Most bearish: {ms.get('most_bearish', '?')}")
     else:
-        print("  │   (no sentiment data for today)")
+        logger.info("  │   (no sentiment data for today)")
 
-    print("""  │
+    logger.info("""  │
   9:00 AM ── Trade Decision (THE ORCHESTRATOR) ────────────────────────
   │          1. Check stop-loss / take-profit on open positions
   │          2. Friday: close all forex (weekend gap risk)
@@ -209,16 +212,16 @@ def print_pipeline():
         bal = state.get("balance", 0)
         n_open = len(state.get("open", []))
         n_closed = len(state.get("closed", []))
-        print(f"  │   Current: ${bal:,.2f} balance, "
+        logger.info(f"  │   Current: ${bal:,.2f} balance, "
               f"{n_open} open, {n_closed} closed all-time")
         for p in state.get("open", []):
             pnl = p.get("unrealized_pnl", 0)
-            print(f"  │     {p['symbol']:8s} {p['direction']:5s} "
+            logger.info(f"  │     {p['symbol']:8s} {p['direction']:5s} "
                   f"entry: {p['entry']:.5f}  P&L: ${pnl:+,.2f}")
     else:
-        print("  │   (no trading state yet)")
+        logger.info("  │   (no trading state yet)")
 
-    print("""  │
+    logger.info("""  │
   9:20 AM ── Post-Mortem Analysis ─────────────────────────────────────
              Analyze every closed trade: what worked, what didn't.
              Output feeds back into tomorrow's trade decisions.
@@ -230,15 +233,15 @@ def print_pipeline():
         for st, data in lessons.get("by_signal_type", {}).items():
             wr = data.get("win_rate", 0) * 100
             cm = data.get("confidence_multiplier", 1.0)
-            print(f"             Signal '{st}': {data.get('count', 0)} trades, "
+            logger.info(f"             Signal '{st}': {data.get('count', 0)} trades, "
                   f"{wr:.0f}% win rate -> {cm:.2f}x sizing multiplier")
     else:
-        print("             (no post-mortem data yet — need closed trades first)")
-    print()
+        logger.info("             (no post-mortem data yet — need closed trades first)")
+    logger.info("")
 
 
 def print_feedback_loop():
-    print("""
+    logger.info("""
 == 4. FEEDBACK LOOP ============================================================
 
   The system learns from its own trades. Every day at 9:20 AM, the
@@ -269,8 +272,8 @@ def print_feedback_loop():
 def print_education():
     curriculum = load_text(os.path.join(EDU, "curriculum-progress.md"))
     if curriculum is None:
-        print("== 5. EDUCATION PIPELINE ========================================")
-        print("  (curriculum-progress.md not found)\n")
+        logger.info("== 5. EDUCATION PIPELINE ========================================")
+        logger.info("  (curriculum-progress.md not found)\n")
         return
 
     done = 0
@@ -289,7 +292,7 @@ def print_education():
     filled = int(bar_len * done / total) if total > 0 else 0
     bar = "█" * filled + "░" * (bar_len - filled)
 
-    print(f"""
+    logger.info(f"""
 == 5. EDUCATION PIPELINE =======================================================
 
   The bot studies BabyPips School of Pipsology autonomously.
@@ -311,8 +314,8 @@ def print_education():
 def print_backtest():
     report = load_json(os.path.join(PRIVATE, "validation", "validation-report.json"))
     if report is None:
-        print("== 6. BACKTEST VALIDATION ======================================")
-        print("  (validation-report.json not found)\n")
+        logger.info("== 6. BACKTEST VALIDATION ======================================")
+        logger.info("  (validation-report.json not found)\n")
         return
 
     m = report.get("metrics", {})
@@ -326,7 +329,7 @@ def print_backtest():
     final = m.get("final_balance", 0)
     ruin = mc.get("ruin_pct", 0) * 100
 
-    print(f"""
+    logger.info(f"""
 == 6. BACKTEST VALIDATION ======================================================
 
   Before trusting real money, the signal logic is replayed over
@@ -350,8 +353,8 @@ def print_backtest():
 def print_current_status():
     state = load_json(os.path.join(PRIVATE, "paper-state.json"))
     if state is None:
-        print("== 7. CURRENT STATUS ===========================================")
-        print("  (no trading state)\n")
+        logger.info("== 7. CURRENT STATUS ===========================================")
+        logger.info("  (no trading state)\n")
         return
 
     bal = state.get("balance", 0)
@@ -361,7 +364,7 @@ def print_current_status():
     n_closed = len(state.get("closed", []))
     unrealized = sum(p.get("unrealized_pnl", 0) for p in state.get("open", []))
 
-    print(f"""
+    logger.info(f"""
 == 7. CURRENT STATUS ===========================================================
 
   Paper account (play money — $10,000 starting balance):
@@ -380,7 +383,7 @@ def print_current_status():
 
 
 def print_whats_next():
-    print("""
+    logger.info("""
 == WHAT'S NEXT =================================================================
 
   Upcoming improvements (in priority order):
@@ -416,4 +419,5 @@ def main():
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
     main()

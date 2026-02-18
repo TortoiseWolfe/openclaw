@@ -17,6 +17,7 @@ Requires:
 import argparse
 import atexit
 import json
+import logging
 import math
 import os
 import re
@@ -25,6 +26,8 @@ import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
+
+logger = logging.getLogger(__name__)
 
 # Accumulates audio temp files for cleanup even if script aborts early
 _audio_cleanup_list: list[str] = []
@@ -73,13 +76,13 @@ def run(cmd: list[str], label: str, timeout: int = 600) -> subprocess.CompletedP
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired:
-        print(f"ERROR: {label} timed out after {timeout}s", file=sys.stderr)
+        logger.error(f"ERROR: {label} timed out after {timeout}s")
         sys.exit(1)
     if result.returncode != 0:
-        print(f"ERROR: {label} failed (exit {result.returncode})", file=sys.stderr)
+        logger.error(f"ERROR: {label} failed (exit {result.returncode})")
         if result.stderr:
             for line in result.stderr.strip().split("\n")[-10:]:
-                print(f"  {line}", file=sys.stderr)
+                logger.error(f"  {line}")
         sys.exit(1)
     return result
 
@@ -92,9 +95,9 @@ def get_audio_duration(path: str) -> float:
         capture_output=True, text=True, timeout=30,
     )
     if result.returncode != 0 or not result.stdout.strip():
-        print(f"ERROR: ffprobe failed for {path} (exit {result.returncode})", file=sys.stderr)
+        logger.error(f"ERROR: ffprobe failed for {path} (exit {result.returncode})")
         if result.stderr:
-            print(f"  {result.stderr.strip()[:200]}", file=sys.stderr)
+            logger.error(f"  {result.stderr.strip()[:200]}")
         sys.exit(1)
     return float(result.stdout.strip())
 
@@ -103,7 +106,7 @@ def render_composition(composition_id: str, props: dict, output_path: str) -> bo
     """Render a Remotion composition via the remotion-renderer service."""
     result = remotion_client.render(composition_id, props, output_path)
     if not result.get("success"):
-        print(f"ERROR: Render failed: {result.get('error')}", file=sys.stderr)
+        logger.error(f"ERROR: Render failed: {result.get('error')}")
         return False
     return True
 
@@ -184,15 +187,15 @@ def resolve_episode_path(name_or_path: str) -> str:
     path = os.path.join(EPISODES_DIR, f"{name_or_path}.md")
     if os.path.isfile(path):
         return path
-    print(f"ERROR: Episode not found: {name_or_path}", file=sys.stderr)
-    print(f"  Checked: {name_or_path}, {path}", file=sys.stderr)
+    logger.error(f"ERROR: Episode not found: {name_or_path}")
+    logger.error(f"  Checked: {name_or_path}, {path}")
     sys.exit(1)
 
 
 def find_next_scheduled_episode() -> str:
     """Read schedule.md and find the next unrendered episode."""
     if not os.path.isfile(SCHEDULE_FILE):
-        print("ERROR: schedule.md not found", file=sys.stderr)
+        logger.error("ERROR: schedule.md not found")
         sys.exit(1)
 
     # Load existing rendered episodes
@@ -227,7 +230,7 @@ def find_next_scheduled_episode() -> str:
             if os.path.isfile(ep_path) and template_rel not in rendered:
                 return ep_path
 
-    print("ERROR: No scheduled unrendered episodes found", file=sys.stderr)
+    logger.error("ERROR: No scheduled unrendered episodes found")
     sys.exit(1)
 
 
@@ -285,8 +288,8 @@ def main():
 
     # Check remotion-renderer is available
     if not remotion_client.health():
-        print("ERROR: remotion-renderer service not available", file=sys.stderr)
-        print("  Start it with: docker compose up -d remotion-renderer", file=sys.stderr)
+        logger.error("ERROR: remotion-renderer service not available")
+        logger.error("  Start it with: docker compose up -d remotion-renderer")
         sys.exit(1)
 
     # Import parse_episode from same directory
@@ -302,20 +305,20 @@ def main():
     with open(ep_path) as f:
         episode = parse_episode(f.read())
 
-    print(f"Episode: {episode.title} ({len(episode.sections)} sections, ~{episode.duration_min} min)")
+    logger.info(f"Episode: {episode.title} ({len(episode.sections)} sections, ~{episode.duration_min} min)")
 
     # Check disk space (need ~1GB for renders + temp files)
     free_bytes = shutil.disk_usage(args.output_dir).free
     if free_bytes < 1024 * 1024 * 1024:
         free_mb = free_bytes // (1024 * 1024)
-        print(f"ABORT: Only {free_mb} MB free in {args.output_dir} — need at least 1 GB.", file=sys.stderr)
+        logger.error(f"ABORT: Only {free_mb} MB free in {args.output_dir} — need at least 1 GB.")
         sys.exit(1)
 
     # Look up next episode and series info for outro
     next_ep = get_next_episode(episode.title)
     last_in_series = is_last_in_series(episode.title)
     if not next_ep and not last_in_series:
-        print("WARNING: No next episode scheduled — outro will use generic CTA.", file=sys.stderr)
+        logger.warning("WARNING: No next episode scheduled — outro will use generic CTA.")
 
     # Determine series from schedule
     from parse_episode import parse_schedule
@@ -344,7 +347,7 @@ def main():
 
         # Step 1: Render narrated intro
         if not args.no_intro:
-            print(f"\n[intro] Rendering narrated StreamIntro ...")
+            logger.info(f"\n[intro] Rendering narrated StreamIntro ...")
             brand_names = {"turtlewolfe": "TurtleWolfe", "scripthammer": "ScriptHammer"}
             brand_display = brand_names.get(args.brand, args.brand)
             intro_narration = (
@@ -385,10 +388,10 @@ def main():
             if render_composition("StreamIntro", intro_props, f"/renders/{intro_output}"):
                 rendered_path = os.path.join(args.output_dir, intro_output)
                 shutil.move(rendered_path, intro_video_path)
-                print(f"  Video: {os.path.getsize(intro_video_path) // 1024} KB")
+                logger.info(f"  Video: {os.path.getsize(intro_video_path) // 1024} KB")
 
                 # Merge video with audio using FFmpeg
-                print(f"  Merging audio ...")
+                logger.info(f"  Merging audio ...")
                 run([
                     "ffmpeg", "-y",
                     "-i", intro_video_path,
@@ -401,21 +404,21 @@ def main():
                 ], "Merge audio intro", timeout=120)
 
                 segment_files.append(intro_path)
-                print(f"  OK: intro ({os.path.getsize(intro_path) // 1024} KB)")
+                logger.info(f"  OK: intro ({os.path.getsize(intro_path) // 1024} KB)")
             else:
-                print("  WARNING: Intro render failed, skipping", file=sys.stderr)
+                logger.warning("  WARNING: Intro render failed, skipping")
 
         # Step 2: Render each section
         total_sections = len(episode.sections)
         for section in episode.sections:
-            print(f"\n[{section.number}/{total_sections}] {section.title} ({section.time_min} min) ...")
+            logger.info(f"\n[{section.number}/{total_sections}] {section.title} ({section.time_min} min) ...")
 
             # Generate narration with word-boundary timing
             narration_text = bullets_to_narration(section)
             audio_filename = f"section_{section.number}_{timestamp}.mp3"
             audio_path = os.path.join(AUDIO_DIR, audio_filename)
             timing_path = os.path.join(tmpdir, f"timing_{section.number}.json")
-            print(f"  TTS: {len(narration_text)} chars ...")
+            logger.info(f"  TTS: {len(narration_text)} chars ...")
             run([
                 "python3", os.path.join(SCRIPT_DIR, "generate_narration.py"),
                 "--text", narration_text,
@@ -429,13 +432,13 @@ def main():
             # Get audio duration
             duration_sec = get_audio_duration(audio_path)
             duration_frames = math.ceil(duration_sec * 30) + 60  # 30 fade-in + 30 fade-out
-            print(f"  Audio: {duration_sec:.1f}s → {duration_frames} frames")
+            logger.info(f"  Audio: {duration_sec:.1f}s → {duration_frames} frames")
 
             # Map bullet timings from word boundaries
             bullet_timings = _map_bullet_timings(
                 section, narration_text, timing_path, duration_sec,
             )
-            print(f"  Bullet timings: {bullet_timings[:4]}{'...' if len(bullet_timings) > 4 else ''}")
+            logger.debug(f"  Bullet timings: {bullet_timings[:4]}{'...' if len(bullet_timings) > 4 else ''}")
 
             # Build props - render video WITHOUT audio (we'll merge later with FFmpeg)
             props = {
@@ -456,18 +459,18 @@ def main():
             segment_output = f"_tmp/segment_{section.number}_{timestamp}.mp4"
             video_only_path = os.path.join(tmpdir, f"video_{section.number}.mp4")
             segment_path = os.path.join(tmpdir, f"segment_{section.number}.mp4")
-            print(f"  Rendering NarratedSegment (video only) ...")
+            logger.info(f"  Rendering NarratedSegment (video only) ...")
 
             if render_composition("NarratedSegment", props, f"/renders/{segment_output}"):
                 rendered_path = os.path.join(args.output_dir, segment_output)
                 shutil.move(rendered_path, video_only_path)
-                print(f"  Video: {os.path.getsize(video_only_path) // 1024} KB")
+                logger.info(f"  Video: {os.path.getsize(video_only_path) // 1024} KB")
             else:
-                print(f"  ERROR: Segment {section.number} render failed", file=sys.stderr)
+                logger.error(f"  ERROR: Segment {section.number} render failed")
                 sys.exit(1)
 
             # Merge video with audio using FFmpeg
-            print(f"  Merging audio ...")
+            logger.info(f"  Merging audio ...")
             run([
                 "ffmpeg", "-y",
                 "-i", video_only_path,
@@ -481,7 +484,7 @@ def main():
 
             segment_files.append(segment_path)
             size_kb = os.path.getsize(segment_path) // 1024
-            print(f"  OK: segment_{section.number}.mp4 ({size_kb} KB)")
+            logger.info(f"  OK: segment_{section.number}.mp4 ({size_kb} KB)")
 
         # Cleanup audio files
         for audio_file in audio_files_to_cleanup:
@@ -495,7 +498,7 @@ def main():
 
         # Step 3: FFmpeg concat using filter (more reliable than demuxer)
         n = len(segment_files)
-        print(f"\n[concat] Joining {n} segments ...")
+        logger.info(f"\n[concat] Joining {n} segments ...")
 
         final_filename = f"content-{date_slug}.mp4"
         final_path = os.path.join(episode_dir, final_filename)
@@ -534,8 +537,7 @@ def main():
                 capture_output=True, text=True, timeout=30,
             )
             if probe_result.returncode != 0 or not probe_result.stdout.strip():
-                print("ERROR: Concat output failed ffprobe validation (missing moov atom?)",
-                      file=sys.stderr)
+                logger.error("ERROR: Concat output failed ffprobe validation (missing moov atom?)")
                 sys.exit(1)
 
             streams = json.loads(probe_result.stdout).get("streams", [])
@@ -544,14 +546,14 @@ def main():
             a_dur = durations.get("audio", 0)
 
             if v_dur <= 0:
-                print("ERROR: Concat output has no video stream", file=sys.stderr)
+                logger.error("ERROR: Concat output has no video stream")
                 sys.exit(1)
 
             if v_dur > 0 and a_dur > 0:
                 ratio = max(v_dur, a_dur) / min(v_dur, a_dur)
                 if ratio > 1.05:
-                    print(f"WARNING: A/V duration mismatch — video={v_dur:.1f}s, "
-                          f"audio={a_dur:.1f}s, ratio={ratio:.2f}", file=sys.stderr)
+                    logger.warning(f"WARNING: A/V duration mismatch — video={v_dur:.1f}s, "
+                                   f"audio={a_dur:.1f}s, ratio={ratio:.2f}")
 
             # Validation passed — atomic replace
             os.replace(tmp_concat, final_path)
@@ -571,9 +573,9 @@ def main():
     total_duration = get_audio_duration(final_path)
     duration_str = f"{int(total_duration // 60)}:{int(total_duration % 60):02d}"
 
-    print(f"\nOK: Rendered {final_filename} ({size_str}, {duration_str})")
-    print(f"Path: {final_path}")
-    print(f"Sections: {len(episode.sections)}")
+    logger.info(f"\nOK: Rendered {final_filename} ({size_str}, {duration_str})")
+    logger.info(f"Path: {final_path}")
+    logger.info(f"Sections: {len(episode.sections)}")
 
     # Register in episodes.json
     register_episode(
@@ -584,10 +586,10 @@ def main():
         duration_sec=int(total_duration),
         section_count=len(episode.sections),
     )
-    print(f"Registered in episodes.json")
+    logger.info(f"Registered in episodes.json")
 
     # Step 4: Render branding suite (intro, card, outro)
-    print(f"\n[branding] Rendering episode branding suite ...")
+    logger.info(f"\n[branding] Rendering episode branding suite ...")
 
     sched_date = current_sched["date"] if current_sched else datetime.now(timezone.utc).strftime("%Y-%m-%d")
     branding_cmd = [
@@ -611,11 +613,12 @@ def main():
 
     try:
         run(branding_cmd, "Branding suite render", timeout=600)
-        print(f"Branding suite rendered for {slug}")
+        logger.info(f"Branding suite rendered for {slug}")
     except Exception as e:
-        print(f"WARNING: Branding suite render failed: {e}", file=sys.stderr)
+        logger.warning(f"WARNING: Branding suite render failed: {e}")
         # Don't fail the whole episode render if branding fails
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
     main()
