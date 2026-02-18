@@ -119,6 +119,11 @@ class MCPClient:
         server = config["mcpServers"]["docker-mcp"]
         base_url = server["baseUrl"]
         auth = server["headers"].get("Authorization", "")
+        if not auth or auth == "Bearer " or auth.strip() == "Bearer":
+            raise ValueError(
+                "MCP gateway auth token is empty or missing in mcporter.json. "
+                "Set headers.Authorization to 'Bearer <token>'."
+            )
         return base_url, auth
 
     def _connect_sse(self, base_url):

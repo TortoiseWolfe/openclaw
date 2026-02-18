@@ -48,7 +48,12 @@ def main():
     if args.narration_text:
         narration = args.narration_text
     elif args.narration_file:
-        with open(args.narration_file) as f:
+        narration_path = os.path.realpath(args.narration_file)
+        allowed_dirs = ["/home/node/clawd-twitch", "/app/toolkit", "/tmp"]
+        if not any(narration_path.startswith(d) for d in allowed_dirs):
+            print(f"ERROR: narration file must be within allowed directories: {allowed_dirs}", file=sys.stderr)
+            sys.exit(1)
+        with open(narration_path) as f:
             narration = f.read().strip()
     else:
         print("ERROR: Provide --narration-text or --narration-file", file=sys.stderr)
