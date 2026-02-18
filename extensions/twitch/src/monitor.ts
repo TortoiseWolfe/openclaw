@@ -267,7 +267,15 @@ export async function monitorTwitchProvider(
     unregisterHandler();
   };
 
-  abortSignal.addEventListener("abort", stop, { once: true });
+  abortSignal?.addEventListener("abort", stop, { once: true });
+
+  // Block until the abort signal fires so the framework keeps the connection alive.
+  // Without this, the promise resolves immediately and the framework auto-restarts.
+  if (abortSignal && !abortSignal.aborted) {
+    await new Promise<void>((resolve) => {
+      abortSignal.addEventListener("abort", () => resolve(), { once: true });
+    });
+  }
 
   return { stop };
 }
