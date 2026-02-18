@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Auto-start moltbot Docker services after WSL2 reboot.
+# Auto-start openclaw Docker services after WSL2 reboot.
 # Idempotent — skips steps already done. Safe to run multiple times.
 #
 # Triggered by:
@@ -9,10 +9,10 @@
 
 set -euo pipefail
 
-REPO_DIR="$HOME/repos/moltbot"
+REPO_DIR="$HOME/repos/openclaw"
 LOG_DIR="$HOME/.moltbot"
 LOG_FILE="$LOG_DIR/startup.log"
-LOCK_FILE="/tmp/moltbot-starting.lock"
+LOCK_FILE="/tmp/openclaw-starting.lock"
 REQUIRED_MODELS=("qwen3:14b")
 
 mkdir -p "$LOG_DIR"
@@ -26,7 +26,7 @@ if ! flock -n 9; then
 fi
 trap 'rm -f "$LOCK_FILE"' EXIT
 
-log "=== moltbot startup ==="
+log "=== openclaw startup ==="
 
 # 1. Wait for Docker Desktop to be ready (auto-starts on Windows boot)
 if ! docker info &>/dev/null; then
@@ -47,12 +47,12 @@ fi
 cd "$REPO_DIR"
 
 # 2. Build image if missing
-if ! docker image inspect moltbot:local &>/dev/null; then
-  log "Building moltbot:local image..."
-  docker build -t moltbot:local . >> "$LOG_FILE" 2>&1
+if ! docker image inspect openclaw:local &>/dev/null; then
+  log "Building openclaw:local image..."
+  docker build -t openclaw:local . >> "$LOG_FILE" 2>&1
   log "Image built"
 else
-  log "Image moltbot:local exists"
+  log "Image openclaw:local exists"
 fi
 
 # 3. Start services
@@ -92,7 +92,7 @@ else
       log "Variant $variant present"
     else
       log "Creating $variant (num_ctx=8192)..."
-      docker compose exec -T moltbot-gateway curl -sf http://ollama:11434/api/create \
+      docker compose exec -T openclaw-gateway curl -sf http://ollama:11434/api/create \
         -X POST -H 'Content-Type: application/json' \
         -d "{\"model\":\"${variant}\",\"from\":\"${model}\",\"params\":{\"num_ctx\":8192}}" \
         >> "$LOG_FILE" 2>&1
