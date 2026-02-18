@@ -37,7 +37,7 @@ export class TwitchClientManager {
           refreshToken: account.refreshToken ?? null,
           expiresIn: account.expiresIn ?? null,
           obtainmentTimestamp: account.obtainmentTimestamp ?? Date.now(),
-        })
+        }, ['chat'])
         .then((userId) => {
           this.logger.info(
             `Added user ${userId} to RefreshingAuthProvider for ${account.username}`,
