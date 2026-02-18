@@ -24,6 +24,7 @@ Env vars (all optional, sensible defaults):
 import atexit
 import glob
 import os
+import re
 import signal
 import sys
 import time
@@ -31,6 +32,23 @@ from dataclasses import dataclass
 
 import obs_client
 from path_utils import RENDERS_DIR, to_windows_path
+
+
+def _fuzzy_find_episode_dir(base: str, slug: str) -> str | None:
+    """Find episode directory, tolerating 'and'/'the' differences in slugs."""
+    candidate = os.path.join(base, slug)
+    if os.path.isdir(candidate):
+        return candidate
+    stripped = re.sub(r"-(?:and|the|a)-", "-", slug)
+    if stripped != slug:
+        candidate = os.path.join(base, stripped)
+        if os.path.isdir(candidate):
+            return candidate
+    if os.path.isdir(base):
+        for d in os.listdir(base):
+            if re.sub(r"-(?:and|the|a)-", "-", d) == stripped:
+                return os.path.join(base, d)
+    return None
 
 
 # ── Emergency stream shutdown on process kill ──────────────────
@@ -116,7 +134,23 @@ def find_episode_intro(episode_name: str) -> str | None:
     # Fall back to flat file naming (legacy)
     pattern = os.path.join(RENDERS_DIR, f"{episode_name}-intro-*.mp4")
     matches = sorted(glob.glob(pattern))
-    return matches[-1] if matches else None
+    if matches:
+        return matches[-1]
+    # Fuzzy fallback: tolerate 'and'/'the' differences in slug
+    for series_base in sorted(glob.glob(os.path.join(RENDERS_DIR, "*"))):
+        if not os.path.isdir(series_base):
+            continue
+        match = _fuzzy_find_episode_dir(series_base, episode_name)
+        if match:
+            hits = sorted(glob.glob(os.path.join(match, "intro-*.mp4")))
+            if hits:
+                return hits[-1]
+    match = _fuzzy_find_episode_dir(RENDERS_DIR, episode_name)
+    if match:
+        hits = sorted(glob.glob(os.path.join(match, "intro-*.mp4")))
+        if hits:
+            return hits[-1]
+    return None
 
 
 def find_holding_screen() -> str | None:
@@ -158,7 +192,23 @@ def find_episode_outro(episode_name: str) -> str | None:
     # Fall back to flat file naming (legacy)
     pattern = os.path.join(RENDERS_DIR, f"{episode_name}-outro-*.mp4")
     matches = sorted(glob.glob(pattern))
-    return matches[-1] if matches else None
+    if matches:
+        return matches[-1]
+    # Fuzzy fallback: tolerate 'and'/'the' differences in slug
+    for series_base in sorted(glob.glob(os.path.join(RENDERS_DIR, "*"))):
+        if not os.path.isdir(series_base):
+            continue
+        match = _fuzzy_find_episode_dir(series_base, episode_name)
+        if match:
+            hits = sorted(glob.glob(os.path.join(match, "outro-*.mp4")))
+            if hits:
+                return hits[-1]
+    match = _fuzzy_find_episode_dir(RENDERS_DIR, episode_name)
+    if match:
+        hits = sorted(glob.glob(os.path.join(match, "outro-*.mp4")))
+        if hits:
+            return hits[-1]
+    return None
 
 
 def ensure_scenes(phases: list[ShowPhase]) -> None:

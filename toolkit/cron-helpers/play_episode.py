@@ -13,10 +13,10 @@ Env vars:
 """
 
 import argparse
-import re
 import glob
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -24,6 +24,7 @@ from datetime import datetime
 
 import obs_client
 from path_utils import RENDERS_DIR, to_windows_path
+from show_flow import _fuzzy_find_episode_dir
 
 EPISODES_JSON = "/home/node/clawd-twitch/episodes.json"
 SCHEDULE_FILE = "/home/node/clawd-twitch/schedule.md"
@@ -121,6 +122,35 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
                 duration_sec = 0
             else:
                 duration_sec = int(float(result.stdout.strip()))
+            return video_path, duration_sec
+
+    # Fuzzy fallback: tolerate 'and'/'the' differences in slug
+    for series_base in sorted(glob.glob(os.path.join(RENDERS_DIR, "*"))):
+        if not os.path.isdir(series_base):
+            continue
+        match = _fuzzy_find_episode_dir(series_base, slug)
+        if match:
+            hits = sorted(glob.glob(os.path.join(match, "content-*.mp4")))
+            if hits:
+                video_path = hits[-1]
+                result = subprocess.run(
+                    ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+                     "-of", "default=noprint_wrappers=1:nokey=1", video_path],
+                    capture_output=True, text=True, timeout=30,
+                )
+                duration_sec = int(float(result.stdout.strip())) if result.returncode == 0 and result.stdout.strip() else 0
+                return video_path, duration_sec
+    match = _fuzzy_find_episode_dir(RENDERS_DIR, slug)
+    if match:
+        hits = sorted(glob.glob(os.path.join(match, "content-*.mp4")))
+        if hits:
+            video_path = hits[-1]
+            result = subprocess.run(
+                ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+                 "-of", "default=noprint_wrappers=1:nokey=1", video_path],
+                capture_output=True, text=True, timeout=30,
+            )
+            duration_sec = int(float(result.stdout.strip())) if result.returncode == 0 and result.stdout.strip() else 0
             return video_path, duration_sec
 
     # Fall back to episodes.json registry (legacy)
@@ -253,6 +283,35 @@ def play(episode_name: str, stream: bool = True) -> None:
     print(f"\nDone: {episode_name}")
 
 
+def _update_twitch_metadata(args: argparse.Namespace) -> None:
+    """Update Twitch channel title/category before streaming."""
+    title = getattr(args, "twitch_title", None)
+    category = getattr(args, "twitch_category", None)
+
+    # Auto-derive title from schedule when --from-schedule and no explicit --twitch-title
+    if not title and getattr(args, "from_schedule", False):
+        rows = parse_schedule()
+        today = datetime.now().strftime("%Y-%m-%d")
+        for row in rows:
+            if row["date"] == today:
+                title = row["topic"]
+                break
+
+    # Default category when any Twitch flag is used
+    if title and not category:
+        category = "Software and Game Development"
+
+    if not title and not category:
+        return
+
+    try:
+        import twitch_client
+        twitch_client.update_channel(title=title, game=category)
+    except Exception as e:
+        print(f"WARNING: Twitch metadata update failed: {e}", file=sys.stderr)
+        print("Continuing with stream anyway...", file=sys.stderr)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Play a rendered episode via OBS")
     group = parser.add_mutually_exclusive_group(required=True)
@@ -265,7 +324,14 @@ def main() -> None:
                         help="Use multi-scene show flow (Starting Soon -> Intro -> Episode -> Outro)")
     parser.add_argument("--series", action="store_true",
                         help="Play all episodes in today's series consecutively")
+    parser.add_argument("--twitch-title",
+                        help="Set Twitch stream title before playing")
+    parser.add_argument("--twitch-category", default=None,
+                        help="Set Twitch game category (default: Software and Game Development)")
     args = parser.parse_args()
+
+    # Update Twitch channel metadata if requested
+    _update_twitch_metadata(args)
 
     if args.series and args.from_schedule:
         # Series mode: play all episodes in today's series back-to-back
