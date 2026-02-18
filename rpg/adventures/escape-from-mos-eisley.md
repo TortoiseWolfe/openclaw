@@ -1,0 +1,1 @@
+../campaigns/darkstrider/modules/01-escape-from-mos-eisley/adventure.md

@@ -1,0 +1,82 @@
+{
+  "map": "docking-bay-87.svg",
+  "width": 1200,
+  "height": 900,
+  "positions": {
+    "blast-door": {"x": 600, "y": 830, "desc": "Main blast door (heavy — Mechanical 20 to close on AT-ST, Strength to manual override)"},
+    "blast-door-left": {"x": 480, "y": 830, "desc": "Left side of blast door (partial cover from doorframe)"},
+    "blast-door-right": {"x": 720, "y": 830, "desc": "Right side of blast door (partial cover from doorframe)"},
+    "side-entry": {"x": 70, "y": 450, "desc": "Side personnel entrance (less guarded, leads to alley — locked from outside, Security 10)"},
+    "ship-ramp": {"x": 600, "y": 510, "desc": "Boarding ramp of the Rusty Mynock (Starship Repair 15 to fix before launch)"},
+    "ship-cockpit": {"x": 815, "y": 380, "desc": "Cockpit area (Astrogation 15 to plot hyperspace jump, comms panel inside)"},
+    "ship-top-hatch": {"x": 580, "y": 360, "desc": "Below top hatch (Climbing 10 to reach, alternate entry — bypasses ramp)"},
+    "ship-bow": {"x": 600, "y": 230, "desc": "Between mandibles (exposed, but good angle to fire at blast door entrance)"},
+    "ship-stern": {"x": 600, "y": 530, "desc": "Ship rear (engine section — Repair 15 to jury-rig engine boost for takeoff)"},
+    "ship-port": {"x": 420, "y": 380, "desc": "Port side (left — landing strut here, can duck under hull for cover)"},
+    "ship-starboard": {"x": 780, "y": 380, "desc": "Starboard side (right — landing strut here, cover from east side fire)"},
+    "ship-turret": {"x": 600, "y": 350, "desc": "Dorsal turret position (quad laser — Starship Gunnery 4D+2, but needs power: Repair 12)"},
+    "cargo-left": {"x": 190, "y": 220, "desc": "Left cargo cluster (can push crates to block doorways, Strength 15)"},
+    "cargo-left-behind": {"x": 120, "y": 250, "desc": "Behind left cargo (+2D cover, dead Rebel pilot's body — datapad with Bay 94 codes)"},
+    "cargo-right": {"x": 1020, "y": 195, "desc": "Right cargo cluster (Imperial supply crates — 4 E-11 blasters, 2 medpacs)"},
+    "cargo-right-behind": {"x": 1060, "y": 220, "desc": "Behind right cargo (+2D cover, good sniper position toward blast door)"},
+    "cargo-left-top": {"x": 170, "y": 170, "desc": "On top of left cargo (Climbing 10, +1D elevation bonus, exposed)"},
+    "cargo-right-top": {"x": 1000, "y": 160, "desc": "On top of right cargo (Climbing 10, +1D elevation bonus, exposed)"},
+    "fuel-barrels": {"x": 160, "y": 640, "desc": "Fuel barrels (EXPLOSIVE — shoot to detonate 6D damage, 5m radius; or roll toward blast door)"},
+    "fuel-barrels-behind": {"x": 120, "y": 670, "desc": "Behind fuel barrels (cover, but VERY dangerous if barrels are hit)"},
+    "maintenance-pit": {"x": 940, "y": 560, "desc": "Maintenance pit (recessed — characters hidden from ground-level fire, repair tools inside)"},
+    "maintenance-pit-tools": {"x": 970, "y": 530, "desc": "Pit tool rack (hydrospanner, welding torch — 3D melee weapon, plasma cutter — can cut through doors)"},
+    "control-panel": {"x": 460, "y": 75, "desc": "Bay control panel (blast door override, lights kill switch, comms — Computer Prog 10)"},
+    "catwalk-left": {"x": 210, "y": 90, "desc": "Left catwalk (upper level, +1D high ground, ladder at west end)"},
+    "catwalk-right": {"x": 990, "y": 90, "desc": "Right catwalk (upper level, +1D high ground, ladder at east end)"},
+    "catwalk-left-end": {"x": 80, "y": 90, "desc": "Left catwalk west end (ladder down to bay floor)"},
+    "catwalk-right-end": {"x": 1120, "y": 90, "desc": "Right catwalk east end (ladder down to bay floor)"},
+    "at-st-approach": {"x": 600, "y": 800, "desc": "AT-ST approach zone (clear line of fire to ship — danger zone during climax)"},
+    "bay-floor-left": {"x": 200, "y": 500, "desc": "Open bay floor, left side (no cover)"},
+    "bay-floor-right": {"x": 1000, "y": 500, "desc": "Open bay floor, right side (no cover)"},
+    "bay-floor-center": {"x": 600, "y": 700, "desc": "Open bay floor center (between ship and door — kill zone during assault)"},
+    "ladder-left": {"x": 80, "y": 150, "desc": "Ladder to left catwalk (Climbing 5, takes 1 round)"},
+    "ladder-right": {"x": 1120, "y": 150, "desc": "Ladder to right catwalk (Climbing 5, takes 1 round)"}
+  },
+  "connections": {
+    "blast-door": {"map": "mos-eisley-streets-3.png", "position": "bay-87-road"},
+    "side-entry": {"map": "mos-eisley-streets-2.png", "position": "warehouse-door"}
+  },
+  "obstacles": [
+    {"id": "ship-hull", "x1": 440, "y1": 270, "x2": 760, "y2": 490, "desc": "Rusty Mynock hull"},
+    {"id": "ship-mandible-left", "x1": 480, "y1": 190, "x2": 560, "y2": 290, "desc": "Ship left mandible"},
+    {"id": "ship-mandible-right", "x1": 640, "y1": 190, "x2": 720, "y2": 290, "desc": "Ship right mandible"},
+    {"id": "cargo-crates-left", "x1": 120, "y1": 150, "x2": 260, "y2": 250, "desc": "Left cargo cluster"},
+    {"id": "cargo-crates-right", "x1": 950, "y1": 150, "x2": 1060, "y2": 240, "desc": "Right cargo cluster"},
+    {"id": "walls-north", "x1": 40, "y1": 40, "x2": 1160, "y2": 55, "desc": "North wall"},
+    {"id": "walls-south-l", "x1": 40, "y1": 846, "x2": 440, "y2": 864, "desc": "South wall left of blast door"},
+    {"id": "walls-south-r", "x1": 760, "y1": 846, "x2": 1160, "y2": 864, "desc": "South wall right of blast door"},
+    {"id": "walls-west", "x1": 40, "y1": 40, "x2": 55, "y2": 860, "desc": "West wall"},
+    {"id": "walls-east", "x1": 1145, "y1": 40, "x2": 1160, "y2": 860, "desc": "East wall"}
+  ],
+  "zones": {
+    "ship": {
+      "desc": "Rusty Mynock YT-1300 (needs Repair 15 to fly, turret needs Repair 12 for power)",
+      "positions": ["ship-ramp", "ship-cockpit", "ship-top-hatch", "ship-bow", "ship-stern", "ship-port", "ship-starboard", "ship-turret"]
+    },
+    "cargo": {
+      "desc": "Cargo crate clusters (+2D cover — left has dead Rebel's datapad, right has Imperial weapons)",
+      "positions": ["cargo-left", "cargo-left-behind", "cargo-left-top", "cargo-right", "cargo-right-behind", "cargo-right-top"]
+    },
+    "upper-level": {
+      "desc": "Catwalks and control panel (high ground +1D, ladders take 1 round to climb)",
+      "positions": ["catwalk-left", "catwalk-left-end", "catwalk-right", "catwalk-right-end", "control-panel", "ladder-left", "ladder-right"]
+    },
+    "entrances": {
+      "desc": "Bay entry points (blast door closeable, side entry locked Security 10)",
+      "positions": ["blast-door", "blast-door-left", "blast-door-right", "side-entry"]
+    },
+    "open-floor": {
+      "desc": "Open bay floor (no cover — kill zone during assault)",
+      "positions": ["bay-floor-left", "bay-floor-right", "bay-floor-center", "at-st-approach"]
+    },
+    "tactical": {
+      "desc": "Tactical positions (fuel barrels EXPLOSIVE 6D, maintenance pit has tools, catwalks give +1D)",
+      "positions": ["fuel-barrels", "fuel-barrels-behind", "maintenance-pit", "maintenance-pit-tools", "catwalk-left", "catwalk-right"]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "DarkStrider Campaign",
+  "slug": "darkstrider",
+  "setting": "Kathol Sector, Classic Trilogy era",
+  "description": "The hunt for Moff Sarne across the Kathol sector. After escaping Mos Eisley with stolen Imperial data, the crew of the Rusty Mynock is drawn into a galaxy-spanning chase through the remote Kathol Outback.",
+  "modules": [
+    { "slug": "01-escape-from-mos-eisley", "name": "Escape from Mos Eisley", "status": "complete" },
+    { "slug": "02-shadows-of-onderon", "name": "Shadows of Onderon", "status": "draft" },
+    { "slug": "03-kathol-outback", "name": "The Kathol Outback", "status": "skeleton" }
+  ],
+  "pc_roster": [
+    { "name": "Kira Voss", "species": "Human", "class": "Smuggler" },
+    { "name": "Tok-3", "species": "Droid", "class": "Astromech" },
+    { "name": "Renn Darkhollow", "species": "Twi'lek", "class": "Bounty Hunter" },
+    { "name": "Zeph Ando", "species": "Cerean", "class": "Force-sensitive Mechanic" }
+  ],
+  "current_module": "01-escape-from-mos-eisley",
+  "ship": {
+    "name": "Rusty Mynock",
+    "type": "YT-1300",
+    "status": "operational"
+  }
+}

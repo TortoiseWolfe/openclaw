@@ -1,0 +1,363 @@
+{
+  "date": "2026-02-17",
+  "lastUpdated": "2026-02-17T04:25:18.245302+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 14,
+      "matched": [
+        {
+          "title": "This Key Metric for Amazon and Alphabet Will Take a Huge Hit in 2026 Thanks to Massive AI Spending. Here's What It Means for Investors.",
+          "url": "https://finance.yahoo.com/news/key-metric-amazon-alphabet-huge-165200833.html",
+          "source": "yahoo",
+          "published": "2026-02-15T16:52:00Z",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Prediction: This AI Stock Will Recover Faster Than Microsoft After the Sell-Off",
+          "url": "https://finance.yahoo.com/news/prediction-ai-stock-recover-faster-170500817.html",
+          "source": "yahoo",
+          "published": "2026-02-15T17:05:00Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Is Amazon.com\u00a0(AMZN) Mason Morfit\u2019s Top Pick?",
+          "url": "https://finance.yahoo.com/news/amazon-com-amzn-mason-morfit-224733875.html",
+          "source": "yahoo",
+          "published": "2026-02-15T22:47:33Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Is Microsoft Corporation\u00a0(MSFT) Chase Coleman III\u2019s Top Pick?",
+          "url": "https://finance.yahoo.com/news/microsoft-corporation-msft-chase-coleman-224742048.html",
+          "source": "yahoo",
+          "published": "2026-02-15T22:47:42Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "3 Predictions for Nvidia in 2026",
+          "url": "https://finance.yahoo.com/news/3-predictions-nvidia-2026-163900112.html",
+          "source": "yahoo",
+          "published": "2026-02-15T16:39:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Is Alphabet\u00a0(GOOGL) Christopher Rokos\u2019 Top Pick?",
+          "url": "https://finance.yahoo.com/news/alphabet-googl-christopher-rokos-top-224800701.html",
+          "source": "yahoo",
+          "published": "2026-02-15T22:48:00Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Is Apple (AAPL) John Overdeck\u2019s Top Pick?",
+          "url": "https://finance.yahoo.com/news/apple-aapl-john-overdeck-top-224942582.html",
+          "source": "yahoo",
+          "published": "2026-02-15T22:49:42Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple takes on YouTube and Spotify with new video podcasting push",
+          "url": "https://www.cnbc.com/2026/02/16/apple-takes-on-youtube-and-spotify-with-new-video-podcasting-push.html",
+          "source": "cnbc_top",
+          "published": "Mon, 16 Feb 2026 18:45:50 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "In bitcoin price plummet, ETF flows are down but aren't signaling 'crypto winter' investor panic",
+          "url": "https://www.cnbc.com/2026/02/15/bitcoin-price-crash-crypto-winter-investors-etf-flows.html",
+          "source": "cnbc_top",
+          "published": "Sun, 15 Feb 2026 15:24:48 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple takes on YouTube and Spotify with new video podcasting push",
+          "url": "https://www.cnbc.com/2026/02/16/apple-takes-on-youtube-and-spotify-with-new-video-podcasting-push.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Feb 2026 18:45:50 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's stock is down and AMD is up. The culprit may be Arista.",
+          "url": "https://www.cnbc.com/2026/02/13/nvidias-stock-is-down-and-amd-is-up-the-culprit-may-be-arista-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Feb 2026 20:38:27 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic taps ex-Microsoft CFO, Trump aide Liddell for board",
+          "url": "https://www.cnbc.com/2026/02/13/anthropic-ai-chris-liddell-microsoft-trump-board.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Feb 2026 17:37:47 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Instacart jumps 9% on strong results as CEO calls grocery competition fears 'overblown'",
+          "url": "https://www.cnbc.com/2026/02/13/instacart-cart-stock-ceo-grocery.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Feb 2026 22:16:07 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo is paying DoorDash gig workers to close its robotaxi doors",
+          "url": "https://www.cnbc.com/2026/02/12/waymo-is-paying-doordash-gig-workers-to-close-its-robotaxi-doors.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Feb 2026 02:10:42 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "AUDUSD",
+        "EURUSD",
+        "GBPUSD",
+        "NZDUSD",
+        "USDCAD",
+        "USDCHF",
+        "USDJPY"
+      ],
+      "currency_strength": {
+        "strongest": "CAD",
+        "weakest": "CAD",
+        "detail": {
+          "CAD": 1,
+          "USD": 1
+        }
+      },
+      "economic_events": [
+        "CPI",
+        "Central Bank",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Inflation",
+        "Manufacturing",
+        "RBA",
+        "employment",
+        "inflation"
+      ],
+      "key_headlines": [
+        "Markets traded in a subdued, range-bound fashion on Monday as the United States observed the Presidents\u2019 Day holiday and mainland China remained closed for Lunar New Year celebrations, with thin tradi",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Last Saturday, the European Central Bank unveiled its plans to widen \u2060access to its euro liquidity backstop , making it globally available and permanent New Zealand Servic",
+        "Click here to get the TradeZella Edge and use code PIPS20 to save 20% on your subscription !",
+        "Disclosure: We may earn a commission from our partners if you sign up through our links, at no extra cost to you."
+      ],
+      "error": null,
+      "fetch_date": "2026-02-16"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "AI is destroying Open Source, and it's not even good yet",
+          "url": "https://www.jeffgeerling.com/blog/2026/ai-is-destroying-open-source/",
+          "hn_score": 241,
+          "comments": 184,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Building for an audience of one: starting and finishing side projects with AI",
+          "url": "https://codemade.net/blog/building-for-one/",
+          "hn_score": 22,
+          "comments": 8,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "A Deep Dive into Apple's .car File Format",
+          "url": "https://dbg.re/posts/car-file-format/",
+          "hn_score": 9,
+          "comments": 0,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "The long tail of LLM-assisted decompilation",
+          "url": "https://blog.chrislewis.au/the-long-tail-of-llm-assisted-decompilation/",
+          "hn_score": 59,
+          "comments": 15,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Show HN: Maths, CS and AI Compendium",
+          "url": "https://github.com/HenryNdubuaku/maths-cs-ai-compendium",
+          "hn_score": 62,
+          "comments": 16,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AUDUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "EURUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NZDUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDCAD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDCHF": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 3,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

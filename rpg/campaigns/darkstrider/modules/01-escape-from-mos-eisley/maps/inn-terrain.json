@@ -1,0 +1,51 @@
+{
+  "map": "inn.svg",
+  "width": 1200,
+  "height": 900,
+  "positions": {
+    "lobby": {"x": 600, "y": 850, "desc": "Main entrance / lobby"},
+    "back-stairs": {"x": 1080, "y": 80, "desc": "Back stairs exit to alley behind inn"},
+    "registration": {"x": 200, "y": 130, "desc": "Registration desk (innkeeper asks no questions, 20 credits/night)"},
+    "common-room-center": {"x": 400, "y": 400, "desc": "Common room center (open area, bar gossip)"},
+    "table-1": {"x": 200, "y": 350, "desc": "Corner table (quiet, good for private conversations)"},
+    "table-2": {"x": 400, "y": 350, "desc": "Central table (regulars sit here, might overhear rumors)"},
+    "table-3": {"x": 600, "y": 350, "desc": "Table near wall (close to stairs, easy exit)"},
+    "table-4": {"x": 300, "y": 500, "desc": "Back table (dim lighting, +1D to Sneak/Hide)"},
+    "table-5": {"x": 500, "y": 500, "desc": "Open table (visible from entrance)"},
+    "closet": {"x": 135, "y": 760, "desc": "Storage closet (cleaning supplies, nothing valuable)"},
+    "stairs-bottom": {"x": 860, "y": 770, "desc": "Staircase, ground floor (leads to upper floor)"},
+    "stairs-top": {"x": 860, "y": 680, "desc": "Staircase, upper floor landing"},
+    "hallway": {"x": 980, "y": 125, "desc": "Upper floor hallway"},
+    "room-1": {"x": 890, "y": 240, "desc": "Room 1 (empty, basic bed and chest)"},
+    "room-2": {"x": 890, "y": 410, "desc": "Room 2 (window overlooking Street 1 — sniping position, Perception +2D)"},
+    "room-3": {"x": 890, "y": 580, "desc": "Room 3 (occupied by a nervous Rodian — might have information for credits)"},
+    "suite": {"x": 1060, "y": 330, "desc": "Suite (large room, 20 credits/night, window overlooking street)"},
+    "suite-window": {"x": 1135, "y": 295, "desc": "Suite window (overlooks Street 1, Perception +2D from elevation)"}
+  },
+  "connections": {
+    "lobby": {"map": "mos-eisley-streets-1.png", "position": "inn-door"},
+    "back-stairs": {"map": "mos-eisley-streets-1.png", "position": "inn-front"}
+  },
+  "obstacles": [
+    {"id": "dividing-wall", "x1": 796, "y1": 48, "x2": 804, "y2": 860, "desc": "Dividing wall between ground floor and upper level"},
+    {"id": "registration", "x1": 100, "y1": 100, "x2": 300, "y2": 160, "desc": "Registration desk"},
+    {"id": "room-1-walls", "x1": 820, "y1": 170, "x2": 960, "y2": 310, "desc": "Room 1 walls"},
+    {"id": "room-2-walls", "x1": 820, "y1": 340, "x2": 960, "y2": 480, "desc": "Room 2 walls"},
+    {"id": "room-3-walls", "x1": 820, "y1": 510, "x2": 960, "y2": 650, "desc": "Room 3 walls"},
+    {"id": "suite-walls", "x1": 990, "y1": 170, "x2": 1130, "y2": 480, "desc": "Suite walls"}
+  ],
+  "zones": {
+    "ground-floor": {
+      "desc": "Ground floor — common room, registration, storage",
+      "positions": ["lobby", "registration", "common-room-center", "table-1", "table-2", "table-3", "table-4", "table-5", "closet", "stairs-bottom"]
+    },
+    "upper-floor": {
+      "desc": "Upper floor — rooms for rent, hallway, suite",
+      "positions": ["stairs-top", "hallway", "room-1", "room-2", "room-3", "suite", "suite-window"]
+    },
+    "exits": {
+      "desc": "Exit points from the inn",
+      "positions": ["lobby", "back-stairs"]
+    }
+  }
+}

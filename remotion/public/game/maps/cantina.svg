@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <pattern id="floor" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#3d2b1a"/>
+      <rect x="0" y="0" width="20" height="20" fill="#362618" opacity="0.5"/>
+      <rect x="20" y="20" width="20" height="20" fill="#362618" opacity="0.5"/>
+    </pattern>
+    <pattern id="wall" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#5a4a3a"/>
+      <line x1="0" y1="4" x2="8" y2="4" stroke="#4a3a2a" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="light" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Floor -->
+  <rect width="1200" height="900" fill="url(#floor)"/>
+
+  <!-- Outer walls -->
+  <rect x="40" y="40" width="1120" height="820" fill="none" stroke="#5a4a3a" stroke-width="16" rx="4"/>
+
+  <!-- Title -->
+  <text x="600" y="28" text-anchor="middle" font-family="Arial" font-size="18" fill="#ffd700" font-weight="bold">CHALMUN'S CANTINA — Mos Eisley</text>
+
+  <!-- Main entrance (south) -->
+  <rect x="520" y="844" width="160" height="20" fill="#3d2b1a"/>
+  <text x="600" y="890" text-anchor="middle" font-family="Arial" font-size="14" fill="#888">ENTRANCE</text>
+
+  <!-- Back door (north-east) -->
+  <rect x="1060" y="40" width="20" height="80" fill="#3d2b1a"/>
+  <text x="1100" y="80" text-anchor="start" font-family="Arial" font-size="12" fill="#888">BACK</text>
+
+  <!-- Bar (center-left) -->
+  <path d="M 200 300 L 200 600 Q 200 640 240 640 L 440 640 Q 480 640 480 600 L 480 300 Q 480 260 440 260 L 240 260 Q 200 260 200 300 Z" fill="#6b4226" stroke="#4a2e18" stroke-width="3"/>
+  <text x="340" y="460" text-anchor="middle" font-family="Arial" font-size="16" fill="#aa8866" font-weight="bold">BAR</text>
+  <!-- Bar stools -->
+  <circle cx="180" cy="320" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="180" cy="380" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="180" cy="440" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="180" cy="500" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="180" cy="560" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="500" cy="320" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="500" cy="380" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="500" cy="440" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="500" cy="500" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+  <circle cx="500" cy="560" r="12" fill="#4a3520" stroke="#3a2510" stroke-width="2"/>
+
+  <!-- Band stage (top-left alcove) -->
+  <rect x="80" y="70" width="200" height="140" rx="8" fill="#2a1f14" stroke="#5a4a3a" stroke-width="3"/>
+  <text x="180" y="148" text-anchor="middle" font-family="Arial" font-size="14" fill="#cc9944" font-weight="bold">BAND STAGE</text>
+  <circle cx="120" cy="120" r="8" fill="#664422"/>
+  <circle cx="160" cy="110" r="8" fill="#664422"/>
+  <circle cx="200" cy="120" r="8" fill="#664422"/>
+  <circle cx="240" cy="110" r="8" fill="#664422"/>
+
+  <!-- Booth alcoves (right side) -->
+  <g transform="translate(700, 100)">
+    <rect width="180" height="100" rx="6" fill="#2a1f14" stroke="#5a4a3a" stroke-width="2"/>
+    <rect x="20" y="15" width="140" height="70" rx="4" fill="#4a3520"/>
+    <text x="90" y="55" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">BOOTH 1</text>
+  </g>
+  <g transform="translate(700, 230)">
+    <rect width="180" height="100" rx="6" fill="#2a1f14" stroke="#5a4a3a" stroke-width="2"/>
+    <rect x="20" y="15" width="140" height="70" rx="4" fill="#4a3520"/>
+    <text x="90" y="55" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">BOOTH 2</text>
+  </g>
+  <g transform="translate(700, 360)">
+    <rect width="180" height="100" rx="6" fill="#2a1f14" stroke="#5a4a3a" stroke-width="2"/>
+    <rect x="20" y="15" width="140" height="70" rx="4" fill="#4a3520"/>
+    <text x="90" y="55" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">BOOTH 3</text>
+  </g>
+
+  <!-- Round tables (center area) -->
+  <g>
+    <circle cx="600" cy="200" r="35" fill="#5a3d20" stroke="#4a2e18" stroke-width="2"/>
+    <circle cx="600" cy="200" r="4" fill="#3a2010"/>
+    <circle cx="600" cy="380" r="35" fill="#5a3d20" stroke="#4a2e18" stroke-width="2"/>
+    <circle cx="600" cy="380" r="4" fill="#3a2010"/>
+    <circle cx="600" cy="560" r="35" fill="#5a3d20" stroke="#4a2e18" stroke-width="2"/>
+    <circle cx="600" cy="560" r="4" fill="#3a2010"/>
+  </g>
+
+  <!-- Tables near booths -->
+  <circle cx="920" cy="150" r="30" fill="#5a3d20" stroke="#4a2e18" stroke-width="2"/>
+  <circle cx="920" cy="280" r="30" fill="#5a3d20" stroke="#4a2e18" stroke-width="2"/>
+  <circle cx="920" cy="410" r="30" fill="#5a3d20" stroke="#4a2e18" stroke-width="2"/>
+
+  <!-- Storage room (bottom-right) -->
+  <rect x="900" y="600" width="220" height="220" fill="#2a1f14" stroke="#5a4a3a" stroke-width="3"/>
+  <text x="1010" y="715" text-anchor="middle" font-family="Arial" font-size="14" fill="#888">STORAGE</text>
+  <!-- Crates -->
+  <rect x="920" y="620" width="40" height="30" fill="#6b5530" stroke="#4a3a20" stroke-width="1" rx="2"/>
+  <rect x="970" y="630" width="35" height="25" fill="#6b5530" stroke="#4a3a20" stroke-width="1" rx="2"/>
+  <rect x="920" y="660" width="45" height="35" fill="#6b5530" stroke="#4a3a20" stroke-width="1" rx="2"/>
+
+  <!-- Ambient lights -->
+  <circle cx="340" cy="450" r="120" fill="url(#light)"/>
+  <circle cx="600" cy="380" r="100" fill="url(#light)"/>
+  <circle cx="820" cy="280" r="80" fill="url(#light)"/>
+  <circle cx="180" cy="140" r="80" fill="url(#light)"/>
+
+  <!-- Grid overlay (subtle) -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+</svg>

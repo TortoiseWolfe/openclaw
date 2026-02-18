@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "docker-mcp": {
+      "baseUrl": "http://mcp-gateway:8808/sse",
+      "headers": {
+        "Authorization": "Bearer <MCP_GATEWAY_AUTH_TOKEN from .env>"
+      }
+    }
+  },
+  "imports": []
+}
