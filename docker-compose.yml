@@ -1,21 +1,119 @@
 services:
+  ollama:
+    image: ollama/ollama@sha256:76d0c003b27db65170e88ab319ff19c9bcee41ecb8177c52ab06921dfa13abdf
+    volumes:
+      - ollama-data:/root/.ollama
+    ports:
+      - "127.0.0.1:11434:11434"
+    restart: unless-stopped
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 8G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  mcp-gateway:
+    image: debian:bookworm-slim@sha256:56ff6d36d4eb3db13a741b342ec466f121480b5edded42e4b7ee850ce7a418ee
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/wsl/docker-desktop/cli-tools/usr/bin/docker:/usr/bin/docker:ro
+      - /mnt/wsl/docker-desktop/cli-tools/usr/local/lib/docker/cli-plugins/docker-mcp:/usr/local/lib/docker/cli-plugins/docker-mcp:ro
+      - ${DOCKER_MCP_CONFIG}:/root/.docker/mcp:ro
+      - /mnt/wsl/docker-desktop/shared-sockets/host-services:/run/host-services
+      - /mnt/wsl/docker-desktop/shared-sockets/guest-services/jfs.sock:/run/host-services/jfs.sock
+    environment:
+      MCP_GATEWAY_AUTH_TOKEN: ${MCP_GATEWAY_AUTH_TOKEN}
+    entrypoint:
+      [
+        "/usr/bin/docker", "mcp", "gateway", "run",
+        "--transport", "sse",
+        "--port", "8808"
+      ]
+    ports:
+      - "127.0.0.1:8808:8808"
+    restart: unless-stopped
+    networks:
+      - backend
+    security_opt:
+      - "no-new-privileges:true"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+
   openclaw-gateway:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
+    depends_on:
+      - ollama
+      - mcp-gateway
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       HOME: /home/node
       TERM: xterm-256color
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      OLLAMA_HOST: http://ollama:11434
+      OPENCLAW_TWITCH_ACCESS_TOKEN: ${OPENCLAW_TWITCH_ACCESS_TOKEN}
+      OPENCLAW_TWITCH_CLIENT_ID: ${OPENCLAW_TWITCH_CLIENT_ID}
+      OPENCLAW_TWITCH_CLIENT_SECRET: ${OPENCLAW_TWITCH_CLIENT_SECRET}
+      OPENCLAW_TWITCH_REFRESH_TOKEN: ${OPENCLAW_TWITCH_REFRESH_TOKEN}
       CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}
       CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}
       CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}
+      ALPHA_VANTAGE_API_KEY: ${ALPHA_VANTAGE_API_KEY}
+      OBS_WS_HOST: ${OBS_WS_HOST:-host.docker.internal}
+      OBS_WS_PORT: ${OBS_WS_PORT:-4455}
+      OBS_WS_PASSWORD: ${OBS_WS_PASSWORD}
+      OBS_LAUNCHER_URL: ${OBS_LAUNCHER_URL:-http://host.docker.internal:8100}
+      OBS_MEDIA_SOURCE: ${OBS_MEDIA_SOURCE:-EpisodeVideo}
+      OBS_PLAYBACK_SCENE: ${OBS_PLAYBACK_SCENE:-Episode Playback}
+      OBS_RENDERS_WIN_PREFIX: ${OBS_RENDERS_WIN_PREFIX}
+      OBS_STREAM_KEY: ${OBS_STREAM_KEY}
+      OBS_STARTING_SCENE: ${OBS_STARTING_SCENE:-Starting Soon}
+      OBS_STARTING_DURATION: ${OBS_STARTING_DURATION:-120}
+      OBS_INTRO_SCENE: ${OBS_INTRO_SCENE:-Stream Intro}
+      OBS_INTRO_SOURCE: ${OBS_INTRO_SOURCE:-IntroVideo}
+      OBS_OUTRO_SCENE: ${OBS_OUTRO_SCENE:-Starting Soon}
+      OBS_OUTRO_DURATION: ${OBS_OUTRO_DURATION:-30}
     volumes:
       - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
-      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/clawd
+      - ${TWITCH_WORKSPACE_DIR}:/home/node/clawd-twitch
+      - ${BUSINESS_DEV_REPO}:/home/node/repos/SpokeToWork---Business-Development
+      - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts
+      - ${TRADING_DATA_DIR}:/home/node/repos/Trading
+      - ./toolkit:/app/toolkit:ro
     ports:
-      - "${OPENCLAW_GATEWAY_PORT:-18789}:18789"
-      - "${OPENCLAW_BRIDGE_PORT:-18790}:18790"
+      - "127.0.0.1:${OPENCLAW_GATEWAY_PORT:-18789}:18789"
+      - "127.0.0.1:${OPENCLAW_BRIDGE_PORT:-18790}:18790"
     init: true
     restart: unless-stopped
+    networks:
+      - backend
+      - default
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 6G
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:18789/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
     command:
       [
         "node",
@@ -24,23 +122,66 @@ services:
         "--bind",
         "${OPENCLAW_GATEWAY_BIND:-lan}",
         "--port",
-        "18789",
+        "${OPENCLAW_GATEWAY_PORT:-18789}"
       ]
+
+  remotion-renderer:
+    build:
+      context: ./remotion
+      dockerfile: Dockerfile
+    environment:
+      REMOTION_DIR: /app
+      RENDERS_DIR: /renders
+    volumes:
+      - ${TWITCH_WORKSPACE_DIR}/renders:/renders
+      - ${TWITCH_WORKSPACE_DIR}/renders/_audio:/app/public/_audio
+      - ./toolkit:/app/toolkit:ro
+      - ${OPENCLAW_CONFIG_DIR}/rpg:/home/node/.openclaw/rpg:ro
+    ports:
+      - "127.0.0.1:3100:3100"
+    restart: unless-stopped
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 4G
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3100/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   openclaw-cli:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
     environment:
       HOME: /home/node
       TERM: xterm-256color
-      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
       BROWSER: echo
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
       CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}
       CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}
       CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}
     volumes:
       - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
-      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/clawd
+      - ${TWITCH_WORKSPACE_DIR}:/home/node/clawd-twitch
+      - ${BUSINESS_DEV_REPO}:/home/node/repos/SpokeToWork---Business-Development
+      - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts
+      - ${TRADING_DATA_DIR}:/home/node/repos/Trading
+      - ./toolkit:/app/toolkit:ro
     stdin_open: true
     tty: true
     init: true
+    networks:
+      - default
     entrypoint: ["node", "dist/index.js"]
+
+networks:
+  backend:
+
+volumes:
+  ollama-data:

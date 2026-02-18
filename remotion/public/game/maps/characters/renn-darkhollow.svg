@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0d0d1a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" rx="12" fill="url(#bg)"/>
+  <rect x="2" y="2" width="396" height="596" rx="11" fill="none" stroke="#ff6b6b" stroke-width="2" opacity="0.5"/>
+
+  <!-- Portrait circle -->
+  <circle cx="200" cy="120" r="70" fill="#2a1a1a" stroke="#ff6b6b" stroke-width="3"/>
+  <text x="200" y="110" text-anchor="middle" font-family="Arial" font-size="48" fill="#ff6b6b" font-weight="900">RD</text>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">Twi'lek</text>
+
+  <!-- Name -->
+  <text x="200" y="220" text-anchor="middle" font-family="'Franklin Gothic Medium', Arial" font-size="28" fill="#ffd700" font-weight="700" letter-spacing="2">RENN DARKHOLLOW</text>
+  <text x="200" y="248" text-anchor="middle" font-family="Arial" font-size="16" fill="#ff6b6b" letter-spacing="4">BOUNTY HUNTER</text>
+
+  <line x1="60" y1="265" x2="340" y2="265" stroke="#ff6b6b" stroke-width="1" opacity="0.3"/>
+
+  <!-- Attributes -->
+  <g font-family="Arial" font-size="14">
+    <text x="60" y="295" fill="#888">DEX</text><text x="140" y="295" fill="#e0e0e0" font-weight="bold">4D</text>
+    <text x="220" y="295" fill="#888">KNO</text><text x="300" y="295" fill="#e0e0e0" font-weight="bold">2D+1</text>
+    <text x="60" y="320" fill="#888">MEC</text><text x="140" y="320" fill="#e0e0e0" font-weight="bold">2D+2</text>
+    <text x="220" y="320" fill="#888">PER</text><text x="300" y="320" fill="#e0e0e0" font-weight="bold">3D+1</text>
+    <text x="60" y="345" fill="#888">STR</text><text x="140" y="345" fill="#e0e0e0" font-weight="bold">3D</text>
+    <text x="220" y="345" fill="#888">TEC</text><text x="300" y="345" fill="#e0e0e0" font-weight="bold">2D</text>
+  </g>
+
+  <line x1="60" y1="360" x2="340" y2="360" stroke="#ff6b6b" stroke-width="1" opacity="0.2"/>
+
+  <!-- Key skills -->
+  <text x="200" y="385" text-anchor="middle" font-family="Arial" font-size="12" fill="#ffd700" letter-spacing="3">KEY SKILLS</text>
+  <g font-family="Arial" font-size="13">
+    <text x="60" y="410" fill="#ccc">Blaster 5D+1</text>
+    <text x="220" y="410" fill="#ccc">Brawling 4D</text>
+    <text x="60" y="432" fill="#ccc">Search 4D+1</text>
+    <text x="220" y="432" fill="#ccc">Sneak 4D</text>
+    <text x="60" y="454" fill="#ccc">Intimidation 4D</text>
+  </g>
+
+  <line x1="60" y1="470" x2="340" y2="470" stroke="#ff6b6b" stroke-width="1" opacity="0.2"/>
+
+  <!-- Gear -->
+  <text x="200" y="495" text-anchor="middle" font-family="Arial" font-size="12" fill="#ffd700" letter-spacing="3">GEAR</text>
+  <text x="60" y="520" font-family="Arial" font-size="13" fill="#ccc">Blaster Rifle (5D)</text>
+  <text x="60" y="540" font-family="Arial" font-size="13" fill="#ccc">Binder Cuffs, Tracking Fob, 200cr</text>
+
+  <!-- Background -->
+  <text x="200" y="575" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">Freelance. Personal grudge against the Empire.</text>
+</svg>

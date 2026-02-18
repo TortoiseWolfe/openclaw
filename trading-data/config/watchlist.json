@@ -1,0 +1,74 @@
+{
+  "forex": [
+    {"symbol": "EURUSD", "from": "EUR", "to": "USD", "pip_size": 0.0001},
+    {"symbol": "GBPUSD", "from": "GBP", "to": "USD", "pip_size": 0.0001},
+    {"symbol": "USDJPY", "from": "USD", "to": "JPY", "pip_size": 0.01},
+    {"symbol": "USDCHF", "from": "USD", "to": "CHF", "pip_size": 0.0001},
+    {"symbol": "EURJPY", "from": "EUR", "to": "JPY", "pip_size": 0.01},
+    {"symbol": "GBPJPY", "from": "GBP", "to": "JPY", "pip_size": 0.01},
+    {"symbol": "AUDUSD", "from": "AUD", "to": "USD", "pip_size": 0.0001}
+  ],
+  "stocks": [
+    {"symbol": "SPY", "group": "index"},
+    {"symbol": "QQQ", "group": "index"},
+    {"symbol": "AAPL", "group": "mega_tech"},
+    {"symbol": "MSFT", "group": "mega_tech"},
+    {"symbol": "NVDA", "group": "semiconductors"},
+    {"symbol": "GOOGL", "group": "mega_tech"},
+    {"symbol": "AMZN", "group": "mega_tech"},
+    {"symbol": "AMD", "group": "semiconductors"},
+    {"symbol": "PLTR", "group": "ai_infra"},
+    {"symbol": "AVGO", "group": "semiconductors"},
+    {"symbol": "TSM", "group": "semiconductors"},
+    {"symbol": "META", "group": "mega_tech"},
+    {"symbol": "ARM", "group": "semiconductors"},
+    {"symbol": "SMCI", "group": "semiconductors"},
+    {"symbol": "CRM", "group": "enterprise_sw"},
+    {"symbol": "MRVL", "group": "semiconductors"},
+    {"symbol": "DELL", "group": "hardware"},
+    {"symbol": "AI", "group": "ai_infra"},
+    {"symbol": "PATH", "group": "enterprise_sw"},
+    {"symbol": "SNOW", "group": "enterprise_sw"}
+  ],
+  "crypto": [
+    {"symbol": "BTC", "market": "USD"},
+    {"symbol": "ETH", "market": "USD"},
+    {"symbol": "SOL", "market": "USD"},
+    {"symbol": "LINK", "market": "USD"},
+    {"symbol": "ADA", "market": "USD"},
+    {"symbol": "AVAX", "market": "USD"}
+  ],
+  "rules": {
+    "max_risk": 0.03,
+    "rr_ratio": 3.0,
+    "max_drawdown": 0.50,
+    "max_positions": {
+      "forex": 2,
+      "stocks": 2,
+      "crypto": 1,
+      "global": 3
+    },
+    "spread": {
+      "forex": 0.00015,
+      "stocks": 0.02,
+      "crypto_pct": 0.0015
+    },
+    "slippage": {
+      "forex": 0.00005,
+      "stocks": 0.01,
+      "crypto_pct": 0.0005
+    },
+    "sentiment": {
+      "enabled": true,
+      "agree_multiplier": 1.0,
+      "disagree_multiplier": 0.5,
+      "strong_disagree_threshold": 0.3,
+      "strong_disagree_action": "skip"
+    },
+    "correlation": {
+      "enabled": true,
+      "forex_max_same_currency": 1,
+      "stock_max_same_group": 1
+    }
+  }
+}

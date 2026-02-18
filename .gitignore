@@ -91,3 +91,17 @@ package-lock.json
 
 # Local iOS signing overrides
 apps/ios/LocalSigning.xcconfig
+
+# Trading data (private journal/state)
+trading-data/private/
+
+# Remotion build artifacts
+remotion/node_modules/
+remotion/out/
+
+# Personal files
+*.docx
+*:Zone.Identifier
+
+# .vscode (local IDE config)
+.vscode/

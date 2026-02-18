@@ -1,0 +1,1 @@
+../campaigns/darkstrider/modules/02-shadows-of-onderon/adventure.md

@@ -1,0 +1,10 @@
+# Dual Candlestick Patterns
+
+**Source**: https://www.babypips.com/learn/forex/double-trouble-dual-candlestick-patterns
+**Date**: 2026-02-15
+**Level**: Elementary
+**Section**: Japanese Candlesticks
+
+## Key Concepts
+
+What’s better than single candlestick patterns? DUAL candlestick patterns! To identify dual Japanese candlestick patterns, you need to look for specific formations that consist of TWO candlesticks in total. Engulfing Candles There are two types of Engulfing candles: Bullish Engulfing and Bearish Engulfing . The Bullish Engulfing pattern is a two candlestick reversal pattern that signals a strong up move may occur. It happens when a bearish candle is immediately followed by a larger bullish candle. This second candle “engulfs” the bearish candle. This means buyers are flexing their muscles and that there could be a strong up move after a recent downtrend or a period of consolidation. On the other hand, the Bearish Engulfing pattern is the opposite of the bullish pattern. This type of candlestick pattern occurs when the bullish candle is immediately followed by a bearish candle that completely “engulfs” it. This means that sellers overpowered the buyers and that a strong move down could happen. Tweezer Bottoms and Tops Tweezer patterns are two candlestick reversal patterns. This type of candlestick pattern is usually spotted after an extended uptrend or downtrend, indicating that a reversal will soon occur. There are two types of Tweezer patterns: the Tweezer Bottom and the Tweezer Top . Notice how the candlestick formation looks just like a pair of tweezers! Amazing! The most effective Tweezers have the following characteristics: The first candlestick is the same as the overall trend. If the price is moving up, then the first candle should be bullish. The second candlestick is opposite the overall trend. If the price is moving up, then the second candle should be bearish. The shadows of the candlesticks should be of equal (or near-equal) length. Tweezer Tops should have the same highs, while Tweezer Bottoms should have the same lows.

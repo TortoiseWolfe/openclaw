@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <pattern id="duracrete" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#4a4a4a"/>
+      <rect x="0" y="0" width="10" height="10" fill="#444" opacity="0.3"/>
+      <rect x="10" y="10" width="10" height="10" fill="#444" opacity="0.3"/>
+    </pattern>
+    <pattern id="metal" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="#5a5a6a"/>
+      <line x1="0" y1="2" x2="4" y2="2" stroke="#4a4a5a" stroke-width="0.5"/>
+    </pattern>
+    <radialGradient id="engineGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4e9af5" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4e9af5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Floor -->
+  <rect width="1200" height="900" fill="url(#duracrete)"/>
+
+  <!-- Title -->
+  <text x="600" y="24" text-anchor="middle" font-family="Arial" font-size="18" fill="#ffd700" font-weight="bold">DOCKING BAY 87</text>
+
+  <!-- Outer walls -->
+  <rect x="40" y="40" width="1120" height="820" fill="none" stroke="#6a6a7a" stroke-width="14" rx="6"/>
+
+  <!-- Blast door (south entrance) -->
+  <rect x="440" y="846" width="320" height="18" fill="#7a7a8a" stroke="#5a5a6a" stroke-width="2" rx="3"/>
+  <line x1="520" y1="846" x2="520" y2="864" stroke="#4a4a5a" stroke-width="2"/>
+  <line x1="600" y1="846" x2="600" y2="864" stroke="#4a4a5a" stroke-width="2"/>
+  <line x1="680" y1="846" x2="680" y2="864" stroke="#4a4a5a" stroke-width="2"/>
+  <text x="600" y="892" text-anchor="middle" font-family="Arial" font-size="14" fill="#888">BLAST DOOR</text>
+
+  <!-- Side entrance -->
+  <rect x="40" y="400" width="14" height="100" fill="#4a4a4a"/>
+  <text x="16" y="455" text-anchor="middle" font-family="Arial" font-size="11" fill="#888" transform="rotate(-90,16,455)">SIDE ENTRY</text>
+
+  <!-- The ship: YT-1300 "Rusty Mynock" (center) -->
+  <g transform="translate(600, 380)">
+    <!-- Ship shadow -->
+    <ellipse cx="10" cy="15" rx="170" ry="120" fill="rgba(0,0,0,0.2)"/>
+    <!-- Hull -->
+    <ellipse cx="0" cy="0" rx="160" ry="110" fill="#7a7a7a" stroke="#5a5a5a" stroke-width="3"/>
+    <!-- Mandibles -->
+    <path d="M -80 -90 L -120 -150 L -40 -150 Z" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="2"/>
+    <path d="M 80 -90 L 40 -150 L 120 -150 Z" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="2"/>
+    <!-- Cockpit (right side tube) -->
+    <rect x="130" y="-30" width="80" height="60" rx="20" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="2"/>
+    <ellipse cx="215" cy="0" rx="12" ry="20" fill="#3a5a7a" stroke="#2a4a6a" stroke-width="1"/>
+    <!-- Detail lines -->
+    <ellipse cx="0" cy="0" rx="100" ry="70" fill="none" stroke="#5a5a5a" stroke-width="1"/>
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#5a5a5a" stroke-width="1"/>
+    <!-- Top hatch -->
+    <circle cx="-20" cy="-20" r="15" fill="#666" stroke="#555" stroke-width="2"/>
+    <!-- Engine glow -->
+    <ellipse cx="0" cy="100" rx="60" ry="20" fill="url(#engineGlow)"/>
+    <!-- Label -->
+    <text x="0" y="140" text-anchor="middle" font-family="Arial" font-size="13" fill="#4e9af5" font-style="italic">Rusty Mynock</text>
+  </g>
+
+  <!-- Landing struts -->
+  <circle cx="480" cy="320" r="8" fill="#555" stroke="#444" stroke-width="2"/>
+  <circle cx="720" cy="320" r="8" fill="#555" stroke="#444" stroke-width="2"/>
+  <circle cx="600" cy="520" r="8" fill="#555" stroke="#444" stroke-width="2"/>
+
+  <!-- Cargo crates (left cluster) -->
+  <g transform="translate(120, 150)">
+    <rect x="0" y="0" width="60" height="45" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="70" y="10" width="50" height="35" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="20" y="55" width="70" height="50" fill="#5b6530" stroke="#4a5420" stroke-width="2" rx="3"/>
+    <rect x="100" y="50" width="40" height="40" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <text x="70" y="130" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">CARGO</text>
+  </g>
+
+  <!-- Cargo crates (right cluster) -->
+  <g transform="translate(950, 150)">
+    <rect x="0" y="0" width="55" height="40" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="65" y="5" width="45" height="45" fill="#5b4530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="10" y="50" width="50" height="35" fill="#555b30" stroke="#4a4a20" stroke-width="2" rx="3"/>
+  </g>
+
+  <!-- Fuel barrels (lower left - can be used as explosives!) -->
+  <g transform="translate(140, 600)">
+    <ellipse cx="0" cy="0" rx="18" ry="18" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="45" cy="5" rx="18" ry="18" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="20" cy="40" rx="18" ry="18" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <text x="20" y="80" text-anchor="middle" font-family="Arial" font-size="11" fill="#ff6b6b">FUEL</text>
+  </g>
+
+  <!-- Maintenance pit (center-right) -->
+  <rect x="850" y="500" width="180" height="120" rx="6" fill="#333" stroke="#555" stroke-width="2"/>
+  <text x="940" y="565" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">MAINTENANCE PIT</text>
+
+  <!-- Control panel (upper wall) -->
+  <rect x="400" y="55" width="120" height="40" rx="4" fill="#3a4a5a" stroke="#5a6a7a" stroke-width="2"/>
+  <circle cx="430" cy="75" r="5" fill="#4ecb71"/>
+  <circle cx="455" cy="75" r="5" fill="#ffd700"/>
+  <circle cx="480" cy="75" r="5" fill="#ff6b6b"/>
+  <text x="460" y="110" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">CONTROLS</text>
+
+  <!-- Catwalk (upper level, dashed outline) -->
+  <rect x="60" y="60" width="300" height="60" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="6,4" rx="2"/>
+  <text x="210" y="95" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">CATWALK (upper)</text>
+  <rect x="840" y="60" width="300" height="60" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="6,4" rx="2"/>
+  <text x="990" y="95" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">CATWALK (upper)</text>
+
+  <!-- AT-ST approach zone (marked in red) -->
+  <rect x="440" y="760" width="320" height="80" fill="rgba(255,80,80,0.08)" stroke="#ff4444" stroke-width="1" stroke-dasharray="8,4" rx="4"/>
+  <text x="600" y="808" text-anchor="middle" font-family="Arial" font-size="12" fill="#ff6b6b">AT-ST APPROACH</text>
+
+  <!-- Grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+</svg>

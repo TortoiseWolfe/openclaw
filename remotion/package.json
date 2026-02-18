@@ -1,0 +1,21 @@
+{
+  "name": "@moltbot/remotion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "~4.0.0",
+    "remotion": "~4.0.0",
+    "react": "~18.3.0",
+    "react-dom": "~18.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.7.0"
+  }
+}

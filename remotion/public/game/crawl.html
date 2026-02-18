@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Star Wars Crawl</title>
+<style>
+  /* -- Reset & canvas ----------------------------------------- */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #000;
+    font-family: 'Franklin Gothic Medium', 'News Gothic', 'Arial Narrow', sans-serif;
+  }
+
+  /* -- Starfield ---------------------------------------------- */
+  .starfield {
+    position: absolute;
+    inset: 0;
+    background: #000;
+  }
+  .starfield canvas { position: absolute; inset: 0; }
+
+  /* -- "A long time ago..." ----------------------------------- */
+  .intro {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: introFade 6s ease-in-out forwards;
+    z-index: 2;
+  }
+  .intro p {
+    color: #4ebdff;
+    font-size: 42px;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  @keyframes introFade {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    75%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* -- Title card (STAR WARS style) --------------------------- */
+  .title-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 3;
+    animation: titleZoom 5s ease-in forwards;
+    animation-delay: 6s;
+  }
+  .title-card h1 {
+    color: #ffd700;
+    font-size: 120px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+  }
+  .title-card .subtitle {
+    color: #ffd700;
+    font-size: 36px;
+    letter-spacing: 6px;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+  @keyframes titleZoom {
+    0%   { opacity: 1; transform: scale(1); }
+    50%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.01); }
+  }
+
+  /* -- Crawl text --------------------------------------------- */
+  .crawl-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 1080px;
+    perspective: 350px;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 1;
+    animation: crawlAppear 0.5s ease-in forwards;
+    animation-delay: 10.5s;
+  }
+  @keyframes crawlAppear {
+    to { opacity: 1; }
+  }
+
+  .crawl-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transform-origin: 50% 100%;
+    transform: rotateX(20deg);
+    animation: crawlScroll var(--crawl-duration, 70s) linear forwards;
+    animation-delay: 11s;
+  }
+  @keyframes crawlScroll {
+    to { top: -300%; }
+  }
+
+  .crawl-content .episode-label {
+    color: #4ebdff;
+    font-size: 32px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .crawl-content .episode-title {
+    color: #ffd700;
+    font-size: 56px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 50px;
+  }
+  .crawl-content .crawl-text {
+    color: #ffd700;
+    font-size: 38px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    text-align: justify;
+  }
+  .crawl-content .crawl-text p {
+    margin-bottom: 30px;
+  }
+
+  /* -- Top/bottom fade gradients ------------------------------ */
+  .crawl-wrapper::before,
+  .crawl-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 200px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .crawl-wrapper::before {
+    top: 0;
+    background: linear-gradient(to bottom, #000 0%, transparent 100%);
+  }
+  .crawl-wrapper::after {
+    bottom: 0;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+  <audio id="crawl-music" src="/game/audio/crawl-theme.mp3" preload="auto"></audio>
+  <div class="starfield"><canvas id="stars"></canvas></div>
+
+  <div class="intro">
+    <p>A long time ago in a galaxy far,<br>far away....</p>
+  </div>
+
+  <div class="title-card">
+    <div>
+      <h1 id="main-title">STAR WARS</h1>
+      <div class="subtitle" id="main-subtitle"></div>
+    </div>
+  </div>
+
+  <div class="crawl-wrapper">
+    <div class="crawl-content">
+      <div class="episode-label" id="episode-label"></div>
+      <div class="episode-title" id="episode-title"></div>
+      <div class="crawl-text" id="crawl-text"></div>
+    </div>
+  </div>
+
+<script>
+  // -- Stars --------------------------------------------------
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 1920;
+  canvas.height = 1080;
+
+  const stars = Array.from({ length: 400 }, () => ({
+    x: Math.random() * 1920,
+    y: Math.random() * 1080,
+    r: Math.random() * 1.5 + 0.3,
+    twinkle: Math.random() * Math.PI * 2,
+    speed: Math.random() * 0.02 + 0.005,
+  }));
+
+  function drawStars(t) {
+    ctx.clearRect(0, 0, 1920, 1080);
+    for (const s of stars) {
+      const alpha = 0.5 + 0.5 * Math.sin(s.twinkle + t * s.speed);
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(drawStars);
+  }
+  requestAnimationFrame(drawStars);
+
+  // -- Parameters ---------------------------------------------
+  const params = new URLSearchParams(window.location.search);
+
+  // Title card
+  const mainTitle = params.get('title') || 'STAR WARS';
+  const mainSubtitle = params.get('subtitle') || '';
+  document.getElementById('main-title').textContent = mainTitle;
+  document.getElementById('main-subtitle').textContent = mainSubtitle;
+
+  // Episode label and title
+  const episodeNum = params.get('episode') || 'I';
+  const episodeTitle = params.get('episodeTitle') || 'Escape from Mos Eisley';
+  document.getElementById('episode-label').textContent =
+    episodeNum ? `Episode ${episodeNum}` : '';
+  document.getElementById('episode-title').textContent = episodeTitle;
+
+  // Crawl text — pipe-delimited paragraphs (URL-safe)
+  const rawText = params.get('text') || '';
+  const paragraphs = rawText.split('|').filter(Boolean);
+  const crawlDiv = document.getElementById('crawl-text');
+
+  // Default narrative if no text provided
+  const defaultParagraphs = [
+    'The galaxy is in turmoil. The evil GALACTIC EMPIRE tightens its grip on the Outer Rim, sending patrols to every spaceport and crushing dissent wherever it is found.',
+    'On the dusty streets of MOS EISLEY, a ragtag group of unlikely heroes finds themselves caught in a web of Imperial intrigue. A mysterious data chip has fallen into their hands — and the Empire will stop at nothing to recover it.',
+    'With bounty hunters on their trail and Stormtroopers at every corner, they must find a way off this desert world before it is too late....',
+    'Their only hope: a beat-up freighter in Docking Bay 87 and the courage to face impossible odds.',
+  ];
+
+  const textToShow = paragraphs.length > 0 ? paragraphs : defaultParagraphs;
+  crawlDiv.innerHTML = textToShow.map(p => `<p>${p.trim()}</p>`).join('');
+
+  // Duration (adjust for text length)
+  const baseDuration = parseInt(params.get('duration') || '0', 10);
+  if (baseDuration > 0) {
+    document.querySelector('.crawl-content').style.setProperty(
+      '--crawl-duration', `${baseDuration}s`
+    );
+  } else {
+    // Auto-calculate: ~3s per paragraph, minimum 40s
+    const auto = Math.max(40, paragraphs.length * 8 + 20);
+    document.documentElement.style.setProperty('--crawl-duration', `${auto}s`);
+  }
+
+  // -- Audio --------------------------------------------------
+  const crawlMusic = document.getElementById('crawl-music');
+  crawlMusic.volume = 0.7;
+  // Start music when title card appears (6s delay matches animation)
+  setTimeout(() => {
+    crawlMusic.play().catch(() => {});
+  }, 6000);
+
+  // -- Game state fallback ------------------------------------
+  // If no text param, try loading from game-state endpoint
+  if (!rawText) {
+    fetch('/game/state')
+      .then(r => r.ok ? r.json() : null)
+      .then(state => {
+        if (!state || !state.crawl) return;
+        const c = state.crawl;
+        if (c.title) document.getElementById('main-title').textContent = c.title;
+        if (c.subtitle) document.getElementById('main-subtitle').textContent = c.subtitle;
+        if (c.episode) document.getElementById('episode-label').textContent = `Episode ${c.episode}`;
+        if (c.episodeTitle) document.getElementById('episode-title').textContent = c.episodeTitle;
+        if (c.paragraphs && c.paragraphs.length) {
+          crawlDiv.innerHTML = c.paragraphs.map(p => `<p>${p}</p>`).join('');
+        }
+      })
+      .catch(() => {});
+  }
+</script>
+</body>
+</html>

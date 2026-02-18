@@ -1,0 +1,1035 @@
+{
+  "date": "2026-02-18",
+  "source": "alpha_vantage",
+  "lastUpdated": "2026-02-18T02:53:38.582910+00:00",
+  "api_calls_used": 3,
+  "symbols": {
+    "FOREX:AUD": {
+      "article_count": 33,
+      "avg_sentiment": -0.0718,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0727,
+      "bullish_count": 5,
+      "bearish_count": 9,
+      "neutral_count": 19,
+      "top_articles": [
+        {
+          "title": "Euro gains traction ahead of inflation data, dollar steadies",
+          "url": "https://www.reuters.com/markets/europe/euro-gains-traction-ahead-inflation-data-dollar-steadies-2022-06-28/",
+          "time_published": "20220628T015500",
+          "sentiment_score": 0.014797,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.098984
+        },
+        {
+          "title": "Speculators bet the U.S. dollar is poised for a rebound after longest losing streak in 3 years",
+          "url": "https://www.marketwatch.com/story/speculators-bet-the-u-s-dollar-is-poised-for-a-rebound-after-longest-losing-streak-in-3-years-1ede1fc9",
+          "time_published": "20230417T181600",
+          "sentiment_score": 0.030502,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.094762
+        },
+        {
+          "title": "War sends euro below $1.10 for first time in two years, down 1.3%",
+          "url": "https://www.reuters.com/markets/asia/war-sends-euro-below-110-first-time-two-years-down-13-2022-03-04/",
+          "time_published": "20220304T080000",
+          "sentiment_score": 0.126818,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.094613
+        }
+      ]
+    },
+    "FOREX:CHF": {
+      "article_count": 33,
+      "avg_sentiment": -0.0324,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0965,
+      "bullish_count": 5,
+      "bearish_count": 4,
+      "neutral_count": 24,
+      "top_articles": [
+        {
+          "title": "Yen tanks 1.9% after BOJ sticks to stimulus, franc climbs again",
+          "url": "https://www.reuters.com/markets/currencies/yen-tanks-19-after-boj-sticks-stimulus-franc-climbs-again-2022-06-17/",
+          "time_published": "20220617T073700",
+          "sentiment_score": -0.147271,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.303082
+        },
+        {
+          "title": "Dollar slides as traders rush into safe havens after US tariffs - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/dollar-slides-as-traders-rush-into-safe-havens-after-us-tariffs/119925737",
+          "time_published": "20250403T023800",
+          "sentiment_score": 0.301821,
+          "sentiment_label": "Somewhat-Bullish",
+          "relevance_score": 0.240489
+        },
+        {
+          "title": "War sends euro below $1.10 for first time in two years, down 1.3%",
+          "url": "https://www.reuters.com/markets/asia/war-sends-euro-below-110-first-time-two-years-down-13-2022-03-04/",
+          "time_published": "20220304T080000",
+          "sentiment_score": -0.016432,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.1879
+        }
+      ]
+    },
+    "FOREX:JPY": {
+      "article_count": 33,
+      "avg_sentiment": -0.0718,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.1908,
+      "bullish_count": 4,
+      "bearish_count": 12,
+      "neutral_count": 17,
+      "top_articles": [
+        {
+          "title": "Yen on cusp of multi-decade lows keeps markets on intervention watch",
+          "url": "https://www.business-standard.com/economy/news/yen-on-cusp-of-multi-decade-lows-keeps-markets-on-intervention-watch-123111400553_1.html",
+          "time_published": "20231114T103636",
+          "sentiment_score": -0.096412,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.799128
+        },
+        {
+          "title": "Dollar steady ahead of Fed Chair remarks, underpinned by higher US yields",
+          "url": "https://www.business-standard.com/markets/news/dollar-steady-ahead-of-fed-chair-remarks-underpinned-by-higher-us-yields-123101900769_1.html",
+          "time_published": "20231019T120340",
+          "sentiment_score": -0.059515,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.427425
+        },
+        {
+          "title": "Dollar extends 20-year high vs yen amid inflation jitters; Aussie slips before RBA",
+          "url": "https://www.reuters.com/markets/europe/dollar-extends-20-year-high-vs-yen-amid-inflation-jitters-aussie-slips-before-2022-06-07/",
+          "time_published": "20220607T013800",
+          "sentiment_score": -0.138959,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.371633
+        }
+      ]
+    },
+    "FOREX:EUR": {
+      "article_count": 33,
+      "avg_sentiment": -0.0581,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.1846,
+      "bullish_count": 2,
+      "bearish_count": 5,
+      "neutral_count": 26,
+      "top_articles": [
+        {
+          "title": "War sends euro below $1.10 for first time in two years, down 1.3%",
+          "url": "https://www.reuters.com/markets/asia/war-sends-euro-below-110-first-time-two-years-down-13-2022-03-04/",
+          "time_published": "20220304T080000",
+          "sentiment_score": -0.147022,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.594598
+        },
+        {
+          "title": "Euro under pressure as inflation fears send investors to dollar haven",
+          "url": "https://www.reuters.com/markets/europe/euro-under-pressure-inflation-fears-send-investors-dollar-haven-2022-06-30/",
+          "time_published": "20220630T021700",
+          "sentiment_score": -0.122841,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.398148
+        },
+        {
+          "title": "Euro gains traction ahead of inflation data, dollar steadies",
+          "url": "https://www.reuters.com/markets/europe/euro-gains-traction-ahead-inflation-data-dollar-steadies-2022-06-28/",
+          "time_published": "20220628T015500",
+          "sentiment_score": -0.047615,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.381172
+        }
+      ]
+    },
+    "FOREX:GBP": {
+      "article_count": 33,
+      "avg_sentiment": -0.0901,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.118,
+      "bullish_count": 3,
+      "bearish_count": 8,
+      "neutral_count": 22,
+      "top_articles": [
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.142833,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.613837
+        },
+        {
+          "title": "Euro clings to parity as traders wait on U.S. inflation",
+          "url": "https://www.reuters.com/markets/europe/euro-clings-parity-traders-wait-us-inflation-2022-07-13/",
+          "time_published": "20220713T011900",
+          "sentiment_score": -0.061365,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.245959
+        },
+        {
+          "title": "Dollar gains with yen, Aussie drops as investors fret over recession risks",
+          "url": "https://www.reuters.com/markets/europe/dollar-heads-weekly-gain-investors-weigh-rates-recession-risks-2022-07-01/",
+          "time_published": "20220701T053800",
+          "sentiment_score": -0.026711,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.201635
+        }
+      ]
+    },
+    "FOREX:USD": {
+      "article_count": 33,
+      "avg_sentiment": -0.0956,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.3396,
+      "bullish_count": 2,
+      "bearish_count": 10,
+      "neutral_count": 21,
+      "top_articles": [
+        {
+          "title": "Speculators bet the U.S. dollar is poised for a rebound after longest losing streak in 3 years",
+          "url": "https://www.marketwatch.com/story/speculators-bet-the-u-s-dollar-is-poised-for-a-rebound-after-longest-losing-streak-in-3-years-1ede1fc9",
+          "time_published": "20230417T181600",
+          "sentiment_score": 0.077483,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.716023
+        },
+        {
+          "title": "Dollar gains with yen, Aussie drops as investors fret over recession risks",
+          "url": "https://www.reuters.com/markets/europe/dollar-heads-weekly-gain-investors-weigh-rates-recession-risks-2022-07-01/",
+          "time_published": "20220701T053800",
+          "sentiment_score": -0.270364,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.605534
+        },
+        {
+          "title": "Euro gains traction ahead of inflation data, dollar steadies",
+          "url": "https://www.reuters.com/markets/europe/euro-gains-traction-ahead-inflation-data-dollar-steadies-2022-06-28/",
+          "time_published": "20220628T015500",
+          "sentiment_score": -0.153672,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.544495
+        }
+      ]
+    },
+    "NBHC": {
+      "article_count": 1,
+      "avg_sentiment": -0.2662,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.0946,
+      "bullish_count": 0,
+      "bearish_count": 1,
+      "neutral_count": 0,
+      "top_articles": [
+        {
+          "title": "War sends euro below $1.10 for first time in two years, down 1.3%",
+          "url": "https://www.reuters.com/markets/asia/war-sends-euro-below-110-first-time-two-years-down-13-2022-03-04/",
+          "time_published": "20220304T080000",
+          "sentiment_score": -0.2662,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.094613
+        }
+      ]
+    },
+    "FOREX:PLN": {
+      "article_count": 1,
+      "avg_sentiment": -0.3117,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.0946,
+      "bullish_count": 0,
+      "bearish_count": 1,
+      "neutral_count": 0,
+      "top_articles": [
+        {
+          "title": "War sends euro below $1.10 for first time in two years, down 1.3%",
+          "url": "https://www.reuters.com/markets/asia/war-sends-euro-below-110-first-time-two-years-down-13-2022-03-04/",
+          "time_published": "20220304T080000",
+          "sentiment_score": -0.311744,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.094613
+        }
+      ]
+    },
+    "FOREX:HUF": {
+      "article_count": 1,
+      "avg_sentiment": -0.3117,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.0946,
+      "bullish_count": 0,
+      "bearish_count": 1,
+      "neutral_count": 0,
+      "top_articles": [
+        {
+          "title": "War sends euro below $1.10 for first time in two years, down 1.3%",
+          "url": "https://www.reuters.com/markets/asia/war-sends-euro-below-110-first-time-two-years-down-13-2022-03-04/",
+          "time_published": "20220304T080000",
+          "sentiment_score": -0.311744,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.094613
+        }
+      ]
+    },
+    "FOREX:NZD": {
+      "article_count": 9,
+      "avg_sentiment": -0.0868,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0867,
+      "bullish_count": 0,
+      "bearish_count": 2,
+      "neutral_count": 7,
+      "top_articles": [
+        {
+          "title": "Dollar finds footing as banking crisis fears calm down",
+          "url": "https://www.reuters.com/markets/currencies/dollar-finds-footing-banking-crisis-fears-calm-down-2023-03-15/",
+          "time_published": "20230315T014600",
+          "sentiment_score": -0.116793,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.185306
+        },
+        {
+          "title": "Bonds cheer Fed talk of cuts; kiwi flies",
+          "url": "https://www.reuters.com/markets/global-markets-wrapup-1-2023-11-29/",
+          "time_published": "20231129T025000",
+          "sentiment_score": -0.104811,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.116067
+        },
+        {
+          "title": "Speculators bet the U.S. dollar is poised for a rebound after longest losing streak in 3 years",
+          "url": "https://www.marketwatch.com/story/speculators-bet-the-u-s-dollar-is-poised-for-a-rebound-after-longest-losing-streak-in-3-years-1ede1fc9",
+          "time_published": "20230417T181600",
+          "sentiment_score": 0.030502,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.094762
+        }
+      ]
+    },
+    "SCGLF": {
+      "article_count": 1,
+      "avg_sentiment": -0.0962,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.099,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Euro gains traction ahead of inflation data, dollar steadies",
+          "url": "https://www.reuters.com/markets/europe/euro-gains-traction-ahead-inflation-data-dollar-steadies-2022-06-28/",
+          "time_published": "20220628T015500",
+          "sentiment_score": -0.096242,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.098984
+        }
+      ]
+    },
+    "NAUBF": {
+      "article_count": 6,
+      "avg_sentiment": 0.0217,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0726,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 6,
+      "top_articles": [
+        {
+          "title": "Euro under pressure as inflation fears send investors to dollar haven",
+          "url": "https://www.reuters.com/markets/europe/euro-under-pressure-inflation-fears-send-investors-dollar-haven-2022-06-30/",
+          "time_published": "20220630T021700",
+          "sentiment_score": 0.038087,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.083107
+        },
+        {
+          "title": "Euro hits 10-month-high on dollar as central banks chart divergent courses",
+          "url": "https://bsppd.business-standard.com/article/finance/euro-hits-10-month-high-on-dollar-as-central-banks-chart-divergent-courses-123020200955_1.html",
+          "time_published": "20230202T105300",
+          "sentiment_score": 0.080738,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.08183
+        },
+        {
+          "title": "Dollar slides as traders rush into safe havens after US tariffs - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/dollar-slides-as-traders-rush-into-safe-havens-after-us-tariffs/119925737",
+          "time_published": "20250403T023800",
+          "sentiment_score": -0.003113,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.081276
+        }
+      ]
+    },
+    "CRYPTO:BTC": {
+      "article_count": 8,
+      "avg_sentiment": 0.0329,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.207,
+      "bullish_count": 1,
+      "bearish_count": 1,
+      "neutral_count": 6,
+      "top_articles": [
+        {
+          "title": "Bitcoin Outlook: 'Halving Correction Expected In September May Not Occur'",
+          "url": "https://www.benzinga.com/markets/cryptocurrency/25/07/46764216/bitcoin-outlook-halving-correction-expected-in-september-may-not-occur",
+          "time_published": "20250731T155124",
+          "sentiment_score": 0.156371,
+          "sentiment_label": "Somewhat-Bullish",
+          "relevance_score": 0.757834
+        },
+        {
+          "title": "US dollar gains back ground on rate bets; bitcoin breaches $42,000",
+          "url": "https://www.business-standard.com/world-news/us-dollar-gains-back-ground-on-rate-bets-bitcoin-breaches-42-000-123120401168_1.html",
+          "time_published": "20231204T161143",
+          "sentiment_score": -0.025423,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.250386
+        },
+        {
+          "title": "US dollar struggles near 4-month low amid growth concern; jobs data in spotlight - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/us-dollar-struggles-near-4-month-low-amid-growth-concern-jobs-data-in-spotlight/118773464",
+          "time_published": "20250307T030527",
+          "sentiment_score": 0.003187,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.196344
+        }
+      ]
+    },
+    "FNQQF": {
+      "article_count": 1,
+      "avg_sentiment": -0.018,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0847,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "US dollar gains back ground on rate bets; bitcoin breaches $42,000",
+          "url": "https://www.business-standard.com/world-news/us-dollar-gains-back-ground-on-rate-bets-bitcoin-breaches-42-000-123120401168_1.html",
+          "time_published": "20231204T161143",
+          "sentiment_score": -0.017957,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.084722
+        }
+      ]
+    },
+    "MS": {
+      "article_count": 1,
+      "avg_sentiment": 0.0227,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0948,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Speculators bet the U.S. dollar is poised for a rebound after longest losing streak in 3 years",
+          "url": "https://www.marketwatch.com/story/speculators-bet-the-u-s-dollar-is-poised-for-a-rebound-after-longest-losing-streak-in-3-years-1ede1fc9",
+          "time_published": "20230417T181600",
+          "sentiment_score": 0.022737,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.094762
+        }
+      ]
+    },
+    "FOREX:CAD": {
+      "article_count": 4,
+      "avg_sentiment": -0.0628,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0719,
+      "bullish_count": 0,
+      "bearish_count": 1,
+      "neutral_count": 3,
+      "top_articles": [
+        {
+          "title": "Speculators bet the U.S. dollar is poised for a rebound after longest losing streak in 3 years",
+          "url": "https://www.marketwatch.com/story/speculators-bet-the-u-s-dollar-is-poised-for-a-rebound-after-longest-losing-streak-in-3-years-1ede1fc9",
+          "time_published": "20230417T181600",
+          "sentiment_score": 0.030502,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.094762
+        },
+        {
+          "title": "US dollar struggles near 4-month low amid growth concern; jobs data in spotlight - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/us-dollar-struggles-near-4-month-low-amid-growth-concern-jobs-data-in-spotlight/118773464",
+          "time_published": "20250307T030527",
+          "sentiment_score": -0.150343,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.066047
+        },
+        {
+          "title": "The Market Crash Americans Aren't Seeing",
+          "url": "https://www.fool.com/investing/2022/09/23/the-market-crash-americans-arent-seeing/",
+          "time_published": "20220923T215600",
+          "sentiment_score": -0.138408,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063425
+        }
+      ]
+    },
+    "CBAUF": {
+      "article_count": 4,
+      "avg_sentiment": 0.0177,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0725,
+      "bullish_count": 1,
+      "bearish_count": 1,
+      "neutral_count": 2,
+      "top_articles": [
+        {
+          "title": "Dollar extends 20-year high vs yen amid inflation jitters; Aussie slips before RBA",
+          "url": "https://www.reuters.com/markets/europe/dollar-extends-20-year-high-vs-yen-amid-inflation-jitters-aussie-slips-before-2022-06-07/",
+          "time_published": "20220607T013800",
+          "sentiment_score": -0.267945,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.077119
+        },
+        {
+          "title": "Treasury yields kept dollar firmly on front foot as others currencies fall",
+          "url": "https://www.business-standard.com/markets/news/treasury-yields-kept-dollar-firmly-on-front-foot-as-others-currencies-fall-123100300840_1.html",
+          "time_published": "20231003T133411",
+          "sentiment_score": 0.089906,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.075635
+        },
+        {
+          "title": "Dollar steady ahead of Fed Chair remarks, underpinned by higher US yields",
+          "url": "https://www.business-standard.com/markets/news/dollar-steady-ahead-of-fed-chair-remarks-underpinned-by-higher-us-yields-123101900769_1.html",
+          "time_published": "20231019T120340",
+          "sentiment_score": 0.081736,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.074926
+        }
+      ]
+    },
+    "CBSU": {
+      "article_count": 2,
+      "avg_sentiment": -0.1647,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.1082,
+      "bullish_count": 0,
+      "bearish_count": 1,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar extends 20-year high vs yen amid inflation jitters; Aussie slips before RBA",
+          "url": "https://www.reuters.com/markets/europe/dollar-extends-20-year-high-vs-yen-amid-inflation-jitters-aussie-slips-before-2022-06-07/",
+          "time_published": "20220607T013800",
+          "sentiment_score": -0.190946,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.153519
+        },
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.100695,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.062794
+        }
+      ]
+    },
+    "BAC": {
+      "article_count": 1,
+      "avg_sentiment": -0.1209,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0628,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.120918,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.062794
+        }
+      ]
+    },
+    "FOREX:UYU": {
+      "article_count": 3,
+      "avg_sentiment": -0.1604,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.0908,
+      "bullish_count": 0,
+      "bearish_count": 2,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.137087,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.125199
+        },
+        {
+          "title": "Dollar slides as traders rush into safe havens after US tariffs - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/dollar-slides-as-traders-rush-into-safe-havens-after-us-tariffs/119925737",
+          "time_published": "20250403T023800",
+          "sentiment_score": -0.204474,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.081276
+        },
+        {
+          "title": "US dollar struggles near 4-month low amid growth concern; jobs data in spotlight - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/us-dollar-struggles-near-4-month-low-amid-growth-concern-jobs-data-in-spotlight/118773464",
+          "time_published": "20250307T030527",
+          "sentiment_score": -0.150343,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.066047
+        }
+      ]
+    },
+    "FOREX:ARS": {
+      "article_count": 1,
+      "avg_sentiment": -0.1371,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.1252,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.137087,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.125199
+        }
+      ]
+    },
+    "FOREX:TRY": {
+      "article_count": 1,
+      "avg_sentiment": -0.1371,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.1252,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.137087,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.125199
+        }
+      ]
+    },
+    "FOREX:CNY": {
+      "article_count": 3,
+      "avg_sentiment": 0.1611,
+      "sentiment_label": "Somewhat_Bullish",
+      "avg_relevance": 0.1851,
+      "bullish_count": 1,
+      "bearish_count": 0,
+      "neutral_count": 2,
+      "top_articles": [
+        {
+          "title": "Yuan Pipe Dreams",
+          "url": "https://www.forbes.com/sites/miltonezrati/2023/01/26/yuan-pipe-dreams/",
+          "time_published": "20230126T202323",
+          "sentiment_score": 0.229476,
+          "sentiment_label": "Somewhat-Bullish",
+          "relevance_score": 0.429359
+        },
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": -0.043118,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        },
+        {
+          "title": "Has the pound become emerging-market money?",
+          "url": "https://www.economist.com/finance-and-economics/2022/04/09/has-the-pound-become-emerging-market-money",
+          "time_published": "20220409T000000",
+          "sentiment_score": -0.100695,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.062794
+        }
+      ]
+    },
+    "FOREX:KRW": {
+      "article_count": 2,
+      "avg_sentiment": 0.0758,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0628,
+      "bullish_count": 1,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": -0.014389,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        },
+        {
+          "title": "Euro clings to parity as traders wait on U.S. inflation",
+          "url": "https://www.reuters.com/markets/europe/euro-clings-parity-traders-wait-us-inflation-2022-07-13/",
+          "time_published": "20220713T011900",
+          "sentiment_score": 0.16712,
+          "sentiment_label": "Somewhat-Bullish",
+          "relevance_score": 0.062434
+        }
+      ]
+    },
+    "FOREX:MXN": {
+      "article_count": 2,
+      "avg_sentiment": -0.1802,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.0737,
+      "bullish_count": 0,
+      "bearish_count": 2,
+      "neutral_count": 0,
+      "top_articles": [
+        {
+          "title": "Dollar slides as traders rush into safe havens after US tariffs - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/dollar-slides-as-traders-rush-into-safe-havens-after-us-tariffs/119925737",
+          "time_published": "20250403T023800",
+          "sentiment_score": -0.204474,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.081276
+        },
+        {
+          "title": "US dollar struggles near 4-month low amid growth concern; jobs data in spotlight - ETCFO",
+          "url": "https://cfo.economictimes.indiatimes.com/news/economy/us-dollar-struggles-near-4-month-low-amid-growth-concern-jobs-data-in-spotlight/118773464",
+          "time_published": "20250307T030527",
+          "sentiment_score": -0.150343,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.066047
+        }
+      ]
+    },
+    "FOREX:NOK": {
+      "article_count": 2,
+      "avg_sentiment": -0.1354,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0849,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 2,
+      "top_articles": [
+        {
+          "title": "It's not just stocks - high bond yields are also laying waste to commodities, currencies, and housing",
+          "url": "https://africa.businessinsider.com/markets/its-not-just-stocks-high-bond-yields-are-also-laying-waste-to-commodities-currencies/tq8bqpb",
+          "time_published": "20231008T121501",
+          "sentiment_score": -0.138149,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.093289
+        },
+        {
+          "title": "It's not just stocks - high bond yields are also laying waste to commodities, currencies, and housing",
+          "url": "https://markets.businessinsider.com/news/bonds/treasury-bond-yields-stocks-oil-gold-copper-crypto-dollar-mortgages-2023-10",
+          "time_published": "20231008T121500",
+          "sentiment_score": -0.132163,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.076602
+        }
+      ]
+    },
+    "TOP": {
+      "article_count": 1,
+      "avg_sentiment": 0.0697,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0731,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar drifts as investors eye Powell speech, yen wobbles near intervention zone",
+          "url": "https://www.reuters.com/markets/currencies/dollar-drifts-investors-eye-powell-speech-yen-wobbles-near-intervention-zone-2023-10-17/",
+          "time_published": "20231017T011344",
+          "sentiment_score": 0.069674,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.073098
+        }
+      ]
+    },
+    "NWG": {
+      "article_count": 1,
+      "avg_sentiment": 0.0005,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0632,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": 0.000496,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        }
+      ]
+    },
+    "FOREX:MYR": {
+      "article_count": 1,
+      "avg_sentiment": -0.0144,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0632,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": -0.014389,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        }
+      ]
+    },
+    "FOREX:SGD": {
+      "article_count": 1,
+      "avg_sentiment": -0.0144,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0632,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": -0.014389,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        }
+      ]
+    },
+    "FOREX:IDR": {
+      "article_count": 1,
+      "avg_sentiment": 0.0318,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0632,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": 0.03178,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        }
+      ]
+    },
+    "CRYPTO:ETH": {
+      "article_count": 1,
+      "avg_sentiment": -0.1007,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0632,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar hits 20-yr-high amid rising US rates, Ukraine war, China's lockdown",
+          "url": "https://www.business-standard.com/article/international/dollar-hits-20-yr-high-amid-rising-us-rates-ukraine-war-china-s-lockdown-122050900337_1.html",
+          "time_published": "20220509T072800",
+          "sentiment_score": -0.100659,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.063224
+        }
+      ]
+    },
+    "FOREX:BRL": {
+      "article_count": 1,
+      "avg_sentiment": 0.1016,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0596,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Dollar slips near 7-month low after US jobs data; labour market still tight",
+          "url": "https://www.business-standard.com/article/international/dollar-slips-near-7-month-low-after-us-jobs-data-labour-market-still-tight-123010900635_1.html",
+          "time_published": "20230109T110100",
+          "sentiment_score": 0.101626,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.059636
+        }
+      ]
+    },
+    "PM": {
+      "article_count": 1,
+      "avg_sentiment": 0.0875,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.1265,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "The Market Crash Americans Aren't Seeing",
+          "url": "https://www.fool.com/investing/2022/09/23/the-market-crash-americans-arent-seeing/",
+          "time_published": "20220923T215600",
+          "sentiment_score": 0.087481,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.12645
+        }
+      ]
+    },
+    "MPNGY": {
+      "article_count": 1,
+      "avg_sentiment": -0.2168,
+      "sentiment_label": "Somewhat_Bearish",
+      "avg_relevance": 0.0582,
+      "bullish_count": 0,
+      "bearish_count": 1,
+      "neutral_count": 0,
+      "top_articles": [
+        {
+          "title": "Bonds cheer Fed talk of cuts; kiwi flies",
+          "url": "https://www.reuters.com/markets/global-markets-wrapup-1-2023-11-29/",
+          "time_published": "20231129T025000",
+          "sentiment_score": -0.216764,
+          "sentiment_label": "Somewhat-Bearish",
+          "relevance_score": 0.058188
+        }
+      ]
+    },
+    "COIN": {
+      "article_count": 1,
+      "avg_sentiment": 0.1425,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0466,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Bitcoin Outlook: 'Halving Correction Expected In September May Not Occur'",
+          "url": "https://www.benzinga.com/markets/cryptocurrency/25/07/46764216/bitcoin-outlook-halving-correction-expected-in-september-may-not-occur",
+          "time_published": "20250731T155124",
+          "sentiment_score": 0.142473,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.046633
+        }
+      ]
+    },
+    "PLSQF": {
+      "article_count": 1,
+      "avg_sentiment": 0.2566,
+      "sentiment_label": "Somewhat_Bullish",
+      "avg_relevance": 0.0466,
+      "bullish_count": 1,
+      "bearish_count": 0,
+      "neutral_count": 0,
+      "top_articles": [
+        {
+          "title": "Bitcoin Outlook: 'Halving Correction Expected In September May Not Occur'",
+          "url": "https://www.benzinga.com/markets/cryptocurrency/25/07/46764216/bitcoin-outlook-halving-correction-expected-in-september-may-not-occur",
+          "time_published": "20250731T155124",
+          "sentiment_score": 0.256573,
+          "sentiment_label": "Somewhat-Bullish",
+          "relevance_score": 0.046633
+        }
+      ]
+    },
+    "SCBFF": {
+      "article_count": 1,
+      "avg_sentiment": 0.003,
+      "sentiment_label": "Neutral",
+      "avg_relevance": 0.0466,
+      "bullish_count": 0,
+      "bearish_count": 0,
+      "neutral_count": 1,
+      "top_articles": [
+        {
+          "title": "Bitcoin Outlook: 'Halving Correction Expected In September May Not Occur'",
+          "url": "https://www.benzinga.com/markets/cryptocurrency/25/07/46764216/bitcoin-outlook-halving-correction-expected-in-september-may-not-occur",
+          "time_published": "20250731T155124",
+          "sentiment_score": 0.002998,
+          "sentiment_label": "Neutral",
+          "relevance_score": 0.046633
+        }
+      ]
+    }
+  },
+  "forex_pairs": {
+    "EURUSD": {
+      "base_currency": "EUR",
+      "quote_currency": "USD",
+      "base_sentiment": -0.0581,
+      "quote_sentiment": -0.0956,
+      "net_sentiment": 0.0375,
+      "net_label": "Neutral"
+    },
+    "GBPUSD": {
+      "base_currency": "GBP",
+      "quote_currency": "USD",
+      "base_sentiment": -0.0901,
+      "quote_sentiment": -0.0956,
+      "net_sentiment": 0.0055,
+      "net_label": "Neutral"
+    },
+    "USDJPY": {
+      "base_currency": "USD",
+      "quote_currency": "JPY",
+      "base_sentiment": -0.0956,
+      "quote_sentiment": -0.0718,
+      "net_sentiment": -0.0238,
+      "net_label": "Neutral"
+    },
+    "USDCHF": {
+      "base_currency": "USD",
+      "quote_currency": "CHF",
+      "base_sentiment": -0.0956,
+      "quote_sentiment": -0.0324,
+      "net_sentiment": -0.0632,
+      "net_label": "Neutral"
+    },
+    "EURJPY": {
+      "base_currency": "EUR",
+      "quote_currency": "JPY",
+      "base_sentiment": -0.0581,
+      "quote_sentiment": -0.0718,
+      "net_sentiment": 0.0137,
+      "net_label": "Neutral"
+    },
+    "GBPJPY": {
+      "base_currency": "GBP",
+      "quote_currency": "JPY",
+      "base_sentiment": -0.0901,
+      "quote_sentiment": -0.0718,
+      "net_sentiment": -0.0183,
+      "net_label": "Neutral"
+    },
+    "AUDUSD": {
+      "base_currency": "AUD",
+      "quote_currency": "USD",
+      "base_sentiment": -0.0718,
+      "quote_sentiment": -0.0956,
+      "net_sentiment": 0.0238,
+      "net_label": "Neutral"
+    }
+  },
+  "market_summary": {
+    "total_articles": 264,
+    "overall_sentiment": -0.0508,
+    "overall_label": "Neutral",
+    "most_bullish": "FOREX:CNY",
+    "most_bearish": "FOREX:MXN"
+  }
+}
