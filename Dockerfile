@@ -29,7 +29,6 @@ RUN if [ -n "$OPENCLAW_DOCKER_APT_PACKAGES" ]; then \
 
 COPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY --chown=node:node ui/package.json ./ui/package.json
-COPY --chown=node:node remotion/package.json ./remotion/package.json
 COPY --chown=node:node patches ./patches
 COPY --chown=node:node scripts ./scripts
 
@@ -54,9 +53,6 @@ RUN OPENCLAW_A2UI_SKIP_MISSING=1 pnpm build
 ENV OPENCLAW_PREFER_PNPM=1
 RUN pnpm ui:install
 RUN pnpm ui:build
-
-# Pre-download Chrome Headless Shell for Remotion (avoids runtime download)
-RUN cd remotion && npx remotion browser ensure
 
 ENV NODE_ENV=production
 
