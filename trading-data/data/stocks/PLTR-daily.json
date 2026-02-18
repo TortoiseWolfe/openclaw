@@ -3,7 +3,7 @@
   "asset_class": "stocks",
   "interval": "daily",
   "source": "yahoo_finance",
-  "lastUpdated": "2026-02-18T02:51:03.508226+00:00",
+  "lastUpdated": "2026-02-18T13:31:23.999113+00:00",
   "candles": [
     {
       "date": "2025-08-04",

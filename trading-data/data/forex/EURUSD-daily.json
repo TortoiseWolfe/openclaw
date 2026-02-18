@@ -3,7 +3,7 @@
   "asset_class": "forex",
   "interval": "daily",
   "source": "alpha_vantage",
-  "lastUpdated": "2026-02-18T02:51:00.239691+00:00",
+  "lastUpdated": "2026-02-18T13:31:21.043544+00:00",
   "candles": [
     {
       "date": "2025-10-01",

@@ -146,19 +146,19 @@ Source: https://www.babypips.com/learn/forex
 | 112 | Popular Chart Indicators | How to Use the MACD Indicator | https://www.babypips.com/learn/forex/macd | fetch-failed | 2026-02-17 |
 | 113 | Popular Chart Indicators | How to Use Parabolic SAR | https://www.babypips.com/learn/forex/parabolic-sar | done | 2026-02-17 |
 | 114 | Popular Chart Indicators | How to Use the Stochastic Indicator | https://www.babypips.com/learn/forex/stochastic | done | 2026-02-18 |
-| 115 | Popular Chart Indicators | How to Use RSI (Relative Strength Index) | https://www.babypips.com/learn/forex/relative-strength-index | pending | |
-| 116 | Popular Chart Indicators | How to Use Williams %R | https://www.babypips.com/learn/forex/williams-r | pending | |
-| 117 | Popular Chart Indicators | How to Use ADX (Average Directional Index) | https://www.babypips.com/learn/forex/average-directional-index | pending | |
-| 118 | Popular Chart Indicators | Ichimoku Kinko Hyo | https://www.babypips.com/learn/forex/ichimoku-kinko-hyo | pending | |
-| 119 | Popular Chart Indicators | Trading with Multiple Chart Indicators | https://www.babypips.com/learn/forex/putting-it-all-together | pending | |
-| 120 | Popular Chart Indicators | What is the Best Technical Indicator in Forex? | https://www.babypips.com/learn/forex/best-technical-indicator-forex | pending | |
-| 121 | Popular Chart Indicators | Summary: Popular Chart Indicators | https://www.babypips.com/learn/forex/summary-common-chart-indicators | pending | |
+| 115 | Popular Chart Indicators | How to Use RSI (Relative Strength Index) | https://www.babypips.com/learn/forex/relative-strength-index | done | 2026-02-18 |
+| 116 | Popular Chart Indicators | How to Use Williams %R | https://www.babypips.com/learn/forex/williams-r | done | 2026-02-18 |
+| 117 | Popular Chart Indicators | How to Use ADX (Average Directional Index) | https://www.babypips.com/learn/forex/average-directional-index | done | 2026-02-18 |
+| 118 | Popular Chart Indicators | Ichimoku Kinko Hyo | https://www.babypips.com/learn/forex/ichimoku-kinko-hyo | done | 2026-02-18 |
+| 119 | Popular Chart Indicators | Trading with Multiple Chart Indicators | https://www.babypips.com/learn/forex/putting-it-all-together | done | 2026-02-18 |
+| 120 | Popular Chart Indicators | What is the Best Technical Indicator in Forex? | https://www.babypips.com/learn/forex/best-technical-indicator-forex | done | 2026-02-18 |
+| 121 | Popular Chart Indicators | Summary: Popular Chart Indicators | https://www.babypips.com/learn/forex/summary-common-chart-indicators | done | 2026-02-18 |
 
 ## Middle School Lessons
 
 | # | Section | Lesson | URL | Status | Date |
 |---|---------|--------|-----|--------|------|
-| 122 | Oscillators and Momentum Indicators | Leading vs. Lagging Indicators | https://www.babypips.com/learn/forex/leading-vs-lagging-indicators | pending | |
+| 122 | Oscillators and Momentum Indicators | Leading vs. Lagging Indicators | https://www.babypips.com/learn/forex/leading-vs-lagging-indicators | done | 2026-02-18 |
 | 123 | Oscillators and Momentum Indicators | How to Use Oscillators to Warn You of the End of a Trend | https://www.babypips.com/learn/forex/leading-indicators-oscillators | pending | |
 | 124 | Oscillators and Momentum Indicators | How to Use MACD to Confirm a Trend | https://www.babypips.com/learn/forex/lagging-indicators-momentum-indicators | pending | |
 | 125 | Oscillators and Momentum Indicators | Summary: Leading and Lagging Indicators | https://www.babypips.com/learn/forex/summary-leading-and-lagging-indicators | pending | |

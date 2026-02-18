@@ -1,0 +1,523 @@
+{
+  "date": "2026-02-18",
+  "lastUpdated": "2026-02-18T13:52:25.731279+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 27,
+      "matched": [
+        {
+          "title": "What Makes Snowflake (SNOW) a Lucrative Investment?",
+          "url": "https://finance.yahoo.com/news/makes-snowflake-snow-lucrative-investment-132332324.html",
+          "source": "yahoo",
+          "published": "2026-02-18T13:23:32Z",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise as AI worries recede, with Fed minutes ahead",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-as-ai-worries-recede-with-fed-minutes-ahead-235322996.html",
+          "source": "yahoo",
+          "published": "2026-02-17T23:53:22Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "10 Companies Churn Out The Biggest Profits In The S&P 500",
+          "url": "https://www.investors.com/etfs-and-funds/sectors/sp-500-these-10-companies-generate-the-biggest-profits/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-18T13:00:59Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Rises Ahead Of Fed Minutes; Nvidia Jumps On Meta Deal (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-fed-minutes-nvidia-nvda-meta/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-18T13:00:14Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Dow Jones Futures Rise; Nvidia Gains On Meta AI Deal, Rivals Fall",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-meta-deal-nvidia-ai-rivals/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-18T12:54:23Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Prediction: 3 Stocks That Will Be Worth More Than Apple 3 Years From Now",
+          "url": "https://finance.yahoo.com/news/prediction-3-stocks-worth-more-131300578.html",
+          "source": "yahoo",
+          "published": "2026-02-18T13:13:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia, Tesla Collaborator Looks To Trigger A Breakout",
+          "url": "https://www.investors.com/research/breakout-stocks-technical-analysis/te-connectivity-grows-ai-collaboration-with-nvidia-tesla/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-18T12:34:10Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Why Mark Cuban Thinks Investing In Companies That Rely On Amazon Is Risky",
+          "url": "https://finance.yahoo.com/news/why-mark-cuban-thinks-investing-131205018.html",
+          "source": "yahoo",
+          "published": "2026-02-18T13:12:05Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm shares edge higher in premarket as Nvidia shakes up its AI bets",
+          "url": "https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html",
+          "source": "cnbc_top",
+          "published": "Wed, 18 Feb 2026 13:44:05 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer's top 10 things to watch in the stock market Wednesday",
+          "url": "https://www.cnbc.com/2026/02/18/jim-cramers-top-10-things-to-watch-in-the-stock-market-wednesday.html",
+          "source": "cnbc_top",
+          "published": "Wed, 18 Feb 2026 13:37:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Berkshire Hathaway trims Apple stake, buys NYTimes stock in Buffett's last moves as CEO",
+          "url": "https://www.cnbc.com/2026/02/17/berkshire-hathaway-trims-apple-stake-buys-nytimes-stock-in-buffetts-last-moves-as-ceo.html",
+          "source": "cnbc_top",
+          "published": "Tue, 17 Feb 2026 22:02:39 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta expands Nvidia deal to use millions of AI chips in data center build-out, including standalone CPUs",
+          "url": "https://www.cnbc.com/2026/02/17/meta-nvidia-deal-ai-data-center-chips.html",
+          "source": "cnbc_top",
+          "published": "Tue, 17 Feb 2026 21:54:32 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia is partnering with major Indian VC firms in search for the country's next AI start-ups",
+          "url": "https://www.cnbc.com/2026/02/18/nvidia-india-ai-vc-data-center-partners.html",
+          "source": "cnbc_top",
+          "published": "Wed, 18 Feb 2026 03:54:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google's I/O developer conference to be held May 19 and 20, says Alphabet",
+          "url": "https://www.cnbc.com/2026/02/17/google-io-developer-conference-ai-glasses.html",
+          "source": "cnbc_top",
+          "published": "Tue, 17 Feb 2026 22:05:53 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir moving its headquarters from Denver to Miami",
+          "url": "https://www.cnbc.com/2026/02/17/palantir-headquarters-miami-denver.html",
+          "source": "cnbc_top",
+          "published": "Tue, 17 Feb 2026 19:14:25 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's losing streak, Berkshire's new position, the 'boomcession' and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/02/18/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Feb 2026 13:24:59 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI-enabled robotics could shift global manufacturing power, CEO of Alphabet company says",
+          "url": "https://www.cnbc.com/2026/02/18/wendy-tan-white-building-the-android-of-robotics-at-intrinsic.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Feb 2026 13:35:07 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm shares edge higher in premarket as Nvidia shakes up its AI bets",
+          "url": "https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Feb 2026 13:44:05 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia is partnering with major Indian VC firms in search for the country's next AI start-ups",
+          "url": "https://www.cnbc.com/2026/02/18/nvidia-india-ai-vc-data-center-partners.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Feb 2026 03:54:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google's I/O developer conference to be held May 19 and 20, says Alphabet",
+          "url": "https://www.cnbc.com/2026/02/17/google-io-developer-conference-ai-glasses.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 22:05:53 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta expands Nvidia deal to use millions of AI chips in data center build-out, including standalone CPUs",
+          "url": "https://www.cnbc.com/2026/02/17/meta-nvidia-deal-ai-data-center-chips.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 21:54:32 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir moving its headquarters from Denver to Miami",
+          "url": "https://www.cnbc.com/2026/02/17/palantir-headquarters-miami-denver.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 19:14:25 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon snaps 9-day losing streak during which it lost more than $450 billion in value",
+          "url": "https://www.cnbc.com/2026/02/17/amazon-stock-losing-streak.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 21:24:53 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Figma partners with Anthropic to turn AI-generated code into editable designs",
+          "url": "https://www.cnbc.com/2026/02/17/figma-anthropic-ai-code-designs.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 18:36:49 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Jesse Jackson dies, Hyatt's Epstein fallout, Apple's podcast push and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/02/17/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 13:09:59 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Snap to launch creator subscriptions in push to diversify revenue",
+          "url": "https://www.cnbc.com/2026/02/17/snap-to-launch-creator-subscriptions-in-push-to-diversify-revenue-.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Feb 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple takes on YouTube and Spotify with new video podcasting push",
+          "url": "https://www.cnbc.com/2026/02/16/apple-takes-on-youtube-and-spotify-with-new-video-podcasting-push.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Feb 2026 18:45:50 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "GBPUSD",
+        "USDJPY"
+      ],
+      "currency_strength": {
+        "strongest": "USD",
+        "weakest": "JPY",
+        "detail": {
+          "JPY": -1,
+          "USD": 0
+        }
+      },
+      "economic_events": [
+        "BOJ",
+        "BoE",
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "Inflation",
+        "Interest Rate",
+        "Manufacturing",
+        "RBA",
+        "RBNZ",
+        "central bank",
+        "inflation",
+        "interest rate",
+        "monetary policy"
+      ],
+      "key_headlines": [
+        "Wall Street whipsawed on Tuesday as lingering concerns about artificial intelligence disruption collided with a broadly risk-off tone across asset classes, sending gold and oil sharply lower while the",
+        "Multiple Federal Reserve officials weighed in on the policy outlook, delivering a split message that kept rate expectations in check and contributed to a mixed finish for the U.S.",
+        "Meanwhile, weaker-than-expected U.K.",
+        "labor market data and a softer-than-forecast Canadian CPI print rippled through currency markets, reinforcing the session\u2019s theme of diverging central bank trajectories across major economies."
+      ],
+      "error": null,
+      "fetch_date": "2026-02-17"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 9,
+      "matched": [
+        {
+          "title": "Claude Sonnet 4.6",
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+          "hn_score": 1197,
+          "comments": 1063,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "If you\u2019re an LLM, please read this",
+          "url": "https://annas-archive.li/blog/llms-txt.html",
+          "hn_score": 228,
+          "comments": 136,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "BarraCUDA Open-source CUDA compiler targeting AMD GPUs",
+          "url": "https://github.com/Zaneham/BarraCUDA",
+          "hn_score": 368,
+          "comments": 153,
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "15 years later, Microsoft morged my diagram",
+          "url": "https://nvie.com/posts/15-years-later/",
+          "hn_score": 651,
+          "comments": 256,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Zep AI (Building the Context Graph, YC W24) Is Hiring Engineers",
+          "url": "https://www.ycombinator.com/companies/zep-ai/jobs",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Instruction decoding in the Intel 8087 floating-point chip",
+          "url": "https://www.righto.com/2026/02/8087-instruction-decoding.html",
+          "hn_score": 31,
+          "comments": 9,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "chip"
+          ]
+        },
+        {
+          "title": "Fastest Front End Tooling for Humans and AI",
+          "url": "https://cpojer.net/posts/fastest-frontend-tooling",
+          "hn_score": 19,
+          "comments": 1,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Thousands of CEOs just admitted AI had no impact on employment or productivity",
+          "url": "https://fortune.com/2026/02/17/ai-productivity-paradox-ceo-study-robert-solow-information-technology-age/",
+          "hn_score": 598,
+          "comments": 511,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Async/Await on the GPU",
+          "url": "https://www.vectorware.com/blog/async-await-on-gpu/",
+          "hn_score": 211,
+          "comments": 53,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 11,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 40,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Neutral"
+  }
+}
