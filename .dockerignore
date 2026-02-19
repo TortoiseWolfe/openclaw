@@ -41,6 +41,9 @@ apps/macos/.build
 apps/ios/build
 **/*.trace
 
+# private data — never bake into Docker image
+trading-data/private/
+
 # large app trees not needed for CLI build
 apps/
 assets/

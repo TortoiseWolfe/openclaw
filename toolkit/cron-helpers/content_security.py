@@ -30,6 +30,18 @@ SUSPICIOUS_PATTERNS = [
     ("bulk-delete", re.compile(r"delete\s+all\s+(emails?|files?|data)", re.I)),
     ("fake-system-tag", re.compile(r"</?system>", re.I)),
     ("fake-role-tag", re.compile(r"\]\s*\n\s*\[?(system|assistant|user)\]?:", re.I)),
+    # ChatML / LLaMA delimiter injection
+    ("chatml-delimiter", re.compile(r"<\|im_(start|end)\|>", re.I)),
+    ("llama-delimiter", re.compile(r"\[/?INST\]", re.I)),
+    # Social engineering / persona hijack
+    ("act-as", re.compile(r"(act|behave|respond)\s+(as|like)\s+(a|an|if)", re.I)),
+    ("pretend-to-be", re.compile(r"pretend\s+(to\s+be|you\s+are)", re.I)),
+    # Tool call injection
+    ("tool-call-injection", re.compile(r"</?tool_call>", re.I)),
+    ("function-call-injection", re.compile(r"</?function_call>", re.I)),
+    # Jailbreak templates
+    ("dan-jailbreak", re.compile(r"\bDAN\b.*\b(mode|jailbreak|bypass)\b", re.I)),
+    ("developer-mode", re.compile(r"(enter|enable|activate)\s+developer\s+mode", re.I)),
 ]
 
 BOUNDARY_START = "<<<EXTERNAL_UNTRUSTED_CONTENT>>>"

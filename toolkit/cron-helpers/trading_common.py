@@ -226,18 +226,32 @@ def atomic_json_write(path, data, indent=2):
     """Write JSON data atomically via tmp file + os.replace."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = path + ".tmp"
-    with open(tmp, "w") as f:
-        json.dump(data, f, indent=indent)
-    os.replace(tmp, path)
+    try:
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=indent)
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.remove(tmp)
+        except FileNotFoundError:
+            pass
+        raise
 
 
 def atomic_text_write(path, text):
     """Write text data atomically via tmp file + os.replace."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = path + ".tmp"
-    with open(tmp, "w") as f:
-        f.write(text)
-    os.replace(tmp, path)
+    try:
+        with open(tmp, "w", encoding="utf-8") as f:
+            f.write(text)
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.remove(tmp)
+        except FileNotFoundError:
+            pass
+        raise
 
 
 # ── Correlation guard ─────────────────────────────────────────────

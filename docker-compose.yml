@@ -6,6 +6,8 @@ services:
     ports:
       - "127.0.0.1:11434:11434"
     restart: unless-stopped
+    security_opt:
+      - "no-new-privileges:true"
     networks:
       - backend
     deploy:
@@ -88,8 +90,8 @@ services:
       - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
       - ${OPENCLAW_WORKSPACE_DIR}:/home/node/clawd
       - ${TWITCH_WORKSPACE_DIR}:/home/node/clawd-twitch
-      - ${BUSINESS_DEV_REPO}:/home/node/repos/SpokeToWork---Business-Development
-      - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts
+      - ${BUSINESS_DEV_REPO}:/home/node/repos/SpokeToWork---Business-Development:ro
+      - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts:ro
       - ${TRADING_DATA_DIR}:/home/node/repos/Trading
       - ./toolkit:/app/toolkit:ro
     ports:
@@ -169,8 +171,8 @@ services:
       - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
       - ${OPENCLAW_WORKSPACE_DIR}:/home/node/clawd
       - ${TWITCH_WORKSPACE_DIR}:/home/node/clawd-twitch
-      - ${BUSINESS_DEV_REPO}:/home/node/repos/SpokeToWork---Business-Development
-      - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts
+      - ${BUSINESS_DEV_REPO}:/home/node/repos/SpokeToWork---Business-Development:ro
+      - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts:ro
       - ${TRADING_DATA_DIR}:/home/node/repos/Trading
       - ./toolkit:/app/toolkit:ro
     stdin_open: true

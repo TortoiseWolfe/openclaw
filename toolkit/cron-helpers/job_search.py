@@ -272,8 +272,13 @@ def append_to_tracker(jobs, today):
             f"| linkedin | {status} | {url} | -- | -- | {note} |"
         )
 
-    with open(TRACKER, "a") as f:
-        f.write("\n".join(lines) + "\n")
+    with open(TRACKER) as f:
+        existing = f.read()
+    new_content = existing.rstrip("\n") + "\n" + "\n".join(lines) + "\n"
+    tmp = TRACKER + ".tmp"
+    with open(tmp, "w") as f:
+        f.write(new_content)
+    os.replace(tmp, TRACKER)
 
 
 def update_term_performance(term_name, jobs_found, passed_filter, scores, today):
@@ -337,8 +342,10 @@ def update_term_performance(term_name, jobs_found, passed_filter, scores, today)
         print(f"  WARNING: Could not find term '{term_name}' in term-performance.md")
         return
 
-    with open(TERM_PERF, "w") as f:
+    tmp = TERM_PERF + ".tmp"
+    with open(tmp, "w") as f:
         f.write(new_content)
+    os.replace(tmp, TERM_PERF)
 
 
 def write_daily_report(term_name, jobs_found, passed_filter, top_score,

@@ -44,6 +44,8 @@ const VALID_COMPOSITIONS = new Set([
   "SH-HoldingScreen",
   "NarratedSegment",
   "SH-NarratedSegment",
+  "HighlightTitle",
+  "SH-HighlightTitle",
 ]);
 
 /**

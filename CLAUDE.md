@@ -184,7 +184,7 @@ src/agents/context-window-guard.ts).
 - **Ollama SPOF (C2)**: All 13 cron jobs fail if Ollama is down. The model fallback
   infrastructure (`src/agents/model-fallback.ts:226-282`) supports mixed providers.
   To enable Anthropic as final fallback: set `ANTHROPIC_API_KEY` in `.env`, then add
-  `"anthropic/claude-sonnet-4-20250514"` to the `model.fallbacks` array in
+  `"anthropic/claude-sonnet-4-5"` to the `model.fallbacks` array in
   `~/.openclaw/openclaw.json`. No code changes needed — just config + env var.
 - **Env var exposure (S3)**: Tokens are visible via `docker inspect` and
   `/proc/<pid>/environ`. Inherent to Docker Compose; fix requires Swarm secrets or

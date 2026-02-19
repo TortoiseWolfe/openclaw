@@ -196,7 +196,12 @@ class MCPClient:
         self._post(self._endpoint, payload, headers)
 
     def _post(self, url, payload, headers, max_redirects=3):
-        """POST with manual redirect following."""
+        """POST with manual redirect following.
+
+        Auth headers are only forwarded to redirects on the same origin
+        to prevent bearer token leakage to third-party hosts.
+        """
+        original_origin = urlparse(url).netloc
         for _ in range(max_redirects):
             req = Request(url, data=payload, headers=headers)
             try:
@@ -207,6 +212,10 @@ class MCPClient:
                     location = e.headers.get("Location", "")
                     if location:
                         url = self._resolve_url(url, location)
+                        # Strip auth header if redirected to a different origin
+                        if urlparse(url).netloc != original_origin:
+                            headers = {k: v for k, v in headers.items()
+                                       if k.lower() != "authorization"}
                         continue
                 if 200 <= e.code < 300:
                     return  # 202 Accepted etc.

@@ -30,8 +30,9 @@ def parse_rss_xml(xml_bytes):
     Returns list of {title, link, published, description}.
     Raises ValueError if XML contains DTD entity definitions (XXE guard).
     """
-    if b'<!ENTITY' in xml_bytes or b'<!DOCTYPE' in xml_bytes:
-        raise ValueError("RSS feed contains DTD definitions")
+    xml_upper = xml_bytes.upper()
+    if b'<!ENTITY' in xml_upper or b'<!DOCTYPE' in xml_upper or b'SYSTEM' in xml_upper:
+        raise ValueError("RSS feed contains DTD/entity definitions")
     root = ET.fromstring(xml_bytes)
     articles = []
 

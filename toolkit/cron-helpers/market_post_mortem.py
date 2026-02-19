@@ -439,7 +439,10 @@ def main():
     symbol_stats = build_symbol_stats(details)
     stop_analysis = compute_stop_analysis(details)
 
-    # Build lessons file
+    # Build lessons file — keep only the most recent 200 trades to prevent
+    # unbounded growth; aggregates already capture the full history
+    MAX_TRADE_DETAILS = 200
+    recent_details = details[-MAX_TRADE_DETAILS:] if len(details) > MAX_TRADE_DETAILS else details
     lessons = {
         "generated": datetime.now().isoformat(timespec="seconds"),
         "trade_count": len(details),
@@ -447,7 +450,7 @@ def main():
         "by_asset_class": class_stats,
         "by_symbol": symbol_stats,
         "stop_analysis": stop_analysis,
-        "trade_details": details,
+        "trade_details": recent_details,
     }
 
     write_lessons(lessons)

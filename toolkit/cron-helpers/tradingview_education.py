@@ -21,7 +21,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from content_security import detect_suspicious
+from content_security import detect_suspicious, wrap_external
 
 # ── Paths ────────────────────────────────────────────────────────────
 
@@ -211,7 +211,7 @@ def write_summary(article, content, today):
         "",
         "## Key Concepts",
         "",
-        content,
+        wrap_external(content, source="tradingview"),
         "",
     ]
 
@@ -228,7 +228,11 @@ def main():
     limit = None
     for i, arg in enumerate(sys.argv):
         if arg == "--limit" and i + 1 < len(sys.argv):
-            limit = int(sys.argv[i + 1])
+            try:
+                limit = int(sys.argv[i + 1])
+            except ValueError:
+                print(f"ERROR: --limit requires an integer, got '{sys.argv[i + 1]}'", file=sys.stderr)
+                sys.exit(1)
 
     print(f"TradingView Education Scraper — {len(ARTICLES)} articles indexed")
     print(f"Output: {SUMMARIES_DIR}")

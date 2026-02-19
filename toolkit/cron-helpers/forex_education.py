@@ -7,6 +7,7 @@ BabyPips page, extracts text content, writes a summary, and updates progress.
 Designed to be called via a single `exec` tool call from the cron job.
 """
 
+import atexit
 import os
 import re
 import sys
@@ -23,6 +24,31 @@ from content_security import detect_suspicious, wrap_external
 EDU_DIR = "/home/node/repos/Trading/education"
 CURRICULUM = os.path.join(EDU_DIR, "curriculum-progress.md")
 SUMMARIES_DIR = os.path.join(EDU_DIR, "article-summaries")
+LOCK_FILE = os.path.join(EDU_DIR, "forex_education.lock")
+
+
+def acquire_lock():
+    """Acquire lock file. Abort if another instance is running."""
+    if os.path.exists(LOCK_FILE):
+        try:
+            with open(LOCK_FILE) as f:
+                old_pid = int(f.read().strip())
+            os.kill(old_pid, 0)
+            print("Another instance is running — exiting", file=sys.stderr)
+            sys.exit(0)
+        except (ValueError, ProcessLookupError):
+            pass  # stale lock
+    with open(LOCK_FILE, "w") as f:
+        f.write(str(os.getpid()))
+    atexit.register(release_lock)
+
+
+def release_lock():
+    """Remove lock file."""
+    try:
+        os.remove(LOCK_FILE)
+    except FileNotFoundError:
+        pass
 
 
 # ── HTML content extractor ───────────────────────────────────────────
@@ -249,6 +275,7 @@ def update_curriculum(lesson_num, new_status, today):
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
+    acquire_lock()
     today = date.today()
 
     # Parse curriculum
@@ -284,6 +311,14 @@ def main():
             update_curriculum(lesson["num"], "fetch-failed", today)
             return
 
+        # Check fetched content for suspicious patterns BEFORE writing
+        flags = detect_suspicious(content)
+        if flags:
+            print(f"[security] BLOCKED — suspicious patterns: {flags}",
+                  file=sys.stderr)
+            update_curriculum(lesson["num"], "fetch-failed", today)
+            return
+
         # Write summary
         summary_path = write_summary(lesson, content, today)
         print(f"\nSummary saved: {summary_path}")
@@ -292,12 +327,6 @@ def main():
         # Update curriculum
         update_curriculum(lesson["num"], "done", today)
         print(f"Curriculum updated: lesson #{lesson['num']} marked done")
-
-        # Check fetched content for suspicious patterns
-        flags = detect_suspicious(content)
-        if flags:
-            print(f"[security] Suspicious patterns in web content: {flags}",
-                  file=sys.stderr)
 
         # Print first 200 words as preview, wrapped as untrusted
         preview_words = content.split()[:200]
