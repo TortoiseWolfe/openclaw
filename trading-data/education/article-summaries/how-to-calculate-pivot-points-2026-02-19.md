@@ -1,0 +1,10 @@
+# How to Calculate Pivot Points
+
+**Source**: https://www.babypips.com/learn/forex/how-to-calculate-pivot-points
+**Date**: 2026-02-19
+**Level**: Middle School
+**Section**: Pivot Points
+
+## Key Concepts
+
+The first thing you’re going to learn is how to calculate pivot point levels. The pivot point and associated support and resistance levels are calculated by using the last trading session’s open, high, low, and close. Since forex is a 24-hour market, most forex traders use the New York closing time of 5:00 pm EST as the previous day’s close. Pivot Point Calculation The calculation for a pivot point is shown below: Pivot point (PP) = (High + Low + Close) / 3 Support and resistance levels are then calculated off the pivot point like so: First level support and resistance: First resistance (R1) = (2 x PP) – Low First support (S1) = (2 x PP) – High Second level of support and resistance: Second resistance (R2) = PP + (High – Low) Second support (S2) = PP – (High – Low) Third level of support and resistance: Third resistance (R3) = High + 2(PP – Low) Third support (S3) = Low – 2(High – PP) Keep in mind that some forex charting software plots intermediate levels or mid-point levels. These are basically mini levels between the main pivot point and support and resistance levels. If you hated algebra, have no fear because you don’t have to perform these calculations yourself. Most charting software will automatically do this for you. Just make sure you configure your settings so that it uses the correct closing time and price. We here at BabyPips.com also have our very own Pivot Point Calculator ! The forex pivot point calculator can come in handy, especially if you want to do a little backtesting to see how pivot point levels have held up in the past. Remember, one of the advantages of using pivot points is that it is objective, so it’s very easy to test how prices react to them. Next up, we’ll teach you the various ways in which you can incorporate pivot points into your forex trading strategy.

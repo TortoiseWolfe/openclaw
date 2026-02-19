@@ -1,0 +1,10 @@
+# Divergences are NOT a Trade Signal
+
+**Source**: https://www.babypips.com/learn/forex/summary-of-divergences
+**Date**: 2026-02-19
+**Level**: High School
+**Section**: Trading Divergences
+
+## Key Concepts
+
+Please keep in mind that we use divergence as an INDICATOR, not as a signal to enter a trade ! It wouldn’t be smart to trade based SOLEY on divergences since too many false signals are given. It’s not 100% foolproof, but when used as a setup condition and combined with additional confirmation tools , your trades have a high probability of winning with relatively low risk. There are a bunch of ways to take advantage of those divergences. One way is to look at trend lines or candlestick patterns to confirm whether a reversal or continuation is in order. Another way is to make use of momentum tricks by watching out for an actual crossover or waiting for the oscillator to move out of the overbought/oversold region. You can also try drawing trend lines on the oscillator. With these nifty tricks, you can guard yourself against false signals and filter out those that’ll be very profitable. On the flip side, it is just as dangerous to trade against this indicator. If you’re unsure about which direction to trade, chill out on the sidelines. Remember that taking no position is a trading decision in itself, and it’s better to hold on to your hard-earned cash than bleed Benjamins on a shaky trade idea. Divergences don’t appear that often, but when they do appear, it’d behoove you to pay attention. Regular divergences can help you collect a big chunk of profit because you’re able to get in right when the trend changes. Hidden divergences can help you ride a trade longer, resulting in bigger-than-expected profits by keeping you on the correct side of a trend. The trick is to train your eye to spot divergences when they appear AND choose the proper divergences to trade. Just because you see a divergence, it doesn’t necessarily mean you should automatically jump in with a position. Cherry-pick your setups, and you’ll increase your odds of winning trades.

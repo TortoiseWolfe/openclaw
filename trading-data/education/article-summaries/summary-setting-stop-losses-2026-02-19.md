@@ -1,0 +1,10 @@
+# Summary: Setting Stop Losses
+
+**Source**: https://www.babypips.com/learn/forex/summary-setting-stops
+**Date**: 2026-02-19
+**Level**: Undergraduate Senior
+**Section**: Setting Stop Losses
+
+## Key Concepts
+
+Well, there you have it… Our awesome primer on setting stop losses. Now, let’s review the things you need to remember about stop losses. Find a broker that allows you to trade position sizes that suit the size of your capital and risk management rules. We use the word “predetermined” a lot in this lesson because you should ALWAYS know when to get out before you open a position . Once you are already in a trade and it’s turned into a loser, you lose the ability to make a decision to exit the trade with a clear head. That could be very bad for your account balance! Set stops to the current market environment, framework, or trading method. Do not set your exit levels to how much you are willing to lose . The market does not know how much you have or how much you’re willing to lose. Quite frankly, it doesn’t care. Find the stop levels that prove your trade wrong first, and then manage your position size according to them. This is worth repeating… Use limit orders to close out your trade. Mental stops should only be used by those with a bazillion trades recorded in their journal. Even then, limit orders are still the way to go: emotionally unbiased and can be automatically executed while you are taking in some sun on the beach and sipping on virgin margaritas. Only move your stop in the direction of your profit target . Trailing stops are good, widening stops are very, very bad! Like anything else in trading, setting stop losses is a science and an art. Markets are dynamic, volatility is well… volatile, and a rule or condition that works today may not work tomorrow. If you continually practice the correct way to set stops, record, and review your thought processes and trade outcomes in your journal, then you’ll be one step closer to becoming a professional risk manager!

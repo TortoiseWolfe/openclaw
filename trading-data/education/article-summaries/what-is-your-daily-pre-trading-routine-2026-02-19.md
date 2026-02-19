@@ -1,0 +1,10 @@
+# What Is Your Daily Pre-Trading Routine?
+
+**Source**: https://www.babypips.com/learn/forex/daily-pre-market-routine
+**Date**: 2026-02-19
+**Level**: Undergraduate Junior
+**Section**: Developing Your Own Trading Plan
+
+## Key Concepts
+
+What is your daily pre-trading routine? Waking up doesn’t count. Having a pre-market routine is important. Don’t think you can just jump out of bed, plop in front of your computer, fire up your forex broker ’s platform and start easily grabbing pips as if they were apples from a very short apple tree. What activities will you do BEFORE you start trading? We don’t mean showering and brushing your teeth. Although you should always take a shower and brush your teeth. You don’t wanna smell like Pipcrawler now do you? Your forex trading routine should help you accomplish the following tasks: Reviewing any open positions and making any necessary adjustments Reviewing yesterday’s trades Getting yourself “up to speed” on the market Identifying any upcoming news that could cause volatility Being ready to trade when the next trading session opens Now you will want to review the overall market news. This can be done online through sites such as Bloomberg or through television (CNBC, Bloomberg TV, BBC). Determine what the overall market sentiment is for the day, review yesterday’s trades and how the previous trading session finished, and maybe identify key market areas like support and resistance . Now it’s time to start trading your system! Your pre-market routine will be critical to your success as a trader . It will help you plan your day so that you are not spending time during market hours scrambling trying to figure out what news or data will be coming out, and what to do if the market does something you didn’t expect. You want to start your forex trading session feeling calm, relaxed, and prepared for whatever the market throws at you. Keep up-to-date with both the fundamentals and technicals affecting the forex market. Use our economic calendar . A forex trader in the dark is a forex trader in the red.

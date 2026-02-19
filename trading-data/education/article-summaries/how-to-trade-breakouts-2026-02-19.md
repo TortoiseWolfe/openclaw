@@ -1,0 +1,10 @@
+# How to Trade Breakouts
+
+**Source**: https://www.babypips.com/learn/forex/trading-breakouts
+**Date**: 2026-02-19
+**Level**: High School
+**Section**: Trading Breakouts and Fakeouts
+
+## Key Concepts
+
+What are breakouts and how can I take advantage of them? Unlike the breakouts you might have had as a teenager, a breakout in the trading world is a little different! A breakout occurs when the price “breaks out” (get it?) of some kind of consolidation or trading range. A breakout can also occur when a specific price level is breached such as support and resistance levels, pivot points, Fibonacci levels, etc. With breakout trades, the goal is to enter the market right when the price makes a breakout and then continue to ride the trade until volatility dies down. Volatility, Not Volume You’ll notice that, unlike trading stocks or futures, there is no way for you to see the volume of trades made in the forex market. With stock or futures trades, volume is essential for making good breakout trades so not having this data available in the forex leaves us at a disadvantage. Because of this disadvantage, we have to rely not only on good risk management but also on certain criteria in order to position ourselves for a good potential breakout. If there is a large price movement within a short amount of time then volatility would be considered high. On the other hand, if there is relatively little movement in a short period of time then volatility would be considered low. While it’s tempting to get in the market when it is moving faster than a speeding bullet, you will often find yourself more stressed and anxious; making bad decisions as your money goes in and then goes right back out. This high volatility is what attracts a lot of forex traders, but it’s this same volatility that kills a lot of them as well. The goal here is to use volatility to your advantage . Rather than following the herd and trying to jump in when the market is super volatile, it would be better to look for currency pairs with a volatility that is very low. This way, you can position yourself and be ready for when a breakout occurs, and volatility skyrockets!

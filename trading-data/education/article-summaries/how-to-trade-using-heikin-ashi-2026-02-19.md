@@ -1,0 +1,10 @@
+# How to Trade Using Heikin Ashi
+
+**Source**: https://www.babypips.com/learn/forex/how-to-trade-heikin-ashi
+**Date**: 2026-02-19
+**Level**: Summer School
+**Section**: Heikin Ashi
+
+## Key Concepts
+
+How do you trade Heikin Ashi ? As mentioned in a previous lesson , using a Heikin Ashi chart makes trends easier to identify . Heikin Ashi allows traders to look for the emergence of new trends or for the reversal of already existing trends . Here are five basic ways to use Heikin Ashi charts in your trading. 1. Green candlesticks signal an uptrend. When the Heikin Ashi candle changes from red (bearish) to green (bullish), it’s a sign that the price might be about to turn higher. If you’re currently in a short position, you may want to exit. If you’re currently in a long position, you may want to add to your position. 2. Green candlesticks with no lower shadow or wick indicate a strong uptrend. If you see a lot of green shaved bottoms, you’ll see a strong uptrend. Stay long and until the Heikin Ashi candlestick changes color, from green to red. Ride the uptrend as long as no lower shadows appear and let your profits run. 3. Candlesticks with small bodies showing upper and lower shadows indicated a possible trend reversal (or trend pause). Open a position opposite the current trend since the trend may be coming to an end. Keep in mind though that IF the next candlestick changes color, it does NOT always mean the end of a trend, it could just be a pause . 4. Red candlesticks signal a downtrend. When the Heikin Ashi candle changes from green (bullish) to red (bearish), it’s a sign that the price might be about to turn lower. If you’re currently in a long position, you may want to exit. If you’re currently in a short position, you may want to add to your position. 5. Red candlesticks with no upper shadow or wick indicate a strong downtrend. Notice the amount of red shaved heads? That’s a strong downtrend. Stay short until the Heikin Ashi candlestick changes color, from red to green. Stay short and ride the downtrend as long as no upper shadows appear and let your profits run.

@@ -1,0 +1,10 @@
+# Entry Trigger
+
+**Source**: https://www.babypips.com/learn/forex/entry-trigger
+**Date**: 2026-02-19
+**Level**: Undergraduate Junior
+**Section**: Keeping a Trading Journal
+
+## Key Concepts
+
+The entry trigger tells you when to “fire!” Your entry trigger tells you that once you’re in the potential trade area when to actually enter the trade. This is your specific entry technique. Now that you’ve decided on where you’re looking to enter a trade, now you have to decide how to actually enter the trade. Do you just blindly enter? If you want to cross the street, do you simply just start walking across? Only if you want to possibly get run over. Of course, you look both ways first to make sure it’s “safe”. This same approach is also practical with trading. You want to make sure it is “safe” to enter the market (i.e. a high probability trade setup). The entry technique will help keep you out of trades that aren’t behaving the way you would expect in your potential trade area. Let’s pretend your potential trade area is where bearish divergence is present. Do you just automatically short? Or do you wait for the price to trade near a significant resistance level first? Maybe even wait for an exhaustion reversal candlestick like a shooting star to form? Instead of waiting….you short now, and then watch the price climb higher and get stopped out. Just because you find a good area to trade doesn’t mean you should just jump right in. A good entry technique provides that solid confirmation to help keep you out of losing trades. Again, make a screenshot of your chart and label where your entry trigger is. Don’t forget that you must combine a good entry trigger with a good potential trade area . A moving average crossover may be a popular entry technique but if you don’t factor in the area in which you’re thinking of entering, you will probably be whipsawed to death. Using an entry trigger as a “stand-alone” technique is a recipe for disaster. Make sure you’re aware of your “surroundings” as well. Don’t bring a knife to a gunfight.

@@ -1,0 +1,10 @@
+# How Cross Currency Pairs Affect Dollar Pairs
+
+**Source**: https://www.babypips.com/learn/forex/how-cross-currency-pairs-affect-dollar-pairs
+**Date**: 2026-02-19
+**Level**: Undergraduate Freshman
+**Section**: Currency Crosses
+
+## Key Concepts
+
+Let’s pretend the Fed announces they will raise interest rates. The market quickly starts buying the U.S. dollar across all major currencies…EUR/USD and GBP/USD fall while USD/CHF and USD/JPY rise. You were short EUR/USD and were pleased to see price move in your favor making you some pips, but right before you were about to break out the cigar, you notice your friend who was long USD/JPY made a lot more pips than you. You’re like “What’s up with that yo?” You compare the charts of EUR/USD and USD/JPY and see that USD/JPY made the bigger move. It broke through a major technical resistance level and shot up 200 pips while EUR/USD barely shot down 100 pips and failed to break a major support level. You’re thinking to yourself, “If the U.S. dollar was being bought across the board, then how come my EUR/USD trade looks so weak compared to my friend’s USD/JPY trade?” This is due to the currency crosses! In this particular example, EUR/JPY . When USD/JPY broke through its major resistance level (red dashed line and 101.00 handle), the combination of stop losses being hit and breakout traders jumping on the bandwagon pushed it even higher. Since buying more USD/JPY weakens the yen, this would cause EUR/JPY (and possibly other yen-based pairs) to break through its major resistance level. once again hitting stops and attracting breakout traders, pushing EUR/JPY even higher. When resistance is broken, this results in stops being triggered along with breakout traders entering new positions and going long, pushing EUR/JPY even higher. This causes the euro to strengthen and slows down the descent of your EUR/USD trade. The EUR/JPY cross buying acts as a “parachute” and this is why EUR/USD didn’t move as much or as fast as the USD/JPY. So even if you only trade the major currencies, cross-currency pairs still have an effect on your trades!

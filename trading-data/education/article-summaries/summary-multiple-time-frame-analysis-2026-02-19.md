@@ -1,0 +1,10 @@
+# Summary: Multiple Time Frame Analysis
+
+**Source**: https://www.babypips.com/learn/forex/summary-of-multiple-time-frame-analysis
+**Date**: 2026-02-19
+**Level**: High School
+**Section**: Multiple Time Frame Analysis
+
+## Key Concepts
+
+So now you’re done! Now you can add multiple time frame analysis to your forex trading toolbox! Using multiple time frame analysis allows you to: Get a bird’s eye view. Here are a few tips you should remember: You have to decide what the correct time frame is for YOU. This comes from trying different time frames out through different market environments, recording your results, and analyzing those results to find what works for you. Once you’ve found your preferred time frame: Go up to the next higher time frame. Then make a strategic decision to go long or short based on the direction of the trend. Then return to your preferred time frame (or lower) to make tactical decisions about where to enter and exit (place stop and profit target). Adding the dimension of time to your analysis gives you an edge over the other tunnel vision forex traders who rely on just a single time frame. Make it a habit to look at multiple time frames when trading . Make sure you practice! You don’t wanna get caught up in the heat of trading not knowing where the time frame button is! Make sure you know how to shift quickly between them. Heck, you should even practice having a chart containing multiple time frames up at the same time! Choose a set of time frames that you are going to watch, and only concentrate on those time frames. Learn all you can about how the market works during those time frames. Don’t look at too many time frames , you’ll be overloaded with too much information and your brain will explode. And you’ll end up with a messy desk since there will be blood splattered everywhere. Stick to two or three time frames. Any more than that is overkill. We can’t repeat this enough: Get a bird’s eye view. Using multiple time frames resolves contradiction s between indicators and time frames.

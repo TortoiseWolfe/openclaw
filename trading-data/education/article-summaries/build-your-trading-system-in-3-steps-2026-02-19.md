@@ -1,0 +1,10 @@
+# Build Your Trading System in 3 Steps
+
+**Source**: https://www.babypips.com/learn/forex/build-your-trading-system
+**Date**: 2026-02-19
+**Level**: Undergraduate Junior
+**Section**: Create Your Own Trading System
+
+## Key Concepts
+
+Now that you’ve learned the basics of technical analysis . Let’s now combine all this information and build a simple trading system. This should give you an idea of what you should be looking for when you develop your own forex trading system. This system is a moving average crossover system, which uses moving averages to determine whether to go long or short. Additional technical indicators are also used for confirmation before entering a trade. You’ll learn to use these various technical indicators to establish specific “crystal clear” entry and exit levels. The trading system can be built in 3 simple steps: Define your time frame Determine your entry trigger(s) Determine your exit trigger(s) Trading Setup Trade on daily chart (swing trading) 5 SMA applied to the close 10 SMA applied to the close Stochasti c (14,3,3) RSI (9) Trading Rules Entry Rules Enter LONG if: The 5 SMA crosses above the 10 SMA and both Stochastic lines are heading up (do not enter if the Stochastic lines are already in the overbought territory) RSI is greater than 50 Enter SHORT if: The 5 SMA crosses below the 10 SMA and both Stochastic lines are heading down AND (do not enter if the Stochastic lines are already in oversold territory) RSI is less than 50 Exit Rules Exit when the 5 SMA crosses the 10 SMA in the opposite direction of your trade OR if RSI crosses back to 50 Exit when trade hits stop loss of 100 pips If the daily chart is too slow for you, you can try experimenting with different time frames. Keep in mind though that the faster the time frame, the higher likelihood for “false positive” trades. These are trades that meet the rules for entry but where you end up getting stopped out. Remember: A trading system is only effective if it is followed! You need to have the discipline to stick to the rules! Okay, let’s take a look at some charts and see this baby in action…

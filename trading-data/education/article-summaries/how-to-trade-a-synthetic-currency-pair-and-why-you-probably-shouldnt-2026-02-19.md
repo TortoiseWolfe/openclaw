@@ -1,0 +1,10 @@
+# How to Trade a Synthetic Currency Pair and Why You Probably Shouldn't
+
+**Source**: https://www.babypips.com/learn/forex/creating-synthetic-pairs
+**Date**: 2026-02-19
+**Level**: Undergraduate Freshman
+**Section**: Currency Crosses
+
+## Key Concepts
+
+Sometimes institutional forex traders can’t trade certain currency crosses because they trade in such large sizes that there isn’t enough liquidity to execute their order. In order to execute their desired trade, they have to create a “ synthetic pair “. How to Create a Synthetic Currency Pair Let’s say that an institutional forex trader wants to buy GBP/JPY but can’t because there isn’t enough liquidity. To execute this trade, they would have to buy both GBP/USD and USD/JPY (earlier in this lesson, we learned that these pairs are called its legs ). They are able to do this because there is plenty of liquidity in GBP/USD and USD/JPY which means they can make large orders. If you’re a retail forex trader, and you wanted to pretend to trade like an institutional trader, then you could technically trade synthetic currency pairs as well. But it wouldn’t be too smart. Ever since the great Al Gore “invented the internet,” technology has improved to the point now that even weird currency crosses like GBP/NZD or CHF/JPY can now be traded on your forex broker’s platform. Aside from having access to a larger “menu” of currency pairs to trade, the spreads would be tighter on the crosses compared to the synthetic pair you’d create. And let’s not forgot about margin use! Creating a synthetic currency pair requires you to open two separate positions and each position requires its own margin. This locks up unnecessary capital in your trading account when you can simply trade the cross-currency and save on margin . So unless you’re trading yards (forex slang term for one BILLION units), forget synthetic currency pairs and stick to currency crosses. You will be saving yourself some pips (thanks to a tighter spread) as well as freeing up your capital so you can take on more trades.

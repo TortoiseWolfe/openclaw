@@ -1,0 +1,10 @@
+# How to Use Currency Crosses to Trade the Majors
+
+**Source**: https://www.babypips.com/learn/forex/how-to-use-crosses-to-trade-the-majors
+**Date**: 2026-02-19
+**Level**: Undergraduate Freshman
+**Section**: Currency Crosses
+
+## Key Concepts
+
+Even if you don’t ever want to trade the currency crosses and simply stick to trading the majors, you can use crosses to help you make better forex trading decisions. Here’s an example… Currency crosses can provide clues about the relative strength of each major currency pair. Let’s say you see a buy signal for EUR/USD and GBP/USD but you can only take one trade. Which one do you take? 🤔 Simply looking at your crystal ball and guessing isn’t likely to result in the right answer. To find the right answer, you would look at the EUR/GBP cross. If EUR/GBP is trending downward, this indicates that the pound is relatively stronger than the euro at the moment. So the right answer would be to buy GBP/USD instead of EUR/USD due to the pound’s relative strength against the euro. Since the euro is weaker, relative to the pound, if it proves to strengthen against the U.S. dollar, it is likely to strengthen LESS than the pound. If the U.S. dollar weakens across the board, you would make more pips with GBP/USD since it would rally higher than EUR/USD. So GBP/USD is the better trade. You can do this relative strength analysis on any of the major currency pairs. Know Which Currency Cross to Use Let’s say you’re bearish on the U.S. dollar. How will you trade? Can’t decide whether to buy EUR/USD or sell USD/CHF? Look at EUR/CHF . Can’t decide whether to buy USD/CHF or USD/JPY? Look at CHF/JPY . Can’t decide whether to buy EUR/USD or sell USD/JPY? Look at EUR/JPY . Can’t decide whether to buy GBP/USD or sell USD/CHF? Look at GBP/CHF . Can’t decide whether to buy GBP/USD or sell USD/JPY? Look at GBP/JPY . So always remember, looking at currency cross pairs could give you an idea of the RELATIVE strength of a particular currency .

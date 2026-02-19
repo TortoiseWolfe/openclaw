@@ -1,0 +1,10 @@
+# Protect Yo Self From Reversals
+
+**Source**: https://www.babypips.com/learn/forex/protect-yo-self-from-reversals
+**Date**: 2026-02-19
+**Level**: High School
+**Section**: Market Environment
+
+## Key Concepts
+
+Whenever Pippo goes swimming at the beach or the pool, he always wears his pink rubber ducky floaters. Whenever he trades retracements, he uses stop loss points. Pink rubber ducky floaters are lifesavers . Stop loss points are capital savers . Why Stop Losses Are Critical for Retracement Trading As we discussed earlier, reversals can happen at any time. A retracement can turn into a full reversal without warning, catching traders off guard and turning profitable positions into losses. This is why using trailing stops in trending markets is essential. Trailing stop loss points serve two crucial purposes: They prevent you from exiting a position too early during a normal retracement. They allow you to exit quickly when a retracement becomes a reversal. By adjusting your stop loss as the market moves in your favor, you lock in profits while giving your trade room to breathe during temporary pullbacks. Conclusion You don’t have to be shot down by the “Smooth Retracement”. You don’t have to lose all those pips. And you most certainly don’t need to wear pink arm floaties (although if pink’s your favorite color, it’s okay – we don’t judge). Just know how to distinguish retracements from reversals . This is part of growing up as a trader. Having the ability to do so will effectively reduce your losses and prevent winners from turning into losers. With lots of practice and experience, you’ll find yourself being able to trade accordingly to retracements and exit with a profit more times than not. The key is patience, discipline, and always protecting your capital with well-placed stops. May we also suggest further reading on this topic? These forum threads might be able to help you out: How do I know if a trend is losing strength? Best indicator for gauging the strength of any current trend Trend channels and price action

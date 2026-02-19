@@ -1,0 +1,10 @@
+# Forex Scams
+
+**Source**: https://www.babypips.com/learn/forex/dont-be-a-sucker
+**Date**: 2026-02-19
+**Level**: Graduation
+**Section**: Forex Trading Scams
+
+## Key Concepts
+
+“Buy my ‘End of the Rainbow’ system and you’ll be able to make at least 100,000,000%!!!” It’s like finding the end of a real rainbow but easier!! Guaranteed profit worth a hundred pots of gold with absolutely no risk! Don’t be a sucker! You’ve probably heard or seen something similar on TV ads, online pop-ups, or even from your next-door neighbor. I know what you’re thinking… This is too good to be true! I mean I do believe in leprechauns and I do feel lucky when I eat my Lucky Charms cereal but I don’t know about this system. Nine and a half times out of ten… IT IS A SCAM!!! One of the first things you must learn about the forex market is that although it is enjoyable and exciting, there is no magic button that will instantly turn your pennies into millions of dollars. You may have already heard about forex scams that are littering the forex world. They’re everywhere! Dishonest people are constantly trying to swindle people like every single day. With the relatively new availability of the forex market, people aren’t as familiar with currencies as they are with stocks and bonds. This makes it easier for conniving companies and scheming individuals to mislead people into thinking that making money trading forex is as easy as clicking a button with their “End of the Rainbow” system. There is good news and bad news. Bad news first. Scams DO exist. They are real and they sucker people who think they can’t be misled. If caught in a scam, you can and may lose all the money that you “invested.” However, there is very good news! In the following lesson, we will teach you about the different types of scams out there, how to prepare yourself, and what you can do in case you encounter a scam. We will also describe the regulatory agencies that have jurisdiction in scam cases. Remember, not all forex companies are bad. DYOR . D o. Y our. O wn. R esearch. Just do your research and you’ll be fine.
