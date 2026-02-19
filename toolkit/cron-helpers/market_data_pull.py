@@ -206,7 +206,13 @@ FETCHERS = {
 def save_candles(asset_class, symbol, candles, base_dir=None, source="alpha_vantage"):
     """Save candle data to JSON. Validates candles before saving."""
     candles = validate_candles(candles, symbol=symbol)
+    # Guard: refuse to overwrite existing data with an empty response
     out_dir = os.path.join(base_dir or DATA_DIR, asset_class)
+    path = os.path.join(out_dir, f"{symbol}-daily.json")
+    if not candles and os.path.exists(path):
+        raise RuntimeError(
+            f"Refusing to overwrite {symbol} with empty candle list"
+        )
     out = {
         "symbol": symbol,
         "asset_class": asset_class,
@@ -215,7 +221,6 @@ def save_candles(asset_class, symbol, candles, base_dir=None, source="alpha_vant
         "lastUpdated": datetime.now(timezone.utc).isoformat(),
         "candles": candles,
     }
-    path = os.path.join(out_dir, f"{symbol}-daily.json")
     atomic_json_write(path, out)
     return path
 

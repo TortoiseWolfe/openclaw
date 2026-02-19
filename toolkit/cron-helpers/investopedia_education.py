@@ -301,13 +301,16 @@ def main():
                 errors += 1
                 continue
 
+            flags = detect_suspicious(content)
+            if flags:
+                print(f"  {article['title']:45s}: BLOCKED (suspicious: {flags})",
+                      file=sys.stderr)
+                errors += 1
+                continue
+
             path = write_summary(article, content, today)
             word_count = len(content.split())
             print(f"  {article['title']:45s}: {word_count:4d} words")
-
-            flags = detect_suspicious(content)
-            if flags:
-                print(f"    [security] Suspicious: {flags}", file=sys.stderr)
 
             fetched += 1
             time.sleep(1.5)  # polite delay

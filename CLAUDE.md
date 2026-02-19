@@ -209,7 +209,7 @@ This is the single source of truth for Jonathan's skills and experience.
 
 - **Name:** Jonathan Pohlner (use "TurtleWolfe" casually, "Jonathan Pohlner" on applications)
 - **Location:** Cleveland, TN 37312
-- **Contact:** [REDACTED-PHONE] | [REDACTED-EMAIL]
+- **Contact:** See ~/clawd/USER.md (not committed to git)
 - **GitHub:** github.com/TortoiseWolfe (current), github.com/TurtleWolfe (older repos)
 - **Portfolio:** TurtleWolfe.com
 - **LinkedIn:** linkedin.com/in/pohlner
