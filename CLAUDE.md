@@ -14,7 +14,7 @@ Upstream: [openclaw/openclaw](https://github.com/openclaw/openclaw)
 - Trading data: `trading-data/` (watchlist, candles, education)
 - Video pipeline: `remotion/` (episode rendering with Steampunk design system)
 - RPG system: `rpg/` (adventures, campaigns, maps)
-- Setup guide: `docs/setup-plan.md`
+- Docs: `docs/` (upstream reference docs)
 
 ## Docker Workflow
 
@@ -53,7 +53,14 @@ docker compose logs openclaw-gateway --tail 50
 ~/clawd-twitch/                   # Twitch agent workspace → /home/node/clawd-twitch
   SOUL.md                         # Twitch host persona
   AGENTS.md                       # Operating instructions
+  IDENTITY.md, USER.md, TOOLS.md  # Agent identity + tool config
+  HEARTBEAT.md                    # Health check
+  episodes.json                   # Episode metadata
+  episodes/                       # Episode scripts
+  branding/                       # Channel assets
   highlights/                     # Stream highlight logs
+  renders/                        # Remotion video output
+  schedule.md, channel-schedule*.md  # Stream schedules
 
 ~/.openclaw/                      # Config directory → /home/node/.openclaw
   openclaw.json                   # Main config (agents, models, channels, tools)
@@ -181,7 +188,7 @@ src/agents/context-window-guard.ts).
 
 ### Deferred Hardening
 
-- **Ollama SPOF (C2)**: All 13 cron jobs fail if Ollama is down. The model fallback
+- **Ollama SPOF (C2)**: All 38 cron jobs (34 enabled) fail if Ollama is down. The model fallback
   infrastructure (`src/agents/model-fallback.ts:226-282`) supports mixed providers.
   To enable Anthropic as final fallback: set `ANTHROPIC_API_KEY` in `.env`, then add
   `"anthropic/claude-sonnet-4-5"` to the `model.fallbacks` array in
@@ -189,7 +196,7 @@ src/agents/context-window-guard.ts).
 - **Env var exposure (S3)**: Tokens are visible via `docker inspect` and
   `/proc/<pid>/environ`. Inherent to Docker Compose; fix requires Swarm secrets or
   external vault. Acceptable for single-user local setup.
-- **Cron failure alerting (C4)**: Already implemented. `src/cron/service/timer.ts:114-136`
+- **Cron failure alerting (C4)**: Already implemented. `src/cron/service/timer.ts:471,545,649`
   posts job errors to the main agent session via `enqueueSystemEvent()`.
 
 ## Multi-Agent Safety
@@ -256,7 +263,7 @@ This is the single source of truth for Jonathan's skills and experience.
 **ScriptHammer** | Full Stack Web Developer | Aug 2011 – Present | Cleveland, TN
 - Designed and developed 20+ custom web applications for small business clients
 - Built 1000+ React components across multiple projects
-- Current iteration: Next.js 15 / React 19 / Supabase SaaS platform with 45+ features
+- Current iteration: Next.js 15 / React 19 / Supabase SaaS platform with 46 features
 - AI-first development: 27-terminal orchestration with council governance, 12 slash commands, SpecKit workflow
 - Game components specified: DiceRoller, CharacterSheet, InitiativeTracker, MapGrid, ChatPanel
 - Manages full project lifecycle from requirements gathering to deployment
@@ -340,7 +347,7 @@ Built OpenClaw fork orchestrating 139 MCP tools. Daily AI-assisted development s
 
 **ScriptHammer** (2011–present) — SaaS platform / app factory
 - Next.js 15, React 19, TypeScript, Supabase (PostgreSQL), Tailwind CSS
-- 45+ features across 8 categories (foundation, auth, core, enhancements,
+- 46 features across 8 categories (foundation, auth, core, enhancements,
   integrations, polish, testing, payments)
 - 27-terminal AI orchestration: 7 council (CTO, ProductOwner, Architect,
   UXDesigner, Toolsmith, Security, DevOps) + 19 contributors + 1 operator
@@ -402,7 +409,7 @@ DevCamper API (Node.js + Express + MongoDB + JWT auth)
 - **OpenClaw is workflow customization.** Not a product — it's how Jonathan works.
   A personal Docker pipeline with 139 MCP tools and autonomous cron jobs.
   Mention to show he customizes AI tooling to his own workflows.
-- **ScriptHammer shows scale.** 46 features, 27 AI terminals with formal
+- **ScriptHammer shows scale.** 46 features across 8 categories, 27 AI terminals with formal
   governance (RFC process, council voting, audit trails), 680+ tests.
   One operator managing an entire AI-assisted development pipeline.
 - **Instructor endorsement is available.** TechJoy instructor quote ("You're always

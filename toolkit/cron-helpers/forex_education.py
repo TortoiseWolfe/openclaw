@@ -12,12 +12,11 @@ import os
 import re
 import sys
 from datetime import date
-from html.parser import HTMLParser
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content_security import detect_suspicious, wrap_external
+from education_common import fetch_page, slugify, ContentExtractor
 
 # ── Paths (inside Docker container) ──────────────────────────────────
 
@@ -51,62 +50,7 @@ def release_lock():
         pass
 
 
-# ── HTML content extractor ───────────────────────────────────────────
-
-class ContentExtractor(HTMLParser):
-    """Extract text content from HTML, targeting article/main content."""
-
-    SKIP_TAGS = {"script", "style", "nav", "footer", "header", "aside", "select"}
-    SKIP_CLASSES = {"dropdown", "translate", "lang", "sidebar", "menu"}
-
-    def __init__(self):
-        super().__init__()
-        self._text = []
-        self._skip_stack = []  # tags that entered skip mode
-        self._article_tag = None  # tag that opened article mode
-        self._article_depth = 0   # nesting depth for same-tag children
-        self._in_article = False
-        self._article_text = []
-
-    def handle_starttag(self, tag, attrs):
-        attr_dict = dict(attrs)
-        classes = attr_dict.get("class", "")
-        if tag in self.SKIP_TAGS or any(k in classes for k in self.SKIP_CLASSES):
-            self._skip_stack.append(tag)
-        if not self._in_article:
-            if tag == "article" or (tag == "div" and "article" in classes):
-                self._in_article = True
-                self._article_tag = tag
-                self._article_depth = 1
-        elif tag == self._article_tag:
-            self._article_depth += 1
-
-    def handle_endtag(self, tag):
-        if self._skip_stack and self._skip_stack[-1] == tag:
-            self._skip_stack.pop()
-        if self._in_article and tag == self._article_tag:
-            self._article_depth -= 1
-            if self._article_depth <= 0:
-                self._in_article = False
-                self._article_tag = None
-
-    def handle_data(self, data):
-        if self._skip_stack:
-            return
-        text = data.strip()
-        if not text:
-            return
-        if self._in_article:
-            self._article_text.append(text)
-        self._text.append(text)
-
-    def get_content(self, max_words=2000):
-        """Return extracted text, preferring article content."""
-        source = self._article_text if self._article_text else self._text
-        raw = " ".join(source)
-        raw = _clean_babypips(raw)
-        words = raw.split()
-        return " ".join(words[:max_words])
+# ── BabyPips content extractor (uses shared ContentExtractor base) ───
 
 
 def _clean_babypips(text):
@@ -182,39 +126,16 @@ def find_next_pending(lessons):
     return None
 
 
-# ── Page fetcher ─────────────────────────────────────────────────────
-
-def fetch_page(url):
-    """Fetch a web page and return its HTML content."""
-    req = Request(url, headers={
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/131.0.0.0 Safari/537.36"
-        ),
-        "Accept": "text/html,application/xhtml+xml",
-        "Accept-Language": "en-US,en;q=0.9",
-    })
-    with urlopen(req, timeout=30) as resp:
-        charset = resp.headers.get_content_charset() or "utf-8"
-        return resp.read().decode(charset)
-
-
 def extract_content(html):
-    """Extract text content from HTML."""
-    parser = ContentExtractor()
+    """Extract text content from HTML using BabyPips-specific config."""
+    parser = ContentExtractor(
+        skip_classes={"dropdown", "translate", "lang", "sidebar", "menu"},
+    )
     parser.feed(html)
-    return parser.get_content(max_words=2000)
+    return parser.get_content(max_words=2000, post_process=_clean_babypips)
 
 
 # ── Summary writer ───────────────────────────────────────────────────
-
-def slugify(text):
-    """Convert text to URL-safe slug."""
-    text = text.lower().strip()
-    text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"[\s_]+", "-", text)
-    return text.strip("-")
 
 
 def write_summary(lesson, content, today):

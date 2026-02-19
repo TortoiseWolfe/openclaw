@@ -16,12 +16,11 @@ import re
 import sys
 import time
 from datetime import date
-from html.parser import HTMLParser
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content_security import detect_suspicious, wrap_external
+from education_common import fetch_page, slugify, ContentExtractor
 
 # ── Paths ────────────────────────────────────────────────────────────
 
@@ -102,91 +101,15 @@ ARTICLES = [
 ]
 
 
-# ── HTML content extractor ───────────────────────────────────────────
-
-class ContentExtractor(HTMLParser):
-    """Extract text from TradingView support articles."""
-
-    SKIP_TAGS = {"script", "style", "nav", "footer", "header", "aside",
-                 "select", "form", "button", "svg"}
-
-    def __init__(self):
-        super().__init__()
-        self._text = []
-        self._skip_stack = []
-        self._article_tag = None
-        self._article_depth = 0
-        self._in_article = False
-        self._article_text = []
-
-    def handle_starttag(self, tag, attrs):
-        attr_dict = dict(attrs)
-        classes = attr_dict.get("class", "")
-        article_id = attr_dict.get("id", "")
-        if tag in self.SKIP_TAGS:
-            self._skip_stack.append(tag)
-        if not self._in_article:
-            # TradingView support uses article tag or div with content classes
-            if (tag == "article" or
-                (tag == "div" and ("article" in classes
-                                   or "content" in classes
-                                   or "solution-article" in classes
-                                   or article_id == "article-body"))):
-                self._in_article = True
-                self._article_tag = tag
-                self._article_depth = 1
-        elif tag == self._article_tag:
-            self._article_depth += 1
-
-    def handle_endtag(self, tag):
-        if self._skip_stack and self._skip_stack[-1] == tag:
-            self._skip_stack.pop()
-        if self._in_article and tag == self._article_tag:
-            self._article_depth -= 1
-            if self._article_depth <= 0:
-                self._in_article = False
-                self._article_tag = None
-
-    def handle_data(self, data):
-        if self._skip_stack:
-            return
-        text = data.strip()
-        if not text:
-            return
-        if self._in_article:
-            self._article_text.append(text)
-        self._text.append(text)
-
-    def get_content(self, max_words=2000):
-        source = self._article_text if self._article_text else self._text
-        raw = " ".join(source)
-        raw = re.sub(r"\s{2,}", " ", raw).strip()
-        words = raw.split()
-        return " ".join(words[:max_words])
+# fetch_page, slugify, ContentExtractor imported from education_common
 
 
-# ── Helpers ──────────────────────────────────────────────────────────
-
-def slugify(text):
-    text = text.lower().strip()
-    text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"[\s_]+", "-", text)
-    return text.strip("-")
-
-
-def fetch_page(url):
-    req = Request(url, headers={
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/131.0.0.0 Safari/537.36"
-        ),
-        "Accept": "text/html,application/xhtml+xml",
-        "Accept-Language": "en-US,en;q=0.9",
-    })
-    with urlopen(req, timeout=30) as resp:
-        charset = resp.headers.get_content_charset() or "utf-8"
-        return resp.read().decode(charset)
+def _make_tv_extractor():
+    """Create a ContentExtractor configured for TradingView support articles."""
+    return ContentExtractor(
+        article_classes={"article", "content", "solution-article"},
+        article_ids={"article-body"},
+    )
 
 
 def summary_exists(title, today):
@@ -257,7 +180,7 @@ def main():
 
         try:
             html = fetch_page(article["url"])
-            parser = ContentExtractor()
+            parser = _make_tv_extractor()
             parser.feed(html)
             content = parser.get_content(max_words=2000)
 

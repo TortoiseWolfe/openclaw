@@ -17,10 +17,10 @@ import sys
 import time
 from datetime import date
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content_security import detect_suspicious, wrap_external
+from education_common import fetch_page, slugify
 
 # ── Paths ────────────────────────────────────────────────────────────
 
@@ -208,26 +208,8 @@ def extract_investopedia(html, max_words=2000):
 
 # ── Helpers ──────────────────────────────────────────────────────────
 
-def slugify(text):
-    text = text.lower().strip()
-    text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"[\s_]+", "-", text)
-    return text.strip("-")
 
-
-def fetch_page(url):
-    req = Request(url, headers={
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/131.0.0.0 Safari/537.36"
-        ),
-        "Accept": "text/html,application/xhtml+xml",
-        "Accept-Language": "en-US,en;q=0.9",
-    })
-    with urlopen(req, timeout=30) as resp:
-        charset = resp.headers.get_content_charset() or "utf-8"
-        return resp.read().decode(charset)
+# fetch_page and slugify imported from education_common
 
 
 def summary_exists(title, today):

@@ -167,10 +167,13 @@ def classify_signal(reason):
 
 # ── Alpha Vantage API ───────────────────────────────────────────────
 
+RETRYABLE_HTTP_CODES = {429, 500, 502, 503, 504}
+
+
 def retry_fetch(url, max_retries=3, backoff=2, timeout=30, headers=None):
     """Fetch URL with exponential backoff on transient errors.
 
-    Retries on URLError, TimeoutError, and ConnectionError.
+    Retries on URLError, TimeoutError, ConnectionError, and HTTP 429/5xx.
     Returns the raw response bytes.
     """
     req = urllib.request.Request(url)
@@ -182,6 +185,15 @@ def retry_fetch(url, max_retries=3, backoff=2, timeout=30, headers=None):
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return resp.read()
+        except urllib.error.HTTPError as e:
+            if e.code in RETRYABLE_HTTP_CODES and attempt < max_retries - 1:
+                delay = backoff * (2 ** attempt)
+                print(f"  Retry {attempt + 1}/{max_retries} in {delay}s: HTTP {e.code}",
+                      file=sys.stderr)
+                time.sleep(delay)
+                last_err = e
+            else:
+                raise
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last_err = e
             if attempt < max_retries - 1:

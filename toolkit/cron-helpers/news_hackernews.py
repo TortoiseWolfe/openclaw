@@ -28,14 +28,20 @@ HN_TECH_KEYWORDS = [
 ]
 
 
+MAX_RESPONSE_BYTES = 5 * 1024 * 1024  # 5 MB cap
+
+
 def _fetch_json(url, timeout=15):
-    """Fetch JSON from a URL."""
+    """Fetch JSON from a URL with response size cap."""
     req = urllib.request.Request(url, headers={
         "User-Agent": "OpenClaw/1.0",
         "Accept": "application/json",
     })
     with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read())
+        data = resp.read(MAX_RESPONSE_BYTES + 1)
+        if len(data) > MAX_RESPONSE_BYTES:
+            raise RuntimeError(f"Response exceeds {MAX_RESPONSE_BYTES} bytes")
+        return json.loads(data)
 
 
 def fetch_hackernews(watchlist_symbols):

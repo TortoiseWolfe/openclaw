@@ -196,6 +196,8 @@ def fetch_crypto_yahoo(asset, compact=False):
     return candles
 
 
+# AV fetchers retained for --full historical mode fallback only.
+# Daily pulls use Yahoo Finance (uses_yahoo=True always).
 FETCHERS = {
     "forex": fetch_forex,
     "stocks": fetch_stock,

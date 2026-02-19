@@ -85,36 +85,9 @@ def get_completed_indices(report_path):
     return completed
 
 
-# ── Location gate (from job_search.py) ───────────────────────────────
+# ── Location gate (shared) ───────────────────────────────────────────
 
-PASS_LOCATIONS = {
-    "remote", "united states (remote)", "united states",
-    "cleveland", "chattanooga", "ooltewah", "hixson",
-    "east ridge", "signal mountain", "soddy-daisy",
-}
-
-CHECK_LOCATIONS = {
-    "knoxville", "nashville", "atlanta", "murfreesboro",
-    "franklin", "cookeville", "dalton", "rome",
-    "alpharetta", "athens", "maryville", "oak ridge",
-}
-
-
-def location_gate(location):
-    if not location:
-        return "check", 15
-    loc = location.lower().strip()
-    if "remote" in loc:
-        return "pass", 30
-    for city in PASS_LOCATIONS:
-        if city in loc:
-            return "pass", 25
-    for city in CHECK_LOCATIONS:
-        if city in loc:
-            return "check", 15
-    if ", tn" in loc or "tennessee" in loc:
-        return "check", 15
-    return "reject", 0
+from job_common import location_gate  # noqa: E402
 
 
 # ── Title-based scoring (no description available without login) ─────

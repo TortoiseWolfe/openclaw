@@ -81,9 +81,14 @@ def fetch_news_batch(tickers):
     tickers: list of strings like ["AAPL", "CRYPTO:BTC", "FOREX:EUR"]
     Returns raw AV response dict.
     """
+    # time_from filters to recent articles (AV returns 2022-2023 articles
+    # by relevance without it). Use 7 days ago as cutoff.
+    from datetime import datetime, timedelta, timezone
+    week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y%m%dT0000")
     return fetch_url({
         "function": "NEWS_SENTIMENT",
         "tickers": ",".join(tickers),
+        "time_from": week_ago,
         "sort": "RELEVANCE",
         "limit": "50",
     })

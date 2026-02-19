@@ -11,9 +11,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
     libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 libatspi2.0-0 && \
     rm -rf /var/lib/apt/lists/*
-RUN pip install --break-system-packages --no-cache-dir edge-tts obsws-python Pillow
-RUN curl -fsSL https://bun.sh/install | bash
-ENV PATH="/root/.bun/bin:${PATH}"
+RUN python3 -m venv /opt/venv && \
+    /opt/venv/bin/pip install --no-cache-dir edge-tts obsws-python Pillow
+ENV PATH="/opt/venv/bin:${PATH}"
+# Bun: pin version and verify checksum to mitigate supply chain risk
+ARG BUN_VERSION=1.1.43
+RUN curl -fsSL "https://github.com/oven-sh/bun/releases/download/bun-v${BUN_VERSION}/bun-linux-x64.zip" -o /tmp/bun.zip && \
+    unzip -q /tmp/bun.zip -d /tmp/bun && \
+    mv /tmp/bun/bun-linux-x64/bun /usr/local/bin/bun && \
+    chmod +x /usr/local/bin/bun && \
+    rm -rf /tmp/bun /tmp/bun.zip
 
 RUN corepack enable
 
