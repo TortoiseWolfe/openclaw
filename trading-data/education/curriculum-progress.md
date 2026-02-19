@@ -159,12 +159,12 @@ Source: https://www.babypips.com/learn/forex
 | # | Section | Lesson | URL | Status | Date |
 |---|---------|--------|-----|--------|------|
 | 122 | Oscillators and Momentum Indicators | Leading vs. Lagging Indicators | https://www.babypips.com/learn/forex/leading-vs-lagging-indicators | done | 2026-02-18 |
-| 123 | Oscillators and Momentum Indicators | How to Use Oscillators to Warn You of the End of a Trend | https://www.babypips.com/learn/forex/leading-indicators-oscillators | pending | |
-| 124 | Oscillators and Momentum Indicators | How to Use MACD to Confirm a Trend | https://www.babypips.com/learn/forex/lagging-indicators-momentum-indicators | pending | |
-| 125 | Oscillators and Momentum Indicators | Summary: Leading and Lagging Indicators | https://www.babypips.com/learn/forex/summary-leading-and-lagging-indicators | pending | |
-| 126 | Important Chart Patterns | How to Trade Chart Patterns | https://www.babypips.com/learn/forex/chart-patterns-schmatterns | pending | |
-| 127 | Important Chart Patterns | How to Trade Double Tops and Double Bottoms | https://www.babypips.com/learn/forex/double-top-and-double-bottom | pending | |
-| 128 | Important Chart Patterns | How to Trade the Head and Shoulders Pattern | https://www.babypips.com/learn/forex/head-and-shoulders | pending | |
+| 123 | Oscillators and Momentum Indicators | How to Use Oscillators to Warn You of the End of a Trend | https://www.babypips.com/learn/forex/leading-indicators-oscillators | done | 2026-02-19 |
+| 124 | Oscillators and Momentum Indicators | How to Use MACD to Confirm a Trend | https://www.babypips.com/learn/forex/lagging-indicators-momentum-indicators | done | 2026-02-19 |
+| 125 | Oscillators and Momentum Indicators | Summary: Leading and Lagging Indicators | https://www.babypips.com/learn/forex/summary-leading-and-lagging-indicators | done | 2026-02-19 |
+| 126 | Important Chart Patterns | How to Trade Chart Patterns | https://www.babypips.com/learn/forex/chart-patterns-schmatterns | done | 2026-02-19 |
+| 127 | Important Chart Patterns | How to Trade Double Tops and Double Bottoms | https://www.babypips.com/learn/forex/double-top-and-double-bottom | done | 2026-02-19 |
+| 128 | Important Chart Patterns | How to Trade the Head and Shoulders Pattern | https://www.babypips.com/learn/forex/head-and-shoulders | done | 2026-02-19 |
 | 129 | Important Chart Patterns | How to Trade Wedge Chart Patterns | https://www.babypips.com/learn/forex/wedges | pending | |
 | 130 | Important Chart Patterns | How to Use Rectangle Chart Patterns to Trade Breakouts | https://www.babypips.com/learn/forex/rectangles | pending | |
 | 131 | Important Chart Patterns | How to Trade Bearish and Bullish Pennants | https://www.babypips.com/learn/forex/pennants | pending | |
