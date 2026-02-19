@@ -106,9 +106,10 @@ Auth: `MCP_GATEWAY_AUTH_TOKEN` in `.env`
 
 ## Local Models (Ollama)
 
-- **Primary**: `ollama/qwen3:14b` — best tool-calling F1 (0.971), fits in 12GB GPU (RTX 3060)
-- **Fallback 1**: `ollama/llama3-groq-tool-use:8b` — tool-calling specialist (89% BFCL), fits 8GB GPU
-- **Fallback 2**: `ollama/qwen2.5:14b` — general reasoning fallback
+- **Primary**: `ollama/qwen3:8b-ctx16k` — Qwen3 8B with 16K context, fits in 8GB GPU (RTX 3060 Ti)
+- **Fallback 1**: `ollama/llama3-groq-tool-use:8b-ctx16k` — tool-calling specialist (89% BFCL), 16K context
+- **Fallback 2**: `ollama/llama3.1:8b-ctx16k` — general reasoning fallback, 16K context
+- **Note**: RTX 3060 Ti has 8GB VRAM (not 12GB). 14B models don't fit — they spill to CPU RAM and timeout. All production models are 8B with 16K context (~7GB VRAM).
 - Model scout cron job runs monthly (1st Saturday) to research upgrades
 - Cognitive load split: local model handles mechanical tool work (file reads, API calls,
   data writes); judgment/analysis gets queued for user + Claude Code sessions
@@ -131,9 +132,10 @@ browser_fill_form), YouTube (get_transcript, get_video_info).
 Denied for Ollama: GitHub (40 tools), Postman (39 tools), Git (12 tools), Cloudflare (2),
 automation (cron/gateway), session management, all administrative tools.
 
-Known issues: qwen3:14b times out at 60s with 22K context on RTX 3060 12GB (slow first
-inference). Fallback llama3-groq-tool-use:8b is fast but doesn't reliably call tools yet.
-May need increased timeout or workspace file trimming.
+Known issues: Previous qwen3:14b (9.3GB) exceeded RTX 3060 Ti 8GB VRAM — spilled to CPU
+and timed out. Switched to qwen3:8b-ctx16k (~7.2GB VRAM) which fits with headroom.
+OpenClaw requires minimum 16K context window (CONTEXT_WINDOW_HARD_MIN_TOKENS in
+src/agents/context-window-guard.ts).
 
 ## Build and Test Commands
 
