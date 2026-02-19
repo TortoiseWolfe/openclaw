@@ -165,12 +165,12 @@ Source: https://www.babypips.com/learn/forex
 | 126 | Important Chart Patterns | How to Trade Chart Patterns | https://www.babypips.com/learn/forex/chart-patterns-schmatterns | done | 2026-02-19 |
 | 127 | Important Chart Patterns | How to Trade Double Tops and Double Bottoms | https://www.babypips.com/learn/forex/double-top-and-double-bottom | done | 2026-02-19 |
 | 128 | Important Chart Patterns | How to Trade the Head and Shoulders Pattern | https://www.babypips.com/learn/forex/head-and-shoulders | done | 2026-02-19 |
-| 129 | Important Chart Patterns | How to Trade Wedge Chart Patterns | https://www.babypips.com/learn/forex/wedges | pending | |
-| 130 | Important Chart Patterns | How to Use Rectangle Chart Patterns to Trade Breakouts | https://www.babypips.com/learn/forex/rectangles | pending | |
-| 131 | Important Chart Patterns | How to Trade Bearish and Bullish Pennants | https://www.babypips.com/learn/forex/pennants | pending | |
-| 132 | Important Chart Patterns | How to Trade Triangle Chart Patterns | https://www.babypips.com/learn/forex/triangles | pending | |
-| 133 | Important Chart Patterns | Know the 3 Main Groups of Chart Patterns | https://www.babypips.com/learn/forex/how-to-trade-chart-patterns | pending | |
-| 134 | Important Chart Patterns | Chart Patterns Cheat Sheet | https://www.babypips.com/learn/forex/chart-patterns-cheat-sheet | pending | |
+| 129 | Important Chart Patterns | How to Trade Wedge Chart Patterns | https://www.babypips.com/learn/forex/wedges | done | 2026-02-19 |
+| 130 | Important Chart Patterns | How to Use Rectangle Chart Patterns to Trade Breakouts | https://www.babypips.com/learn/forex/rectangles | done | 2026-02-19 |
+| 131 | Important Chart Patterns | How to Trade Bearish and Bullish Pennants | https://www.babypips.com/learn/forex/pennants | done | 2026-02-19 |
+| 132 | Important Chart Patterns | How to Trade Triangle Chart Patterns | https://www.babypips.com/learn/forex/triangles | done | 2026-02-19 |
+| 133 | Important Chart Patterns | Know the 3 Main Groups of Chart Patterns | https://www.babypips.com/learn/forex/how-to-trade-chart-patterns | done | 2026-02-19 |
+| 134 | Important Chart Patterns | Chart Patterns Cheat Sheet | https://www.babypips.com/learn/forex/chart-patterns-cheat-sheet | done | 2026-02-19 |
 | 135 | Pivot Points | What Are Pivot Points? | https://www.babypips.com/learn/forex/forex-pivot-points | pending | |
 | 136 | Pivot Points | How to Calculate Pivot Points | https://www.babypips.com/learn/forex/how-to-calculate-pivot-points | pending | |
 | 137 | Pivot Points | How to Use Pivot Points for Range Trading | https://www.babypips.com/learn/forex/range-trading-with-pivot-points | pending | |
