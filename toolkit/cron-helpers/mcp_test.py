@@ -12,7 +12,7 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 # Config path inside Docker container
-CONFIG_PATH = "/home/node/.clawdbot/config/mcporter.json"
+CONFIG_PATH = "/home/node/.openclaw/config/mcporter.json"
 
 
 def load_config():

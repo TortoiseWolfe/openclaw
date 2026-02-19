@@ -194,7 +194,7 @@ async function handleRequest(req, res) {
 
   // Game state endpoint (reads from mounted clawd-twitch workspace)
   if (req.method === "GET" && url.pathname === "/game/state") {
-    const statePath = process.env.RPG_STATE_FILE || "/home/node/.clawdbot/rpg/state/game-state.json";
+    const statePath = process.env.RPG_STATE_FILE || "/home/node/.openclaw/rpg/state/game-state.json";
     try {
       const data = readFileSync(statePath, "utf-8");
       res.writeHead(200, { "Content-Type": "application/json" });

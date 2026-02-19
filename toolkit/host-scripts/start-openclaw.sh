@@ -5,12 +5,12 @@
 # Triggered by:
 #   1. @reboot cron entry (primary — no terminal needed)
 #   2. .bashrc hook (fallback — if cron misses)
-# Logs to ~/.moltbot/startup.log
+# Logs to ~/.openclaw/startup.log
 
 set -euo pipefail
 
 REPO_DIR="$HOME/repos/openclaw"
-LOG_DIR="$HOME/.moltbot"
+LOG_DIR="$HOME/.openclaw"
 LOG_FILE="$LOG_DIR/startup.log"
 LOCK_FILE="/tmp/openclaw-starting.lock"
 REQUIRED_MODELS=("qwen3:14b")

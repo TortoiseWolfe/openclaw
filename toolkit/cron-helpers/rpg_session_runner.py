@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 from module_loader import ModuleData, find_module
 # ── In-memory cache for game-state.json (invalidated after run_rpg_cmd) ──
 _state_cache: dict | None = None
-_STATE_PATH = "/home/node/.clawdbot/rpg/state/game-state.json"
+_STATE_PATH = "/home/node/.openclaw/rpg/state/game-state.json"
 
 
 def _read_game_state() -> dict:
@@ -156,7 +156,7 @@ def _check_heal_priority(char: str) -> tuple | None:
 
 def _get_token_xy(char: str) -> tuple[int, int] | None:
     """Look up a character's current (x,y) from game-state.json tokens."""
-    state_path = "/home/node/.clawdbot/rpg/state/game-state.json"
+    state_path = "/home/node/.openclaw/rpg/state/game-state.json"
     try:
         with open(state_path) as f:
             state = json.load(f)
@@ -172,7 +172,7 @@ def _get_token_xy(char: str) -> tuple[int, int] | None:
 def _resolve_position_xy(position_name: str) -> tuple[int, int] | None:
     """Resolve a named position to (x,y) from the current map's terrain."""
     import os
-    state_path = "/home/node/.clawdbot/rpg/state/game-state.json"
+    state_path = "/home/node/.openclaw/rpg/state/game-state.json"
     try:
         with open(state_path) as f:
             state = json.load(f)
@@ -586,7 +586,7 @@ class ActPacer:
         """
         if not self.pc_positions:
             return False
-        state_path = "/home/node/.clawdbot/rpg/state/game-state.json"
+        state_path = "/home/node/.openclaw/rpg/state/game-state.json"
         try:
             with open(state_path) as f:
                 state = json.load(f)
@@ -1271,7 +1271,7 @@ def _write_closing_crawl(transcript: TranscriptLogger):
     import os
     state_path = os.environ.get(
         "RPG_STATE_FILE",
-        "/home/node/.clawdbot/rpg/state/game-state.json",
+        "/home/node/.openclaw/rpg/state/game-state.json",
     )
     try:
         with open(state_path) as f:

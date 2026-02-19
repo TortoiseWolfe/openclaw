@@ -588,7 +588,7 @@ def build_context(adventure=None, since_action=0, act_times=None):
             model from repeating earlier turns.
         act_times: Override time-of-day dict (from module data).
     """
-    state_json_path = "/home/node/.clawdbot/rpg/state/game-state.json"
+    state_json_path = "/home/node/.openclaw/rpg/state/game-state.json"
     try:
         with open(state_json_path) as f:
             state = json.load(f)

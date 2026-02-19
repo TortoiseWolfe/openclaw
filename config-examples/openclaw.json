@@ -115,6 +115,11 @@
     { "agentId": "twitch-cohost", "match": { "channel": "twitch" } }
   ],
   "tools": {
+    "exec": {
+      "host": "gateway",
+      "security": "allowlist",
+      "ask": "off"
+    },
     "mcp": {
       "servers": {
         "docker-mcp": {

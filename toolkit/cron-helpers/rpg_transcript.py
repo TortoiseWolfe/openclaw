@@ -4,7 +4,7 @@
 Each event is one JSON line, flushed immediately (crash-safe).
 At session end, generates a human-readable Markdown transcript.
 
-Output files (in /home/node/.clawdbot/rpg/sessions/):
+Output files (in /home/node/.openclaw/rpg/sessions/):
   {session-id}.jsonl          — raw event log (streaming)
   {session-id}-transcript.md  — human-readable (generated at end)
 """
@@ -13,7 +13,7 @@ import json
 import os
 from datetime import datetime, timezone
 
-_DATA_DIR = os.environ.get("RPG_DATA_DIR", "/home/node/.clawdbot/rpg")
+_DATA_DIR = os.environ.get("RPG_DATA_DIR", "/home/node/.openclaw/rpg")
 SESSIONS_DIR = os.path.join(_DATA_DIR, "sessions")
 
 

@@ -26,8 +26,8 @@ from pathlib import Path
 
 REPO_DIR = Path(__file__).resolve().parent.parent.parent  # openclaw repo root
 PACKAGE_JSON = REPO_DIR / "package.json"
-STATUS_FILE = Path.home() / ".moltbot" / "upstream-status.json"
-LOG_FILE = Path.home() / ".moltbot" / "upstream-sync.log"
+STATUS_FILE = Path.home() / ".openclaw" / "upstream-status.json"
+LOG_FILE = Path.home() / ".openclaw" / "upstream-sync.log"
 
 UPSTREAM_REMOTE = "upstream"
 UPSTREAM_URL = "https://github.com/openclaw/openclaw.git"

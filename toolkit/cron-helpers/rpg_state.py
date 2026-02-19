@@ -45,7 +45,7 @@ _CONTENT_DIR = os.environ.get("RPG_CONTENT_DIR", "/app/rpg")
 ADVENTURES_DIR = os.path.join(_CONTENT_DIR, "adventures")
 
 # Runtime data — writable location for game state, player saves, session logs
-_DATA_DIR = os.environ.get("RPG_DATA_DIR", "/home/node/.clawdbot/rpg")
+_DATA_DIR = os.environ.get("RPG_DATA_DIR", "/home/node/.openclaw/rpg")
 STATE_DIR = os.path.join(_DATA_DIR, "state")
 STATE_FILE = os.path.join(STATE_DIR, "game-state.json")
 PLAYERS_DIR = os.path.join(_DATA_DIR, "players")

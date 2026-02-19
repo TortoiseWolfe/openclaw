@@ -43,7 +43,7 @@ CRAWL_DURATION = int(os.environ.get("RPG_CRAWL_DURATION", "90"))
 SESSION_TIMEOUT = int(os.environ.get("RPG_SESSION_TIMEOUT", "7200"))
 
 # State file path (same as rpg_state.py — runtime data in config dir)
-_DATA_DIR = os.environ.get("RPG_DATA_DIR", "/home/node/.clawdbot/rpg")
+_DATA_DIR = os.environ.get("RPG_DATA_DIR", "/home/node/.openclaw/rpg")
 STATE_FILE = os.path.join(_DATA_DIR, "state", "game-state.json")
 
 SCENE_CRAWL = "RPG - Crawl"

@@ -9,7 +9,7 @@ Upstream: [openclaw/openclaw](https://github.com/openclaw/openclaw)
 - Extensions: `extensions/*` (channel plugins like `extensions/twitch`)
 - Tests: colocated `*.test.ts`
 - Built output: `dist/` (compiled JS, runs inside Docker)
-- Config templates: `config-examples/` (moltbot.json, mcporter.json, cron-jobs.json)
+- Config templates: `config-examples/` (openclaw.json, mcporter.json, cron-jobs.json)
 - Agent tooling: `toolkit/` (mounted read-only into Docker at `/app/toolkit`)
 - Trading data: `trading-data/` (watchlist, candles, education)
 - Video pipeline: `remotion/` (episode rendering with Steampunk design system)
@@ -55,10 +55,10 @@ docker compose logs openclaw-gateway --tail 50
   AGENTS.md                       # Operating instructions
   highlights/                     # Stream highlight logs
 
-~/.moltbot/                       # Config directory → /home/node/.openclaw
-  moltbot.json                    # Main config (agents, models, channels, tools)
+~/.openclaw/                      # Config directory → /home/node/.openclaw
+  openclaw.json                   # Main config (agents, models, channels, tools)
   config/mcporter.json            # MCP gateway connection
-  cron/jobs.json                  # 16 scheduled cron jobs
+  cron/jobs.json                  # 38 scheduled cron jobs
   agents/                         # Agent session data
 ```
 
@@ -116,7 +116,7 @@ Auth: `MCP_GATEWAY_AUTH_TOKEN` in `.env`
 ## Tool Scoping
 
 Ollama models get a restricted tool set via `tools.byProvider` on each agent
-in moltbot.json (NOT on `agents.defaults` — the defaults type doesn't support `tools`).
+in openclaw.json (NOT on `agents.defaults` — the defaults type doesn't support `tools`).
 This cuts tools from 139+ MCP to 22 total, reducing system prompt from ~48K to ~22K chars.
 Interactive Claude Code sessions are unaffected (byProvider only applies to ollama).
 
@@ -183,7 +183,7 @@ May need increased timeout or workspace file trimming.
   infrastructure (`src/agents/model-fallback.ts:226-282`) supports mixed providers.
   To enable Anthropic as final fallback: set `ANTHROPIC_API_KEY` in `.env`, then add
   `"anthropic/claude-sonnet-4-20250514"` to the `model.fallbacks` array in
-  `~/.moltbot/moltbot.json`. No code changes needed — just config + env var.
+  `~/.openclaw/openclaw.json`. No code changes needed — just config + env var.
 - **Env var exposure (S3)**: Tokens are visible via `docker inspect` and
   `/proc/<pid>/environ`. Inherent to Docker Compose; fix requires Swarm secrets or
   external vault. Acceptable for single-user local setup.

@@ -18,7 +18,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 # Default config path inside Docker container
-DEFAULT_CONFIG = "/home/node/.clawdbot/config/mcporter.json"
+DEFAULT_CONFIG = "/home/node/.openclaw/config/mcporter.json"
 
 
 class MCPError(Exception):
