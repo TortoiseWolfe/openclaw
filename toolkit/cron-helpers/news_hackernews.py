@@ -31,7 +31,7 @@ HN_TECH_KEYWORDS = [
 def _fetch_json(url, timeout=15):
     """Fetch JSON from a URL."""
     req = urllib.request.Request(url, headers={
-        "User-Agent": "MoltBot/1.0",
+        "User-Agent": "OpenClaw/1.0",
         "Accept": "application/json",
     })
     with urllib.request.urlopen(req, timeout=timeout) as resp:

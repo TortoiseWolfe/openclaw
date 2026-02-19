@@ -47,7 +47,7 @@ BREAKING_KEYWORDS = [
     "deprecated", "removed",
 ]
 
-USER_AGENT = "MoltBot-UpstreamSync/1.0"
+USER_AGENT = "OpenClaw-UpstreamSync/1.0"
 
 
 # ── Logging ──────────────────────────────────────────────────────────
@@ -232,7 +232,7 @@ def attempt_merge(today_str):
     git("checkout", "-b", branch_name, "main")
 
     try:
-        # --allow-unrelated-histories needed because moltbot is a squashed fork
+        # --allow-unrelated-histories needed because openclaw is a squashed fork
         log(f"Merging upstream/{UPSTREAM_BRANCH}...")
         rc, stdout, stderr = git_rc("merge", f"{UPSTREAM_REMOTE}/{UPSTREAM_BRANCH}",
                                      "--no-edit", "--allow-unrelated-histories")

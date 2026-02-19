@@ -3,7 +3,7 @@
 Star Wars D6 (West End Games) RPG game state manager.
 
 Manages game sessions, player characters, initiative, and wound tracking
-as JSON files in the clawd-twitch workspace. Called by the MoltBot agent
+as JSON files in the clawd-twitch workspace. Called by the OpenClaw agent
 via the exec tool during Twitch chat game sessions.
 
 Usage:

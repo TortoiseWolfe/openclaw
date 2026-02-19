@@ -6,7 +6,7 @@ Run this on the WSL2 host (outside Docker):
   python3 obs_launcher.py --port 8100
   python3 obs_launcher.py --obs-path 'C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe'
 
-MoltBot inside Docker calls this to start/stop OBS on the Windows host.
+OpenClaw inside Docker calls this to start/stop OBS on the Windows host.
 """
 
 import argparse

@@ -1,40 +1,42 @@
 #!/usr/bin/env python3
-"""Render a Remotion composition to video or still image.
+"""Render a Remotion composition to video via the remotion-renderer HTTP API.
 
 Usage:
   python3 render_video.py --composition EpisodeCard \\
     --props '{"title":"Docker Basics","date":"2026-02-10","time":"8 PM ET","topic":"Containers"}'
 
-  python3 render_video.py --composition EpisodeCard --format png --frame 90
-
   python3 render_video.py --composition StreamIntro --format mp4
 
 Outputs to /home/node/clawd-twitch/renders/<composition>-<timestamp>.<ext>
+
+Note: Still image rendering (--frame) is not supported via the HTTP API.
+Use the remotion-renderer container directly for stills.
 """
 
 import argparse
 import json
 import os
-import subprocess
 import sys
 from datetime import datetime, timezone
 
-REMOTION_DIR = "/app/remotion"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import remotion_client
+
 OUTPUT_DIR = "/home/node/clawd-twitch/renders"
-ENTRY_POINT = "src/index.ts"
+# Path prefix as seen by the remotion-renderer container
+REMOTION_RENDERS_PREFIX = "/renders"
 
 
 def main():
     parser = argparse.ArgumentParser(description="Render Remotion composition")
     parser.add_argument("--composition", required=True, help="Composition ID (e.g. EpisodeCard)")
     parser.add_argument("--props", default="{}", help="JSON props string")
-    parser.add_argument("--format", default="mp4", choices=["mp4", "webm", "png", "gif"])
-    parser.add_argument("--frame", type=int, default=None, help="Render single frame (for stills)")
+    parser.add_argument("--format", default="mp4", choices=["mp4", "webm"])
     args = parser.parse_args()
 
     # Validate props JSON
     try:
-        json.loads(args.props)
+        props = json.loads(args.props)
     except json.JSONDecodeError as e:
         print(f"ERROR: Invalid JSON in --props: {e}", file=sys.stderr)
         sys.exit(1)
@@ -46,42 +48,15 @@ def main():
     filename = f"{args.composition}-{timestamp}.{ext}"
     output_path = os.path.join(OUTPUT_DIR, filename)
 
-    # Use 'still' for single-frame renders, 'render' for video
-    if args.frame is not None:
-        cmd = [
-            "npx", "remotion", "still",
-            ENTRY_POINT,
-            args.composition,
-            output_path,
-            "--props", args.props,
-            "--frame", str(args.frame),
-        ]
-    else:
-        cmd = [
-            "npx", "remotion", "render",
-            ENTRY_POINT,
-            args.composition,
-            output_path,
-            "--props", args.props,
-            "--timeout", "120000",
-        ]
+    # Convert to remotion-renderer container path
+    rel = os.path.relpath(output_path, OUTPUT_DIR)
+    api_path = f"{REMOTION_RENDERS_PREFIX}/{rel}"
 
     print(f"Rendering {args.composition} → {filename} ...")
-    result = subprocess.run(
-        cmd,
-        cwd=REMOTION_DIR,
-        capture_output=True,
-        text=True,
-        timeout=600,
-    )
+    result = remotion_client.render(args.composition, props, api_path)
 
-    if result.returncode != 0:
-        print(f"ERROR: Render failed (exit {result.returncode})", file=sys.stderr)
-        if result.stderr:
-            # Print last 20 lines of stderr for diagnostics
-            lines = result.stderr.strip().split("\n")
-            for line in lines[-20:]:
-                print(f"  {line}", file=sys.stderr)
+    if not result.get("success"):
+        print(f"ERROR: Render failed: {result.get('error')}", file=sys.stderr)
         sys.exit(1)
 
     if not os.path.exists(output_path):

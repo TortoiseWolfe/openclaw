@@ -104,6 +104,8 @@ export type CronJob = {
   description?: string;
   enabled: boolean;
   deleteAfterRun?: boolean;
+  /** Force a fresh session on every run (prevents context accumulation for frequent jobs). */
+  sessionPerRun?: boolean;
   createdAtMs: number;
   updatedAtMs: number;
   schedule: CronSchedule;

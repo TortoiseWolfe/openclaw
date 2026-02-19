@@ -34,23 +34,15 @@ export class TwitchClientManager {
         clientSecret: account.clientSecret,
       });
 
-      await authProvider
-        .addUserForToken({
-          accessToken: normalizedToken,
-          refreshToken: account.refreshToken ?? null,
-          expiresIn: account.expiresIn ?? null,
-          obtainmentTimestamp: account.obtainmentTimestamp ?? Date.now(),
-        }, ['chat'])
-        .then((userId) => {
-          this.logger.info(
-            `Added user ${userId} to RefreshingAuthProvider for ${account.username}`,
-          );
-        })
-        .catch((err) => {
-          this.logger.error(
-            `Failed to add user to RefreshingAuthProvider: ${err instanceof Error ? err.message : String(err)}`,
-          );
-        });
+      const userId = await authProvider.addUserForToken({
+        accessToken: normalizedToken,
+        refreshToken: account.refreshToken ?? null,
+        expiresIn: account.expiresIn ?? null,
+        obtainmentTimestamp: account.obtainmentTimestamp ?? Date.now(),
+      }, ['chat']);
+      this.logger.info(
+        `Added user ${userId} to RefreshingAuthProvider for ${account.username}`,
+      );
 
       authProvider.onRefresh(async (userId, token) => {
         this.logger.info(
@@ -193,7 +185,7 @@ export class TwitchClientManager {
 
     this.setupClientHandlers(client, account);
 
-    client.connect();
+    await client.connect();
 
     this.clients.set(key, client);
     this.logger.info(`Connected to Twitch as ${account.username}`);
@@ -206,6 +198,17 @@ export class TwitchClientManager {
    */
   private setupClientHandlers(client: ChatClient, account: TwitchAccountConfig): void {
     const key = this.getAccountKey(account);
+
+    // Handle disconnections
+    client.onDisconnect((manually, reason) => {
+      if (manually) {
+        this.logger.info(`Twitch client ${key} disconnected (manual)`);
+      } else {
+        this.logger.warn(
+          `Twitch client ${key} disconnected unexpectedly: ${reason ?? "unknown reason"}`,
+        );
+      }
+    });
 
     // Handle incoming messages
     client.onMessage((channelName, _user, messageText, msg) => {
@@ -275,7 +278,7 @@ export class TwitchClientManager {
     this.clients.forEach((client) => client.quit());
     this.clients.clear();
     this.messageHandlers.clear();
-    this.logger.info(" Disconnected all clients");
+    this.logger.info("Disconnected all clients");
   }
 
   /**

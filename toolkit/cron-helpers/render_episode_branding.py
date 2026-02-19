@@ -17,18 +17,20 @@ Outputs to /home/node/clawd-twitch/renders/:
   - {episode}-intro-{date}.mp4
   - {episode}-card-{date}.mp4
   - {episode}-outro-{date}.mp4
+
+Renders via HTTP API to the remotion-renderer service (not npx directly).
 """
 
 import argparse
-import json
 import os
-import subprocess
 import sys
-from datetime import datetime, timezone
 
-REMOTION_DIR = os.environ.get("REMOTION_DIR", "/app/remotion")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import remotion_client
+
 RENDERS_DIR = os.environ.get("RENDERS_DIR", "/home/node/clawd-twitch/renders")
-ENTRY_POINT = "src/index.ts"
+# Path prefix as seen by the remotion-renderer container
+REMOTION_RENDERS_PREFIX = "/renders"
 
 
 def render_composition(
@@ -37,39 +39,25 @@ def render_composition(
     output_path: str,
     dry_run: bool = False,
 ) -> str | None:
-    """Render a single composition and return the output path."""
+    """Render a single composition via the HTTP API and return the output path."""
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-    cmd = [
-        "npx", "remotion", "render",
-        ENTRY_POINT,
-        composition,
-        output_path,
-        "--props", json.dumps(props),
-        "--timeout", "120000",
-    ]
 
     if dry_run:
         print(f"[DRY RUN] Would render: {composition}")
-        print(f"  Props: {json.dumps(props, indent=2)}")
+        print(f"  Props: {props}")
         print(f"  Output: {output_path}")
         return output_path
 
-    print(f"Rendering {composition} → {os.path.basename(output_path)} ...")
-    result = subprocess.run(
-        cmd,
-        cwd=REMOTION_DIR,
-        capture_output=True,
-        text=True,
-        timeout=300,
-    )
+    # Convert local path to remotion-renderer container path
+    # /home/node/clawd-twitch/renders/... -> /renders/...
+    rel = os.path.relpath(output_path, RENDERS_DIR)
+    api_path = f"{REMOTION_RENDERS_PREFIX}/{rel}"
 
-    if result.returncode != 0:
-        print(f"ERROR: Render failed for {composition}", file=sys.stderr)
-        if result.stderr:
-            lines = result.stderr.strip().split("\n")
-            for line in lines[-10:]:
-                print(f"  {line}", file=sys.stderr)
+    print(f"Rendering {composition} → {os.path.basename(output_path)} ...")
+    result = remotion_client.render(composition, props, api_path)
+
+    if not result.get("success"):
+        print(f"ERROR: Render failed for {composition}: {result.get('error')}", file=sys.stderr)
         return None
 
     if not os.path.exists(output_path):

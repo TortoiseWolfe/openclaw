@@ -169,7 +169,7 @@ class MCPClient:
         self._post_jsonrpc("initialize", {
             "protocolVersion": "2024-11-05",
             "capabilities": {},
-            "clientInfo": {"name": "moltbot-python", "version": "0.1.0"},
+            "clientInfo": {"name": "openclaw-python", "version": "0.1.0"},
         }, "init-1")
 
         resp = self._read_response("init-1")

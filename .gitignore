@@ -7,7 +7,7 @@ pnpm-lock.yaml
 bun.lock
 bun.lockb
 coverage
-__pycache__/
+**/__pycache__/
 *.pyc
 .tsbuildinfo
 .pnpm-store
