@@ -44,9 +44,9 @@
     "max_drawdown": 0.50,
     "max_positions": {
       "forex": 2,
-      "stocks": 2,
+      "stocks": 3,
       "crypto": 1,
-      "global": 3
+      "global": 6
     },
     "spread": {
       "forex": 0.00015,

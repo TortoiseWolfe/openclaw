@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Fetch daily candles for all watchlist assets.
 
-Stocks: Yahoo Finance (free, no API key, no rate limit).
-Forex/crypto: Alpha Vantage (FX_DAILY, DIGITAL_CURRENCY_DAILY).
+All asset classes use Yahoo Finance (free, no API key, no rate limit).
+Alpha Vantage fetchers are retained for --full historical mode fallback.
 
 Reads watchlist from config, saves structured JSON per asset.
 """
@@ -119,6 +119,83 @@ def fetch_stock_yahoo(asset, compact=False):
     return candles
 
 
+def fetch_forex_yahoo(asset, compact=False):
+    """Fetch forex daily candles from Yahoo Finance (free, no API key).
+
+    Yahoo forex tickers use the format {FROM}{TO}=X (e.g. EURUSD=X).
+    """
+    yahoo_symbol = f"{asset['from']}{asset['to']}=X"
+    period2 = int(time.time())
+    period1 = period2 - (200 * 86400) if compact else 0
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{yahoo_symbol}"
+           f"?period1={period1}&period2={period2}&interval=1d")
+    raw = json.loads(retry_fetch(url, headers={"User-Agent": "Mozilla/5.0"}))
+
+    chart = raw.get("chart", {}).get("result", [{}])[0]
+    timestamps = chart.get("timestamp", [])
+    quotes = chart.get("indicators", {}).get("quote", [{}])[0]
+    opens = quotes.get("open", [])
+    highs = quotes.get("high", [])
+    lows = quotes.get("low", [])
+    closes = quotes.get("close", [])
+
+    if not timestamps:
+        raise RuntimeError(f"No forex data from Yahoo Finance for {yahoo_symbol}")
+
+    candles = []
+    for i, ts in enumerate(timestamps):
+        o = opens[i] if i < len(opens) else None
+        h = highs[i] if i < len(highs) else None
+        l = lows[i] if i < len(lows) else None
+        c = closes[i] if i < len(closes) else None
+        if any(x is None for x in (o, h, l, c)):
+            continue
+        d = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d")
+        candles.append({"date": d, "o": round(o, 4), "h": round(h, 4),
+                        "l": round(l, 4), "c": round(c, 4)})
+    return candles
+
+
+def fetch_crypto_yahoo(asset, compact=False):
+    """Fetch crypto daily candles from Yahoo Finance (free, no API key).
+
+    Yahoo crypto tickers use the format {SYMBOL}-{MARKET} (e.g. BTC-USD).
+    """
+    yahoo_symbol = f"{asset['symbol']}-{asset.get('market', 'USD')}"
+    period2 = int(time.time())
+    period1 = period2 - (200 * 86400) if compact else 0
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{yahoo_symbol}"
+           f"?period1={period1}&period2={period2}&interval=1d")
+    raw = json.loads(retry_fetch(url, headers={"User-Agent": "Mozilla/5.0"}))
+
+    chart = raw.get("chart", {}).get("result", [{}])[0]
+    timestamps = chart.get("timestamp", [])
+    quotes = chart.get("indicators", {}).get("quote", [{}])[0]
+    opens = quotes.get("open", [])
+    highs = quotes.get("high", [])
+    lows = quotes.get("low", [])
+    closes = quotes.get("close", [])
+    volumes = quotes.get("volume", [])
+
+    if not timestamps:
+        raise RuntimeError(f"No crypto data from Yahoo Finance for {yahoo_symbol}")
+
+    candles = []
+    for i, ts in enumerate(timestamps):
+        o = opens[i] if i < len(opens) else None
+        h = highs[i] if i < len(highs) else None
+        l = lows[i] if i < len(lows) else None
+        c = closes[i] if i < len(closes) else None
+        v = volumes[i] if i < len(volumes) else 0
+        if any(x is None for x in (o, h, l, c)):
+            continue
+        d = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d")
+        candles.append({"date": d, "o": round(o, 4), "h": round(h, 4),
+                        "l": round(l, 4), "c": round(c, 4),
+                        "v": int(v or 0)})
+    return candles
+
+
 FETCHERS = {
     "forex": fetch_forex,
     "stocks": fetch_stock,
@@ -199,7 +276,7 @@ def main():
 
     for idx, (asset_class, asset, fetcher) in enumerate(jobs):
         symbol = asset["symbol"]
-        uses_yahoo = (asset_class == "stocks")
+        uses_yahoo = True  # all asset classes use Yahoo Finance for daily pulls
 
         # In full mode, skip symbols we already have
         if full_mode:
@@ -234,7 +311,12 @@ def main():
 
         try:
             if uses_yahoo:
-                candles = fetch_stock_yahoo(asset, compact=(not full_mode))
+                if asset_class == "forex":
+                    candles = fetch_forex_yahoo(asset, compact=(not full_mode))
+                elif asset_class == "crypto":
+                    candles = fetch_crypto_yahoo(asset, compact=(not full_mode))
+                else:
+                    candles = fetch_stock_yahoo(asset, compact=(not full_mode))
                 source = "yahoo_finance"
             else:
                 candles = fetcher(asset, outputsize=outputsize)
