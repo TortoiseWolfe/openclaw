@@ -1,0 +1,106 @@
+{
+  "name": "Shadows of Onderon",
+  "slug": "shadows-of-onderon",
+  "acts": 3,
+  "pregens": ["Kira Voss", "Tok-3", "Renn Darkhollow", "Zeph Ando"],
+  "healers": ["Zeph Ando"],
+  "vehicle_tokens": [],
+  "ship_positions": [
+    "ship-ramp", "ship-cockpit", "ship-top-hatch", "ship-bow",
+    "ship-stern", "ship-port", "ship-starboard", "ship-turret"
+  ],
+
+  "char_stats": {
+    "Kira Voss": {
+      "Blaster": "5D", "Dodge": "4D+2", "Starship Piloting": "5D+1",
+      "Streetwise": "4D", "Con": "4D"
+    },
+    "Tok-3": {
+      "Astrogation": "5D", "Computer Prog": "5D+1", "Starship Repair": "5D",
+      "Security": "4D"
+    },
+    "Renn Darkhollow": {
+      "Blaster": "5D+1", "Brawling": "4D", "Search": "4D+1",
+      "Sneak": "4D", "Intimidation": "4D"
+    },
+    "Zeph Ando": {
+      "Lightsaber": "3D+1", "Sense": "2D", "Droid Repair": "5D",
+      "First Aid": "4D", "Bargain": "4D"
+    }
+  },
+
+  "npc_stats": {
+    "Stormtrooper": {"Blaster": "4D", "Brawling Parry": "4D"},
+    "Stormtrooper Sergeant": {"Blaster": "4D+2", "Brawling Parry": "4D+1"},
+    "Ashka Dey": {"Blaster": "4D", "Survival": "5D", "Sneak": "4D+1"},
+    "Jobal": {"Blaster": "4D+2", "Brawling": "4D", "Command": "3D+2"},
+    "Seventh Sister": {"Lightsaber": "6D", "Dodge": "5D", "Sense": "4D", "Intimidation": "5D"},
+    "Sentry Droid": {"Blaster": "3D", "Dodge": "2D"}
+  },
+
+  "char_move": {
+    "Kira Voss": 96,
+    "Tok-3": 77,
+    "Renn Darkhollow": 96,
+    "Zeph Ando": 96
+  },
+
+  "act_data": {
+    "1": {
+      "name": "Jungle Landing",
+      "map": "onderon-jungle.svg",
+      "map_name": "Onderon Jungle",
+      "terrain": "onderon-jungle.svg",
+      "time_of_day": "Early morning — mist rises from the jungle canopy, alien birdcalls echo",
+      "kick": "The Rusty Mynock drops out of hyperspace above Onderon. Imperial Star Destroyers patrol in pairs. Kira must sneak past the blockade (Piloting 20) or outrun TIE fighters. After landing in dense jungle, the Rebel contact Ashka Dey meets them at a hidden camp with intel on an Imperial weapons project in ancient Sith ruins.",
+      "starting_positions": {},
+      "npc_positions": {},
+      "exit_positions": [],
+      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_explore_threshold": 4},
+      "bot_actions": {},
+      "climax_actions": {},
+      "npc_combat_reactions": {},
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    },
+    "2": {
+      "name": "The City of Iziz",
+      "map": "iziz-city.svg",
+      "map_name": "City of Iziz",
+      "terrain": "iziz-city.svg",
+      "time_of_day": "Midday — harsh sun beats down on the ancient stone city, market crowds fill the streets",
+      "kick": "The party enters the walled city of Iziz to gather intel. The black market dealer Vek has Imperial comm frequencies for sale. Resistance leaders Jobal and Mira are divided on strategy. Imperial patrols conduct random searches. And a dark-robed Inquisitor stalks the streets, hunting Force users.",
+      "starting_positions": {},
+      "npc_positions": {},
+      "exit_positions": [],
+      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_explore_threshold": 4},
+      "bot_actions": {},
+      "climax_actions": {},
+      "npc_combat_reactions": {},
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    },
+    "3": {
+      "name": "The Sith Temple",
+      "map": "sith-temple.svg",
+      "map_name": "Sith Temple Ruins",
+      "terrain": "sith-temple.svg",
+      "time_of_day": "Deep underground — no natural light, only the eerie glow of ancient Sith crystals",
+      "kick": "The party infiltrates the Sith temple where the Empire is excavating a massive kyber crystal array. Dark tunnels are riddled with ancient traps and sentry droids. Six kyber crystals in a focusing ring could destroy a city from orbit. The Inquisitor arrives when the alarm sounds.",
+      "starting_positions": {},
+      "npc_positions": {},
+      "exit_positions": [],
+      "pacer": {"hard_cap": 20, "min_turns": 4},
+      "bot_actions": {},
+      "climax_actions": {},
+      "npc_combat_reactions": {},
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    }
+  },
+
+  "closing_crawl": {
+    "title": "STAR WARS",
+    "subtitle": "Session Complete"
+  }
+}

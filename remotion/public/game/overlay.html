@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>RPG Game Overlay</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: transparent;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: #e0e0e0;
+  }
+
+  /* -- Layout ------------------------------------------------- */
+  .overlay {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    grid-template-rows: 48px 1fr 120px;
+    width: 1920px;
+    height: 1080px;
+    gap: 0;
+  }
+
+  /* -- Top bar: scene title + combat info --------------------- */
+  .top-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 80%, transparent 100%);
+  }
+  .scene-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 0 0 12px rgba(255,215,0,0.4);
+    letter-spacing: 1px;
+  }
+  .combat-info {
+    font-size: 16px;
+    color: #ff6b6b;
+    font-weight: 600;
+  }
+  .combat-info.hidden { display: none; }
+
+  /* -- Map area ----------------------------------------------- */
+  .map-area {
+    position: relative;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+  }
+  .map-viewport {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    transition: opacity 0.8s ease;
+  }
+  .map-container {
+    position: absolute;
+    transform-origin: 0 0;
+    transition: transform 1.2s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+  .map-container img {
+    display: block;
+  }
+  .no-map {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #666;
+    font-size: 24px;
+    font-style: italic;
+  }
+
+  /* -- Tokens on map ------------------------------------------ */
+  .token {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+    transform: translate(-50%, -50%); /* overridden by JS with inverse scale */
+    transition: left 0.6s cubic-bezier(.4,0,.2,1), top 0.6s cubic-bezier(.4,0,.2,1);
+    z-index: 5;
+    border: 2px solid rgba(255,255,255,0.7);
+    box-shadow:
+      0 0 0 2px rgba(0,0,0,0.4),
+      inset 0 2px 4px rgba(255,255,255,0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.35),
+      0 2px 8px rgba(0,0,0,0.6);
+    background-image: linear-gradient(
+      160deg,
+      rgba(255,255,255,0.22) 0%,
+      transparent 45%,
+      rgba(0,0,0,0.18) 100%
+    );
+    background-blend-mode: overlay;
+  }
+
+  /* --- PC tokens: bright ring glow matching their color --- */
+  .token.pc {
+    z-index: 6;
+    border-color: rgba(255,255,255,0.85);
+    box-shadow:
+      0 0 0 2px rgba(0,0,0,0.4),
+      0 0 10px var(--tk-glow, rgba(78,154,245,0.5)),
+      inset 0 2px 4px rgba(255,255,255,0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.35),
+      0 2px 8px rgba(0,0,0,0.6);
+  }
+  /* --- Hostile NPC tokens: menacing red outer ring --- */
+  .token.hostile {
+    border-color: rgba(255,120,120,0.8);
+    box-shadow:
+      0 0 0 2px rgba(100,0,0,0.5),
+      0 0 8px rgba(255,60,60,0.35),
+      inset 0 2px 4px rgba(255,255,255,0.15),
+      inset 0 -2px 4px rgba(0,0,0,0.4),
+      0 2px 8px rgba(0,0,0,0.6);
+  }
+
+  /* --- Vehicle tokens: base style (renders UNDER characters) --- */
+  .token.vehicle {
+    z-index: 3;
+    border-radius: 18px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 2px solid rgba(200,210,220,0.5);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.5),
+      0 0 6px rgba(136,153,170,0.25),
+      inset 0 2px 4px rgba(255,255,255,0.12),
+      inset 0 -2px 4px rgba(0,0,0,0.25),
+      0 4px 12px rgba(0,0,0,0.5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    animation: vehicleIdle 1.2s ease-in-out infinite;
+  }
+  /* Large speeder — seats 4 (map coords, scaled by tokenScale) */
+  .token.vehicle.vehicle-lg {
+    width: 100px;
+    height: 50px;
+    font-size: 11px;
+    border-radius: 22px;
+    background-image: linear-gradient(
+      95deg,
+      rgba(255,255,255,0.18) 0%,
+      rgba(255,255,255,0.06) 20%,
+      transparent 50%,
+      rgba(0,0,0,0.12) 80%,
+      rgba(0,0,0,0.2) 100%
+    );
+  }
+  /* Small speeder — seats 2 (map coords, scaled by tokenScale) */
+  .token.vehicle.vehicle-sm {
+    width: 75px;
+    height: 42px;
+    font-size: 10px;
+    border-radius: 18px;
+    background-image: linear-gradient(
+      95deg,
+      rgba(255,255,255,0.15) 0%,
+      transparent 40%,
+      rgba(0,0,0,0.15) 100%
+    );
+  }
+  /* Directional chevron — large vehicle */
+  .token.vehicle.vehicle-lg::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid rgba(255,255,255,0.3);
+  }
+  /* Directional chevron — small vehicle */
+  .token.vehicle.vehicle-sm::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid rgba(255,255,255,0.3);
+  }
+  /* Thruster glow on rear — large vehicle */
+  .token.vehicle.vehicle-lg::after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 22px;
+    border-radius: 3px;
+    background: radial-gradient(ellipse, rgba(100,180,255,0.5) 0%, transparent 70%);
+  }
+  /* Thruster glow on rear — small vehicle */
+  .token.vehicle.vehicle-sm::after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 16px;
+    border-radius: 3px;
+    background: radial-gradient(ellipse, rgba(100,180,255,0.4) 0%, transparent 70%);
+  }
+
+  /* --- Active turn: dramatic gold scanner ring --- */
+  .token.active-turn {
+    border-color: #ffd700 !important;
+    z-index: 10 !important;
+    animation: activeTurnPulse 1.8s ease-in-out infinite;
+    box-shadow:
+      0 0 0 3px rgba(255,215,0,0.6),
+      0 0 18px rgba(255,215,0,0.45),
+      0 0 40px rgba(255,215,0,0.15),
+      inset 0 2px 4px rgba(255,255,255,0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.3) !important;
+  }
+  .token.active-turn::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: -6px;
+    border-radius: inherit;
+    border: 2px dashed rgba(255,215,0,0.5) !important;
+    animation: scanRing 4s linear infinite !important;
+    pointer-events: none;
+    /* Override vehicle thruster glow */
+    width: auto !important;
+    height: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    background: none !important;
+  }
+  @keyframes activeTurnPulse {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 6px rgba(255,215,0,0.4)); }
+    50%      { filter: brightness(1.15) drop-shadow(0 0 14px rgba(255,215,0,0.7)); }
+  }
+  @keyframes scanRing {
+    0%   { transform: rotate(0deg); opacity: 0.7; }
+    50%  { opacity: 1; }
+    100% { transform: rotate(360deg); opacity: 0.7; }
+  }
+  @keyframes vehicleIdle {
+    0%, 100% { filter: brightness(1); }
+    50%      { filter: brightness(1.05); }
+  }
+
+  /* --- Token name label --- */
+  .token-label {
+    position: absolute;
+    top: 100%;
+    margin-top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e8e8e8;
+    text-shadow: 0 1px 3px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.65);
+    padding: 1px 7px;
+    border-radius: 3px;
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+  }
+  .token.vehicle .token-label {
+    margin-top: 2px;
+    font-size: 10px;
+  }
+
+  /* -- Right sidebar: players + initiative -------------------- */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+    background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 90%, transparent 100%);
+    overflow-y: auto;
+  }
+
+  .sidebar-heading {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 4px 8px;
+    border-bottom: 1px solid rgba(255,215,0,0.3);
+  }
+
+  /* -- Player cards ------------------------------------------- */
+  .player-card {
+    background: rgba(30,30,50,0.8);
+    border: 1px solid rgba(78,154,245,0.3);
+    border-radius: 6px;
+    padding: 8px 10px;
+    transition: border-color 0.3s;
+  }
+  .player-card.bot-controlled {
+    border-color: rgba(150,150,150,0.3);
+    opacity: 0.75;
+  }
+  .player-card.active-turn {
+    border-color: #ffd700;
+    box-shadow: 0 0 8px rgba(255,215,0,0.3);
+  }
+  .player-card .char-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4e9af5;
+  }
+  .player-card.bot-controlled .char-name::after {
+    content: ' (BOT)';
+    color: #888;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .player-card .viewer-name {
+    font-size: 11px;
+    color: #888;
+  }
+  .player-card .health-bar {
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    margin: 6px 0 4px;
+    overflow: hidden;
+  }
+  .player-card .health-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s, background 0.5s;
+  }
+  .player-card .stats {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #aaa;
+  }
+  .player-card .stats span { white-space: nowrap; }
+  .player-card .stats .cp { color: #ffd700; }
+  .player-card .stats .fp { color: #4ebdff; }
+
+  /* Token swatch — mini token indicator in player cards */
+  .player-card .token-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 6px;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    box-shadow:
+      inset 0 1px 2px rgba(255,255,255,0.2),
+      0 0 4px rgba(78,154,245,0.4);
+  }
+
+  /* -- Initiative tracker ------------------------------------- */
+  .initiative-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .init-entry {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    background: rgba(30,30,50,0.5);
+  }
+  .init-entry.current {
+    background: rgba(255,215,0,0.15);
+    color: #ffd700;
+    font-weight: 700;
+  }
+  .init-marker {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .turn-timer {
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    min-width: 36px;
+    text-align: right;
+  }
+  .mode-badge {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .mode-badge.rp { color: #4CAF50; border: 1px solid rgba(76,175,80,0.4); }
+  .mode-badge.combat { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); }
+  .mode-badge.cutscene { color: #aaa; border: 1px solid rgba(170,170,170,0.3); font-style: italic; }
+
+  /* -- Map switch indicator ------------------------------------ */
+  .map-switch-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: #FFD700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .map-switch-indicator.visible { opacity: 1; }
+
+  /* -- Bottom bar: narration ---------------------------------- */
+  .narration-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 80%, transparent 100%);
+  }
+  .narration-text {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #ccc;
+    font-style: italic;
+    max-height: 100px;
+    overflow: hidden;
+  }
+  .narration-text:empty::before {
+    content: 'The adventure awaits...';
+    color: #555;
+  }
+
+  /* -- Action feed -------------------------------------------- */
+  .action-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .action-entry {
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: rgba(30,30,50,0.6);
+    font-size: 13px;
+    line-height: 1.3;
+    border-left: 3px solid;
+    animation: fadeIn 0.3s ease;
+  }
+  .action-entry.say { border-color: #4ecb71; }
+  .action-entry.do { border-color: #4ebdff; }
+  .action-char {
+    font-weight: 700;
+    color: #ffd700;
+    font-size: 12px;
+  }
+  .action-type {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 6px;
+  }
+  .action-type.say { color: #4ecb71; }
+  .action-type.do { color: #4ebdff; }
+  .action-text { color: #ddd; margin-top: 2px; }
+  .action-text.say { font-style: italic; }
+  .action-text.say::before { content: '\201C'; color: #4ecb71; }
+  .action-text.say::after { content: '\201D'; color: #4ecb71; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* -- Dice result popup -------------------------------------- */
+  .dice-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(20,20,40,0.95);
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    padding: 20px 32px;
+    text-align: center;
+    z-index: 100;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+  .dice-popup.show {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .dice-popup .roll-result {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffd700;
+  }
+  .dice-popup .roll-detail {
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 4px;
+  }
+  .dice-popup .roll-outcome {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .dice-popup .roll-outcome.success { color: #4ecb71; }
+  .dice-popup .roll-outcome.failure { color: #ff6b6b; }
+</style>
+</head>
+<body>
+  <!-- Dice: real tabletop dice (Kenney Casino Audio, CC0) -->
+  <audio id="sfx-dice-1" src="/game/audio/dice-throw-1.mp3" preload="auto"></audio>
+  <audio id="sfx-dice-2" src="/game/audio/dice-throw-2.mp3" preload="auto"></audio>
+  <audio id="sfx-dice-3" src="/game/audio/dice-throw-3.mp3" preload="auto"></audio>
+  <!-- Blasters: weapon-specific (Kenney Sci-Fi Sounds, CC0) -->
+  <audio id="sfx-blaster-heavy" src="/game/audio/blaster-heavy.mp3" preload="auto"></audio>
+  <audio id="sfx-blaster-heavy2" src="/game/audio/blaster-heavy2.mp3" preload="auto"></audio>
+  <audio id="sfx-blaster-light" src="/game/audio/blaster-light.mp3" preload="auto"></audio>
+  <audio id="sfx-blaster-rifle" src="/game/audio/blaster-retro.mp3" preload="auto"></audio>
+  <!-- Impact: heavy punch (Kenney Impact Sounds, CC0) -->
+  <audio id="sfx-punch-1" src="/game/audio/punch-000.mp3" preload="auto"></audio>
+  <audio id="sfx-punch-2" src="/game/audio/punch-001.mp3" preload="auto"></audio>
+  <audio id="sfx-punch-3" src="/game/audio/punch-003.mp3" preload="auto"></audio>
+  <!-- Per-map ambient music (CC-BY) -->
+  <audio id="ambient-cantina" src="/game/audio/ambient-cantina.mp3" preload="auto" loop></audio>
+  <audio id="ambient-streets" src="/game/audio/ambient-streets.mp3" preload="auto" loop></audio>
+  <audio id="ambient-docking-bay" src="/game/audio/ambient-docking-bay.mp3" preload="auto" loop></audio>
+  <audio id="ambient-fallback" src="/game/audio/ambient.mp3" preload="auto" loop></audio>
+  <div class="overlay">
+    <div class="top-bar">
+      <div class="scene-title" id="scene-title">Act 1 — The Cantina</div>
+      <div class="combat-info hidden" id="combat-info">COMBAT — Round 1</div>
+    </div>
+
+    <div class="map-area" id="map-area">
+      <div class="no-map" id="no-map">No map loaded</div>
+      <div class="map-viewport" id="map-viewport" style="display:none">
+        <div class="map-container" id="map-container">
+          <img id="map-image" src="" alt="Map">
+          <!-- Tokens injected here -->
+        </div>
+      </div>
+      <div class="map-switch-indicator" id="map-switch-indicator"></div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-heading">Players</div>
+      <div id="player-list"></div>
+      <div class="sidebar-heading hidden" id="init-heading">Initiative</div>
+      <div class="initiative-list" id="initiative-list"></div>
+      <div class="sidebar-heading hidden" id="action-heading">Actions</div>
+      <div class="action-feed" id="action-feed"></div>
+    </div>
+
+    <div class="narration-bar">
+      <div class="narration-text" id="narration"></div>
+    </div>
+  </div>
+
+  <div class="dice-popup" id="dice-popup">
+    <div class="roll-result" id="roll-result"></div>
+    <div class="roll-detail" id="roll-detail"></div>
+    <div class="roll-outcome" id="roll-outcome"></div>
+  </div>
+
+<script>
+  const POLL_MS = 2000;
+  const STATE_URL = '/game/state';
+  const MAPS_BASE = '/game/maps/';
+
+  const WOUND_NAMES = ['Healthy', 'Stunned', 'Wounded', 'Incapacitated', 'Mortally Wounded', 'Dead'];
+  const WOUND_COLORS = ['#4ecb71', '#c4cb4e', '#cb974e', '#cb6b4e', '#cb4e4e', '#666'];
+  const WOUND_PCT = [100, 80, 60, 40, 20, 0];
+
+  let lastState = null;
+  let lastDiceLog = [];
+  let lastActionCount = 0;
+  let lastWounds = {};
+
+  // -- Audio helpers ------------------------------------------
+  const dicePool = [
+    document.getElementById('sfx-dice-1'),
+    document.getElementById('sfx-dice-2'),
+    document.getElementById('sfx-dice-3'),
+  ];
+  const punchPool = [
+    document.getElementById('sfx-punch-1'),
+    document.getElementById('sfx-punch-2'),
+    document.getElementById('sfx-punch-3'),
+  ];
+  // Weapon sounds keyed by gear keyword match
+  const weaponSfx = {
+    'heavy blaster':  document.getElementById('sfx-blaster-heavy'),
+    'heavy blaster2': document.getElementById('sfx-blaster-heavy2'),
+    'blaster rifle':  document.getElementById('sfx-blaster-rifle'),
+    'e-11':           document.getElementById('sfx-blaster-rifle'),
+    'light blaster':  document.getElementById('sfx-blaster-light'),
+    'blaster pistol': document.getElementById('sfx-blaster-light'),
+  };
+  const defaultBlaster = document.getElementById('sfx-blaster-light');
+
+  // Per-map ambient music: map filename → audio element ID
+  const MAP_AMBIENT = {
+    'cantina.png':                'ambient-cantina',
+    'cantina.svg':                'ambient-cantina',
+    'mos-eisley-streets-1.png':   'ambient-streets',
+    'junk-dealer.svg':            'ambient-cantina',
+    'warehouse.svg':              'ambient-streets',
+    'inn.svg':                    'ambient-cantina',
+    'docking-bay-87.svg':         'ambient-docking-bay',
+  };
+  const ambientTracks = {
+    'ambient-cantina':     document.getElementById('ambient-cantina'),
+    'ambient-streets':     document.getElementById('ambient-streets'),
+    'ambient-docking-bay': document.getElementById('ambient-docking-bay'),
+    'ambient-fallback':    document.getElementById('ambient-fallback'),
+  };
+  const AMBIENT_VOLUME = 0.12;
+  const FADE_MS = 2000;
+  let currentAmbientId = null;
+  let ambientStarted = false;
+
+  // Set volumes
+  dicePool.forEach(a => a.volume = 0.8);
+  punchPool.forEach(a => a.volume = 0.8);
+  Object.values(weaponSfx).forEach(a => a.volume = 0.7);
+  defaultBlaster.volume = 0.7;
+  Object.values(ambientTracks).forEach(a => { a.volume = AMBIENT_VOLUME; });
+
+  function playSfx(audio) {
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+  }
+
+  function playRandom(pool) {
+    playSfx(pool[Math.floor(Math.random() * pool.length)]);
+  }
+
+  /** Match a character's gear list to the right blaster sound. */
+  function getWeaponSound(characterName) {
+    const players = (lastState && lastState.players) || {};
+    for (const p of Object.values(players)) {
+      if (p.character !== characterName) continue;
+      const gear = (p.gear || []).join(' ').toLowerCase();
+      if (gear.includes('heavy blaster')) {
+        // Alternate between two DL-44 variants
+        return Math.random() < 0.5 ? weaponSfx['heavy blaster'] : weaponSfx['heavy blaster2'];
+      }
+      if (gear.includes('blaster rifle') || gear.includes('e-11')) return weaponSfx['blaster rifle'];
+      if (gear.includes('blaster pistol') || gear.includes('light blaster')) return weaponSfx['light blaster'];
+      if (gear.includes('blaster')) return defaultBlaster;
+      return null;  // no blaster in gear (lightsaber, arc welder, etc.)
+    }
+    // NPC fallback: Stormtroopers get rifle sound
+    if (characterName.toLowerCase().includes('stormtrooper')) return weaponSfx['blaster rifle'];
+    return defaultBlaster;
+  }
+
+  /** Fade an audio element out over FADE_MS, then pause + reset. */
+  function fadeOut(audio) {
+    if (!audio || audio.paused) return;
+    const step = 50;
+    const decrement = audio.volume / (FADE_MS / step);
+    const timer = setInterval(() => {
+      audio.volume = Math.max(0, audio.volume - decrement);
+      if (audio.volume <= 0) {
+        clearInterval(timer);
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = AMBIENT_VOLUME;
+      }
+    }, step);
+  }
+
+  /** Start or switch ambient music based on current map image. */
+  function startAmbient(mapImage) {
+    const targetId = MAP_AMBIENT[mapImage] || 'ambient-fallback';
+    if (targetId === currentAmbientId) {
+      // Same track — just make sure it's playing
+      const track = ambientTracks[targetId];
+      if (track && track.paused) track.play().catch(() => {});
+      return;
+    }
+    // Fade out old track
+    if (currentAmbientId && ambientTracks[currentAmbientId]) {
+      fadeOut(ambientTracks[currentAmbientId]);
+    }
+    // Start new track
+    const newTrack = ambientTracks[targetId];
+    if (newTrack) {
+      newTrack.volume = AMBIENT_VOLUME;
+      newTrack.play().catch(() => {});
+    }
+    currentAmbientId = targetId;
+    ambientStarted = true;
+  }
+
+  function getInitials(name) {
+    return name.split(/[\s-]+/).map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  }
+
+  /** Escape HTML to prevent XSS from user-controlled game state. */
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  function renderPlayers(state) {
+    const list = document.getElementById('player-list');
+    const players = state.players || {};
+    const currentTurn = (state.initiative_order || [])[0] || '';
+
+    list.innerHTML = '';
+    for (const [viewer, p] of Object.entries(players)) {
+      const wl = p.wound_level || 0;
+      const isBot = p.bot_controlled || viewer.startsWith('bot:');
+      const isTurn = p.character === currentTurn && state.combat_active;
+
+      const card = document.createElement('div');
+      card.className = 'player-card' +
+        (isBot ? ' bot-controlled' : '') +
+        (isTurn ? ' active-turn' : '');
+
+      // Look up token color for swatch
+      const charSlug = (p.character || '').toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
+      const charToken = (state.tokens || {})[charSlug];
+      const tokenColor = charToken ? charToken.color : '#4e9af5';
+
+      card.innerHTML = `
+        <div class="char-name">
+          <span class="token-swatch" style="background:${tokenColor}"></span>
+          ${escapeHtml(p.character)}
+        </div>
+        <div class="viewer-name">${isBot ? 'Bot-controlled' : '@' + escapeHtml(viewer)}</div>
+        <div class="health-bar">
+          <div class="health-fill" style="width:${WOUND_PCT[wl]}%;background:${WOUND_COLORS[wl]}"></div>
+        </div>
+        <div class="stats">
+          <span>${WOUND_NAMES[wl]}</span>
+          <span class="cp">${p.character_points || 0} CP</span>
+          <span class="fp">${p.force_points || 0} FP</span>
+        </div>`;
+      list.appendChild(card);
+    }
+  }
+
+  function renderInitiative(state) {
+    const heading = document.getElementById('init-heading');
+    const list = document.getElementById('initiative-list');
+    const order = state.initiative_order || [];
+
+    if (!state.combat_active || order.length === 0) {
+      heading.classList.add('hidden');
+      list.innerHTML = '';
+      return;
+    }
+
+    heading.classList.remove('hidden');
+    list.innerHTML = '';
+
+    const turnStarted = state.session?.turn_started_at;
+    const timeout = state.session?.turn_timeout_secs || 120;
+
+    for (let i = 0; i < order.length; i++) {
+      const name = order[i];
+      const isCurrent = i === 0;
+      // Find token color
+      const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
+      const token = (state.tokens || {})[slug];
+      const color = token ? token.color : '#888';
+
+      const entry = document.createElement('div');
+      entry.className = 'init-entry' + (isCurrent ? ' current' : '');
+
+      let timerHtml = '';
+      if (isCurrent && turnStarted) {
+        const elapsed = (Date.now() - new Date(turnStarted).getTime()) / 1000;
+        const remaining = Math.max(0, Math.ceil(timeout - elapsed));
+        const timerColor = remaining > 60 ? '#4CAF50' : remaining > 20 ? '#FFC107' : '#F44336';
+        timerHtml = `<span class="turn-timer" style="color:${timerColor}">${remaining}s</span>`;
+      }
+
+      entry.innerHTML = `
+        <div class="init-marker" style="background:${color}"></div>
+        <span>${isCurrent ? '&gt; ' : ''}${escapeHtml(name)}</span>${timerHtml}`;
+      list.appendChild(entry);
+    }
+  }
+
+  let currentContainerScale = 1;  // for inverse-scaling tokens
+  let mapSwitching = false;       // crossfade lock
+
+  function renderMap(state) {
+    const noMap = document.getElementById('no-map');
+    const viewport = document.getElementById('map-viewport');
+    const container = document.getElementById('map-container');
+    const img = document.getElementById('map-image');
+    const mapData = state.map;
+
+    if (!mapData || !mapData.image) {
+      noMap.style.display = '';
+      viewport.style.display = 'none';
+      return;
+    }
+
+    noMap.style.display = 'none';
+    viewport.style.display = '';
+
+    const mapW = mapData.width || 1920;
+    const mapH = mapData.height || 1080;
+
+    // Detect map switch — crossfade
+    const src = MAPS_BASE + mapData.image;
+    const prevSrc = img.getAttribute('data-src') || '';
+    if (prevSrc && src !== prevSrc && !mapSwitching) {
+      mapSwitching = true;
+      viewport.style.opacity = '0';
+      setTimeout(() => {
+        img.setAttribute('data-src', src);
+        img.src = src;
+        img.width = mapW;
+        img.height = mapH;
+        container.style.width = mapW + 'px';
+        container.style.height = mapH + 'px';
+        // Reset camera transform for new map (instant, no transition)
+        container.style.transition = 'none';
+        applyCamera(state, viewport, container, mapW, mapH);
+        // Force reflow then restore transition
+        container.offsetHeight;
+        container.style.transition = '';
+        viewport.style.opacity = '1';
+        mapSwitching = false;
+      }, 800);
+      return; // skip rendering during fade-out
+    }
+
+    if (!prevSrc || img.getAttribute('data-src') !== src) {
+      img.setAttribute('data-src', src);
+      img.src = src;
+      img.width = mapW;
+      img.height = mapH;
+      container.style.width = mapW + 'px';
+      container.style.height = mapH + 'px';
+    }
+
+    // Apply camera transform
+    applyCamera(state, viewport, container, mapW, mapH);
+
+    // Render tokens
+    const existing = container.querySelectorAll('.token');
+    existing.forEach(el => el.remove());
+
+    const tokens = state.tokens || {};
+    const currentTurn = (state.initiative_order || [])[0] || '';
+
+    // Build list of visible tokens with their positions
+    const TOKEN_RADIUS = 22;
+    const COLLISION_DIST = 36;
+    const visibleTokens = [];
+    const activeMapImage = mapData.image || '';
+    for (const [slug, t] of Object.entries(tokens)) {
+      if (!t.visible) continue;
+      if (t.map_id && t.map_id !== activeMapImage) continue;
+      visibleTokens.push({ slug, ...t, drawX: t.x, drawY: t.y });
+    }
+
+    // Detect clusters and spread overlapping tokens
+    const processed = new Set();
+    for (let i = 0; i < visibleTokens.length; i++) {
+      if (processed.has(i)) continue;
+      const cluster = [i];
+      for (let j = i + 1; j < visibleTokens.length; j++) {
+        if (processed.has(j)) continue;
+        const dx = visibleTokens[i].x - visibleTokens[j].x;
+        const dy = visibleTokens[i].y - visibleTokens[j].y;
+        if (Math.sqrt(dx * dx + dy * dy) < COLLISION_DIST) {
+          cluster.push(j);
+        }
+      }
+      if (cluster.length > 1) {
+        let cx = 0, cy = 0;
+        for (const idx of cluster) {
+          cx += visibleTokens[idx].x;
+          cy += visibleTokens[idx].y;
+        }
+        cx /= cluster.length;
+        cy /= cluster.length;
+        const spreadRadius = TOKEN_RADIUS * 1.2 * Math.max(1, cluster.length / 3);
+        for (let k = 0; k < cluster.length; k++) {
+          const angle = (2 * Math.PI * k) / cluster.length - Math.PI / 2;
+          visibleTokens[cluster[k]].drawX = cx + Math.cos(angle) * spreadRadius;
+          visibleTokens[cluster[k]].drawY = cy + Math.sin(angle) * spreadRadius;
+          processed.add(cluster[k]);
+        }
+      }
+    }
+
+    // Token inverse scale: keeps tokens at constant screen size
+    const invScale = 1 / currentContainerScale;
+
+    for (const t of visibleTokens) {
+      const isTurn = t.name === currentTurn && state.combat_active;
+      const isVehicle = t.type === 'vehicle';
+      const isPC = t.type === 'pc';
+      const isHostile = t.color === '#f54e4e';
+
+      const el = document.createElement('div');
+      let cls = 'token';
+      if (isVehicle) {
+        cls += ' vehicle';
+        const cap = t.capacity || 0;
+        if (cap >= 4 || /large|lg|seats?\s*4|speeder\s*1/i.test(t.name)) {
+          cls += ' vehicle-lg';
+        } else {
+          cls += ' vehicle-sm';
+        }
+      }
+      if (isPC) cls += ' pc';
+      if (isHostile) cls += ' hostile';
+      if (isTurn) cls += ' active-turn';
+      el.className = cls;
+      // Tokens positioned in raw map pixel coords
+      el.style.left = t.drawX + 'px';
+      el.style.top = t.drawY + 'px';
+      el.style.transform = `translate(-50%, -50%) scale(${invScale})`;
+      el.style.backgroundColor = t.color || '#4e9af5';
+      if (isPC) el.style.setProperty('--tk-glow', (t.color || '#4e9af5') + '80');
+      el.textContent = isVehicle ? t.name : getInitials(t.name);
+
+      const label = document.createElement('div');
+      label.className = 'token-label';
+      label.textContent = t.name;
+      el.appendChild(label);
+
+      container.appendChild(el);
+    }
+  }
+
+  function applyCamera(state, viewport, container, mapW, mapH) {
+    const camera = state.camera || { x: mapW / 2, y: mapH / 2, zoom: 1.0 };
+    const vpW = viewport.clientWidth || 1640;  // map-area width (1920 - 280 sidebar)
+    const vpH = viewport.clientHeight || 1012; // map-area height (1080 - 48 top - 120 bottom)
+    const baseFit = Math.min(vpW / mapW, vpH / mapH);
+    const scale = baseFit * (camera.zoom || 1.0);
+    const tx = (vpW / 2) - (camera.x * scale);
+    const ty = (vpH / 2) - (camera.y * scale);
+    container.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    currentContainerScale = scale;
+  }
+
+  function renderActionFeed(state) {
+    const heading = document.getElementById('action-heading');
+    const feed = document.getElementById('action-feed');
+    const actions = state.action_log || [];
+
+    if (actions.length === 0) {
+      heading.classList.add('hidden');
+      feed.innerHTML = '';
+      return;
+    }
+
+    heading.classList.remove('hidden');
+
+    // Only re-render if new actions appeared
+    if (actions.length === lastActionCount) return;
+
+    // Show last 8 actions (most recent at bottom)
+    const recent = actions.slice(-8);
+    feed.innerHTML = '';
+    for (const a of recent) {
+      const entry = document.createElement('div');
+      entry.className = 'action-entry ' + a.type;
+      const safeType = a.type === 'say' ? 'say' : 'do';
+      entry.innerHTML = `
+        <span class="action-char">${escapeHtml(a.character)}</span>
+        <span class="action-type ${safeType}">${safeType === 'say' ? 'says' : 'does'}</span>
+        <div class="action-text ${safeType}">${escapeHtml(a.text)}</div>`;
+      feed.appendChild(entry);
+    }
+
+    // Scroll to bottom
+    feed.scrollTop = feed.scrollHeight;
+    lastActionCount = actions.length;
+  }
+
+  function renderScene(state) {
+    const session = state.session || {};
+    const title = document.getElementById('scene-title');
+    title.textContent = `Act ${session.act || '?'} \u2014 ${session.scene || 'Unknown'}`;
+
+    const combat = document.getElementById('combat-info');
+    const mode = session.mode || 'rp';
+    if (state.combat_active) {
+      combat.classList.remove('hidden');
+      const order = state.initiative_order || [];
+      const current = order[0] || '';
+      combat.textContent = `COMBAT \u2014 Round ${session.round || 1} \u2014 ${current}'s turn`;
+    } else if (mode === 'cutscene') {
+      combat.classList.remove('hidden');
+      combat.textContent = 'CUTSCENE';
+      combat.style.color = '#aaa';
+      combat.style.fontStyle = 'italic';
+    } else {
+      combat.classList.add('hidden');
+      combat.style.color = '';
+      combat.style.fontStyle = '';
+    }
+
+    const narration = document.getElementById('narration');
+    narration.textContent = state.narration || '';
+  }
+
+  function showDiceRoll(entry) {
+    const popup = document.getElementById('dice-popup');
+    const result = document.getElementById('roll-result');
+    const detail = document.getElementById('roll-detail');
+    const outcome = document.getElementById('roll-outcome');
+
+    // Play real tabletop dice SFX
+    playRandom(dicePool);
+
+    result.textContent = entry.total;
+    detail.textContent = entry.detail || '';
+
+    if (entry.difficulty) {
+      const passed = entry.total >= entry.difficulty;
+      outcome.textContent = passed ? 'SUCCESS!' : 'FAILED';
+      outcome.className = 'roll-outcome ' + (passed ? 'success' : 'failure');
+    } else {
+      outcome.textContent = '';
+    }
+
+    popup.classList.add('show');
+    setTimeout(() => popup.classList.remove('show'), 3500);
+  }
+
+  let isLiveServer = false;  // true only when we get a real server response
+
+  function stopAllAudio() {
+    Object.values(ambientTracks).forEach(a => { a.pause(); a.currentTime = 0; });
+    currentAmbientId = null;
+    ambientStarted = false;
+  }
+
+  function update(state) {
+    if (!state || !state.session) return;
+    // Only play ambient music when connected to a live server
+    if (isLiveServer) {
+      startAmbient((state.map || {}).image || '');
+    }
+    renderScene(state);
+    renderPlayers(state);
+    renderInitiative(state);
+    renderMap(state);
+
+    // --- SFX triggers BEFORE renderActionFeed (which updates lastActionCount) ---
+
+    // Play character-specific blaster SFX on new combat actions
+    const actions = state.action_log || [];
+    if (actions.length > lastActionCount) {
+      const newActions = actions.slice(lastActionCount);
+      for (const a of newActions) {
+        const txt = (a.text || '').toLowerCase();
+        if (txt.includes('fire') || txt.includes('blast') || txt.includes('shoot') || txt.includes('shot')) {
+          const sfx = getWeaponSound(a.character || '');
+          if (sfx) playSfx(sfx);
+        }
+      }
+    }
+
+    // Check for new dice rolls — play real tabletop dice
+    const diceLog = state.dice_log || [];
+    if (diceLog.length > lastDiceLog.length) {
+      const newest = diceLog[diceLog.length - 1];
+      showDiceRoll(newest);
+    }
+    lastDiceLog = diceLog;
+
+    // Check for wound changes (play punch impact SFX)
+    const players = state.players || {};
+    for (const [key, p] of Object.entries(players)) {
+      const wl = p.wound_level || 0;
+      if (lastWounds[key] !== undefined && wl > lastWounds[key]) {
+        playRandom(punchPool);
+      }
+      lastWounds[key] = wl;
+    }
+
+    // Render action feed AFTER SFX checks (this updates lastActionCount)
+    renderActionFeed(state);
+
+    // Play blaster volley when combat starts (Stormtrooper rifle)
+    if (state.combat_active && lastState && !lastState.combat_active) {
+      playSfx(weaponSfx['blaster rifle']);
+    }
+
+    // Map switch indicator
+    const currentMapImage = (state.map || {}).image || '';
+    const prevMapImage = ((lastState && lastState.map) || {}).image || '';
+    if (lastState && currentMapImage && currentMapImage !== prevMapImage) {
+      const indicator = document.getElementById('map-switch-indicator');
+      const mapName = (state.map || {}).name || currentMapImage;
+      indicator.textContent = `\u{1F4CD} ${mapName}`;
+      indicator.classList.add('visible');
+      clearTimeout(indicator._fadeTimer);
+      indicator._fadeTimer = setTimeout(() => indicator.classList.remove('visible'), 2500);
+    }
+
+    lastState = state;
+  }
+
+  // -- Demo state for preview when no server -------------------
+  const DEMO_STATE = {
+    session: { act: 2, scene: 'Mos Eisley Streets', round: 2, status: 'active' },
+    players: {
+      'bot:kira-voss': {
+        character: 'Kira Voss', wound_level: 0, character_points: 5,
+        force_points: 1, bot_controlled: true
+      },
+      'bot:tok-3': {
+        character: 'Tok-3', wound_level: 0, character_points: 5,
+        force_points: 1, bot_controlled: true
+      },
+      'bot:renn-darkhollow': {
+        character: 'Renn Darkhollow', wound_level: 1, character_points: 5,
+        force_points: 1, bot_controlled: true
+      },
+      'bot:zeph-ando': {
+        character: 'Zeph Ando', wound_level: 0, character_points: 5,
+        force_points: 1, bot_controlled: true
+      }
+    },
+    combat_active: true,
+    current_turn: 'Kira Voss',
+    initiative_order: ['Kira Voss', 'Stormtrooper 1', 'Renn Darkhollow', 'Tok-3', 'Stormtrooper 2', 'Zeph Ando'],
+    narration: 'Blaster bolts ricochet off the sandstone walls as the crew sprints toward the speeders. Stormtroopers are closing in from the checkpoint...',
+    tokens: {
+      'kira-voss':      { name: 'Kira Voss',      x: 350, y: 320, type: 'pc',  color: '#4e9af5', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'tok-3':          { name: 'Tok-3',           x: 380, y: 350, type: 'pc',  color: '#4e9af5', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'renn-darkhollow': { name: 'Renn Darkhollow', x: 320, y: 380, type: 'pc',  color: '#4e9af5', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'zeph-ando':      { name: 'Zeph Ando',       x: 400, y: 300, type: 'pc',  color: '#4e9af5', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'stormtrooper-1': { name: 'Stormtrooper 1',  x: 500, y: 250, type: 'npc', color: '#f54e4e', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'stormtrooper-2': { name: 'Stormtrooper 2',  x: 520, y: 270, type: 'npc', color: '#f54e4e', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'jawa-trader':    { name: 'Jawa Trader',     x: 200, y: 400, type: 'npc', color: '#e8a030', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'speeder-1':      { name: 'Speeder 1',       x: 420, y: 365, type: 'vehicle', color: '#8899aa', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'speeder-2':      { name: 'Speeder 2',       x: 600, y: 420, type: 'vehicle', color: '#997766', visible: true, map_id: 'mos-eisley-streets-1.png' },
+      'speeder-driver': { name: 'Speeder Driver',  x: 420, y: 365, type: 'npc', color: '#e8a030', visible: true, map_id: 'mos-eisley-streets-1.png' },
+    },
+    map: { image: 'mos-eisley-streets-1.png', name: 'Mos Eisley Streets', width: 1920, height: 1080 },
+    camera: { x: 400, y: 340, zoom: 2.0, target: 'combat' },
+    dice_log: [],
+    action_log: [
+      { character: 'Kira Voss', type: 'do', text: 'fires her heavy blaster at the checkpoint barricade', timestamp: '' },
+      { character: 'Renn Darkhollow', type: 'say', text: "Get to the speeder! I'll cover you!", timestamp: '' },
+      { character: 'Stormtrooper 1', type: 'do', text: 'returns fire from behind the barricade', timestamp: '' },
+    ]
+  };
+
+  // -- Polling loop -------------------------------------------
+  async function poll() {
+    try {
+      const resp = await fetch(STATE_URL);
+      if (resp.ok) {
+        isLiveServer = true;
+        const state = await resp.json();
+        update(state);
+      } else {
+        if (isLiveServer) { isLiveServer = false; stopAllAudio(); }
+        if (!lastState) update(DEMO_STATE);
+      }
+    } catch {
+      if (isLiveServer) { isLiveServer = false; stopAllAudio(); }
+      if (!lastState) update(DEMO_STATE);
+    }
+  }
+
+  poll();
+  setInterval(poll, POLL_MS);
+</script>
+</body>
+</html>

@@ -49,11 +49,16 @@ export function getAccountConfig(
         typeof twitchRaw?.clientSecret === "string" ? twitchRaw.clientSecret : undefined,
       refreshToken:
         typeof twitchRaw?.refreshToken === "string" ? twitchRaw.refreshToken : undefined,
-      expiresIn: typeof twitchRaw?.expiresIn === "number" ? twitchRaw.expiresIn : undefined,
-      obtainmentTimestamp:
-        typeof twitchRaw?.obtainmentTimestamp === "number"
-          ? twitchRaw.obtainmentTimestamp
-          : undefined,
+      expiresIn: typeof twitchRaw?.expiresIn === "number"
+        ? twitchRaw.expiresIn
+        : (process.env.OPENCLAW_TWITCH_EXPIRES_IN
+          ? Number(process.env.OPENCLAW_TWITCH_EXPIRES_IN)
+          : undefined),
+      obtainmentTimestamp: typeof twitchRaw?.obtainmentTimestamp === "number"
+        ? twitchRaw.obtainmentTimestamp
+        : (process.env.OPENCLAW_TWITCH_OBTAINMENT_TIMESTAMP
+          ? Number(process.env.OPENCLAW_TWITCH_OBTAINMENT_TIMESTAMP)
+          : undefined),
     };
 
     // Merge: base-level takes precedence over accounts.default

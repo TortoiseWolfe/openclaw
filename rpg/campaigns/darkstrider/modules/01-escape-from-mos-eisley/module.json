@@ -1,0 +1,311 @@
+{
+  "name": "Escape from Mos Eisley",
+  "slug": "escape-from-mos-eisley",
+  "acts": 3,
+  "pregens": ["Kira Voss", "Tok-3", "Renn Darkhollow", "Zeph Ando"],
+  "healers": ["Zeph Ando"],
+  "vehicle_tokens": ["Speeder 1", "Speeder 2"],
+  "ship_positions": [
+    "ship-ramp", "ship-cockpit", "ship-top-hatch", "ship-bow",
+    "ship-stern", "ship-port", "ship-starboard", "ship-turret"
+  ],
+
+  "char_stats": {
+    "Kira Voss": {
+      "Blaster": "5D", "Dodge": "4D+2", "Starship Piloting": "5D+1",
+      "Streetwise": "4D", "Con": "4D"
+    },
+    "Tok-3": {
+      "Astrogation": "5D", "Computer Prog": "5D+1", "Starship Repair": "5D",
+      "Security": "4D"
+    },
+    "Renn Darkhollow": {
+      "Blaster": "5D+1", "Brawling": "4D", "Search": "4D+1",
+      "Sneak": "4D", "Intimidation": "4D"
+    },
+    "Zeph Ando": {
+      "Lightsaber": "3D+1", "Sense": "2D", "Droid Repair": "5D",
+      "First Aid": "4D", "Bargain": "4D"
+    }
+  },
+
+  "npc_stats": {
+    "Stormtrooper": {"Blaster": "4D", "Brawling Parry": "4D"},
+    "Lt. Hask": {"Command": "4D", "Blaster": "4D"},
+    "Greevak": {"Brawling": "5D", "Blaster": "4D+1"}
+  },
+
+  "char_move": {
+    "Kira Voss": 96,
+    "Tok-3": 77,
+    "Renn Darkhollow": 96,
+    "Zeph Ando": 96
+  },
+
+  "act_data": {
+    "1": {
+      "name": "Cantina Lockdown",
+      "map": "cantina.png",
+      "map_name": "Chalmun's Cantina",
+      "terrain": "cantina.png",
+      "time_of_day": "Late afternoon — twin suns hang low, the cantina is dim and smoky",
+      "kick": "Narrate the opening. Stormtroopers march in from the entrance toward the bar. The Rodian at Booth 1 slides a data chip to Kira. Tension rises as troopers begin checking IDs.",
+      "starting_positions": {
+        "Kira Voss": "booth-1-left",
+        "Tok-3": "bar-stool-r3",
+        "Renn Darkhollow": "table-2",
+        "Zeph Ando": "bar-stool-l2"
+      },
+      "npc_positions": {
+        "Stormtrooper 1": {"position": "entrance", "color": "#f54e4e", "hidden": false},
+        "Stormtrooper 2": {"position": "entrance-right", "color": "#f54e4e", "hidden": false},
+        "Wuher": {"position": "behind-bar-center", "color": "#e8a030", "hidden": false},
+        "Rodian Contact": {"position": "booth-1-right", "color": "#e8a030", "hidden": false},
+        "Figrin Dan": {"position": "band-stage", "color": "#888888", "hidden": false},
+        "Patron 1": {"position": "bar-stool-l4", "color": "#888888", "hidden": false},
+        "Patron 2": {"position": "table-3", "color": "#888888", "hidden": false}
+      },
+      "exit_positions": ["back-door", "storage-door"],
+      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_explore_threshold": 4},
+      "bot_actions": {
+        "Kira Voss": [
+          {"type": "do", "text": "palms the data chip from the Rodian", "skill": "Con", "difficulty": 15, "move_to": "booth-1-center"},
+          {"type": "say", "text": "Keep your heads down — act natural."},
+          {"type": "do", "text": "draws her DL-44 under the table"},
+          {"type": "say", "text": "If this goes sideways, follow me to the back door."},
+          {"type": "do", "text": "bluffs the officer about never seeing any Rodian", "skill": "Con", "difficulty": 20},
+          {"type": "do", "text": "edges along the booths toward the back wall", "move_to": "near-table-1"}
+        ],
+        "Tok-3": [
+          {"type": "do", "text": "*scans the Stormtroopers' comlink frequencies*", "skill": "Computer Prog", "difficulty": 12},
+          {"type": "do", "text": "*whistles nervously and rolls behind a bar stool*", "move_to": "bar-stool-r2"},
+          {"type": "say", "text": "This unit recommends immediate evacuation."},
+          {"type": "do", "text": "*hacks the cantina's door lock to seal the entrance*", "skill": "Security", "difficulty": 15},
+          {"type": "do", "text": "*projects the cantina blueprint to find alternate exits*"},
+          {"type": "do", "text": "*rolls toward the booth area to regroup with the party*", "move_to": "booth-3-approach"},
+          {"type": "do", "text": "*trundles east past the tables*", "move_to": "table-3-east"}
+        ],
+        "Renn Darkhollow": [
+          {"type": "say", "text": "I'll cover the exit — nobody follows us."},
+          {"type": "do", "text": "*readies blaster rifle under the table*"},
+          {"type": "do", "text": "*scans the cantina for Imperial reinforcements*", "skill": "Search", "difficulty": 12},
+          {"type": "do", "text": "*moves to a better tactical position near the booths*", "skill": "Sneak", "difficulty": 10, "move_to": "booth-3-right"},
+          {"type": "do", "text": "*slides east along the wall toward the back*", "skill": "Sneak", "difficulty": 10, "move_to": "near-table-2"}
+        ],
+        "Zeph Ando": [
+          {"type": "do", "text": "*closes eyes, sensing danger through the Force*", "skill": "Sense", "difficulty": 15},
+          {"type": "say", "text": "Something's very wrong. They know about the chip."},
+          {"type": "say", "text": "I can feel their fear — they're searching for something specific."},
+          {"type": "do", "text": "*moves toward the center of the cantina*", "move_to": "bar-stool-r2"},
+          {"type": "do", "text": "*edges along the bar toward the right side*", "move_to": "bar-stool-r5"}
+        ]
+      },
+      "climax_actions": {
+        "Kira Voss": [
+          {"type": "do", "text": "kicks over the table and fires at the lead trooper while sprinting for the back door", "skill": "Blaster", "difficulty": 15, "move_to": "back-door"},
+          {"type": "do", "text": "grabs the data chip and bolts for the storage exit under a hail of blaster fire", "skill": "Dodge", "difficulty": 18, "move_to": "storage-door"}
+        ],
+        "Tok-3": [
+          {"type": "do", "text": "*overloads the cantina's power grid — lights explode, plunging the room into darkness*", "skill": "Computer Prog", "difficulty": 15, "move_to": "storage-door"},
+          {"type": "do", "text": "*triggers the fire suppression system, filling the cantina with blinding foam*", "skill": "Security", "difficulty": 12, "move_to": "storage-door"}
+        ],
+        "Renn Darkhollow": [
+          {"type": "do", "text": "*opens covering fire on the Stormtroopers while backing toward the exit*", "skill": "Blaster", "difficulty": 15, "move_to": "back-door"},
+          {"type": "do", "text": "*hurls a bottle of Corellian whiskey at the trooper's visor and charges for the door*", "skill": "Brawling", "difficulty": 12, "move_to": "back-door"}
+        ],
+        "Zeph Ando": [
+          {"type": "do", "text": "*uses the Force to slam the cantina door shut behind the fleeing party*", "skill": "Sense", "difficulty": 20, "move_to": "storage-door"},
+          {"type": "do", "text": "*deflects a blaster bolt with an instinctive Force push and dives for the exit*", "skill": "Sense", "difficulty": 18, "move_to": "storage-door"}
+        ]
+      },
+      "npc_combat_reactions": {
+        "Patron 1": {"reaction": "cover", "position": "bar-stool-l4"},
+        "Patron 2": {"reaction": "cover", "position": "booth-3"},
+        "Figrin Dan": {"reaction": "cover", "position": "band-stage"}
+      },
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    },
+    "2": {
+      "name": "Mos Eisley Streets",
+      "map": "mos-eisley-streets-1.png",
+      "map_name": "Cantina District",
+      "terrain": "mos-eisley-streets-1.png",
+      "time_of_day": "Approaching sunset — long shadows stretch across the dusty streets",
+      "kick": "The party is on Mos Eisley's streets. Their goal is Docking Bay 87, but the main road is blocked by an Imperial checkpoint. Multiple routes exist: alleys, rooftops, market crowds, the warehouse bypass. If players explore shops, the inn, or the junk dealer, go with it — describe what they find using the AVAILABLE POSITIONS details. Create tension: Imperial patrols, a lurking Trandoshan bounty hunter, time pressure as sunset approaches.",
+      "starting_positions": {
+        "Kira Voss": "cantina-street",
+        "Tok-3": "cantina-door",
+        "Renn Darkhollow": "cantina-street",
+        "Zeph Ando": "cantina-street"
+      },
+      "npc_positions": {
+        "Speeder 1": {"position": "speeder-1", "color": "#8899aa", "hidden": false},
+        "Speeder 2": {"position": "speeder-2", "color": "#997766", "hidden": false},
+        "Speeder Driver": {"position": "speeder-1", "color": "#e8a030", "hidden": false},
+        "Civilian 1": {"position": "road-center", "color": "#888888", "hidden": false},
+        "Civilian 2": {"position": "tapcaf-front", "color": "#888888", "hidden": false}
+      },
+      "exit_positions": ["bay-87-entrance", "checkpoint-bay"],
+      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_explore_threshold": 4},
+      "bot_actions": {
+        "Kira Voss": [
+          {"type": "say", "text": "We take the alleys. Main road is a death trap."},
+          {"type": "say", "text": "Keep moving west — the Rodian said Bay 87, sunset."},
+          {"type": "do", "text": "leads the group west along the road away from the cantina", "skill": "Streetwise", "difficulty": 12, "move_to": "road-west"},
+          {"type": "do", "text": "spots the bounty hunter's trap before walking into it", "skill": "Dodge", "difficulty": 15, "move_to": "side-alley"},
+          {"type": "do", "text": "talks the speeder driver into giving them a ride", "skill": "Con", "difficulty": 15, "move_to": "speeder-1"},
+          {"type": "do", "text": "asks the dockworker for directions to Bay 87", "skill": "Streetwise", "difficulty": 10, "move_to": "npc-dockworker"},
+          {"type": "do", "text": "reads the directional sign pointing toward the bays", "move_to": "sign-docking-bays"},
+          {"type": "do", "text": "scouts the road ahead toward the bay checkpoint", "skill": "Streetwise", "difficulty": 12, "move_to": "road-west"}
+        ],
+        "Tok-3": [
+          {"type": "say", "text": "My sensors detect a Trandoshan biosignature nearby."},
+          {"type": "do", "text": "*projects a holographic map of alternate routes*"},
+          {"type": "do", "text": "*hacks the speeder's ignition lock*", "skill": "Security", "difficulty": 10, "move_to": "speeder-1"},
+          {"type": "do", "text": "*rolls west along the main road, scanning for patrols*", "skill": "Search", "difficulty": 12, "move_to": "road-west"},
+          {"type": "do", "text": "*interfaces with the directional sign's data port*", "skill": "Computer Prog", "difficulty": 10, "move_to": "sign-docking-bays"},
+          {"type": "do", "text": "*scans the road ahead for Imperial patrols*", "skill": "Search", "difficulty": 12, "move_to": "npc-dockworker"},
+          {"type": "do", "text": "*hacks into a nearby terminal for bay access codes*", "skill": "Computer Prog", "difficulty": 15, "move_to": "road-west"}
+        ],
+        "Renn Darkhollow": [
+          {"type": "say", "text": "Bounty hunter nearby. I know that species — they fight dirty."},
+          {"type": "say", "text": "I'll take point. Stay behind me."},
+          {"type": "do", "text": "*scouts the road ahead from the dwelling doorway*", "skill": "Search", "difficulty": 15, "move_to": "dwelling-front"},
+          {"type": "do", "text": "*sneaks along the building walls heading west*", "skill": "Sneak", "difficulty": 15, "move_to": "road-west"},
+          {"type": "do", "text": "*climbs to a vantage point overlooking the road*", "skill": "Sneak", "difficulty": 12, "move_to": "side-alley"},
+          {"type": "do", "text": "*scouts ahead toward the docking bay signs*", "skill": "Search", "difficulty": 15, "move_to": "sign-docking-bays"},
+          {"type": "do", "text": "*checks the alley for ambushes before moving west*", "skill": "Search", "difficulty": 12, "move_to": "npc-dockworker"}
+        ],
+        "Zeph Ando": [
+          {"type": "say", "text": "That Gran is lying — I can feel it."},
+          {"type": "do", "text": "*senses the informant's hidden comlink through the Force*", "skill": "Sense", "difficulty": 20},
+          {"type": "do", "text": "*patches up Renn's blaster wound*", "skill": "First Aid", "difficulty": 10, "move_to": "side-alley"},
+          {"type": "do", "text": "*checks the tapcaf for medical supplies*", "move_to": "tapcaf-front"},
+          {"type": "do", "text": "*senses the safest path west through the streets*", "skill": "Sense", "difficulty": 15, "move_to": "road-west"},
+          {"type": "do", "text": "*asks the dockworker about Bay 87*", "skill": "Bargain", "difficulty": 10, "move_to": "npc-dockworker"},
+          {"type": "do", "text": "*uses the Force to scan for danger near the bay signs*", "skill": "Sense", "difficulty": 12, "move_to": "sign-docking-bays"}
+        ]
+      },
+      "climax_actions": {
+        "Kira Voss": [
+          {"type": "do", "text": "guns the speeder straight through the checkpoint barricade toward Bay 87", "skill": "Starship Piloting", "difficulty": 18, "move_to": "bay-87-entrance"},
+          {"type": "do", "text": "throws a smoke bomb and sprints for the Bay 87 blast door", "skill": "Dodge", "difficulty": 15, "move_to": "bay-87-entrance"}
+        ],
+        "Tok-3": [
+          {"type": "do", "text": "*broadcasts a fake Imperial all-clear — the checkpoint troopers stand down*", "skill": "Computer Prog", "difficulty": 20, "move_to": "checkpoint-bay"},
+          {"type": "do", "text": "*jams the checkpoint scanners and rolls for Bay 87*", "skill": "Security", "difficulty": 15, "move_to": "bay-87-entrance"}
+        ],
+        "Renn Darkhollow": [
+          {"type": "do", "text": "*lays covering fire at the checkpoint while the group runs for Bay 87*", "skill": "Blaster", "difficulty": 18, "move_to": "checkpoint-bay"},
+          {"type": "do", "text": "*tackles Greevak and sprints for the Bay 87 blast door*", "skill": "Brawling", "difficulty": 15, "move_to": "bay-87-entrance"}
+        ],
+        "Zeph Ando": [
+          {"type": "do", "text": "*senses the safest path and guides the group to Bay 87's entrance*", "skill": "Sense", "difficulty": 15, "move_to": "bay-87-entrance"},
+          {"type": "do", "text": "*uses the Force to topple a market stall into the troopers' path*", "skill": "Sense", "difficulty": 18, "move_to": "checkpoint-bay"}
+        ]
+      },
+      "npc_combat_reactions": {
+        "Speeder 2": {"reaction": "flee", "position": "road-west"},
+        "Civilian 1": {"reaction": "flee", "position": "dwelling-front"},
+        "Civilian 2": {"reaction": "cover", "position": "shop-front"}
+      },
+      "npc_ambient_routes": {
+        "Speeder 2": ["road-west", "road-center", "road-east", "road-center"],
+        "Civilian 1": ["road-center", "dwelling-front", "road-center", "road-west"],
+        "Civilian 2": ["tapcaf-front", "shop-front", "tapcaf-front", "road-center"]
+      },
+      "companion_keywords": {
+        "speeder": ["Speeder Driver", "Speeder 1"],
+        "hotwire": ["Speeder Driver", "Speeder 1"],
+        "driver": ["Speeder Driver", "Speeder 1"],
+        "speeder-2": ["Speeder 2"],
+        "smaller speeder": ["Speeder 2"],
+        "fast speeder": ["Speeder 2"]
+      }
+    },
+    "3": {
+      "name": "Docking Bay 87",
+      "map": "docking-bay-87.svg",
+      "map_name": "Docking Bay 87",
+      "terrain": "docking-bay-87.svg",
+      "time_of_day": "Sunset — orange light floods the docking bay as the suns touch the horizon",
+      "kick": "The party reaches Docking Bay 87. The Rusty Mynock sits in the center — it needs repairs before it can fly. Lt. Hask and Stormtroopers are closing in. If players explore the bay, describe cargo crates, catwalks, fuel barrels, and the maintenance pit using position details.",
+      "starting_positions": {
+        "Kira Voss": "ship-stern",
+        "Tok-3": "ship-ramp",
+        "Renn Darkhollow": "ship-starboard",
+        "Zeph Ando": "ship-port"
+      },
+      "npc_positions": {
+        "Lt. Hask": {"position": "blast-door", "color": "#f54e4e", "hidden": false},
+        "Stormtrooper 1": {"position": "blast-door-left", "color": "#f54e4e", "hidden": false},
+        "Stormtrooper 2": {"position": "blast-door-right", "color": "#f54e4e", "hidden": false},
+        "Stormtrooper 3": {"position": "bay-floor-center", "color": "#f54e4e", "hidden": false},
+        "Stormtrooper 4": {"position": "bay-floor-right", "color": "#f54e4e", "hidden": false},
+        "Dock Worker": {"position": "cargo-right", "color": "#888888", "hidden": false}
+      },
+      "exit_positions": ["ship-cockpit", "ship-turret"],
+      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_repair_or_turn": 8},
+      "bot_actions": {
+        "Kira Voss": [
+          {"type": "say", "text": "Get that ship flying — I'll hold them off!"},
+          {"type": "do", "text": "sprints for the cockpit to prep for launch", "skill": "Starship Piloting", "difficulty": 12, "move_to": "ship-cockpit"},
+          {"type": "do", "text": "fires from the ship ramp at advancing Stormtroopers", "skill": "Blaster", "difficulty": 15, "move_to": "ship-ramp"},
+          {"type": "do", "text": "ducks behind the ship hull for cover", "skill": "Dodge", "difficulty": 18, "move_to": "ship-port"}
+        ],
+        "Tok-3": [
+          {"type": "do", "text": "*frantically repairs the Rusty Mynock's engine*", "skill": "Starship Repair", "difficulty": 12, "move_to": "ship-ramp"},
+          {"type": "do", "text": "*plots the hyperspace jump coordinates*", "skill": "Astrogation", "difficulty": 15, "move_to": "ship-cockpit"},
+          {"type": "do", "text": "*reroutes power to the dorsal turret*", "skill": "Starship Repair", "difficulty": 12, "move_to": "ship-turret"},
+          {"type": "do", "text": "*welds a hull breach while under fire*", "move_to": "ship-port"}
+        ],
+        "Renn Darkhollow": [
+          {"type": "do", "text": "*fires from the ship turret at the blast door*", "skill": "Blaster", "difficulty": 15, "move_to": "ship-turret"},
+          {"type": "do", "text": "*lays suppressing fire from the boarding ramp*", "skill": "Blaster", "difficulty": 12, "move_to": "ship-ramp"},
+          {"type": "say", "text": "They're bringing in a walker! We need to move NOW!"},
+          {"type": "do", "text": "*takes a defensive position at the ship's starboard side*", "skill": "Blaster", "difficulty": 15, "move_to": "ship-starboard"}
+        ],
+        "Zeph Ando": [
+          {"type": "do", "text": "*ignites lightsaber to deflect incoming fire at the ramp*", "skill": "Lightsaber", "difficulty": 18, "move_to": "ship-ramp"},
+          {"type": "do", "text": "*uses the Force to sense the AT-ST pilot's next move*", "skill": "Sense", "difficulty": 15},
+          {"type": "do", "text": "*applies first aid to a wounded ally*", "skill": "First Aid", "difficulty": 10, "move_to": "ship-ramp"},
+          {"type": "say", "text": "The Force will guide us out of here. Trust me."}
+        ]
+      },
+      "climax_actions": {
+        "Kira Voss": [
+          {"type": "do", "text": "slides into the cockpit and punches the engines to full thrust", "skill": "Starship Piloting", "difficulty": 18, "move_to": "ship-cockpit"},
+          {"type": "do", "text": "fires the ship's forward guns at the AT-ST as it enters the bay", "skill": "Blaster", "difficulty": 20, "move_to": "ship-cockpit"}
+        ],
+        "Tok-3": [
+          {"type": "do", "text": "*slams the hyperspace lever — coordinates locked, stars streak!*", "skill": "Astrogation", "difficulty": 15, "move_to": "ship-cockpit"},
+          {"type": "do", "text": "*reroutes ALL power to engines — emergency liftoff NOW!*", "skill": "Starship Repair", "difficulty": 12, "move_to": "ship-cockpit"}
+        ],
+        "Renn Darkhollow": [
+          {"type": "do", "text": "*lays a final barrage from the turret and seals the hatch*", "skill": "Blaster", "difficulty": 15, "move_to": "ship-turret"},
+          {"type": "do", "text": "*sprints up the ramp and slams the boarding hatch shut*", "skill": "Dodge", "difficulty": 12, "move_to": "ship-ramp"}
+        ],
+        "Zeph Ando": [
+          {"type": "do", "text": "*ignites lightsaber and holds the ramp while the ship powers up*", "skill": "Lightsaber", "difficulty": 20, "move_to": "ship-ramp"},
+          {"type": "do", "text": "*uses the Force to slam the ramp shut behind the crew*", "skill": "Sense", "difficulty": 18, "move_to": "ship-ramp"}
+        ]
+      },
+      "npc_combat_reactions": {
+        "Lt. Hask": {"reaction": "engage", "position": "bay-floor-center"},
+        "Stormtrooper 1": {"reaction": "engage", "position": "bay-floor-left"},
+        "Stormtrooper 2": {"reaction": "engage", "position": "bay-floor-right"},
+        "Stormtrooper 3": {"reaction": "engage", "position": "bay-floor-center"},
+        "Stormtrooper 4": {"reaction": "engage", "position": "blast-door-right"},
+        "Dock Worker": {"reaction": "flee", "position": "side-entry"}
+      },
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    }
+  },
+
+  "closing_crawl": {
+    "title": "STAR WARS",
+    "subtitle": "Session Complete"
+  }
+}

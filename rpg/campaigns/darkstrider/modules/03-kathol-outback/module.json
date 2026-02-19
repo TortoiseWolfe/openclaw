@@ -1,0 +1,104 @@
+{
+  "name": "The Kathol Outback",
+  "slug": "kathol-outback",
+  "acts": 3,
+  "pregens": ["Kira Voss", "Tok-3", "Renn Darkhollow", "Zeph Ando"],
+  "healers": ["Zeph Ando"],
+  "vehicle_tokens": [],
+  "ship_positions": [
+    "bridge", "engine-room", "cargo-bay", "crew-quarters",
+    "med-bay", "brig", "docking-bay", "corridor"
+  ],
+
+  "char_stats": {
+    "Kira Voss": {
+      "Blaster": "5D", "Dodge": "4D+2", "Starship Piloting": "5D+1",
+      "Streetwise": "4D", "Con": "4D"
+    },
+    "Tok-3": {
+      "Astrogation": "5D", "Computer Prog": "5D+1", "Starship Repair": "5D",
+      "Security": "4D"
+    },
+    "Renn Darkhollow": {
+      "Blaster": "5D+1", "Brawling": "4D", "Search": "4D+1",
+      "Sneak": "4D", "Intimidation": "4D"
+    },
+    "Zeph Ando": {
+      "Lightsaber": "3D+1", "Sense": "2D", "Droid Repair": "5D",
+      "First Aid": "4D", "Bargain": "4D"
+    }
+  },
+
+  "npc_stats": {
+    "Stormtrooper": {"Blaster": "4D", "Brawling Parry": "4D"},
+    "Moff Sarne": {"Command": "6D", "Blaster": "4D+1", "Tactics": "5D+2"},
+    "Kaiya Adrimetrum": {"Command": "5D", "Blaster": "4D", "Tactics": "4D+2"},
+    "Pirate": {"Blaster": "3D+2", "Dodge": "3D"}
+  },
+
+  "char_move": {
+    "Kira Voss": 96,
+    "Tok-3": 77,
+    "Renn Darkhollow": 96,
+    "Zeph Ando": 96
+  },
+
+  "act_data": {
+    "1": {
+      "name": "Departure from Kal'Shebbol",
+      "map": "farstar-interior.svg",
+      "map_name": "FarStar Bridge",
+      "terrain": "farstar-interior.svg",
+      "time_of_day": "Ship time — artificial lighting, the hum of engines",
+      "kick": "The crew boards the FarStar at Kal'Shebbol spaceport. First Officer Adrimetrum runs a tight ship. The mission: pursue Moff Sarne into the Kathol Outback before he can consolidate his forces. But the crew is untested and the charts beyond this point are incomplete.",
+      "starting_positions": {},
+      "npc_positions": {},
+      "exit_positions": [],
+      "pacer": {"hard_cap": 20, "min_turns": 4},
+      "bot_actions": {},
+      "climax_actions": {},
+      "npc_combat_reactions": {},
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    },
+    "2": {
+      "name": "Kolatill — First Stop",
+      "map": "kolatill.svg",
+      "map_name": "Kolatill Settlement",
+      "terrain": "kolatill.svg",
+      "time_of_day": "Dusk on an alien world — two pale moons rising over rust-colored plains",
+      "kick": "The FarStar's first stop for fuel and supplies. The settlement is rough — miners, smugglers, and Imperial sympathizers. Pirates have been raiding supply convoys. The crew must resupply while watching their backs.",
+      "starting_positions": {},
+      "npc_positions": {},
+      "exit_positions": [],
+      "pacer": {"hard_cap": 20, "min_turns": 4},
+      "bot_actions": {},
+      "climax_actions": {},
+      "npc_combat_reactions": {},
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    },
+    "3": {
+      "name": "The Kathol Rift",
+      "map": "kathol-rift.svg",
+      "map_name": "Kathol Rift Anomaly",
+      "terrain": "kathol-rift.svg",
+      "time_of_day": "Perpetual twilight — the rift's energy distorts light and sensor readings",
+      "kick": "The FarStar enters the Kathol Rift — a region of space where reality itself seems to twist. Navigation is treacherous, sensors are unreliable, and strange energy signatures flicker on the edge of detection. Something ancient waits in the heart of the rift.",
+      "starting_positions": {},
+      "npc_positions": {},
+      "exit_positions": [],
+      "pacer": {"hard_cap": 20, "min_turns": 4},
+      "bot_actions": {},
+      "climax_actions": {},
+      "npc_combat_reactions": {},
+      "npc_ambient_routes": {},
+      "companion_keywords": {}
+    }
+  },
+
+  "closing_crawl": {
+    "title": "STAR WARS",
+    "subtitle": "Session Complete"
+  }
+}

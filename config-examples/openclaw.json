@@ -1,0 +1,158 @@
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://ollama:11434/v1",
+        "apiKey": "ollama-local",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3:14b",
+            "name": "Qwen 3 14B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192,
+            "compat": {
+              "supportsStore": false,
+              "supportsDeveloperRole": false,
+              "supportsReasoningEffort": false,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "llama3.1:8b",
+            "name": "Llama 3.1 8B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192,
+            "compat": {
+              "supportsStore": false,
+              "supportsDeveloperRole": false,
+              "supportsReasoningEffort": false,
+              "maxTokensField": "max_tokens"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/qwen3:14b",
+        "fallbacks": ["ollama/llama3.1:8b", "ollama/qwen2.5:14b"]
+      },
+      "heartbeat": {
+        "every": "30m",
+        "activeHours": { "start": "07:00", "end": "22:00" }
+      },
+      "bootstrapMaxChars": 5000,
+      "maxConcurrent": 4,
+      "subagents": { "maxConcurrent": 8 }
+    },
+    "list": [
+      {
+        "id": "main",
+        "workspace": "/home/node/clawd",
+        "identity": {
+          "name": "Moltbot",
+          "theme": "personal AI assistant for job search, business automation, and Twitch hosting"
+        },
+        "tools": {
+          "byProvider": {
+            "ollama": {
+              "allow": [
+                "group:fs", "group:web", "group:runtime",
+                "search_jobs", "get_job_details", "get_company_profile",
+                "get_recommended_jobs", "get_person_profile",
+                "findMessage", "listMessages",
+                "maps_search_places", "maps_directions",
+                "browser_navigate", "browser_snapshot", "browser_click", "browser_fill_form",
+                "get_transcript", "get_video_info"
+              ],
+              "deny": [
+                "group:automation", "group:sessions",
+                "gateway", "cron", "agents_list", "sessions_spawn"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "twitch-cohost",
+        "workspace": "/home/node/clawd-twitch",
+        "model": {
+          "primary": "ollama/qwen3:14b",
+          "fallbacks": ["ollama/llama3.1:8b", "ollama/qwen2.5:14b"]
+        },
+        "identity": {
+          "name": "MoltBot",
+          "theme": "AI coding co-host, teaching assistant, and Star Wars GM"
+        },
+        "tools": {
+          "byProvider": {
+            "ollama": {
+              "allow": [
+                "group:web", "group:messaging",
+                "browser_navigate", "browser_snapshot"
+              ],
+              "deny": [
+                "group:automation", "group:sessions",
+                "gateway", "cron", "agents_list", "sessions_spawn"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "bindings": [
+    { "agentId": "twitch-cohost", "match": { "channel": "twitch" } }
+  ],
+  "tools": {
+    "exec": {
+      "host": "gateway",
+      "security": "allowlist",
+      "ask": "off"
+    },
+    "mcp": {
+      "servers": {
+        "docker-mcp": {
+          "url": "http://mcp-gateway:8808/sse",
+          "headers": {
+            "Authorization": "Bearer <MCP_GATEWAY_AUTH_TOKEN from .env>"
+          }
+        }
+      }
+    }
+  },
+  "commands": { "native": "auto", "nativeSkills": "auto" },
+  "channels": {
+    "twitch": {
+      "enabled": true,
+      "username": "<bot-twitch-username>",
+      "channel": "<your-twitch-channel>",
+      "clientId": "<from twitchtokengenerator.com>",
+      "requireMention": false,
+      "allowedRoles": ["all"]
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "trustedNetworks": ["172.16.0.0/12"],
+    "auth": { "mode": "token" }
+  },
+  "messages": { "ackReactionScope": "group-mentions" },
+  "plugins": {
+    "entries": {
+      "twitch": { "enabled": true }
+    }
+  }
+}

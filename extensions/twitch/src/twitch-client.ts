@@ -1,6 +1,8 @@
 import { RefreshingAuthProvider, StaticAuthProvider } from "@twurple/auth";
 import { ChatClient, LogLevel } from "@twurple/chat";
 import type { OpenClawConfig } from "openclaw/plugin-sdk";
+import { updateDotEnvFile, resolveGlobalDotEnvPath } from "../../../src/infra/dotenv-write.js";
+import { DEFAULT_ACCOUNT_ID } from "./config.js";
 import { resolveTwitchToken } from "./token.js";
 import type { ChannelLogSink, TwitchAccountConfig, TwitchChatMessage } from "./types.js";
 import { normalizeToken } from "./utils/twitch.js";
@@ -20,6 +22,7 @@ export class TwitchClientManager {
   private async createAuthProvider(
     account: TwitchAccountConfig,
     normalizedToken: string,
+    accountId?: string,
   ): Promise<StaticAuthProvider | RefreshingAuthProvider> {
     if (!account.clientId) {
       throw new Error("Missing Twitch client ID");
@@ -37,7 +40,7 @@ export class TwitchClientManager {
           refreshToken: account.refreshToken ?? null,
           expiresIn: account.expiresIn ?? null,
           obtainmentTimestamp: account.obtainmentTimestamp ?? Date.now(),
-        })
+        }, ['chat'])
         .then((userId) => {
           this.logger.info(
             `Added user ${userId} to RefreshingAuthProvider for ${account.username}`,
@@ -49,10 +52,56 @@ export class TwitchClientManager {
           );
         });
 
-      authProvider.onRefresh((userId, token) => {
+      authProvider.onRefresh(async (userId, token) => {
         this.logger.info(
           `Access token refreshed for user ${userId} (expires in ${token.expiresIn ? `${token.expiresIn}s` : "unknown"})`,
         );
+
+        // Persist refreshed tokens to ~/.openclaw/.env so they survive restarts.
+        // The config file uses ${VAR} references — we update the .env source.
+        try {
+          const isDefault = !accountId || accountId === DEFAULT_ACCOUNT_ID;
+
+          if (!isDefault) {
+            this.logger.warn(
+              `Token refresh for non-default account "${accountId}" — env persistence not supported`,
+            );
+            return;
+          }
+
+          const envPath = resolveGlobalDotEnvPath();
+          const updates: Array<{ key: string; value: string }> = [
+            { key: "OPENCLAW_TWITCH_ACCESS_TOKEN", value: token.accessToken },
+          ];
+          if (token.refreshToken) {
+            updates.push({ key: "OPENCLAW_TWITCH_REFRESH_TOKEN", value: token.refreshToken });
+          }
+          if (token.expiresIn != null) {
+            updates.push({ key: "OPENCLAW_TWITCH_EXPIRES_IN", value: String(token.expiresIn) });
+          }
+          updates.push({
+            key: "OPENCLAW_TWITCH_OBTAINMENT_TIMESTAMP",
+            value: String(token.obtainmentTimestamp),
+          });
+
+          await updateDotEnvFile(envPath, updates);
+
+          // Update process.env for immediate use without restart
+          process.env.OPENCLAW_TWITCH_ACCESS_TOKEN = token.accessToken;
+          if (token.refreshToken) {
+            process.env.OPENCLAW_TWITCH_REFRESH_TOKEN = token.refreshToken;
+          }
+          if (token.expiresIn != null) {
+            process.env.OPENCLAW_TWITCH_EXPIRES_IN = String(token.expiresIn);
+          }
+          process.env.OPENCLAW_TWITCH_OBTAINMENT_TIMESTAMP = String(token.obtainmentTimestamp);
+
+          this.logger.info(`Persisted refreshed tokens to ${envPath} for user ${userId}`);
+        } catch (err) {
+          this.logger.error(
+            `Failed to persist refreshed tokens: ${err instanceof Error ? err.message : String(err)}`,
+          );
+        }
       });
 
       authProvider.onRefreshFailure((userId, error) => {
@@ -106,7 +155,7 @@ export class TwitchClientManager {
 
     const normalizedToken = normalizeToken(tokenResolution.token);
 
-    const authProvider = await this.createAuthProvider(account, normalizedToken);
+    const authProvider = await this.createAuthProvider(account, normalizedToken, accountId);
 
     const client = new ChatClient({
       authProvider,

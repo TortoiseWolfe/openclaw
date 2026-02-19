@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <pattern id="concrete" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#3a3a3a"/>
+      <rect x="0" y="0" width="10" height="10" fill="#353535" opacity="0.4"/>
+      <rect x="10" y="10" width="10" height="10" fill="#353535" opacity="0.4"/>
+    </pattern>
+    <pattern id="metal-wall" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#4a4a4a"/>
+      <line x1="0" y1="4" x2="8" y2="4" stroke="#3a3a3a" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Floor -->
+  <rect width="1200" height="900" fill="url(#concrete)"/>
+
+  <!-- Outer walls -->
+  <rect x="40" y="40" width="1120" height="820" fill="none" stroke="#5a5a5a" stroke-width="14" rx="4"/>
+
+  <!-- Title -->
+  <text x="600" y="28" text-anchor="middle" font-family="Arial" font-size="18" fill="#ffd700" font-weight="bold">WAREHOUSE — Imperial Supply Cache</text>
+
+  <!-- Loading dock entrance (south wall) -->
+  <rect x="400" y="844" width="400" height="20" fill="#3a3a3a"/>
+  <line x1="500" y1="844" x2="500" y2="864" stroke="#4a4a4a" stroke-width="2"/>
+  <line x1="600" y1="844" x2="600" y2="864" stroke="#4a4a4a" stroke-width="2"/>
+  <line x1="700" y1="844" x2="700" y2="864" stroke="#4a4a4a" stroke-width="2"/>
+  <text x="600" y="892" text-anchor="middle" font-family="Arial" font-size="14" fill="#888">LOADING DOCK</text>
+
+  <!-- Cargo crate clusters -->
+  <!-- Left cluster -->
+  <g transform="translate(80, 100)">
+    <rect x="0" y="0" width="80" height="60" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="90" y="10" width="70" height="50" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="0" y="70" width="100" height="70" fill="#5b6530" stroke="#4a5420" stroke-width="2" rx="3"/>
+    <rect x="110" y="70" width="60" height="60" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="30" y="150" width="90" height="60" fill="#555b30" stroke="#4a4a20" stroke-width="2" rx="3"/>
+    <rect x="130" y="140" width="50" height="70" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <text x="90" y="240" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">CARGO A</text>
+  </g>
+
+  <!-- Right cluster -->
+  <g transform="translate(800, 100)">
+    <rect x="0" y="0" width="90" height="70" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="100" y="5" width="60" height="55" fill="#5b6530" stroke="#4a5420" stroke-width="2" rx="3"/>
+    <rect x="170" y="0" width="80" height="65" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <rect x="20" y="80" width="110" height="70" fill="#555b30" stroke="#4a4a20" stroke-width="2" rx="3"/>
+    <rect x="140" y="75" width="80" height="65" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <text x="130" y="180" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">CARGO B</text>
+  </g>
+
+  <!-- Imperial supply crates (center, marked red) -->
+  <g transform="translate(400, 250)">
+    <rect x="0" y="0" width="100" height="70" fill="#5a3030" stroke="#883333" stroke-width="2" rx="3"/>
+    <rect x="110" y="5" width="80" height="60" fill="#5a3030" stroke="#883333" stroke-width="2" rx="3"/>
+    <rect x="200" y="0" width="90" height="65" fill="#5a3030" stroke="#883333" stroke-width="2" rx="3"/>
+    <rect x="30" y="80" width="120" height="70" fill="#5a3030" stroke="#883333" stroke-width="2" rx="3"/>
+    <rect x="160" y="75" width="100" height="65" fill="#5a3030" stroke="#883333" stroke-width="2" rx="3"/>
+    <text x="150" y="180" text-anchor="middle" font-family="Arial" font-size="14" fill="#ff6b6b" font-weight="bold">IMPERIAL SUPPLIES</text>
+  </g>
+
+  <!-- Catwalks (upper level, dashed outline) -->
+  <rect x="60" y="60" width="500" height="30" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="6,4" rx="2"/>
+  <text x="310" y="82" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">CATWALK — UPPER (Climbing 12)</text>
+  <rect x="640" y="60" width="500" height="30" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="6,4" rx="2"/>
+  <text x="890" y="82" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">CATWALK — UPPER (Climbing 12)</text>
+
+  <!-- Office/desk area (bottom-right) -->
+  <rect x="850" y="600" width="260" height="200" rx="4" fill="#2a2a2a" stroke="#4a4a4a" stroke-width="3"/>
+  <rect x="870" y="620" width="100" height="60" rx="2" fill="#3a3a4a"/>
+  <rect x="990" y="620" width="100" height="60" rx="2" fill="#3a3a4a"/>
+  <rect x="900" y="700" width="180" height="80" rx="2" fill="#3a3a4a"/>
+  <text x="980" y="670" text-anchor="middle" font-family="Arial" font-size="14" fill="#888" font-weight="bold">OFFICE</text>
+  <text x="980" y="770" text-anchor="middle" font-family="Arial" font-size="11" fill="#cc9944" opacity="0.7">stolen manifest</text>
+
+  <!-- Open floor area (center) for movement -->
+  <rect x="350" y="500" width="400" height="250" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="10,6" rx="4" opacity="0.3"/>
+  <text x="550" y="640" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">OPEN FLOOR</text>
+
+  <!-- Barrel stack (left side) -->
+  <g transform="translate(80, 550)">
+    <ellipse cx="0" cy="0" rx="20" ry="20" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="50" cy="5" rx="20" ry="20" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="25" cy="45" rx="20" ry="20" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="75" cy="40" rx="20" ry="20" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <text x="35" y="85" text-anchor="middle" font-family="Arial" font-size="11" fill="#ff6b6b">BARRELS</text>
+  </g>
+
+  <!-- Grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+</svg>
