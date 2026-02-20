@@ -22,6 +22,9 @@ import sys
 import time
 from datetime import datetime
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from trading_common import ET
+
 import obs_client
 from path_utils import RENDERS_DIR, to_windows_path
 from show_flow import _fuzzy_find_episode_dir
@@ -63,7 +66,7 @@ def parse_schedule() -> list[dict]:
 def find_series_episodes() -> list[str]:
     """Find all episode slugs in today's scheduled series, in order."""
     rows = parse_schedule()
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(ET).strftime("%Y-%m-%d")
     print(f"[diag] Series lookup date: {today}")
 
     # Find today's series
@@ -181,7 +184,7 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
 def find_scheduled_episode() -> str:
     """Find today's first scheduled episode from schedule.md."""
     rows = parse_schedule()
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(ET).strftime("%Y-%m-%d")
     print(f"[diag] Schedule lookup date: {today}")
     for row in rows:
         if row["date"] == today:
@@ -291,7 +294,7 @@ def _update_twitch_metadata(args: argparse.Namespace) -> None:
     # Auto-derive title from schedule when --from-schedule and no explicit --twitch-title
     if not title and getattr(args, "from_schedule", False):
         rows = parse_schedule()
-        today = datetime.now().strftime("%Y-%m-%d")
+        today = datetime.now(ET).strftime("%Y-%m-%d")
         for row in rows:
             if row["date"] == today:
                 title = row["topic"]

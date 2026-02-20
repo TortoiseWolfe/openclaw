@@ -1150,6 +1150,12 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
 
     if narration and narration != "(no narration)":
         logger.info(f"  GM: {narration[:100]}...")
+        # Send narration to Twitch chat (best-effort — don't break game on failure)
+        try:
+            import twitch_client
+            twitch_client.send_chat_message(f"[GM] {narration}")
+        except Exception as e:
+            logger.warning(f"  Twitch chat send failed: {e}")
     else:
         logger.info(f"  (no text response)")
 

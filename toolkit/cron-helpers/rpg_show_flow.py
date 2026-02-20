@@ -196,11 +196,17 @@ def setup_scenes() -> None:
 
 # ── Session monitoring ────────────────────────────────────────────
 
-def wait_for_session_end(timeout: int = SESSION_TIMEOUT) -> None:
+def wait_for_session_end(
+    timeout: int = SESSION_TIMEOUT,
+    session_proc: subprocess.Popen | None = None,
+) -> None:
     """Poll game-state.json until session status is 'ended' or timeout.
 
     The GM agent calls `rpg_state.py end-session` when the game is done,
     which sets session.status to 'ended'. We poll every 30s.
+
+    If session_proc is provided, also monitor the subprocess — if it exits
+    (completes or crashes), treat that as session end.
     """
     print(f"\nWaiting for session to end (timeout: {timeout // 60} min) ...")
     poll_interval = 30
@@ -209,6 +215,15 @@ def wait_for_session_end(timeout: int = SESSION_TIMEOUT) -> None:
     while elapsed < timeout:
         time.sleep(poll_interval)
         elapsed += poll_interval
+
+        # Check if session runner subprocess exited
+        if session_proc is not None and session_proc.poll() is not None:
+            rc = session_proc.returncode
+            print(f"  Session runner exited (rc={rc}) after {elapsed // 60}m {elapsed % 60}s")
+            if rc != 0:
+                print(f"  WARNING: Session runner exited with error code {rc}",
+                      file=sys.stderr)
+            return
 
         try:
             with open(STATE_FILE) as f:
@@ -270,7 +285,11 @@ def wait_for_session_end(timeout: int = SESSION_TIMEOUT) -> None:
 
 # ── Main flow ─────────────────────────────────────────────────────
 
-def run_game_night(stream: bool = True) -> None:
+def run_game_night(
+    stream: bool = True,
+    with_session: bool = False,
+    adventure: str = "escape-from-mos-eisley",
+) -> None:
     """Full game night orchestration."""
     print("=" * 60)
     print("RPG GAME NIGHT")
@@ -311,6 +330,7 @@ def run_game_night(stream: bool = True) -> None:
     else:
         print("\n(--no-stream: skipping)")
 
+    session_proc = None
     try:
         # 4. Opening crawl
         print(f"\n>> Opening Crawl ({CRAWL_DURATION}s)")
@@ -321,10 +341,19 @@ def run_game_night(stream: bool = True) -> None:
         obs_client.switch_scene(SCENE_CRAWL)
         time.sleep(CRAWL_DURATION)
 
-        # 5. Game scene — agent takes over
+        # 5. Game scene — launch session runner if requested
         print("\n>> Game Session")
         obs_client.switch_scene(SCENE_GAME)
-        wait_for_session_end()
+        if with_session:
+            cmd = [
+                "python3", "/app/toolkit/cron-helpers/rpg_session_runner.py",
+                "--dry-run", "--adventure", adventure,
+            ]
+            print(f"  Launching session runner: {' '.join(cmd)}")
+            session_proc = subprocess.Popen(cmd)
+            print(f"  Session runner PID: {session_proc.pid}")
+
+        wait_for_session_end(session_proc=session_proc)
 
         # 5.5. Closing crawl (if session runner wrote one)
         closing_url = closing_crawl_url_from_state()
@@ -345,7 +374,19 @@ def run_game_night(stream: bool = True) -> None:
     except Exception as e:
         print(f"\nERROR during game night: {e}", file=sys.stderr)
     finally:
-        # 7. Stop streaming
+        # 7a. Clean up session runner subprocess
+        if session_proc is not None and session_proc.poll() is None:
+            print("Terminating session runner ...")
+            session_proc.terminate()
+            try:
+                session_proc.wait(timeout=10)
+                print(f"  Session runner exited (rc={session_proc.returncode})")
+            except subprocess.TimeoutExpired:
+                print("  Session runner did not exit — killing", file=sys.stderr)
+                session_proc.kill()
+                session_proc.wait(timeout=5)
+
+        # 7b. Stop streaming
         if stream and not already_live:
             print("\nStopping stream ...")
             try:
@@ -378,6 +419,14 @@ def main() -> None:
         "--crawl-only", action="store_true",
         help="Play the opening crawl and exit",
     )
+    parser.add_argument(
+        "--with-session", action="store_true",
+        help="Launch rpg_session_runner.py during the game phase",
+    )
+    parser.add_argument(
+        "--adventure", default="escape-from-mos-eisley",
+        help="Adventure module name (default: escape-from-mos-eisley)",
+    )
     args = parser.parse_args()
 
     if args.setup_only:
@@ -403,7 +452,11 @@ def main() -> None:
         print("Crawl complete")
         return
 
-    run_game_night(stream=not args.no_stream)
+    run_game_night(
+        stream=not args.no_stream,
+        with_session=args.with_session,
+        adventure=args.adventure,
+    )
 
 
 if __name__ == "__main__":
