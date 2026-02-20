@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Supplementary Alpha Vantage data pull — budget-aware rotating schedule.
+"""Supplementary Alpha Vantage data pull — maximises 25 daily calls.
 
 Runs at 8:35 AM ET (after main data pull, before news sentiment).
-Spends up to 9 remaining AV API calls per day on a rotating basis:
+market_data_pull uses Yahoo Finance (0 AV calls), sentiment uses 3,
+leaving 22 calls/day for this script.
 
-  Mon: 5 earnings + 4 company overviews  (set A)
-  Tue: 5 earnings + 4 company overviews  (set B)
-  Wed: 7 intraday forex (4h) + 2 earnings refresh
-  Thu: 5 earnings + 4 company overviews  (set A refresh)
-  Fri: 7 intraday forex (4h) + 2 earnings refresh
+Daily plan (every weekday):
+  7 FX_INTRADAY   — all 7 forex pairs (fresh intraday data)
+  10 EARNINGS     — half the stocks (set A on odd days, set B on even)
+  5 OVERVIEW      — rotating slice of 20 stocks (full cycle every 4 days)
 
 Earnings data feeds into trade decision (skip stocks near earnings).
 Company overviews provide fundamentals for future analysis.
@@ -23,15 +23,15 @@ import json
 import os
 import sys
 import time
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from trading_common import (
     load_watchlist, av_fetch, av_extract_error, is_av_rate_limited,
-    atomic_json_write, AV_API_KEY, AV_CALLS_PER_MINUTE, DATA_DIR,
+    atomic_json_write, AV_API_KEY, AV_CALLS_PER_MINUTE, DATA_DIR, ET,
 )
 
-DAILY_BUDGET = 9  # calls reserved for this script
+DAILY_BUDGET = 22  # 25 total AV limit - 3 sentiment = 22 for supplement
 SUPPLEMENT_DIR = os.path.join(DATA_DIR, "supplement")
 
 
@@ -158,57 +158,44 @@ def fetch_forex_intraday(from_sym, to_sym, interval="60min"):
 # ── Rotation schedule ───────────────────────────────────────────────
 
 def build_rotation(watchlist, weekday):
-    """Build the day's fetch plan based on weekday (0=Mon .. 4=Fri).
+    """Build the day's fetch plan — same structure every weekday.
 
     Returns list of (fetch_type, args_dict) tuples.
     Each fetch_type is 'earnings', 'overview', or 'forex_intraday'.
+
+    Daily: 7 forex intraday + 10 earnings (alternating halves) +
+           5 overviews (rotating slice). Total = 22 calls.
     """
     stocks = [a["symbol"] for a in watchlist.get("stocks", [])]
     forex = watchlist.get("forex", [])
 
-    # Split stocks into two halves for Mon/Tue rotation
     mid = len(stocks) // 2
     set_a = stocks[:mid]       # first 10
     set_b = stocks[mid:]       # last 10
 
     plan = []
 
-    if weekday == 0:  # Monday
-        for s in set_a[:5]:
-            plan.append(("earnings", {"symbol": s}))
-        for s in set_a[5:9]:
-            plan.append(("overview", {"symbol": s}))
+    # 1) All forex pairs get intraday data every day (7 calls)
+    for pair in forex:
+        plan.append(("forex_intraday", {
+            "from": pair["from"], "to": pair["to"],
+            "symbol": pair["symbol"],
+        }))
 
-    elif weekday == 1:  # Tuesday
-        for s in set_b[:5]:
-            plan.append(("earnings", {"symbol": s}))
-        for s in set_b[5:9]:
-            plan.append(("overview", {"symbol": s}))
+    # 2) Earnings: alternate halves (10 calls)
+    #    Odd weekdays (Mon=0, Wed=2, Fri=4) → set A
+    #    Even weekdays (Tue=1, Thu=3)       → set B
+    earnings_set = set_a if weekday % 2 == 0 else set_b
+    for s in earnings_set:
+        plan.append(("earnings", {"symbol": s}))
 
-    elif weekday == 2:  # Wednesday
-        for pair in forex:
-            plan.append(("forex_intraday", {
-                "from": pair["from"], "to": pair["to"],
-                "symbol": pair["symbol"],
-            }))
-        # Fill remaining budget with earnings refresh
-        for s in stocks[:2]:
-            plan.append(("earnings", {"symbol": s}))
-
-    elif weekday == 3:  # Thursday
-        for s in set_b[:5]:
-            plan.append(("earnings", {"symbol": s}))
-        for s in set_b[5:9]:
-            plan.append(("overview", {"symbol": s}))
-
-    elif weekday == 4:  # Friday
-        for pair in forex:
-            plan.append(("forex_intraday", {
-                "from": pair["from"], "to": pair["to"],
-                "symbol": pair["symbol"],
-            }))
-        for s in stocks[-2:]:
-            plan.append(("earnings", {"symbol": s}))
+    # 3) Overviews: rotate 5 stocks/day through all 20 (5 calls)
+    #    weekday 0 → stocks[0:5], weekday 1 → stocks[5:10], etc.
+    #    Full cycle every 4 weekdays.
+    overview_start = (weekday % 4) * 5
+    overview_slice = stocks[overview_start:overview_start + 5]
+    for s in overview_slice:
+        plan.append(("overview", {"symbol": s}))
 
     return plan[:DAILY_BUDGET]
 
@@ -270,7 +257,7 @@ def days_until_earnings(symbol, today=None):
         return None
     try:
         if today is None:
-            today = date.today()
+            today = datetime.now(ET).date()
         earnings_date = date.fromisoformat(data["next_earnings_date"])
         return (earnings_date - today).days
     except (ValueError, TypeError):
@@ -283,7 +270,7 @@ DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 def main():
     dry_run = "--dry-run" in sys.argv
-    today = date.today()
+    today = datetime.now(ET).date()
     weekday = today.weekday()
 
     if weekday > 4:

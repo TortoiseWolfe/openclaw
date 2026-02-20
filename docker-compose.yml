@@ -94,6 +94,7 @@ services:
       - ${TRANSCRIPTS_REPO}:/home/node/repos/TranScripts:ro
       - ${TRADING_DATA_DIR}:/home/node/repos/Trading
       - ./toolkit:/app/toolkit:ro
+      - ${OPENCLAW_CONFIG_DIR}/logs:/tmp/openclaw
     ports:
       - "127.0.0.1:${OPENCLAW_GATEWAY_PORT:-18789}:18789"
       - "127.0.0.1:${OPENCLAW_BRIDGE_PORT:-18790}:18790"
