@@ -97,13 +97,44 @@ export class TwitchClientManager {
       });
 
       authProvider.onRefreshFailure((userId, error) => {
-        this.logger.error(`Failed to refresh access token for user ${userId}: ${error.message}`);
+        this.logger.error(
+          `TWITCH TOKEN DEAD — refresh failed for user ${userId}: ${error.message}. ` +
+            `Generate new tokens: https://twitchtokengenerator.com — then update ` +
+            `OPENCLAW_TWITCH_ACCESS_TOKEN and OPENCLAW_TWITCH_REFRESH_TOKEN in ` +
+            `~/.openclaw/.env and restart: docker compose up -d --force-recreate openclaw-gateway`,
+        );
       });
 
       const refreshStatus = account.refreshToken
         ? "automatic token refresh enabled"
         : "token refresh disabled (no refresh token)";
       this.logger.info(`Using RefreshingAuthProvider for ${account.username} (${refreshStatus})`);
+
+      // Proactively validate token at startup: if the access token is expired,
+      // attempt a refresh immediately so we fail fast with a clear error instead
+      // of letting the ChatClient retry forever with a dead token.
+      const isExpired =
+        account.expiresIn != null &&
+        account.obtainmentTimestamp != null &&
+        Date.now() > account.obtainmentTimestamp + account.expiresIn * 1000;
+
+      if (isExpired) {
+        this.logger.info(
+          `Access token for ${account.username} is expired — attempting proactive refresh…`,
+        );
+        try {
+          await authProvider.refreshAccessTokenForUser(userId);
+          this.logger.info(`Proactive token refresh succeeded for ${account.username}`);
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err);
+          throw new Error(
+            `Twitch refresh token is invalid for ${account.username}: ${msg}. ` +
+              `Generate new tokens: https://twitchtokengenerator.com — then update ` +
+              `OPENCLAW_TWITCH_ACCESS_TOKEN and OPENCLAW_TWITCH_REFRESH_TOKEN in ` +
+              `~/.openclaw/.env and restart: docker compose up -d --force-recreate openclaw-gateway`,
+          );
+        }
+      }
 
       return authProvider;
     }

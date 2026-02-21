@@ -3,7 +3,7 @@ FROM node:22-bookworm-slim@sha256:5373f1906319b3a1f291da5d102f4ce5c77ccbe29eb637
 
 # Install curl (not included in slim) and Bun (required for build scripts)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl ca-certificates unzip python3 python3-pip \
+    curl ca-certificates unzip python3 python3-pip python3-venv \
     # PDF map extraction (pdfimages, pdfinfo)
     poppler-utils \
     # Remotion: FFmpeg for video encoding, Chrome Headless Shell deps
