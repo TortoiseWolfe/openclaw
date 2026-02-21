@@ -35,7 +35,8 @@ from market_backtest_stats import (
 
 # ── Paths ─────────────────────────────────────────────────────────────
 
-VALIDATION_DIR = "/home/node/repos/Trading/private/validation"
+from trading_common import PRIVATE_DIR
+VALIDATION_DIR = os.path.join(PRIVATE_DIR, "validation")
 
 # ── Pass/Fail Thresholds ─────────────────────────────────────────────
 
@@ -489,6 +490,11 @@ def main():
 
     # ── Run main backtest ────────────────────────────────────────
     print(f"\nRunning backtest ({args['start']} to {args['end']})...")
+    # Signal filter rules that pass through to analyze()
+    _core_keys = {"max_risk", "rr_ratio", "max_drawdown", "max_positions",
+                  "spread", "slippage", "sentiment", "correlation"}
+    signal_rules = {k: v for k, v in rules.items() if k not in _core_keys}
+
     cfg = BacktestConfig(
         start_date=args["start"],
         end_date=args["end"],
@@ -497,6 +503,7 @@ def main():
         edu_sections=edu_sections,
         symbols=symbols,
     )
+    cfg.extra_rules = signal_rules
     result = run_backtest(cfg, candle_data)
     print(f"  {len(result.trades)} trades, final balance: ${result.final_balance:.2f}")
 

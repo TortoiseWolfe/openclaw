@@ -19,7 +19,7 @@ from datetime import date, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import market_trade_decision as mtd
-from trading_common import check_correlation_guard
+from trading_common import check_correlation_guard, CONFIG_DIR, DATA_DIR, HISTORICAL_DIR
 from trading_handlers import HANDLERS
 from trading_signals import LOOKBACK, analyze
 
@@ -73,6 +73,7 @@ class BacktestConfig:
         self.slippage = slippage or {}  # {"forex": 0.00005, "stocks": 0.01, "crypto_pct": 0.0005}
         self.correlation_enabled = False  # Default off — preserves existing backtest behavior
         self.correlation_rules = None     # Set to {"forex_max_same_currency": 1, ...} to enable
+        self.extra_rules = {}  # Additional rules passed through to analyze() (e.g., signal filters)
 
 
 # ── Result ────────────────────────────────────────────────────────────
@@ -119,6 +120,7 @@ def run_backtest(config, candle_data):
 def _run_backtest_inner(config, candle_data):
     result = BacktestResult()
     balance = config.initial_balance
+    peak_balance = config.initial_balance
     open_positions = []
     next_id = 1
 
@@ -131,6 +133,7 @@ def _run_backtest_inner(config, candle_data):
         },
         "spread": config.spread,
         "slippage": config.slippage,
+        **config.extra_rules,  # signal filters, ATR/ADX configs, etc.
     }
     if config.correlation_enabled and config.correlation_rules:
         rules["correlation"] = {
@@ -251,7 +254,32 @@ def _run_backtest_inner(config, candle_data):
                     still_open.append(pos)
             open_positions = still_open
 
+        # Update peak balance (high-water mark)
+        if balance > peak_balance:
+            peak_balance = balance
+
+        # Drawdown circuit breaker: halt new entries if DD exceeds limit
+        max_dd_limit = rules.get("max_drawdown", 1.0)
+        current_dd = (peak_balance - balance) / peak_balance if peak_balance > 0 else 0
+        halt_new_entries = current_dd > max_dd_limit
+
         # ── Generate signals and open new trades ─────────────────
+        # Equity curve filter: reduce max positions during losing streaks
+        effective_max_global = config.max_positions_global
+        ecf = rules.get("equity_curve_filter", {})
+        if ecf.get("enabled", False):
+            lb = ecf.get("lookback_trades", 10)
+            recent = result.trades[-lb:] if len(result.trades) >= lb else []
+            if len(recent) >= lb:
+                recent_pnl = sum(t.get("pnl_dollars", 0) for t in recent)
+                if recent_pnl < 0:
+                    effective_max_global = min(
+                        effective_max_global,
+                        ecf.get("reduced_max_positions", 3))
+
+        if halt_new_entries:
+            effective_max_global = 0
+
         for asset_class, symbol, sym_config in symbols:
             key = (asset_class, symbol)
             candles = candle_data.get(key, [])
@@ -265,7 +293,7 @@ def _run_backtest_inner(config, candle_data):
                 continue
 
             # Position limits
-            if len(open_positions) >= config.max_positions_global:
+            if len(open_positions) >= effective_max_global:
                 break
             class_count = sum(
                 1 for p in open_positions if p["asset_class"] == asset_class)
@@ -323,6 +351,16 @@ def _run_backtest_inner(config, candle_data):
                 entry, symbol, sym_config)
             if size <= 0:
                 continue
+
+            # Regime-based sizing: scale position by market regime
+            regime_sizing = rules.get("regime_sizing", {})
+            if regime_sizing.get("enabled", False):
+                regime = analysis.get("regime", "unknown")
+                regime_mult = regime_sizing.get("multipliers", {}).get(regime, 1.0)
+                if regime_mult <= 0:
+                    continue  # regime blocks entry
+                if regime_mult != 1.0:
+                    size = max(1, round(size * regime_mult))
 
             # Compute risk amount for R-multiple tracking
             risk_amount = abs(stop_dist) * size
@@ -423,9 +461,6 @@ def _close_trade(pos, exit_price, pnl, close_date, close_reason, result):
 
 # ── Candle Loading ────────────────────────────────────────────────────
 
-HISTORICAL_DIR = "/home/node/repos/Trading/data/historical"
-DATA_DIR = "/home/node/repos/Trading/data"
-
 
 def load_historical_candles(symbols, prefer_historical=True):
     """Load candle data for backtesting.
@@ -473,7 +508,7 @@ def _load_candle_file(path):
 def load_watchlist_symbols(watchlist_path=None):
     """Load symbols from watchlist.json for backtesting."""
     if watchlist_path is None:
-        watchlist_path = "/home/node/repos/Trading/config/watchlist.json"
+        watchlist_path = os.path.join(CONFIG_DIR, "watchlist.json")
     with open(watchlist_path) as f:
         wl = json.load(f)
 

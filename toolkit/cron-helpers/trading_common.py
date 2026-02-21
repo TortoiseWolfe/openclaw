@@ -14,12 +14,18 @@ import sys
 import time
 import urllib.error
 import urllib.request
-from datetime import date as _date_type
+from datetime import date as _date_type, datetime, timedelta, timezone
 from urllib.parse import urlencode
+
+try:
+    from zoneinfo import ZoneInfo
+    ET = ZoneInfo("America/New_York")
+except ImportError:
+    ET = timezone(timedelta(hours=-5))
 
 # ── Path constants (inside Docker container) ────────────────────────
 
-BASE_DIR = "/home/node/repos/Trading"
+BASE_DIR = os.environ.get("TRADING_BASE_DIR", "/home/node/repos/Trading")
 CONFIG_DIR = os.path.join(BASE_DIR, "config")
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PRIVATE_DIR = os.path.join(BASE_DIR, "private")
@@ -365,7 +371,7 @@ def load_sentiment_for_trading(today_str=None):
     Returns empty dict on missing data or errors.
     """
     if today_str is None:
-        today_str = _date_type.today().isoformat()
+        today_str = datetime.now(ET).strftime("%Y-%m-%d")
 
     path = os.path.join(NEWS_DIR, f"sentiment-{today_str}.json")
     try:

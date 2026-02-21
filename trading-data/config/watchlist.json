@@ -39,9 +39,27 @@
     {"symbol": "AVAX", "market": "USD"}
   ],
   "rules": {
-    "max_risk": 0.03,
-    "rr_ratio": 3.0,
+    "max_risk": 0.015,
+    "rr_ratio": 2.0,
     "max_drawdown": 0.50,
+    "min_trend_count": 4,
+    "ranging_entries": false,
+    "sma_confirmation": true,
+    "atr_filter": {
+      "enabled": true,
+      "period": 14,
+      "min_atr_pct": 0.005
+    },
+    "adx_filter": {
+      "enabled": true,
+      "period": 14,
+      "min_adx": 25
+    },
+    "atr_stops": {
+      "enabled": true,
+      "period": 14,
+      "multiplier": 1.5
+    },
     "max_positions": {
       "forex": 2,
       "stocks": 3,
@@ -69,6 +87,25 @@
       "enabled": true,
       "forex_max_same_currency": 1,
       "stock_max_same_group": 1
+    },
+    "regime_filter": {
+      "enabled": false,
+      "skip_regimes": []
+    },
+    "regime_sizing": {
+      "enabled": true,
+      "multipliers": {
+        "bull_low_vol": 1.0,
+        "bull_high_vol": 0.75,
+        "bear_low_vol": 0.75,
+        "bear_high_vol": 0.5,
+        "ranging": 0.5
+      }
+    },
+    "equity_curve_filter": {
+      "enabled": true,
+      "lookback_trades": 10,
+      "reduced_max_positions": 3
     }
   }
 }

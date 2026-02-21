@@ -21,14 +21,14 @@ Decomposed modules:
 import json
 import os
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from trading_common import (
     load_watchlist, load_candles, classify_signal,
     load_sentiment_for_trading, check_correlation_guard,
     atomic_json_write,
-    CONFIG_DIR, STATE_FILE, PAPER_MD,
+    CONFIG_DIR, STATE_FILE, PAPER_MD, ET,
 )
 from trading_handlers import HANDLERS
 from trading_signals import (
@@ -192,7 +192,7 @@ def _get_slippage(rules, asset_class, price):
 
 
 def open_trade(state, asset_class, symbol, signal, watchlist, today,
-               lessons=None, sentiment_multiplier=1.0):
+               lessons=None, sentiment_multiplier=1.0, regime=None):
     """Open a new paper trade."""
     handler = HANDLERS[asset_class]
     config = _asset_config(asset_class, symbol)
@@ -231,6 +231,15 @@ def open_trade(state, asset_class, symbol, signal, watchlist, today,
     if sentiment_multiplier < 1.0 and size > 0:
         size = max(1, round(size * sentiment_multiplier))
 
+    # Regime-based sizing: scale down in adverse regimes
+    regime_sizing = rules.get("regime_sizing", {})
+    if regime_sizing.get("enabled", False) and regime and size > 0:
+        regime_mult = regime_sizing.get("multipliers", {}).get(regime, 1.0)
+        if regime_mult <= 0:
+            return None  # regime blocks entry entirely
+        if regime_mult != 1.0:
+            size = max(1, round(size * regime_mult))
+
     trade = {
         "id": f"T{state['next_id']:03d}",
         "date_opened": today,
@@ -264,7 +273,7 @@ def _asset_config(asset_class, symbol):
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
-    today_date = date.today()
+    today_date = datetime.now(ET).date()
     today = today_date.isoformat()
 
     state = load_state()
@@ -307,7 +316,7 @@ def main():
             symbol = asset["symbol"]
             try:
                 candles = load_candles(asset_class, symbol,
-                                       warn_stale_days=5, max_stale_days=3,
+                                       warn_stale_days=2, max_stale_days=3,
                                        today=today_date)
                 if len(candles) < LOOKBACK:
                     print(f"{asset_class:6s} {symbol:6s}: SKIP (only {len(candles)} candles)", file=sys.stderr)
@@ -360,6 +369,19 @@ def main():
         global_max = rules["max_positions"]["global"]
         class_limits = rules["max_positions"]
 
+        # Equity curve filter: scale back when losing
+        ecf = rules.get("equity_curve_filter", {})
+        if ecf.get("enabled", False):
+            lb = ecf.get("lookback_trades", 10)
+            recent_closed = state.get("closed", [])[-lb:]
+            if len(recent_closed) >= lb:
+                recent_pnl = sum(t.get("pnl_dollars", 0) for t in recent_closed)
+                if recent_pnl < 0:
+                    reduced = ecf.get("reduced_max_positions", 3)
+                    global_max = min(global_max, reduced)
+                    print(f"EQUITY CURVE: last {lb} trades net ${recent_pnl:.2f} "
+                          f"— reducing max positions to {global_max}")
+
         for a in analyses:
             if len(state["open"]) >= global_max:
                 break
@@ -410,7 +432,8 @@ def main():
 
             trade = open_trade(state, ac, sym, a["signal"], watchlist, today,
                                lessons=lessons,
-                               sentiment_multiplier=sent_mult)
+                               sentiment_multiplier=sent_mult,
+                               regime=a.get("regime"))
             if trade:
                 trade["sentiment_multiplier"] = sent_mult
                 trade["sentiment_reason"] = sent_reason

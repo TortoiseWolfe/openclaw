@@ -12,6 +12,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import statistics
+
 from trading_common import CURRICULUM, LESSONS_FILE
 from trading_handlers import HANDLERS
 
@@ -156,6 +158,91 @@ def compute_sma(candles, period):
     return sum(closes) / period
 
 
+def compute_atr(candles, period=14):
+    """Average True Range over period."""
+    if len(candles) < period + 1:
+        return None
+    trs = []
+    for i in range(-period, 0):
+        c = candles[i]
+        cp = candles[i - 1]["c"]
+        tr = max(c["h"] - c["l"], abs(c["h"] - cp), abs(c["l"] - cp))
+        trs.append(tr)
+    return statistics.mean(trs) if trs else None
+
+
+def compute_adx(candles, period=14):
+    """Average Directional Index — trend strength (0-100).
+
+    ADX > 25 = trending. ADX < 20 = ranging/choppy.
+    Uses Wilder smoothing (pure stdlib).
+    """
+    if len(candles) < period * 2 + 1:
+        return None
+
+    tr_list, plus_dm_list, minus_dm_list = [], [], []
+    for i in range(1, len(candles)):
+        c, p = candles[i], candles[i - 1]
+        tr = max(c["h"] - c["l"], abs(c["h"] - p["c"]), abs(c["l"] - p["c"]))
+        up_move = c["h"] - p["h"]
+        down_move = p["l"] - c["l"]
+        plus_dm = up_move if up_move > down_move and up_move > 0 else 0
+        minus_dm = down_move if down_move > up_move and down_move > 0 else 0
+        tr_list.append(tr)
+        plus_dm_list.append(plus_dm)
+        minus_dm_list.append(minus_dm)
+
+    if len(tr_list) < period * 2:
+        return None
+
+    def wilder_smooth(values, n):
+        result = [sum(values[:n]) / n]
+        for v in values[n:]:
+            result.append((result[-1] * (n - 1) + v) / n)
+        return result
+
+    smooth_tr = wilder_smooth(tr_list, period)
+    smooth_plus = wilder_smooth(plus_dm_list, period)
+    smooth_minus = wilder_smooth(minus_dm_list, period)
+
+    dx_list = []
+    min_len = min(len(smooth_tr), len(smooth_plus), len(smooth_minus))
+    for i in range(min_len):
+        if smooth_tr[i] == 0:
+            continue
+        plus_di = 100 * smooth_plus[i] / smooth_tr[i]
+        minus_di = 100 * smooth_minus[i] / smooth_tr[i]
+        di_sum = plus_di + minus_di
+        if di_sum == 0:
+            continue
+        dx_list.append(100 * abs(plus_di - minus_di) / di_sum)
+
+    if len(dx_list) < period:
+        return None
+    adx_values = wilder_smooth(dx_list, period)
+    return adx_values[-1] if adx_values else None
+
+
+def classify_regime(candles, lookback=60):
+    """Classify market regime: bull/bear × high/low vol, or ranging."""
+    if len(candles) < max(lookback, 21):
+        return "unknown"
+    recent = candles[-lookback:]
+    sma_start = statistics.mean([c["c"] for c in recent[:20]])
+    sma_end = statistics.mean([c["c"] for c in recent[-20:]])
+    sma_change = (sma_end - sma_start) / sma_start if sma_start > 0 else 0
+    atr = compute_atr(candles, 20)
+    sma = statistics.mean([c["c"] for c in candles[-20:]])
+    vol_ratio = atr / sma if sma > 0 and atr else 0
+    high_vol = vol_ratio > 0.015
+    if abs(sma_change) < 0.02:
+        return "ranging"
+    elif sma_change > 0:
+        return "bull_high_vol" if high_vol else "bull_low_vol"
+    else:
+        return "bear_high_vol" if high_vol else "bear_low_vol"
+
+
 def analyze(asset_class, symbol, config, candles, edu_sections, rules,
             lessons=None):
     """Analyze candles with education-unlocked techniques.
@@ -175,13 +262,54 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
     lh = sum(1 for i in range(1, len(recent)) if recent[i]["h"] < recent[i - 1]["h"])
     ll = sum(1 for i in range(1, len(recent)) if recent[i]["l"] < recent[i - 1]["l"])
 
-    # Loose trend detection: 3 out of 9 is enough (was 4)
-    if hh >= 3 and hl >= 3:
+    # Configurable trend threshold (default 3 for backwards compat)
+    min_tc = rules.get("min_trend_count", 3)
+    if hh >= min_tc and hl >= min_tc:
         trend = "uptrend"
-    elif lh >= 3 and ll >= 3:
+    elif lh >= min_tc and ll >= min_tc:
         trend = "downtrend"
     else:
         trend = "ranging"
+
+    # ── ATR volatility filter (skip dead markets) ────────────────
+    atr_cfg = rules.get("atr_filter", {})
+    atr_val = compute_atr(candles, period=atr_cfg.get("period", 14))
+    if atr_cfg.get("enabled", False) and atr_val and len(candles) >= 21:
+        sma_20 = compute_sma(candles, 20)
+        if sma_20 and sma_20 > 0:
+            atr_pct = atr_val / sma_20
+            if atr_pct < atr_cfg.get("min_atr_pct", 0.005):
+                return {
+                    "asset_class": asset_class, "symbol": symbol,
+                    "trend": "low_volatility", "support": 0, "resistance": 0,
+                    "last_close": last["c"], "last_high": last["h"],
+                    "last_low": last["l"], "last_date": last["date"],
+                    "pattern": None, "signal": None, "sma_signal": None,
+                    "hh": hh, "hl": hl, "lh": lh, "ll": ll,
+                }
+
+    # ── ADX trend strength filter ───────────────────────────────
+    adx_cfg = rules.get("adx_filter", {})
+    if adx_cfg.get("enabled", False) and trend in ("uptrend", "downtrend"):
+        adx_val = compute_adx(candles, period=adx_cfg.get("period", 14))
+        if adx_val is not None and adx_val < adx_cfg.get("min_adx", 25):
+            trend = "weak_trend"  # demote — don't enter
+
+    # ── Regime detection ────────────────────────────────────────
+    regime = classify_regime(candles) if len(candles) >= 60 else "unknown"
+    regime_cfg = rules.get("regime_filter", {})
+    if regime_cfg.get("enabled", False):
+        skip_regimes = regime_cfg.get("skip_regimes", [])
+        if regime in skip_regimes:
+            return {
+                "asset_class": asset_class, "symbol": symbol,
+                "trend": trend, "regime": regime,
+                "support": 0, "resistance": 0,
+                "last_close": last["c"], "last_high": last["h"],
+                "last_low": last["l"], "last_date": last["date"],
+                "pattern": None, "signal": None, "sma_signal": None,
+                "hh": hh, "hl": hl, "lh": lh, "ll": ll,
+            }
 
     support = min(c["l"] for c in recent)
     resistance = max(c["h"] for c in recent)
@@ -243,25 +371,36 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
     elif trend == "downtrend":
         direction = "SHORT"
         reason_parts.append(f"downtrend (LL:{ll}/9)")
-    elif sma_signal and "bullish" in sma_signal:
-        direction = "LONG"
-        reason_parts.append(sma_signal)
-    elif sma_signal and "bearish" in sma_signal:
-        direction = "SHORT"
-        reason_parts.append(sma_signal)
-    elif bull_pattern and know_candles:
-        direction = "LONG"
-        reason_parts.append(f"ranging + {pattern}")
-    elif bear_pattern and know_candles:
-        direction = "SHORT"
-        reason_parts.append(f"ranging + {pattern}")
-    elif pos_in_range < 0.35 and "Support and Resistance Levels" in edu_sections:
-        direction = "LONG"
-        reason_parts.append(f"ranging, near support ({pos_in_range:.0%})")
-    elif pos_in_range > 0.65 and "Support and Resistance Levels" in edu_sections:
-        direction = "SHORT"
-        reason_parts.append(f"ranging, near resistance ({pos_in_range:.0%})")
+    elif rules.get("ranging_entries", True):
+        # Ranging market signals — gated by config flag
+        if sma_signal and "bullish" in sma_signal:
+            direction = "LONG"
+            reason_parts.append(sma_signal)
+        elif sma_signal and "bearish" in sma_signal:
+            direction = "SHORT"
+            reason_parts.append(sma_signal)
+        elif bull_pattern and know_candles:
+            direction = "LONG"
+            reason_parts.append(f"ranging + {pattern}")
+        elif bear_pattern and know_candles:
+            direction = "SHORT"
+            reason_parts.append(f"ranging + {pattern}")
+        elif pos_in_range < 0.35 and "Support and Resistance Levels" in edu_sections:
+            direction = "LONG"
+            reason_parts.append(f"ranging, near support ({pos_in_range:.0%})")
+        elif pos_in_range > 0.65 and "Support and Resistance Levels" in edu_sections:
+            direction = "SHORT"
+            reason_parts.append(f"ranging, near resistance ({pos_in_range:.0%})")
     # Dead center in range with no signal — skip (no YOLO trades)
+
+    # ── SMA confirmation filter (veto trades against medium-term trend) ──
+    if direction and rules.get("sma_confirmation", False) and sma_signal:
+        if direction == "LONG" and "bearish" in sma_signal:
+            direction = None
+            reason_parts = []
+        elif direction == "SHORT" and "bullish" in sma_signal:
+            direction = None
+            reason_parts = []
 
     if direction:
         if pattern and pattern not in " ".join(reason_parts):
@@ -270,10 +409,20 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
             reason_parts.append(sma_signal)
 
         sr_label = "S/R" if "Support and Resistance Levels" in edu_sections else "range"
+
+        # ── Stop placement: ATR-based or S/R-based ──────────────
+        atr_stops_cfg = rules.get("atr_stops", {})
+        use_atr_stops = atr_stops_cfg.get("enabled", False) and atr_val and atr_val > 0
+
         if direction == "LONG":
             reason_parts.append(f"{sr_label}: {support:.5f}")
-            sl = support - buf
-            stop_dist = last["c"] - sl
+            if use_atr_stops:
+                atr_mult = atr_stops_cfg.get("multiplier", 1.5)
+                sl = last["c"] - atr_val * atr_mult
+                stop_dist = last["c"] - sl
+            else:
+                sl = support - buf
+                stop_dist = last["c"] - sl
             if stop_dist <= 0:
                 stop_dist = rng * 0.3
                 sl = last["c"] - stop_dist
@@ -287,8 +436,13 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
             }
         else:
             reason_parts.append(f"{sr_label}: {resistance:.5f}")
-            sl = resistance + buf
-            stop_dist = sl - last["c"]
+            if use_atr_stops:
+                atr_mult = atr_stops_cfg.get("multiplier", 1.5)
+                sl = last["c"] + atr_val * atr_mult
+                stop_dist = sl - last["c"]
+            else:
+                sl = resistance + buf
+                stop_dist = sl - last["c"]
             if stop_dist <= 0:
                 stop_dist = rng * 0.3
                 sl = last["c"] + stop_dist
@@ -305,6 +459,7 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
         "asset_class": asset_class,
         "symbol": symbol,
         "trend": trend,
+        "regime": regime,
         "support": support,
         "resistance": resistance,
         "last_close": last["c"],
