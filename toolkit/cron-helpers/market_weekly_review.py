@@ -11,10 +11,10 @@ Designed to be called via a single `exec` tool call from the cron job.
 import json
 import os
 import sys
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from trading_common import PRIVATE_DIR, STATE_FILE, JOURNAL
+from trading_common import PRIVATE_DIR, STATE_FILE, JOURNAL, ET
 
 
 def load_state():
@@ -26,7 +26,7 @@ def load_state():
 def week_bounds(today=None):
     """Return (monday, sunday) date strings for the current week."""
     if today is None:
-        today = date.today()
+        today = datetime.now(ET).date()
     monday = today - timedelta(days=today.weekday())
     sunday = monday + timedelta(days=6)
     return monday.isoformat(), sunday.isoformat()
@@ -106,7 +106,7 @@ def format_trade_line(trade):
 def build_review(state, today=None):
     """Build the weekly review entry lines and summary."""
     if today is None:
-        today = date.today()
+        today = datetime.now(ET).date()
 
     mon_iso, sun_iso = week_bounds(today)
     monday = date.fromisoformat(mon_iso)
@@ -179,7 +179,7 @@ def build_review(state, today=None):
 def check_duplicate(today=None):
     """Check if a weekly review for this date already exists."""
     if today is None:
-        today = date.today()
+        today = datetime.now(ET).date()
     marker = f"### {today.isoformat()} — Weekly Review"
     try:
         with open(JOURNAL) as f:
@@ -198,7 +198,7 @@ def main():
         print(f"ERROR: Invalid JSON in paper-state.json: {e}", file=sys.stderr)
         sys.exit(1)
 
-    today = date.today()
+    today = datetime.now(ET).date()
 
     if check_duplicate(today):
         print(f"Weekly review for {today.isoformat()} already exists, skipping.")

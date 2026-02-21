@@ -373,7 +373,15 @@ def main():
     # Parse results
     try:
         jobs = json.loads(raw_result)
-        if not isinstance(jobs, list):
+        if isinstance(jobs, dict):
+            # MCP may return an error dict instead of a job list
+            if jobs.get("error"):
+                print(f"LinkedIn error: {jobs.get('message', jobs['error'])}",
+                      file=sys.stderr)
+                jobs = []
+            else:
+                jobs = []
+        elif not isinstance(jobs, list):
             jobs = []
     except (json.JSONDecodeError, TypeError):
         print(f"WARNING: Could not parse search results as JSON")

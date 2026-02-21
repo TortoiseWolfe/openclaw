@@ -17,7 +17,7 @@ import sys
 import statistics
 import time
 import urllib.request
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timezone, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from trading_common import (
@@ -315,7 +315,8 @@ def format_markdown_section(data):
 # -- Main -------------------------------------------------------------
 
 def main():
-    today = date.today().isoformat()
+    from trading_common import ET
+    today = datetime.now(ET).strftime("%Y-%m-%d")
 
     # Duplicate protection
     existing = load_sentiment(today)

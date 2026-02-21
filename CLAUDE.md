@@ -125,19 +125,20 @@ Auth: `MCP_GATEWAY_AUTH_TOKEN` in `.env`
 
 Ollama models get a restricted tool set via `tools.byProvider` on each agent
 in openclaw.json (NOT on `agents.defaults` — the defaults type doesn't support `tools`).
-This cuts tools from 139+ MCP to 22 total, reducing system prompt from ~48K to ~22K chars.
-Interactive Claude Code sessions are unaffected (byProvider only applies to ollama).
+Only **core tool groups** can be referenced in the allowlist — MCP tools from the Docker
+gateway are NOT registered as OpenClaw plugin tools and will show "unknown entries" warnings
+if added to byProvider.allow.
 
-Verified: system prompt report shows 22 tools, 22,328 chars total prompt.
+Allowed for Ollama (main agent): `group:fs` (read/write/edit/apply_patch),
+`group:web` (web_search/web_fetch), `group:runtime` (exec/process).
+Denied: `group:automation` (cron/gateway), `group:sessions` (sessions management).
 
-Allowed for Ollama: native file ops (read/edit/write/exec/process), web search/fetch,
-LinkedIn (search_jobs, get_job_details, get_company_profile, get_person_profile,
-get_recommended_jobs), Gmail (findMessage, listMessages), Maps (maps_search_places,
-maps_directions), Playwright basics (browser_navigate, browser_snapshot, browser_click,
-browser_fill_form), YouTube (get_transcript, get_video_info).
+MCP tools (LinkedIn, Gmail, Maps, Playwright, YouTube, GitHub, etc.) are accessed by
+Python scripts via `toolkit/cron-helpers/mcp_client.py`, which connects directly to
+the MCP gateway SSE endpoint. The Ollama agent runs these scripts via the `exec` tool.
 
 Denied for Ollama: GitHub (40 tools), Postman (39 tools), Git (12 tools), Cloudflare (2),
-automation (cron/gateway), session management, all administrative tools.
+automation (cron/gateway), session management — all unreachable via byProvider anyway.
 
 Known issues: Previous qwen3:14b (9.3GB) exceeded RTX 3060 Ti 8GB VRAM — spilled to CPU
 and timed out. Switched to qwen3:8b-ctx16k (~7.2GB VRAM) which fits with headroom.

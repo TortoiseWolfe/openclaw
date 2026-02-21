@@ -1,0 +1,318 @@
+{
+  "date": "2026-02-20",
+  "lastUpdated": "2026-02-20T02:43:43.995842+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 2,
+      "articles_found": 75,
+      "articles_matched": 11,
+      "matched": [
+        {
+          "title": "Tom Lee Forecasts End Of Crypto Winter By This Month, Says Bitcoin, Ethereum May Find Support At These Levels",
+          "url": "https://finance.yahoo.com/news/tom-lee-forecasts-end-crypto-143109506.html",
+          "source": "yahoo",
+          "published": "2026-02-18T14:31:09Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet (GOOG) Rallies on YouTube Ad Growth and Double-Digit Cloud Revenue Gains",
+          "url": "https://finance.yahoo.com/news/alphabet-goog-rallies-youtube-ad-145955764.html",
+          "source": "yahoo",
+          "published": "2026-02-18T14:59:55Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SoftBank Just Sold $3.6 Billion Worth of Nvidia Stock. Should You Ditch NVDA Too?",
+          "url": "https://finance.yahoo.com/news/softbank-just-sold-3-6-150536062.html",
+          "source": "yahoo",
+          "published": "2026-02-18T15:05:36Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Advanced Micro Devices (AMD) Surges on Strong AI Chip and Data Center Processor Demand",
+          "url": "https://finance.yahoo.com/news/advanced-micro-devices-inc-amd-151140253.html",
+          "source": "yahoo",
+          "published": "2026-02-18T15:11:40Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia, Arm Stocks Rise Following Meta Deal",
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-02-18-2026/card/nvidia-stock-rises-following-meta-deal-P7aOEDAU8gYcafs2yov7?siteid=yhoof2&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-18T14:35:17Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Citi Is Hot on Nvidia Ahead of February 25. Should You Buy NVDA Stock Now?",
+          "url": "https://finance.yahoo.com/news/citi-hot-nvidia-ahead-february-152946447.html",
+          "source": "yahoo",
+          "published": "2026-02-18T15:29:46Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia is in talks to invest up to $30 billion in OpenAI, source says",
+          "url": "https://www.cnbc.com/2026/02/19/nvidia-is-in-talks-to-invest-up-to-30-billion-in-openai-source-says.html",
+          "source": "cnbc_top",
+          "published": "Fri, 20 Feb 2026 02:05:55 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon surpasses Walmart in annual revenue for first time, as both chase AI-fueled growth",
+          "url": "https://www.cnbc.com/2026/02/19/amazon-revenue-passes-walmart-earnings-reports.html",
+          "source": "cnbc_top",
+          "published": "Thu, 19 Feb 2026 22:51:37 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "OpenAI and Anthropic\u2019s rivalry on display as CEOs avoid holding hands at AI summit",
+          "url": "https://www.cnbc.com/2026/02/19/openai-sam-altman-anthropic-dario-amodei-india-ai-summit.html",
+          "source": "cnbc_top",
+          "published": "Thu, 19 Feb 2026 13:09:06 GMT",
+          "matched_symbols": [
+            "LINK"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "New York Gov. Hochul drops robotaxi service proposal for outside NYC in blow to Waymo",
+          "url": "https://www.cnbc.com/2026/02/19/new-york-driverless-rideshare-nyc-waymo.html",
+          "source": "cnbc_top",
+          "published": "Thu, 19 Feb 2026 18:37:50 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple sued by West Virginia for alleged failure to stop child sexual abuse material on iCloud, iOS devices",
+          "url": "https://www.cnbc.com/2026/02/19/apple-sued-csam-icloud-ios.html",
+          "source": "cnbc_top",
+          "published": "Thu, 19 Feb 2026 15:17:37 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": [
+        "cnbc_tech: RSS feed contains DTD/entity definitions"
+      ]
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "Manufacturing",
+        "PMI",
+        "Retail Sales",
+        "employment",
+        "inflation",
+        "manufacturing",
+        "retail sales"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Japan Machinery Orders for December 2025: 19.1% m/m (8.5% m/m forecast; -11.0% m/m previous); 16.8% y/y (2.0% y/y forecast; -6.4% y/y previous) Australia Employment Change",
+        "CBI Industrial Trends Orders for February 2026: -28.0 (-25.0 forecast; -30.0 previous) Canada Balance of Trade for December 2025: -1.31B (-2.4B forecast; -2.2B previous) Canada New Housing Price Index",
+        "Initial Jobless Claims for February 14, 2026: 206.0k (229.0k forecast; 227.0k previous) U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-02-19"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "Gemini 3.1 Pro",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+          "hn_score": 552,
+          "comments": 712,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "An ARM Homelab Server, or a Minisforum MS-R1 Review",
+          "url": "https://sour.coffee/2026/02/20/an-arm-homelab-server-or-a-minisforum-ms-r1-review/",
+          "hn_score": 13,
+          "comments": 11,
+          "matched_symbols": [
+            "ARM"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Pi for Excel: AI sidebar add-in for Excel, powered by Pi",
+          "url": "https://github.com/tmustier/pi-for-excel",
+          "hn_score": 3,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: Ghostty-based terminal with vertical tabs and notifications",
+          "url": "https://github.com/manaflow-ai/cmux",
+          "hn_score": 93,
+          "comments": 48,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Don't Trust the Salt: AI Summarization, Multilingual Safety, and LLM Guardrails",
+          "url": "https://royapakzad.substack.com/p/multilingual-llm-evaluation-to-guardrails",
+          "hn_score": 183,
+          "comments": 76,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "LLM"
+          ]
+        },
+        {
+          "title": "Measuring AI agent autonomy in practice",
+          "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+          "hn_score": 83,
+          "comments": 38,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Show HN: A physically-based GPU ray tracer written in Julia",
+          "url": "https://makie.org/website/blogposts/raytracing/",
+          "hn_score": 162,
+          "comments": 63,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "AI is not a coworker, it's an exoskeleton",
+          "url": "https://www.kasava.dev/blog/ai-as-exoskeleton",
+          "hn_score": 158,
+          "comments": 172,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "LINK": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

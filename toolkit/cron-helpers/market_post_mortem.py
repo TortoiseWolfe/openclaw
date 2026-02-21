@@ -14,13 +14,13 @@ Designed to be called via a single `exec` tool call from the cron job.
 import json
 import os
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from trading_common import (
     classify_signal, load_candles_safe as load_candles,
     atomic_json_write,
-    DATA_DIR, PRIVATE_DIR, STATE_FILE, LESSONS_FILE, JOURNAL,
+    DATA_DIR, PRIVATE_DIR, STATE_FILE, LESSONS_FILE, JOURNAL, ET,
 )
 
 MIN_SAMPLE_SIZE = 3
@@ -218,7 +218,7 @@ def build_symbol_stats(details):
         groups[sym].append(d)
 
     result = {}
-    today = date.today()
+    today = datetime.now(ET).date()
     for sym, trades in groups.items():
         sorted_trades = sorted(trades, key=lambda t: t["close_date"], reverse=True)
 
@@ -320,7 +320,7 @@ def write_lessons(lessons):
 
 def append_journal_entry(details, signal_stats, symbol_stats, stop_analysis):
     """Append a post-mortem summary to trade-journal.md."""
-    today = date.today().isoformat()
+    today = datetime.now(ET).date().isoformat()
 
     # Check for duplicate entry
     try:
@@ -404,7 +404,7 @@ def main():
     if not closed:
         print("No closed trades to analyze.")
         write_lessons({
-            "generated": datetime.now().isoformat(timespec="seconds"),
+            "generated": datetime.now(ET).isoformat(timespec="seconds"),
             "trade_count": 0,
             "by_signal_type": {},
             "by_asset_class": {},
@@ -444,7 +444,7 @@ def main():
     MAX_TRADE_DETAILS = 200
     recent_details = details[-MAX_TRADE_DETAILS:] if len(details) > MAX_TRADE_DETAILS else details
     lessons = {
-        "generated": datetime.now().isoformat(timespec="seconds"),
+        "generated": datetime.now(ET).isoformat(timespec="seconds"),
         "trade_count": len(details),
         "by_signal_type": signal_stats,
         "by_asset_class": class_stats,

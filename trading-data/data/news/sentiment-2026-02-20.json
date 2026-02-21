@@ -1,0 +1,72 @@
+{
+  "date": "2026-02-20",
+  "source": "alpha_vantage",
+  "lastUpdated": "2026-02-20T02:42:20.655454+00:00",
+  "api_calls_used": 3,
+  "symbols": {},
+  "forex_pairs": {
+    "EURUSD": {
+      "base_currency": "EUR",
+      "quote_currency": "USD",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    },
+    "GBPUSD": {
+      "base_currency": "GBP",
+      "quote_currency": "USD",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    },
+    "USDJPY": {
+      "base_currency": "USD",
+      "quote_currency": "JPY",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    },
+    "USDCHF": {
+      "base_currency": "USD",
+      "quote_currency": "CHF",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    },
+    "EURJPY": {
+      "base_currency": "EUR",
+      "quote_currency": "JPY",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    },
+    "GBPJPY": {
+      "base_currency": "GBP",
+      "quote_currency": "JPY",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    },
+    "AUDUSD": {
+      "base_currency": "AUD",
+      "quote_currency": "USD",
+      "base_sentiment": null,
+      "quote_sentiment": null,
+      "net_sentiment": null,
+      "net_label": "No Data"
+    }
+  },
+  "market_summary": {
+    "total_articles": 0,
+    "overall_sentiment": 0.0,
+    "overall_label": "No Data",
+    "most_bullish": null,
+    "most_bearish": null
+  }
+}

@@ -18,7 +18,7 @@ import json
 import os
 import sys
 import time
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timezone, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from trading_common import load_watchlist, atomic_json_write, NEWS_DIR
@@ -232,8 +232,9 @@ def format_supplementary_markdown(data):
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
-    today = date.today()
-    today_str = today.isoformat()
+    from trading_common import ET
+    today_dt = datetime.now(ET).date()
+    today_str = today_dt.isoformat()
 
     existing = load_supplementary(today_str)
     if existing:
@@ -256,7 +257,7 @@ def main():
 
     # Source 2: BabyPips daily recap
     print("Fetching BabyPips recap...")
-    babypips_data = fetch_babypips_recap(today)
+    babypips_data = fetch_babypips_recap(today_dt)
 
     time.sleep(SOURCE_DELAY)
 
