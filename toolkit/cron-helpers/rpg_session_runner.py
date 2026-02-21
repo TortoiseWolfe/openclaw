@@ -68,6 +68,11 @@ from rpg_transcript import TranscriptLogger
 _module: ModuleData | None = None
 
 
+def _mod(attr: str, default=None):
+    """Safe access to the loaded module data, falling back to default."""
+    return getattr(_module, attr, default) if _module else default
+
+
 def _log_dice_to_state(char: str, skill: str, result: dict) -> None:
     """Write dice result to game-state.json so overlay plays SFX + popup."""
     args = ["log-dice", "--character", char, "--skill", skill,
@@ -131,11 +136,11 @@ _HEALERS = {"Zeph Ando"}
 
 def _check_heal_priority(char: str) -> tuple | None:
     """If char is a healer and an ally is wounded, return a heal action tuple."""
-    healers = _module.healers if _module else _HEALERS
+    healers = _mod("healers", _HEALERS)
     if char not in healers:
         return None
     # Find the most wounded able ally (wound_level 1-3)
-    pregens = _module.pregens if _module else PREGENS
+    pregens = _mod("pregens", PREGENS)
     worst_char = ""
     worst_wl = 0
     for pc in pregens:
@@ -203,7 +208,7 @@ def _compute_move_penalty(char: str, move_to: str) -> tuple[int, int]:
     to_xy = _resolve_position_xy(move_to)
     if not from_xy or not to_xy:
         return (0, 0)  # Can't compute — allow move without penalty
-    char_move = _module.char_move if _module else CHAR_MOVE
+    char_move = _mod("char_move", CHAR_MOVE)
     penalty = calc_move_penalty(char, from_xy, to_xy, char_move=char_move)
     move_allowance = char_move.get(char, DEFAULT_MOVE)
     # Max distance is 4× move (sprint limit)
@@ -553,10 +558,10 @@ class ActPacer:
 
     def __init__(self, act_num: int):
         self.act_num = act_num
-        exit_pos = _module.act_exit_positions if _module else ACT_EXIT_POSITIONS
+        exit_pos = _mod("act_exit_positions", ACT_EXIT_POSITIONS)
         self.exit_positions = exit_pos.get(act_num, set())
         self.hard_cap = ACT_HARD_CAP
-        self.ship_positions = _module.ship_positions if _module else SHIP_POSITIONS
+        self.ship_positions = _mod("ship_positions", SHIP_POSITIONS)
         if _module:
             act_data = _module.get_act(act_num)
             if act_data and act_data.pacer.get("hard_cap"):
@@ -686,7 +691,7 @@ def _init_session(adventure: str, transcript: TranscriptLogger):
     out = run_rpg_cmd(["init", "--adventure", adventure, "--auto-join-bots"])
     logger.info(f"  init: {out}")
     # Log persistent wound state (wounds carry over from last canon session)
-    pregens = _module.pregens if _module else PREGENS
+    pregens = _mod("pregens", PREGENS)
     for char in pregens:
         wl = _get_wound_level(char)
         if wl > 0:
@@ -698,16 +703,14 @@ def _init_session(adventure: str, transcript: TranscriptLogger):
 def _auto_place_tokens(act_num: int):
     """Place PC and NPC tokens at their starting positions for this act."""
     # Place PCs
-    positions = (_module.act_starting_positions.get(act_num, {})
-                 if _module else ACT_STARTING_POSITIONS.get(act_num, {}))
+    positions = _mod("act_starting_positions", ACT_STARTING_POSITIONS).get(act_num, {})
     for char, pos in positions.items():
         out = run_rpg_cmd(["move-token", "--character", char, "--position", pos])
         logger.info(f"  TOKEN: {char} -> {pos} ({out})")
 
     # Place NPCs (and vehicles)
-    npcs = (_module.npc_starting_positions.get(act_num, {})
-            if _module else NPC_STARTING_POSITIONS.get(act_num, {}))
-    vehicle_tokens = _module.vehicle_tokens if _module else VEHICLE_TOKENS
+    npcs = _mod("npc_starting_positions", NPC_STARTING_POSITIONS).get(act_num, {})
+    vehicle_tokens = _mod("vehicle_tokens", VEHICLE_TOKENS)
     for npc, (pos, color, hidden) in npcs.items():
         cmd = ["move-token", "--character", npc, "--position", pos, "--color", color]
         if npc in vehicle_tokens:
@@ -721,8 +724,8 @@ def _auto_place_tokens(act_num: int):
 
 def _set_act_map(act_num: int, transcript: TranscriptLogger):
     """Set the map for the current act and auto-place tokens."""
-    act_maps = _module.act_maps if _module else ACT_MAPS
-    act_map_terrain = _module.act_map_terrain if _module else ACT_MAP_TERRAIN
+    act_maps = _mod("act_maps", ACT_MAPS)
+    act_map_terrain = _mod("act_map_terrain", ACT_MAP_TERRAIN)
     if act_num not in act_maps:
         return
     map_image, map_name = act_maps[act_num]
@@ -891,7 +894,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     logged_actions = []
 
     # Filter out incapacitated/dead PCs (wound_level >= 4)
-    pregens = _module.pregens if _module else PREGENS
+    pregens = _mod("pregens", PREGENS)
     able_chars = [c for c in pregens if _get_wound_level(c) < 4]
     if not able_chars:
         logger.warning("  [WARNING] All PCs incapacitated!")
@@ -900,8 +903,8 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     chars = random.sample(able_chars, min(num_actions, len(able_chars)))
 
     # Climax turn: draw from climax pool, fall back to normal
-    act_climax = _module.act_climax_actions if _module else ACT_CLIMAX_ACTIONS
-    act_bot = _module.act_bot_actions if _module else ACT_BOT_ACTIONS
+    act_climax = _mod("act_climax_actions", ACT_CLIMAX_ACTIONS)
+    act_bot = _mod("act_bot_actions", ACT_BOT_ACTIONS)
     if is_climax:
         act_actions = act_climax.get(act_num, {})
         act_fallback = act_bot.get(act_num, {})
@@ -964,7 +967,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
             # Move companion NPCs whose keywords appear in the action text
             text_lower = text.lower()
             moved_npcs = set()
-            companion_kw = _module.companion_keywords if _module else COMPANION_NPC_KEYWORDS
+            companion_kw = _mod("companion_keywords", COMPANION_NPC_KEYWORDS)
             for keyword, npc_names in companion_kw.items():
                 if keyword in text_lower:
                     for npc_name in npc_names:
@@ -990,7 +993,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
 
         # Pre-roll skill check if this action has one
         if skill:
-            char_stats = _module.char_stats if _module else CHAR_STATS
+            char_stats = _mod("char_stats", CHAR_STATS)
             result = pre_roll_skill_check(char, skill, difficulty,
                                           penalty=move_penalty, char_stats=char_stats)
             if "error" not in result:
@@ -1023,7 +1026,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 _log_dice_to_state(char, skill, result)
 
     # NPC counter-attack: one hostile NPC shoots at a random able PC each turn
-    npc_pos = _module.npc_starting_positions if _module else NPC_STARTING_POSITIONS
+    npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
     hostile_npcs = npc_pos.get(act_num, {})
     hostile_names = [n for n, (_, color, _) in hostile_npcs.items()
                      if color == "#f54e4e" and _get_wound_level(n) < 4]
@@ -1061,7 +1064,7 @@ _npc_roam_index: dict[str, int] = {}
 def _move_npcs_dry_run(act_num: int, turn_num: int) -> None:
     """Move NPCs during dry-run: hostiles advance, civilians roam or flee."""
     # Combat reactions on turn 1 (hostiles engage, civilians flee/cover)
-    combat_reactions = _module.npc_combat_reactions if _module else NPC_COMBAT_REACTIONS
+    combat_reactions = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
     reactions = combat_reactions.get(act_num, {})
     if turn_num == 1:
         for npc_name, (reaction, dest) in reactions.items():
@@ -1071,7 +1074,7 @@ def _move_npcs_dry_run(act_num: int, turn_num: int) -> None:
             logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
 
     # Ambient NPC routes (civilians cycle through positions on non-combat turns)
-    ambient_routes = _module.npc_ambient_routes if _module else NPC_AMBIENT_ROUTES
+    ambient_routes = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
     roamers = ambient_routes.get(act_num, {})
     for npc_name, route in roamers.items():
         if _get_wound_level(npc_name) >= 4:
@@ -1097,7 +1100,7 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
     run_rpg_cmd(["update-scene", "--narration",
                  "The Game Master considers the situation... (thinking)"])
 
-    act_times = _module.act_times if _module else None
+    act_times = _mod("act_times")
     state, context = build_context(since_action=since_action, act_times=act_times)
     if state is None:
         logger.error(f"  ERROR: {context}")
@@ -1106,7 +1109,7 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
 
     # Act kick only on turn 0 (cutscene opening); later turns just respond
     # to NEW actions — repeating the kick causes the GM to re-narrate the opening
-    act_kicks = _module.act_kicks if _module else None
+    act_kicks = _mod("act_kicks")
     kick = get_act_kick(act_num, act_kicks=act_kicks) if turn_num == 0 else ""
 
     # Build DICE RESULTS section from pre-rolled results
@@ -1142,7 +1145,12 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
     msg = response.get("message", {})
     logger.info(f"  Response in {elapsed:.0f}s")
 
-    text, narration_from_tool = process_response(msg, messages, transcript)
+    try:
+        text, narration_from_tool = process_response(msg, messages, transcript)
+    except Exception as e:
+        logger.error(f"  ERROR processing GM response: {e}")
+        transcript.log_session_event("error", {"message": f"process_response: {e}"})
+        return ""
 
     # Prefer narration from update_narration tool call, fall back to cleaned text
     narration = narration_from_tool or clean_narration(text) or "(no narration)"
@@ -1166,7 +1174,7 @@ def _get_available_characters():
     """Return list of bot-controlled characters (available for players)."""
     status = run_rpg_cmd(["status"])
     available = []
-    pregens = _module.pregens if _module else PREGENS
+    pregens = _mod("pregens", PREGENS)
     for char in pregens:
         # Status shows "Name (bot)" or "Name (bot:slug)" — match either
         if f"{char} (bot)" in status or f"{char} (bot:" in status:
@@ -1314,7 +1322,7 @@ def run_dry_session(adventure: str):
     total_turns = 0
     last_action_idx = 0  # track where GM left off in action_log
 
-    num_acts = _module.num_acts if _module else 3
+    num_acts = _mod("num_acts", 3)
     for act_num in range(1, num_acts + 1):
         if not _running:
             break
@@ -1346,8 +1354,7 @@ def run_dry_session(adventure: str):
         # Objective-based turn loop — acts end when PCs complete objectives
         pacer = ActPacer(act_num)
         # Seed pc_positions from starting positions so all PCs are tracked
-        start_pos = (_module.act_starting_positions.get(act_num, {})
-                     if _module else ACT_STARTING_POSITIONS.get(act_num, {}))
+        start_pos = _mod("act_starting_positions", ACT_STARTING_POSITIONS).get(act_num, {})
         pacer.pc_positions = dict(start_pos)
         _npc_roam_index.clear()
 
@@ -1451,7 +1458,7 @@ def _pick_combat_opponent(act_num: int, action_text: str) -> str:
     Checks the action text for NPC name mentions first, then falls
     back to the first hostile NPC in the act's starting positions.
     """
-    npc_pos = _module.npc_starting_positions if _module else NPC_STARTING_POSITIONS
+    npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
     npcs = npc_pos.get(act_num, {})
     hostile = [name for name, (_, color, _) in npcs.items()
                if color == _HOSTILE_COLOR]
@@ -1524,7 +1531,7 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
                 logger.info(f"  [dice-live] {detail}")
                 if hit:
                     _apply_wound(opponent, 1)
-                cs = _module.char_stats if _module else CHAR_STATS
+                cs = _mod("char_stats", CHAR_STATS)
                 transcript.log_dice_roll(
                     char, skill,
                     cs.get(char, {}).get(skill, DEFAULT_DICE),
@@ -1536,7 +1543,7 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
         # Check for skill-based action
         for kw, skill in _SKILL_KEYWORDS.items():
             if kw in text_lower:
-                cs = _module.char_stats if _module else CHAR_STATS
+                cs = _mod("char_stats", CHAR_STATS)
                 result = pre_roll_skill_check(char, skill, difficulty=15,
                                               char_stats=cs)
                 if "error" not in result:
@@ -1569,7 +1576,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
 
     # Get bot-controlled characters that are still able to act
     status = run_rpg_cmd(["status"])
-    pregens = _module.pregens if _module else PREGENS
+    pregens = _mod("pregens", PREGENS)
     bot_chars = [c for c in pregens
                  if f"{c} (bot:" in status and _get_wound_level(c) < 4]
     if not bot_chars:
@@ -1579,8 +1586,8 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     num = min(random.randint(1, 2), len(bot_chars))
     chars = random.sample(bot_chars, num)
 
-    act_climax = _module.act_climax_actions if _module else ACT_CLIMAX_ACTIONS
-    act_bot = _module.act_bot_actions if _module else ACT_BOT_ACTIONS
+    act_climax = _mod("act_climax_actions", ACT_CLIMAX_ACTIONS)
+    act_bot = _mod("act_bot_actions", ACT_BOT_ACTIONS)
     is_climax = pacer.is_climax
     if is_climax:
         act_actions = act_climax.get(act_num, {})
@@ -1634,7 +1641,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
             # Move companion NPCs
             text_lower = text.lower()
             moved_npcs = set()
-            companion_kw = _module.companion_keywords if _module else COMPANION_NPC_KEYWORDS
+            companion_kw = _mod("companion_keywords", COMPANION_NPC_KEYWORDS)
             for keyword, npc_names in companion_kw.items():
                 if keyword in text_lower:
                     for npc_name in npc_names:
@@ -1644,7 +1651,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                             moved_npcs.add(npc_name)
 
         if skill:
-            char_stats = _module.char_stats if _module else CHAR_STATS
+            char_stats = _mod("char_stats", CHAR_STATS)
             result = pre_roll_skill_check(char, skill, difficulty,
                                           penalty=move_penalty, char_stats=char_stats)
             if "error" not in result:
@@ -1684,12 +1691,12 @@ def run_live_session(adventure: str):
     last_action_count = 0
     last_gm_time = time.time()
     last_roam_time = time.time()
-    roam_interval = 30  # seconds between ambient NPC movements
+    roam_interval = int(os.environ.get("RPG_ROAM_INTERVAL", "30"))
     roam_index = {}  # tracks position in each NPC's route
     npcs_reacted = False  # True once NPCs have reacted to combat
-    min_turn_cooldown = 120  # minimum seconds between GM turns
-    gm_idle_threshold = 180  # seconds before GM prompts idle players
-    poll_interval = 10  # seconds between state checks
+    min_turn_cooldown = int(os.environ.get("RPG_TURN_COOLDOWN", "120"))
+    gm_idle_threshold = int(os.environ.get("RPG_IDLE_THRESHOLD", "180"))
+    poll_interval = int(os.environ.get("RPG_POLL_INTERVAL", "10"))
     pacer = ActPacer(act_num)
 
     _set_act_map(act_num, transcript)
@@ -1753,7 +1760,7 @@ def run_live_session(adventure: str):
             is_combat = mode == "combat" or state.get("combat_active")
             if is_combat and not npcs_reacted:
                 # Combat just started — NPCs react
-                combat_react = _module.npc_combat_reactions if _module else NPC_COMBAT_REACTIONS
+                combat_react = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
                 reactions = combat_react.get(current_act, {})
                 for npc_name, (reaction, dest) in reactions.items():
                     run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
@@ -1762,7 +1769,7 @@ def run_live_session(adventure: str):
             elif not is_combat:
                 # Peaceful — ambient roaming
                 npcs_reacted = False
-                ambient = _module.npc_ambient_routes if _module else NPC_AMBIENT_ROUTES
+                ambient = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
                 roamers = ambient.get(current_act, {})
                 for npc_name, route in roamers.items():
                     idx = roam_index.get(npc_name, 0)

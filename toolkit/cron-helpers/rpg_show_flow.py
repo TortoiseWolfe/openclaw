@@ -347,7 +347,7 @@ def run_game_night(
         if with_session:
             cmd = [
                 "python3", "/app/toolkit/cron-helpers/rpg_session_runner.py",
-                "--dry-run", "--adventure", adventure,
+                "--live", "--adventure", adventure,
             ]
             print(f"  Launching session runner: {' '.join(cmd)}")
             session_proc = subprocess.Popen(cmd)
