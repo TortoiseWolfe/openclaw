@@ -12,6 +12,7 @@ Usage:
 import argparse
 import json
 import logging
+import os
 import pathlib
 import random
 import signal
@@ -928,9 +929,10 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 _pick_reachable_action(char, pool)
             )
 
-        # Log the action to game state
+        # Log the action to game state (viewer key matches bot:slug format)
+        bot_slug = char.lower().replace(" ", "-").replace("'", "")
         out = run_rpg_cmd([
-            "log-action", "--viewer", "bot",
+            "log-action", "--viewer", f"bot:{bot_slug}",
             "--type", action_type, "--text", text,
         ])
         label = "[CLIMAX]" if is_climax else "[sim]"
@@ -1606,9 +1608,10 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
             _pick_reachable_action(char, pool)
         )
 
-        # Log the action to game state
+        # Log the action to game state (viewer key matches bot:slug format)
+        bot_slug = char.lower().replace(" ", "-").replace("'", "")
         out = run_rpg_cmd([
-            "log-action", "--viewer", "bot",
+            "log-action", "--viewer", f"bot:{bot_slug}",
             "--type", action_type, "--text", text,
         ])
         logger.info(f"  [bot-live] {char} {action_type}: {text}")
