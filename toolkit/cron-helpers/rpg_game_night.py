@@ -2,7 +2,7 @@
 """One-command launcher for RPG game night.
 
 Chains OBS launch → scene setup → stream → init → crawl → live session.
-Falls back gracefully to engine-only mode if OBS is unavailable.
+Refuses to run if OBS can't be reached — no point running a game nobody sees.
 
 Used by the cron job so the Ollama agent only needs to exec a single
 script with no flags to get wrong.
@@ -14,6 +14,8 @@ import signal
 import subprocess
 import sys
 import time
+
+import obs_client
 
 ADVENTURE = "escape-from-mos-eisley"
 STATE = ["python3", "/app/toolkit/cron-helpers/rpg_state.py"]
@@ -35,26 +37,20 @@ CRAWL_TEXT = (
     "they must find a way off this desert world before it is too late..."
 )
 
-# ── OBS integration (graceful — game runs with or without OBS) ───
+# ── Stream safety ────────────────────────────────────────────────
 
-_obs = None  # obs_client module, set on successful import
 _stream_started = False
-
-try:
-    import obs_client as _obs
-except ImportError:
-    pass
 
 
 def _emergency_stop(signum=None, frame=None):
     """Best-effort stream stop on crash or SIGTERM."""
     global _stream_started
-    if _stream_started and _obs:
+    if _stream_started:
         try:
-            _obs.stop_streaming(verify_timeout=5)
+            obs_client.stop_streaming(verify_timeout=5)
         except Exception:
             try:
-                cl = _obs._connect()
+                cl = obs_client._connect()
                 cl.stop_stream()
                 cl.disconnect()
             except Exception:
@@ -65,25 +61,8 @@ def _emergency_stop(signum=None, frame=None):
         sys.exit(1)
 
 
-def _ensure_obs() -> bool:
-    """Launch OBS if available. Returns True if OBS WebSocket is ready."""
-    if _obs is None:
-        print("OBS client not available — engine-only mode")
-        return False
-    try:
-        if _obs.is_connected():
-            print("OBS already connected")
-            return True
-        print("Launching OBS via host launcher ...")
-        ok = _obs.launch_obs(wait=True, max_wait=30)
-        if ok:
-            print("OBS connected")
-        else:
-            print("OBS launch timed out — engine-only mode")
-        return ok
-    except Exception as e:
-        print(f"OBS launch error: {e} — engine-only mode")
-        return False
+signal.signal(signal.SIGTERM, _emergency_stop)
+atexit.register(_emergency_stop)
 
 
 # ── Helpers ──────────────────────────────────────────────────────
@@ -103,12 +82,14 @@ def run(cmd: list[str]) -> None:
 def main():
     global _stream_started
 
-    # 0. Try to launch OBS (falls back to engine-only if unavailable)
-    obs_ready = _ensure_obs()
-
-    if obs_ready:
-        signal.signal(signal.SIGTERM, _emergency_stop)
-        atexit.register(_emergency_stop)
+    # 0. Launch OBS — hard requirement
+    if not obs_client.is_connected():
+        print("Launching OBS via host launcher ...")
+        if not obs_client.launch_obs(wait=True, max_wait=30):
+            print("ERROR: Cannot reach OBS. Start obs_launcher.py on the "
+                  "Windows host, then retry.", file=sys.stderr)
+            sys.exit(1)
+    print("OBS connected")
 
     # 1. Init game state
     run([*STATE, "init", "--adventure", ADVENTURE, "--auto-join-bots"])
@@ -120,56 +101,45 @@ def main():
          "--text", CRAWL_TEXT])
 
     # 3. OBS: scenes → stream → opening crawl
-    if obs_ready:
-        # Scene setup (reuses show_flow's proven scene creation)
-        run([*SHOW_FLOW, "--setup-only"])
+    run([*SHOW_FLOW, "--setup-only"])
 
-        # Start Twitch stream
-        try:
-            if not _obs.is_streaming():
-                stream_key = os.environ.get("OBS_STREAM_KEY", "")
-                if stream_key:
-                    _obs.set_stream_service("rtmp_common", {
-                        "service": "Twitch",
-                        "key": stream_key,
-                    })
-                _obs.start_streaming()
-                _stream_started = True
-                print("LIVE on Twitch")
-            else:
-                print("Already streaming — joining existing stream")
-        except Exception as e:
-            print(f"Stream start failed: {e}")
+    if not obs_client.is_streaming():
+        stream_key = os.environ.get("OBS_STREAM_KEY", "")
+        if stream_key:
+            obs_client.set_stream_service("rtmp_common", {
+                "service": "Twitch",
+                "key": stream_key,
+            })
+        obs_client.start_streaming()
+        _stream_started = True
+        print("LIVE on Twitch")
+    else:
+        print("Already streaming — joining existing stream")
 
-        # Opening crawl
-        print(f">> Opening Crawl ({CRAWL_DURATION}s)")
-        try:
-            _obs.refresh_browser_source(SOURCE_CRAWL)
-            _obs.switch_scene(SCENE_CRAWL)
-            time.sleep(CRAWL_DURATION)
-            _obs.switch_scene(SCENE_GAME)
-        except Exception as e:
-            print(f"Crawl display error: {e}")
+    print(f">> Opening Crawl ({CRAWL_DURATION}s)")
+    obs_client.refresh_browser_source(SOURCE_CRAWL)
+    obs_client.switch_scene(SCENE_CRAWL)
+    time.sleep(CRAWL_DURATION)
+    obs_client.switch_scene(SCENE_GAME)
 
     # 4. Live session (long-running — blocks until session ends)
     print("\n>> Starting live session ...")
     proc = subprocess.run([*RUNNER, "--live", "--adventure", ADVENTURE])
 
-    # 5. Post-session OBS wrap-up
-    if obs_ready:
-        try:
-            _obs.switch_scene(SCENE_INTERMISSION)
-            time.sleep(30)
-        except Exception as e:
-            print(f"Post-session scene error: {e}")
+    # 5. Post-session: intermission → stop stream
+    try:
+        obs_client.switch_scene(SCENE_INTERMISSION)
+        time.sleep(30)
+    except Exception as e:
+        print(f"Post-session scene error: {e}")
 
-        if _stream_started:
-            try:
-                _obs.stop_streaming()
-                _stream_started = False
-                print("Stream stopped")
-            except Exception as e:
-                print(f"Stream stop error: {e}")
+    if _stream_started:
+        try:
+            obs_client.stop_streaming()
+            _stream_started = False
+            print("Stream stopped")
+        except Exception as e:
+            print(f"Stream stop error: {e}")
 
     sys.exit(proc.returncode)
 
