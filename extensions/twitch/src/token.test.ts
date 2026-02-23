@@ -65,12 +65,20 @@ describe("token", () => {
       expect(result.source).toBe("config");
     });
 
-    it("should prioritize config token over env var (simplified config)", () => {
+    it("should prioritize env var over config for default account (onRefresh keeps env current)", () => {
       process.env.OPENCLAW_TWITCH_ACCESS_TOKEN = "oauth:env-token";
 
       const result = resolveTwitchToken(mockSimplifiedConfig, { accountId: "default" });
 
-      // Config token should be used even if env var exists
+      // Env var wins for default account — onRefresh updates process.env with fresh tokens
+      expect(result.token).toBe("oauth:env-token");
+      expect(result.source).toBe("env");
+    });
+
+    it("should fall back to config when env var is not set (simplified config)", () => {
+      // No env var set — config token should be used
+      const result = resolveTwitchToken(mockSimplifiedConfig, { accountId: "default" });
+
       expect(result.token).toBe("oauth:config-token");
       expect(result.source).toBe("config");
     });

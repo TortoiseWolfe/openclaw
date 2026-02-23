@@ -48,7 +48,8 @@ export function getAccountConfig(
       clientSecret:
         typeof twitchRaw?.clientSecret === "string" ? twitchRaw.clientSecret : undefined,
       refreshToken:
-        typeof twitchRaw?.refreshToken === "string" ? twitchRaw.refreshToken : undefined,
+        process.env.OPENCLAW_TWITCH_REFRESH_TOKEN
+        || (typeof twitchRaw?.refreshToken === "string" ? twitchRaw.refreshToken : undefined),
       expiresIn: typeof twitchRaw?.expiresIn === "number"
         ? twitchRaw.expiresIn
         : (process.env.OPENCLAW_TWITCH_EXPIRES_IN
