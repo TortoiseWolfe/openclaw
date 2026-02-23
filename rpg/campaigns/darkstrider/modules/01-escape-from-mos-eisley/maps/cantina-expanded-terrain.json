@@ -131,9 +131,9 @@
     {"id": "table-3-obs", "x1": 1141, "y1": 440, "x2": 1181, "y2": 480, "desc": "Round table 3"}
   ],
   "connections": {
-    "entrance": {"map": "mos-eisley-streets-1.png", "position": "cantina-door"},
-    "back-door": {"map": "mos-eisley-streets-1.png", "position": "cantina-street"},
-    "hangar-door": {"map": "mos-eisley-streets-1.png", "position": "cantina-street"},
+    "entrance": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "cantina-door"},
+    "back-door": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "cantina-street"},
+    "hangar-door": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "cantina-street"},
     "ladder-down": {"map": "cantina-basement.svg", "position": "staircase-up"}
   },
   "zones": {

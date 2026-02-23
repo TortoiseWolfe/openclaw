@@ -1,5 +1,5 @@
 {
-  "map": "mos-eisley-streets-2.png",
+  "map": "mos-eisley-streets-2-enhanced.svg",
   "width": 1920,
   "height": 1080,
   "positions": {
@@ -57,8 +57,8 @@
     "cover-crates-south": {"x": 1200, "y": 680, "desc": "Behind crates in storage yard (+1D cover)"}
   },
   "connections": {
-    "east-entrance": {"map": "mos-eisley-streets-1.png", "position": "west-exit"},
-    "west-exit": {"map": "mos-eisley-streets-3.png", "position": "east-entrance"},
+    "east-entrance": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "west-exit"},
+    "west-exit": {"map": "mos-eisley-streets-3-enhanced.svg", "position": "east-entrance"},
     "warehouse-door": {"map": "warehouse.svg", "position": "loading-dock"}
   },
   "obstacles": [

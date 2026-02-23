@@ -299,14 +299,19 @@ def _resolve_position_xy(position_name: str, for_char: str | None = None) -> tup
     return None
 
 
-def _build_move_cmd(char: str, position: str) -> list[str]:
+def _build_move_cmd(char: str, position: str, *, ref_char: str = "") -> list[str]:
     """Build a move-token command, resolving position against the token's map.
 
     When a PC is on a different map than the global map (e.g., after auto-transfer),
     move-token --position would resolve against the global map and fail. This helper
     resolves the position from the token's actual map terrain and uses --x/--y instead.
+
+    ref_char: if set, resolve the position against this character's map instead of
+    *char*'s map.  Useful for companion NPCs that follow a PC — they need the
+    position resolved on the PC's map.
     """
-    char_map = _get_token_map(char)
+    lookup_char = ref_char or char
+    char_map = _get_token_map(lookup_char)
     state = _load_game_state()
     global_map = (state.get("map") or {}).get("image", "") if state else ""
 
@@ -315,7 +320,7 @@ def _build_move_cmd(char: str, position: str) -> list[str]:
         return ["move-token", "--character", char, "--position", position]
 
     # Token is on a different map — resolve position from its terrain
-    xy = _resolve_position_xy(position, for_char=char)
+    xy = _resolve_position_xy(position, for_char=lookup_char)
     if xy:
         return ["move-token", "--character", char, "--x", str(xy[0]), "--y", str(xy[1])]
 
@@ -874,10 +879,10 @@ NPC_AMBIENT_ROUTES = {
 NPC_HOSTILE_ADVANCE = {
     1: {
         "Stormtrooper 1": [
-            "entrance", "vestibule-inner", "near-table-1", "table-2",
+            "entrance", "foyer", "near-table-1", "table-2",
         ],
         "Stormtrooper 2": [
-            "entrance-right", "vestibule-inner", "bar-stool-r3", "near-table-2",
+            "entrance-right", "foyer", "bar-stool-r3", "near-table-2",
         ],
     },
     3: {
@@ -885,10 +890,10 @@ NPC_HOSTILE_ADVANCE = {
             "blast-door-left", "bay-floor-center", "ship-bow", "ship-ramp",
         ],
         "Stormtrooper 1": [
-            "blast-door-left", "bay-floor-left", "bay-crate-left", "ship-port",
+            "blast-door-left", "bay-floor-left", "cargo-left", "ship-port",
         ],
         "Stormtrooper 2": [
-            "blast-door-right", "bay-floor-right", "bay-crate-right", "ship-starboard",
+            "blast-door-right", "bay-floor-right", "cargo-right", "ship-starboard",
         ],
         "Stormtrooper 3": [
             "blast-door-left", "bay-floor-center", "bay-floor-center", "ship-bow",
@@ -1855,7 +1860,8 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 if keyword in text_lower:
                     for npc_name in npc_names:
                         if npc_name not in moved_npcs:
-                            run_rpg_cmd(["move-token", "--character", npc_name, "--position", move_to])
+                            cmd = _build_move_cmd(npc_name, move_to, ref_char=char)
+                            run_rpg_cmd(cmd)
                             logger.info(f"  [move-npc] {npc_name} -> {move_to} (follows {char})")
                             moved_npcs.add(npc_name)
 
@@ -2638,7 +2644,8 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                 if keyword in text_lower:
                     for npc_name in npc_names:
                         if npc_name not in moved_npcs:
-                            run_rpg_cmd(["move-token", "--character", npc_name, "--position", move_to])
+                            cmd = _build_move_cmd(npc_name, move_to, ref_char=char)
+                            run_rpg_cmd(cmd)
                             logger.info(f"  [move-npc] {npc_name} -> {move_to}")
                             moved_npcs.add(npc_name)
 

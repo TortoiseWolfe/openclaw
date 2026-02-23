@@ -23,8 +23,8 @@
     "suite-window": {"x": 1135, "y": 295, "desc": "Suite window (overlooks Street 1, Perception +2D from elevation)"}
   },
   "connections": {
-    "lobby": {"map": "mos-eisley-streets-1.png", "position": "inn-door"},
-    "back-stairs": {"map": "mos-eisley-streets-1.png", "position": "inn-front"}
+    "lobby": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "inn-door"},
+    "back-stairs": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "inn-front"}
   },
   "obstacles": [
     {"id": "dividing-wall", "x1": 796, "y1": 48, "x2": 804, "y2": 860, "desc": "Dividing wall between ground floor and upper level"},

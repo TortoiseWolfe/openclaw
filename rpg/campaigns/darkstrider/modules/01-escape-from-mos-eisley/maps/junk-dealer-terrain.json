@@ -21,8 +21,8 @@
     "back-room": {"x": 180, "y": 600, "desc": "Back room — fake IDs (Difficult Forgery 25, 300 credits), comlink jammers (150 credits), stolen blasters"}
   },
   "connections": {
-    "entrance": {"map": "mos-eisley-streets-1.png", "position": "junk-dealer-door"},
-    "back-exit": {"map": "mos-eisley-streets-1.png", "position": "junk-dealer-alley"}
+    "entrance": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "junk-dealer-door"},
+    "back-exit": {"map": "mos-eisley-streets-1-enhanced.svg", "position": "junk-dealer-alley"}
   },
   "obstacles": [
     {"id": "counter", "x1": 350, "y1": 500, "x2": 650, "y2": 560, "desc": "Sales counter"},

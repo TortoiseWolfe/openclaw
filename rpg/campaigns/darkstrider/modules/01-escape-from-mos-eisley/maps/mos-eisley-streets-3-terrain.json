@@ -1,5 +1,5 @@
 {
-  "map": "mos-eisley-streets-3.png",
+  "map": "mos-eisley-streets-3-enhanced.svg",
   "width": 1920,
   "height": 1080,
   "positions": {
@@ -52,7 +52,7 @@
     "cover-cargo-crates": {"x": 1300, "y": 480, "desc": "Behind cargo crates between bays (+1D cover)"}
   },
   "connections": {
-    "east-entrance": {"map": "mos-eisley-streets-2.png", "position": "west-exit"},
+    "east-entrance": {"map": "mos-eisley-streets-2-enhanced.svg", "position": "west-exit"},
     "bay-87-road": {"map": "docking-bay-87.svg", "position": "blast-door"}
   },
   "obstacles": [

@@ -1,5 +1,5 @@
 {
-  "map": "mos-eisley-streets-1.png",
+  "map": "mos-eisley-streets-1-enhanced.svg",
   "width": 1920,
   "height": 1080,
   "positions": {
@@ -68,7 +68,7 @@
     "checkpoint-bay": {"x": 150, "y": 400, "desc": "Imperial checkpoint on road approach to docking bays (2 Stormtroopers, scanner equipment, barricade). Moderate Con 15 to bluff past, or sneak through alleys."}
   },
   "connections": {
-    "cantina-door": {"map": "cantina.png", "position": "entrance"},
+    "cantina-door": {"map": "cantina-expanded.svg", "position": "entrance"},
     "junk-dealer-door": {"map": "junk-dealer.svg", "position": "entrance"},
     "inn-door": {"map": "inn.svg", "position": "lobby"},
     "bay-87-entrance": {"map": "docking-bay-87.svg", "position": "blast-door"}

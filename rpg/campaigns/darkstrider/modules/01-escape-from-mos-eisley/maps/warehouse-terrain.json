@@ -19,7 +19,7 @@
     "center-floor": {"x": 600, "y": 500, "desc": "Center of warehouse (exposed, no cover)"}
   },
   "connections": {
-    "loading-dock": {"map": "mos-eisley-streets-2.png", "position": "warehouse-door"}
+    "loading-dock": {"map": "mos-eisley-streets-2-enhanced.svg", "position": "warehouse-door"}
   },
   "obstacles": [
     {"id": "cargo-a", "x1": 80, "y1": 100, "x2": 280, "y2": 340, "desc": "Cargo cluster A"},
