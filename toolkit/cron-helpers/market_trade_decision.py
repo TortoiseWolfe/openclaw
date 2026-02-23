@@ -68,7 +68,7 @@ def save_state(state):
 
 # ── Trade management ─────────────────────────────────────────────────
 
-def check_stops(state, prices, today, rules=None):
+def check_stops(state, prices, today, rules=None, cross_rates=None):
     """Close positions that hit stop loss or take profit.
 
     Uses daily high/low (not just close) to detect intraday SL/TP hits,
@@ -100,7 +100,7 @@ def check_stops(state, prices, today, rules=None):
             exit_price = pos["stop_loss"]
             pnl = handler.calculate_pnl(
                 pos["entry"], exit_price, pos["direction"], pos["size"],
-                sym, _asset_config(ac, sym), rules=rules,
+                sym, _asset_config(ac, sym), rules=rules, cross_rates=cross_rates,
             )
             newly_closed.append({
                 **pos,
@@ -113,7 +113,7 @@ def check_stops(state, prices, today, rules=None):
             exit_price = pos["take_profit"]
             pnl = handler.calculate_pnl(
                 pos["entry"], exit_price, pos["direction"], pos["size"],
-                sym, _asset_config(ac, sym), rules=rules,
+                sym, _asset_config(ac, sym), rules=rules, cross_rates=cross_rates,
             )
             newly_closed.append({
                 **pos,
@@ -125,7 +125,7 @@ def check_stops(state, prices, today, rules=None):
         else:
             pnl = handler.calculate_pnl(
                 pos["entry"], close, pos["direction"], pos["size"],
-                sym, _asset_config(ac, sym), rules=rules,
+                sym, _asset_config(ac, sym), rules=rules, cross_rates=cross_rates,
             )
             updated = {**pos, "current_price": close, "unrealized_pnl": pnl}
             still_open.append(updated)
@@ -141,7 +141,7 @@ def check_stops(state, prices, today, rules=None):
     return newly_closed
 
 
-def friday_close(state, prices, today, today_date, rules=None):
+def friday_close(state, prices, today, today_date, rules=None, cross_rates=None):
     """Close positions for asset classes with weekend close rule."""
     if today_date.weekday() != 4:
         return []
@@ -162,7 +162,7 @@ def friday_close(state, prices, today, today_date, rules=None):
         exit_price = price_data[0] if price_data else pos["entry"]
         pnl = handler.calculate_pnl(
             pos["entry"], exit_price, pos["direction"], pos["size"],
-            sym, _asset_config(ac, sym), rules=rules,
+            sym, _asset_config(ac, sym), rules=rules, cross_rates=cross_rates,
         )
         closed.append({
             **pos,
@@ -192,7 +192,8 @@ def _get_slippage(rules, asset_class, price):
 
 
 def open_trade(state, asset_class, symbol, signal, watchlist, today,
-               lessons=None, sentiment_multiplier=1.0, regime=None):
+               lessons=None, sentiment_multiplier=1.0, regime=None,
+               cross_rates=None):
     """Open a new paper trade."""
     handler = HANDLERS[asset_class]
     config = _asset_config(asset_class, symbol)
@@ -213,10 +214,17 @@ def open_trade(state, asset_class, symbol, signal, watchlist, today,
     size = handler.position_size(
         state["balance"], rules["max_risk"],
         stop_distance, entry,
-        symbol, config,
+        symbol, config, cross_rates=cross_rates,
     )
     if size == 0:
         return None
+
+    # Cap notional value at max_leverage × balance (prevents tiny-ATR blowups)
+    max_leverage = rules.get("max_leverage", 5)
+    notional = size * entry
+    max_notional = state["balance"] * max_leverage
+    if notional > max_notional and max_notional > 0:
+        size = max(1, int(max_notional / entry))
 
     # Apply lessons-based confidence multiplier to position size
     if lessons and size > 0:
@@ -339,13 +347,21 @@ def main():
         print("ERROR: No candle data available", file=sys.stderr)
         sys.exit(1)
 
+    # Build cross rates for accurate pip value on cross pairs (EURJPY, GBPJPY, etc.)
+    cross_rates = {}
+    for sym_key in ["USDJPY", "USDCHF"]:
+        pd = prices.get(("forex", sym_key))
+        if pd:
+            cross_rates[sym_key] = pd[0]  # last close
+
     # Step 1: Check stops on open positions
-    closed_by_stop = check_stops(state, prices, today, rules=rules)
+    closed_by_stop = check_stops(state, prices, today, rules=rules, cross_rates=cross_rates)
     for c in closed_by_stop:
         print(f"CLOSED {c['id']} {c['asset_class']}/{c['symbol']} ({c['close_reason']}): ${c['pnl_dollars']:+.2f}")
 
     # Step 2: Friday weekend close (forex only)
-    closed_friday = friday_close(state, prices, today, today_date, rules=rules)
+    closed_friday = friday_close(state, prices, today, today_date, rules=rules,
+                                  cross_rates=cross_rates)
     for c in closed_friday:
         print(f"CLOSED {c['id']} {c['asset_class']}/{c['symbol']} (weekend): ${c['pnl_dollars']:+.2f}")
 
@@ -433,7 +449,8 @@ def main():
             trade = open_trade(state, ac, sym, a["signal"], watchlist, today,
                                lessons=lessons,
                                sentiment_multiplier=sent_mult,
-                               regime=a.get("regime"))
+                               regime=a.get("regime"),
+                               cross_rates=cross_rates)
             if trade:
                 trade["sentiment_multiplier"] = sent_mult
                 trade["sentiment_reason"] = sent_reason

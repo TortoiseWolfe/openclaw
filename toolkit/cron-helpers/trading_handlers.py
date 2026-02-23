@@ -17,28 +17,38 @@ class ForexHandler:
     def to_pips(self, symbol, config, diff):
         return round(diff / self.pip_size(symbol, config), 1)
 
-    def _pip_value_usd(self, symbol, config, price):
+    def _pip_value_usd(self, symbol, config, price, cross_rates=None):
         """Dollar value of 1 pip per standard lot (100K units).
 
         For USD-quote pairs (EURUSD, GBPUSD): always $10/pip/lot.
-        For non-USD-quote pairs (USDJPY, EURJPY, etc.): $10 / quote rate.
+        For non-USD-quote pairs (USDJPY, EURJPY, etc.): pip value in
+        quote currency converted to USD via the USD/quote cross rate.
         """
         if symbol.endswith("USD"):
             return 10.0
-        # For JPY/CHF pairs, approximate pip value using current price
         pip = self.pip_size(symbol, config)
+        # Use the USD cross rate for the quote currency when available
+        # e.g. EURJPY → use USDJPY rate, EURCHF → use USDCHF rate
+        quote_ccy = symbol[-3:]  # JPY, CHF, etc.
+        usd_rate = None
+        if cross_rates:
+            usd_rate = cross_rates.get(f"USD{quote_ccy}")
+        if usd_rate and usd_rate > 0:
+            return (pip / usd_rate) * 100_000
+        # Fallback: use the pair's own price (approximate)
         return (pip / price) * 100_000 if price > 0 else 10.0
 
-    def position_size(self, balance, risk_pct, stop_distance, price, symbol, config):
+    def position_size(self, balance, risk_pct, stop_distance, price, symbol, config,
+                       cross_rates=None):
         stop_pips = abs(stop_distance) / self.pip_size(symbol, config)
         if stop_pips == 0:
             return 0
-        pip_value = self._pip_value_usd(symbol, config, price)
+        pip_value = self._pip_value_usd(symbol, config, price, cross_rates)
         lots = (balance * risk_pct) / (stop_pips * pip_value)
         return round(lots * 100_000)  # nearest unit, not truncated
 
     def calculate_pnl(self, entry, exit_price, direction, size, symbol, config,
-                       rules=None):
+                       rules=None, cross_rates=None):
         # Apply spread: buy at ask, sell at bid
         if rules:
             half_spread = rules.get("spread", {}).get("forex", 0) / 2
@@ -54,7 +64,7 @@ class ForexHandler:
             diff = entry - exit_price
         pips = diff / self.pip_size(symbol, config)
         lots = size / 100_000
-        pip_value = self._pip_value_usd(symbol, config, exit_price)
+        pip_value = self._pip_value_usd(symbol, config, exit_price, cross_rates)
         return pips * lots * pip_value  # full precision — round at display
 
     def format_size(self, size):
@@ -73,7 +83,8 @@ class StockHandler:
     def to_pips(self, symbol, config, diff):
         return round(diff, 2)
 
-    def position_size(self, balance, risk_pct, stop_distance, price, symbol, config):
+    def position_size(self, balance, risk_pct, stop_distance, price, symbol, config,
+                       cross_rates=None):
         if stop_distance == 0:
             return 0
         # Whole shares — round to nearest (real brokers floor, but rounding
@@ -81,7 +92,7 @@ class StockHandler:
         return round((balance * risk_pct) / abs(stop_distance))
 
     def calculate_pnl(self, entry, exit_price, direction, size, symbol, config,
-                       rules=None):
+                       rules=None, cross_rates=None):
         # Apply spread: buy at ask, sell at bid
         if rules:
             half_spread = rules.get("spread", {}).get("stocks", 0) / 2
@@ -113,13 +124,14 @@ class CryptoHandler:
     def to_pips(self, symbol, config, diff):
         return round(diff, 2)
 
-    def position_size(self, balance, risk_pct, stop_distance, price, symbol, config):
+    def position_size(self, balance, risk_pct, stop_distance, price, symbol, config,
+                       cross_rates=None):
         if stop_distance == 0:
             return 0
         return round((balance * risk_pct) / abs(stop_distance), 8)
 
     def calculate_pnl(self, entry, exit_price, direction, size, symbol, config,
-                       rules=None):
+                       rules=None, cross_rates=None):
         # Apply spread: percentage-based for crypto
         if rules:
             half_pct = rules.get("spread", {}).get("crypto_pct", 0) / 2

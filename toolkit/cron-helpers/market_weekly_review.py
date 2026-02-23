@@ -62,6 +62,7 @@ def calc_stats(closed_this_week):
 
     wins = [t for t in closed_this_week if t.get("pnl_dollars", 0) > 0]
     losses = [t for t in closed_this_week if t.get("pnl_dollars", 0) < 0]
+    breakeven = [t for t in closed_this_week if t.get("pnl_dollars", 0) == 0]
     total_pnl = sum(t.get("pnl_dollars", 0) for t in closed_this_week)
 
     best = max(closed_this_week, key=lambda t: t.get("pnl_dollars", 0))
@@ -78,6 +79,7 @@ def calc_stats(closed_this_week):
     return {
         "wins": len(wins),
         "losses": len(losses),
+        "breakeven": len(breakeven),
         "total_pnl": total_pnl,
         "best": best,
         "worst": worst,
@@ -142,7 +144,9 @@ def build_review(state, today=None):
     if closed_this_week:
         total = stats["wins"] + stats["losses"]
         pct = (stats["wins"] / total * 100) if total > 0 else 0
-        lines.append(f"**Win rate**: {pct:.0f}% ({stats['wins']}W / {stats['losses']}L)")
+        be = stats.get("breakeven", 0)
+        be_str = f" / {be}BE" if be else ""
+        lines.append(f"**Win rate**: {pct:.0f}% ({stats['wins']}W / {stats['losses']}L{be_str})")
         lines.append(f"**Weekly P&L**: ${stats['total_pnl']:+,.2f}")
 
         if stats["best"]:
@@ -208,7 +212,7 @@ def main():
 
     # Append to journal
     os.makedirs(PRIVATE_DIR, exist_ok=True)
-    with open(JOURNAL, "a") as f:
+    with open(JOURNAL, "a", encoding="utf-8") as f:
         f.write("\n".join(review_lines) + "\n")
 
     # Print summary to stdout for model to report

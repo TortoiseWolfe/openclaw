@@ -367,10 +367,10 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
 
     if trend == "uptrend":
         direction = "LONG"
-        reason_parts.append(f"uptrend (HH:{hh}/9)")
+        reason_parts.append(f"uptrend (HH:{hh}/{LOOKBACK - 1})")
     elif trend == "downtrend":
         direction = "SHORT"
-        reason_parts.append(f"downtrend (LL:{ll}/9)")
+        reason_parts.append(f"downtrend (LL:{ll}/{LOOKBACK - 1})")
     elif rules.get("ranging_entries", True):
         # Ranging market signals — gated by config flag
         if sma_signal and "bullish" in sma_signal:

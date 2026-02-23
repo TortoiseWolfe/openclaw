@@ -55,10 +55,10 @@ def analyze_trade(trade, candles):
     if trade_candles:
         if direction == "LONG":
             mae = max((entry - c["l"]) / entry for c in trade_candles)
-            mfe = max((c["h"] - entry) / entry for c in trade_candles)
+            mfe = max(0, max((c["h"] - entry) / entry for c in trade_candles))
         else:
             mae = max((c["h"] - entry) / entry for c in trade_candles)
-            mfe = max((entry - c["l"]) / entry for c in trade_candles)
+            mfe = max(0, max((entry - c["l"]) / entry for c in trade_candles))
 
     # Trend continuation: check candles AFTER close
     post_close = [c for c in candles if c["date"] > date_closed]
@@ -184,13 +184,14 @@ def build_class_stats(details):
     for ac, trades in groups.items():
         count = len(trades)
         wins = sum(1 for t in trades if t["pnl_dollars"] > 0)
+        losses = sum(1 for t in trades if t["pnl_dollars"] < 0)
         win_rate = wins / count if count > 0 else 0
         avg_pnl = sum(t["pnl_dollars"] for t in trades) / count if count > 0 else 0
 
         result[ac] = {
             "count": count,
             "wins": wins,
-            "losses": count - wins,
+            "losses": losses,
             "win_rate": round(win_rate, 3),
             "avg_pnl": round(avg_pnl, 2),
             "confidence_multiplier": compute_confidence_multiplier(count, win_rate),

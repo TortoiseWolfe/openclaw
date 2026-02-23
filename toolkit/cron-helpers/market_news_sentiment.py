@@ -318,14 +318,17 @@ def main():
     from trading_common import ET
     today = datetime.now(ET).strftime("%Y-%m-%d")
 
-    # Duplicate protection
+    # Duplicate protection (--force to re-run after partial failure)
+    force = "--force" in sys.argv
     existing = load_sentiment(today)
-    if existing:
+    if existing and not force:
         print(f"Sentiment data already collected for {today}")
         summary = existing.get("market_summary", {})
         print(f"  {summary.get('total_articles', 0)} articles, "
               f"overall: {summary.get('overall_label', '?')}")
         return
+    if existing and force:
+        print(f"  --force: re-running sentiment for {today}")
 
     if API_KEY == "demo":
         print("WARNING: Using demo API key — results may be limited",

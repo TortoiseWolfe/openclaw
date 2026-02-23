@@ -11,7 +11,13 @@ import json
 import os
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
+
+try:
+    from zoneinfo import ZoneInfo
+    ET = ZoneInfo("America/New_York")
+except ImportError:
+    ET = timezone(timedelta(hours=-5))
 
 
 def find_repo_root():
@@ -331,7 +337,7 @@ def main():
     curriculum = load_text(os.path.join(EDU, "curriculum-progress.md"))
     report = load_json(os.path.join(PRIVATE, "validation", "validation-report.json"))
 
-    today = date.today().isoformat()
+    today = datetime.now(ET).date().isoformat()
     print(f"# Trading System Status — {today}")
     print()
     print(section_portfolio(state))

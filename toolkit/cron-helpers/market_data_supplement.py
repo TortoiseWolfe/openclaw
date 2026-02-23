@@ -31,7 +31,25 @@ from trading_common import (
     atomic_json_write, AV_API_KEY, AV_CALLS_PER_MINUTE, DATA_DIR, ET,
 )
 
-DAILY_BUDGET = 22  # 25 total AV limit - 3 sentiment = 22 for supplement
+AV_DAILY_LIMIT = 25
+
+
+def _sentiment_call_count(watchlist):
+    """Estimate how many AV calls the sentiment script will use."""
+    stocks = watchlist.get("stocks", [])
+    crypto = watchlist.get("crypto", [])
+    forex = watchlist.get("forex", [])
+    forex_currencies = set()
+    for a in forex:
+        forex_currencies.add(a["from"])
+        forex_currencies.add(a["to"])
+    mid = len(stocks) // 2
+    batches = [b for b in [
+        stocks[:mid],
+        list(stocks[mid:]) + list(crypto),
+        sorted(forex_currencies),
+    ] if b]
+    return len(batches)
 SUPPLEMENT_DIR = os.path.join(DATA_DIR, "supplement")
 
 
@@ -162,9 +180,7 @@ def build_rotation(watchlist, weekday):
 
     Returns list of (fetch_type, args_dict) tuples.
     Each fetch_type is 'earnings', 'overview', or 'forex_intraday'.
-
-    Daily: 7 forex intraday + 10 earnings (alternating halves) +
-           5 overviews (rotating slice). Total = 22 calls.
+    Budget is computed dynamically: AV_DAILY_LIMIT - sentiment calls.
     """
     stocks = [a["symbol"] for a in watchlist.get("stocks", [])]
     forex = watchlist.get("forex", [])
@@ -197,7 +213,11 @@ def build_rotation(watchlist, weekday):
     for s in overview_slice:
         plan.append(("overview", {"symbol": s}))
 
-    return plan[:DAILY_BUDGET]
+    budget = AV_DAILY_LIMIT - _sentiment_call_count(watchlist)
+    if len(plan) > budget:
+        print(f"  WARNING: plan has {len(plan)} calls, trimming to {budget} "
+              f"(AV limit {AV_DAILY_LIMIT} - {AV_DAILY_LIMIT - budget} sentiment)")
+    return plan[:budget]
 
 
 # ── Persistence ─────────────────────────────────────────────────────

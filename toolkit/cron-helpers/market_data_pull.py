@@ -268,8 +268,6 @@ def main():
     total = 0
     errors = 0
     skipped = 0
-    call_count = 0  # track API calls for rate limiting
-    rate_limited = False
 
     # Build flat list of (asset_class, asset, fetcher)
     jobs = []
@@ -283,7 +281,6 @@ def main():
 
     for idx, (asset_class, asset, fetcher) in enumerate(jobs):
         symbol = asset["symbol"]
-        uses_yahoo = True  # all asset classes use Yahoo Finance for daily pulls
 
         # In full mode, skip symbols we already have
         if full_mode:
@@ -293,43 +290,15 @@ def main():
                 skipped += 1
                 continue
 
-        # Skip AV assets if no API key is configured
-        if AV_API_KEY is None and not uses_yahoo:
-            print(f"{asset_class:6s} {symbol:6s}: SKIP (no AV API key)")
-            skipped += 1
-            continue
-
-        # Stop early if we hit the AV daily quota (stocks bypass this)
-        if rate_limited and not uses_yahoo:
-            print(f"{asset_class:6s} {symbol:6s}: SKIP (API quota exhausted — re-run later)")
-            skipped += 1
-            continue
-
-        # Rate limit only applies to Alpha Vantage calls (forex + crypto)
-        if not uses_yahoo:
-            if call_count > 0 and call_count % CALLS_PER_MINUTE == 0:
-                remaining = sum(1 for ac, a, _ in jobs[idx:]
-                               if ac != "stocks"
-                               and not (full_mode and _historical_exists(ac, a["symbol"])[0]))
-                print(f"  (AV rate limit pause — ~{remaining} forex/crypto remaining)")
-                time.sleep(65)
-            elif call_count > 0:
-                time.sleep(0.3)
-
         try:
-            if uses_yahoo:
-                if asset_class == "forex":
-                    candles = fetch_forex_yahoo(asset, compact=(not full_mode))
-                elif asset_class == "crypto":
-                    candles = fetch_crypto_yahoo(asset, compact=(not full_mode))
-                else:
-                    candles = fetch_stock_yahoo(asset, compact=(not full_mode))
-                source = "yahoo_finance"
+            if asset_class == "forex":
+                candles = fetch_forex_yahoo(asset, compact=(not full_mode))
+            elif asset_class == "crypto":
+                candles = fetch_crypto_yahoo(asset, compact=(not full_mode))
             else:
-                candles = fetcher(asset, outputsize=outputsize)
-                source = "alpha_vantage"
+                candles = fetch_stock_yahoo(asset, compact=(not full_mode))
             save_candles(asset_class, symbol, candles, base_dir=save_dir,
-                         source=source)
+                         source="yahoo_finance")
             latest = candles[-1] if candles else {}
             close_val = latest.get("c", "?")
             close_str = f"{close_val:.5f}" if isinstance(close_val, (int, float)) else str(close_val)
@@ -337,24 +306,14 @@ def main():
             print(f"{asset_class:6s} {symbol:6s}: close={close_str:>12s} ({latest.get('date', '?')}){count_str}")
             total += 1
         except Exception as e:
-            err_str = str(e)
-            if is_av_rate_limited(err_str):
-                print(f"{asset_class:6s} {symbol:6s}: RATE LIMITED — stopping AV calls", file=sys.stderr)
-                rate_limited = True
-                errors += 1
-            else:
-                print(f"{asset_class:6s} {symbol:6s}: ERROR {e}", file=sys.stderr)
-                errors += 1
-        if not uses_yahoo:
-            call_count += 1
+            print(f"{asset_class:6s} {symbol:6s}: ERROR {e}", file=sys.stderr)
+            errors += 1
 
     parts = [f"Fetched {total}/{total + errors + skipped} assets"]
     if skipped:
         parts.append(f"{skipped} skipped")
     if errors:
         parts.append(f"{errors} errors")
-    if rate_limited:
-        parts.append("re-run to fetch remaining")
     print(f"\n{' | '.join(parts)}")
 
 

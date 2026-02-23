@@ -11,6 +11,7 @@ market_news_supplementary.
 import json
 import os
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -242,11 +243,14 @@ def is_av_rate_limited(error_msg):
 
 def atomic_json_write(path, data, indent=2):
     """Write JSON data atomically via tmp file + os.replace."""
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    tmp = path + ".tmp"
+    dir_ = os.path.dirname(path)
+    os.makedirs(dir_, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=dir_, suffix=".tmp")
     try:
-        with open(tmp, "w", encoding="utf-8") as f:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=indent)
+            f.flush()
+            os.fsync(f.fileno())
         os.replace(tmp, path)
     except Exception:
         try:
@@ -258,11 +262,14 @@ def atomic_json_write(path, data, indent=2):
 
 def atomic_text_write(path, text):
     """Write text data atomically via tmp file + os.replace."""
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    tmp = path + ".tmp"
+    dir_ = os.path.dirname(path)
+    os.makedirs(dir_, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=dir_, suffix=".tmp")
     try:
-        with open(tmp, "w", encoding="utf-8") as f:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
             f.write(text)
+            f.flush()
+            os.fsync(f.fileno())
         os.replace(tmp, path)
     except Exception:
         try:
