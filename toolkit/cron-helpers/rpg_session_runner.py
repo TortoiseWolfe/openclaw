@@ -58,7 +58,11 @@ from rpg_bot_common import (
     CHAR_STATS,
     DEFAULT_DICE,
     DEFAULT_MOVE,
+    FORCE_SENSITIVE,
     GM_SYSTEM_PROMPT,
+    STARSHIP_MAPS,
+    STARSHIP_SKILLS,
+    ask_character_agent,
     build_context,
     calc_move_penalty,
     chat,
@@ -142,11 +146,17 @@ _HEALERS = {"Zeph Ando"}
 
 
 def _check_heal_priority(char: str) -> tuple | None:
-    """If char is a healer and an ally is wounded, return a heal action tuple."""
+    """If char is a healer and an ally is wounded AND nearby, return a heal action tuple."""
     healers = _mod("healers", _HEALERS)
     if char not in healers:
         return None
-    # Find the most wounded able ally (wound_level 1-3)
+
+    healer_map = _get_token_map(char)
+    healer_xy = _get_token_xy(char)
+    char_move_map = _mod("char_move", CHAR_MOVE)
+    max_sprint = char_move_map.get(char, DEFAULT_MOVE) * 4
+
+    # Find the most wounded ally that is on the same map and within sprint range
     pregens = _mod("pregens", PREGENS)
     worst_char = ""
     worst_wl = 0
@@ -154,20 +164,54 @@ def _check_heal_priority(char: str) -> tuple | None:
         if pc == char:
             continue
         wl = _get_wound_level(pc)
-        if 1 <= wl <= 3 and wl > worst_wl:
+        if wl < 1 or wl > 3:
+            continue
+        # Same-map check
+        pc_map = _get_token_map(pc)
+        if healer_map and pc_map and healer_map != pc_map:
+            continue
+        # Distance check
+        if healer_xy:
+            pc_xy = _get_token_xy(pc)
+            if pc_xy:
+                dist = ((healer_xy[0] - pc_xy[0])**2 + (healer_xy[1] - pc_xy[1])**2) ** 0.5
+                if dist > max_sprint:
+                    continue  # Too far to reach
+        if wl > worst_wl:
             worst_wl = wl
             worst_char = pc
     if not worst_char:
         return None
+
+    # Use Droid Repair for droid targets (Tok-3 is an astromech)
+    is_droid = worst_char == "Tok-3"
+    if is_droid:
+        skill = "Droid Repair"
+        text = f"*kneels beside {worst_char} and repairs damage*"
+    else:
+        skill = "First Aid"
+        text = f"*kneels beside {worst_char} and applies first aid*"
+
     return (
-        "do",
-        f"*kneels beside {worst_char} and applies first aid*",
-        "First Aid", None, 10, None,
+        "do", text, skill, None, 10, None,
     )
 
 
-def _check_carry_priority(char: str) -> tuple | None:
-    """If an ally is incapacitated (wl >= 3) and nearby, drag them to the ship."""
+def _check_carry_priority(char: str, carry_helpers: dict[str, int] | None = None,
+                           act_num: int = 3) -> tuple | None:
+    """Cooperative carry: multiple PCs can help carry a downed ally.
+
+    Only activates in Act 3 (docking bay) where ship-ramp is a valid target.
+    In other acts, downed allies are left for the healer to fix.
+
+    Uses *carry_helpers* dict (ally → helper count) to escalate rewards:
+      - 1st carrier: normal Lifting check (difficulty 10), full movement penalty
+      - 2nd carrier: same difficulty, movement penalty waived
+      - 3rd+ carrier: difficulty reduced to 5, movement penalty waived
+    """
+    # Only carry in Act 3 (docking bay) where ship-ramp exists
+    if act_num != 3:
+        return None
     pregens = _mod("pregens", PREGENS)
     for pc in pregens:
         if pc == char:
@@ -181,11 +225,19 @@ def _check_carry_priority(char: str) -> tuple | None:
             continue
         dist = ((char_xy[0] - ally_xy[0])**2 + (char_xy[1] - ally_xy[1])**2) ** 0.5
         if dist < 300:  # within reach
-            return (
-                "do",
-                f"*grabs {pc} and drags them toward the ship ramp*",
-                "Lifting", None, 10, "ship-ramp",
-            )
+            n = carry_helpers.get(pc, 0) if carry_helpers else 0
+            if n == 0:
+                text = f"*grabs {pc} and drags them toward the ship ramp*"
+                difficulty, waive = 10, False
+            elif n == 1:
+                text = f"*helps carry {pc}, steadying the load*"
+                difficulty, waive = 10, True
+            else:
+                text = f"*supports the group carrying {pc} to the ship*"
+                difficulty, waive = 5, True
+            if carry_helpers is not None:
+                carry_helpers[pc] = n + 1
+            return ("do", text, "Lifting", None, difficulty, "ship-ramp", pc, waive)
     return None
 
 
@@ -211,29 +263,64 @@ def _get_token_xy(char: str) -> tuple[int, int] | None:
     return None
 
 
-def _resolve_position_xy(position_name: str) -> tuple[int, int] | None:
-    """Resolve a named position to (x,y) from the current map's terrain."""
-    import os
-    state_path = "/home/node/.openclaw/rpg/state/game-state.json"
-    try:
-        with open(state_path) as f:
-            state = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return None
-    map_image = (state.get("map") or {}).get("image", "")
+def _get_token_map(char: str) -> str:
+    """Return the map_id for a character's token, or empty string."""
+    state = _load_game_state()
+    if not state:
+        return ""
+    slug = char.lower().replace(" ", "-").replace("'", "")
+    token = state.get("tokens", {}).get(slug)
+    if token:
+        return token.get("map_id", "")
+    return ""
+
+
+def _resolve_position_xy(position_name: str, for_char: str | None = None) -> tuple[int, int] | None:
+    """Resolve a named position to (x,y) from terrain.
+
+    If for_char is given, uses that character's map_id for lookup.
+    Otherwise falls back to the global map.
+    """
+    map_image = ""
+    if for_char:
+        map_image = _get_token_map(for_char)
+    if not map_image:
+        state = _read_game_state()
+        map_image = (state.get("map") or {}).get("image", "") if state else ""
     if not map_image:
         return None
-    base = map_image.rsplit(".", 1)[0] if "." in map_image else map_image
-    terrain_path = os.path.join("/app/rpg/maps", f"{base}-terrain.json")
-    try:
-        with open(terrain_path) as f:
-            terrain = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
+
+    terrain = _load_terrain_for_map(map_image)
+    if not terrain:
         return None
     pos = terrain.get("positions", {}).get(position_name)
     if pos:
         return (pos["x"], pos["y"])
     return None
+
+
+def _build_move_cmd(char: str, position: str) -> list[str]:
+    """Build a move-token command, resolving position against the token's map.
+
+    When a PC is on a different map than the global map (e.g., after auto-transfer),
+    move-token --position would resolve against the global map and fail. This helper
+    resolves the position from the token's actual map terrain and uses --x/--y instead.
+    """
+    char_map = _get_token_map(char)
+    state = _load_game_state()
+    global_map = (state.get("map") or {}).get("image", "") if state else ""
+
+    # If token is on the global map (or no map_id), use --position normally
+    if not char_map or char_map == global_map:
+        return ["move-token", "--character", char, "--position", position]
+
+    # Token is on a different map — resolve position from its terrain
+    xy = _resolve_position_xy(position, for_char=char)
+    if xy:
+        return ["move-token", "--character", char, "--x", str(xy[0]), "--y", str(xy[1])]
+
+    # Fallback: try --position anyway (may fail)
+    return ["move-token", "--character", char, "--position", position]
 
 
 def _compute_move_penalty(char: str, move_to: str) -> tuple[int, int]:
@@ -242,7 +329,7 @@ def _compute_move_penalty(char: str, move_to: str) -> tuple[int, int]:
     Returns (penalty, max_distance_px). penalty=3 means move is too far.
     """
     from_xy = _get_token_xy(char)
-    to_xy = _resolve_position_xy(move_to)
+    to_xy = _resolve_position_xy(move_to, for_char=char)
     if not from_xy or not to_xy:
         return (0, 0)  # Can't compute — allow move without penalty
     char_move = _mod("char_move", CHAR_MOVE)
@@ -486,7 +573,7 @@ NPC_STARTING_POSITIONS = {
         "Patron 1": ("bar-stool-l4", "#888888", False),
         "Patron 2": ("table-3", "#888888", False),
     },
-    2: {  # Street 1 — Cantina District (NPCs on Streets 2/3 placed on map transition)
+    2: {  # Street 1 — Cantina District (initial NPCs only)
         "Speeder 1": ("speeder-1", "#8899aa", False),  # large speeder (seats 4)
         "Speeder 2": ("speeder-2", "#997766", False),  # small speeder (seats 2)
         "Speeder Driver": ("speeder-1", "#e8a030", False),  # driver sits on speeder 1
@@ -502,6 +589,64 @@ NPC_STARTING_POSITIONS = {
         "Dock Worker": ("cargo-right", "#888888", False),
     },
 }
+
+# NPCs spawned when PCs first arrive on a new map (multi-map Act 2).
+# format: {map_image: {npc_name: (position, color, hidden)}}
+MAP_NPC_SPAWNS = {
+    "mos-eisley-streets-2-enhanced.svg": {
+        "Trandoshan Hunter": ("alley-center-1", "#f54e4e", True),  # ambush in alley
+        "Market Vendor": ("market-center", "#888888", False),
+        "Suspicious Rodian": ("alley-east", "#e8a030", True),
+    },
+    "mos-eisley-streets-3-enhanced.svg": {
+        "Checkpoint Trooper 1": ("checkpoint", "#f54e4e", False),
+        "Checkpoint Trooper 2": ("checkpoint-barricade", "#f54e4e", False),
+        "Patrol Trooper 1": ("patrol-route-bay", "#f54e4e", False),
+        "Patrol Trooper 2": ("patrol-route-between", "#f54e4e", False),
+        "Bay Guard": ("bay-large-entrance", "#f54e4e", False),
+    },
+}
+
+# Track which maps have had their NPCs spawned (reset per act)
+_spawned_map_npcs: set[str] = set()
+
+
+def _spawn_map_npcs(target_map: str):
+    """Spawn NPCs for a map when a PC first arrives there."""
+    if target_map in _spawned_map_npcs:
+        return
+    npcs = MAP_NPC_SPAWNS.get(target_map, {})
+    if not npcs:
+        return
+    _spawned_map_npcs.add(target_map)
+    vehicle_tokens = _mod("vehicle_tokens", VEHICLE_TOKENS)
+    # Load terrain for the target map to resolve positions to (x,y)
+    target_terrain = _load_terrain_for_map(target_map)
+    for npc, (pos, color, hidden) in npcs.items():
+        # Resolve position from target map terrain (not global map)
+        x, y = None, None
+        if target_terrain:
+            pos_data = target_terrain.get("positions", {}).get(pos)
+            if pos_data:
+                x, y = pos_data["x"], pos_data["y"]
+        if x is None:
+            logger.warning(f"  [map-npc] Cannot resolve '{pos}' on {target_map} — skipping {npc}")
+            continue
+        # Create token with raw x,y (avoids global map position resolution)
+        cmd = ["move-token", "--character", npc, "--x", str(x), "--y", str(y),
+               "--color", color]
+        if npc in vehicle_tokens:
+            cmd += ["--type", "vehicle"]
+        if hidden:
+            cmd.append("--hidden")
+        run_rpg_cmd(cmd)
+        # Transfer to target map (sets map_id + validates position)
+        run_rpg_cmd(["transfer-token", "--character", npc,
+                      "--to-map", target_map, "--position", pos])
+        _invalidate_state_cache()
+        vis = " [hidden]" if hidden else ""
+        logger.info(f"  [map-npc] {npc} -> {pos} ({x},{y}) on {target_map}{vis}")
+
 
 # ---------------------------------------------------------------------------
 # Skill-check-aware bot actions per act
@@ -557,48 +702,107 @@ ACT_BOT_ACTIONS = {
             ("do", "*heads toward the storage room, hand on lightsaber*", None, None, None, "back-hallway-south"),
         ],
     },
-    2: {  # Streets — westward traversal toward Docking Bay 87
-        # Every action moves. Stepping stones pull westward toward the bay.
-        "Kira Voss": [
-            ("do", "leads the group into the alleys — main road is a death trap", "Streetwise", None, 12, "side-alley"),
-            ("do", "spots the bounty hunter's trap and redirects the group", "Dodge", None, 15, "dwelling-front"),
-            ("do", "talks the speeder driver into giving them a ride west", "Con", None, 15, "speeder-1"),
-            ("do", "asks the dockworker for directions to Bay 87", "Streetwise", None, 10, "npc-dockworker"),
-            ("do", "reads the directional sign pointing toward the bays", None, None, None, "sign-docking-bays"),
-            ("do", "scouts the road ahead toward the bay checkpoint", "Streetwise", None, 12, "road-west"),
-            ("do", "waves the others forward and pushes west", None, None, None, "road-west"),
-            ("do", "doubles back to cover the group's rear", "Blaster", None, 12, "road-center"),
-        ],
-        "Tok-3": [
-            ("do", "*hacks the speeder's ignition lock*", "Security", None, 10, "speeder-1"),
-            ("do", "*rolls west along the main road, scanning for patrols*", "Search", None, 12, "road-west"),
-            ("do", "*interfaces with the directional sign's data port*", "Computer Prog", None, 10, "sign-docking-bays"),
-            ("do", "*scans the road ahead for Imperial patrols*", "Search", None, 12, "npc-dockworker"),
-            ("do", "*hacks into a nearby terminal for bay access codes*", "Computer Prog", None, 15, "road-west"),
-            ("do", "*rolls back to guide stragglers with a projected holomap*", None, None, None, "road-center"),
-            ("do", "*trundles into the alley, scanning for a shortcut*", "Search", None, 12, "side-alley"),
-            ("do", "*rolls toward the dwelling to check for supplies*", None, None, None, "dwelling-front"),
-        ],
-        "Renn Darkhollow": [
-            ("do", "*scouts the road ahead from the dwelling doorway*", "Search", None, 15, "dwelling-front"),
-            ("do", "*sneaks along the building walls heading west*", "Sneak", None, 15, "road-west"),
-            ("do", "*climbs to a vantage point overlooking the road*", "Sneak", None, 12, "side-alley"),
-            ("do", "*scouts ahead toward the docking bay signs*", "Search", None, 15, "sign-docking-bays"),
-            ("do", "*checks the alley for ambushes before waving the group forward*", "Search", None, 12, "npc-dockworker"),
-            ("do", "*drops back to lay suppressing fire for the others*", "Blaster", None, 12, "road-center"),
-            ("do", "*takes a defensive position at the road junction*", "Blaster", None, 12, "road-east"),
-            ("do", "*covers the tapcaf entrance while the party passes*", "Search", None, 10, "tapcaf-front"),
-        ],
-        "Zeph Ando": [
-            ("do", "*senses the safest path west through the streets*", "Sense", None, 15, "road-west"),
-            ("do", "*patches up Renn's blaster wound in the alley*", "First Aid", None, 10, "side-alley"),
-            ("do", "*checks the tapcaf for medical supplies*", None, None, None, "tapcaf-front"),
-            ("do", "*asks the dockworker about Bay 87*", "Bargain", None, 10, "npc-dockworker"),
-            ("do", "*uses the Force to scan for danger near the bay signs*", "Sense", None, 12, "sign-docking-bays"),
-            ("do", "*reaches out with the Force to guide stragglers to safety*", "Sense", None, 15, "road-center"),
-            ("do", "*senses an ambush near the dwelling and warns the group*", "Sense", None, 15, "dwelling-front"),
-            ("do", "*drops back to heal a wounded ally*", "First Aid", None, 10, "road-east"),
-        ],
+    2: {  # Streets — multi-map westward traversal toward Docking Bay 87
+        # Map-specific action pools.  The outer key is the map filename.
+        # _pick_reachable_action selects from the current map's pool.
+        # PCs auto-transfer between maps via terrain connection positions.
+        "__per_map__": True,  # sentinel: session runner looks up by map_id
+        "mos-eisley-streets-1-enhanced.svg": {
+            "Kira Voss": [
+                ("do", "leads the group into the alleys — main road is a death trap", "Streetwise", None, 12, "side-alley"),
+                ("do", "spots a bounty hunter's trap and redirects the group", "Dodge", None, 15, "dwelling-front"),
+                ("do", "talks the speeder driver into giving them a ride west", "Con", None, 15, "speeder-1"),
+                ("do", "asks the dockworker for directions to Bay 87", "Streetwise", None, 10, "npc-dockworker"),
+                ("do", "reads the directional sign pointing toward the bays", None, None, None, "sign-docking-bays"),
+                ("do", "scouts the road ahead and pushes west", "Streetwise", None, 12, "road-west"),
+                ("do", "waves the others forward toward the west exit", None, None, None, "west-exit"),
+            ],
+            "Tok-3": [
+                ("do", "*hacks the speeder's ignition lock*", "Security", None, 10, "speeder-1"),
+                ("do", "*rolls west along the main road, scanning for patrols*", "Search", None, 12, "road-west"),
+                ("do", "*interfaces with the directional sign's data port*", "Computer Prog", None, 10, "sign-docking-bays"),
+                ("do", "*scans the road ahead for Imperial patrols*", "Search", None, 12, "npc-dockworker"),
+                ("do", "*hacks into a nearby terminal for bay access codes*", "Computer Prog", None, 15, "road-west"),
+                ("do", "*rolls toward the west exit, sensors sweeping*", None, None, None, "west-exit"),
+            ],
+            "Renn Darkhollow": [
+                ("do", "*scouts the road ahead from the dwelling doorway*", "Search", None, 15, "dwelling-front"),
+                ("do", "*sneaks along the building walls heading west*", "Sneak", None, 15, "road-west"),
+                ("do", "*scouts ahead toward the docking bay signs*", "Search", None, 15, "sign-docking-bays"),
+                ("do", "*checks the alley for ambushes before waving the group forward*", "Search", None, 12, "side-alley"),
+                ("do", "*covers the west road and waves the group through*", "Blaster", None, 12, "road-west"),
+                ("do", "*heads for the west exit, rifle raised*", None, None, None, "west-exit"),
+            ],
+            "Zeph Ando": [
+                ("do", "*senses the safest path west through the streets*", "Sense", None, 15, "road-west"),
+                ("do", "*patches up a blaster wound in the alley*", "First Aid", None, 10, "side-alley"),
+                ("do", "*asks the dockworker about Bay 87*", "Bargain", None, 10, "npc-dockworker"),
+                ("do", "*uses the Force to scan for danger near the bay signs*", "Sense", None, 12, "sign-docking-bays"),
+                ("do", "*follows the Force westward toward the docking district*", "Sense", None, 12, "road-west"),
+                ("do", "*heads for the west exit, hand on lightsaber*", None, None, None, "west-exit"),
+            ],
+        },
+        "mos-eisley-streets-2-enhanced.svg": {
+            "Kira Voss": [
+                ("do", "moves through the market crowd for cover", "Sneak", None, 12, "market-center"),
+                ("do", "checks the trading post for supplies", None, None, None, "trading-post-front"),
+                ("do", "ducks into the alley to avoid a patrol", "Sneak", None, 15, "alley-center-1"),
+                ("do", "pushes west past the warehouse", None, None, None, "road-center-west"),
+                ("do", "scouts the west exit toward the docking district", "Streetwise", None, 12, "road-west"),
+                ("do", "heads for the west exit", None, None, None, "west-exit"),
+            ],
+            "Tok-3": [
+                ("do", "*scans the market stalls for useful scrap*", "Search", None, 10, "market-stall-scrap"),
+                ("do", "*rolls past the apothecary, sensors active*", "Search", None, 12, "apothecary-front"),
+                ("do", "*hacks a door lock to create a shortcut*", "Security", None, 12, "warehouse-door"),
+                ("do", "*rolls west along the road toward the docking district*", None, None, None, "road-center-west"),
+                ("do", "*heads for the west exit*", None, None, None, "west-exit"),
+            ],
+            "Renn Darkhollow": [
+                ("do", "*takes cover behind the market stalls and scans for threats*", "Search", None, 15, "market-behind"),
+                ("do", "*sneaks through the eastern alley*", "Sneak", None, 15, "alley-east"),
+                ("do", "*scouts the road ahead from behind cover*", "Search", None, 12, "cover-crates-south"),
+                ("do", "*moves west along the road, covering the rear*", "Blaster", None, 12, "road-center-west"),
+                ("do", "*pushes for the west exit, rifle up*", None, None, None, "west-exit"),
+            ],
+            "Zeph Ando": [
+                ("do", "*senses danger in the alley — ambush!*", "Sense", None, 15, "alley-center-1"),
+                ("do", "*stops at the apothecary for medpacs*", None, None, None, "apothecary-front"),
+                ("do", "*patches a wounded ally behind the market stalls*", "First Aid", None, 10, "market-behind"),
+                ("do", "*follows the Force westward through the district*", "Sense", None, 12, "road-center-west"),
+                ("do", "*heads for the west exit*", None, None, None, "west-exit"),
+            ],
+        },
+        "mos-eisley-streets-3-enhanced.svg": {
+            "Kira Voss": [
+                ("do", "approaches the checkpoint cautiously from the east", "Sneak", None, 15, "checkpoint-approach"),
+                ("do", "bluffs the checkpoint guards — 'Imperial business, stand aside'", "Con", None, 15, "checkpoint-past"),
+                ("do", "spots the large docking bay ahead", "Search", None, 10, "bay-large-entrance"),
+                ("do", "pushes west past the docking bay toward Bay 87", None, None, None, "road-west"),
+                ("do", "heads for the Bay 87 road", None, None, None, "bay-87-road"),
+            ],
+            "Tok-3": [
+                ("do", "*jams the checkpoint scanner frequencies*", "Computer Prog", None, 12, "checkpoint-approach"),
+                ("do", "*rolls past the checkpoint while the troopers argue over the scanner*", "Sneak", None, 10, "checkpoint-past"),
+                ("do", "*scans the docking bay area for Bay 87*", "Search", None, 12, "road-center"),
+                ("do", "*interfaces with a terminal for bay access codes*", "Computer Prog", None, 15, "bay-large-entrance"),
+                ("do", "*rolls toward the Bay 87 road*", None, None, None, "bay-87-road"),
+            ],
+            "Renn Darkhollow": [
+                ("do", "*creeps through the alley to bypass the checkpoint*", "Sneak", None, 15, "buildings-nw-alley"),
+                ("do", "*covers the checkpoint and waves the group through*", "Blaster", None, 12, "checkpoint-past"),
+                ("do", "*scouts the road between the bays*", "Search", None, 15, "buildings-between-bays"),
+                ("do", "*takes cover behind the fuel drums*", None, None, None, "cover-fuel-drums"),
+                ("do", "*pushes for Bay 87 road, rifle raised*", None, None, None, "bay-87-road"),
+            ],
+            "Zeph Ando": [
+                ("do", "*senses the checkpoint guards' alertness*", "Sense", None, 15, "checkpoint-approach"),
+                ("do", "*waves a hand — these aren't the droids you're looking for*", "Sense", None, 18, "checkpoint-past"),
+                ("do", "*senses the path toward Bay 87*", "Sense", None, 12, "road-west"),
+                ("do", "*patches a wound behind cover near the bay*", "First Aid", None, 10, "cover-fuel-drums"),
+                ("do", "*follows the Force toward Bay 87 road*", "Sense", None, 12, "bay-87-road"),
+            ],
+        },
     },
     3: {  # Docking Bay — ship repair, combat, escape
         # All PCs start at ship positions. Every action moves.
@@ -724,14 +928,26 @@ NPC_COMBAT_REACTIONS = {
 
 ACT_EXIT_POSITIONS = {
     1: {"back-door", "storage-door"},
-    2: {"bay-87-entrance", "checkpoint-bay"},  # docking bay area — reachable via stepping stones
+    2: {"west-exit"},  # streets-1 exit → streets-2 (multi-map traversal continues via auto-transfer)
     3: {"ship-cockpit", "ship-turret"},
 }
 
-# Safety-valve hard cap — acts are objective-based but we need an upper
-# bound to prevent infinite loops from bad RNG.  This is NOT pacing; the
-# real act-end trigger is reaching exit positions (+ Act 3 objectives).
-ACT_HARD_CAP = 20
+# Multi-map exit: Act 2 ends when ALL PCs reach the docking bay map.
+# This is checked by map_id, not by position name.
+ACT_EXIT_MAP = {
+    2: "docking-bay-87.svg",  # ALL PCs must be on this map for act 2 to end
+}
+
+# Multi-map climax trigger: Act 2 climax fires when ALL PCs reach these maps.
+# Once on streets-3 (or already at the docking bay), the climax pool kicks in.
+ACT_CLIMAX_MAP = {
+    2: {"mos-eisley-streets-3-enhanced.svg", "docking-bay-87.svg"},
+}
+
+# Safety-valve hard cap — only prevents truly infinite loops (e.g. all PCs
+# incapacitated with no healer).  Acts are narrative-driven: they end when
+# PCs reach their objective, not after an arbitrary turn count.
+ACT_HARD_CAP = 50
 
 # Climax actions — dramatic finale moments that move characters to exits
 ACT_CLIMAX_ACTIONS = {
@@ -760,22 +976,50 @@ ACT_CLIMAX_ACTIONS = {
         ],
     },
     2: {
-        "Kira Voss": [
-            ("do", "guns the speeder straight through the checkpoint barricade toward Bay 87", "Starship Piloting", None, 18, "bay-87-entrance"),
-            ("do", "throws a smoke bomb and sprints for the Bay 87 blast door", "Dodge", None, 15, "bay-87-entrance"),
-        ],
-        "Tok-3": [
-            ("do", "*broadcasts a fake Imperial all-clear — the checkpoint troopers stand down*", "Computer Prog", None, 20, "checkpoint-bay"),
-            ("do", "*jams the checkpoint scanners and rolls for Bay 87*", "Security", None, 15, "bay-87-entrance"),
-        ],
-        "Renn Darkhollow": [
-            ("do", "*lays covering fire at the checkpoint while the group runs for Bay 87*", "Blaster", None, 18, "checkpoint-bay"),
-            ("do", "*tackles Greevak and sprints for the Bay 87 blast door*", "Brawling", None, 15, "bay-87-entrance"),
-        ],
-        "Zeph Ando": [
-            ("do", "*senses the safest path and guides the group to Bay 87's entrance*", "Sense", None, 15, "bay-87-entrance"),
-            ("do", "*uses the Force to topple a market stall into the troopers' path*", "Sense", None, 18, "checkpoint-bay"),
-        ],
+        # Climax per-map: force PCs toward the exit connection on whichever map they're on.
+        "__per_map__": True,
+        "mos-eisley-streets-1-enhanced.svg": {
+            "Kira Voss": [
+                ("do", "guns the speeder straight for the west exit", "Starship Piloting", None, 18, "west-exit"),
+            ],
+            "Tok-3": [
+                ("do", "*broadcasts a fake all-clear and rolls for the west exit*", "Computer Prog", None, 15, "west-exit"),
+            ],
+            "Renn Darkhollow": [
+                ("do", "*lays covering fire while sprinting for the west exit*", "Blaster", None, 15, "west-exit"),
+            ],
+            "Zeph Ando": [
+                ("do", "*guides the group toward the west exit with the Force*", "Sense", None, 15, "west-exit"),
+            ],
+        },
+        "mos-eisley-streets-2-enhanced.svg": {
+            "Kira Voss": [
+                ("do", "throws a smoke bomb and sprints for the west exit to the docking district", "Dodge", None, 15, "west-exit"),
+            ],
+            "Tok-3": [
+                ("do", "*jams nearby scanners and rolls for the west exit*", "Security", None, 15, "west-exit"),
+            ],
+            "Renn Darkhollow": [
+                ("do", "*covers the retreat and charges for the west exit*", "Blaster", None, 15, "west-exit"),
+            ],
+            "Zeph Ando": [
+                ("do", "*uses the Force to topple a market stall into the troopers' path and runs west*", "Sense", None, 18, "west-exit"),
+            ],
+        },
+        "mos-eisley-streets-3-enhanced.svg": {
+            "Kira Voss": [
+                ("do", "guns the speeder straight through the checkpoint barricade toward Bay 87", "Starship Piloting", None, 18, "bay-87-road"),
+            ],
+            "Tok-3": [
+                ("do", "*broadcasts a fake Imperial all-clear and rolls for Bay 87*", "Computer Prog", None, 20, "bay-87-road"),
+            ],
+            "Renn Darkhollow": [
+                ("do", "*lays covering fire at the checkpoint while sprinting for Bay 87*", "Blaster", None, 18, "bay-87-road"),
+            ],
+            "Zeph Ando": [
+                ("do", "*senses the safest path and guides the group to Bay 87*", "Sense", None, 15, "bay-87-road"),
+            ],
+        },
     },
     3: {
         "Kira Voss": [
@@ -844,10 +1088,34 @@ class ActPacer:
         """Record positions PCs moved to this turn."""
         self.turn += 1
         self.visited.update(p for p in positions_this_turn if p)
-        if self.visited & self.exit_positions:
-            self.reached_exit = True
         if pc_position_map:
             self.pc_positions.update(pc_position_map)
+        # ALL able PCs must be at exit positions for the act to end
+        self.reached_exit = self._all_pcs_at_exit()
+
+    def _all_pcs_at_exit(self) -> bool:
+        """Check if ALL PCs have reached the act's exit condition.
+
+        For multi-map acts (Act 2): ALL PCs must be on the destination map.
+        For single-map acts: ALL PCs must be at an exit position.
+        No exceptions, no proximity fudging.
+        """
+        pregens = _mod("pregens", PREGENS)
+        # Multi-map check: all PCs on the destination map
+        exit_map = ACT_EXIT_MAP.get(self.act_num)
+        if exit_map:
+            for char in pregens:
+                if _get_token_map(char) != exit_map:
+                    return False
+            return True
+        # Single-map check: all PCs at exit positions
+        if not self.exit_positions or not self.pc_positions:
+            return False
+        for char in pregens:
+            pos = self.pc_positions.get(char, "")
+            if pos not in self.exit_positions:
+                return False
+        return True
 
     def _all_surviving_aboard(self) -> bool:
         """Check if all able PCs are in ship positions.
@@ -884,39 +1152,54 @@ class ActPacer:
                     and self._all_surviving_aboard())
         return self.reached_exit
 
-    def _any_pc_near_exit(self) -> bool:
-        """Check if any PC is within sprint range of an exit position."""
+    def _all_pcs_near_exit(self) -> bool:
+        """Check if ALL PCs are close to the act's goal.
+
+        Single-map acts: ALL PCs within sprint range of an exit position.
+        Multi-map Act 2: ALL PCs on the penultimate map (streets-3) or
+        the destination map (docking-bay-87).
+        No exceptions for wounds.
+        """
+        pregens = _mod("pregens", PREGENS)
+        # Multi-map: climax once all PCs are on streets-3 or beyond
+        climax_maps = ACT_CLIMAX_MAP.get(self.act_num)
+        if climax_maps:
+            for char in pregens:
+                char_map = _get_token_map(char)
+                if char_map not in climax_maps:
+                    return False
+            return True
+        # Single-map: sprint range of exit positions
         if not self.exit_positions:
             return False
-        pregens = _mod("pregens", PREGENS)
         for char in pregens:
-            if _get_wound_level(char) >= 3:
-                continue  # incapacitated — can't move
+            char_near = False
             for exit_pos in self.exit_positions:
                 penalty, _ = _compute_move_penalty(char, exit_pos)
-                if penalty < 3:  # reachable (walk, run, or sprint)
-                    return True
-        return False
+                if penalty < 3:
+                    char_near = True
+                    break
+            if not char_near:
+                return False
+        return True
 
     @property
     def is_climax(self) -> bool:
         """Should the next turn use the climax action pool?
 
-        Narrative-driven: climax fires when a character has naturally moved
-        close enough to an exit to make a dramatic escape. No arbitrary
-        position counting — the story gets there when it gets there.
+        PURELY NARRATIVE — no turn counts, no arbitrary limits.
 
-        Act 3: Climax fires once the ship is repaired (escape sequence).
-        Hard cap is the only safety valve.
+        Act 1: climax when ALL PCs are within sprint range of an exit.
+        Act 2: climax when ANY PC reaches the final map (streets-3) or
+               when ALL PCs are near their current map's exit connection.
+        Act 3: climax when the ship is repaired.
         """
-        if self.turn + 1 >= self.hard_cap:
-            return True
         if self.turn < self.min_turns:
             return False
         if self.act_num == 3:
-            return self.ship_repaired or self.turn >= 8
-        # Acts 1-2: climax when someone is close enough to actually escape
-        return self._any_pc_near_exit()
+            return self.ship_repaired
+        # Acts 1-2: climax when all PCs are near exit (narrative convergence)
+        return self._all_pcs_near_exit()
 
     def pacing_hint(self) -> str:
         """Generate a pacing hint for the GM prompt."""
@@ -971,6 +1254,7 @@ def _init_session(adventure: str, transcript: TranscriptLogger):
 
     logger.info("=== INITIALIZING SESSION ===")
     out = run_rpg_cmd(["init", "--adventure", adventure, "--auto-join-bots"])
+    _invalidate_state_cache()          # init rewrites state — flush stale cache
     logger.info(f"  init: {out}")
     # Log persistent wound state (wounds carry over from last canon session)
     pregens = _mod("pregens", PREGENS)
@@ -1032,6 +1316,7 @@ def _set_act_map(act_num: int, transcript: TranscriptLogger):
     if terrain_file:
         cmd.extend(["--terrain", terrain_file])
     out = run_rpg_cmd(cmd)
+    _invalidate_state_cache()          # map changed on disk — flush stale cache
     logger.info(f"  map: {map_name} ({map_image}) -> {out}")
     transcript.log_scene_change(act_num, map_name, map_image)
     _auto_place_tokens(act_num)
@@ -1052,33 +1337,47 @@ def _set_act_map(act_num: int, transcript: TranscriptLogger):
         logger.info("  camera: follow-party zoom=2.0")
 
 
+def _load_terrain_for_map(map_image: str) -> dict | None:
+    """Load terrain JSON for a given map image filename."""
+    # Strip the image extension to get the base name
+    base = map_image
+    for ext in (".svg", ".png"):
+        if base.endswith(ext):
+            base = base[:-len(ext)]
+            break
+    terrain_name = f"{base}-terrain.json"
+    # Check standard location first, then campaign module location
+    for search_dir in ["/app/rpg/maps",
+                       "/app/rpg/campaigns/darkstrider/modules/01-escape-from-mos-eisley/maps"]:
+        terrain_path = pathlib.Path(search_dir) / terrain_name
+        if terrain_path.exists():
+            try:
+                with open(terrain_path) as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, OSError):
+                pass
+    return None
+
+
 def _maybe_auto_transfer(char_name: str, position_name: str):
     """If position is a map connection exit, auto-transfer the token.
 
-    Checks if ``position_name`` is a connection point on the current map.
-    If so, transfers the token to the connected map and switches the scene
-    so the overlay follows the character.
+    Checks if ``position_name`` is a connection on the character's current
+    map.  If so, transfers the token to the connected map at the connected
+    position.  Does NOT switch the global scene — the overlay picks which
+    map to show based on PC majority (Fix 3).
     """
-    state_path = os.environ.get(
-        "RPG_STATE_FILE",
-        "/home/node/.openclaw/rpg/state/game-state.json",
-    )
-    try:
-        with open(state_path) as f:
-            state = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return
-    current_map = (state.get("map") or {}).get("image", "")
-    if not current_map:
+    char_map = _get_token_map(char_name)
+    if not char_map:
+        # Fallback: use the global map
+        state = _load_game_state()
+        char_map = (state.get("map") or {}).get("image", "") if state else ""
+    if not char_map:
         return
 
-    # Load terrain for current map to check connections
-    terrain_file = current_map.replace(".svg", "-terrain.json")
-    terrain_path = pathlib.Path("/app/rpg/maps") / terrain_file
-    if not terrain_path.exists():
+    terrain = _load_terrain_for_map(char_map)
+    if not terrain:
         return
-    with open(terrain_path) as f:
-        terrain = json.load(f)
 
     connections = terrain.get("connections", {})
     if position_name not in connections:
@@ -1086,10 +1385,22 @@ def _maybe_auto_transfer(char_name: str, position_name: str):
 
     conn = connections[position_name]
     target_map = conn["map"]
-    logger.info(f"  [auto-transfer] {char_name}: {position_name} -> {target_map}")
-    run_rpg_cmd(["transfer-token", "--character", char_name,
-                  "--to-map", target_map])
-    run_rpg_cmd(["switch-scene", "--map", target_map])
+    target_pos = conn.get("position", "")
+    logger.info(f"  [auto-transfer] {char_name}: {position_name} on {char_map} -> {target_map} @ {target_pos}")
+
+    # Spawn NPCs for the target map (first PC to arrive triggers this)
+    _spawn_map_npcs(target_map)
+
+    # Transfer the token to the new map.  transfer-token resolves the
+    # connection internally and sets x, y, map_id on the target map.
+    # Do NOT call move-token afterwards — it overwrites map_id with the
+    # global map, undoing the transfer.
+    cmd = ["transfer-token", "--character", char_name, "--to-map", target_map]
+    if target_pos:
+        cmd += ["--position", target_pos]
+    run_rpg_cmd(cmd)
+
+    _invalidate_state_cache()
 
 
 # ---------------------------------------------------------------------------
@@ -1172,7 +1483,7 @@ def _pick_reachable_action(char: str, pool: list,
             stationary.append(action)
         else:
             # Skip if character is already at this position (within 30px)
-            to_xy = _resolve_position_xy(move_to)
+            to_xy = _resolve_position_xy(move_to, for_char=char)
             if from_xy and to_xy:
                 dist = ((from_xy[0] - to_xy[0])**2 + (from_xy[1] - to_xy[1])**2) ** 0.5
                 if dist < 30:
@@ -1192,6 +1503,231 @@ def _pick_reachable_action(char: str, pool: list,
         if fresh:
             pick_from = fresh
     return random.choice(pick_from)
+
+
+def _get_char_action_pool(act_actions: dict, char: str, act_num: int) -> list:
+    """Resolve the action pool for a character, handling per-map pools.
+
+    If the act's action dict has '__per_map__': True, look up the pool
+    by the character's current map_id.  Otherwise use the flat dict.
+    """
+    if act_actions.get("__per_map__"):
+        char_map = _get_token_map(char)
+        map_pool = act_actions.get(char_map, {})
+        return map_pool.get(char, [])
+    return act_actions.get(char, [])
+
+
+# ---------------------------------------------------------------------------
+# AI character agent — replaces hardcoded action pools
+# ---------------------------------------------------------------------------
+
+# Per-act objectives that character agents use to decide what to do
+ACT_OBJECTIVES = {
+    1: "Escape the cantina! Stormtroopers are closing in. Get to the back door or storage exit.",
+    2: "Reach Docking Bay 87! Head WEST through the streets. Follow signs, ask for directions, "
+       "go through each map's west-exit to reach the next district. Your destination is Bay 87.",
+    3: "Repair the Rusty Mynock and escape! Fix the ship, hold off the Stormtroopers, "
+       "get everyone aboard, and launch before the AT-ST arrives.",
+}
+
+
+def _get_reachable_positions_for_agent(char: str) -> list[dict]:
+    """Build a list of reachable positions with direction hints for the character agent.
+
+    Returns list of {id, desc, direction} dicts.
+    """
+    char_map = _get_token_map(char)
+    if not char_map:
+        state = _read_game_state()
+        char_map = (state.get("map") or {}).get("image", "") if state else ""
+    if not char_map:
+        return []
+
+    terrain = _load_terrain_for_map(char_map)
+    if not terrain:
+        return []
+
+    from_xy = _get_token_xy(char)
+    positions = terrain.get("positions", {})
+    connections = terrain.get("connections", {})
+    char_move_map = _mod("char_move", CHAR_MOVE)
+    move_allowance = char_move_map.get(char, DEFAULT_MOVE)
+    max_sprint = move_allowance * 4
+
+    result = []
+    for pos_id, pos_data in positions.items():
+        px, py = pos_data.get("x", 0), pos_data.get("y", 0)
+        desc = pos_data.get("desc", "")
+
+        # Skip if already there
+        if from_xy:
+            dx = px - from_xy[0]
+            dy = py - from_xy[1]
+            dist = (dx * dx + dy * dy) ** 0.5
+            if dist < 30:
+                continue  # Already here
+            if dist > max_sprint:
+                continue  # Too far to reach in one turn
+
+        # Compute direction hint
+        direction = ""
+        if from_xy:
+            dx = px - from_xy[0]
+            dy = py - from_xy[1]
+            if abs(dx) > abs(dy):
+                direction = "WEST" if dx < 0 else "EAST"
+            else:
+                direction = "NORTH" if dy < 0 else "SOUTH"
+
+        # Mark connection exits, flag backtracks
+        is_exit = pos_id in connections
+        if is_exit:
+            conn = connections[pos_id]
+            target_map = conn["map"]
+            # Check if this exit goes backward (toward a map we came from)
+            if _is_backtrack_map(char_map, target_map):
+                desc = f"BACKTRACK to {target_map} — avoid"
+            else:
+                desc = f"EXIT to {target_map} — {desc}"
+
+        result.append({"id": pos_id, "desc": desc, "direction": direction})
+
+    return result
+
+
+# Map progression order — later index = further along the mission
+_MAP_PROGRESSION = [
+    "cantina-expanded.svg",
+    "cantina-basement.svg",
+    "mos-eisley-streets-1-enhanced.svg",
+    "mos-eisley-streets-2-enhanced.svg",
+    "mos-eisley-streets-3-enhanced.svg",
+    "docking-bay-87.svg",
+]
+
+
+def _is_backtrack_map(current_map: str, target_map: str) -> bool:
+    """Return True if moving to target_map would be going backward or off-track."""
+    try:
+        cur_idx = _MAP_PROGRESSION.index(current_map)
+    except ValueError:
+        return False  # Current map unknown — can't determine
+    if target_map not in _MAP_PROGRESSION:
+        return True  # Target not on the mission path — dead end / side building
+    tgt_idx = _MAP_PROGRESSION.index(target_map)
+    return tgt_idx < cur_idx
+
+
+def _get_allies_status(char: str) -> str:
+    """Build a string describing where allied PCs are."""
+    pregens = _mod("pregens", PREGENS)
+    lines = []
+    for pc in pregens:
+        if pc == char:
+            continue
+        pc_map = _get_token_map(pc)
+        pc_xy = _get_token_xy(pc)
+        wl = _get_wound_level(pc)
+        status = ""
+        if wl >= 3:
+            status = " [INCAPACITATED]"
+        elif wl > 0:
+            status = f" [wounded lvl {wl}]"
+        map_short = pc_map.split(".")[0] if pc_map else "?"
+        pos = f"({pc_xy[0]},{pc_xy[1]})" if pc_xy else "?"
+        lines.append(f"  {pc}: {map_short} {pos}{status}")
+    if not lines:
+        return ""
+    return "ALLIES:\n" + "\n".join(lines)
+
+
+def _ask_agent_for_action(char: str, act_num: int,
+                           recent_texts: set[str] | None = None,
+                           is_climax: bool = False) -> tuple | None:
+    """Ask the AI character agent for the PC's next action.
+
+    Returns an action tuple (action_type, text, skill, dice_override, difficulty, move_to)
+    compatible with the existing simulation loop, or None on failure.
+    """
+    objective = ACT_OBJECTIVES.get(act_num, "Complete the mission.")
+    if is_climax:
+        objective = "CLIMAX! " + objective + " THIS IS URGENT — move to the exit NOW!"
+
+    current_map = _get_token_map(char)
+    if not current_map:
+        state = _read_game_state()
+        current_map = (state.get("map") or {}).get("image", "") if state else ""
+
+    # Reverse-lookup current position name
+    from_xy = _get_token_xy(char)
+    current_pos = "unknown"
+    if from_xy and current_map:
+        terrain = _load_terrain_for_map(current_map)
+        if terrain:
+            for pid, pdata in terrain.get("positions", {}).items():
+                dx = from_xy[0] - pdata.get("x", 0)
+                dy = from_xy[1] - pdata.get("y", 0)
+                if (dx * dx + dy * dy) ** 0.5 < 30:
+                    current_pos = pid
+                    break
+
+    reachable = _get_reachable_positions_for_agent(char)
+    allies = _get_allies_status(char)
+    recent_list = list(recent_texts)[:4] if recent_texts else None
+
+    # Compute banned skills based on current map context
+    banned_skills = None
+    if current_map and current_map not in STARSHIP_MAPS:
+        char_skills = set(CHAR_STATS.get(char, {}).keys())
+        banned = char_skills & STARSHIP_SKILLS
+        if banned:
+            banned_skills = sorted(banned)
+
+    result = ask_character_agent(
+        char=char,
+        objective=objective,
+        current_pos=current_pos,
+        current_map=current_map,
+        reachable_positions=reachable,
+        recent_actions=recent_list,
+        allies_status=allies,
+        banned_skills=banned_skills,
+    )
+
+    if not result:
+        return None
+
+    # Auto-select a position if agent returned null but there are reachable positions
+    move_to = result.get("move_to")
+    if not move_to and reachable:
+        # Prefer EXIT positions, then positions in the objective direction
+        exit_positions = [p for p in reachable if "EXIT" in p.get("desc", "")]
+        if exit_positions:
+            move_to = exit_positions[0]["id"]
+        else:
+            # Act 1: prefer back-door/storage-door exits
+            # Act 2: prefer WEST (toward docking bays)
+            pref_dir = "WEST" if act_num == 2 else None
+            if pref_dir:
+                dir_positions = [p for p in reachable
+                                 if p.get("direction") == pref_dir]
+                if dir_positions:
+                    move_to = dir_positions[0]["id"]
+            if not move_to:
+                # Pick any position — movement is better than standing still
+                move_to = reachable[0]["id"]
+        logger.info(f"  [agent] {char} returned null move — auto-selected {move_to}")
+
+    # Convert agent result to action tuple format
+    return (
+        result.get("action_type", "do"),
+        result.get("text", f"{char} considers the situation"),
+        result.get("skill"),
+        None,  # dice_override — always None, let stats handle it
+        result.get("difficulty"),
+        move_to,
+    )
 
 
 def _simulate_player_actions(act_num: int, turn_num: int,
@@ -1236,26 +1772,38 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     _hist_state = _load_game_state()
     _hist_log = _hist_state.get("action_log", []) if _hist_state else []
 
+    carry_helpers: dict[str, int] = {}  # ally → helper count (cooperative carry)
     for char in chars:
         recent_texts = {a["text"] for a in _hist_log[-12:]
                         if a.get("character") == char}
         # Priority: heal wounded > carry incapacitated > normal action
+        waive_penalty = False
         heal_action = _check_heal_priority(char)
-        carry_action = _check_carry_priority(char) if not heal_action else None
+        carry_action = _check_carry_priority(char, carry_helpers, act_num=act_num) if not heal_action else None
         if heal_action:
-            action_type, text, skill, dice_override, difficulty, move_to = heal_action
+            action_type, text, skill, dice_override, difficulty, move_to = heal_action[:6]
         elif carry_action:
-            action_type, text, skill, dice_override, difficulty, move_to = carry_action
+            action_type, text, skill, dice_override, difficulty, move_to = carry_action[:6]
+            waive_penalty = carry_action[7] if len(carry_action) > 7 else False
         else:
-            pool = act_actions.get(char, [])
-            if not pool and act_fallback:
-                pool = act_fallback.get(char, [])
-            if not pool:
-                continue
-            # Position-aware selection: prefer reachable moves, avoid wasted turns
-            action_type, text, skill, dice_override, difficulty, move_to = (
-                _pick_reachable_action(char, pool, recent_texts=recent_texts)
-            )
+            # Try AI character agent first — makes goal-directed decisions
+            agent_action = _ask_agent_for_action(
+                char, act_num, recent_texts=recent_texts,
+                is_climax=is_climax)
+            if agent_action:
+                action_type, text, skill, dice_override, difficulty, move_to = agent_action
+                logger.info(f"  [agent] {char} decided: {text} -> {move_to}")
+            else:
+                # Fallback to hardcoded pool if agent fails
+                logger.info(f"  [agent] {char} failed — using pool fallback")
+                pool = _get_char_action_pool(act_actions, char, act_num)
+                if not pool and act_fallback:
+                    pool = _get_char_action_pool(act_fallback, char, act_num)
+                if not pool:
+                    continue
+                action_type, text, skill, dice_override, difficulty, move_to = (
+                    _pick_reachable_action(char, pool, recent_texts=recent_texts)
+                )
 
         # Log the action to game state (viewer key matches bot:slug format)
         bot_slug = char.lower().replace(" ", "-").replace("'", "")
@@ -1273,6 +1821,10 @@ def _simulate_player_actions(act_num: int, turn_num: int,
         max_dist = 0
         if move_to:
             move_penalty, max_dist = _compute_move_penalty(char, move_to)
+            # Cooperative carry: helpers get movement penalty waived
+            if waive_penalty and move_penalty > 0:
+                logger.info(f"  [carry-assist] {char} penalty waived (cooperative carry)")
+                move_penalty = 0
             if move_penalty >= 3:
                 logger.info(f"  [BLOCKED] {char} can't reach {move_to} (too far to sprint)")
                 move_to = None  # Skip the move
@@ -1283,10 +1835,11 @@ def _simulate_player_actions(act_num: int, turn_num: int,
 
         # Move token if this action has a position hint
         if move_to:
-            move_cmd = ["move-token", "--character", char, "--position", move_to]
+            move_cmd = _build_move_cmd(char, move_to)
             if max_dist > 0:
                 move_cmd += ["--max-distance", str(max_dist)]
             run_rpg_cmd(move_cmd)
+            _invalidate_state_cache()
             logger.info(f"  [move] {char} -> {move_to}")
             positions.append(move_to)
             pc_position_map[char] = move_to
@@ -1341,8 +1894,8 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                         and pacer is not None):
                     pacer.ship_repaired = True
                     logger.info(f"  [OBJECTIVE] Ship repaired by {char}!")
-                # Healing: successful First Aid reduces ally wound level
-                if skill == "First Aid" and result.get("success"):
+                # Healing: successful First Aid / Droid Repair reduces ally wound level
+                if skill in ("First Aid", "Droid Repair") and result.get("success"):
                     # Find the wounded ally from the action text
                     for pc in pregens:
                         if pc != char and pc in text:
@@ -1741,6 +2294,7 @@ def run_dry_session(adventure: str):
         start_pos = _mod("act_starting_positions", ACT_STARTING_POSITIONS).get(act_num, {})
         pacer.pc_positions = dict(start_pos)
         _npc_roam_index.clear()
+        _spawned_map_npcs.clear()
 
         while not pacer.should_end_act() and _running:
             turn = pacer.turn + 1
@@ -1894,7 +2448,7 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
             char_move_map = _mod("char_move", CHAR_MOVE)
             move_allowance = char_move_map.get(char, DEFAULT_MOVE)
             max_dist = move_allowance * 4
-            move_cmd = ["move-token", "--character", char, "--position", move_to]
+            move_cmd = _build_move_cmd(char, move_to)
             if max_dist > 0:
                 move_cmd += ["--max-distance", str(max_dist)]
             run_rpg_cmd(move_cmd)
@@ -2005,26 +2559,38 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     _hist_state = _load_game_state()
     _hist_log = _hist_state.get("action_log", []) if _hist_state else []
 
+    carry_helpers: dict[str, int] = {}  # ally → helper count (cooperative carry)
     pc_pos_map = {}
     for char in chars:
         recent_texts = {a["text"] for a in _hist_log[-12:]
                         if a.get("character") == char}
         # Priority: heal wounded > carry incapacitated > normal action
+        waive_penalty = False
         heal_action = _check_heal_priority(char)
-        carry_action = _check_carry_priority(char) if not heal_action else None
+        carry_action = _check_carry_priority(char, carry_helpers, act_num=act_num) if not heal_action else None
         if heal_action:
-            action_type, text, skill, dice_override, difficulty, move_to = heal_action
+            action_type, text, skill, dice_override, difficulty, move_to = heal_action[:6]
         elif carry_action:
-            action_type, text, skill, dice_override, difficulty, move_to = carry_action
+            action_type, text, skill, dice_override, difficulty, move_to = carry_action[:6]
+            waive_penalty = carry_action[7] if len(carry_action) > 7 else False
         else:
-            pool = act_actions.get(char, [])
-            if not pool and act_fallback:
-                pool = act_fallback.get(char, [])
-            if not pool:
-                continue
-            action_type, text, skill, dice_override, difficulty, move_to = (
-                _pick_reachable_action(char, pool, recent_texts=recent_texts)
-            )
+            # Try AI character agent first
+            agent_action = _ask_agent_for_action(
+                char, act_num, recent_texts=recent_texts,
+                is_climax=is_climax)
+            if agent_action:
+                action_type, text, skill, dice_override, difficulty, move_to = agent_action
+                logger.info(f"  [agent] {char} decided: {text} -> {move_to}")
+            else:
+                logger.info(f"  [agent] {char} failed — using pool fallback")
+                pool = _get_char_action_pool(act_actions, char, act_num)
+                if not pool and act_fallback:
+                    pool = _get_char_action_pool(act_fallback, char, act_num)
+                if not pool:
+                    continue
+                action_type, text, skill, dice_override, difficulty, move_to = (
+                    _pick_reachable_action(char, pool, recent_texts=recent_texts)
+                )
 
         # Log the action to game state (viewer key matches bot:slug format)
         bot_slug = char.lower().replace(" ", "-").replace("'", "")
@@ -2040,6 +2606,10 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
         max_dist = 0
         if move_to:
             move_penalty, max_dist = _compute_move_penalty(char, move_to)
+            # Cooperative carry: helpers get movement penalty waived
+            if waive_penalty and move_penalty > 0:
+                logger.info(f"  [carry-assist] {char} penalty waived (cooperative carry)")
+                move_penalty = 0
             if move_penalty >= 3:
                 logger.info(f"  [BLOCKED] {char} can't reach {move_to} (too far to sprint)")
                 move_to = None
@@ -2049,10 +2619,11 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                 logger.info(f"  [{tier}] {char} -> {move_to} (-{move_penalty}D)")
 
         if move_to:
-            move_cmd = ["move-token", "--character", char, "--position", move_to]
+            move_cmd = _build_move_cmd(char, move_to)
             if max_dist > 0:
                 move_cmd += ["--max-distance", str(max_dist)]
             run_rpg_cmd(move_cmd)
+            _invalidate_state_cache()
             logger.info(f"  [move] {char} -> {move_to}")
             positions.append(move_to)
 
@@ -2090,8 +2661,8 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                 if skill == "Starship Repair" and result.get("success"):
                     pacer.ship_repaired = True
                     logger.info(f"  [OBJECTIVE] Ship repaired by {char}!")
-                # Healing: successful First Aid reduces ally wound level
-                if skill == "First Aid" and result.get("success"):
+                # Healing: successful First Aid / Droid Repair reduces ally wound level
+                if skill in ("First Aid", "Droid Repair") and result.get("success"):
                     pregens = _mod("pregens", PREGENS)
                     for pc in pregens:
                         if pc != char and pc in text:

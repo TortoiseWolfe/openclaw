@@ -139,9 +139,9 @@
     },
     "2": {
       "name": "Mos Eisley Streets",
-      "map": "mos-eisley-streets-1.png",
+      "map": "mos-eisley-streets-1-enhanced.svg",
       "map_name": "Cantina District",
-      "terrain": "mos-eisley-streets-1.png",
+      "terrain": "mos-eisley-streets-1-enhanced.svg",
       "time_of_day": "Approaching sunset — long shadows stretch across the dusty streets",
       "kick": "The party is on Mos Eisley's streets. Their goal is Docking Bay 87, but the main road is blocked by an Imperial checkpoint. Multiple routes exist: alleys, rooftops, market crowds, the warehouse bypass. If players explore shops, the inn, or the junk dealer, go with it — describe what they find using the AVAILABLE POSITIONS details. Create tension: Imperial patrols, a lurking Trandoshan bounty hunter, time pressure as sunset approaches.",
       "starting_positions": {

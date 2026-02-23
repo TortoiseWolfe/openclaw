@@ -1,1 +1,50 @@
-../campaigns/darkstrider/modules/01-escape-from-mos-eisley/maps/junk-dealer-terrain.json
+{
+  "map": "junk-dealer.svg",
+  "width": 1200,
+  "height": 900,
+  "positions": {
+    "entrance": {"x": 600, "y": 850, "desc": "Main entrance from the street"},
+    "back-exit": {"x": 50, "y": 240, "desc": "Back exit to alley behind building"},
+    "counter": {"x": 500, "y": 530, "desc": "Front counter (Toydarian owner hovers here, haggles everything)"},
+    "counter-left": {"x": 380, "y": 530, "desc": "Left side of counter (display case — comlink parts, 50 credits)"},
+    "counter-right": {"x": 620, "y": 530, "desc": "Right side of counter (display case — datapads, 80 credits)"},
+    "browsing-area": {"x": 500, "y": 700, "desc": "Open browsing area between entrance and counter"},
+    "shelves-front": {"x": 950, "y": 200, "desc": "Front shelving unit (droid parts, hydrospanners — 30 credits each)"},
+    "shelves-mid": {"x": 950, "y": 400, "desc": "Middle shelving unit (power cells, glow rods — 20 credits)"},
+    "shelves-back": {"x": 950, "y": 600, "desc": "Back shelving unit (larger items — speeder parts, 200+ credits)"},
+    "scrap-pile-1": {"x": 160, "y": 150, "desc": "Scrap pile (junk electronics, Moderate Perception to find useful parts)"},
+    "scrap-pile-2": {"x": 160, "y": 250, "desc": "Scrap pile (mixed salvage, might contain a working blaster — Difficult Search 20)"},
+    "scrap-pile-3": {"x": 160, "y": 350, "desc": "Scrap pile (ship components, 300+ credits to the right buyer)"},
+    "droid-parts": {"x": 180, "y": 680, "desc": "Droid parts corner (restraining bolts, motivators, photoreceptors)"},
+    "workbench": {"x": 450, "y": 340, "desc": "Workbench (tools available, +1D to Repair checks made here)"},
+    "back-room-door": {"x": 290, "y": 600, "desc": "Back room door (locked, Security 12)"},
+    "back-room": {"x": 180, "y": 600, "desc": "Back room — fake IDs (Difficult Forgery 25, 300 credits), comlink jammers (150 credits), stolen blasters"}
+  },
+  "connections": {
+    "entrance": {"map": "mos-eisley-streets-1.png", "position": "junk-dealer-door"},
+    "back-exit": {"map": "mos-eisley-streets-1.png", "position": "junk-dealer-alley"}
+  },
+  "obstacles": [
+    {"id": "counter", "x1": 350, "y1": 500, "x2": 650, "y2": 560, "desc": "Sales counter"},
+    {"id": "shelves", "x1": 800, "y1": 100, "x2": 1100, "y2": 700, "desc": "Shelving units (can be toppled — STR 15)"},
+    {"id": "back-room-wall", "x1": 60, "y1": 500, "x2": 300, "y2": 700, "desc": "Back room walls (locked door)"}
+  ],
+  "zones": {
+    "shop-floor": {
+      "desc": "Main shop area — cluttered but navigable",
+      "positions": ["entrance", "browsing-area", "counter", "counter-left", "counter-right", "workbench"]
+    },
+    "shelves": {
+      "desc": "Shelving area — tight aisles, +1D cover if hiding between shelves",
+      "positions": ["shelves-front", "shelves-mid", "shelves-back"]
+    },
+    "scrap": {
+      "desc": "Scrap piles — unorganized junk, Search checks to find useful items",
+      "positions": ["scrap-pile-1", "scrap-pile-2", "scrap-pile-3", "droid-parts"]
+    },
+    "restricted": {
+      "desc": "Back room — locked, contains high-value contraband",
+      "positions": ["back-room-door", "back-room"]
+    }
+  }
+}

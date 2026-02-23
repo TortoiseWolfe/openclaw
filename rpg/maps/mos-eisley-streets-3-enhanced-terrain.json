@@ -1,0 +1,432 @@
+{
+  "map": "mos-eisley-streets-3-enhanced.svg",
+  "width": 1920,
+  "height": 1080,
+  "positions": {
+    "east-entrance": {
+      "x": 1905,
+      "y": 450,
+      "desc": "East entrance from Southern District"
+    },
+    "bay-87-road": {
+      "x": 15,
+      "y": 550,
+      "desc": "West road -- approach to Docking Bay 87 area"
+    },
+    "road-east": {
+      "x": 1700,
+      "y": 450,
+      "desc": "Road, east section (approach from district)"
+    },
+    "road-center": {
+      "x": 1100,
+      "y": 400,
+      "desc": "Road, center section (between the two bays)"
+    },
+    "road-west": {
+      "x": 400,
+      "y": 450,
+      "desc": "Road, west section (near large docking bay)"
+    },
+    "road-south": {
+      "x": 750,
+      "y": 800,
+      "desc": "Southern road below large docking bay"
+    },
+    "road-north": {
+      "x": 1100,
+      "y": 150,
+      "desc": "Northern road above buildings between bays"
+    },
+    "bay-large-entrance": {
+      "x": 580,
+      "y": 450,
+      "desc": "Large docking bay entrance (left-center bay, main access road)"
+    },
+    "bay-large-rim-north": {
+      "x": 750,
+      "y": 380,
+      "desc": "Large docking bay north rim -- open edge, overlooks bay floor"
+    },
+    "bay-large-rim-south": {
+      "x": 750,
+      "y": 720,
+      "desc": "Large docking bay south rim -- edge overlooking bay"
+    },
+    "bay-large-rim-west": {
+      "x": 580,
+      "y": 550,
+      "desc": "Large docking bay west rim -- nearest buildings"
+    },
+    "bay-large-rim-east": {
+      "x": 920,
+      "y": 550,
+      "desc": "Large docking bay east rim -- road side"
+    },
+    "bay-large-floor-center": {
+      "x": 750,
+      "y": 550,
+      "desc": "Large docking bay floor center (cross-hair pattern, open area -- no cover)"
+    },
+    "bay-large-floor-north": {
+      "x": 750,
+      "y": 450,
+      "desc": "Large docking bay floor north side (near fuel lines)"
+    },
+    "bay-large-floor-south": {
+      "x": 750,
+      "y": 650,
+      "desc": "Large docking bay floor south side (cargo area)"
+    },
+    "bay-small-entrance": {
+      "x": 1250,
+      "y": 300,
+      "desc": "Small docking bay entrance (upper-right bay, main access)"
+    },
+    "bay-small-rim-north": {
+      "x": 1400,
+      "y": 160,
+      "desc": "Small docking bay north rim -- edge"
+    },
+    "bay-small-rim-south": {
+      "x": 1400,
+      "y": 440,
+      "desc": "Small docking bay south rim -- near road"
+    },
+    "bay-small-rim-west": {
+      "x": 1260,
+      "y": 300,
+      "desc": "Small docking bay west rim -- buildings side"
+    },
+    "bay-small-rim-east": {
+      "x": 1540,
+      "y": 300,
+      "desc": "Small docking bay east rim -- outer edge"
+    },
+    "bay-small-floor-center": {
+      "x": 1400,
+      "y": 300,
+      "desc": "Small docking bay floor center (cross-hair pattern, open -- no cover)"
+    },
+    "checkpoint-approach": {
+      "x": 500,
+      "y": 400,
+      "desc": "Approaching checkpoint from east (visible to guards)"
+    },
+    "checkpoint": {
+      "x": 450,
+      "y": 420,
+      "desc": "Checkpoint building (2-4 troopers or guards, scanner equipment)"
+    },
+    "checkpoint-barricade": {
+      "x": 480,
+      "y": 470,
+      "desc": "Behind the barricades at checkpoint (+2D cover)"
+    },
+    "checkpoint-past": {
+      "x": 350,
+      "y": 450,
+      "desc": "Past the checkpoint (cleared, heading to bay entrance)"
+    },
+    "buildings-nw-street": {
+      "x": 300,
+      "y": 300,
+      "desc": "Street in north-west building cluster"
+    },
+    "buildings-nw-alley": {
+      "x": 200,
+      "y": 200,
+      "desc": "Alley in north-west buildings (tight, Sneak +1D)"
+    },
+    "buildings-between-bays": {
+      "x": 1100,
+      "y": 300,
+      "desc": "Street between the two docking bays"
+    },
+    "buildings-east-street": {
+      "x": 1700,
+      "y": 300,
+      "desc": "Street in east building block (beyond small bay)"
+    },
+    "buildings-south-street": {
+      "x": 400,
+      "y": 800,
+      "desc": "Street in south building cluster (below large bay)"
+    },
+    "buildings-se-street": {
+      "x": 1300,
+      "y": 700,
+      "desc": "Street in south-east building area"
+    },
+    "garrison-front": {
+      "x": 1100,
+      "y": 450,
+      "desc": "Street in front of garrison annex (between bays)"
+    },
+    "garrison-annex": {
+      "x": 1100,
+      "y": 350,
+      "desc": "Garrison annex (off-duty troopers, armory in back room)"
+    },
+    "guard-station": {
+      "x": 1600,
+      "y": 200,
+      "desc": "Guard station (shift changeover every 2 hours, brief gap in coverage)"
+    },
+    "guard-station-front": {
+      "x": 1600,
+      "y": 450,
+      "desc": "Street in front of guard station"
+    },
+    "detention": {
+      "x": 1800,
+      "y": 250,
+      "desc": "Detention block (cells, Difficult Security 25 to unlock)"
+    },
+    "detention-front": {
+      "x": 1800,
+      "y": 450,
+      "desc": "Street in front of detention block"
+    },
+    "impound-lot": {
+      "x": 1400,
+      "y": 650,
+      "desc": "Impound lot (seized civilian vehicles, Moderate Mechanical to hotwire one)"
+    },
+    "impound-lot-front": {
+      "x": 1400,
+      "y": 500,
+      "desc": "Street south of small bay near impound lot"
+    },
+    "supply-depot": {
+      "x": 1700,
+      "y": 700,
+      "desc": "Supply depot (Imperial gear, E-11 blasters 800 credits on black market)"
+    },
+    "supply-depot-front": {
+      "x": 1700,
+      "y": 550,
+      "desc": "Street in front of supply depot"
+    },
+    "patrol-route-bay": {
+      "x": 920,
+      "y": 400,
+      "desc": "Patrol route near large bay east rim (stormtroopers every 5 min)"
+    },
+    "patrol-route-between": {
+      "x": 1100,
+      "y": 200,
+      "desc": "Patrol route on northern road between bays"
+    },
+    "imp-speeder": {
+      "x": 1200,
+      "y": 460,
+      "desc": "Parked Imperial speeder (Very Difficult Mechanical 25, fast but conspicuous)"
+    },
+    "vaporator-bay": {
+      "x": 950,
+      "y": 470,
+      "desc": "Behind vaporator near large bay east side (partial cover)"
+    },
+    "cover-fuel-drums": {
+      "x": 600,
+      "y": 500,
+      "desc": "Behind fuel drums near large bay entrance (+1D cover, explosive hazard)"
+    },
+    "cover-cargo-crates": {
+      "x": 1300,
+      "y": 480,
+      "desc": "Behind cargo crates between bays (+1D cover)"
+    }
+  },
+  "connections": {
+    "east-entrance": {
+      "map": "mos-eisley-streets-2-enhanced.svg",
+      "position": "west-exit"
+    },
+    "bay-87-road": {
+      "map": "docking-bay-87.svg",
+      "position": "blast-door"
+    }
+  },
+  "obstacles": [
+    {
+      "id": "block-nw",
+      "x1": 0,
+      "y1": 0,
+      "x2": 500,
+      "y2": 370,
+      "desc": "North-west building block (buildings north-west of large bay)"
+    },
+    {
+      "id": "block-w",
+      "x1": 0,
+      "y1": 430,
+      "x2": 500,
+      "y2": 1080,
+      "desc": "West building block (south-west of large bay)"
+    },
+    {
+      "id": "block-between-upper",
+      "x1": 950,
+      "y1": 0,
+      "x2": 1230,
+      "y2": 130,
+      "desc": "Building cluster north of gap between bays"
+    },
+    {
+      "id": "block-between-lower",
+      "x1": 950,
+      "y1": 470,
+      "x2": 1230,
+      "y2": 600,
+      "desc": "Building cluster south of gap between bays"
+    },
+    {
+      "id": "block-ne",
+      "x1": 1570,
+      "y1": 0,
+      "x2": 1920,
+      "y2": 130,
+      "desc": "North-east building block (beyond small bay)"
+    },
+    {
+      "id": "block-e",
+      "x1": 1570,
+      "y1": 470,
+      "x2": 1920,
+      "y2": 1080,
+      "desc": "East building block (guard station, detention, supply depot)"
+    },
+    {
+      "id": "block-s-center",
+      "x1": 500,
+      "y1": 780,
+      "x2": 1230,
+      "y2": 1080,
+      "desc": "South center building block (below large bay)"
+    },
+    {
+      "id": "block-se",
+      "x1": 1230,
+      "y1": 600,
+      "x2": 1570,
+      "y2": 1080,
+      "desc": "South-east building block (impound lot area)"
+    },
+    {
+      "id": "bay-large-wall",
+      "x1": 575,
+      "y1": 375,
+      "x2": 925,
+      "y2": 725,
+      "desc": "Large docking bay perimeter wall (circular, ~350px diameter centered at 750,550)"
+    },
+    {
+      "id": "bay-small-wall",
+      "x1": 1250,
+      "y1": 150,
+      "x2": 1550,
+      "y2": 450,
+      "desc": "Small docking bay perimeter wall (circular, ~300px diameter centered at 1400,300)"
+    },
+    {
+      "id": "checkpoint-structure",
+      "x1": 430,
+      "y1": 400,
+      "x2": 520,
+      "y2": 480,
+      "desc": "Checkpoint structure and barricades near large bay approach"
+    }
+  ],
+  "zones": {
+    "main-road": {
+      "desc": "Roads connecting districts and circling the docking bays -- patrolled",
+      "positions": [
+        "road-east",
+        "road-center",
+        "road-west",
+        "road-south",
+        "road-north",
+        "east-entrance",
+        "bay-87-road"
+      ]
+    },
+    "bay-large": {
+      "desc": "Large docking bay (left-center) -- circular pit with cross-hair markings, ship berth",
+      "positions": [
+        "bay-large-entrance",
+        "bay-large-rim-north",
+        "bay-large-rim-south",
+        "bay-large-rim-west",
+        "bay-large-rim-east",
+        "bay-large-floor-center",
+        "bay-large-floor-north",
+        "bay-large-floor-south"
+      ]
+    },
+    "bay-small": {
+      "desc": "Small docking bay (upper-right) -- circular pit, secondary berth",
+      "positions": [
+        "bay-small-entrance",
+        "bay-small-rim-north",
+        "bay-small-rim-south",
+        "bay-small-rim-west",
+        "bay-small-rim-east",
+        "bay-small-floor-center"
+      ]
+    },
+    "checkpoint": {
+      "desc": "Checkpoint blocking approach to the large docking bay (scanner, barricades, 2-4 guards)",
+      "positions": [
+        "checkpoint",
+        "checkpoint-approach",
+        "checkpoint-barricade",
+        "checkpoint-past"
+      ]
+    },
+    "building-streets": {
+      "desc": "Streets running through building clusters around the bays",
+      "positions": [
+        "buildings-nw-street",
+        "buildings-nw-alley",
+        "buildings-between-bays",
+        "buildings-east-street",
+        "buildings-south-street",
+        "buildings-se-street"
+      ]
+    },
+    "imperial-buildings": {
+      "desc": "Imperial-controlled buildings (restricted access, armed guards)",
+      "positions": [
+        "garrison-annex",
+        "guard-station",
+        "detention",
+        "supply-depot"
+      ]
+    },
+    "impound": {
+      "desc": "Vehicle impound lot (seized speeders, possibility of stealing one)",
+      "positions": [
+        "impound-lot",
+        "imp-speeder"
+      ]
+    },
+    "patrol": {
+      "desc": "Stormtrooper patrol route (regular patrols, timing-based evasion around bays)",
+      "positions": [
+        "patrol-route-bay",
+        "patrol-route-between"
+      ]
+    },
+    "cover": {
+      "desc": "Positions offering partial cover near the docking bays",
+      "positions": [
+        "vaporator-bay",
+        "cover-fuel-drums",
+        "cover-cargo-crates",
+        "checkpoint-barricade"
+      ]
+    }
+  }
+}

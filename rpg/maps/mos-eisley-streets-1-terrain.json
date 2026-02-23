@@ -1,1 +1,157 @@
-../campaigns/darkstrider/modules/01-escape-from-mos-eisley/maps/mos-eisley-streets-1-terrain.json
+{
+  "map": "mos-eisley-streets-1.png",
+  "width": 1920,
+  "height": 1080,
+  "positions": {
+    "west-exit": {"x": 15, "y": 400, "desc": "West edge of N-S street (exit to Southern District)"},
+    "east-exit": {"x": 1130, "y": 580, "desc": "East edge where southern road meets legend boundary"},
+    "road-west": {"x": 380, "y": 400, "desc": "Main E-W road, western section (near N-S crossroad)"},
+    "road-center": {"x": 600, "y": 400, "desc": "Main E-W road, open intersection/plaza"},
+    "road-east": {"x": 720, "y": 400, "desc": "Main E-W road, east section (near center N-S street)"},
+    "road-far-east": {"x": 1120, "y": 400, "desc": "Main E-W road, far east (near N-S street at x=1100)"},
+    "upper-road-west": {"x": 370, "y": 110, "desc": "Upper E-W road, open area (west)"},
+    "upper-road-center": {"x": 600, "y": 110, "desc": "Upper E-W road, center section"},
+    "upper-road-east": {"x": 1120, "y": 110, "desc": "Upper E-W road, east section"},
+    "southern-road-west": {"x": 380, "y": 640, "desc": "Southern E-W road, near Power Station #12"},
+    "southern-road-center": {"x": 600, "y": 640, "desc": "Southern E-W road, center"},
+    "southern-road-east": {"x": 720, "y": 640, "desc": "Southern E-W road, east section"},
+    "ns-street-west-north": {"x": 380, "y": 200, "desc": "Western N-S street, north segment"},
+    "ns-street-west-south": {"x": 380, "y": 540, "desc": "Western N-S street, south segment"},
+    "ns-street-center-north": {"x": 600, "y": 200, "desc": "Center N-S street, north segment"},
+    "ns-street-center-south": {"x": 600, "y": 540, "desc": "Center N-S street, south segment"},
+    "ns-street-east-north": {"x": 1120, "y": 200, "desc": "Eastern N-S street, north segment"},
+    "ns-street-east-south": {"x": 1120, "y": 540, "desc": "Eastern N-S street, south segment"},
+    "inn-front": {"x": 870, "y": 400, "desc": "Street in front of Mos Eisley Inn (#8) on main E-W road"},
+    "inn-door": {"x": 870, "y": 420, "desc": "Mos Eisley Inn (#8) entrance — green tiled facade"},
+    "inn-roof": {"x": 870, "y": 350, "desc": "Mos Eisley Inn rooftop (Climbing 15, overlooks main road)"},
+    "cantina-street": {"x": 600, "y": 380, "desc": "Street outside the cantina area at the central plaza"},
+    "cantina-door": {"x": 580, "y": 360, "desc": "Cantina entrance (south face, off central plaza)"},
+    "cantina-roof": {"x": 580, "y": 280, "desc": "Cantina rooftop (Climbing 15 from alley side)"},
+    "jabbas-townhouse-front": {"x": 450, "y": 400, "desc": "Street near Jabba's Townhouse (#13) compound wall"},
+    "jabbas-townhouse": {"x": 450, "y": 460, "desc": "Jabba's Townhouse (#13) — large compound, heavily guarded"},
+    "militia-front": {"x": 1050, "y": 400, "desc": "Street south of Tatooine Militia (#9) building"},
+    "militia-building": {"x": 1050, "y": 200, "desc": "Tatooine Militia (#9) — large building, armed locals"},
+    "dewback-stables-front": {"x": 1350, "y": 400, "desc": "Street south of Dewback Stables (#10)"},
+    "dewback-stables": {"x": 1350, "y": 210, "desc": "Dewback Stables (#10) — dewbacks for hire"},
+    "govt-offices-front": {"x": 1200, "y": 400, "desc": "Street in front of Regional Government Offices (#11)"},
+    "govt-offices": {"x": 1200, "y": 310, "desc": "Regional Government Offices (#11) — ornate decorative roof"},
+    "power-station": {"x": 330, "y": 750, "desc": "Power Station (#12) — electrical hazard, partial cover from machinery"},
+    "power-station-road": {"x": 380, "y": 700, "desc": "Road near Power Station #12"},
+    "preacher-corner": {"x": 370, "y": 110, "desc": "Street Corner Preacher (#14) — ranting about doom, harmless distraction"},
+    "junk-dealer-front": {"x": 1120, "y": 350, "desc": "Street near junk dealers (between #9 and #11)"},
+    "junk-dealer-door": {"x": 1160, "y": 310, "desc": "Junk dealer entrance (near Government Offices #11)"},
+    "dwelling-front": {"x": 600, "y": 540, "desc": "Street in front of dwelling (southern road intersection)"},
+    "dwelling": {"x": 630, "y": 700, "desc": "Inside dwelling (occupied family, Moderate Persuasion for help)"},
+    "shop-front": {"x": 720, "y": 640, "desc": "Street in front of shop on southern road"},
+    "shop": {"x": 750, "y": 720, "desc": "Shop interior (rope, glow rods, ration packs -- 50 credits each)"},
+    "tapcaf-front": {"x": 380, "y": 540, "desc": "Street in front of tapcaf on western N-S street"},
+    "tapcaf": {"x": 350, "y": 600, "desc": "Tapcaf (cheap food, blue milk, locals gossip)"},
+    "garage-front": {"x": 720, "y": 540, "desc": "Street in front of garage (center-east N-S street)"},
+    "garage": {"x": 750, "y": 580, "desc": "Garage/workshop (mechanic might help with speeders)"},
+    "speeder-1": {"x": 590, "y": 400, "desc": "Parked speeder at central plaza (larger -- Moderate Mechanical 15, seats 4)"},
+    "speeder-2": {"x": 1100, "y": 400, "desc": "Parked speeder on main road near eastern N-S street (smaller -- Easy Mechanical 10, seats 2, faster)"},
+    "vaporator-plaza": {"x": 620, "y": 420, "desc": "Behind vaporator at central plaza (partial cover)"},
+    "vaporator-south": {"x": 380, "y": 660, "desc": "Behind vaporator on southern road (partial cover)"},
+    "rooftop-route-start": {"x": 400, "y": 280, "desc": "Rooftop route start (above western buildings, Climbing 15 + Dex 15)"},
+    "rooftop-route-end": {"x": 700, "y": 280, "desc": "Rooftop route end (above center-east buildings)"},
+    "cover-crates-west": {"x": 370, "y": 400, "desc": "Behind crates at western intersection (+1D cover)"},
+    "cover-crates-east": {"x": 1130, "y": 400, "desc": "Behind crates at eastern intersection (+1D cover)"},
+    "side-alley": {"x": 350, "y": 480, "desc": "Narrow alley between buildings — tight, only 2 people wide. Ambush territory. Recessed doorway provides hiding (+1D Sneak)."},
+    "bay-94-entrance": {"x": 100, "y": 375, "desc": "Docking Bay 94 entrance — Imperial impound, 4 Stormtroopers posted. Seized freighter with engine clamps (Mechanical 25 to remove). Ship theft: Very Difficult, triggers immediate alert."},
+    "bay-86-entrance": {"x": 200, "y": 375, "desc": "Docking Bay 86 entrance — smuggler's YT-2000 being loaded by 2 Rodian crew. Hostile but bribable (500 credits or Moderate Persuasion 15). Rodians fight back, ship needs their Astrogation codes."},
+    "bay-87-entrance": {"x": 300, "y": 375, "desc": "Docking Bay 87 entrance — sign reads 'BAY 87' above the blast door. The Rodian said sunset. The Rusty Mynock (YT-1300) waits inside, needs Repair 15."},
+    "bay-92-entrance": {"x": 1000, "y": 680, "desc": "Docking Bay 92 entrance — empty bay, a maintenance droid (MSE-6) sweeps the floor. No ship. Safe to explore but a dead end — sunset is approaching."},
+    "sign-docking-bays": {"x": 380, "y": 380, "desc": "Directional sign: 'DOCKING BAYS 86-94 →' pointing west (Aurebesh + Basic). Arrow points toward the upper-left bay complex."},
+    "npc-dockworker": {"x": 450, "y": 400, "desc": "Ithorian dockworker leaning on a cargo loader. Gives Bay 87 directions for 10 credits or Easy Persuasion 10: 'Bay 87? Third door on the left past the impound yard. Watch out for the troopers at Bay 94.'"},
+    "sign-bay-87": {"x": 300, "y": 365, "desc": "Sign above blast door: 'BAY 87' in faded Aurebesh. Below it in Basic: 'Authorized Personnel Only'. The blast door is unlocked."},
+    "market-stalls": {"x": 600, "y": 620, "desc": "Open-air market stalls (Jawa traders selling scrap electronics, food vendor with skewered meats and blue milk, cloth merchant with cloaks — 30 credits for a disguise)"},
+    "checkpoint-bay": {"x": 150, "y": 400, "desc": "Imperial checkpoint on road approach to docking bays (2 Stormtroopers, scanner equipment, barricade). Moderate Con 15 to bluff past, or sneak through alleys."}
+  },
+  "connections": {
+    "cantina-door": {"map": "cantina.png", "position": "entrance"},
+    "junk-dealer-door": {"map": "junk-dealer.svg", "position": "entrance"},
+    "inn-door": {"map": "inn.svg", "position": "lobby"},
+    "bay-87-entrance": {"map": "docking-bay-87.svg", "position": "blast-door"}
+  },
+  "camera_presets": {
+    "overview": {"x": 960, "y": 540, "zoom": 1.0},
+    "cantina": {"x": 580, "y": 360, "zoom": 2.0},
+    "docking-bays": {"x": 200, "y": 375, "zoom": 2.5},
+    "bay-87": {"x": 300, "y": 375, "zoom": 3.0},
+    "inn": {"x": 870, "y": 400, "zoom": 2.0},
+    "market": {"x": 600, "y": 620, "zoom": 2.0},
+    "checkpoint": {"x": 150, "y": 400, "zoom": 2.5}
+  },
+  "obstacles": [
+    {"id": "block-nw", "x1": 0, "y1": 0, "x2": 340, "y2": 350, "desc": "North-west building block (north of main road, west of first N-S street)"},
+    {"id": "block-n-center-west", "x1": 410, "y1": 140, "x2": 560, "y2": 350, "desc": "North center-west building block (between N-S streets, south of upper road)"},
+    {"id": "block-n-center", "x1": 630, "y1": 140, "x2": 690, "y2": 350, "desc": "North center building block (between center N-S streets)"},
+    {"id": "block-n-center-east", "x1": 740, "y1": 0, "x2": 1090, "y2": 350, "desc": "North center-east building block (includes #8 Inn, #9 Militia area buildings)"},
+    {"id": "block-ne", "x1": 1160, "y1": 0, "x2": 1920, "y2": 350, "desc": "North-east building block (includes #10 Dewback Stables, #11 Gov Offices)"},
+    {"id": "block-sw", "x1": 0, "y1": 430, "x2": 340, "y2": 1080, "desc": "South-west building block (includes #12 Power Station)"},
+    {"id": "block-s-center-west", "x1": 410, "y1": 430, "x2": 560, "y2": 590, "desc": "South center-west building cluster (includes #13 Jabba's Townhouse area)"},
+    {"id": "block-s-center", "x1": 630, "y1": 430, "x2": 690, "y2": 590, "desc": "South center building cluster"},
+    {"id": "block-s-lower", "x1": 0, "y1": 700, "x2": 960, "y2": 1080, "desc": "Southern building block (south of southern road)"},
+    {"id": "block-se-buildings", "x1": 740, "y1": 430, "x2": 1090, "y2": 590, "desc": "South center-east building cluster"},
+    {"id": "legend-box", "x1": 1050, "y1": 600, "x2": 1720, "y2": 1000, "desc": "Map legend area (no gameplay)"},
+    {"id": "block-se-upper", "x1": 1160, "y1": 430, "x2": 1920, "y2": 590, "desc": "South-east building block (east side)"}
+  ],
+  "zones": {
+    "main-road": {
+      "desc": "Main east-west road at y~400 -- open and exposed, occasional patrol",
+      "positions": ["road-west", "road-center", "road-east", "road-far-east", "west-exit", "east-exit"]
+    },
+    "upper-road": {
+      "desc": "Upper east-west road at y~110 -- less trafficked, connects north buildings",
+      "positions": ["upper-road-west", "upper-road-center", "upper-road-east", "preacher-corner"]
+    },
+    "southern-road": {
+      "desc": "Southern east-west road at y~640 -- residential area, near Power Station",
+      "positions": ["southern-road-west", "southern-road-center", "southern-road-east", "power-station-road"]
+    },
+    "ns-streets": {
+      "desc": "North-south cross streets connecting the three E-W roads",
+      "positions": ["ns-street-west-north", "ns-street-west-south", "ns-street-center-north", "ns-street-center-south", "ns-street-east-north", "ns-street-east-south"]
+    },
+    "weg-landmarks": {
+      "desc": "WEG numbered locations from Tatooine Manhunt -- key buildings",
+      "positions": ["inn-door", "militia-building", "dewback-stables", "govt-offices", "power-station", "jabbas-townhouse", "preacher-corner"]
+    },
+    "cantina-area": {
+      "desc": "Area near the cantina at the central plaza -- familiar territory",
+      "positions": ["cantina-door", "cantina-street", "cantina-roof"]
+    },
+    "buildings-north": {
+      "desc": "Named buildings on the north side of the main road",
+      "positions": ["dwelling", "inn-door", "junk-dealer-door", "militia-building", "dewback-stables", "govt-offices"]
+    },
+    "buildings-south": {
+      "desc": "Buildings on the south side of the main road and southern areas",
+      "positions": ["shop", "tapcaf", "garage", "dwelling", "power-station", "jabbas-townhouse"]
+    },
+    "vehicles": {
+      "desc": "Parked speeders along the main road",
+      "positions": ["speeder-1", "speeder-2"]
+    },
+    "rooftops": {
+      "desc": "Rooftop route across the north block (Climbing 15 + Dex 15 to jump between)",
+      "positions": ["inn-roof", "cantina-roof", "rooftop-route-start", "rooftop-route-end"]
+    },
+    "cover": {
+      "desc": "Positions offering partial cover from obstacles and structures",
+      "positions": ["vaporator-plaza", "vaporator-south", "cover-crates-west", "cover-crates-east", "side-alley"]
+    },
+    "docking-bays": {
+      "desc": "Docking bay entrances in the upper-left bay complex and southeast. Bay 87 is the destination!",
+      "positions": ["bay-94-entrance", "bay-86-entrance", "bay-87-entrance", "bay-92-entrance", "checkpoint-bay"]
+    },
+    "wayfinding": {
+      "desc": "Signs and NPCs that help the party find Bay 87",
+      "positions": ["sign-docking-bays", "npc-dockworker", "sign-bay-87"]
+    },
+    "market": {
+      "desc": "Open-air market stalls on the southern road — crowded, good cover for sneaking (+1D Sneak)",
+      "positions": ["market-stalls"]
+    }
+  }
+}

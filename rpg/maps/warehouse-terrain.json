@@ -1,1 +1,56 @@
-../campaigns/darkstrider/modules/01-escape-from-mos-eisley/maps/warehouse-terrain.json
+{
+  "map": "warehouse.svg",
+  "width": 1200,
+  "height": 900,
+  "positions": {
+    "loading-dock": {"x": 600, "y": 850, "desc": "Loading dock entrance from the street"},
+    "open-floor": {"x": 550, "y": 625, "desc": "Open floor area (clear movement, no cover)"},
+    "cargo-a": {"x": 170, "y": 200, "desc": "Cargo cluster A (general goods — crates provide +1D cover)"},
+    "cargo-b": {"x": 950, "y": 200, "desc": "Cargo cluster B (mixed cargo — crates provide +1D cover)"},
+    "imperial-crates": {"x": 550, "y": 350, "desc": "Imperial supply crates (marked, alarmed — Moderate Security 15 to open quietly)"},
+    "imperial-crates-left": {"x": 430, "y": 300, "desc": "Left side of Imperial crates (flanking position)"},
+    "imperial-crates-right": {"x": 700, "y": 300, "desc": "Right side of Imperial crates (flanking position)"},
+    "catwalk-left": {"x": 310, "y": 75, "desc": "Left catwalk (upper level, Climbing 12 — elevated firing position, +2D cover)"},
+    "catwalk-right": {"x": 890, "y": 75, "desc": "Right catwalk (upper level, Climbing 12 — elevated firing position, +2D cover)"},
+    "office": {"x": 980, "y": 700, "desc": "Office area (desk with stolen manifest — Moderate Perception to find it)"},
+    "office-desk": {"x": 940, "y": 650, "desc": "Office desk (datapad with shipping schedules, Imperial codes)"},
+    "barrels": {"x": 120, "y": 600, "desc": "Fuel barrels (explosive — 5D damage if shot, 3m blast radius)"},
+    "behind-barrels": {"x": 100, "y": 650, "desc": "Behind fuel barrels (+1D cover, but EXPLOSIVE)"},
+    "center-floor": {"x": 600, "y": 500, "desc": "Center of warehouse (exposed, no cover)"}
+  },
+  "connections": {
+    "loading-dock": {"map": "mos-eisley-streets-2.png", "position": "warehouse-door"}
+  },
+  "obstacles": [
+    {"id": "cargo-a", "x1": 80, "y1": 100, "x2": 280, "y2": 340, "desc": "Cargo cluster A"},
+    {"id": "cargo-b", "x1": 800, "y1": 100, "x2": 1100, "y2": 300, "desc": "Cargo cluster B"},
+    {"id": "imperial-crates", "x1": 400, "y1": 250, "x2": 700, "y2": 430, "desc": "Imperial supply crates"},
+    {"id": "office-wall", "x1": 850, "y1": 600, "x2": 1110, "y2": 800, "desc": "Office enclosure"}
+  ],
+  "zones": {
+    "floor": {
+      "desc": "Main warehouse floor — open but cluttered with crate clusters",
+      "positions": ["loading-dock", "open-floor", "center-floor"]
+    },
+    "cargo": {
+      "desc": "Cargo areas — crates provide cover (+1D), can be climbed",
+      "positions": ["cargo-a", "cargo-b"]
+    },
+    "imperial": {
+      "desc": "Imperial supplies — alarmed crates, high-value contraband",
+      "positions": ["imperial-crates", "imperial-crates-left", "imperial-crates-right"]
+    },
+    "catwalks": {
+      "desc": "Upper catwalks — elevated positions, excellent cover (+2D), Climbing 12 to reach",
+      "positions": ["catwalk-left", "catwalk-right"]
+    },
+    "office": {
+      "desc": "Office area with stolen manifest and shipping data",
+      "positions": ["office", "office-desk"]
+    },
+    "hazard": {
+      "desc": "Fuel barrels — good cover but EXPLOSIVE (5D damage if ignited)",
+      "positions": ["barrels", "behind-barrels"]
+    }
+  }
+}

@@ -1,118 +1,612 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
   <defs>
-    <pattern id="duracrete" width="20" height="20" patternUnits="userSpaceOnUse">
-      <rect width="20" height="20" fill="#4a4a4a"/>
-      <rect x="0" y="0" width="10" height="10" fill="#444" opacity="0.3"/>
-      <rect x="10" y="10" width="10" height="10" fill="#444" opacity="0.3"/>
+    <!-- Duracrete HD floor pattern -->
+    <pattern id="duracrete-hd" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#4a4a4a"/>
+      <rect x="0" y="0" width="20" height="20" fill="#484848" opacity="0.6"/>
+      <rect x="20" y="20" width="20" height="20" fill="#464646" opacity="0.5"/>
+      <rect x="20" y="0" width="20" height="20" fill="#4c4c4c" opacity="0.4"/>
+      <rect x="0" y="20" width="20" height="20" fill="#454545" opacity="0.3"/>
+      <line x1="0" y1="20" x2="40" y2="20" stroke="#3e3e3e" stroke-width="0.6" opacity="0.5"/>
+      <line x1="20" y1="0" x2="20" y2="40" stroke="#3e3e3e" stroke-width="0.6" opacity="0.5"/>
+      <!-- Wear marks -->
+      <line x1="5" y1="8" x2="14" y2="12" stroke="#3a3a3a" stroke-width="0.3" opacity="0.4"/>
+      <line x1="28" y1="30" x2="36" y2="33" stroke="#404040" stroke-width="0.3" opacity="0.3"/>
+      <!-- Subtle crack -->
+      <path d="M 3 37 L 8 32 L 11 35" fill="none" stroke="#383838" stroke-width="0.4" opacity="0.5"/>
     </pattern>
-    <pattern id="metal" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect width="4" height="4" fill="#5a5a6a"/>
-      <line x1="0" y1="2" x2="4" y2="2" stroke="#4a4a5a" stroke-width="0.5"/>
+
+    <!-- Brushed metal plate pattern -->
+    <pattern id="metal-plate" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#5a5a6a"/>
+      <line x1="0" y1="1" x2="8" y2="1" stroke="#525262" stroke-width="0.4" opacity="0.5"/>
+      <line x1="0" y1="3" x2="8" y2="3" stroke="#626272" stroke-width="0.3" opacity="0.3"/>
+      <line x1="0" y1="5" x2="8" y2="5" stroke="#525262" stroke-width="0.4" opacity="0.4"/>
+      <line x1="0" y1="7" x2="8" y2="7" stroke="#626272" stroke-width="0.3" opacity="0.3"/>
     </pattern>
+
+    <!-- Catwalk grating pattern -->
+    <pattern id="grating" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#3a3a3a" opacity="0.6"/>
+      <line x1="0" y1="0" x2="12" y2="12" stroke="#555" stroke-width="0.8" opacity="0.5"/>
+      <line x1="12" y1="0" x2="0" y2="12" stroke="#555" stroke-width="0.8" opacity="0.5"/>
+      <line x1="6" y1="0" x2="6" y2="12" stroke="#4a4a4a" stroke-width="0.4" opacity="0.4"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="#4a4a4a" stroke-width="0.4" opacity="0.4"/>
+    </pattern>
+
+    <!-- Warning chevron pattern -->
+    <pattern id="chevron" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="20" height="20" fill="#c8a800"/>
+      <rect x="0" y="0" width="20" height="10" fill="#222"/>
+    </pattern>
+
+    <!-- Engine glow gradient -->
     <radialGradient id="engineGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#4e9af5" stop-opacity="0.3"/>
+      <stop offset="0%" stop-color="#6eb5ff" stop-opacity="0.8"/>
+      <stop offset="30%" stop-color="#4e9af5" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#3070c0" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#4e9af5" stop-opacity="0"/>
     </radialGradient>
+
+    <!-- Overhead light cone -->
+    <radialGradient id="lightCone" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffbe6" stop-opacity="0.12"/>
+      <stop offset="40%" stop-color="#fff5cc" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#fff5cc" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Red alert gradient -->
+    <radialGradient id="redAlert" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff4444" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ff2222" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Welding glow -->
+    <radialGradient id="weldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffaa33" stop-opacity="0.7"/>
+      <stop offset="40%" stop-color="#ff8800" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ff6600" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Maintenance pit inner shadow -->
+    <linearGradient id="pitShadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.5"/>
+      <stop offset="30%" stop-color="#1a1a1a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#222" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Sand drift gradient -->
+    <linearGradient id="sandDrift" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#8a7a60" stop-opacity="0.25"/>
+      <stop offset="40%" stop-color="#7a6a50" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#6a5a40" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Ship hull gradient -->
+    <linearGradient id="hullGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8a8a8a"/>
+      <stop offset="50%" stop-color="#7a7a7a"/>
+      <stop offset="100%" stop-color="#686868"/>
+    </linearGradient>
+
+    <!-- Vignette gradient -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.35"/>
+    </radialGradient>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Drop shadow filter for ship -->
+    <filter id="shipShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur"/>
+      <feOffset dx="6" dy="8" result="offset"/>
+      <feFlood flood-color="#000" flood-opacity="0.35" result="color"/>
+      <feComposite in="color" in2="offset" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Scorch mark filter -->
+    <filter id="scorch" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+
+    <!-- Light fixture glow filter -->
+    <filter id="lightGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
   </defs>
 
-  <!-- Floor -->
-  <rect width="1200" height="900" fill="url(#duracrete)"/>
+  <!-- ============================================ -->
+  <!-- BASE FLOOR LAYER                             -->
+  <!-- ============================================ -->
+  <rect width="1920" height="1080" fill="url(#duracrete-hd)"/>
 
-  <!-- Title -->
-  <text x="600" y="24" text-anchor="middle" font-family="Arial" font-size="18" fill="#ffd700" font-weight="bold">DOCKING BAY 87</text>
+  <!-- Oil stain ellipses scattered on floor -->
+  <ellipse cx="380" cy="520" rx="45" ry="28" fill="#2a2a2a" opacity="0.2"/>
+  <ellipse cx="1100" cy="680" rx="55" ry="22" fill="#2d2a25" opacity="0.18"/>
+  <ellipse cx="750" cy="360" rx="30" ry="40" fill="#2a2a2a" opacity="0.15"/>
+  <ellipse cx="1600" cy="500" rx="38" ry="25" fill="#2d2d28" opacity="0.16"/>
+  <ellipse cx="500" cy="800" rx="50" ry="20" fill="#282520" opacity="0.14"/>
 
-  <!-- Outer walls -->
-  <rect x="40" y="40" width="1120" height="820" fill="none" stroke="#6a6a7a" stroke-width="14" rx="6"/>
+  <!-- Blast scorch marks near blast door -->
+  <circle cx="780" cy="960" r="22" fill="#222" opacity="0.2" filter="url(#scorch)"/>
+  <circle cx="1040" cy="970" r="18" fill="#1e1e1e" opacity="0.18" filter="url(#scorch)"/>
+  <circle cx="900" cy="940" r="15" fill="#252525" opacity="0.15" filter="url(#scorch)"/>
+  <circle cx="1150" cy="950" r="12" fill="#222" opacity="0.12" filter="url(#scorch)"/>
 
-  <!-- Blast door (south entrance) -->
-  <rect x="440" y="846" width="320" height="18" fill="#7a7a8a" stroke="#5a5a6a" stroke-width="2" rx="3"/>
-  <line x1="520" y1="846" x2="520" y2="864" stroke="#4a4a5a" stroke-width="2"/>
-  <line x1="600" y1="846" x2="600" y2="864" stroke="#4a4a5a" stroke-width="2"/>
-  <line x1="680" y1="846" x2="680" y2="864" stroke="#4a4a5a" stroke-width="2"/>
-  <text x="600" y="892" text-anchor="middle" font-family="Arial" font-size="14" fill="#888">BLAST DOOR</text>
+  <!-- Tire / tread marks from blast door toward ship -->
+  <line x1="880" y1="1000" x2="900" y2="650" stroke="#3a3a3a" stroke-width="2.5" opacity="0.12"/>
+  <line x1="888" y1="1000" x2="908" y2="650" stroke="#3a3a3a" stroke-width="2.5" opacity="0.10"/>
+  <line x1="1000" y1="1000" x2="980" y2="650" stroke="#3a3a3a" stroke-width="2.5" opacity="0.11"/>
+  <line x1="1008" y1="1000" x2="988" y2="650" stroke="#3a3a3a" stroke-width="2.5" opacity="0.09"/>
 
-  <!-- Side entrance -->
-  <rect x="40" y="400" width="14" height="100" fill="#4a4a4a"/>
-  <text x="16" y="455" text-anchor="middle" font-family="Arial" font-size="11" fill="#888" transform="rotate(-90,16,455)">SIDE ENTRY</text>
+  <!-- Sand drift at blast door threshold -->
+  <rect x="680" y="960" width="560" height="55" fill="url(#sandDrift)" rx="4"/>
 
-  <!-- The ship: YT-1300 "Rusty Mynock" (center) -->
-  <g transform="translate(600, 380)">
-    <!-- Ship shadow -->
-    <ellipse cx="10" cy="15" rx="170" ry="120" fill="rgba(0,0,0,0.2)"/>
-    <!-- Hull -->
-    <ellipse cx="0" cy="0" rx="160" ry="110" fill="#7a7a7a" stroke="#5a5a5a" stroke-width="3"/>
-    <!-- Mandibles -->
-    <path d="M -80 -90 L -120 -150 L -40 -150 Z" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="2"/>
-    <path d="M 80 -90 L 40 -150 L 120 -150 Z" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="2"/>
-    <!-- Cockpit (right side tube) -->
-    <rect x="130" y="-30" width="80" height="60" rx="20" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="2"/>
-    <ellipse cx="215" cy="0" rx="12" ry="20" fill="#3a5a7a" stroke="#2a4a6a" stroke-width="1"/>
-    <!-- Detail lines -->
-    <ellipse cx="0" cy="0" rx="100" ry="70" fill="none" stroke="#5a5a5a" stroke-width="1"/>
-    <line x1="-80" y1="0" x2="80" y2="0" stroke="#5a5a5a" stroke-width="1"/>
-    <!-- Top hatch -->
-    <circle cx="-20" cy="-20" r="15" fill="#666" stroke="#555" stroke-width="2"/>
-    <!-- Engine glow -->
-    <ellipse cx="0" cy="100" rx="60" ry="20" fill="url(#engineGlow)"/>
-    <!-- Label -->
-    <text x="0" y="140" text-anchor="middle" font-family="Arial" font-size="13" fill="#4e9af5" font-style="italic">Rusty Mynock</text>
+  <!-- ============================================ -->
+  <!-- WALLS                                        -->
+  <!-- ============================================ -->
+
+  <!-- Outer walls with metal plate fill -->
+  <rect x="64" y="48" width="1792" height="984" fill="none" stroke="url(#metal-plate)" stroke-width="14" rx="8"/>
+  <!-- Inner wall edge highlight -->
+  <rect x="71" y="55" width="1778" height="970" fill="none" stroke="#6a6a7a" stroke-width="1" rx="6" opacity="0.5"/>
+
+  <!-- Conduit pipes along upper wall -->
+  <line x1="100" y1="68" x2="700" y2="68" stroke="#50505a" stroke-width="3"/>
+  <line x1="1220" y1="68" x2="1820" y2="68" stroke="#50505a" stroke-width="3"/>
+  <!-- Junction boxes on conduits -->
+  <rect x="300" y="60" width="16" height="16" fill="#44444e" stroke="#55555f" stroke-width="1" rx="2"/>
+  <rect x="550" y="60" width="16" height="16" fill="#44444e" stroke="#55555f" stroke-width="1" rx="2"/>
+  <rect x="1400" y="60" width="16" height="16" fill="#44444e" stroke="#55555f" stroke-width="1" rx="2"/>
+  <rect x="1680" y="60" width="16" height="16" fill="#44444e" stroke="#55555f" stroke-width="1" rx="2"/>
+
+  <!-- Conduit pipe along lower wall -->
+  <line x1="100" y1="1018" x2="680" y2="1018" stroke="#50505a" stroke-width="2.5"/>
+  <line x1="1240" y1="1018" x2="1820" y2="1018" stroke="#50505a" stroke-width="2.5"/>
+
+  <!-- Ventilation grates along walls -->
+  <rect x="180" y="50" width="28" height="10" fill="#2a2a2e" rx="1"/>
+  <rect x="420" y="50" width="28" height="10" fill="#2a2a2e" rx="1"/>
+  <rect x="1300" y="50" width="28" height="10" fill="#2a2a2e" rx="1"/>
+  <rect x="1550" y="50" width="28" height="10" fill="#2a2a2e" rx="1"/>
+  <rect x="1770" y="50" width="28" height="10" fill="#2a2a2e" rx="1"/>
+  <!-- Right wall vents -->
+  <rect x="1846" y="200" width="10" height="28" fill="#2a2a2e" rx="1"/>
+  <rect x="1846" y="500" width="10" height="28" fill="#2a2a2e" rx="1"/>
+  <rect x="1846" y="780" width="10" height="28" fill="#2a2a2e" rx="1"/>
+  <!-- Left wall vents -->
+  <rect x="64" y="250" width="10" height="28" fill="#2a2a2e" rx="1"/>
+  <rect x="64" y="680" width="10" height="28" fill="#2a2a2e" rx="1"/>
+  <rect x="64" y="880" width="10" height="28" fill="#2a2a2e" rx="1"/>
+
+  <!-- Warning chevrons near blast door frame -->
+  <rect x="688" y="1001" width="18" height="30" fill="url(#chevron)" opacity="0.7"/>
+  <rect x="1214" y="1001" width="18" height="30" fill="url(#chevron)" opacity="0.7"/>
+
+  <!-- Wall-mounted emergency lights at corners -->
+  <circle cx="88" cy="72" r="5" fill="#ff3333" opacity="0.6"/>
+  <circle cx="88" cy="72" r="12" fill="#ff3333" opacity="0.08"/>
+  <circle cx="1832" cy="72" r="5" fill="#ff3333" opacity="0.6"/>
+  <circle cx="1832" cy="72" r="12" fill="#ff3333" opacity="0.08"/>
+  <circle cx="88" cy="1008" r="5" fill="#ff3333" opacity="0.6"/>
+  <circle cx="88" cy="1008" r="12" fill="#ff3333" opacity="0.08"/>
+  <circle cx="1832" cy="1008" r="5" fill="#ff3333" opacity="0.6"/>
+  <circle cx="1832" cy="1008" r="12" fill="#ff3333" opacity="0.08"/>
+
+  <!-- ============================================ -->
+  <!-- BLAST DOOR (south entrance)                  -->
+  <!-- ============================================ -->
+  <rect x="704" y="1015" width="512" height="22" fill="#7a7a8a" stroke="#5a5a6a" stroke-width="2" rx="3"/>
+  <!-- Door panel lines -->
+  <line x1="832" y1="1015" x2="832" y2="1037" stroke="#5a5a6a" stroke-width="1.5"/>
+  <line x1="960" y1="1015" x2="960" y2="1037" stroke="#5a5a6a" stroke-width="1.5"/>
+  <line x1="1088" y1="1015" x2="1088" y2="1037" stroke="#5a5a6a" stroke-width="1.5"/>
+  <!-- Door lock indicators -->
+  <circle cx="720" cy="1026" r="3" fill="#4ecb71"/>
+  <circle cx="1200" cy="1026" r="3" fill="#4ecb71"/>
+  <text x="960" y="1060" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="13" fill="#888">BLAST DOOR</text>
+
+  <!-- ============================================ -->
+  <!-- SIDE ENTRY (west wall)                       -->
+  <!-- ============================================ -->
+  <rect x="64" y="480" width="22" height="120" fill="#4a4a4a" stroke="#5a5a6a" stroke-width="1"/>
+  <!-- Side door detail -->
+  <line x1="64" y1="520" x2="86" y2="520" stroke="#555" stroke-width="1"/>
+  <line x1="64" y1="560" x2="86" y2="560" stroke="#555" stroke-width="1"/>
+  <text x="36" y="545" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="11" fill="#888" transform="rotate(-90,36,545)">SIDE ENTRY</text>
+
+  <!-- ============================================ -->
+  <!-- CATWALKS (upper level)                       -->
+  <!-- ============================================ -->
+
+  <!-- Left catwalk shadow -->
+  <rect x="100" y="80" width="480" height="72" fill="#1a1a1a" opacity="0.15" rx="2"/>
+  <!-- Left catwalk -->
+  <rect x="96" y="72" width="480" height="72" fill="url(#grating)" stroke="#777" stroke-width="1" stroke-dasharray="8,4" rx="3" opacity="0.75"/>
+  <!-- Left catwalk railing -->
+  <rect x="102" y="78" width="468" height="60" fill="none" stroke="#666" stroke-width="0.8" rx="2"/>
+  <text x="336" y="114" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#777">CATWALK (upper)</text>
+
+  <!-- Right catwalk shadow -->
+  <rect x="1348" y="80" width="480" height="72" fill="#1a1a1a" opacity="0.15" rx="2"/>
+  <!-- Right catwalk -->
+  <rect x="1344" y="72" width="480" height="72" fill="url(#grating)" stroke="#777" stroke-width="1" stroke-dasharray="8,4" rx="3" opacity="0.75"/>
+  <!-- Right catwalk railing -->
+  <rect x="1350" y="78" width="468" height="60" fill="none" stroke="#666" stroke-width="0.8" rx="2"/>
+  <text x="1584" y="114" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#777">CATWALK (upper)</text>
+
+  <!-- ============================================ -->
+  <!-- SHIP: YT-1300 "Rusty Mynock"                 -->
+  <!-- ============================================ -->
+  <g transform="translate(960, 456)" filter="url(#shipShadow)">
+    <!-- Main hull -->
+    <ellipse cx="0" cy="0" rx="256" ry="132" fill="url(#hullGrad)" stroke="#5a5a5a" stroke-width="3"/>
+
+    <!-- Hull panel lines (concentric) -->
+    <ellipse cx="0" cy="0" rx="200" ry="100" fill="none" stroke="#636363" stroke-width="0.8" opacity="0.6"/>
+    <ellipse cx="0" cy="0" rx="140" ry="70" fill="none" stroke="#636363" stroke-width="0.8" opacity="0.5"/>
+    <ellipse cx="0" cy="0" rx="80" ry="40" fill="none" stroke="#636363" stroke-width="0.6" opacity="0.4"/>
+
+    <!-- Hull divider lines -->
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="#636363" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#636363" stroke-width="0.8" opacity="0.4"/>
+    <!-- Diagonal panel lines -->
+    <line x1="-140" y1="-70" x2="140" y2="70" stroke="#636363" stroke-width="0.5" opacity="0.3"/>
+    <line x1="140" y1="-70" x2="-140" y2="70" stroke="#636363" stroke-width="0.5" opacity="0.3"/>
+
+    <!-- Weathering: scratch marks -->
+    <line x1="-80" y1="-40" x2="-50" y2="-35" stroke="#9a9a9a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="60" y1="20" x2="95" y2="15" stroke="#9a9a9a" stroke-width="0.5" opacity="0.35"/>
+    <line x1="-30" y1="50" x2="10" y2="55" stroke="#9a9a9a" stroke-width="0.7" opacity="0.3"/>
+    <line x1="120" y1="-60" x2="150" y2="-50" stroke="#9a9a9a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="-150" y1="30" x2="-110" y2="35" stroke="#9a9a9a" stroke-width="0.6" opacity="0.35"/>
+
+    <!-- Weathering: rust patches -->
+    <ellipse cx="-100" cy="-20" rx="12" ry="8" fill="#6a4a2a" opacity="0.2"/>
+    <ellipse cx="80" cy="50" rx="10" ry="6" fill="#6a4a2a" opacity="0.18"/>
+    <ellipse cx="-40" cy="80" rx="8" ry="5" fill="#6a4a2a" opacity="0.15"/>
+    <ellipse cx="160" cy="-30" rx="14" ry="7" fill="#6a4a2a" opacity="0.17"/>
+    <ellipse cx="-180" cy="40" rx="10" ry="8" fill="#5a3a1a" opacity="0.14"/>
+
+    <!-- Mandibles (extending forward/up) -->
+    <!-- Left mandible -->
+    <path d="M -110 -110 L -160 -220 L -60 -220 L -50 -120 Z" fill="#6e6e6e" stroke="#5a5a5a" stroke-width="2"/>
+    <line x1="-110" y1="-160" x2="-80" y2="-160" stroke="#585858" stroke-width="0.8" opacity="0.5"/>
+    <!-- Right mandible -->
+    <path d="M 110 -110 L 60 -220 L 160 -220 L 50 -120 Z" fill="#6e6e6e" stroke="#5a5a5a" stroke-width="2"/>
+    <line x1="80" y1="-160" x2="110" y2="-160" stroke="#585858" stroke-width="0.8" opacity="0.5"/>
+    <!-- Sensor array between mandibles -->
+    <circle cx="0" cy="-195" r="8" fill="#4a5a6a" stroke="#3a4a5a" stroke-width="1.5"/>
+    <circle cx="0" cy="-195" r="3" fill="#5a7a9a"/>
+    <!-- Gap between mandibles detail -->
+    <line x1="-40" y1="-210" x2="40" y2="-210" stroke="#3a3a3a" stroke-width="1" opacity="0.4"/>
+
+    <!-- Cockpit (right side extending tube) -->
+    <rect x="210" y="-45" width="110" height="90" rx="30" fill="#686868" stroke="#5a5a5a" stroke-width="2"/>
+    <!-- Cockpit detail lines -->
+    <line x1="240" y1="-30" x2="240" y2="30" stroke="#5a5a5a" stroke-width="0.8" opacity="0.5"/>
+    <line x1="280" y1="-35" x2="280" y2="35" stroke="#5a5a5a" stroke-width="0.8" opacity="0.4"/>
+    <!-- Cockpit viewport glass -->
+    <ellipse cx="315" cy="0" rx="18" ry="30" fill="#2a4a6a" stroke="#1a3a5a" stroke-width="1.5" opacity="0.85"/>
+    <!-- Viewport glint -->
+    <ellipse cx="310" cy="-10" rx="5" ry="12" fill="#4a7aaa" opacity="0.25"/>
+
+    <!-- Engine section (rear/bottom) -->
+    <ellipse cx="0" cy="120" rx="100" ry="24" fill="#606060" stroke="#505050" stroke-width="1.5"/>
+    <!-- Engine exhaust vents -->
+    <ellipse cx="-50" cy="125" rx="20" ry="8" fill="url(#engineGlow)"/>
+    <ellipse cx="0" cy="128" rx="22" ry="9" fill="url(#engineGlow)"/>
+    <ellipse cx="50" cy="125" rx="20" ry="8" fill="url(#engineGlow)"/>
+    <!-- Engine glow halo -->
+    <ellipse cx="0" cy="130" rx="110" ry="35" fill="url(#engineGlow)" opacity="0.4"/>
+
+    <!-- Top hatch with crosshair -->
+    <circle cx="-30" cy="-25" r="20" fill="#666" stroke="#555" stroke-width="2"/>
+    <circle cx="-30" cy="-25" r="14" fill="none" stroke="#5a5a5a" stroke-width="0.8"/>
+    <line x1="-30" y1="-40" x2="-30" y2="-10" stroke="#5a5a5a" stroke-width="0.8"/>
+    <line x1="-45" y1="-25" x2="-15" y2="-25" stroke="#5a5a5a" stroke-width="0.8"/>
+
+    <!-- Sensor dish on hull top -->
+    <circle cx="50" cy="-70" r="14" fill="#6a6a6a" stroke="#5a5a5a" stroke-width="1.5"/>
+    <circle cx="50" cy="-70" r="6" fill="#555" stroke="#4a4a4a" stroke-width="1"/>
+    <circle cx="50" cy="-70" r="2" fill="#4a6a8a"/>
+
+    <!-- Loading ramp extending from bottom of hull -->
+    <rect x="-40" y="95" width="80" height="60" rx="3" fill="#606060" stroke="#505050" stroke-width="1.5" opacity="0.85"/>
+    <line x1="-25" y1="105" x2="-25" y2="145" stroke="#555" stroke-width="0.8" opacity="0.5"/>
+    <line x1="25" y1="105" x2="25" y2="145" stroke="#555" stroke-width="0.8" opacity="0.5"/>
+    <!-- Ramp ridges -->
+    <line x1="-30" y1="115" x2="30" y2="115" stroke="#555" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-30" y1="125" x2="30" y2="125" stroke="#555" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-30" y1="135" x2="30" y2="135" stroke="#555" stroke-width="0.5" opacity="0.4"/>
   </g>
+
+  <!-- Ship name label -->
+  <text x="960" y="630" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="15" fill="#4e9af5" font-style="italic">Rusty Mynock</text>
 
   <!-- Landing struts -->
-  <circle cx="480" cy="320" r="8" fill="#555" stroke="#444" stroke-width="2"/>
-  <circle cx="720" cy="320" r="8" fill="#555" stroke="#444" stroke-width="2"/>
-  <circle cx="600" cy="520" r="8" fill="#555" stroke="#444" stroke-width="2"/>
-
-  <!-- Cargo crates (left cluster) -->
-  <g transform="translate(120, 150)">
-    <rect x="0" y="0" width="60" height="45" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
-    <rect x="70" y="10" width="50" height="35" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
-    <rect x="20" y="55" width="70" height="50" fill="#5b6530" stroke="#4a5420" stroke-width="2" rx="3"/>
-    <rect x="100" y="50" width="40" height="40" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
-    <text x="70" y="130" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">CARGO</text>
+  <!-- Front-left strut -->
+  <g transform="translate(768, 384)">
+    <circle r="12" fill="#555" stroke="#444" stroke-width="2"/>
+    <circle r="5" fill="#444"/>
+    <line x1="-8" y1="12" x2="-14" y2="22" stroke="#4a4a4a" stroke-width="1.5"/>
+    <line x1="8" y1="12" x2="14" y2="22" stroke="#4a4a4a" stroke-width="1.5"/>
+  </g>
+  <!-- Front-right strut -->
+  <g transform="translate(1152, 384)">
+    <circle r="12" fill="#555" stroke="#444" stroke-width="2"/>
+    <circle r="5" fill="#444"/>
+    <line x1="-8" y1="12" x2="-14" y2="22" stroke="#4a4a4a" stroke-width="1.5"/>
+    <line x1="8" y1="12" x2="14" y2="22" stroke="#4a4a4a" stroke-width="1.5"/>
+  </g>
+  <!-- Rear strut -->
+  <g transform="translate(960, 624)">
+    <circle r="12" fill="#555" stroke="#444" stroke-width="2"/>
+    <circle r="5" fill="#444"/>
+    <line x1="-8" y1="12" x2="-14" y2="22" stroke="#4a4a4a" stroke-width="1.5"/>
+    <line x1="8" y1="12" x2="14" y2="22" stroke="#4a4a4a" stroke-width="1.5"/>
   </g>
 
-  <!-- Cargo crates (right cluster) -->
-  <g transform="translate(950, 150)">
-    <rect x="0" y="0" width="55" height="40" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
-    <rect x="65" y="5" width="45" height="45" fill="#5b4530" stroke="#4a3a20" stroke-width="2" rx="3"/>
-    <rect x="10" y="50" width="50" height="35" fill="#555b30" stroke="#4a4a20" stroke-width="2" rx="3"/>
+  <!-- ============================================ -->
+  <!-- CARGO CRATES (left cluster)                  -->
+  <!-- ============================================ -->
+  <g transform="translate(192, 180)">
+    <!-- Crate 1: large brown -->
+    <rect x="0" y="0" width="96" height="72" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <line x1="48" y1="0" x2="48" y2="72" stroke="#5a4525" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="36" x2="96" y2="36" stroke="#5a4525" stroke-width="0.8" opacity="0.5"/>
+    <text x="48" y="28" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="8" fill="#8a7550" font-weight="bold">RATIONS</text>
+
+    <!-- Crate 2: medium green -->
+    <rect x="112" y="16" width="80" height="56" fill="#5b6530" stroke="#4a5420" stroke-width="2" rx="3"/>
+    <text x="152" y="50" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="8" fill="#7a8550" font-weight="bold">PARTS</text>
+
+    <!-- Crate 3: stacked (smaller on larger) -->
+    <rect x="32" y="88" width="112" height="80" fill="#5b6530" stroke="#4a5420" stroke-width="2" rx="3"/>
+    <rect x="52" y="72" width="64" height="40" fill="#6b5530" stroke="#4a3a20" stroke-width="2" rx="3"/>
+
+    <!-- Crate 4: open crate -->
+    <rect x="160" y="90" width="64" height="64" fill="#5a4a2a" stroke="#4a3a20" stroke-width="2" rx="3"/>
+    <!-- Open crate interior (lighter) -->
+    <rect x="165" y="95" width="54" height="54" fill="#7a6a4a" stroke="#5a4a30" stroke-width="1" rx="2"/>
+    <!-- Contents hint -->
+    <rect x="172" y="102" width="14" height="20" fill="#8a7a5a" rx="1"/>
+    <rect x="190" y="108" width="12" height="16" fill="#8a7a5a" rx="1"/>
+    <rect x="206" y="104" width="8" height="22" fill="#8a7a5a" rx="1"/>
+
+    <!-- Crate 5: small brown -->
+    <rect x="200" y="20" width="50" height="50" fill="#7a6540" stroke="#5a4a28" stroke-width="2" rx="3"/>
+    <text x="225" y="50" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="7" fill="#9a8560" font-weight="bold">MISC</text>
+
+    <text x="120" y="198" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#888">CARGO</text>
   </g>
 
-  <!-- Fuel barrels (lower left - can be used as explosives!) -->
-  <g transform="translate(140, 600)">
-    <ellipse cx="0" cy="0" rx="18" ry="18" fill="#884444" stroke="#663333" stroke-width="2"/>
-    <ellipse cx="45" cy="5" rx="18" ry="18" fill="#884444" stroke="#663333" stroke-width="2"/>
-    <ellipse cx="20" cy="40" rx="18" ry="18" fill="#884444" stroke="#663333" stroke-width="2"/>
-    <text x="20" y="80" text-anchor="middle" font-family="Arial" font-size="11" fill="#ff6b6b">FUEL</text>
+  <!-- ============================================ -->
+  <!-- CARGO CRATES (right cluster)                 -->
+  <!-- ============================================ -->
+  <g transform="translate(1520, 180)">
+    <!-- Imperial gray crate 1 -->
+    <rect x="-48" y="0" width="88" height="64" fill="#5a5a64" stroke="#4a4a54" stroke-width="2" rx="3"/>
+    <rect x="-40" y="8" width="20" height="8" fill="#3a3a44" rx="1"/>
+    <text x="-4" y="44" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="7" fill="#7a7a8a" font-weight="bold">MUNITIONS</text>
+
+    <!-- Imperial gray crate 2 -->
+    <rect x="56" y="8" width="72" height="72" fill="#5a5a64" stroke="#4a4a54" stroke-width="2" rx="3"/>
+    <rect x="64" y="16" width="20" height="8" fill="#3a3a44" rx="1"/>
+    <!-- Imperial markings -->
+    <circle cx="92" cy="44" r="12" fill="none" stroke="#4a4a54" stroke-width="1.5"/>
+    <path d="M 92 35 L 86 50 L 98 50 Z" fill="#4a4a54" opacity="0.5"/>
+
+    <!-- Imperial gray crate 3 -->
+    <rect x="-16" y="80" width="80" height="56" fill="#585864" stroke="#4a4a54" stroke-width="2" rx="3"/>
+    <text x="24" y="114" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="7" fill="#7a7a8a" font-weight="bold">CLASSIFIED</text>
+
+    <!-- Imperial gray crate 4: small -->
+    <rect x="80" y="96" width="48" height="40" fill="#5c5c66" stroke="#4a4a54" stroke-width="2" rx="3"/>
+
+    <text x="48" y="166" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#888">CARGO</text>
   </g>
 
-  <!-- Maintenance pit (center-right) -->
-  <rect x="850" y="500" width="180" height="120" rx="6" fill="#333" stroke="#555" stroke-width="2"/>
-  <text x="940" y="565" text-anchor="middle" font-family="Arial" font-size="12" fill="#888">MAINTENANCE PIT</text>
+  <!-- ============================================ -->
+  <!-- FUEL BARRELS (lower left, hazardous)         -->
+  <!-- ============================================ -->
+  <g transform="translate(224, 720)">
+    <!-- Red alert glow under fuel area -->
+    <ellipse cx="30" cy="30" rx="100" ry="80" fill="url(#redAlert)"/>
 
-  <!-- Control panel (upper wall) -->
-  <rect x="400" y="55" width="120" height="40" rx="4" fill="#3a4a5a" stroke="#5a6a7a" stroke-width="2"/>
-  <circle cx="430" cy="75" r="5" fill="#4ecb71"/>
-  <circle cx="455" cy="75" r="5" fill="#ffd700"/>
-  <circle cx="480" cy="75" r="5" fill="#ff6b6b"/>
-  <text x="460" y="110" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">CONTROLS</text>
+    <!-- Drip stains on floor -->
+    <ellipse cx="-10" cy="55" rx="15" ry="8" fill="#2a2020" opacity="0.25"/>
+    <ellipse cx="50" cy="62" rx="12" ry="6" fill="#2a2020" opacity="0.2"/>
+    <ellipse cx="25" cy="70" rx="18" ry="7" fill="#2a2020" opacity="0.18"/>
 
-  <!-- Catwalk (upper level, dashed outline) -->
-  <rect x="60" y="60" width="300" height="60" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="6,4" rx="2"/>
-  <text x="210" y="95" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">CATWALK (upper)</text>
-  <rect x="840" y="60" width="300" height="60" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="6,4" rx="2"/>
-  <text x="990" y="95" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">CATWALK (upper)</text>
+    <!-- Barrel 1 -->
+    <ellipse cx="0" cy="0" rx="24" ry="24" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="24" ry="4" fill="#993333" opacity="0.3"/>
+    <!-- Hazard stripe -->
+    <line x1="-16" y1="-8" x2="16" y2="-8" stroke="#ccaa00" stroke-width="3"/>
+    <line x1="-16" y1="-8" x2="-8" y2="-8" stroke="#222" stroke-width="3"/>
+    <line x1="0" y1="-8" x2="8" y2="-8" stroke="#222" stroke-width="3"/>
+    <!-- Warning triangle -->
+    <path d="M 0 4 L -6 14 L 6 14 Z" fill="none" stroke="#ccaa00" stroke-width="1.2"/>
+    <text x="0" y="13" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="5" fill="#ccaa00" font-weight="bold">!</text>
 
-  <!-- AT-ST approach zone (marked in red) -->
-  <rect x="440" y="760" width="320" height="80" fill="rgba(255,80,80,0.08)" stroke="#ff4444" stroke-width="1" stroke-dasharray="8,4" rx="4"/>
-  <text x="600" y="808" text-anchor="middle" font-family="Arial" font-size="12" fill="#ff6b6b">AT-ST APPROACH</text>
+    <!-- Barrel 2 -->
+    <ellipse cx="60" cy="8" rx="24" ry="24" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="60" cy="8" rx="24" ry="4" fill="#993333" opacity="0.3"/>
+    <line x1="44" y1="0" x2="76" y2="0" stroke="#ccaa00" stroke-width="3"/>
+    <line x1="44" y1="0" x2="52" y2="0" stroke="#222" stroke-width="3"/>
+    <line x1="60" y1="0" x2="68" y2="0" stroke="#222" stroke-width="3"/>
+    <path d="M 60 12 L 54 22 L 66 22 Z" fill="none" stroke="#ccaa00" stroke-width="1.2"/>
+    <text x="60" y="21" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="5" fill="#ccaa00" font-weight="bold">!</text>
 
-  <!-- Grid -->
-  <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-    </pattern>
-  </defs>
-  <rect width="1200" height="900" fill="url(#grid)"/>
+    <!-- Barrel 3 -->
+    <ellipse cx="26" cy="55" rx="24" ry="24" fill="#884444" stroke="#663333" stroke-width="2"/>
+    <ellipse cx="26" cy="55" rx="24" ry="4" fill="#993333" opacity="0.3"/>
+    <line x1="10" y1="47" x2="42" y2="47" stroke="#ccaa00" stroke-width="3"/>
+    <line x1="10" y1="47" x2="18" y2="47" stroke="#222" stroke-width="3"/>
+    <line x1="26" y1="47" x2="34" y2="47" stroke="#222" stroke-width="3"/>
+    <path d="M 26 59 L 20 69 L 32 69 Z" fill="none" stroke="#ccaa00" stroke-width="1.2"/>
+    <text x="26" y="68" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="5" fill="#ccaa00" font-weight="bold">!</text>
+
+    <text x="28" y="104" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#ff6b6b" font-weight="bold">FUEL</text>
+    <text x="28" y="118" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="9" fill="#cc4444">DANGER</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- MAINTENANCE PIT                              -->
+  <!-- ============================================ -->
+  <g transform="translate(1360, 600)">
+    <!-- Pit recess -->
+    <rect x="0" y="0" width="288" height="144" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="2"/>
+    <!-- Inner shadow -->
+    <rect x="4" y="4" width="280" height="136" rx="4" fill="url(#pitShadow)"/>
+    <!-- Pit floor detail -->
+    <rect x="10" y="10" width="268" height="124" rx="3" fill="#222" opacity="0.5"/>
+
+    <!-- Tool outlines -->
+    <!-- Wrench -->
+    <g transform="translate(60, 70)" opacity="0.4">
+      <path d="M 0 0 L 30 -4 L 34 -10 L 40 -6 L 36 0 L 40 6 L 34 10 L 30 4 Z" fill="none" stroke="#666" stroke-width="1.2"/>
+    </g>
+    <!-- Hydrospanner (elongated tool) -->
+    <g transform="translate(140, 50)" opacity="0.4">
+      <rect x="0" y="0" width="60" height="8" rx="2" fill="none" stroke="#666" stroke-width="1.2"/>
+      <circle cx="65" cy="4" r="6" fill="none" stroke="#666" stroke-width="1.2"/>
+    </g>
+    <!-- Smaller tool -->
+    <g transform="translate(100, 100)" opacity="0.35">
+      <rect x="0" y="0" width="40" height="5" rx="1" fill="none" stroke="#666" stroke-width="1"/>
+      <rect x="40" y="-3" width="12" height="11" rx="2" fill="none" stroke="#666" stroke-width="1"/>
+    </g>
+
+    <!-- Welding glow -->
+    <circle cx="220" cy="90" r="18" fill="url(#weldGlow)"/>
+    <circle cx="220" cy="90" r="3" fill="#ffcc66" opacity="0.8"/>
+
+    <text x="144" y="82" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#888">MAINTENANCE PIT</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CONTROL PANEL (upper wall)                   -->
+  <!-- ============================================ -->
+  <g transform="translate(640, 66)">
+    <!-- Panel body -->
+    <rect x="0" y="0" width="192" height="48" rx="4" fill="#3a4a5a" stroke="#5a6a7a" stroke-width="2"/>
+    <!-- Panel inner frame -->
+    <rect x="4" y="4" width="184" height="40" rx="3" fill="#2a3a4a" opacity="0.5"/>
+
+    <!-- Screen -->
+    <rect x="10" y="8" width="60" height="32" rx="3" fill="#1a3050" stroke="#2a5070" stroke-width="1"/>
+    <!-- Screen scan line -->
+    <line x1="14" y1="20" x2="66" y2="20" stroke="#2a5a8a" stroke-width="0.5" opacity="0.4"/>
+    <line x1="14" y1="28" x2="66" y2="28" stroke="#2a5a8a" stroke-width="0.5" opacity="0.3"/>
+    <!-- Screen text -->
+    <text x="40" y="22" text-anchor="middle" font-family="monospace" font-size="5" fill="#3a8aaa" opacity="0.7">SYS OK</text>
+
+    <!-- Indicator lights row -->
+    <circle cx="88" cy="16" r="4" fill="#4ecb71"/>
+    <circle cx="104" cy="16" r="4" fill="#4ecb71"/>
+    <circle cx="120" cy="16" r="4" fill="#ffd700"/>
+    <circle cx="136" cy="16" r="4" fill="#ffd700"/>
+    <circle cx="152" cy="16" r="4" fill="#ff6b6b"/>
+    <circle cx="168" cy="16" r="4" fill="#4ecb71"/>
+
+    <!-- Buttons row -->
+    <circle cx="90" cy="34" r="3" fill="#444e5a" stroke="#556a7a" stroke-width="0.8"/>
+    <circle cx="106" cy="34" r="3" fill="#444e5a" stroke="#556a7a" stroke-width="0.8"/>
+    <circle cx="122" cy="34" r="3" fill="#444e5a" stroke="#556a7a" stroke-width="0.8"/>
+    <circle cx="138" cy="34" r="3" fill="#444e5a" stroke="#556a7a" stroke-width="0.8"/>
+    <!-- Toggle switch -->
+    <rect x="154" y="30" width="12" height="8" rx="2" fill="#444e5a" stroke="#556a7a" stroke-width="0.8"/>
+    <rect x="160" y="31" width="5" height="6" rx="1" fill="#5a6a7a"/>
+    <rect x="172" y="30" width="12" height="8" rx="2" fill="#444e5a" stroke="#556a7a" stroke-width="0.8"/>
+
+    <text x="96" y="66" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="12" fill="#888">CONTROLS</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- AT-ST APPROACH ZONE                          -->
+  <!-- ============================================ -->
+  <rect x="704" y="912" width="512" height="96" fill="rgba(255,60,60,0.06)" stroke="#ff4444" stroke-width="1.5" stroke-dasharray="10,5" rx="4"/>
+  <text x="960" y="968" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="13" fill="#ff6b6b" font-weight="bold" letter-spacing="1">AT-ST APPROACH</text>
+
+  <!-- ============================================ -->
+  <!-- LIGHTING                                     -->
+  <!-- ============================================ -->
+
+  <!-- Overhead light 1 -->
+  <circle cx="480" cy="300" r="140" fill="url(#lightCone)"/>
+  <circle cx="480" cy="300" r="8" fill="#fffbe6" opacity="0.5" filter="url(#lightGlow)"/>
+  <circle cx="480" cy="300" r="4" fill="#fffde8" opacity="0.8"/>
+
+  <!-- Overhead light 2 -->
+  <circle cx="1440" cy="300" r="140" fill="url(#lightCone)"/>
+  <circle cx="1440" cy="300" r="8" fill="#fffbe6" opacity="0.5" filter="url(#lightGlow)"/>
+  <circle cx="1440" cy="300" r="4" fill="#fffde8" opacity="0.8"/>
+
+  <!-- Overhead light 3 -->
+  <circle cx="480" cy="700" r="140" fill="url(#lightCone)"/>
+  <circle cx="480" cy="700" r="8" fill="#fffbe6" opacity="0.5" filter="url(#lightGlow)"/>
+  <circle cx="480" cy="700" r="4" fill="#fffde8" opacity="0.8"/>
+
+  <!-- Overhead light 4 -->
+  <circle cx="1440" cy="700" r="140" fill="url(#lightCone)"/>
+  <circle cx="1440" cy="700" r="8" fill="#fffbe6" opacity="0.5" filter="url(#lightGlow)"/>
+  <circle cx="1440" cy="700" r="4" fill="#fffde8" opacity="0.8"/>
+
+  <!-- Overhead light 5 (center top) -->
+  <circle cx="960" cy="150" r="120" fill="url(#lightCone)"/>
+  <circle cx="960" cy="150" r="6" fill="#fffbe6" opacity="0.4" filter="url(#lightGlow)"/>
+  <circle cx="960" cy="150" r="3" fill="#fffde8" opacity="0.7"/>
+
+  <!-- Overhead light 6 (center bottom) -->
+  <circle cx="960" cy="850" r="130" fill="url(#lightCone)"/>
+  <circle cx="960" cy="850" r="7" fill="#fffbe6" opacity="0.45" filter="url(#lightGlow)"/>
+  <circle cx="960" cy="850" r="3.5" fill="#fffde8" opacity="0.75"/>
+
+  <!-- Dust motes near light cones -->
+  <circle cx="475" cy="285" r="1" fill="#fffbe6" opacity="0.2"/>
+  <circle cx="490" cy="310" r="0.8" fill="#fffbe6" opacity="0.15"/>
+  <circle cx="465" cy="295" r="1.2" fill="#fffbe6" opacity="0.18"/>
+  <circle cx="1445" cy="290" r="1" fill="#fffbe6" opacity="0.17"/>
+  <circle cx="1430" cy="315" r="0.9" fill="#fffbe6" opacity="0.14"/>
+  <circle cx="1455" cy="305" r="1.1" fill="#fffbe6" opacity="0.16"/>
+  <circle cx="485" cy="690" r="1" fill="#fffbe6" opacity="0.15"/>
+  <circle cx="470" cy="710" r="0.8" fill="#fffbe6" opacity="0.13"/>
+  <circle cx="1435" cy="695" r="0.9" fill="#fffbe6" opacity="0.14"/>
+  <circle cx="1450" cy="715" r="1.1" fill="#fffbe6" opacity="0.16"/>
+  <circle cx="955" cy="140" r="0.8" fill="#fffbe6" opacity="0.15"/>
+  <circle cx="970" cy="155" r="1" fill="#fffbe6" opacity="0.13"/>
+  <circle cx="950" cy="845" r="0.9" fill="#fffbe6" opacity="0.14"/>
+  <circle cx="968" cy="860" r="1" fill="#fffbe6" opacity="0.12"/>
+
+  <!-- ============================================ -->
+  <!-- GRID OVERLAY                                 -->
+  <!-- ============================================ -->
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+
+  <!-- ============================================ -->
+  <!-- ATMOSPHERE: haze + vignette                  -->
+  <!-- ============================================ -->
+
+  <!-- Subtle warm haze overlay -->
+  <rect width="1920" height="1080" fill="#3a3020" opacity="0.04"/>
+
+  <!-- Vignette -->
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+
+  <!-- ============================================ -->
+  <!-- TITLE                                        -->
+  <!-- ============================================ -->
+  <text x="960" y="36" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,serif" font-size="22" fill="#ffd700" font-weight="bold" letter-spacing="2">DOCKING BAY 87</text>
 </svg>

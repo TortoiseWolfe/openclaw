@@ -64,11 +64,16 @@ def _load_terrain(map_image: str) -> dict | None:
     if map_image in _terrain_cache:
         return _terrain_cache[map_image]
     base = map_image.rsplit(".", 1)[0] if "." in map_image else map_image
-    terrain_path = os.path.join(MAPS_DIR, f"{base}-terrain.json")
+    terrain_name = f"{base}-terrain.json"
     terrain = None
-    if os.path.exists(terrain_path):
-        with open(terrain_path) as f:
-            terrain = json.load(f)
+    for search_dir in [MAPS_DIR,
+                       os.path.join(_CONTENT_DIR, "campaigns", "darkstrider",
+                                    "modules", "01-escape-from-mos-eisley", "maps")]:
+        terrain_path = os.path.join(search_dir, terrain_name)
+        if os.path.exists(terrain_path):
+            with open(terrain_path) as f:
+                terrain = json.load(f)
+            break
     _terrain_cache[map_image] = terrain
     return terrain
 
@@ -792,11 +797,23 @@ def cmd_move_token(args: argparse.Namespace) -> None:
 
     default_colors = {"pc": "#4e9af5", "npc": "#f54e4e", "vehicle": "#8899aa"}
     tokens = state.setdefault("tokens", {})
+
+    # Determine map_id:  When moving by raw --x/--y AND the token already
+    # exists, preserve its current map_id (the caller placed it on the
+    # correct map via transfer-token).  --position calls resolve against the
+    # global map, so always use the global map_id for those.
+    global_map = (state.get("map") or {}).get("image", "")
+    existing = tokens.get(slug)
+    if existing and args.x is not None and not args.position:
+        token_map_id = existing.get("map_id", global_map)
+    else:
+        token_map_id = global_map
+
     tokens[slug] = {
         "name": name,
         "x": x,
         "y": y,
-        "map_id": (state.get("map") or {}).get("image", ""),
+        "map_id": token_map_id,
         "type": token_type,
         "color": args.color or default_colors.get(token_type, "#f54e4e"),
         "visible": not args.hidden,

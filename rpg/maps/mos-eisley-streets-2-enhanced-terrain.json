@@ -1,0 +1,470 @@
+{
+  "map": "mos-eisley-streets-2-enhanced.svg",
+  "width": 1920,
+  "height": 1080,
+  "positions": {
+    "east-entrance": {
+      "x": 1905,
+      "y": 450,
+      "desc": "East entrance from Central Sector overview"
+    },
+    "west-exit": {
+      "x": 15,
+      "y": 450,
+      "desc": "West exit toward docking bays"
+    },
+    "road-east": {
+      "x": 1600,
+      "y": 450,
+      "desc": "Main E-W road, east section"
+    },
+    "road-center-east": {
+      "x": 1200,
+      "y": 450,
+      "desc": "Main E-W road, center-east (near N-S cross street)"
+    },
+    "road-center": {
+      "x": 800,
+      "y": 450,
+      "desc": "Main E-W road, center of southern district"
+    },
+    "road-center-west": {
+      "x": 400,
+      "y": 450,
+      "desc": "Main E-W road, center-west (near N-S cross street)"
+    },
+    "road-west": {
+      "x": 200,
+      "y": 450,
+      "desc": "Main E-W road, west section"
+    },
+    "ns-street-west-north": {
+      "x": 400,
+      "y": 250,
+      "desc": "Western N-S street, north segment"
+    },
+    "ns-street-west-south": {
+      "x": 400,
+      "y": 650,
+      "desc": "Western N-S street, south segment"
+    },
+    "ns-street-center-north": {
+      "x": 800,
+      "y": 250,
+      "desc": "Center N-S street, north segment"
+    },
+    "ns-street-center-south": {
+      "x": 800,
+      "y": 650,
+      "desc": "Center N-S street, south segment"
+    },
+    "ns-street-east-north": {
+      "x": 1200,
+      "y": 250,
+      "desc": "Eastern N-S street, north segment"
+    },
+    "ns-street-east-south": {
+      "x": 1200,
+      "y": 650,
+      "desc": "Eastern N-S street, south segment"
+    },
+    "alley-north-1": {
+      "x": 600,
+      "y": 200,
+      "desc": "Narrow alley, north section (tight, 2 people wide)"
+    },
+    "alley-center-1": {
+      "x": 600,
+      "y": 350,
+      "desc": "Narrow alley center (Trandoshan ambush point, +1D cover)"
+    },
+    "alley-road-1": {
+      "x": 600,
+      "y": 440,
+      "desc": "Alley opening at main road level"
+    },
+    "alley-south-1": {
+      "x": 600,
+      "y": 600,
+      "desc": "Narrow alley, south end (below road)"
+    },
+    "alley-alcove": {
+      "x": 580,
+      "y": 280,
+      "desc": "Recessed doorway in alley (hiding spot, Sneak +1D)"
+    },
+    "alley-east": {
+      "x": 1000,
+      "y": 300,
+      "desc": "Narrow eastern alley (between dense buildings)"
+    },
+    "alley-east-south": {
+      "x": 1000,
+      "y": 600,
+      "desc": "Eastern alley south end"
+    },
+    "warehouse-front": {
+      "x": 300,
+      "y": 450,
+      "desc": "Street in front of warehouse on main road"
+    },
+    "warehouse-door": {
+      "x": 280,
+      "y": 380,
+      "desc": "Warehouse loading dock entrance (north side of road)"
+    },
+    "warehouse-roof": {
+      "x": 280,
+      "y": 250,
+      "desc": "Warehouse roof (Climbing 15 -- overlooks alley and road)"
+    },
+    "trading-post-front": {
+      "x": 700,
+      "y": 450,
+      "desc": "Street in front of trading post on main road"
+    },
+    "trading-post": {
+      "x": 700,
+      "y": 350,
+      "desc": "Trading post interior (general trade goods, 10-20% markup)"
+    },
+    "apothecary-front": {
+      "x": 900,
+      "y": 450,
+      "desc": "Street in front of apothecary on main road"
+    },
+    "apothecary": {
+      "x": 900,
+      "y": 350,
+      "desc": "Apothecary (medpacs 100 credits, stimpacks 50 credits, bacta patches 200 credits)"
+    },
+    "apartments-front": {
+      "x": 1100,
+      "y": 450,
+      "desc": "Street in front of apartments on main road"
+    },
+    "apartments": {
+      "x": 1100,
+      "y": 300,
+      "desc": "Apartment building (#15 area, locked doors, Difficult Persuasion to enter)"
+    },
+    "dwelling-north": {
+      "x": 1500,
+      "y": 300,
+      "desc": "North-side dwelling (#18 area, civilians)"
+    },
+    "dwelling-north-front": {
+      "x": 1500,
+      "y": 450,
+      "desc": "Street in front of north dwelling"
+    },
+    "cantina-south": {
+      "x": 1400,
+      "y": 350,
+      "desc": "Small cantina (#20 area, locals only, hostile to outsiders)"
+    },
+    "cantina-south-front": {
+      "x": 1400,
+      "y": 450,
+      "desc": "Street in front of southern cantina"
+    },
+    "repair-shop": {
+      "x": 500,
+      "y": 300,
+      "desc": "Repair shop (#21 area, droid and speeder repairs)"
+    },
+    "repair-shop-front": {
+      "x": 500,
+      "y": 450,
+      "desc": "Street in front of repair shop"
+    },
+    "market-stall-scrap": {
+      "x": 700,
+      "y": 600,
+      "desc": "Market stall (Jawa selling scrap electronics)"
+    },
+    "market-stall-food": {
+      "x": 850,
+      "y": 600,
+      "desc": "Market stall (food vendor -- skewered meats, blue milk)"
+    },
+    "market-stall-cloaks": {
+      "x": 700,
+      "y": 700,
+      "desc": "Market stall (cloth and cloaks -- disguise material, 30 credits)"
+    },
+    "market-stall-tools": {
+      "x": 850,
+      "y": 700,
+      "desc": "Market stall (Jawa tool dealer -- hydrospanners, fuses)"
+    },
+    "market-center": {
+      "x": 775,
+      "y": 650,
+      "desc": "Market center (crowded, +1D cover for sneaking)"
+    },
+    "market-behind": {
+      "x": 775,
+      "y": 780,
+      "desc": "Behind market stalls (out of sight from road)"
+    },
+    "storage-yard": {
+      "x": 1200,
+      "y": 700,
+      "desc": "Storage yard (crates and junk, +1D cover)"
+    },
+    "residential-south": {
+      "x": 1500,
+      "y": 700,
+      "desc": "South residential block (civilians)"
+    },
+    "storage-shed": {
+      "x": 300,
+      "y": 650,
+      "desc": "Storage shed (south of alley, unlocked, empty crates)"
+    },
+    "squatter-dwelling": {
+      "x": 200,
+      "y": 800,
+      "desc": "Squatter dwelling (desperate locals, might trade info for credits)"
+    },
+    "speeder-parked-1": {
+      "x": 600,
+      "y": 460,
+      "desc": "Blue speeder parked on road (visible triangular vehicle)"
+    },
+    "speeder-parked-2": {
+      "x": 1300,
+      "y": 460,
+      "desc": "Blue speeder parked on road (visible triangular vehicle)"
+    },
+    "merchant-cart": {
+      "x": 950,
+      "y": 465,
+      "desc": "Merchant cart on the road (partial cover, annoyed merchant)"
+    },
+    "vaporator-market": {
+      "x": 650,
+      "y": 530,
+      "desc": "Behind vaporator near market (partial cover)"
+    },
+    "vaporator-north": {
+      "x": 1100,
+      "y": 420,
+      "desc": "Behind vaporator near apartments (partial cover)"
+    },
+    "compass-area": {
+      "x": 150,
+      "y": 950,
+      "desc": "Open area near compass rose (map reference, no gameplay feature)"
+    },
+    "cover-crates-south": {
+      "x": 1200,
+      "y": 680,
+      "desc": "Behind crates in storage yard (+1D cover)"
+    }
+  },
+  "connections": {
+    "east-entrance": {
+      "map": "mos-eisley-streets-1-enhanced.svg",
+      "position": "west-exit"
+    },
+    "west-exit": {
+      "map": "mos-eisley-streets-3-enhanced.svg",
+      "position": "east-entrance"
+    },
+    "warehouse-door": {
+      "map": "warehouse.svg",
+      "position": "loading-dock"
+    }
+  },
+  "obstacles": [
+    {
+      "id": "block-nw",
+      "x1": 0,
+      "y1": 0,
+      "x2": 370,
+      "y2": 380,
+      "desc": "North-west building block (warehouse and adjacent)"
+    },
+    {
+      "id": "block-n-west-inner",
+      "x1": 430,
+      "y1": 0,
+      "x2": 570,
+      "y2": 380,
+      "desc": "North buildings between western alleys (repair shop area)"
+    },
+    {
+      "id": "block-n-center-west",
+      "x1": 630,
+      "y1": 0,
+      "x2": 770,
+      "y2": 380,
+      "desc": "North center-west building block (trading post)"
+    },
+    {
+      "id": "block-n-center",
+      "x1": 830,
+      "y1": 0,
+      "x2": 970,
+      "y2": 380,
+      "desc": "North center building block (apothecary)"
+    },
+    {
+      "id": "block-n-center-east",
+      "x1": 1030,
+      "y1": 0,
+      "x2": 1170,
+      "y2": 380,
+      "desc": "North center-east building block (apartments #15)"
+    },
+    {
+      "id": "block-ne",
+      "x1": 1230,
+      "y1": 0,
+      "x2": 1920,
+      "y2": 380,
+      "desc": "North-east building block (cantina #20, dwelling #18)"
+    },
+    {
+      "id": "block-sw",
+      "x1": 0,
+      "y1": 520,
+      "x2": 370,
+      "y2": 1080,
+      "desc": "South-west building block (storage shed, squatter)"
+    },
+    {
+      "id": "block-s-center-west",
+      "x1": 430,
+      "y1": 520,
+      "x2": 570,
+      "y2": 1080,
+      "desc": "South inner-west building block"
+    },
+    {
+      "id": "block-s-market",
+      "x1": 630,
+      "y1": 520,
+      "x2": 970,
+      "y2": 550,
+      "desc": "South building strip above market area"
+    },
+    {
+      "id": "block-s-center-east",
+      "x1": 1030,
+      "y1": 520,
+      "x2": 1170,
+      "y2": 1080,
+      "desc": "South center-east building block"
+    },
+    {
+      "id": "block-se",
+      "x1": 1230,
+      "y1": 520,
+      "x2": 1920,
+      "y2": 1080,
+      "desc": "South-east building block (residential)"
+    },
+    {
+      "id": "block-market-south",
+      "x1": 630,
+      "y1": 780,
+      "x2": 970,
+      "y2": 1080,
+      "desc": "Buildings south of market stalls"
+    }
+  ],
+  "zones": {
+    "main-road": {
+      "desc": "Main east-west road -- dense area, frequent patrols, narrow sight lines",
+      "positions": [
+        "road-east",
+        "road-center-east",
+        "road-center",
+        "road-center-west",
+        "road-west",
+        "east-entrance",
+        "west-exit"
+      ]
+    },
+    "alleys": {
+      "desc": "Narrow cross-alleys (2 people wide, ambush territory -- Trandoshan bounty hunter lurks here)",
+      "positions": [
+        "alley-north-1",
+        "alley-center-1",
+        "alley-road-1",
+        "alley-south-1",
+        "alley-alcove",
+        "alley-east",
+        "alley-east-south"
+      ]
+    },
+    "ns-streets": {
+      "desc": "North-south cross streets at x=400, 800, 1200",
+      "positions": [
+        "ns-street-west-north",
+        "ns-street-west-south",
+        "ns-street-center-north",
+        "ns-street-center-south",
+        "ns-street-east-north",
+        "ns-street-east-south"
+      ]
+    },
+    "market": {
+      "desc": "Open-air market (crowded, Jawa traders -- good cover for sneaking, +1D Sneak)",
+      "positions": [
+        "market-stall-scrap",
+        "market-stall-food",
+        "market-stall-cloaks",
+        "market-stall-tools",
+        "market-center",
+        "market-behind"
+      ]
+    },
+    "buildings-north": {
+      "desc": "Named buildings on the north side -- dense and tightly packed",
+      "positions": [
+        "warehouse-door",
+        "trading-post",
+        "apothecary",
+        "apartments",
+        "dwelling-north",
+        "cantina-south",
+        "repair-shop"
+      ]
+    },
+    "buildings-south": {
+      "desc": "Buildings on the south side",
+      "positions": [
+        "storage-shed",
+        "squatter-dwelling",
+        "storage-yard",
+        "residential-south"
+      ]
+    },
+    "vehicles": {
+      "desc": "Blue triangular speeders visible on the streets",
+      "positions": [
+        "speeder-parked-1",
+        "speeder-parked-2"
+      ]
+    },
+    "cover": {
+      "desc": "Positions offering partial cover",
+      "positions": [
+        "vaporator-market",
+        "vaporator-north",
+        "merchant-cart",
+        "cover-crates-south"
+      ]
+    },
+    "rooftops": {
+      "desc": "Warehouse roof accessible from alley side (Climbing 15)",
+      "positions": [
+        "warehouse-roof"
+      ]
+    }
+  }
+}

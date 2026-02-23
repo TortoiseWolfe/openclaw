@@ -766,10 +766,18 @@
       const charToken = (state.tokens || {})[charSlug];
       const tokenColor = charToken ? charToken.color : '#4e9af5';
 
+      // Off-map indicator: show when PC is on a different map than displayed
+      const activeMap = pickActiveMap(state);
+      const tokenMapId = charToken ? (charToken.map_id || '') : '';
+      const isOffMap = tokenMapId && activeMap && tokenMapId !== activeMap;
+      const offMapLabel = isOffMap
+        ? ` <span style="color:#ffd700;font-size:10px">(${tokenMapId.replace(/\.(svg|png)$/, '').split('-').slice(-1)[0]})</span>`
+        : '';
+
       card.innerHTML = `
         <div class="char-name">
           <span class="token-swatch" style="background:${tokenColor}"></span>
-          ${escapeHtml(p.character)}
+          ${escapeHtml(p.character)}${offMapLabel}
         </div>
         <div class="viewer-name">${isBot ? 'Bot-controlled' : '@' + escapeHtml(viewer)}</div>
         <div class="health-bar">
@@ -830,6 +838,30 @@
   let currentContainerScale = 1;  // for inverse-scaling tokens
   let mapSwitching = false;       // crossfade lock
 
+  /**
+   * Pick which map to display when tokens are split across maps.
+   * Strategy: follow the majority of PCs.  Ties go to the server-set map.
+   */
+  function pickActiveMap(state) {
+    const tokens = state.tokens || {};
+    const mapData = state.map || {};
+    const counts = {};
+    for (const [, t] of Object.entries(tokens)) {
+      if (t.type === 'pc' && t.map_id && t.visible) {
+        counts[t.map_id] = (counts[t.map_id] || 0) + 1;
+      }
+    }
+    let best = mapData.image || '';
+    let bestCount = 0;
+    for (const [mapId, count] of Object.entries(counts)) {
+      if (count > bestCount) {
+        bestCount = count;
+        best = mapId;
+      }
+    }
+    return best;
+  }
+
   function renderMap(state) {
     const noMap = document.getElementById('no-map');
     const viewport = document.getElementById('map-viewport');
@@ -841,6 +873,12 @@
       noMap.style.display = '';
       viewport.style.display = 'none';
       return;
+    }
+
+    // Override displayed map based on PC majority
+    const activeMap = pickActiveMap(state);
+    if (activeMap && activeMap !== mapData.image) {
+      mapData.image = activeMap;  // display the map most PCs are on
     }
 
     noMap.style.display = 'none';
