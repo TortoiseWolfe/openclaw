@@ -62,6 +62,7 @@ def _emergency_stop(signum=None, frame=None):
 
 
 signal.signal(signal.SIGTERM, _emergency_stop)
+signal.signal(signal.SIGINT, _emergency_stop)
 atexit.register(_emergency_stop)
 
 
@@ -114,6 +115,7 @@ def main():
         _stream_started = True
         print("LIVE on Twitch")
     else:
+        _stream_started = True  # track existing stream so crash triggers emergency stop
         print("Already streaming — joining existing stream")
 
     print(f">> Opening Crawl ({CRAWL_DURATION}s)")
@@ -122,9 +124,25 @@ def main():
     time.sleep(CRAWL_DURATION)
     obs_client.switch_scene(SCENE_GAME)
 
-    # 4. Live session (long-running — blocks until session ends)
+    # 4. Live session (long-running — monitored via Popen)
     print("\n>> Starting live session ...")
-    proc = subprocess.run([*RUNNER, "--live", "--adventure", ADVENTURE])
+    proc = subprocess.Popen([*RUNNER, "--live", "--adventure", ADVENTURE])
+    check_interval = 30  # seconds between health checks
+    returncode = None
+    while returncode is None:
+        returncode = proc.poll()
+        if returncode is not None:
+            break
+        # Monitor stream health while session runs
+        if _stream_started:
+            try:
+                if not obs_client.is_streaming():
+                    print("WARNING: OBS stream dropped mid-session!", file=sys.stderr)
+            except Exception:
+                pass
+        time.sleep(check_interval)
+
+    print(f"Session runner exited (rc={returncode})")
 
     # 5. Post-session: intermission → stop stream
     try:
@@ -141,7 +159,7 @@ def main():
         except Exception as e:
             print(f"Stream stop error: {e}")
 
-    sys.exit(proc.returncode)
+    sys.exit(returncode or 0)
 
 
 if __name__ == "__main__":

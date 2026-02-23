@@ -567,6 +567,7 @@
   <div class="overlay">
     <div class="top-bar">
       <div class="scene-title" id="scene-title">Act 1 — The Cantina</div>
+      <span class="mode-badge rp" id="modeBadge">ROLEPLAY</span>
       <div class="combat-info hidden" id="combat-info">COMBAT — Round 1</div>
     </div>
 
@@ -639,8 +640,8 @@
 
   // Per-map ambient music: map filename → audio element ID
   const MAP_AMBIENT = {
-    'cantina.png':                'ambient-cantina',
-    'cantina.svg':                'ambient-cantina',
+    'cantina-expanded.svg':       'ambient-cantina',
+    'cantina-basement.svg':       'ambient-cantina',
     'mos-eisley-streets-1.png':   'ambient-streets',
     'junk-dealer.svg':            'ambient-cantina',
     'warehouse.svg':              'ambient-streets',
@@ -1029,6 +1030,9 @@
 
     const combat = document.getElementById('combat-info');
     const mode = session.mode || 'rp';
+    const badge = document.getElementById('modeBadge');
+    badge.className = 'mode-badge ' + mode;
+    badge.textContent = mode === 'combat' ? 'COMBAT' : mode === 'cutscene' ? 'CUTSCENE' : 'ROLEPLAY';
     if (state.combat_active) {
       combat.classList.remove('hidden');
       const order = state.initiative_order || [];
@@ -1196,11 +1200,31 @@
   };
 
   // -- Polling loop -------------------------------------------
+  let lastSuccessfulPoll = Date.now();
+  const STALE_THRESHOLD_MS = 15000;
+
+  function updateStaleIndicator() {
+    const elapsed = Date.now() - lastSuccessfulPoll;
+    let badge = document.getElementById('reconnecting-badge');
+    if (elapsed > STALE_THRESHOLD_MS && isLiveServer === false) {
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.id = 'reconnecting-badge';
+        badge.style.cssText = 'position:fixed;top:8px;right:8px;background:rgba(200,40,40,0.85);color:#fff;padding:4px 12px;border-radius:4px;font-size:14px;z-index:9999;font-family:sans-serif;';
+        badge.textContent = 'RECONNECTING...';
+        document.body.appendChild(badge);
+      }
+    } else if (badge) {
+      badge.remove();
+    }
+  }
+
   async function poll() {
     try {
       const resp = await fetch(STATE_URL);
       if (resp.ok) {
         isLiveServer = true;
+        lastSuccessfulPoll = Date.now();
         const state = await resp.json();
         update(state);
       } else {
@@ -1211,6 +1235,7 @@
       if (isLiveServer) { isLiveServer = false; stopAllAudio(); }
       if (!lastState) update(DEMO_STATE);
     }
+    updateStaleIndicator();
   }
 
   poll();

@@ -393,7 +393,7 @@ ACT_KICKS = {
 }
 
 ACT_MAPS = {
-    1: ("cantina.png", "Chalmun's Cantina"),
+    1: ("cantina-expanded.svg", "Chalmun's Cantina"),
     2: ("mos-eisley-streets-1.png", "Cantina District"),
     3: ("docking-bay-87.svg", "Docking Bay 87"),
 }
@@ -401,7 +401,7 @@ ACT_MAPS = {
 # Map image for terrain lookup per act (used by _set_act_map for dimensions).
 # _load_terrain() derives the terrain JSON path from the image name.
 ACT_MAP_TERRAIN = {
-    1: "cantina.png",
+    1: "cantina-expanded.svg",
     2: "mos-eisley-streets-1.png",
     3: "docking-bay-87.svg",
 }
@@ -426,6 +426,10 @@ def get_act_kick(act_num, act_kicks=None):
 
 def run_rpg_cmd(args):
     result = subprocess.run(STATE_CMD + args, capture_output=True, text=True)
+    if result.returncode != 0:
+        import sys
+        print(f"  [warn] rpg_state.py {args[0]} failed (rc={result.returncode}): {result.stderr.strip()}",
+              file=sys.stderr)
     return result.stdout.strip() or result.stderr.strip()
 
 

@@ -95,6 +95,9 @@ apps/ios/LocalSigning.xcconfig
 # Trading data (private journal/state)
 trading-data/private/
 
+# WEG reference material (copyrighted, not for redistribution)
+rpg/maps/source/
+
 # Remotion build artifacts
 remotion/node_modules/
 remotion/out/

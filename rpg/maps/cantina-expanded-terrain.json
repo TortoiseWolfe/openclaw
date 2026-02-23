@@ -1,0 +1,205 @@
+{
+  "map": "cantina-expanded.svg",
+  "width": 1920,
+  "height": 1080,
+  "positions": {
+    "entrance": {"x": 1111, "y": 933, "desc": "Main entrance (south, vestibule mouth)"},
+    "entrance-left": {"x": 1050, "y": 920, "desc": "Left side of entrance"},
+    "entrance-right": {"x": 1170, "y": 920, "desc": "Right side of entrance"},
+    "vestibule": {"x": 1111, "y": 870, "desc": "Inside the curved entrance vestibule"},
+    "vestibule-inner": {"x": 1111, "y": 807, "desc": "Inner vestibule, opening to main room"},
+    "droid-detector": {"x": 1515, "y": 807, "desc": "EPT-212 droid detector checkpoint (area 7)"},
+    "foyer": {"x": 1111, "y": 807, "desc": "Foyer (alias for vestibule-inner)"},
+    "foyer-doorway": {"x": 1111, "y": 760, "desc": "Doorway from vestibule into main bar room"},
+
+    "bar-stool-l1": {"x": 660, "y": 500, "desc": "Left bar stool 1 (north end of racetrack)"},
+    "bar-stool-l2": {"x": 660, "y": 560, "desc": "Left bar stool 2"},
+    "bar-stool-l3": {"x": 660, "y": 620, "desc": "Left bar stool 3 (center)"},
+    "bar-stool-l4": {"x": 660, "y": 680, "desc": "Left bar stool 4"},
+    "bar-stool-l5": {"x": 710, "y": 720, "desc": "Left bar stool 5 (south curve of racetrack)"},
+    "bar-stool-r1": {"x": 1050, "y": 500, "desc": "Right bar stool 1 (north end)"},
+    "bar-stool-r2": {"x": 1050, "y": 560, "desc": "Right bar stool 2"},
+    "bar-stool-r3": {"x": 1050, "y": 620, "desc": "Right bar stool 3 (center)"},
+    "bar-stool-r4": {"x": 1050, "y": 680, "desc": "Right bar stool 4"},
+    "bar-stool-r5": {"x": 1000, "y": 720, "desc": "Right bar stool 5 (south curve)"},
+    "bar-top-1": {"x": 780, "y": 480, "desc": "Top of bar (north end, facing band)"},
+    "bar-top-2": {"x": 900, "y": 480, "desc": "Top of bar (north center)"},
+    "bar-front": {"x": 855, "y": 730, "desc": "Standing in front of bar (south end)"},
+
+    "behind-bar-top": {"x": 780, "y": 540, "desc": "Behind bar — north staff area"},
+    "behind-bar-center": {"x": 855, "y": 590, "desc": "Behind bar — center (Wuher's station)"},
+    "behind-bar-south": {"x": 855, "y": 680, "desc": "Behind bar — south staff area"},
+
+    "booth-1-left": {"x": 1530, "y": 650, "desc": "Alcove east-lower — left seat (Han's booth)"},
+    "booth-1-right": {"x": 1570, "y": 690, "desc": "Alcove east-lower — right seat (Greedo's seat)"},
+    "booth-1-center": {"x": 1550, "y": 670, "desc": "Alcove east-lower — center"},
+    "booth-1-approach": {"x": 1480, "y": 660, "desc": "Approaching the east-lower alcove"},
+    "booth-2-left": {"x": 1530, "y": 400, "desc": "Alcove east-upper — left seat"},
+    "booth-2-right": {"x": 1570, "y": 440, "desc": "Alcove east-upper — right seat"},
+    "booth-2-center": {"x": 1550, "y": 420, "desc": "Alcove east-upper — center"},
+    "booth-2-approach": {"x": 1480, "y": 420, "desc": "Approaching the east-upper alcove"},
+    "booth-3-left": {"x": 1430, "y": 200, "desc": "Alcove northeast — left seat"},
+    "booth-3-right": {"x": 1460, "y": 240, "desc": "Alcove northeast — right seat"},
+    "booth-3-center": {"x": 1445, "y": 220, "desc": "Alcove northeast — center"},
+    "booth-3-approach": {"x": 1380, "y": 230, "desc": "Approaching the northeast alcove"},
+
+    "alcove-n": {"x": 1195, "y": 134, "desc": "North wall alcove (curved seating)"},
+    "alcove-n-left": {"x": 1150, "y": 150, "desc": "North alcove — left seat"},
+    "alcove-n-right": {"x": 1240, "y": 150, "desc": "North alcove — right seat"},
+    "alcove-sw": {"x": 455, "y": 874, "desc": "Southwest alcove (round table)"},
+    "alcove-sw-left": {"x": 410, "y": 860, "desc": "SW alcove — left seat"},
+    "alcove-sw-right": {"x": 500, "y": 860, "desc": "SW alcove — right seat"},
+    "alcove-s1": {"x": 657, "y": 880, "desc": "South alcove 1 (left of entrance)"},
+    "alcove-s2": {"x": 842, "y": 890, "desc": "South alcove 2 (near entrance, left)"},
+    "alcove-s3": {"x": 1229, "y": 890, "desc": "South alcove 3 (near entrance, right)"},
+    "alcove-se": {"x": 1414, "y": 870, "desc": "Southeast alcove (near droid detector)"},
+
+    "table-1": {"x": 926, "y": 300, "desc": "Round table 1 (north floor, near band area)"},
+    "table-2": {"x": 1044, "y": 380, "desc": "Round table 2 (center floor)"},
+    "table-2-east": {"x": 1090, "y": 380, "desc": "East side of table 2"},
+    "table-3": {"x": 1161, "y": 460, "desc": "Round table 3 (south floor, near booths)"},
+    "table-3-east": {"x": 1207, "y": 460, "desc": "East side of table 3"},
+    "near-table-1": {"x": 880, "y": 300, "desc": "Standing near table 1"},
+    "near-table-2": {"x": 1000, "y": 380, "desc": "Standing near table 2"},
+    "near-table-3": {"x": 1115, "y": 460, "desc": "Standing near table 3"},
+
+    "center-floor": {"x": 1100, "y": 550, "desc": "Center of main bar room (open floor)"},
+    "center-floor-north": {"x": 1100, "y": 350, "desc": "North section of open floor"},
+    "center-floor-south": {"x": 1100, "y": 750, "desc": "South section of open floor"},
+
+    "band-stage": {"x": 707, "y": 201, "desc": "Band stage — Figrin D'an and the Modal Nodes"},
+    "band-stage-behind": {"x": 660, "y": 160, "desc": "Behind band equipment"},
+    "band-stage-front": {"x": 750, "y": 250, "desc": "Front of band stage (standing room)"},
+
+    "back-rooms-nw": {"x": 350, "y": 140, "desc": "Northwest back room (round table)"},
+    "back-rooms-n": {"x": 550, "y": 120, "desc": "North back room (tables)"},
+    "back-hallway-north": {"x": 380, "y": 280, "desc": "Back hallway — north end"},
+    "back-hallway-center": {"x": 380, "y": 400, "desc": "Back hallway — center"},
+    "back-hallway-south": {"x": 380, "y": 520, "desc": "Back hallway — south end"},
+
+    "staff-door": {"x": 440, "y": 350, "desc": "Staff door from bar to back hallway"},
+
+    "office": {"x": 300, "y": 180, "desc": "Chalmun's office"},
+    "office-desk": {"x": 280, "y": 150, "desc": "At the desk in Chalmun's office"},
+    "office-safe": {"x": 260, "y": 120, "desc": "Near the wall safe (Security 15 to crack)"},
+    "office-window": {"x": 340, "y": 200, "desc": "One-way surveillance window into bar"},
+
+    "stairwell-top": {"x": 219, "y": 302, "desc": "Top of stairwell (area 4, power room)"},
+    "stairwell-center": {"x": 219, "y": 445, "desc": "Center of stairwell"},
+    "stairwell-bottom": {"x": 219, "y": 588, "desc": "Bottom of stairwell"},
+    "ladder-down": {"x": 240, "y": 350, "desc": "Ladder down to basement (in power room)"},
+
+    "storage-room": {"x": 300, "y": 650, "desc": "Storage room (crates, supplies)"},
+    "storage-crates": {"x": 320, "y": 680, "desc": "Behind storage crates (hiding spot)"},
+    "storage-door": {"x": 350, "y": 600, "desc": "Door to storage room from hallway"},
+
+    "kitchen": {"x": 300, "y": 780, "desc": "Kitchen / prep area"},
+    "kitchen-counter": {"x": 280, "y": 820, "desc": "Kitchen counter"},
+
+    "back-door": {"x": 250, "y": 870, "desc": "Back exit to alley"},
+
+    "private-bar": {"x": 480, "y": 750, "desc": "Private bar room (VIP / shady deals)"},
+    "private-bar-table": {"x": 500, "y": 780, "desc": "Private bar table"},
+
+    "hangar-door": {"x": 200, "y": 700, "desc": "Door to private hangar"}
+  },
+  "obstacles": [
+    {"id": "wall-north", "x1": 203, "y1": 50, "x2": 1582, "y2": 75, "desc": "North outer wall"},
+    {"id": "wall-south-left", "x1": 203, "y1": 935, "x2": 1050, "y2": 960, "desc": "South wall (left of entrance)"},
+    {"id": "wall-south-right", "x1": 1170, "y1": 935, "x2": 1582, "y2": 960, "desc": "South wall (right of entrance)"},
+    {"id": "wall-west", "x1": 170, "y1": 50, "x2": 203, "y2": 960, "desc": "West outer wall"},
+    {"id": "wall-east-upper", "x1": 1560, "y1": 50, "x2": 1600, "y2": 350, "desc": "East wall upper (straight section)"},
+    {"id": "wall-east-curve-1", "x1": 1570, "y1": 350, "x2": 1610, "y2": 500, "desc": "East wall curve segment 1"},
+    {"id": "wall-east-curve-2", "x1": 1580, "y1": 500, "x2": 1620, "y2": 650, "desc": "East wall curve segment 2"},
+    {"id": "wall-east-curve-3", "x1": 1570, "y1": 650, "x2": 1610, "y2": 800, "desc": "East wall curve segment 3"},
+    {"id": "wall-east-lower", "x1": 1560, "y1": 800, "x2": 1600, "y2": 960, "desc": "East wall lower"},
+
+    {"id": "bar-counter-left", "x1": 640, "y1": 490, "x2": 680, "y2": 720, "desc": "Bar counter — left rail"},
+    {"id": "bar-counter-right", "x1": 1030, "y1": 490, "x2": 1070, "y2": 720, "desc": "Bar counter — right rail"},
+    {"id": "bar-counter-top", "x1": 680, "y1": 470, "x2": 1030, "y2": 500, "desc": "Bar counter — top rail"},
+    {"id": "bar-counter-bottom", "x1": 700, "y1": 710, "x2": 1010, "y2": 740, "desc": "Bar counter — bottom curve"},
+
+    {"id": "vestibule-left", "x1": 1040, "y1": 800, "x2": 1070, "y2": 940, "desc": "Vestibule left wall"},
+    {"id": "vestibule-right", "x1": 1150, "y1": 800, "x2": 1180, "y2": 940, "desc": "Vestibule right wall"},
+
+    {"id": "divider-back-rooms", "x1": 340, "y1": 250, "x2": 800, "y2": 275, "desc": "Wall separating back rooms from main floor"},
+    {"id": "divider-hallway-east", "x1": 420, "y1": 275, "x2": 445, "y2": 750, "desc": "East wall of back hallway"},
+    {"id": "divider-hallway-west", "x1": 320, "y1": 275, "x2": 345, "y2": 750, "desc": "West wall of back hallway"},
+
+    {"id": "table-1-obs", "x1": 906, "y1": 280, "x2": 946, "y2": 320, "desc": "Round table 1"},
+    {"id": "table-2-obs", "x1": 1024, "y1": 360, "x2": 1064, "y2": 400, "desc": "Round table 2"},
+    {"id": "table-3-obs", "x1": 1141, "y1": 440, "x2": 1181, "y2": 480, "desc": "Round table 3"}
+  ],
+  "connections": {
+    "entrance": {"map": "mos-eisley-streets-1.png", "position": "cantina-door"},
+    "back-door": {"map": "mos-eisley-streets-1.png", "position": "cantina-street"},
+    "hangar-door": {"map": "mos-eisley-streets-1.png", "position": "cantina-street"},
+    "ladder-down": {"map": "cantina-basement.svg", "position": "staircase-up"}
+  },
+  "zones": {
+    "vestibule": {
+      "desc": "Curved entrance passage — droid detector scans all who enter",
+      "positions": ["entrance", "entrance-left", "entrance-right", "vestibule", "vestibule-inner", "foyer", "foyer-doorway"]
+    },
+    "main-floor": {
+      "desc": "Open floor of the main bar room — round tables, exposed, little cover",
+      "positions": ["center-floor", "center-floor-north", "center-floor-south", "table-1", "table-2", "table-2-east", "table-3", "table-3-east", "near-table-1", "near-table-2", "near-table-3", "bar-front"]
+    },
+    "bar-seating": {
+      "desc": "Stools around the racetrack-shaped bar counter",
+      "positions": ["bar-stool-l1", "bar-stool-l2", "bar-stool-l3", "bar-stool-l4", "bar-stool-l5", "bar-stool-r1", "bar-stool-r2", "bar-stool-r3", "bar-stool-r4", "bar-stool-r5", "bar-top-1", "bar-top-2"]
+    },
+    "behind-bar": {
+      "desc": "Staff area behind the counter — Wuher's domain",
+      "positions": ["behind-bar-top", "behind-bar-center", "behind-bar-south"]
+    },
+    "east-alcoves": {
+      "desc": "Curved alcoves along the east wall — booth seating, good cover (+1D if table flipped)",
+      "positions": ["booth-1-left", "booth-1-right", "booth-1-center", "booth-1-approach", "booth-2-left", "booth-2-right", "booth-2-center", "booth-2-approach", "booth-3-left", "booth-3-right", "booth-3-center", "booth-3-approach"]
+    },
+    "perimeter-alcoves": {
+      "desc": "Alcoves along north and south walls — curved seating nooks",
+      "positions": ["alcove-n", "alcove-n-left", "alcove-n-right", "alcove-sw", "alcove-sw-left", "alcove-sw-right", "alcove-s1", "alcove-s2", "alcove-s3", "alcove-se"]
+    },
+    "stage": {
+      "desc": "Raised band platform — conspicuous, dead end, Figrin D'an plays here",
+      "positions": ["band-stage", "band-stage-behind", "band-stage-front"]
+    },
+    "back-rooms": {
+      "desc": "Private rooms behind the main bar area",
+      "positions": ["back-rooms-nw", "back-rooms-n"]
+    },
+    "back-hallway": {
+      "desc": "Service corridor connecting back rooms to storage and kitchen",
+      "positions": ["back-hallway-north", "back-hallway-center", "back-hallway-south", "staff-door"]
+    },
+    "office": {
+      "desc": "Chalmun's private office — one-way surveillance window into bar",
+      "positions": ["office", "office-desk", "office-safe", "office-window"]
+    },
+    "stairwell": {
+      "desc": "Power room with stairwell — ladder down to basement",
+      "positions": ["stairwell-top", "stairwell-center", "stairwell-bottom", "ladder-down"]
+    },
+    "storage": {
+      "desc": "Storage room — crates and supplies, hiding spots",
+      "positions": ["storage-room", "storage-crates", "storage-door"]
+    },
+    "kitchen": {
+      "desc": "Kitchen and food prep area",
+      "positions": ["kitchen", "kitchen-counter"]
+    },
+    "private-bar": {
+      "desc": "VIP private bar — shady deals, smuggling negotiations",
+      "positions": ["private-bar", "private-bar-table"]
+    },
+    "droid-detector": {
+      "desc": "Droid detector station near secondary entrance (area 7)",
+      "positions": ["droid-detector"]
+    },
+    "exits": {
+      "desc": "Exit points connecting to other maps",
+      "positions": ["entrance", "back-door", "hangar-door", "ladder-down"]
+    }
+  }
+}

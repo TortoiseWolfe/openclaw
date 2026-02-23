@@ -1313,6 +1313,8 @@ def cmd_log_action(args: argparse.Namespace) -> None:
 
     log = state.setdefault("action_log", [])
     log.append(action)
+    if len(log) > 50:
+        del log[:-50]
 
     _save_state(state)
     logger.info(json.dumps(action))

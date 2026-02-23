@@ -11,6 +11,7 @@ Env vars:
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -50,7 +51,7 @@ def _headers() -> dict[str, str]:
     }
 
 
-def _helix_get(path: str) -> dict:
+def _raw_helix_get(path: str) -> dict:
     url = f"{HELIX_BASE}{path}"
     req = urllib.request.Request(url, headers=_headers())
     try:
@@ -62,7 +63,7 @@ def _helix_get(path: str) -> dict:
         raise
 
 
-def _helix_post(path: str, body: dict) -> dict:
+def _raw_helix_post(path: str, body: dict) -> dict:
     url = f"{HELIX_BASE}{path}"
     data = json.dumps(body).encode()
     req = urllib.request.Request(url, data=data, headers=_headers(), method="POST")
@@ -76,7 +77,7 @@ def _helix_post(path: str, body: dict) -> dict:
         raise
 
 
-def _helix_patch(path: str, body: dict) -> None:
+def _raw_helix_patch(path: str, body: dict) -> None:
     url = f"{HELIX_BASE}{path}"
     data = json.dumps(body).encode()
     req = urllib.request.Request(url, data=data, headers=_headers(), method="PATCH")
@@ -90,6 +91,83 @@ def _helix_patch(path: str, body: dict) -> None:
 
 
 _broadcaster_id_cache: str | None = None
+_refresh_attempted = False
+
+
+def _try_refresh_token() -> bool:
+    """Attempt to refresh the Twitch access token. Returns True on success."""
+    global _refresh_attempted, _broadcaster_id_cache
+    if _refresh_attempted:
+        return False
+    _refresh_attempted = True
+    try:
+        from twitch_token_refresh import refresh_token, update_env, read_env, DOT_ENV_PATH
+        env = read_env(DOT_ENV_PATH)
+        client_id = env.get("OPENCLAW_TWITCH_CLIENT_ID", "")
+        client_secret = env.get("OPENCLAW_TWITCH_CLIENT_SECRET", "")
+        refresh_tok = env.get("OPENCLAW_TWITCH_REFRESH_TOKEN", "")
+        if not all([client_id, client_secret, refresh_tok]):
+            print("Token refresh skipped — missing credentials", file=sys.stderr)
+            return False
+        result = refresh_token(client_id, client_secret, refresh_tok)
+        updates = {
+            "OPENCLAW_TWITCH_ACCESS_TOKEN": result["access_token"],
+            "OPENCLAW_TWITCH_REFRESH_TOKEN": result.get("refresh_token", refresh_tok),
+            "OPENCLAW_TWITCH_EXPIRES_IN": str(result.get("expires_in", 0)),
+            "OPENCLAW_TWITCH_OBTAINMENT_TIMESTAMP": str(int(time.time() * 1000)),
+        }
+        update_env(DOT_ENV_PATH, updates)
+        _broadcaster_id_cache = None
+        print(f"Token auto-refreshed (expires in {result.get('expires_in', '?')}s)", file=sys.stderr)
+        return True
+    except SystemExit:
+        raise  # Let sys.exit() propagate (dead refresh token)
+    except Exception as e:
+        print(f"Token auto-refresh failed: {e}", file=sys.stderr)
+        return False
+
+
+def _helix_get(path: str) -> dict:
+    """Helix GET with auto-refresh on 401."""
+    global _refresh_attempted
+    try:
+        result = _raw_helix_get(path)
+        _refresh_attempted = False
+        return result
+    except urllib.error.HTTPError as e:
+        if e.code != 401 or not _try_refresh_token():
+            raise
+        result = _raw_helix_get(path)
+        _refresh_attempted = False
+        return result
+
+
+def _helix_post(path: str, body: dict) -> dict:
+    """Helix POST with auto-refresh on 401."""
+    global _refresh_attempted
+    try:
+        result = _raw_helix_post(path, body)
+        _refresh_attempted = False
+        return result
+    except urllib.error.HTTPError as e:
+        if e.code != 401 or not _try_refresh_token():
+            raise
+        result = _raw_helix_post(path, body)
+        _refresh_attempted = False
+        return result
+
+
+def _helix_patch(path: str, body: dict) -> None:
+    """Helix PATCH with auto-refresh on 401."""
+    global _refresh_attempted
+    try:
+        _raw_helix_patch(path, body)
+        _refresh_attempted = False
+    except urllib.error.HTTPError as e:
+        if e.code != 401 or not _try_refresh_token():
+            raise
+        _raw_helix_patch(path, body)
+        _refresh_attempted = False
 
 
 def get_broadcaster_id() -> str:

@@ -45,9 +45,9 @@
   "act_data": {
     "1": {
       "name": "Cantina Lockdown",
-      "map": "cantina.png",
+      "map": "cantina-expanded.svg",
       "map_name": "Chalmun's Cantina",
-      "terrain": "cantina.png",
+      "terrain": "cantina-expanded.svg",
       "time_of_day": "Late afternoon — twin suns hang low, the cantina is dim and smoky",
       "kick": "Narrate the opening. Stormtroopers march in from the entrance toward the bar. The Rodian at Booth 1 slides a data chip to Kira. Tension rises as troopers begin checking IDs.",
       "starting_positions": {
@@ -66,38 +66,49 @@
         "Patron 2": {"position": "table-3", "color": "#888888", "hidden": false}
       },
       "exit_positions": ["back-door", "storage-door"],
-      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_explore_threshold": 4},
+      "pacer": {"hard_cap": 20, "min_turns": 6, "climax_explore_threshold": 16},
       "bot_actions": {
         "Kira Voss": [
           {"type": "do", "text": "palms the data chip from the Rodian", "skill": "Con", "difficulty": 15, "move_to": "booth-1-center"},
-          {"type": "say", "text": "Keep your heads down — act natural."},
-          {"type": "do", "text": "draws her DL-44 under the table"},
-          {"type": "say", "text": "If this goes sideways, follow me to the back door."},
-          {"type": "do", "text": "bluffs the officer about never seeing any Rodian", "skill": "Con", "difficulty": 20},
-          {"type": "do", "text": "edges along the booths toward the back wall", "move_to": "near-table-1"}
+          {"type": "do", "text": "slides out of the booth and signals the others", "move_to": "booth-1-approach"},
+          {"type": "do", "text": "draws her DL-44 and edges toward the back", "move_to": "near-table-1"},
+          {"type": "do", "text": "bluffs the officer about never seeing any Rodian", "skill": "Con", "difficulty": 20, "move_to": "booth-2-approach"},
+          {"type": "do", "text": "slips past the booths toward the staff door", "skill": "Sneak", "difficulty": 12, "move_to": "near-table-2"},
+          {"type": "do", "text": "ducks behind the round tables heading east", "move_to": "table-2-east"},
+          {"type": "do", "text": "checks the staff door — it's unlocked", "skill": "Search", "difficulty": 10, "move_to": "staff-door"},
+          {"type": "do", "text": "pushes into the back hallway", "move_to": "back-hallway-center"},
+          {"type": "do", "text": "moves down the hallway toward the storage room", "move_to": "back-hallway-south"}
         ],
         "Tok-3": [
-          {"type": "do", "text": "*scans the Stormtroopers' comlink frequencies*", "skill": "Computer Prog", "difficulty": 12},
-          {"type": "do", "text": "*whistles nervously and rolls behind a bar stool*", "move_to": "bar-stool-r2"},
-          {"type": "say", "text": "This unit recommends immediate evacuation."},
-          {"type": "do", "text": "*hacks the cantina's door lock to seal the entrance*", "skill": "Security", "difficulty": 15},
-          {"type": "do", "text": "*projects the cantina blueprint to find alternate exits*"},
-          {"type": "do", "text": "*rolls toward the booth area to regroup with the party*", "move_to": "booth-3-approach"},
-          {"type": "do", "text": "*trundles east past the tables*", "move_to": "table-3-east"}
+          {"type": "do", "text": "*scans the Stormtroopers' comlink frequencies while rolling sideways*", "skill": "Computer Prog", "difficulty": 12, "move_to": "bar-stool-r2"},
+          {"type": "do", "text": "*whistles nervously and rolls toward the booth area*", "move_to": "booth-3-approach"},
+          {"type": "do", "text": "*trundles east past the tables*", "move_to": "table-3-east"},
+          {"type": "do", "text": "*rolls toward the center of the room, sensors sweeping*", "move_to": "center-floor-north"},
+          {"type": "do", "text": "*interfaces with the droid detector near the foyer*", "skill": "Computer Prog", "difficulty": 15, "move_to": "droid-detector"},
+          {"type": "do", "text": "*rolls behind the bar counter to hide*", "skill": "Sneak", "difficulty": 10, "move_to": "bar-front"},
+          {"type": "do", "text": "*trundles toward the staff doorway*", "move_to": "staff-door"},
+          {"type": "do", "text": "*rolls down the back hallway*", "move_to": "back-hallway-center"},
+          {"type": "do", "text": "*heads toward the storage room*", "move_to": "back-hallway-south"}
         ],
         "Renn Darkhollow": [
-          {"type": "say", "text": "I'll cover the exit — nobody follows us."},
-          {"type": "do", "text": "*readies blaster rifle under the table*"},
-          {"type": "do", "text": "*scans the cantina for Imperial reinforcements*", "skill": "Search", "difficulty": 12},
-          {"type": "do", "text": "*moves to a better tactical position near the booths*", "skill": "Sneak", "difficulty": 10, "move_to": "booth-3-right"},
-          {"type": "do", "text": "*slides east along the wall toward the back*", "skill": "Sneak", "difficulty": 10, "move_to": "near-table-2"}
+          {"type": "do", "text": "*readies blaster rifle and moves to a better position*", "move_to": "table-2-east"},
+          {"type": "do", "text": "*scans the cantina for Imperial reinforcements*", "skill": "Search", "difficulty": 12, "move_to": "booth-3-right"},
+          {"type": "do", "text": "*slides east along the wall toward the back*", "skill": "Sneak", "difficulty": 10, "move_to": "near-table-2"},
+          {"type": "do", "text": "*takes cover behind the round table*", "move_to": "table-3"},
+          {"type": "do", "text": "*moves to the near table for a better firing angle*", "move_to": "near-table-3"},
+          {"type": "do", "text": "*covers the staff door, ready to move*", "skill": "Search", "difficulty": 10, "move_to": "staff-door"},
+          {"type": "do", "text": "*pushes into the back hallway, rifle raised*", "move_to": "back-hallway-center"},
+          {"type": "do", "text": "*advances toward the storage room*", "skill": "Sneak", "difficulty": 10, "move_to": "back-hallway-south"}
         ],
         "Zeph Ando": [
-          {"type": "do", "text": "*closes eyes, sensing danger through the Force*", "skill": "Sense", "difficulty": 15},
-          {"type": "say", "text": "Something's very wrong. They know about the chip."},
-          {"type": "say", "text": "I can feel their fear — they're searching for something specific."},
-          {"type": "do", "text": "*moves toward the center of the cantina*", "move_to": "bar-stool-r2"},
-          {"type": "do", "text": "*edges along the bar toward the right side*", "move_to": "bar-stool-r5"}
+          {"type": "do", "text": "*closes eyes, sensing danger through the Force*", "skill": "Sense", "difficulty": 15, "move_to": "bar-stool-l3"},
+          {"type": "do", "text": "*moves toward the center of the cantina, sensing the way*", "move_to": "center-floor-north"},
+          {"type": "do", "text": "*edges along the bar toward the right side*", "move_to": "bar-stool-r5"},
+          {"type": "do", "text": "*senses a path through the crowd toward the booths*", "skill": "Sense", "difficulty": 12, "move_to": "booth-2-approach"},
+          {"type": "do", "text": "*slips past the tables, guided by the Force*", "move_to": "table-3-east"},
+          {"type": "do", "text": "*moves toward the staff door — the Force says this way*", "skill": "Sense", "difficulty": 12, "move_to": "staff-door"},
+          {"type": "do", "text": "*follows the others into the back hallway*", "move_to": "back-hallway-center"},
+          {"type": "do", "text": "*heads toward the storage room, hand on lightsaber*", "move_to": "back-hallway-south"}
         ]
       },
       "climax_actions": {
@@ -120,7 +131,7 @@
       },
       "npc_combat_reactions": {
         "Patron 1": {"reaction": "cover", "position": "bar-stool-l4"},
-        "Patron 2": {"reaction": "cover", "position": "booth-3"},
+        "Patron 2": {"reaction": "cover", "position": "booth-3-center"},
         "Figrin Dan": {"reaction": "cover", "position": "band-stage"}
       },
       "npc_ambient_routes": {},
@@ -147,44 +158,47 @@
         "Civilian 2": {"position": "tapcaf-front", "color": "#888888", "hidden": false}
       },
       "exit_positions": ["bay-87-entrance", "checkpoint-bay"],
-      "pacer": {"hard_cap": 20, "min_turns": 4, "climax_explore_threshold": 4},
+      "pacer": {"hard_cap": 20, "min_turns": 6, "climax_explore_threshold": 16},
       "bot_actions": {
         "Kira Voss": [
-          {"type": "say", "text": "We take the alleys. Main road is a death trap."},
-          {"type": "say", "text": "Keep moving west — the Rodian said Bay 87, sunset."},
-          {"type": "do", "text": "leads the group west along the road away from the cantina", "skill": "Streetwise", "difficulty": 12, "move_to": "road-west"},
-          {"type": "do", "text": "spots the bounty hunter's trap before walking into it", "skill": "Dodge", "difficulty": 15, "move_to": "side-alley"},
-          {"type": "do", "text": "talks the speeder driver into giving them a ride", "skill": "Con", "difficulty": 15, "move_to": "speeder-1"},
+          {"type": "do", "text": "leads the group into the alleys — main road is a death trap", "skill": "Streetwise", "difficulty": 12, "move_to": "side-alley"},
+          {"type": "do", "text": "spots the bounty hunter's trap and redirects the group", "skill": "Dodge", "difficulty": 15, "move_to": "dwelling-front"},
+          {"type": "do", "text": "talks the speeder driver into giving them a ride west", "skill": "Con", "difficulty": 15, "move_to": "speeder-1"},
           {"type": "do", "text": "asks the dockworker for directions to Bay 87", "skill": "Streetwise", "difficulty": 10, "move_to": "npc-dockworker"},
           {"type": "do", "text": "reads the directional sign pointing toward the bays", "move_to": "sign-docking-bays"},
-          {"type": "do", "text": "scouts the road ahead toward the bay checkpoint", "skill": "Streetwise", "difficulty": 12, "move_to": "road-west"}
+          {"type": "do", "text": "scouts the road ahead toward the bay checkpoint", "skill": "Streetwise", "difficulty": 12, "move_to": "road-west"},
+          {"type": "do", "text": "waves the others forward and pushes west", "move_to": "road-west"},
+          {"type": "do", "text": "doubles back to cover the group's rear", "skill": "Blaster", "difficulty": 12, "move_to": "road-center"}
         ],
         "Tok-3": [
-          {"type": "say", "text": "My sensors detect a Trandoshan biosignature nearby."},
-          {"type": "do", "text": "*projects a holographic map of alternate routes*"},
           {"type": "do", "text": "*hacks the speeder's ignition lock*", "skill": "Security", "difficulty": 10, "move_to": "speeder-1"},
           {"type": "do", "text": "*rolls west along the main road, scanning for patrols*", "skill": "Search", "difficulty": 12, "move_to": "road-west"},
           {"type": "do", "text": "*interfaces with the directional sign's data port*", "skill": "Computer Prog", "difficulty": 10, "move_to": "sign-docking-bays"},
           {"type": "do", "text": "*scans the road ahead for Imperial patrols*", "skill": "Search", "difficulty": 12, "move_to": "npc-dockworker"},
-          {"type": "do", "text": "*hacks into a nearby terminal for bay access codes*", "skill": "Computer Prog", "difficulty": 15, "move_to": "road-west"}
+          {"type": "do", "text": "*hacks into a nearby terminal for bay access codes*", "skill": "Computer Prog", "difficulty": 15, "move_to": "road-west"},
+          {"type": "do", "text": "*rolls back to guide stragglers with a projected holomap*", "move_to": "road-center"},
+          {"type": "do", "text": "*trundles into the alley, scanning for a shortcut*", "skill": "Search", "difficulty": 12, "move_to": "side-alley"},
+          {"type": "do", "text": "*rolls toward the dwelling to check for supplies*", "move_to": "dwelling-front"}
         ],
         "Renn Darkhollow": [
-          {"type": "say", "text": "Bounty hunter nearby. I know that species — they fight dirty."},
-          {"type": "say", "text": "I'll take point. Stay behind me."},
           {"type": "do", "text": "*scouts the road ahead from the dwelling doorway*", "skill": "Search", "difficulty": 15, "move_to": "dwelling-front"},
           {"type": "do", "text": "*sneaks along the building walls heading west*", "skill": "Sneak", "difficulty": 15, "move_to": "road-west"},
           {"type": "do", "text": "*climbs to a vantage point overlooking the road*", "skill": "Sneak", "difficulty": 12, "move_to": "side-alley"},
           {"type": "do", "text": "*scouts ahead toward the docking bay signs*", "skill": "Search", "difficulty": 15, "move_to": "sign-docking-bays"},
-          {"type": "do", "text": "*checks the alley for ambushes before moving west*", "skill": "Search", "difficulty": 12, "move_to": "npc-dockworker"}
+          {"type": "do", "text": "*checks the alley for ambushes before waving the group forward*", "skill": "Search", "difficulty": 12, "move_to": "npc-dockworker"},
+          {"type": "do", "text": "*drops back to lay suppressing fire for the others*", "skill": "Blaster", "difficulty": 12, "move_to": "road-center"},
+          {"type": "do", "text": "*takes a defensive position at the road junction*", "skill": "Blaster", "difficulty": 12, "move_to": "road-east"},
+          {"type": "do", "text": "*covers the tapcaf entrance while the party passes*", "skill": "Search", "difficulty": 10, "move_to": "tapcaf-front"}
         ],
         "Zeph Ando": [
-          {"type": "say", "text": "That Gran is lying — I can feel it."},
-          {"type": "do", "text": "*senses the informant's hidden comlink through the Force*", "skill": "Sense", "difficulty": 20},
-          {"type": "do", "text": "*patches up Renn's blaster wound*", "skill": "First Aid", "difficulty": 10, "move_to": "side-alley"},
-          {"type": "do", "text": "*checks the tapcaf for medical supplies*", "move_to": "tapcaf-front"},
           {"type": "do", "text": "*senses the safest path west through the streets*", "skill": "Sense", "difficulty": 15, "move_to": "road-west"},
+          {"type": "do", "text": "*patches up Renn's blaster wound in the alley*", "skill": "First Aid", "difficulty": 10, "move_to": "side-alley"},
+          {"type": "do", "text": "*checks the tapcaf for medical supplies*", "move_to": "tapcaf-front"},
           {"type": "do", "text": "*asks the dockworker about Bay 87*", "skill": "Bargain", "difficulty": 10, "move_to": "npc-dockworker"},
-          {"type": "do", "text": "*uses the Force to scan for danger near the bay signs*", "skill": "Sense", "difficulty": 12, "move_to": "sign-docking-bays"}
+          {"type": "do", "text": "*uses the Force to scan for danger near the bay signs*", "skill": "Sense", "difficulty": 12, "move_to": "sign-docking-bays"},
+          {"type": "do", "text": "*reaches out with the Force to guide stragglers to safety*", "skill": "Sense", "difficulty": 15, "move_to": "road-center"},
+          {"type": "do", "text": "*senses an ambush near the dwelling and warns the group*", "skill": "Sense", "difficulty": 15, "move_to": "dwelling-front"},
+          {"type": "do", "text": "*drops back to heal a wounded ally*", "skill": "First Aid", "difficulty": 10, "move_to": "road-east"}
         ]
       },
       "climax_actions": {
@@ -249,10 +263,10 @@
       "pacer": {"hard_cap": 20, "min_turns": 4, "climax_repair_or_turn": 8},
       "bot_actions": {
         "Kira Voss": [
-          {"type": "say", "text": "Get that ship flying — I'll hold them off!"},
           {"type": "do", "text": "sprints for the cockpit to prep for launch", "skill": "Starship Piloting", "difficulty": 12, "move_to": "ship-cockpit"},
           {"type": "do", "text": "fires from the ship ramp at advancing Stormtroopers", "skill": "Blaster", "difficulty": 15, "move_to": "ship-ramp"},
-          {"type": "do", "text": "ducks behind the ship hull for cover", "skill": "Dodge", "difficulty": 18, "move_to": "ship-port"}
+          {"type": "do", "text": "ducks behind the ship hull for cover", "skill": "Dodge", "difficulty": 18, "move_to": "ship-port"},
+          {"type": "do", "text": "runs to the starboard side to return fire", "skill": "Blaster", "difficulty": 15, "move_to": "ship-starboard"}
         ],
         "Tok-3": [
           {"type": "do", "text": "*frantically repairs the Rusty Mynock's engine*", "skill": "Starship Repair", "difficulty": 12, "move_to": "ship-ramp"},
@@ -263,14 +277,14 @@
         "Renn Darkhollow": [
           {"type": "do", "text": "*fires from the ship turret at the blast door*", "skill": "Blaster", "difficulty": 15, "move_to": "ship-turret"},
           {"type": "do", "text": "*lays suppressing fire from the boarding ramp*", "skill": "Blaster", "difficulty": 12, "move_to": "ship-ramp"},
-          {"type": "say", "text": "They're bringing in a walker! We need to move NOW!"},
-          {"type": "do", "text": "*takes a defensive position at the ship's starboard side*", "skill": "Blaster", "difficulty": 15, "move_to": "ship-starboard"}
+          {"type": "do", "text": "*takes a defensive position at the ship's starboard side*", "skill": "Blaster", "difficulty": 15, "move_to": "ship-starboard"},
+          {"type": "do", "text": "*falls back to the port side, covering the flank*", "skill": "Blaster", "difficulty": 12, "move_to": "ship-port"}
         ],
         "Zeph Ando": [
           {"type": "do", "text": "*ignites lightsaber to deflect incoming fire at the ramp*", "skill": "Lightsaber", "difficulty": 18, "move_to": "ship-ramp"},
-          {"type": "do", "text": "*uses the Force to sense the AT-ST pilot's next move*", "skill": "Sense", "difficulty": 15},
-          {"type": "do", "text": "*applies first aid to a wounded ally*", "skill": "First Aid", "difficulty": 10, "move_to": "ship-ramp"},
-          {"type": "say", "text": "The Force will guide us out of here. Trust me."}
+          {"type": "do", "text": "*uses the Force to hurl debris at the advancing troopers*", "skill": "Sense", "difficulty": 15, "move_to": "ship-port"},
+          {"type": "do", "text": "*applies first aid to a wounded ally at the ramp*", "skill": "First Aid", "difficulty": 10, "move_to": "ship-ramp"},
+          {"type": "do", "text": "*rushes to the turret to provide covering fire*", "move_to": "ship-turret"}
         ]
       },
       "climax_actions": {

@@ -1,0 +1,97 @@
+{
+  "map": "cantina-basement.svg",
+  "width": 1920,
+  "height": 1080,
+  "positions": {
+    "staircase-up": {"x": 500, "y": 260, "desc": "Bottom of staircase (leads up to cantina storage room)"},
+    "staircase-landing": {"x": 500, "y": 180, "desc": "Staircase landing (midway up)"},
+    "staircase-bottom": {"x": 500, "y": 310, "desc": "Open area at base of stairs"},
+    "lab-entrance": {"x": 500, "y": 370, "desc": "Doorway into Wuher's lab"},
+    "lab-workbench": {"x": 340, "y": 450, "desc": "At the workbench (west wall, beakers and bottles)"},
+    "lab-distiller": {"x": 490, "y": 440, "desc": "At the distillation apparatus (center)"},
+    "lab-shelves": {"x": 660, "y": 440, "desc": "Ingredient shelves (east wall)"},
+    "lab-pipes": {"x": 490, "y": 355, "desc": "Near the buried pipes leading up to bar"},
+    "lab-center": {"x": 500, "y": 510, "desc": "Center of the lab (open floor)"},
+    "lab-barrels": {"x": 390, "y": 625, "desc": "Near the storage barrels (south wall)"},
+    "lab-drain": {"x": 550, "y": 600, "desc": "Over the drain grate in the floor"},
+    "caustic-pit-north": {"x": 500, "y": 720, "desc": "North edge of the caustic pit (approach from lab)"},
+    "caustic-pit-edge-left": {"x": 310, "y": 820, "desc": "Left ledge along caustic pit (narrow, Dex 12 to traverse)"},
+    "caustic-pit-edge-right": {"x": 690, "y": 820, "desc": "Right ledge along caustic pit (narrow, Dex 12 to traverse)"},
+    "caustic-pit": {"x": 500, "y": 820, "desc": "In the caustic pit — instant death (acid dissolves everything)"},
+    "caustic-pit-south": {"x": 500, "y": 930, "desc": "South edge of the caustic pit"},
+    "pipeways-entrance": {"x": 240, "y": 440, "desc": "Entrance to the pipeways from lab area"},
+    "pipeways-tunnel": {"x": 240, "y": 600, "desc": "Pipeway tunnel (narrow, pipes along walls)"},
+    "pipeways-camp": {"x": 310, "y": 240, "desc": "Kabe & Muftak's camp (bedrolls, stolen goods)"},
+    "pipeways-stash": {"x": 320, "y": 290, "desc": "Near the stolen goods stash"},
+    "pipeways-south": {"x": 240, "y": 850, "desc": "South end of pipeways (near caustic pit passage)"},
+    "catacombs-entrance": {"x": 860, "y": 420, "desc": "Entrance to the ancient catacombs (from lab passage)"},
+    "catacombs-west": {"x": 960, "y": 300, "desc": "West side of catacomb chamber (bone piles)"},
+    "catacombs-center": {"x": 1100, "y": 280, "desc": "Center of catacomb chamber (near altar)"},
+    "catacombs-altar": {"x": 1120, "y": 255, "desc": "At the ancient altar"},
+    "catacombs-pillar-1": {"x": 1015, "y": 195, "desc": "Near stone pillar (north-west)"},
+    "catacombs-pillar-2": {"x": 1165, "y": 215, "desc": "Near stone pillar (north-east)"},
+    "catacombs-pillar-3": {"x": 1065, "y": 335, "desc": "Near stone pillar (south)"},
+    "catacombs-east": {"x": 1300, "y": 260, "desc": "East side of catacomb chamber (near passage to shrine)"},
+    "catacombs-deep-passage": {"x": 1430, "y": 260, "desc": "Passage connecting catacombs to monk shrine"},
+    "shrine-entrance": {"x": 1500, "y": 290, "desc": "Entrance to the monk shrine chamber"},
+    "shrine-center": {"x": 1620, "y": 290, "desc": "Center of shrine — the brain walker jar (Force-sensitive)"},
+    "shrine-pedestal-nw": {"x": 1540, "y": 210, "desc": "Northwest pedestal"},
+    "shrine-pedestal-ne": {"x": 1700, "y": 220, "desc": "Northeast pedestal"},
+    "shrine-pedestal-sw": {"x": 1570, "y": 380, "desc": "Southwest pedestal"},
+    "shrine-pedestal-se": {"x": 1680, "y": 370, "desc": "Southeast pedestal"},
+    "deep-tunnels": {"x": 1250, "y": 580, "desc": "Deep tunnels south of catacombs (dark, unexplored)"},
+    "collapsed-tunnel": {"x": 840, "y": 950, "desc": "Collapsed tunnel (impassable rubble)"}
+  },
+  "obstacles": [
+    {"id": "staircase-walls", "x1": 420, "y1": 100, "x2": 580, "y2": 280, "desc": "Staircase walls"},
+    {"id": "lab-wall-north", "x1": 280, "y1": 336, "x2": 720, "y2": 344, "desc": "Lab north wall"},
+    {"id": "lab-wall-south", "x1": 280, "y1": 676, "x2": 720, "y2": 684, "desc": "Lab south wall"},
+    {"id": "lab-wall-west", "x1": 276, "y1": 340, "x2": 284, "y2": 680, "desc": "Lab west wall"},
+    {"id": "lab-wall-east", "x1": 716, "y1": 340, "x2": 724, "y2": 680, "desc": "Lab east wall"},
+    {"id": "lab-workbench", "x1": 300, "y1": 380, "x2": 380, "y2": 520, "desc": "Workbench (partial cover)"},
+    {"id": "lab-distiller", "x1": 440, "y1": 400, "x2": 540, "y2": 480, "desc": "Distillation apparatus"},
+    {"id": "caustic-pit-zone", "x1": 340, "y1": 720, "x2": 660, "y2": 920, "desc": "Caustic pit — deadly acid pool"},
+    {"id": "catacomb-pillar-1", "x1": 1000, "y1": 180, "x2": 1030, "y2": 210, "desc": "Stone pillar 1"},
+    {"id": "catacomb-pillar-2", "x1": 1150, "y1": 200, "x2": 1180, "y2": 230, "desc": "Stone pillar 2"},
+    {"id": "catacomb-pillar-3", "x1": 1050, "y1": 320, "x2": 1080, "y2": 350, "desc": "Stone pillar 3"},
+    {"id": "collapsed-rubble", "x1": 680, "y1": 910, "x2": 1000, "y2": 1000, "desc": "Collapsed tunnel rubble (impassable)"},
+    {"id": "shrine-brain-jar", "x1": 1600, "y1": 270, "x2": 1640, "y2": 310, "desc": "Brain walker jar pedestal"}
+  ],
+  "connections": {
+    "staircase-up": {"map": "cantina-expanded.svg", "position": "ladder-down"}
+  },
+  "zones": {
+    "staircase": {
+      "desc": "Staircase connecting to cantina storage room above",
+      "positions": ["staircase-up", "staircase-landing", "staircase-bottom"]
+    },
+    "lab": {
+      "desc": "Wuher's secret lab — drink mixing, chemical experiments, pipes to the bar above",
+      "positions": ["lab-entrance", "lab-workbench", "lab-distiller", "lab-shelves", "lab-pipes", "lab-center", "lab-barrels", "lab-drain"]
+    },
+    "caustic-pit": {
+      "desc": "Deadly acid pit — bones and warning signs. Narrow ledges on left and right (Dex 12 to cross safely)",
+      "positions": ["caustic-pit-north", "caustic-pit-edge-left", "caustic-pit-edge-right", "caustic-pit", "caustic-pit-south"]
+    },
+    "pipeways": {
+      "desc": "Underground pipe tunnels — Kabe and Muftak's squatter camp, stolen goods, cramped and dark",
+      "positions": ["pipeways-entrance", "pipeways-tunnel", "pipeways-camp", "pipeways-stash", "pipeways-south"]
+    },
+    "catacombs": {
+      "desc": "Ancient B'omarr monk chambers — carved symbols, bone piles, stone pillars, altar",
+      "positions": ["catacombs-entrance", "catacombs-west", "catacombs-center", "catacombs-altar", "catacombs-pillar-1", "catacombs-pillar-2", "catacombs-pillar-3", "catacombs-east", "catacombs-deep-passage"]
+    },
+    "shrine": {
+      "desc": "Inner monk shrine — the brain walker jar (Force-sensitive artifact, faint blue glow). Ceremonial circle, stone pedestals",
+      "positions": ["shrine-entrance", "shrine-center", "shrine-pedestal-nw", "shrine-pedestal-ne", "shrine-pedestal-sw", "shrine-pedestal-se"]
+    },
+    "deep-tunnels": {
+      "desc": "Unexplored tunnels leading deeper underground — dark, dangerous, no mapped exits",
+      "positions": ["deep-tunnels", "collapsed-tunnel"]
+    },
+    "exits": {
+      "desc": "All exits from the basement",
+      "positions": ["staircase-up"]
+    }
+  }
+}

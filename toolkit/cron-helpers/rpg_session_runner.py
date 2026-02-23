@@ -15,7 +15,9 @@ import logging
 import os
 import pathlib
 import random
+import re
 import signal
+import tempfile
 import time
 from datetime import datetime
 
@@ -25,6 +27,8 @@ from module_loader import ModuleData, find_module
 # ── In-memory cache for game-state.json (invalidated after run_rpg_cmd) ──
 _state_cache: dict | None = None
 _STATE_PATH = "/home/node/.openclaw/rpg/state/game-state.json"
+_terrain_data_cache: dict | None = None
+_terrain_map_key: str = ""
 
 
 def _read_game_state() -> dict:
@@ -40,9 +44,11 @@ def _read_game_state() -> dict:
 
 
 def _invalidate_state_cache() -> None:
-    """Clear the game state cache (call after any run_rpg_cmd that mutates state)."""
-    global _state_cache
+    """Clear the game state and terrain caches (call after any run_rpg_cmd that mutates state)."""
+    global _state_cache, _terrain_data_cache, _terrain_map_key
     _state_cache = None
+    _terrain_data_cache = None
+    _terrain_map_key = ""
 
 
 from rpg_bot_common import (
@@ -222,6 +228,188 @@ _MOVE_TIER_LABELS = {0: "walk", 1: "run", 2: "sprint"}
 
 
 # ---------------------------------------------------------------------------
+# Player natural-language → position resolution
+# ---------------------------------------------------------------------------
+
+_MOVEMENT_VERBS = {
+    "go", "move", "walk", "run", "sprint", "head", "sneak", "hide",
+    "flee", "approach", "enter", "leave", "exit", "climb", "crawl",
+    "dash", "rush", "retreat", "duck", "crouch", "step", "cross",
+}
+
+_MOVE_STOP_WORDS = {"the", "and", "then"}
+
+# Scoring weights for position matching
+_POS_ID_WEIGHT = 3
+_POS_DESC_WEIGHT = 2
+_ZONE_NAME_WEIGHT = 2
+_ZONE_DESC_WEIGHT = 1
+_MIN_MOVE_SCORE = 3
+
+_WORD_SPLIT_RE = re.compile(r'[^a-z0-9]+')
+
+
+def _load_current_terrain() -> dict | None:
+    """Load and cache terrain data for the current map."""
+    global _terrain_data_cache, _terrain_map_key
+    state = _read_game_state()
+    map_image = (state.get("map") or {}).get("image", "")
+    if not map_image:
+        return None
+    if map_image == _terrain_map_key and _terrain_data_cache is not None:
+        return _terrain_data_cache
+    base = map_image.rsplit(".", 1)[0] if "." in map_image else map_image
+    terrain_path = os.path.join("/app/rpg/maps", f"{base}-terrain.json")
+    try:
+        with open(terrain_path) as f:
+            _terrain_data_cache = json.load(f)
+            _terrain_map_key = map_image
+    except (FileNotFoundError, json.JSONDecodeError):
+        _terrain_data_cache = None
+    return _terrain_data_cache
+
+
+def _build_zone_index(terrain: dict) -> dict[str, tuple[str, str]]:
+    """Build {position_id: (zone_name, zone_desc)} from terrain zones."""
+    index = {}
+    for zone_name, zone_data in terrain.get("zones", {}).items():
+        zone_desc = zone_data.get("desc", "")
+        for pos_id in zone_data.get("positions", []):
+            index[pos_id] = (zone_name, zone_desc)
+    return index
+
+
+def _tokenize_text(text: str, exclude: set[str] | None = None) -> set[str]:
+    """Split text into lowercase word tokens, removing short words and exclusions."""
+    words = set(_WORD_SPLIT_RE.split(text.lower()))
+    words.discard("")
+    if exclude:
+        words -= exclude
+    return {w for w in words if len(w) > 2}
+
+
+def _score_positions(action_words: set[str], terrain: dict,
+                     zone_index: dict[str, tuple[str, str]]) -> list[tuple[str, float]]:
+    """Score all positions against action text words. Returns [(pos_id, score)] sorted desc."""
+    positions = terrain.get("positions", {})
+    scores = []
+    for pos_id, pos_data in positions.items():
+        score = 0.0
+
+        # Score from position ID (split on hyphens)
+        id_words = {w for w in pos_id.split("-") if len(w) > 2}
+        score += len(action_words & id_words) * _POS_ID_WEIGHT
+
+        # Score from position description
+        desc_words = _tokenize_text(pos_data.get("desc", ""))
+        score += len(action_words & desc_words) * _POS_DESC_WEIGHT
+
+        # Score from zone
+        if pos_id in zone_index:
+            zone_name, zone_desc = zone_index[pos_id]
+            zone_name_words = {w for w in zone_name.split("-") if len(w) > 2}
+            score += len(action_words & zone_name_words) * _ZONE_NAME_WEIGHT
+            zone_desc_words = _tokenize_text(zone_desc)
+            score += len(action_words & zone_desc_words) * _ZONE_DESC_WEIGHT
+
+        if score > 0:
+            scores.append((pos_id, score))
+
+    scores.sort(key=lambda x: -x[1])
+    return scores
+
+
+def _resolve_player_movement(char: str, action_text: str) -> tuple[str | None, int]:
+    """Resolve natural language action text to a position ID for movement.
+
+    Returns (position_id, move_penalty) or (None, 0) if no movement detected.
+    """
+    words = action_text.lower().split()
+
+    # Step 1: Check for movement verb
+    if not any(w in _MOVEMENT_VERBS for w in words):
+        return (None, 0)
+
+    # Step 2: Load terrain
+    terrain = _load_current_terrain()
+    if not terrain:
+        return (None, 0)
+
+    # Step 3: Tokenize action text (exclude movement verbs and stop words)
+    exclude = _MOVEMENT_VERBS | _MOVE_STOP_WORDS
+    action_words = _tokenize_text(action_text, exclude=exclude)
+    if not action_words:
+        return (None, 0)
+
+    # Step 4: Build zone index and score all positions
+    zone_index = _build_zone_index(terrain)
+    scored = _score_positions(action_words, terrain, zone_index)
+    if not scored or scored[0][1] < _MIN_MOVE_SCORE:
+        return (None, 0)
+
+    # Step 5: Get character position for proximity and reachability
+    from_xy = _get_token_xy(char)
+    positions = terrain.get("positions", {})
+    char_move_map = _mod("char_move", CHAR_MOVE)
+    move_allowance = char_move_map.get(char, DEFAULT_MOVE)
+    max_sprint = move_allowance * 4
+
+    # Step 6: Apply proximity bonus to break ties, skip current position
+    final_scored = []
+    for pos_id, text_score in scored:
+        pos_data = positions.get(pos_id, {})
+        prox_bonus = 0.0
+        if from_xy and "x" in pos_data and "y" in pos_data:
+            dx = pos_data["x"] - from_xy[0]
+            dy = pos_data["y"] - from_xy[1]
+            dist = (dx * dx + dy * dy) ** 0.5
+            if dist < 30:
+                continue  # Already at this position
+            prox_bonus = max(0.0, 1.0 - (dist / max_sprint)) if max_sprint > 0 else 0.0
+        final_scored.append((pos_id, text_score + prox_bonus))
+
+    if not final_scored:
+        return (None, 0)
+    final_scored.sort(key=lambda x: -x[1])
+
+    # Step 7: Filter for reachability
+    best_pos_id = final_scored[0][0]
+    penalty, _ = _compute_move_penalty(char, best_pos_id)
+
+    if penalty < 3:
+        logger.info(f"  [move-resolve] {char} \"{action_text[:60]}\" -> {best_pos_id} "
+                    f"(score={final_scored[0][1]:.1f}, penalty={penalty})")
+        return (best_pos_id, penalty)
+
+    # Best match is unreachable — try same zone first
+    best_zone = zone_index.get(best_pos_id, (None, None))[0]
+    if best_zone:
+        for pos_id, score in final_scored[1:]:
+            if score < _MIN_MOVE_SCORE:
+                break
+            pos_zone = zone_index.get(pos_id, (None, None))[0]
+            if pos_zone == best_zone:
+                p, _ = _compute_move_penalty(char, pos_id)
+                if p < 3:
+                    logger.info(f"  [move-resolve] {char} \"{action_text[:60]}\" -> {pos_id} "
+                                f"(fallback in zone '{best_zone}', score={score:.1f})")
+                    return (pos_id, p)
+
+    # No same-zone fallback — pick closest reachable position above threshold
+    for pos_id, score in final_scored[1:]:
+        if score < _MIN_MOVE_SCORE:
+            break
+        p, _ = _compute_move_penalty(char, pos_id)
+        if p < 3:
+            logger.info(f"  [move-resolve] {char} \"{action_text[:60]}\" -> {pos_id} "
+                        f"(closest reachable, score={score:.1f})")
+            return (pos_id, p)
+
+    logger.info(f"  [move-resolve] {char}: best match '{best_pos_id}' unreachable, no fallback")
+    return (None, 0)
+
+
+# ---------------------------------------------------------------------------
 # Pre-gen characters and their personality action pools
 # ---------------------------------------------------------------------------
 
@@ -294,89 +482,101 @@ NPC_STARTING_POSITIONS = {
 
 ACT_BOT_ACTIONS = {
     1: {  # Cantina — lockdown, data chip, escape
-        # Normal pool: RP actions + stepping stones toward exits.
+        # Every action moves the character. Stepping stones pull toward exits.
         # Exits (back-door, storage-door) reserved for climax only.
-        # Kira starts booth-1-left (740,130), Tok-3 bar-stool-r3 (525,440),
-        # Renn table-2 (560,380), Zeph bar-stool-l2 (155,380).
         "Kira Voss": [
             ("do", "palms the data chip from the Rodian", "Con", None, 15, "booth-1-center"),
-            ("say", "Keep your heads down — act natural.", None, None, None, None),
-            ("do", "draws her DL-44 under the table", None, None, None, None),
-            ("say", "If this goes sideways, follow me to the back door.", None, None, None, None),
-            ("do", "bluffs the officer about never seeing any Rodian", "Con", None, 20, None),
-            ("do", "edges along the booths toward the back wall", None, None, None, "near-table-1"),
+            ("do", "slides out of the booth and signals the others", None, None, None, "booth-1-approach"),
+            ("do", "draws her DL-44 under the table and edges toward the back", None, None, None, "near-table-1"),
+            ("do", "bluffs the officer about never seeing any Rodian", "Con", None, 20, "booth-2-approach"),
+            ("do", "slips past the booths toward the staff door", "Sneak", None, 12, "near-table-2"),
+            ("do", "ducks behind the round tables heading east", None, None, None, "table-2-east"),
+            ("do", "checks the staff door — it's unlocked", "Search", None, 10, "staff-door"),
+            ("do", "pushes into the back hallway", None, None, None, "back-hallway-center"),
+            ("do", "moves down the hallway toward the storage room", None, None, None, "back-hallway-south"),
         ],
         "Tok-3": [
-            ("do", "*scans the Stormtroopers' comlink frequencies*", "Computer Prog", None, 12, None),
-            ("do", "*whistles nervously and rolls behind a bar stool*", None, None, None, "bar-stool-r2"),
-            ("say", "This unit recommends immediate evacuation.", None, None, None, None),
-            ("do", "*rolls toward the booth area to regroup with the party*", None, None, None, "booth-3-approach"),
+            ("do", "*scans the Stormtroopers' comlink frequencies while rolling sideways*", "Computer Prog", None, 12, "bar-stool-r2"),
+            ("do", "*whistles nervously and rolls toward the booth area*", None, None, None, "booth-3-approach"),
             ("do", "*trundles east past the tables*", None, None, None, "table-3-east"),
+            ("do", "*rolls toward the center of the room, sensors sweeping*", None, None, None, "center-floor-north"),
+            ("do", "*interfaces with the droid detector near the foyer*", "Computer Prog", None, 15, "droid-detector"),
+            ("do", "*rolls behind the bar counter to hide*", "Sneak", None, 10, "bar-front"),
+            ("do", "*trundles toward the staff doorway*", None, None, None, "staff-door"),
+            ("do", "*rolls down the back hallway*", None, None, None, "back-hallway-center"),
+            ("do", "*heads toward the storage room*", None, None, None, "back-hallway-south"),
         ],
         "Renn Darkhollow": [
-            ("say", "I'll cover the exit — nobody follows us.", None, None, None, None),
-            ("do", "*readies blaster rifle under the table*", None, None, None, None),
-            ("do", "*scans the cantina for Imperial reinforcements*", "Search", None, 12, None),
-            ("do", "*moves to a better tactical position near the booths*", "Sneak", None, 10, "booth-3-right"),
+            ("do", "*readies blaster rifle and moves to a better position*", None, None, None, "table-2-east"),
+            ("do", "*scans the cantina for Imperial reinforcements*", "Search", None, 12, "booth-3-right"),
             ("do", "*slides east along the wall toward the back*", "Sneak", None, 10, "near-table-2"),
+            ("do", "*takes cover behind the round table*", None, None, None, "table-3"),
+            ("do", "*moves to the near table for a better firing angle*", None, None, None, "near-table-3"),
+            ("do", "*covers the staff door, ready to move*", "Search", None, 10, "staff-door"),
+            ("do", "*pushes into the back hallway, rifle raised*", None, None, None, "back-hallway-center"),
+            ("do", "*advances toward the storage room*", "Sneak", None, 10, "back-hallway-south"),
         ],
         "Zeph Ando": [
-            ("do", "*closes eyes, sensing danger through the Force*", "Sense", None, 15, None),
-            ("say", "Something's very wrong. They know about the chip.", None, None, None, None),
-            ("say", "I can feel their fear — they're searching for something specific.", None, None, None, None),
-            ("do", "*moves toward the center of the cantina*", None, None, None, "bar-stool-r2"),
+            ("do", "*closes eyes, sensing danger through the Force*", "Sense", None, 15, "bar-stool-l3"),
+            ("do", "*moves toward the center of the cantina, sensing the way*", None, None, None, "center-floor-north"),
             ("do", "*edges along the bar toward the right side*", None, None, None, "bar-stool-r5"),
+            ("do", "*senses a path through the crowd toward the booths*", "Sense", None, 12, "booth-2-approach"),
+            ("do", "*slips past the tables, guided by the Force*", None, None, None, "table-3-east"),
+            ("do", "*moves toward the staff door — the Force says this way*", "Sense", None, 12, "staff-door"),
+            ("do", "*follows the others into the back hallway*", None, None, None, "back-hallway-center"),
+            ("do", "*heads toward the storage room, hand on lightsaber*", None, None, None, "back-hallway-south"),
         ],
     },
     2: {  # Streets — westward traversal toward Docking Bay 87
-        # Normal pool: stepping stones pulling westward. NO bay-87 or checkpoint
-        # here — those are exit positions reserved for climax actions.
+        # Every action moves. Stepping stones pull westward toward the bay.
         "Kira Voss": [
-            ("say", "We take the alleys. Main road is a death trap.", None, None, None, None),
-            ("say", "Keep moving west — the Rodian said Bay 87, sunset.", None, None, None, None),
-            ("do", "leads the group west along the road away from the cantina", "Streetwise", None, 12, "road-west"),
-            ("do", "spots the bounty hunter's trap before walking into it", "Dodge", None, 15, "side-alley"),
-            ("do", "talks the speeder driver into giving them a ride", "Con", None, 15, "speeder-1"),
+            ("do", "leads the group into the alleys — main road is a death trap", "Streetwise", None, 12, "side-alley"),
+            ("do", "spots the bounty hunter's trap and redirects the group", "Dodge", None, 15, "dwelling-front"),
+            ("do", "talks the speeder driver into giving them a ride west", "Con", None, 15, "speeder-1"),
             ("do", "asks the dockworker for directions to Bay 87", "Streetwise", None, 10, "npc-dockworker"),
             ("do", "reads the directional sign pointing toward the bays", None, None, None, "sign-docking-bays"),
             ("do", "scouts the road ahead toward the bay checkpoint", "Streetwise", None, 12, "road-west"),
+            ("do", "waves the others forward and pushes west", None, None, None, "road-west"),
+            ("do", "doubles back to cover the group's rear", "Blaster", None, 12, "road-center"),
         ],
         "Tok-3": [
-            ("say", "My sensors detect a Trandoshan biosignature nearby.", None, None, None, None),
-            ("do", "*projects a holographic map of alternate routes*", None, None, None, None),
             ("do", "*hacks the speeder's ignition lock*", "Security", None, 10, "speeder-1"),
             ("do", "*rolls west along the main road, scanning for patrols*", "Search", None, 12, "road-west"),
             ("do", "*interfaces with the directional sign's data port*", "Computer Prog", None, 10, "sign-docking-bays"),
             ("do", "*scans the road ahead for Imperial patrols*", "Search", None, 12, "npc-dockworker"),
             ("do", "*hacks into a nearby terminal for bay access codes*", "Computer Prog", None, 15, "road-west"),
+            ("do", "*rolls back to guide stragglers with a projected holomap*", None, None, None, "road-center"),
+            ("do", "*trundles into the alley, scanning for a shortcut*", "Search", None, 12, "side-alley"),
+            ("do", "*rolls toward the dwelling to check for supplies*", None, None, None, "dwelling-front"),
         ],
         "Renn Darkhollow": [
-            ("say", "Bounty hunter nearby. I know that species — they fight dirty.", None, None, None, None),
-            ("say", "I'll take point. Stay behind me.", None, None, None, None),
             ("do", "*scouts the road ahead from the dwelling doorway*", "Search", None, 15, "dwelling-front"),
             ("do", "*sneaks along the building walls heading west*", "Sneak", None, 15, "road-west"),
             ("do", "*climbs to a vantage point overlooking the road*", "Sneak", None, 12, "side-alley"),
             ("do", "*scouts ahead toward the docking bay signs*", "Search", None, 15, "sign-docking-bays"),
-            ("do", "*checks the alley for ambushes before moving west*", "Search", None, 12, "npc-dockworker"),
+            ("do", "*checks the alley for ambushes before waving the group forward*", "Search", None, 12, "npc-dockworker"),
+            ("do", "*drops back to lay suppressing fire for the others*", "Blaster", None, 12, "road-center"),
+            ("do", "*takes a defensive position at the road junction*", "Blaster", None, 12, "road-east"),
+            ("do", "*covers the tapcaf entrance while the party passes*", "Search", None, 10, "tapcaf-front"),
         ],
         "Zeph Ando": [
-            ("say", "That Gran is lying — I can feel it.", None, None, None, None),
-            ("do", "*senses the informant's hidden comlink through the Force*", "Sense", None, 20, None),
-            ("do", "*patches up Renn's blaster wound*", "First Aid", None, 10, "side-alley"),
-            ("do", "*checks the tapcaf for medical supplies*", None, None, None, "tapcaf-front"),
             ("do", "*senses the safest path west through the streets*", "Sense", None, 15, "road-west"),
+            ("do", "*patches up Renn's blaster wound in the alley*", "First Aid", None, 10, "side-alley"),
+            ("do", "*checks the tapcaf for medical supplies*", None, None, None, "tapcaf-front"),
             ("do", "*asks the dockworker about Bay 87*", "Bargain", None, 10, "npc-dockworker"),
             ("do", "*uses the Force to scan for danger near the bay signs*", "Sense", None, 12, "sign-docking-bays"),
+            ("do", "*reaches out with the Force to guide stragglers to safety*", "Sense", None, 15, "road-center"),
+            ("do", "*senses an ambush near the dwelling and warns the group*", "Sense", None, 15, "dwelling-front"),
+            ("do", "*drops back to heal a wounded ally*", "First Aid", None, 10, "road-east"),
         ],
     },
     3: {  # Docking Bay — ship repair, combat, escape
-        # All PCs start at ship positions. Normal pool mixes combat (nearby)
-        # with ship actions so PCs stay within boarding range.
+        # All PCs start at ship positions. Every action moves.
         "Kira Voss": [
-            ("say", "Get that ship flying — I'll hold them off!", None, None, None, None),
             ("do", "sprints for the cockpit to prep for launch", "Starship Piloting", None, 12, "ship-cockpit"),
             ("do", "fires from the ship ramp at advancing Stormtroopers", "Blaster", None, 15, "ship-ramp"),
             ("do", "ducks behind the ship hull for cover", "Dodge", None, 18, "ship-port"),
+            ("do", "runs to the starboard side to return fire", "Blaster", None, 15, "ship-starboard"),
         ],
         "Tok-3": [
             ("do", "*frantically repairs the Rusty Mynock's engine*", "Starship Repair", None, 12, "ship-ramp"),
@@ -387,14 +587,14 @@ ACT_BOT_ACTIONS = {
         "Renn Darkhollow": [
             ("do", "*fires from the ship turret at the blast door*", "Blaster", None, 15, "ship-turret"),
             ("do", "*lays suppressing fire from the boarding ramp*", "Blaster", None, 12, "ship-ramp"),
-            ("say", "They're bringing in a walker! We need to move NOW!", None, None, None, None),
             ("do", "*takes a defensive position at the ship's starboard side*", "Blaster", None, 15, "ship-starboard"),
+            ("do", "*falls back to the port side, covering the flank*", "Blaster", None, 12, "ship-port"),
         ],
         "Zeph Ando": [
             ("do", "*ignites lightsaber to deflect incoming fire at the ramp*", "Lightsaber", None, 18, "ship-ramp"),
-            ("do", "*uses the Force to sense the AT-ST pilot's next move*", "Sense", None, 15, None),
-            ("do", "*applies first aid to a wounded ally*", "First Aid", None, 10, "ship-ramp"),
-            ("say", "The Force will guide us out of here. Trust me.", None, None, None, None),
+            ("do", "*uses the Force to hurl debris at the advancing troopers*", "Sense", None, 15, "ship-port"),
+            ("do", "*applies first aid to a wounded ally at the ramp*", "First Aid", None, 10, "ship-ramp"),
+            ("do", "*rushes to the turret to provide covering fire*", None, None, None, "ship-turret"),
         ],
     },
 }
@@ -439,7 +639,7 @@ NPC_AMBIENT_ROUTES = {
 NPC_COMBAT_REACTIONS = {
     1: {
         "Patron 1": ("cover", "bar-stool-l4"),            # ducks behind bar
-        "Patron 2": ("cover", "booth-3"),                 # dives into empty booth
+        "Patron 2": ("cover", "booth-3-center"),            # dives into empty booth
         "Figrin Dan": ("cover", "band-stage"),             # stays on stage
     },
     2: {
@@ -562,11 +762,15 @@ class ActPacer:
         exit_pos = _mod("act_exit_positions", ACT_EXIT_POSITIONS)
         self.exit_positions = exit_pos.get(act_num, set())
         self.hard_cap = ACT_HARD_CAP
+        self.min_turns = 4
         self.ship_positions = _mod("ship_positions", SHIP_POSITIONS)
         if _module:
             act_data = _module.get_act(act_num)
-            if act_data and act_data.pacer.get("hard_cap"):
-                self.hard_cap = act_data.pacer["hard_cap"]
+            if act_data:
+                if act_data.pacer.get("hard_cap"):
+                    self.hard_cap = act_data.pacer["hard_cap"]
+                if act_data.pacer.get("min_turns"):
+                    self.min_turns = act_data.pacer["min_turns"]
         self.turn = 0
         self.visited: set[str] = set()
         self.reached_exit = False
@@ -612,30 +816,46 @@ class ActPacer:
         """Should the act end after this turn?"""
         if self.turn >= self.hard_cap:
             return True
-        # Minimum 4 turns per act for narrative content
-        if self.turn < 4:
+        if self.turn < self.min_turns:
             return False
         if self.act_num == 3:
             return (self.ship_repaired and self.reached_exit
                     and self._all_surviving_aboard())
         return self.reached_exit
 
+    def _any_pc_near_exit(self) -> bool:
+        """Check if any PC is within sprint range of an exit position."""
+        if not self.exit_positions:
+            return False
+        pregens = _mod("pregens", PREGENS)
+        for char in pregens:
+            if _get_wound_level(char) >= 4:
+                continue
+            for exit_pos in self.exit_positions:
+                penalty, _ = _compute_move_penalty(char, exit_pos)
+                if penalty < 3:  # reachable (walk, run, or sprint)
+                    return True
+        return False
+
     @property
     def is_climax(self) -> bool:
         """Should the next turn use the climax action pool?
 
-        Acts 1-2: After exploring enough stepping stones (>=4 unique positions),
-        the party has had enough RP to justify heading for the exit.
+        Narrative-driven: climax fires when a character has naturally moved
+        close enough to an exit to make a dramatic escape. No arbitrary
+        position counting — the story gets there when it gets there.
+
         Act 3: Climax fires once the ship is repaired (escape sequence).
+        Hard cap is the only safety valve.
         """
         if self.turn + 1 >= self.hard_cap:
             return True
+        if self.turn < self.min_turns:
+            return False
         if self.act_num == 3:
-            # Climax once repaired, OR after 8 turns of combat (don't let bad
-            # RNG stall the finale — the narrative should escalate regardless)
             return self.ship_repaired or self.turn >= 8
-        # Acts 1-2: enough exploration triggers the dramatic exit sequence
-        return len(self.visited) >= 4
+        # Acts 1-2: climax when someone is close enough to actually escape
+        return self._any_pc_near_exit()
 
     def pacing_hint(self) -> str:
         """Generate a pacing hint for the GM prompt."""
@@ -723,6 +943,21 @@ def _auto_place_tokens(act_num: int):
         logger.info(f"  NPC: {npc} -> {pos} ({color}){vis} ({out})")
 
 
+def _get_act_scene_name(act_num: int) -> str:
+    """Get the scene name for an act from module data, or a sensible default."""
+    if _module:
+        ad = _module.get_act(act_num)
+        if ad and ad.name:
+            return ad.name
+    return f"Act {act_num}"
+
+
+def _update_scene_for_act(act_num: int):
+    """Set act number and scene name in game state."""
+    scene_name = _get_act_scene_name(act_num)
+    run_rpg_cmd(["update-scene", "--act", str(act_num), "--scene", scene_name])
+
+
 def _set_act_map(act_num: int, transcript: TranscriptLogger):
     """Set the map for the current act and auto-place tokens."""
     act_maps = _mod("act_maps", ACT_MAPS)
@@ -740,16 +975,18 @@ def _set_act_map(act_num: int, transcript: TranscriptLogger):
     transcript.log_scene_change(act_num, map_name, map_image)
     _auto_place_tokens(act_num)
 
-    # Camera per act:
-    #   Act 1 (cantina): zoom 2.0 — indoor map, follow party through the room
-    #   Act 2 (streets): zoom 2.0 — large street map, pan with party
+    # Camera per act (zoom tuned to map size):
+    #   Act 1 (cantina-expanded 1920x1080): follow-party zoom 1.5
+    #   Act 2 (streets 1920x1080): zoom 2.0 — large street map, pan with party
     #   Act 3 (docking bay): zoom 1.0 overview — small map, show the whole bay
-    if act_num == 3:
-        # Docking bay is small — overview shows everything without cropping
+    if act_num == 1:
+        # Expanded cantina (1920x1080) — follow party, moderate zoom
+        run_rpg_cmd(["set-camera", "--follow-party", "--zoom", "1.5"])
+        logger.info("  camera: follow-party zoom=1.5 (expanded cantina)")
+    elif act_num == 3:
         run_rpg_cmd(["set-camera", "--follow-party", "--zoom", "1.0"])
         logger.info("  camera: overview zoom=1.0 (full bay visible)")
     else:
-        # Acts 1-2: zoom in and pan with the party
         run_rpg_cmd(["set-camera", "--follow-party", "--zoom", "2.0"])
         logger.info("  camera: follow-party zoom=2.0")
 
@@ -761,10 +998,14 @@ def _maybe_auto_transfer(char_name: str, position_name: str):
     If so, transfers the token to the connected map and switches the scene
     so the overlay follows the character.
     """
-    state_text = run_rpg_cmd(["dump"])
+    state_path = os.environ.get(
+        "RPG_STATE_FILE",
+        "/home/node/.openclaw/rpg/state/game-state.json",
+    )
     try:
-        state = json.loads(state_text)
-    except (json.JSONDecodeError, TypeError):
+        with open(state_path) as f:
+            state = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
         return
     current_map = (state.get("map") or {}).get("image", "")
     if not current_map:
@@ -849,14 +1090,15 @@ _EXPLORE_KICK = (
 
 
 def _pick_reachable_action(char: str, pool: list) -> tuple:
-    """Pick an action whose move_to is reachable, falling back to stationary.
+    """Pick an action whose move_to is reachable and not the current position.
 
     Splits the pool into:
-      1. Actions with reachable move_to (penalty < 3)
+      1. Actions with reachable move_to that isn't where the char already is
       2. Stationary actions (no move_to)
-      3. Unreachable actions (penalty >= 3)
+      3. Unreachable actions (penalty >= 3) or already-there duplicates
     Picks from group 1 first (movement), then 2 (still useful RP), then 3 last.
     """
+    from_xy = _get_token_xy(char)
     reachable = []
     stationary = []
     blocked = []
@@ -865,6 +1107,12 @@ def _pick_reachable_action(char: str, pool: list) -> tuple:
         if not move_to:
             stationary.append(action)
         else:
+            # Skip if character is already at this position (within 30px)
+            to_xy = _resolve_position_xy(move_to)
+            if from_xy and to_xy:
+                dist = ((from_xy[0] - to_xy[0])**2 + (from_xy[1] - to_xy[1])**2) ** 0.5
+                if dist < 30:
+                    continue  # Already there — skip entirely
             penalty, _ = _compute_move_penalty(char, move_to)
             if penalty < 3:
                 reachable.append(action)
@@ -872,6 +1120,8 @@ def _pick_reachable_action(char: str, pool: list) -> tuple:
                 blocked.append(action)
     # Prefer reachable moves (progresses the story), then stationary RP
     pick_from = reachable or stationary or blocked
+    if not pick_from:
+        pick_from = pool  # Last resort: pick anything
     return random.choice(pick_from)
 
 
@@ -900,8 +1150,8 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     if not able_chars:
         logger.warning("  [WARNING] All PCs incapacitated!")
         return dice_strings, positions, pc_position_map, "normal"
-    num_actions = random.randint(1, 2)
-    chars = random.sample(able_chars, min(num_actions, len(able_chars)))
+    # All able characters act every turn — standing guard is still an action
+    chars = able_chars
 
     # Climax turn: draw from climax pool, fall back to normal
     act_climax = _mod("act_climax_actions", ACT_CLIMAX_ACTIONS)
@@ -1247,44 +1497,48 @@ def _end_session(transcript: TranscriptLogger):
 
 def _write_closing_crawl(transcript: TranscriptLogger):
     """Generate and store closing crawl data for the show flow to display."""
-    # Build summary from transcript events
-    narrations = []
-    wounds = {}
-    acts_completed = 0
-    for ev in transcript.events:
-        if ev.get("type") == "narration":
-            narrations.append(ev.get("narration", ""))
-        if ev.get("type") == "act_end":
-            acts_completed = ev.get("data", {}).get("act", acts_completed)
-        if ev.get("type") == "session_event" and ev.get("data", {}).get("event") == "wound":
-            char = ev.get("data", {}).get("character", "")
-            wounds[char] = ev.get("data", {}).get("level", 0)
+    # Use module closing_crawl if available, otherwise fall back to hardcoded
+    module_crawl = _mod("closing_crawl", None)
+    if module_crawl and isinstance(module_crawl, dict) and module_crawl.get("paragraphs"):
+        crawl_data = module_crawl
+    else:
+        # Build summary from transcript events
+        narrations = []
+        wounds = {}
+        acts_completed = 0
+        for ev in transcript.events:
+            if ev.get("type") == "narration":
+                narrations.append(ev.get("narration", ""))
+            if ev.get("type") == "act_end":
+                acts_completed = ev.get("data", {}).get("act", acts_completed)
+            if ev.get("type") == "session_event" and ev.get("data", {}).get("event") == "wound":
+                char = ev.get("data", {}).get("character", "")
+                wounds[char] = ev.get("data", {}).get("level", 0)
 
-    # Build 3-paragraph closing crawl
-    paragraphs = [
-        "Our heroes fought through the cantina lockdown, "
-        "navigated the dangerous streets of Mos Eisley, "
-        "and battled their way to Docking Bay 87.",
+        # Hardcoded fallback for Mos Eisley
+        paragraphs = [
+            "Our heroes fought through the cantina lockdown, "
+            "navigated the dangerous streets of Mos Eisley, "
+            "and battled their way to Docking Bay 87.",
 
-        "Against all odds, they reached the Rusty Mynock "
-        "and blasted free from the Imperial blockade. "
-        "The stars of hyperspace welcome them... for now.",
+            "Against all odds, they reached the Rusty Mynock "
+            "and blasted free from the Imperial blockade. "
+            "The stars of hyperspace welcome them... for now.",
 
-        "What dangers await in the Outer Rim? "
-        "Will the Empire's pursuit catch up? "
-        "Find out next time on Star Wars: Game Night!",
-    ]
+            "What dangers await in the Outer Rim? "
+            "Will the Empire's pursuit catch up? "
+            "Find out next time on Star Wars: Game Night!",
+        ]
 
-    crawl_data = {
-        "title": "STAR WARS",
-        "subtitle": "Session Complete",
-        "episodeTitle": "Escape from Mos Eisley",
-        "paragraphs": paragraphs,
-    }
+        crawl_data = {
+            "title": "STAR WARS",
+            "subtitle": "Session Complete",
+            "episodeTitle": "Escape from Mos Eisley",
+            "paragraphs": paragraphs,
+        }
 
     # Write directly to state file — session is already ended so update-scene
     # would reject the command. The show flow reads this field from game-state.json.
-    import os
     state_path = os.environ.get(
         "RPG_STATE_FILE",
         "/home/node/.openclaw/rpg/state/game-state.json",
@@ -1293,11 +1547,22 @@ def _write_closing_crawl(transcript: TranscriptLogger):
         with open(state_path) as f:
             state = json.load(f)
         state["closing_crawl"] = crawl_data
-        with open(state_path, "w") as f:
-            json.dump(state, f, indent=2)
+        # Atomic write: temp file + os.replace to prevent corruption
+        tmp_fd, tmp_path = tempfile.mkstemp(
+            dir=os.path.dirname(state_path), suffix=".tmp"
+        )
+        try:
+            with os.fdopen(tmp_fd, "w") as f:
+                json.dump(state, f, indent=2)
+                f.write("\n")
+            os.replace(tmp_path, state_path)
+        except BaseException:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+            raise
         logger.info(f"\n  === CLOSING CRAWL ===")
-        logger.info(f"  {crawl_data['subtitle']} — {crawl_data['episodeTitle']}")
-        for p in paragraphs:
+        logger.info(f"  {crawl_data.get('subtitle', '')} — {crawl_data.get('episodeTitle', '')}")
+        for p in crawl_data.get("paragraphs", []):
             logger.info(f"  {p}")
         logger.info(f"  ======================\n")
     except (FileNotFoundError, json.JSONDecodeError) as e:
@@ -1335,7 +1600,7 @@ def run_dry_session(adventure: str):
 
         # Set map and update scene
         _set_act_map(act_num, transcript)
-        run_rpg_cmd(["update-scene", "--act", str(act_num)])
+        _update_scene_for_act(act_num)
 
         # Cutscene for act opening
         run_rpg_cmd(["set-mode", "--mode", "cutscene"])
@@ -1506,6 +1771,26 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
         if viewer.startswith("bot"):
             continue
 
+        # Resolve movement intent from natural language
+        move_to, move_penalty = _resolve_player_movement(char, a.get("text", ""))
+        if move_to:
+            char_move_map = _mod("char_move", CHAR_MOVE)
+            move_allowance = char_move_map.get(char, DEFAULT_MOVE)
+            max_dist = move_allowance * 4
+            move_cmd = ["move-token", "--character", char, "--position", move_to]
+            if max_dist > 0:
+                move_cmd += ["--max-distance", str(max_dist)]
+            run_rpg_cmd(move_cmd)
+            _invalidate_state_cache()
+            tier = _MOVE_TIER_LABELS.get(move_penalty, "sprint")
+            terrain = _load_current_terrain()
+            pos_desc = move_to
+            if terrain:
+                pos_desc = terrain.get("positions", {}).get(move_to, {}).get("desc", move_to)
+            dice_strings.append(f"{char} moves to {pos_desc} ({tier})")
+            logger.info(f"  [move-player] {char} -> {move_to} ({tier})")
+            _maybe_auto_transfer(char, move_to)
+
         # Check for combat action (blaster fire, etc.)
         if any(kw in text_lower for kw in _COMBAT_KEYWORDS):
             # Determine skill: default to Blaster for ranged, Brawling for melee
@@ -1518,8 +1803,8 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
 
             opponent = _pick_combat_opponent(act_num, a.get("text", ""))
 
-            # Roll PC attack
-            result = pre_roll_skill_check(char, skill)
+            # Roll PC attack (movement penalty applied if moving + fighting)
+            result = pre_roll_skill_check(char, skill, penalty=move_penalty)
             if "error" not in result:
                 # Roll NPC dodge
                 npc_dodge = pre_roll_skill_check(opponent, "Dodge")
@@ -1546,7 +1831,9 @@ def _roll_dice_for_player_actions(new_actions, transcript, act_num,
         for kw, skill in _SKILL_KEYWORDS.items():
             if kw in text_lower:
                 cs = _mod("char_stats", CHAR_STATS)
+                # Movement penalty applied if moving + using skill
                 result = pre_roll_skill_check(char, skill, difficulty=15,
+                                              penalty=move_penalty,
                                               char_stats=cs)
                 if "error" not in result:
                     dice_strings.append(result["detail"])
@@ -1584,9 +1871,8 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     if not bot_chars:
         return dice_strings
 
-    # Pick 1-2 bot characters to act this turn
-    num = min(random.randint(1, 2), len(bot_chars))
-    chars = random.sample(bot_chars, num)
+    # All bot characters act every turn
+    chars = bot_chars
 
     act_climax = _mod("act_climax_actions", ACT_CLIMAX_ACTIONS)
     act_bot = _mod("act_bot_actions", ACT_BOT_ACTIONS)
@@ -1598,15 +1884,21 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
         act_actions = act_bot.get(act_num, {})
         act_fallback = {}
 
+    pc_pos_map = {}
     for char in chars:
-        pool = act_actions.get(char, [])
-        if not pool and act_fallback:
-            pool = act_fallback.get(char, [])
-        if not pool:
-            continue
-        action_type, text, skill, dice_override, difficulty, move_to = (
-            _pick_reachable_action(char, pool)
-        )
+        # Healing priority: characters with First Aid heal wounded allies first
+        heal_action = _check_heal_priority(char)
+        if heal_action:
+            action_type, text, skill, dice_override, difficulty, move_to = heal_action
+        else:
+            pool = act_actions.get(char, [])
+            if not pool and act_fallback:
+                pool = act_fallback.get(char, [])
+            if not pool:
+                continue
+            action_type, text, skill, dice_override, difficulty, move_to = (
+                _pick_reachable_action(char, pool)
+            )
 
         # Log the action to game state (viewer key matches bot:slug format)
         bot_slug = char.lower().replace(" ", "-").replace("'", "")
@@ -1653,6 +1945,10 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                             logger.info(f"  [move-npc] {npc_name} -> {move_to}")
                             moved_npcs.add(npc_name)
 
+        # Track PC position for pacer
+        if move_to:
+            pc_pos_map[char] = move_to
+
         if skill:
             char_stats = _mod("char_stats", CHAR_STATS)
             result = pre_roll_skill_check(char, skill, difficulty,
@@ -1660,9 +1956,21 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
             if "error" not in result:
                 dice_strings.append(result["detail"])
                 logger.info(f"  [dice-bot] {result['detail']}")
+                # Apply wound on successful combat hits
+                if skill in ("Blaster", "Brawling", "Lightsaber") and result.get("success"):
+                    opponent = _pick_combat_opponent(act_num, text)
+                    _apply_wound(opponent, 1)
+                # Act 3: ship repair gate
                 if skill == "Starship Repair" and result.get("success"):
                     pacer.ship_repaired = True
                     logger.info(f"  [OBJECTIVE] Ship repaired by {char}!")
+                # Healing: successful First Aid reduces ally wound level
+                if skill == "First Aid" and result.get("success"):
+                    pregens = _mod("pregens", PREGENS)
+                    for pc in pregens:
+                        if pc != char and pc in text:
+                            _heal_wound(pc, 1)
+                            break
                 dice_code = dice_override or char_stats.get(char, {}).get(skill, DEFAULT_DICE)
                 transcript.log_dice_roll(
                     char, skill, dice_code,
@@ -1670,8 +1978,32 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                     difficulty, result["success"])
                 _log_dice_to_state(char, skill, result)
 
+    # NPC counter-attack: one hostile NPC shoots at a random able PC each turn
+    npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
+    hostile_npcs = npc_pos.get(act_num, {})
+    hostile_names = [n for n, (_, color, _) in hostile_npcs.items()
+                     if color == "#f54e4e" and _get_wound_level(n) < 4]
+    pregens = _mod("pregens", PREGENS)
+    able_targets = [c for c in pregens if _get_wound_level(c) < 4]
+    if hostile_names and able_targets:
+        attacker = random.choice(hostile_names)
+        target = random.choice(able_targets)
+        npc_attack = pre_roll_skill_check(attacker, "Blaster")
+        pc_dodge = pre_roll_skill_check(target, "Dodge")
+        if "error" not in npc_attack and "error" not in pc_dodge:
+            hit = npc_attack["total"] > pc_dodge["total"]
+            detail = (
+                f"{attacker} fires at {target}: "
+                f"{npc_attack['total']} vs dodge {pc_dodge['total']} "
+                f"— {'HIT!' if hit else 'MISS'}"
+            )
+            dice_strings.append(detail)
+            logger.info(f"  [npc-attack] {detail}")
+            if hit:
+                _apply_wound(target, 1)
+
     if positions:
-        pacer.record_turn(positions)
+        pacer.record_turn(positions, pc_position_map=pc_pos_map)
 
     return dice_strings
 
@@ -1703,7 +2035,7 @@ def run_live_session(adventure: str):
     pacer = ActPacer(act_num)
 
     _set_act_map(act_num, transcript)
-    run_rpg_cmd(["update-scene", "--act", str(act_num)])
+    _update_scene_for_act(act_num)
 
     # Cutscene opening
     run_rpg_cmd(["set-mode", "--mode", "cutscene"])
@@ -1725,154 +2057,159 @@ def run_live_session(adventure: str):
 
     while _running:
         time.sleep(poll_interval)
+        try:
+            # Read current state
+            state, context = build_context(adventure)
+            if state is None:
+                logger.error(f"  ERROR: {context}")
+                continue
 
-        # Read current state
-        state, context = build_context(adventure)
-        if state is None:
-            logger.error(f"  ERROR: {context}")
-            continue
+            session = state.get("session", {})
+            mode = session.get("mode", "rp")
+            current_act = session.get("act", act_num)
 
-        session = state.get("session", {})
-        mode = session.get("mode", "rp")
-        current_act = session.get("act", act_num)
-
-        # Check for act advancement
-        if current_act != act_num:
-            act_num = current_act
-            pacer = ActPacer(act_num)
-            turn_num = 0
-            roam_index.clear()
-            npcs_reacted = False
-            logger.info(f"\n  ACT CHANGE -> Act {act_num}")
-            _set_act_map(act_num, transcript)
-            run_rpg_cmd(["set-mode", "--mode", "cutscene"])
-            transcript.log_mode_change("cutscene", f"Act {act_num} opening")
-            _run_gm_turn(act_num, 0, transcript,
-                          "New act begins. Set the scene.",
-                          since_action=last_action_count)
-            run_rpg_cmd(["set-mode", "--mode", "rp"])
-            transcript.log_mode_change("rp", f"Act {act_num} gameplay")
-            _run_join_prompt(transcript)
-            _run_poll(BETWEEN_ACT_POLL, transcript, wait_secs=30)
-            last_gm_time = time.time()
-            last_action_count = len(state.get("action_log", []))
-            continue
-
-        # NPC behavior — ambient roaming in RP mode, reactive in combat
-        if time.time() - last_roam_time >= roam_interval:
-            is_combat = mode == "combat" or state.get("combat_active")
-            if is_combat and not npcs_reacted:
-                # Combat just started — NPCs react
-                combat_react = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
-                reactions = combat_react.get(current_act, {})
-                for npc_name, (reaction, dest) in reactions.items():
-                    run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
-                    logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
-                npcs_reacted = True
-            elif not is_combat:
-                # Peaceful — ambient roaming
+            # Check for act advancement
+            if current_act != act_num:
+                act_num = current_act
+                pacer = ActPacer(act_num)
+                turn_num = 0
+                roam_index.clear()
                 npcs_reacted = False
-                ambient = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
-                roamers = ambient.get(current_act, {})
-                for npc_name, route in roamers.items():
-                    idx = roam_index.get(npc_name, 0)
-                    pos = route[idx % len(route)]
-                    run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
-                    roam_index[npc_name] = idx + 1
-            last_roam_time = time.time()
+                logger.info(f"\n  ACT CHANGE -> Act {act_num}")
+                _set_act_map(act_num, transcript)
+                _update_scene_for_act(act_num)
+                run_rpg_cmd(["set-mode", "--mode", "cutscene"])
+                transcript.log_mode_change("cutscene", f"Act {act_num} opening")
+                _run_gm_turn(act_num, 0, transcript,
+                              "New act begins. Set the scene.",
+                              since_action=last_action_count)
+                run_rpg_cmd(["set-mode", "--mode", "rp"])
+                transcript.log_mode_change("rp", f"Act {act_num} gameplay")
+                _run_join_prompt(transcript)
+                _run_poll(BETWEEN_ACT_POLL, transcript, wait_secs=30)
+                last_gm_time = time.time()
+                last_action_count = len(state.get("action_log", []))
+                continue
 
-        # Count new actions
-        actions = state.get("action_log", [])
-        new_count = len(actions)
+            # NPC behavior — ambient roaming in RP mode, reactive in combat
+            if time.time() - last_roam_time >= roam_interval:
+                is_combat = mode == "combat" or state.get("combat_active")
+                if is_combat and not npcs_reacted:
+                    # Combat just started — NPCs react
+                    combat_react = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
+                    reactions = combat_react.get(current_act, {})
+                    for npc_name, (reaction, dest) in reactions.items():
+                        run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
+                        logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
+                    npcs_reacted = True
+                elif not is_combat:
+                    # Peaceful — ambient roaming
+                    npcs_reacted = False
+                    ambient = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
+                    roamers = ambient.get(current_act, {})
+                    for npc_name, route in roamers.items():
+                        idx = roam_index.get(npc_name, 0)
+                        pos = route[idx % len(route)]
+                        run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
+                        roam_index[npc_name] = idx + 1
+                last_roam_time = time.time()
 
-        # Combat mode: handle timers
-        if mode == "combat":
-            timer_status = run_rpg_cmd(["check-timer"])
-            try:
-                timer = json.loads(timer_status)
-                if timer.get("expired"):
-                    run_rpg_cmd(["auto-advance"])
-                    logger.info(f"  >> AUTO-ADVANCE (timer expired)")
-            except (json.JSONDecodeError, ValueError):
-                pass
+            # Count new actions
+            actions = state.get("action_log", [])
+            new_count = len(actions)
 
-        # GM responds if there are new player actions (with cooldown)
-        time_since_last = time.time() - last_gm_time
-        if new_count > last_action_count and time_since_last >= min_turn_cooldown:
-            turn_num += 1
-            # Read PC token positions from state for pacer exit detection
-            pc_positions = []
-            pc_pos_map = {}
-            for slug, tok in state.get("tokens", {}).items():
-                if tok.get("type") == "pc":
-                    pos_name = _position_name_from_token(state, tok)
-                    pc_positions.append(pos_name)
-                    char_name = tok.get("label", slug)
-                    pc_pos_map[char_name] = pos_name
-            pacer.record_turn(pc_positions, pc_position_map=pc_pos_map)
-            new_actions = actions[last_action_count:]
-            action_summary = "; ".join(
-                f"{a.get('character', '?')} {a.get('type', 'do')}s: {a.get('text', '...')}"
-                for a in new_actions
-            )
-            logger.info(f"  New actions ({new_count - last_action_count}): {action_summary[:100]}")
+            # Combat mode: handle timers
+            if mode == "combat":
+                timer_status = run_rpg_cmd(["check-timer"])
+                try:
+                    timer = json.loads(timer_status)
+                    if timer.get("expired"):
+                        run_rpg_cmd(["auto-advance"])
+                        logger.info(f"  >> AUTO-ADVANCE (timer expired)")
+                except (json.JSONDecodeError, ValueError):
+                    pass
 
-            # Roll dice for any combat/skill actions from real players
-            dice_strings = _roll_dice_for_player_actions(
-                new_actions, transcript, act_num, pacer=pacer)
+            # GM responds if there are new player actions (with cooldown)
+            time_since_last = time.time() - last_gm_time
+            if new_count > last_action_count and time_since_last >= min_turn_cooldown:
+                turn_num += 1
+                # Read PC token positions from state for pacer exit detection
+                pc_positions = []
+                pc_pos_map = {}
+                for slug, tok in state.get("tokens", {}).items():
+                    if tok.get("type") == "pc":
+                        pos_name = _position_name_from_token(state, tok)
+                        pc_positions.append(pos_name)
+                        char_name = tok.get("label", slug)
+                        pc_pos_map[char_name] = pos_name
+                pacer.record_turn(pc_positions, pc_position_map=pc_pos_map)
+                new_actions = actions[last_action_count:]
+                action_summary = "; ".join(
+                    f"{a.get('character', '?')} {a.get('type', 'do')}s: {a.get('text', '...')}"
+                    for a in new_actions
+                )
+                logger.info(f"  New actions ({new_count - last_action_count}): {action_summary[:100]}")
 
-            # Pre-roll bot character actions with dice (like dry-run does)
-            bot_dice = _pre_roll_bot_actions(act_num, transcript, pacer)
-            dice_strings.extend(bot_dice)
+                # Roll dice for any combat/skill actions from real players
+                dice_strings = _roll_dice_for_player_actions(
+                    new_actions, transcript, act_num, pacer=pacer)
 
-            action_class = _classify_actions(new_actions)
-            if action_class == "explore":
-                extra = _EXPLORE_KICK
-                logger.info(f"  [classify] EXPLORE — off-script action detected")
-            else:
-                extra = "Respond to the recent player actions."
-            extra += "\n" + pacer.pacing_hint()
+                # Pre-roll bot character actions with dice (like dry-run does)
+                bot_dice = _pre_roll_bot_actions(act_num, transcript, pacer)
+                dice_strings.extend(bot_dice)
 
-            _run_gm_turn(act_num, turn_num, transcript, extra,
-                          dice_results=dice_strings,
-                          since_action=last_action_count)
-            last_gm_time = time.time()
-            # Re-read action count AFTER GM turn to include GM's own log_action calls
-            post_state, _ = build_context(adventure)
-            if post_state:
-                last_action_count = len(post_state.get("action_log", []))
-            else:
-                last_action_count = new_count
-        elif new_count > last_action_count:
-            wait_remaining = int(min_turn_cooldown - time_since_last)
-            logger.info(f"  New actions queued, cooldown {wait_remaining}s remaining")
+                action_class = _classify_actions(new_actions)
+                if action_class == "explore":
+                    extra = _EXPLORE_KICK
+                    logger.info(f"  [classify] EXPLORE — off-script action detected")
+                else:
+                    extra = "Respond to the recent player actions."
+                extra += "\n" + pacer.pacing_hint()
 
-            # Auto-advance act if objectives met
+                _run_gm_turn(act_num, turn_num, transcript, extra,
+                              dice_results=dice_strings,
+                              since_action=last_action_count)
+                last_gm_time = time.time()
+                # Re-read action count AFTER GM turn to include GM's own log_action calls
+                post_state, _ = build_context(adventure)
+                if post_state:
+                    last_action_count = len(post_state.get("action_log", []))
+                else:
+                    last_action_count = new_count
+            elif new_count > last_action_count:
+                wait_remaining = int(min_turn_cooldown - time_since_last)
+                logger.info(f"  New actions queued, cooldown {wait_remaining}s remaining")
+
+            # Idle check: prompt quiet players (only after cooldown + idle threshold)
+            elif time_since_last > gm_idle_threshold and mode == "rp":
+                idle_check = run_rpg_cmd(["activity-summary"])
+                turn_num += 1
+                # Bot characters act to keep the scene alive
+                bot_dice = _pre_roll_bot_actions(act_num, transcript, pacer)
+                _run_gm_turn(act_num, turn_num, transcript,
+                              "No new player actions. Prompt a quiet character or advance the scene.",
+                              dice_results=bot_dice,
+                              since_action=last_action_count)
+                last_gm_time = time.time()
+                # Update action count after idle GM turn
+                post_state, _ = build_context(adventure)
+                if post_state:
+                    last_action_count = len(post_state.get("action_log", []))
+
+            # Auto-advance act if objectives met (checked every poll, not just during cooldown)
             if pacer.should_end_act() and act_num < 3:
                 next_act = act_num + 1
                 logger.info(f"  [pacer] Objectives met — advancing to Act {next_act}")
-                run_rpg_cmd(["update-scene", "--act", str(next_act)])
+                _update_scene_for_act(next_act)
 
-        # Idle check: prompt quiet players (only after cooldown + idle threshold)
-        elif time_since_last > gm_idle_threshold and mode == "rp":
-            idle_check = run_rpg_cmd(["activity-summary"])
-            turn_num += 1
-            # Bot characters act to keep the scene alive
-            bot_dice = _pre_roll_bot_actions(act_num, transcript, pacer)
-            _run_gm_turn(act_num, turn_num, transcript,
-                          "No new player actions. Prompt a quiet character or advance the scene.",
-                          dice_results=bot_dice,
-                          since_action=last_action_count)
-            last_gm_time = time.time()
-            # Update action count after idle GM turn
-            post_state, _ = build_context(adventure)
-            if post_state:
-                last_action_count = len(post_state.get("action_log", []))
+            # Check if session ended externally
+            if session.get("status") == "ended":
+                logger.info(f"\n  Session ended externally.")
+                break
 
-        # Check if session ended externally
-        if session.get("status") == "ended":
-            logger.info(f"\n  Session ended externally.")
-            break
+        except Exception as e:
+            logger.error(f"  [poll-error] {type(e).__name__}: {e}")
+            continue
 
     # End session
     if _running:
