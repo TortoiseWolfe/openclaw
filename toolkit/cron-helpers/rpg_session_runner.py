@@ -166,13 +166,43 @@ def _check_heal_priority(char: str) -> tuple | None:
     )
 
 
-def _get_token_xy(char: str) -> tuple[int, int] | None:
-    """Look up a character's current (x,y) from game-state.json tokens."""
+def _check_carry_priority(char: str) -> tuple | None:
+    """If an ally is incapacitated (wl >= 3) and nearby, drag them to the ship."""
+    pregens = _mod("pregens", PREGENS)
+    for pc in pregens:
+        if pc == char:
+            continue
+        wl = _get_wound_level(pc)
+        if wl < 3:
+            continue  # not incapacitated
+        char_xy = _get_token_xy(char)
+        ally_xy = _get_token_xy(pc)
+        if not char_xy or not ally_xy:
+            continue
+        dist = ((char_xy[0] - ally_xy[0])**2 + (char_xy[1] - ally_xy[1])**2) ** 0.5
+        if dist < 300:  # within reach
+            return (
+                "do",
+                f"*grabs {pc} and drags them toward the ship ramp*",
+                "Lifting", None, 10, "ship-ramp",
+            )
+    return None
+
+
+def _load_game_state() -> dict | None:
+    """Load the current game-state.json, returning None on error."""
     state_path = "/home/node/.openclaw/rpg/state/game-state.json"
     try:
         with open(state_path) as f:
-            state = json.load(f)
+            return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
+        return None
+
+
+def _get_token_xy(char: str) -> tuple[int, int] | None:
+    """Look up a character's current (x,y) from game-state.json tokens."""
+    state = _load_game_state()
+    if not state:
         return None
     slug = char.lower().replace(" ", "-").replace("'", "")
     token = state.get("tokens", {}).get(slug)
@@ -634,6 +664,37 @@ NPC_AMBIENT_ROUTES = {
     },
 }
 
+# Hostile NPC advancement — routes hostiles follow each roam interval in combat.
+# Unlike ambient routes (looping), these are one-shot: each step moves the NPC
+# closer to the party.  Once the route is exhausted the NPC holds position.
+NPC_HOSTILE_ADVANCE = {
+    1: {
+        "Stormtrooper 1": [
+            "entrance", "vestibule-inner", "near-table-1", "table-2",
+        ],
+        "Stormtrooper 2": [
+            "entrance-right", "vestibule-inner", "bar-stool-r3", "near-table-2",
+        ],
+    },
+    3: {
+        "Lt. Hask": [
+            "blast-door-left", "bay-floor-center", "ship-bow", "ship-ramp",
+        ],
+        "Stormtrooper 1": [
+            "blast-door-left", "bay-floor-left", "bay-crate-left", "ship-port",
+        ],
+        "Stormtrooper 2": [
+            "blast-door-right", "bay-floor-right", "bay-crate-right", "ship-starboard",
+        ],
+        "Stormtrooper 3": [
+            "blast-door-left", "bay-floor-center", "bay-floor-center", "ship-bow",
+        ],
+        "Stormtrooper 4": [
+            "blast-door-right", "blast-door-right", "bay-floor-right", "ship-stern",
+        ],
+    },
+}
+
 # Reactive positions: where NPCs go when combat starts.
 # "cover" = take cover, "flee" = run off-map, "engage" = join the fight.
 NPC_COMBAT_REACTIONS = {
@@ -791,7 +852,7 @@ class ActPacer:
     def _all_surviving_aboard(self) -> bool:
         """Check if all able PCs are in ship positions.
 
-        PCs with wound_level >= 4 (incapacitated/mortally wounded/dead) can't
+        PCs with wound_level >= 3 (incapacitated/mortally wounded/dead) can't
         move themselves, so they're narratively carried — don't block departure.
         """
         if not self.pc_positions:
@@ -804,7 +865,7 @@ class ActPacer:
             return False
         for viewer, pdata in state.get("players", {}).items():
             wl = pdata.get("wound_level", 0)
-            if wl >= 4:  # can't move — narratively carried aboard
+            if wl >= 3:  # incapacitated — narratively carried aboard
                 continue
             char = pdata.get("character", "")
             pos = self.pc_positions.get(char, "")
@@ -829,8 +890,8 @@ class ActPacer:
             return False
         pregens = _mod("pregens", PREGENS)
         for char in pregens:
-            if _get_wound_level(char) >= 4:
-                continue
+            if _get_wound_level(char) >= 3:
+                continue  # incapacitated — can't move
             for exit_pos in self.exit_positions:
                 penalty, _ = _compute_move_penalty(char, exit_pos)
                 if penalty < 3:  # reachable (walk, run, or sprint)
@@ -1089,7 +1150,8 @@ _EXPLORE_KICK = (
 )
 
 
-def _pick_reachable_action(char: str, pool: list) -> tuple:
+def _pick_reachable_action(char: str, pool: list,
+                           recent_texts: set[str] | None = None) -> tuple:
     """Pick an action whose move_to is reachable and not the current position.
 
     Splits the pool into:
@@ -1097,6 +1159,8 @@ def _pick_reachable_action(char: str, pool: list) -> tuple:
       2. Stationary actions (no move_to)
       3. Unreachable actions (penalty >= 3) or already-there duplicates
     Picks from group 1 first (movement), then 2 (still useful RP), then 3 last.
+    If recent_texts is provided, filters out actions the character already did
+    (unless all remaining options have been done — then allow repeats).
     """
     from_xy = _get_token_xy(char)
     reachable = []
@@ -1122,6 +1186,11 @@ def _pick_reachable_action(char: str, pool: list) -> tuple:
     pick_from = reachable or stationary or blocked
     if not pick_from:
         pick_from = pool  # Last resort: pick anything
+    # Filter out recently-done actions (avoid mindless repetition)
+    if recent_texts and len(pick_from) > 1:
+        fresh = [a for a in pick_from if a[1] not in recent_texts]
+        if fresh:
+            pick_from = fresh
     return random.choice(pick_from)
 
 
@@ -1144,9 +1213,9 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     pc_position_map: dict[str, str] = {}
     logged_actions = []
 
-    # Filter out incapacitated/dead PCs (wound_level >= 4)
+    # Filter out incapacitated/dead PCs (wound_level >= 3 = incapacitated in WEG D6)
     pregens = _mod("pregens", PREGENS)
-    able_chars = [c for c in pregens if _get_wound_level(c) < 4]
+    able_chars = [c for c in pregens if _get_wound_level(c) < 3]
     if not able_chars:
         logger.warning("  [WARNING] All PCs incapacitated!")
         return dice_strings, positions, pc_position_map, "normal"
@@ -1163,11 +1232,20 @@ def _simulate_player_actions(act_num: int, turn_num: int,
         act_actions = act_bot.get(act_num, {})
         act_fallback = {}
 
+    # Build per-character recent action texts to avoid mindless repetition
+    _hist_state = _load_game_state()
+    _hist_log = _hist_state.get("action_log", []) if _hist_state else []
+
     for char in chars:
-        # Healing priority: characters with First Aid heal wounded allies
+        recent_texts = {a["text"] for a in _hist_log[-12:]
+                        if a.get("character") == char}
+        # Priority: heal wounded > carry incapacitated > normal action
         heal_action = _check_heal_priority(char)
+        carry_action = _check_carry_priority(char) if not heal_action else None
         if heal_action:
             action_type, text, skill, dice_override, difficulty, move_to = heal_action
+        elif carry_action:
+            action_type, text, skill, dice_override, difficulty, move_to = carry_action
         else:
             pool = act_actions.get(char, [])
             if not pool and act_fallback:
@@ -1176,7 +1254,7 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                 continue
             # Position-aware selection: prefer reachable moves, avoid wasted turns
             action_type, text, skill, dice_override, difficulty, move_to = (
-                _pick_reachable_action(char, pool)
+                _pick_reachable_action(char, pool, recent_texts=recent_texts)
             )
 
         # Log the action to game state (viewer key matches bot:slug format)
@@ -1281,8 +1359,8 @@ def _simulate_player_actions(act_num: int, turn_num: int,
     npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
     hostile_npcs = npc_pos.get(act_num, {})
     hostile_names = [n for n, (_, color, _) in hostile_npcs.items()
-                     if color == "#f54e4e" and _get_wound_level(n) < 4]
-    able_targets = [c for c in pregens if _get_wound_level(c) < 4]
+                     if color == "#f54e4e" and _get_wound_level(n) < 3]
+    able_targets = [c for c in pregens if _get_wound_level(c) < 3]
     if hostile_names and able_targets:
         attacker = random.choice(hostile_names)
         target = random.choice(able_targets)
@@ -1320,16 +1398,29 @@ def _move_npcs_dry_run(act_num: int, turn_num: int) -> None:
     reactions = combat_reactions.get(act_num, {})
     if turn_num == 1:
         for npc_name, (reaction, dest) in reactions.items():
-            if _get_wound_level(npc_name) >= 4:
+            if _get_wound_level(npc_name) >= 3:
                 continue
             run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
             logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
+
+    # Hostile NPC advancement (one-shot routes toward PCs)
+    hostile_routes = _mod("npc_hostile_advance", NPC_HOSTILE_ADVANCE)
+    advancers = hostile_routes.get(act_num, {})
+    for npc_name, route in advancers.items():
+        if _get_wound_level(npc_name) >= 3:
+            continue
+        idx = _npc_roam_index.get(npc_name, 0)
+        if idx < len(route):
+            pos = route[idx]
+            run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
+            _npc_roam_index[npc_name] = idx + 1
+            logger.info(f"  [npc-advance] {npc_name} -> {pos}")
 
     # Ambient NPC routes (civilians cycle through positions on non-combat turns)
     ambient_routes = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
     roamers = ambient_routes.get(act_num, {})
     for npc_name, route in roamers.items():
-        if _get_wound_level(npc_name) >= 4:
+        if _get_wound_level(npc_name) >= 3:
             continue
         idx = _npc_roam_index.get(npc_name, 0)
         pos = route[idx % len(route)]
@@ -1404,9 +1495,35 @@ def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
         transcript.log_session_event("error", {"message": f"process_response: {e}"})
         return ""
 
+    # Detect filler narration from confused models
+    def _is_filler(t: str) -> bool:
+        if not t:
+            return False
+        low = t.lower()
+        return any(p in low for p in (
+            "considers the situation",
+            "the scene has been set up",
+            "what would you like to do",
+            "waiting for the players",
+            "can't perform the function",
+            "i cannot perform",
+        ))
+
     # Prefer narration from update_narration tool call, fall back to cleaned text
-    narration = narration_from_tool or clean_narration(text) or "(no narration)"
+    raw_narration = narration_from_tool or clean_narration(text) or "(no narration)"
+    if _is_filler(raw_narration):
+        session_scene = state.get("session", {}).get("scene", "the scene") if state else "the scene"
+        narration = f"The action intensifies in {session_scene}..."
+        logger.info(f"  >> Replaced filler narration")
+    else:
+        narration = raw_narration
     transcript.log_narration(act_num, turn_num, narration, text)
+
+    # If the tool call didn't fire (model refused or failed), push the
+    # fallback narration to the overlay so it doesn't stay on "thinking..."
+    if not narration_from_tool and narration and narration != "(no narration)":
+        run_rpg_cmd(["update-scene", "--narration", narration[:500]])
+        logger.info(f"  >> OVERLAY: auto-updated narration from bot text")
 
     if narration and narration != "(no narration)":
         logger.info(f"  GM: {narration[:100]}...")
@@ -1867,7 +1984,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     status = run_rpg_cmd(["status"])
     pregens = _mod("pregens", PREGENS)
     bot_chars = [c for c in pregens
-                 if f"{c} (bot:" in status and _get_wound_level(c) < 4]
+                 if f"{c} (bot:" in status and _get_wound_level(c) < 3]
     if not bot_chars:
         return dice_strings
 
@@ -1884,12 +2001,21 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
         act_actions = act_bot.get(act_num, {})
         act_fallback = {}
 
+    # Build per-character recent action texts to avoid mindless repetition
+    _hist_state = _load_game_state()
+    _hist_log = _hist_state.get("action_log", []) if _hist_state else []
+
     pc_pos_map = {}
     for char in chars:
-        # Healing priority: characters with First Aid heal wounded allies first
+        recent_texts = {a["text"] for a in _hist_log[-12:]
+                        if a.get("character") == char}
+        # Priority: heal wounded > carry incapacitated > normal action
         heal_action = _check_heal_priority(char)
+        carry_action = _check_carry_priority(char) if not heal_action else None
         if heal_action:
             action_type, text, skill, dice_override, difficulty, move_to = heal_action
+        elif carry_action:
+            action_type, text, skill, dice_override, difficulty, move_to = carry_action
         else:
             pool = act_actions.get(char, [])
             if not pool and act_fallback:
@@ -1897,7 +2023,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
             if not pool:
                 continue
             action_type, text, skill, dice_override, difficulty, move_to = (
-                _pick_reachable_action(char, pool)
+                _pick_reachable_action(char, pool, recent_texts=recent_texts)
             )
 
         # Log the action to game state (viewer key matches bot:slug format)
@@ -1982,9 +2108,9 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
     hostile_npcs = npc_pos.get(act_num, {})
     hostile_names = [n for n, (_, color, _) in hostile_npcs.items()
-                     if color == "#f54e4e" and _get_wound_level(n) < 4]
+                     if color == "#f54e4e" and _get_wound_level(n) < 3]
     pregens = _mod("pregens", PREGENS)
-    able_targets = [c for c in pregens if _get_wound_level(c) < 4]
+    able_targets = [c for c in pregens if _get_wound_level(c) < 3]
     if hostile_names and able_targets:
         attacker = random.choice(hostile_names)
         target = random.choice(able_targets)
@@ -2095,13 +2221,26 @@ def run_live_session(adventure: str):
             if time.time() - last_roam_time >= roam_interval:
                 is_combat = mode == "combat" or state.get("combat_active")
                 if is_combat and not npcs_reacted:
-                    # Combat just started — NPCs react
+                    # Combat just started — NPCs react (one-time)
                     combat_react = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
                     reactions = combat_react.get(current_act, {})
                     for npc_name, (reaction, dest) in reactions.items():
                         run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
                         logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
                     npcs_reacted = True
+                if is_combat:
+                    # Hostile NPCs advance along routes every roam interval
+                    hostile_routes = _mod("npc_hostile_advance", NPC_HOSTILE_ADVANCE)
+                    advancers = hostile_routes.get(current_act, {})
+                    for npc_name, route in advancers.items():
+                        if _get_wound_level(npc_name) >= 3:
+                            continue  # incapacitated
+                        idx = roam_index.get(npc_name, 0)
+                        if idx < len(route):
+                            pos = route[idx]
+                            run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
+                            roam_index[npc_name] = idx + 1
+                            logger.info(f"  [npc-advance] {npc_name} -> {pos}")
                 elif not is_combat:
                     # Peaceful — ambient roaming
                     npcs_reacted = False
@@ -2197,10 +2336,21 @@ def run_live_session(adventure: str):
                     last_action_count = len(post_state.get("action_log", []))
 
             # Auto-advance act if objectives met (checked every poll, not just during cooldown)
-            if pacer.should_end_act() and act_num < 3:
-                next_act = act_num + 1
-                logger.info(f"  [pacer] Objectives met — advancing to Act {next_act}")
-                _update_scene_for_act(next_act)
+            if pacer.should_end_act():
+                if act_num < 3:
+                    next_act = act_num + 1
+                    logger.info(f"  [pacer] Objectives met — advancing to Act {next_act}")
+                    _update_scene_for_act(next_act)
+                else:
+                    # Adventure complete — closing crawl and end session
+                    logger.info(f"  [pacer] Act 3 objectives met — adventure complete!")
+                    run_rpg_cmd(["set-mode", "--mode", "cutscene"])
+                    _run_gm_turn(act_num, turn_num + 1, transcript,
+                                  "The party has escaped Mos Eisley! Write an epic "
+                                  "closing narration celebrating their victory.",
+                                  since_action=last_action_count)
+                    _write_closing_crawl(transcript)
+                    break
 
             # Check if session ended externally
             if session.get("status") == "ended":

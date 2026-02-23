@@ -127,11 +127,23 @@ def _try_refresh_token() -> bool:
         return False
 
 
+def _retry_on_dns(fn, *args, retries: int = 2):
+    """Retry a callable on transient DNS errors (URLError)."""
+    for attempt in range(retries + 1):
+        try:
+            return fn(*args)
+        except urllib.error.URLError as e:
+            if "Name or service not known" in str(e) and attempt < retries:
+                time.sleep(2 ** attempt)
+                continue
+            raise
+
+
 def _helix_get(path: str) -> dict:
-    """Helix GET with auto-refresh on 401."""
+    """Helix GET with auto-refresh on 401 and DNS retry."""
     global _refresh_attempted
     try:
-        result = _raw_helix_get(path)
+        result = _retry_on_dns(_raw_helix_get, path)
         _refresh_attempted = False
         return result
     except urllib.error.HTTPError as e:
@@ -143,10 +155,10 @@ def _helix_get(path: str) -> dict:
 
 
 def _helix_post(path: str, body: dict) -> dict:
-    """Helix POST with auto-refresh on 401."""
+    """Helix POST with auto-refresh on 401 and DNS retry."""
     global _refresh_attempted
     try:
-        result = _raw_helix_post(path, body)
+        result = _retry_on_dns(_raw_helix_post, path, body)
         _refresh_attempted = False
         return result
     except urllib.error.HTTPError as e:
@@ -158,10 +170,10 @@ def _helix_post(path: str, body: dict) -> dict:
 
 
 def _helix_patch(path: str, body: dict) -> None:
-    """Helix PATCH with auto-refresh on 401."""
+    """Helix PATCH with auto-refresh on 401 and DNS retry."""
     global _refresh_attempted
     try:
-        _raw_helix_patch(path, body)
+        _retry_on_dns(_raw_helix_patch, path, body)
         _refresh_attempted = False
     except urllib.error.HTTPError as e:
         if e.code != 401 or not _try_refresh_token():
