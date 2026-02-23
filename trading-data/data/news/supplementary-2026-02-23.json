@@ -1,0 +1,308 @@
+{
+  "date": "2026-02-23",
+  "lastUpdated": "2026-02-23T13:50:56.803497+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 14,
+      "matched": [
+        {
+          "title": "Earnings live: Domino's stock rises, Dominion Energy stock slips as investors await crucial update from Nvidia",
+          "url": "https://finance.yahoo.com/news/live/earnings-live-dominos-stock-rises-dominion-energy-stock-slips-as-investors-await-crucial-update-from-nvidia-132417105.html",
+          "source": "yahoo",
+          "published": "2026-02-23T13:24:17Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Stock: Wells Fargo Upgrades On Three Traits Of \"AI Winner\"",
+          "url": "https://www.investors.com/news/technology/google-stock-wells-fargo-upgrades-ai-winner/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-23T13:08:23Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "7 S&P 500 Stocks Gain The Most After Trump Tariffs Are Slapped Down",
+          "url": "https://www.investors.com/etfs-and-funds/sectors/sp-500-stocks-gain-the-most-after-trump-tariffs-slapped-down/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-23T13:00:17Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "AI Stocks Hit Reset. Will Nvidia, Snowflake, CoreWeave, Salesforce Earnings Decide What's Next?",
+          "url": "https://www.investors.com/news/technology/ai-stocks-artificial-intelligence-stocks-2026-disruption-openclaw-feb23/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-23T12:59:13Z",
+          "matched_symbols": [
+            "CRM",
+            "NVDA",
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google spinout Aalyria valued at $1.3 billion as investors pour into space-based communications",
+          "url": "https://www.cnbc.com/2026/02/23/google-spinout-aalyria-valued-at-1point3-billion-in-100-million-round.html",
+          "source": "cnbc_top",
+          "published": "Mon, 23 Feb 2026 13:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google spinout Aalyria valued at $1.3 billion as investors pour into space-based communications",
+          "url": "https://www.cnbc.com/2026/02/23/google-spinout-aalyria-valued-at-1point3-billion-in-100-million-round.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 23 Feb 2026 13:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Xbox chief Phil Spencer retires, replaced by AI executive Asha Sharma",
+          "url": "https://www.cnbc.com/2026/02/20/microsoft-gaming-chief-phil-spencer-retires-asha-sharma-replacing.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 21 Feb 2026 00:16:18 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "How the Supreme Court's decision affects Apple and its $3.3 billion tariff bill",
+          "url": "https://www.cnbc.com/2026/02/20/supreme-court-tariff-decision-apple-trump-cook-iphone.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Feb 2026 20:24:13 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon, Etsy, other e-commerce stocks pop after Supreme Court rules against Trump's tariffs",
+          "url": "https://www.cnbc.com/2026/02/20/supreme-court-decision-amazon-etsy-stocks-tariffs-trump.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Feb 2026 21:07:17 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta and Apple face serious questions about child safety and privacy",
+          "url": "https://www.cnbc.com/2026/02/20/meta-apple-child-safety-zuckerberg-cook.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Feb 2026 19:47:13 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "PCE data, Amazon dethrones Walmart, Silicon Valley's 'vanlords' and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/02/20/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Feb 2026 15:16:08 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Three Silicon Valley engineers charged with stealing Google trade secrets and sending data to Iran",
+          "url": "https://www.cnbc.com/2026/02/20/three-engineers-charged-stealing-google-trade-secrets-data-iran-soc-snapdragon.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Feb 2026 05:39:55 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia is in talks to invest up to $30 billion in OpenAI, source says",
+          "url": "https://www.cnbc.com/2026/02/19/nvidia-is-in-talks-to-invest-up-to-30-billion-in-openai-source-says.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Feb 2026 15:59:14 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "New York Gov. Hochul drops robotaxi service proposal for outside NYC in blow to Waymo",
+          "url": "https://www.cnbc.com/2026/02/19/new-york-driverless-rideshare-nyc-waymo.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Feb 2026 18:37:50 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Facebook's Fascination with My Robots.txt",
+          "url": "https://blog.nytsoi.net/2026/02/23/facebook-robots-txt",
+          "hn_score": 28,
+          "comments": 6,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Pope tells priests to use their brains, not AI, to write homilies",
+          "url": "https://www.ewtnnews.com/vatican/pope-leo-xiv-tells-priests-to-use-their-brains-not-ai-to-write-homilies",
+          "hn_score": 304,
+          "comments": 274,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Bitmovin (YC S15) Is Hiring Interns in AI for Summer 2026 in Austria",
+          "url": "https://bitmovin.com/careers/8023403002/",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: AI Timeline \u2013 171 LLMs from Transformer (2017) to GPT-5.3 (2026)",
+          "url": "https://llm-timeline.com/",
+          "hn_score": 18,
+          "comments": 20,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "LLM",
+            "transformer"
+          ]
+        },
+        {
+          "title": "Pinterest is drowning in a sea of AI slop and auto-moderation",
+          "url": "https://www.404media.co/pinterest-is-drowning-in-a-sea-of-ai-slop-and-auto-moderation/",
+          "hn_score": 54,
+          "comments": 37,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Google restricting Google AI Pro/Ultra subscribers for using OpenClaw",
+          "url": "https://discuss.ai.google.dev/t/account-restricted-without-warning-google-ai-ultra-oauth-via-openclaw/122778",
+          "hn_score": 684,
+          "comments": 573,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 20,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}
