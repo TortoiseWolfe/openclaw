@@ -303,6 +303,11 @@ def parse_schedule() -> list[dict]:
     return episodes
 
 
+def _normalize_topic(topic: str) -> str:
+    """Normalize topic for comparison — handles & vs 'and' and other variations."""
+    return topic.lower().replace("&", "and").strip()
+
+
 def get_next_episode(current_topic: str) -> dict | None:
     """Get the next episode after the current one (any status).
 
@@ -313,11 +318,12 @@ def get_next_episode(current_topic: str) -> dict | None:
         Dict with date, time, topic, series, type, status or None.
     """
     schedule = parse_schedule()
+    norm_current = _normalize_topic(current_topic)
     found_current = False
     for ep in schedule:
         if found_current:
             return ep
-        if ep["topic"].lower() == current_topic.lower():
+        if _normalize_topic(ep["topic"]) == norm_current:
             found_current = True
     return None
 
@@ -330,11 +336,12 @@ def get_series_episodes(series: str) -> list[dict]:
 def is_last_in_series(topic: str) -> bool:
     """Check if this episode is the last in its series."""
     schedule = parse_schedule()
-    current = next((ep for ep in schedule if ep["topic"].lower() == topic.lower()), None)
+    norm = _normalize_topic(topic)
+    current = next((ep for ep in schedule if _normalize_topic(ep["topic"]) == norm), None)
     if not current or not current.get("series"):
         return True
     series_eps = get_series_episodes(current["series"])
-    return series_eps[-1]["topic"].lower() == topic.lower()
+    return _normalize_topic(series_eps[-1]["topic"]) == norm
 
 
 def topic_to_slug(topic: str) -> str:

@@ -298,8 +298,10 @@ def run_phase(phase: ShowPhase, check_stream: bool = False) -> None:
         win_path = to_windows_path(phase.video_file)
         print(f"   Media: {phase.media_source} -> {win_path}")
 
+        # Loop the video if phase has a fixed duration (e.g., 30s holding screen over 120s countdown)
+        should_loop = phase.duration_sec is not None
         obs_client.create_media_source(phase.scene, phase.media_source)
-        obs_client.set_media_source(phase.media_source, win_path)
+        obs_client.set_media_source(phase.media_source, win_path, looping=should_loop)
         obs_client.set_input_volume(phase.media_source, phase.volume_db)
         time.sleep(1)
         obs_client.trigger_media_action(
@@ -307,7 +309,7 @@ def run_phase(phase: ShowPhase, check_stream: bool = False) -> None:
         )
 
     if phase.duration_sec is not None and phase.media_source and phase.video_file:
-        # Play video but limit to duration (e.g., Starting Soon with holding screen)
+        # Play looping video for fixed duration (e.g., Starting Soon with holding screen)
         print(f"   Playing for {phase.duration_sec}s ...")
         time.sleep(phase.duration_sec)
     elif phase.duration_sec is not None:
@@ -475,17 +477,20 @@ def build_series_phases(
             video_file=ep_video,
         ))
 
-        # Per-episode outro
-        outro_video = find_episode_outro(ep_name)
-        if outro_video:
-            print(f"    Outro: {os.path.basename(outro_video)}")
-            phases.append(ShowPhase(
-                name=f"Outro ({ep_name})",
-                scene=os.environ.get("OBS_OUTRO_SCENE",
-                                     os.environ.get("OBS_STARTING_SCENE", "Starting Soon")),
-                media_source=os.environ.get("OBS_OUTRO_SOURCE", "OutroVideo"),
-                video_file=outro_video,
-            ))
+        # Per-episode outro — only for the last episode in the series.
+        # Mid-series outros have stale "next episode" info baked in from render time
+        # (e.g., shows "Up Next: React Hooks" between Python episodes).
+        if i == len(episodes):
+            outro_video = find_episode_outro(ep_name)
+            if outro_video:
+                print(f"    Outro: {os.path.basename(outro_video)}")
+                phases.append(ShowPhase(
+                    name=f"Outro ({ep_name})",
+                    scene=os.environ.get("OBS_OUTRO_SCENE",
+                                         os.environ.get("OBS_STARTING_SCENE", "Starting Soon")),
+                    media_source=os.environ.get("OBS_OUTRO_SOURCE", "OutroVideo"),
+                    video_file=outro_video,
+                ))
 
     return phases
 

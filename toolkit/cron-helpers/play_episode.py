@@ -32,6 +32,8 @@ from show_flow import _fuzzy_find_episode_dir
 EPISODES_JSON = "/home/node/clawd-twitch/episodes.json"
 SCHEDULE_FILE = "/home/node/clawd-twitch/schedule.md"
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 MEDIA_SOURCE = os.environ.get("OBS_MEDIA_SOURCE", "EpisodeVideo")
 PLAYBACK_SCENE = os.environ.get("OBS_PLAYBACK_SCENE", "Episode Playback")
 STREAM_KEY = os.environ.get("OBS_STREAM_KEY", "")
@@ -179,6 +181,101 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
     video_rel = best["videoFile"]
     video_path = os.path.join("/home/node/clawd-twitch", video_rel)
     return video_path, best.get("durationSec", 0)
+
+
+def _get_scheduled_date(slug: str) -> str | None:
+    """Get the scheduled air date for an episode slug from schedule.md."""
+    rows = parse_schedule()
+    for row in rows:
+        row_slug = re.sub(r"\s+", "-", re.sub(r"[^a-z0-9\s-]", "", row["topic"].lower().replace("&", "and")).strip())
+        if row_slug == slug:
+            return row["date"]  # e.g. "2026-02-23"
+    return None
+
+
+def _get_branding_date(slug: str) -> str | None:
+    """Extract the date slug from existing branding files (intro-YYYYMMDD.mp4)."""
+    for series_dir in sorted(glob.glob(os.path.join(RENDERS_DIR, "*", slug))):
+        if os.path.isdir(series_dir):
+            intros = sorted(glob.glob(os.path.join(series_dir, "intro-*.mp4")))
+            if intros:
+                # intro-20260211.mp4 → 20260211
+                base = os.path.basename(intros[-1])
+                date_part = base.replace("intro-", "").replace(".mp4", "")
+                return date_part
+    flat_dir = os.path.join(RENDERS_DIR, slug)
+    if os.path.isdir(flat_dir):
+        intros = sorted(glob.glob(os.path.join(flat_dir, "intro-*.mp4")))
+        if intros:
+            base = os.path.basename(intros[-1])
+            date_part = base.replace("intro-", "").replace(".mp4", "")
+            return date_part
+    return None
+
+
+def _rerender_branding(slug: str, scheduled_date: str) -> None:
+    """Re-render branding suite (intro, card, outro) with correct date."""
+    from parse_episode import parse_schedule as _parse_sched, _normalize_topic, get_next_episode, is_last_in_series
+
+    schedule = _parse_sched()
+    row = next((ep for ep in schedule if _normalize_topic(ep["topic"]) == _normalize_topic(slug.replace("-", " "))), None)
+    if not row:
+        # Try with 'and' expanded
+        for ep in schedule:
+            ep_slug = re.sub(r"\s+", "-", re.sub(r"[^a-z0-9\s-]", "", ep["topic"].lower().replace("&", "and")).strip())
+            if ep_slug == slug:
+                row = ep
+                break
+    if not row:
+        print(f"  WARNING: Cannot find schedule entry for {slug}, skipping re-render", file=sys.stderr)
+        return
+
+    title = row["topic"]
+    series = row.get("series", "")
+    next_ep = get_next_episode(title)
+    last_in = is_last_in_series(title)
+
+    branding_cmd = [
+        "python3", os.path.join(SCRIPT_DIR, "render_episode_branding.py"),
+        "--episode", slug,
+        "--title", title,
+        "--topic", title,
+        "--date", scheduled_date,
+        "--time", row.get("time", "2:00 PM ET"),
+        "--brand", os.environ.get("EPISODE_BRAND", "scripthammer"),
+    ]
+    if series:
+        branding_cmd += ["--series", series]
+    if next_ep:
+        branding_cmd += ["--next-title", next_ep.get("topic", "")]
+        branding_cmd += ["--next-topic", next_ep.get("topic", "")]
+        if last_in:
+            branding_cmd += ["--next-date", next_ep.get("date", "")]
+
+    print(f"  Re-rendering branding for {slug} (date: {scheduled_date}) ...")
+    try:
+        subprocess.run(branding_cmd, check=True, timeout=600)
+        print(f"  Branding re-rendered for {slug}")
+    except Exception as e:
+        print(f"  WARNING: Branding re-render failed: {e}", file=sys.stderr)
+
+
+def ensure_branding_current(slugs: list[str]) -> None:
+    """Check all episode slugs have branding with the correct scheduled date.
+    Re-renders branding if the date is stale (e.g., episode was rescheduled).
+    """
+    for slug in slugs:
+        sched_date = _get_scheduled_date(slug)
+        if not sched_date:
+            continue
+        expected_date_slug = sched_date.replace("-", "")  # "2026-02-23" → "20260223"
+        actual_date_slug = _get_branding_date(slug)
+        if actual_date_slug and actual_date_slug != expected_date_slug:
+            print(f"  Stale branding for {slug}: have {actual_date_slug}, need {expected_date_slug}")
+            _rerender_branding(slug, sched_date)
+        elif not actual_date_slug:
+            print(f"  No branding found for {slug}, rendering ...")
+            _rerender_branding(slug, sched_date)
 
 
 def find_scheduled_episode() -> str:
@@ -339,6 +436,10 @@ def main() -> None:
     if args.series and args.from_schedule:
         # Series mode: play all episodes in today's series back-to-back
         episodes = find_series_episodes()
+
+        # Re-render branding if scheduled date changed since last render
+        ensure_branding_current(episodes)
+
         episode_data = []
         for slug in episodes:
             try:
@@ -357,6 +458,7 @@ def main() -> None:
         episode_name = args.episode
 
     if args.show_flow:
+        ensure_branding_current([episode_name])
         import show_flow
         video_path, duration_sec = find_episode_video(episode_name)
         show_flow.run_show(video_path, duration_sec, stream=not args.no_stream,

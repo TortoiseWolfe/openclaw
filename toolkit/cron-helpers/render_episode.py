@@ -323,7 +323,8 @@ def main():
     # Determine series from schedule
     from parse_episode import parse_schedule
     schedule = parse_schedule()
-    current_sched = next((ep for ep in schedule if ep["topic"].lower() == episode.title.lower()), None)
+    from parse_episode import _normalize_topic
+    current_sched = next((ep for ep in schedule if _normalize_topic(ep["topic"]) == _normalize_topic(episode.title)), None)
     series = current_sched["series"] if current_sched and current_sched.get("series") else ""
 
     # Create audio directory for TTS files (accessible to remotion-renderer)
@@ -604,6 +605,7 @@ def main():
     if series:
         branding_cmd += ["--series", series]
     if next_ep:
+        # schedule.md has no "title" column — topic is the display title
         branding_cmd += ["--next-title", next_ep.get("topic", "")]
         branding_cmd += ["--next-topic", next_ep.get("topic", "")]
         # Smart outro: only pass date if next episode is in a DIFFERENT series

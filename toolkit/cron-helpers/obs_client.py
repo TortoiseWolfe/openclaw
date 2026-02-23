@@ -435,7 +435,7 @@ def update_text_source(source: str, text: str) -> None:
 
 # ── Media control ─────────────────────────────────────────────────
 
-def set_media_source(source: str, file_path: str) -> None:
+def set_media_source(source: str, file_path: str, looping: bool = False) -> None:
     """Set the file path on a media source and trigger playback.
 
     After setting the path, triggers a RESTART action to ensure OBS
@@ -445,7 +445,7 @@ def set_media_source(source: str, file_path: str) -> None:
     try:
         cl.set_input_settings(
             source,
-            {"local_file": file_path, "looping": False},
+            {"local_file": file_path, "looping": looping},
             overlay=True,
         )
         # Give OBS time to recognize the file, then restart playback
