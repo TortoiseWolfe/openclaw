@@ -3,7 +3,7 @@
   "asset_class": "forex",
   "interval": "daily",
   "source": "yahoo_finance",
-  "lastUpdated": "2026-02-24T17:13:34.842059+00:00",
+  "lastUpdated": "2026-02-24T20:41:47.651064+00:00",
   "candles": [
     {
       "date": "2025-08-07",
@@ -955,7 +955,7 @@
       "o": 1.1791,
       "h": 1.1799,
       "l": 1.177,
-      "c": 1.179
+      "c": 1.1786
     }
   ]
 }
