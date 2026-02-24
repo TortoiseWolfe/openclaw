@@ -16,7 +16,7 @@ import urllib.request
 
 OLLAMA_URL = "http://ollama:11434/api/chat"
 MODEL = "llama3-groq-tool-use:8b-ctx16k"
-STATE_CMD = ["python3", "/app/toolkit/cron-helpers/rpg_state.py"]
+STATE_CMD = ["python3", "/app/toolkit/rpg/rpg_state.py"]
 ADVENTURE_PATH_TEMPLATE = "/app/rpg/adventures/{}.md"
 DEFAULT_ADVENTURE = "escape-from-mos-eisley"
 MAPS_DIR = "/app/rpg/maps"

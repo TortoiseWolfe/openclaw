@@ -17,12 +17,15 @@ import pathlib
 import random
 import re
 import signal
+import sys
 import tempfile
 import time
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, "/app/toolkit/twitch")
 from module_loader import ModuleData, find_module
 # ── In-memory cache for game-state.json (invalidated after run_rpg_cmd) ──
 _state_cache: dict | None = None

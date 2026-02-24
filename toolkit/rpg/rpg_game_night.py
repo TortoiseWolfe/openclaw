@@ -15,12 +15,15 @@ import subprocess
 import sys
 import time
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, "/app/toolkit/obs")
+
 import obs_client
 
 ADVENTURE = "escape-from-mos-eisley"
-STATE = ["python3", "/app/toolkit/cron-helpers/rpg_state.py"]
-RUNNER = ["python3", "/app/toolkit/cron-helpers/rpg_session_runner.py"]
-SHOW_FLOW = ["python3", "/app/toolkit/cron-helpers/rpg_show_flow.py"]
+STATE = ["python3", "/app/toolkit/rpg/rpg_state.py"]
+RUNNER = ["python3", "/app/toolkit/rpg/rpg_session_runner.py"]
+SHOW_FLOW = ["python3", "/app/toolkit/rpg/rpg_show_flow.py"]
 
 CRAWL_DURATION = int(os.environ.get("RPG_CRAWL_DURATION", "90"))
 SCENE_CRAWL = "RPG - Crawl"

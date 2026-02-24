@@ -96,7 +96,7 @@ run pre-gen characters as bot-controlled PCs until viewers claim them:
 - **The Force:** Mysterious and powerful. Don't over-explain it. "That's not how the Force works!"
 
 ### Game State Management
-- Use `exec` to call `python3 /app/toolkit/cron-helpers/rpg_state.py` for session management:
+- Use `exec` to call `python3 /app/toolkit/rpg/rpg_state.py` for session management:
   - `init --adventure escape-from-mos-eisley` — start a new session
   - `join --viewer username --character "Kira Voss"` — add a player
   - `wound --character "Kira Voss" --level 2` — set wound level (0=healthy, 5=dead)

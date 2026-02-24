@@ -15,6 +15,7 @@ from datetime import date
 from urllib.error import HTTPError, URLError
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/app/toolkit/cron-helpers")
 from content_security import detect_suspicious, wrap_external
 from education_common import fetch_page, slugify, ContentExtractor
 

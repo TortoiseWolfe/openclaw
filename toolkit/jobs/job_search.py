@@ -19,10 +19,10 @@ import re
 import sys
 from datetime import date
 
-from content_security import detect_suspicious, sanitize_field
-
-# Add toolkit dir to path for mcp_client import
+# Add toolkit dirs to path for shared imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+from content_security import detect_suspicious, sanitize_field
 from mcp_client import MCPClient, MCPError
 
 # ── Paths (inside Docker container) ──────────────────────────────────

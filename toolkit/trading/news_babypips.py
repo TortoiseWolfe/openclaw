@@ -10,6 +10,8 @@ import sys
 import urllib.request
 from datetime import timedelta
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, "/app/toolkit/education")
 from content_security import detect_suspicious, sanitize_field
 from forex_education import ContentExtractor
 from news_matching import _HEADERS, MAX_RESPONSE_BYTES

@@ -11,6 +11,7 @@ import sys
 import time
 import urllib.request
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
 from content_security import detect_suspicious, sanitize_field
 from news_matching import match_symbols
 

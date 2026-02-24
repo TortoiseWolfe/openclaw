@@ -34,6 +34,9 @@ import time
 import urllib.parse
 import urllib.request
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, "/app/toolkit/obs")
+
 import obs_client
 
 # ── Config ────────────────────────────────────────────────────────
@@ -248,14 +251,14 @@ def wait_for_session_end(
             if state.get("combat_active"):
                 try:
                     result = subprocess.run(
-                        ["python3", "/app/toolkit/cron-helpers/rpg_state.py",
+                        ["python3", "/app/toolkit/rpg/rpg_state.py",
                          "check-timer"],
                         capture_output=True, text=True, timeout=10,
                     )
                     timer = json.loads(result.stdout)
                     if timer.get("expired"):
                         adv = subprocess.run(
-                            ["python3", "/app/toolkit/cron-helpers/rpg_state.py",
+                            ["python3", "/app/toolkit/rpg/rpg_state.py",
                              "auto-advance"],
                             capture_output=True, text=True, timeout=10,
                         )
@@ -346,7 +349,7 @@ def run_game_night(
         obs_client.switch_scene(SCENE_GAME)
         if with_session:
             cmd = [
-                "python3", "/app/toolkit/cron-helpers/rpg_session_runner.py",
+                "python3", "/app/toolkit/rpg/rpg_session_runner.py",
                 "--live", "--adventure", adventure,
             ]
             print(f"  Launching session runner: {' '.join(cmd)}")

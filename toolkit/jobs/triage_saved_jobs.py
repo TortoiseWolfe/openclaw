@@ -28,6 +28,7 @@ import time
 from datetime import date, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/app/toolkit/cron-helpers")
 from content_security import detect_suspicious, sanitize_field
 from mcp_client import MCPClient, MCPError
 

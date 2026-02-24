@@ -23,6 +23,9 @@ import time
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/app/toolkit/obs")
+sys.path.insert(0, "/app/toolkit/twitch")
+sys.path.insert(0, "/app/toolkit/trading")
 from trading_common import ET
 
 import obs_client
@@ -33,6 +36,7 @@ EPISODES_JSON = "/home/node/clawd-twitch/episodes.json"
 SCHEDULE_FILE = "/home/node/clawd-twitch/schedule.md"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+VIDEO_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "video")
 
 MEDIA_SOURCE = os.environ.get("OBS_MEDIA_SOURCE", "EpisodeVideo")
 PLAYBACK_SCENE = os.environ.get("OBS_PLAYBACK_SCENE", "Episode Playback")
@@ -236,7 +240,7 @@ def _rerender_branding(slug: str, scheduled_date: str) -> None:
     last_in = is_last_in_series(title)
 
     branding_cmd = [
-        "python3", os.path.join(SCRIPT_DIR, "render_episode_branding.py"),
+        "python3", os.path.join(VIDEO_DIR, "render_episode_branding.py"),
         "--episode", slug,
         "--title", title,
         "--topic", title,

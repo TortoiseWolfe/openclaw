@@ -30,6 +30,8 @@ import sys
 import time
 from dataclasses import dataclass
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+
 import obs_client
 from path_utils import RENDERS_DIR, to_windows_path
 

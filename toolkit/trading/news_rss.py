@@ -9,6 +9,7 @@ import sys
 import urllib.request
 import xml.etree.ElementTree as ET
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
 from content_security import detect_suspicious, sanitize_field
 from news_matching import (
     match_symbols, headline_sentiment, _HEADERS, MAX_RESPONSE_BYTES,

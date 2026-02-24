@@ -292,8 +292,8 @@ def main():
         logger.error("  Start it with: docker compose up -d remotion-renderer")
         sys.exit(1)
 
-    # Import parse_episode from same directory
-    sys.path.insert(0, SCRIPT_DIR)
+    # Import parse_episode from cron-helpers (shared lib)
+    sys.path.insert(0, "/app/toolkit/cron-helpers")
     from parse_episode import Episode, bullets_to_narration, parse_bullet_parts, get_bullet_char_offsets, parse_episode, get_next_episode, is_last_in_series
 
     # Resolve episode

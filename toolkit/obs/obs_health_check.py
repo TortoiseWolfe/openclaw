@@ -5,7 +5,7 @@ Only launches OBS when a stream is scheduled for today (per schedule.md).
 Otherwise prints "No stream scheduled today" and exits cleanly.
 
 Usage (inside Docker):
-    python3 /app/toolkit/cron-helpers/obs_health_check.py
+    python3 /app/toolkit/obs/obs_health_check.py
 """
 
 import os

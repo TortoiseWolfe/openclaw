@@ -8,6 +8,10 @@ skip the 30-second boot wait.
 
 import sys
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, "/app/toolkit/obs")
+sys.path.insert(0, "/app/toolkit/twitch")
+
 import obs_client
 import twitch_client
 
