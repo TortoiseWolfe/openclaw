@@ -11,6 +11,16 @@ Upstream: [openclaw/openclaw](https://github.com/openclaw/openclaw)
 - Built output: `dist/` (compiled JS, runs inside Docker)
 - Config templates: `config-examples/` (openclaw.json, mcporter.json, cron-jobs.json)
 - Agent tooling: `toolkit/` (mounted read-only into Docker at `/app/toolkit`)
+  - `toolkit/cron-helpers/` — shared libs (MCP client, episode parser, security, paths)
+  - `toolkit/rpg/` — RPG game engine, state, bots, map builder
+  - `toolkit/video/` — Remotion rendering, TTS, branding
+  - `toolkit/twitch/` — Helix API, token refresh, schedule sync
+  - `toolkit/obs/` — OBS WebSocket client, health check, show flow
+  - `toolkit/trading/` — market data, signals, backtesting, news
+  - `toolkit/education/` — BabyPips, Investopedia, TradingView scrapers
+  - `toolkit/jobs/` — job search, SpokeToWork, triage
+  - `toolkit/docs/` — schedule docs, style guides
+  - `toolkit/host-scripts/` — OBS launcher, startup, upstream sync
 - Trading data: `trading-data/` (watchlist, candles, education)
 - Video pipeline: `remotion/` (episode rendering with Steampunk design system)
 - RPG system: `rpg/` (adventures, campaigns, maps)
