@@ -342,6 +342,30 @@ def create_schedule_segment(
     return result
 
 
+def update_schedule_segment(
+    segment_id: str,
+    title: str | None = None,
+    category_id: str | None = None,
+    duration_minutes: int | None = None,
+) -> None:
+    """Update a schedule segment's title, category, or duration."""
+    broadcaster_id = get_broadcaster_id()
+    body: dict = {}
+    if title is not None:
+        body["title"] = title
+    if category_id is not None:
+        body["category_id"] = category_id
+    if duration_minutes is not None:
+        body["duration"] = str(duration_minutes)
+    if not body:
+        return
+    _helix_patch(
+        f"/schedule/segment?broadcaster_id={broadcaster_id}&id={segment_id}",
+        body,
+    )
+    print(f"Updated schedule segment: {title or segment_id}")
+
+
 def delete_schedule_segment(segment_id: str) -> None:
     """Delete a schedule segment by ID."""
     broadcaster_id = get_broadcaster_id()
