@@ -470,4 +470,5 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
         "signal": signal,
         "sma_signal": sma_signal,
         "hh": hh, "hl": hl, "lh": lh, "ll": ll,
+        "atr": atr_val,
     }

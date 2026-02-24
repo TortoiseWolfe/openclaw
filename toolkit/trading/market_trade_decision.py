@@ -68,12 +68,57 @@ def save_state(state):
 
 # ── Trade management ─────────────────────────────────────────────────
 
+def _update_trailing_stop(pos, high, low, rules):
+    """Tighten stop loss via ATR trailing stop if trade has reached activation threshold.
+
+    Only activates after the trade moves activation_rr × initial risk in the
+    favorable direction. Uses atr_at_entry × atr_multiplier for trail distance.
+    """
+    ts_cfg = (rules or {}).get("trailing_stop", {})
+    if not ts_cfg.get("enabled", False):
+        return
+    atr = pos.get("atr_at_entry")
+    if not atr or atr <= 0:
+        return
+
+    direction = pos["direction"]
+    entry = pos["entry"]
+    initial_risk = abs(entry - pos.get("original_stop_loss", pos["stop_loss"]))
+    if initial_risk <= 0:
+        return
+
+    # Update high/low water marks
+    if direction == "LONG":
+        hwm = max(pos.get("high_water_mark", entry), high)
+        pos["high_water_mark"] = hwm
+        r_multiple = (hwm - entry) / initial_risk
+    else:
+        lwm = min(pos.get("low_water_mark", entry), low)
+        pos["low_water_mark"] = lwm
+        r_multiple = (entry - lwm) / initial_risk
+
+    activation = ts_cfg.get("activation_rr", 1.0)
+    if r_multiple < activation:
+        return
+
+    trail_dist = atr * ts_cfg.get("atr_multiplier", 2.0)
+    if direction == "LONG":
+        trailing_sl = hwm - trail_dist
+        if trailing_sl > pos["stop_loss"]:
+            pos["stop_loss"] = round(trailing_sl, 5)
+    else:
+        trailing_sl = lwm + trail_dist
+        if trailing_sl < pos["stop_loss"]:
+            pos["stop_loss"] = round(trailing_sl, 5)
+
+
 def check_stops(state, prices, today, rules=None, cross_rates=None):
     """Close positions that hit stop loss or take profit.
 
     Uses daily high/low (not just close) to detect intraday SL/TP hits,
     matching the backtest engine's behavior. Checks SL before TP
     (conservative: assume adverse move happened first).
+    Applies trailing stop updates before checking SL/TP.
     """
     still_open = []
     newly_closed = []
@@ -87,6 +132,9 @@ def check_stops(state, prices, today, rules=None, cross_rates=None):
             still_open.append(pos)
             continue
         close, high, low = price_data
+
+        # Trailing stop: tighten SL before checking hits
+        _update_trailing_stop(pos, high, low, rules)
 
         hit_sl = hit_tp = False
         if pos["direction"] == "LONG":
@@ -102,12 +150,18 @@ def check_stops(state, prices, today, rules=None, cross_rates=None):
                 pos["entry"], exit_price, pos["direction"], pos["size"],
                 sym, _asset_config(ac, sym), rules=rules, cross_rates=cross_rates,
             )
+            # Trailing stop produces a different close reason
+            orig_sl = pos.get("original_stop_loss", pos["stop_loss"])
+            if pos["direction"] == "LONG":
+                trailed = pos["stop_loss"] > orig_sl
+            else:
+                trailed = pos["stop_loss"] < orig_sl
             newly_closed.append({
                 **pos,
                 "date_closed": today,
                 "exit": round(exit_price, 5),
                 "pnl_dollars": pnl,
-                "close_reason": "stop loss",
+                "close_reason": "trailing stop" if trailed else "stop loss",
             })
         elif hit_tp:
             exit_price = pos["take_profit"]
@@ -193,7 +247,7 @@ def _get_slippage(rules, asset_class, price):
 
 def open_trade(state, asset_class, symbol, signal, watchlist, today,
                lessons=None, sentiment_multiplier=1.0, regime=None,
-               cross_rates=None):
+               cross_rates=None, atr_at_entry=None):
     """Open a new paper trade."""
     handler = HANDLERS[asset_class]
     config = _asset_config(asset_class, symbol)
@@ -256,10 +310,17 @@ def open_trade(state, asset_class, symbol, signal, watchlist, today,
         "direction": signal["direction"],
         "entry": round(entry, 5),
         "stop_loss": round(stop_loss, 5),
+        "original_stop_loss": round(stop_loss, 5),
         "take_profit": round(take_profit, 5),
         "size": size,
         "reason": signal["reason"],
     }
+    if atr_at_entry is not None:
+        trade["atr_at_entry"] = round(atr_at_entry, 6)
+        if signal["direction"] == "LONG":
+            trade["high_water_mark"] = round(entry, 5)
+        else:
+            trade["low_water_mark"] = round(entry, 5)
     state["open"].append(trade)
     state["next_id"] += 1
     return trade
@@ -353,6 +414,20 @@ def main():
         pd = prices.get(("forex", sym_key))
         if pd:
             cross_rates[sym_key] = pd[0]  # last close
+
+    # Backfill trailing stop fields for positions opened before this feature
+    for pos in state["open"]:
+        if "atr_at_entry" not in pos:
+            ac, sym = pos["asset_class"], pos["symbol"]
+            for a in analyses:
+                if a["asset_class"] == ac and a["symbol"] == sym and a.get("atr"):
+                    pos["atr_at_entry"] = round(a["atr"], 6)
+                    pos["original_stop_loss"] = pos["stop_loss"]
+                    if pos["direction"] == "LONG":
+                        pos["high_water_mark"] = pos.get("current_price", pos["entry"])
+                    else:
+                        pos["low_water_mark"] = pos.get("current_price", pos["entry"])
+                    break
 
     # Step 1: Check stops on open positions
     closed_by_stop = check_stops(state, prices, today, rules=rules, cross_rates=cross_rates)
@@ -450,7 +525,8 @@ def main():
                                lessons=lessons,
                                sentiment_multiplier=sent_mult,
                                regime=a.get("regime"),
-                               cross_rates=cross_rates)
+                               cross_rates=cross_rates,
+                               atr_at_entry=a.get("atr"))
             if trade:
                 trade["sentiment_multiplier"] = sent_mult
                 trade["sentiment_reason"] = sent_reason

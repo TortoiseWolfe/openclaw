@@ -42,8 +42,8 @@
     "max_risk": 0.015,
     "rr_ratio": 2.0,
     "max_drawdown": 0.50,
-    "min_trend_count": 4,
-    "ranging_entries": false,
+    "min_trend_count": 3,
+    "ranging_entries": true,
     "sma_confirmation": true,
     "atr_filter": {
       "enabled": true,
@@ -59,6 +59,11 @@
       "enabled": true,
       "period": 14,
       "multiplier": 1.5
+    },
+    "trailing_stop": {
+      "enabled": true,
+      "activation_rr": 1.0,
+      "atr_multiplier": 2.0
     },
     "max_positions": {
       "forex": 2,
@@ -89,8 +94,8 @@
       "stock_max_same_group": 1
     },
     "regime_filter": {
-      "enabled": false,
-      "skip_regimes": []
+      "enabled": true,
+      "skip_regimes": ["bear_low_vol"]
     },
     "regime_sizing": {
       "enabled": true,
@@ -99,7 +104,7 @@
         "bull_high_vol": 0.75,
         "bear_low_vol": 0.75,
         "bear_high_vol": 0.5,
-        "ranging": 0.5
+        "ranging": 0.75
       }
     },
     "equity_curve_filter": {

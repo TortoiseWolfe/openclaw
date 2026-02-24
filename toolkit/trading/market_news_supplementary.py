@@ -11,7 +11,7 @@ Decomposed modules:
   - news_hackernews.py  — Hacker News story filtering
 
 Usage (from Docker):
-  python3 market_news_supplementary.py
+  python3 market_news_supplementary.py [--force]
 """
 
 import json
@@ -235,14 +235,17 @@ def main():
     from trading_common import ET
     today_dt = datetime.now(ET).date()
     today_str = today_dt.isoformat()
+    force = "--force" in sys.argv
 
     existing = load_supplementary(today_str)
-    if existing:
+    if existing and not force:
         print(f"Supplementary news already collected for {today_str}")
         summary = existing.get("summary", {})
         print(f"  {summary.get('total_articles', 0)} items, "
               f"sentiment: {summary.get('headline_sentiment', '?')}")
         return
+    if existing and force:
+        print(f"  --force: re-running supplementary news for {today_str}")
 
     watchlist = load_watchlist()
     symbols = build_symbol_set(watchlist)
@@ -280,6 +283,15 @@ def main():
         "symbol_mentions": mentions,
         "summary": summary,
     }
+
+    # Quality gate: don't save empty results (allows automatic re-run later)
+    if summary["sources_succeeded"] == 0 and summary["total_articles"] == 0:
+        print("\nAll sources failed — not saving (will retry on next run)")
+        for src, src_data in data["sources"].items():
+            err = src_data.get("error") or src_data.get("errors")
+            if err:
+                print(f"  {src}: {err}")
+        return
 
     path = save_supplementary(today_str, data)
     print(f"\nSaved to {path}")
