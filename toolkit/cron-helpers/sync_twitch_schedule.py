@@ -92,9 +92,6 @@ def sync_today() -> None:
         return
 
     title = _build_title(today_eps)
-    replay_title = f"[Replay] {title}"
-    if len(replay_title) > 140:
-        replay_title = replay_title[:137] + "..."
 
     print(f"Today's content: {title}")
 
@@ -117,25 +114,14 @@ def sync_today() -> None:
         if cat and cat.get("id") == "509664":
             continue
 
-        seg_hour = dt.hour
-        if seg_hour >= 12:
-            # PM slot — main stream
-            if seg["title"] != title:
-                print(f"  Updating PM segment: {seg['title'][:40]} -> {title[:40]}")
-                update_schedule_segment(seg["id"], title=title)
-                updated += 1
-                time.sleep(0.3)
-            else:
-                print(f"  PM segment already correct")
+        slot = "AM" if dt.hour < 12 else "PM"
+        if seg["title"] != title:
+            print(f"  Updating {slot} segment: {seg['title'][:40]} -> {title[:40]}")
+            update_schedule_segment(seg["id"], title=title)
+            updated += 1
+            time.sleep(0.3)
         else:
-            # AM slot — replay
-            if seg["title"] != replay_title:
-                print(f"  Updating AM segment: {seg['title'][:40]} -> {replay_title[:40]}")
-                update_schedule_segment(seg["id"], title=replay_title)
-                updated += 1
-                time.sleep(0.3)
-            else:
-                print(f"  AM segment already correct")
+            print(f"  {slot} segment already correct")
 
     print(f"Updated {updated} segments.")
 
@@ -191,22 +177,17 @@ def sync_week() -> None:
             continue
 
         title = _build_title(eps)
-        replay_title = f"[Replay] {title}"
-        if len(replay_title) > 140:
-            replay_title = replay_title[:137] + "..."
 
-        target_title = replay_title if dt.hour < 12 else title
-        if seg["title"] != target_title:
-            slot = "AM" if dt.hour < 12 else "PM"
-            print(f"  {seg_date} {slot}: {seg['title'][:40]} -> {target_title[:40]}")
+        slot = "AM" if dt.hour < 12 else "PM"
+        if seg["title"] != title:
+            print(f"  {seg_date} {slot}: {seg['title'][:40]} -> {title[:40]}")
             try:
-                update_schedule_segment(seg["id"], title=target_title)
+                update_schedule_segment(seg["id"], title=title)
                 updated += 1
                 time.sleep(0.3)
             except Exception as e:
                 print(f"    ERROR: {e}")
         else:
-            slot = "AM" if dt.hour < 12 else "PM"
             print(f"  {seg_date} {slot}: already correct")
 
     print(f"\nUpdated {updated} segments for the next 7 days.")
