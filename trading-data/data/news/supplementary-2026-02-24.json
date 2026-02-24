@@ -1,0 +1,294 @@
+{
+  "date": "2026-02-24",
+  "lastUpdated": "2026-02-24T18:14:02.456206+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 102,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Nvidia Earnings, Inflation Data, State of the Union Address: What to Watch This Week",
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-tariffs-02-23-2026/card/nvidia-home-depot-earnings-inflation-data-what-to-watch-this-week-pCuy2Z762rRudmtON9bF?siteid=yhoof2&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-23T08:56:52Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Is bitcoin's price slump an investing opportunity? Here's how to buy bitcoin.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/how-to-buy-bitcoin-222211772.html",
+          "source": "yahoo",
+          "published": "2026-02-19T22:22:11Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "You Don't Need to Buy Apple Stock. Here's Why",
+          "url": "https://finance.yahoo.com/news/dont-buy-apple-stock-heres-092200337.html",
+          "source": "yahoo",
+          "published": "2026-02-23T09:22:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Meta strikes AI chip deal with AMD days after committing to deploy millions of Nvidia GPUs",
+          "url": "https://www.cnbc.com/2026/02/24/meta-to-use-6gw-of-amd-gpus-days-after-expanded-nvidia-ai-chip-deal.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 15:26:27 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia earnings report collides with Wall Street skepticism over AI spending",
+          "url": "https://www.cnbc.com/2026/02/24/nvidia-earnings-collide-with-wall-street-skepticism-over-ai-spending.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 13:00:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo opens robotaxi service to 'select riders' in Houston, Dallas, San Antonio and Orlando",
+          "url": "https://www.cnbc.com/2026/02/24/waymo-opens-robotaxi-service-to-select-riders-in-4-more-us-cities.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google to build data center in Minnesota with new solar, wind power and battery storage",
+          "url": "https://www.cnbc.com/2026/02/24/google-to-build-data-center-in-minnesota-with-solar-wind-and-battery-storage.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 15:19:07 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic updates Claude Cowork tool built to give the average office worker a productivity boost",
+          "url": "https://www.cnbc.com/2026/02/24/anthropic-claude-cowork-office-worker.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 14:30:49 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google to build data center in Minnesota with new solar, wind power and battery storage",
+          "url": "https://www.cnbc.com/2026/02/24/google-to-build-data-center-in-minnesota-with-solar-wind-and-battery-storage.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 15:19:07 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo opens robotaxi service to 'select riders' in Houston, Dallas, San Antonio and Orlando",
+          "url": "https://www.cnbc.com/2026/02/24/waymo-opens-robotaxi-service-to-select-riders-in-4-more-us-cities.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta-AMD chip deal, Wall Street's AI angst, Trump's State of the Union and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/02/24/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 13:51:59 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia earnings report collides with Wall Street skepticism over AI spending",
+          "url": "https://www.cnbc.com/2026/02/24/nvidia-earnings-collide-with-wall-street-skepticism-over-ai-spending.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 13:00:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta strikes AI chip deal with AMD days after committing to deploy millions of Nvidia GPUs",
+          "url": "https://www.cnbc.com/2026/02/24/meta-to-use-6gw-of-amd-gpus-days-after-expanded-nvidia-ai-chip-deal.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 15:26:27 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to spend $12 billion in Louisiana on AI data centers",
+          "url": "https://www.cnbc.com/2026/02/23/amazon-louisiana-ai-data-centers.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 23 Feb 2026 19:30:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google spinout Aalyria valued at $1.3 billion as investors pour into space-based communications",
+          "url": "https://www.cnbc.com/2026/02/23/google-spinout-aalyria-valued-at-1point3-billion-in-100-million-round.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 23 Feb 2026 13:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "Central Bank",
+        "ECB",
+        "Employment",
+        "Fed",
+        "Manufacturing",
+        "Retail Sales",
+        "Services Index",
+        "central bank",
+        "employment",
+        "inflation",
+        "jobs",
+        "monetary policy",
+        "rate decision"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: New Zealand Retail Sales Growth for December 31, 2025: 0.9% q/q (1.0% q/q forecast; 1.9% q/q previous); 4.4% y/y (3.6% y/y forecast; 4.5% y/y previous) New Zealand Credit ",
+        "Factory Orders for December 2025: -0.7% m/m (0.9% m/m forecast; 2.7% m/m previous) U.S.",
+        "Factory Orders ex Transportation for December 2025: 0.4% m/m (0.1% m/m forecast; 0.2% m/m previous) U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-02-23"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "Open Letter to Google on Mandatory Developer Registration for App Distribution",
+          "url": "https://keepandroidopen.org/open-letter/",
+          "hn_score": 71,
+          "comments": 26,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Verge (YC S15) Is Hiring a Director of Computational Biology and AI Scientists/Eng",
+          "url": "https://jobs.ashbyhq.com/verge-genomics",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: Steerling-8B, a language model that can explain any token it generates",
+          "url": "https://www.guidelabs.ai/post/steerling-8b-base-model-release/",
+          "hn_score": 288,
+          "comments": 83,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Making Wolfram tech available as a foundation tool for LLM systems",
+          "url": "https://writings.stephenwolfram.com/2026/02/making-wolfram-tech-available-as-a-foundation-tool-for-llm-systems/",
+          "hn_score": 281,
+          "comments": 155,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 3,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}
