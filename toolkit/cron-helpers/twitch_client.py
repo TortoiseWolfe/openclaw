@@ -77,6 +77,18 @@ def _raw_helix_post(path: str, body: dict) -> dict:
         raise
 
 
+def _raw_helix_delete(path: str) -> None:
+    url = f"{HELIX_BASE}{path}"
+    req = urllib.request.Request(url, headers=_headers(), method="DELETE")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            _ = resp.read()
+    except urllib.error.HTTPError as e:
+        resp_body = e.read().decode("utf-8", errors="replace")
+        print(f"Helix DELETE {path} failed ({e.code}): {resp_body}", file=sys.stderr)
+        raise
+
+
 def _raw_helix_patch(path: str, body: dict) -> None:
     url = f"{HELIX_BASE}{path}"
     data = json.dumps(body).encode()
@@ -182,6 +194,19 @@ def _helix_patch(path: str, body: dict) -> None:
         _refresh_attempted = False
 
 
+def _helix_delete(path: str) -> None:
+    """Helix DELETE with auto-refresh on 401 and DNS retry."""
+    global _refresh_attempted
+    try:
+        _retry_on_dns(_raw_helix_delete, path)
+        _refresh_attempted = False
+    except urllib.error.HTTPError as e:
+        if e.code != 401 or not _try_refresh_token():
+            raise
+        _raw_helix_delete(path)
+        _refresh_attempted = False
+
+
 def get_broadcaster_id() -> str:
     """Get the broadcaster ID for the authenticated user (cached)."""
     global _broadcaster_id_cache
@@ -255,6 +280,75 @@ def send_chat_message(message: str) -> None:
         "sender_id": broadcaster_id,
         "message": truncated,
     })
+
+
+def get_schedule(first: int = 25) -> list[dict]:
+    """Get all schedule segments for the channel."""
+    broadcaster_id = get_broadcaster_id()
+    segments: list[dict] = []
+    cursor = ""
+    while True:
+        path = f"/schedule?broadcaster_id={broadcaster_id}&first={first}"
+        if cursor:
+            path += f"&after={cursor}"
+        try:
+            data = _helix_get(path)
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                break
+            raise
+        segs = data.get("data", {}).get("segments", [])
+        if not segs:
+            break
+        segments.extend(segs)
+        cursor = data.get("pagination", {}).get("cursor", "")
+        if not cursor:
+            break
+    return segments
+
+
+def create_schedule_segment(
+    start_time: str,
+    title: str,
+    duration_minutes: int = 120,
+    category_id: str | None = None,
+    is_recurring: bool = False,
+    timezone: str = "America/New_York",
+) -> dict:
+    """Create a schedule segment on the channel.
+
+    Args:
+        start_time: ISO 8601 datetime (e.g. '2026-02-28T20:00:00-05:00')
+        title: Segment title
+        duration_minutes: Duration in minutes (default 120)
+        category_id: Twitch category ID (None to skip)
+        is_recurring: Whether this repeats weekly
+        timezone: IANA timezone for the segment
+    """
+    broadcaster_id = get_broadcaster_id()
+    body: dict = {
+        "start_time": start_time,
+        "timezone": timezone,
+        "duration": str(duration_minutes),
+        "title": title,
+        "is_recurring": is_recurring,
+    }
+    if category_id:
+        body["category_id"] = category_id
+    result = _helix_post(
+        f"/schedule/segment?broadcaster_id={broadcaster_id}", body
+    )
+    print(f"Created schedule segment: {title}")
+    return result
+
+
+def delete_schedule_segment(segment_id: str) -> None:
+    """Delete a schedule segment by ID."""
+    broadcaster_id = get_broadcaster_id()
+    _helix_delete(
+        f"/schedule/segment?broadcaster_id={broadcaster_id}&id={segment_id}"
+    )
+    print(f"Deleted schedule segment: {segment_id}")
 
 
 def main() -> None:
