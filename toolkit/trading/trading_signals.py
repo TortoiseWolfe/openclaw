@@ -455,6 +455,13 @@ def analyze(asset_class, symbol, config, candles, edu_sections, rules,
                 "reason": ", ".join(reason_parts),
             }
 
+    # ── Fractal signals (opt-in via rules) ─────────────────────────
+    if signal is None and rules.get("fractal_signals", False):
+        from trading_fractals import fractal_signal as _frac_sig
+        fsig = _frac_sig(candles, rules, handler, symbol, config)
+        if fsig:
+            signal = fsig
+
     return {
         "asset_class": asset_class,
         "symbol": symbol,

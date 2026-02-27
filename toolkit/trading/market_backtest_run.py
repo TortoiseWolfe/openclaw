@@ -75,6 +75,7 @@ def parse_args():
         "edu": None,  # None=current, "all", "none"
         "start": "2015-01-01",
         "end": "2025-12-31",
+        "strategy": None,  # None=default, "fractal"
     }
     argv = sys.argv[1:]
     i = 0
@@ -98,6 +99,9 @@ def parse_args():
             i += 1
         elif argv[i] == "--end" and i + 1 < len(argv):
             args["end"] = argv[i + 1]
+            i += 1
+        elif argv[i] == "--strategy" and i + 1 < len(argv):
+            args["strategy"] = argv[i + 1]
             i += 1
         i += 1
     return args
@@ -568,6 +572,11 @@ def main():
     _core_keys = {"max_risk", "rr_ratio", "max_drawdown", "max_positions",
                   "spread", "slippage", "sentiment", "correlation"}
     signal_rules = {k: v for k, v in rules.items() if k not in _core_keys}
+
+    if args.get("strategy") == "fractal":
+        signal_rules["fractal_signals"] = True
+        signal_rules.setdefault("fractal_window", 2)
+        signal_rules.setdefault("fractal_lookback", 3)
 
     pos_limits = rules.get("max_positions", {})
     cfg = BacktestConfig(

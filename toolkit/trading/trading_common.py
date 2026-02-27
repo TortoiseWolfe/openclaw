@@ -33,6 +33,7 @@ PRIVATE_DIR = os.path.join(BASE_DIR, "private")
 NEWS_DIR = os.path.join(DATA_DIR, "news")
 HISTORICAL_DIR = os.path.join(DATA_DIR, "historical")
 STATE_FILE = os.path.join(PRIVATE_DIR, "paper-state.json")
+FRACTAL_STATE_FILE = os.path.join(PRIVATE_DIR, "fractal-state.json")
 LESSONS_FILE = os.path.join(PRIVATE_DIR, "trade-lessons.json")
 PAPER_MD = os.path.join(PRIVATE_DIR, "paper-trades.md")
 JOURNAL = os.path.join(PRIVATE_DIR, "trade-journal.md")
@@ -159,6 +160,8 @@ def classify_signal(reason):
     from market_trade_decision.py's analyze() function.
     """
     r = reason.lower()
+    if r.startswith("fractal"):
+        return "fractal"
     if r.startswith("uptrend") or r.startswith("downtrend"):
         return "trend"
     if r.startswith("sma"):
