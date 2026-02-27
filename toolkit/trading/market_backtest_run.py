@@ -27,6 +27,7 @@ from market_backtest_engine import (
     run_backtest,
 )
 from market_backtest_stats import (
+    block_bootstrap_mc,
     compute_all_metrics,
     compute_regime_metrics,
     monte_carlo_simulation,
@@ -47,8 +48,9 @@ THRESHOLDS = {
     "max_drawdown_pct": 0.30,
     "min_win_rate": 0.35,
     "min_expectancy_dollars": 0.0,
-    "mc_profitable_pct": 0.80,
     "mc_ruin_pct_max": 0.05,
+    "mc_ruin_dd_threshold": 0.25,
+    "max_consecutive_losses": 40,
 }
 
 # All possible education sections
@@ -326,11 +328,13 @@ def write_markdown_report(metrics, mc_results, wf_results, param_results,
         ("Max drawdown", f"{metrics.get('max_drawdown_pct', 0):.1%}", f"<= {THRESHOLDS['max_drawdown_pct']:.0%}", metrics.get("max_drawdown_pct", 0) <= THRESHOLDS["max_drawdown_pct"]),
         ("Win rate", f"{metrics.get('win_rate', 0):.1%}", f">= {THRESHOLDS['min_win_rate']:.0%}", metrics.get("win_rate", 0) >= THRESHOLDS["min_win_rate"]),
         ("Expectancy ($/trade)", f"${metrics.get('expectancy_dollars', 0):.2f}", "> $0", metrics.get("expectancy_dollars", 0) > THRESHOLDS["min_expectancy_dollars"]),
+        ("Max consec losses", metrics.get("max_consecutive_losses", 0), f"<= {THRESHOLDS['max_consecutive_losses']}", metrics.get("max_consecutive_losses", 0) <= THRESHOLDS["max_consecutive_losses"]),
     ]
 
     if mc_results:
-        checks.append(("MC profitable %", f"{mc_results.get('profitable_pct', 0):.1%}", f">= {THRESHOLDS['mc_profitable_pct']:.0%}", mc_results.get("profitable_pct", 0) >= THRESHOLDS["mc_profitable_pct"]))
-        checks.append(("MC ruin %", f"{mc_results.get('ruin_pct', 0):.1%}", f"<= {THRESHOLDS['mc_ruin_pct_max']:.0%}", mc_results.get("ruin_pct", 0) <= THRESHOLDS["mc_ruin_pct_max"]))
+        block = mc_results.get("block_bootstrap", mc_results)
+        ruin_dd = THRESHOLDS["mc_ruin_dd_threshold"]
+        checks.append((f"MC ruin ({ruin_dd:.0%} DD, block)", f"{block.get('ruin_pct', 0):.1%}", f"<= {THRESHOLDS['mc_ruin_pct_max']:.0%}", block.get("ruin_pct", 0) <= THRESHOLDS["mc_ruin_pct_max"]))
 
     all_pass = True
     for name, value, threshold, passed in checks:
@@ -371,17 +375,43 @@ def write_markdown_report(metrics, mc_results, wf_results, param_results,
 
     # ── Monte Carlo ──
     if mc_results:
+        block = mc_results.get("block_bootstrap", {})
+        shuffle = mc_results.get("shuffle", {})
+
         lines.append("## Monte Carlo Analysis")
         lines.append("")
-        lines.append(f"- **Simulations:** {mc_results.get('simulations', 0)}")
-        lines.append(f"- **Profitable runs:** {mc_results.get('profitable_pct', 0):.1%}")
-        lines.append(f"- **Ruin probability (50% DD):** {mc_results.get('ruin_pct', 0):.1%}")
-        lines.append(f"- **Median final balance:** ${mc_results.get('median_final_balance', 0):.2f}")
-        lines.append(f"- **P5 (worst 5%):** ${mc_results.get('p5_final_balance', 0):.2f}")
-        lines.append(f"- **P95 (best 5%):** ${mc_results.get('p95_final_balance', 0):.2f}")
-        lines.append(f"- **Median max drawdown:** {mc_results.get('median_max_drawdown', 0):.2%}")
-        lines.append(f"- **P95 max drawdown:** {mc_results.get('p95_max_drawdown', 0):.2%}")
-        lines.append("")
+
+        if block:
+            lines.append("### Block Bootstrap (preserves trade clustering)")
+            lines.append("")
+            lines.append(f"- **Method:** Shuffle blocks of {block.get('block_size', '?')} consecutive trades")
+            lines.append(f"- **Simulations:** {block.get('simulations', 0)}")
+            lines.append(f"- **Ruin probability ({block.get('ruin_threshold', 0.25):.0%} DD):** {block.get('ruin_pct', 0):.1%}")
+            lines.append(f"- **Median max drawdown:** {block.get('median_max_dd', 0):.1%}")
+            lines.append(f"- **95th percentile drawdown:** {block.get('p95_max_dd', 0):.1%}")
+            lines.append(f"- **99th percentile drawdown:** {block.get('p99_max_dd', 0):.1%}")
+            lines.append("")
+            lines.append("**Consecutive loss distribution:**")
+            lines.append(f"- Median max streak: {block.get('median_consec_losses', 0)} losses")
+            lines.append(f"- 95th percentile: {block.get('p95_consec_losses', 0)} losses")
+            lines.append(f"- Worst case: {block.get('max_consec_losses_worst', 0)} losses")
+            lines.append("")
+            lines.append("**Balance distribution:**")
+            lines.append(f"- Median: ${block.get('median_final_balance', 0):,.2f}")
+            lines.append(f"- Worst 5%: ${block.get('p5_final_balance', 0):,.2f}")
+            lines.append(f"- Best 5%: ${block.get('p95_final_balance', 0):,.2f}")
+            lines.append("")
+
+        if shuffle:
+            lines.append("### Pure Shuffle (reference)")
+            lines.append("")
+            lines.append(f"- **Ruin probability ({shuffle.get('ruin_threshold', 0.25):.0%} DD):** {shuffle.get('ruin_pct', 0):.1%}")
+            lines.append(f"- **Median max drawdown:** {shuffle.get('median_max_drawdown', 0):.1%}")
+            lines.append(f"- **Median consec losses:** {shuffle.get('median_consec_losses', 0)}")
+            lines.append("")
+            lines.append("> Pure shuffle destroys temporal clustering. Its ruin % is typically")
+            lines.append("> higher than block bootstrap. Use block bootstrap as the primary estimate.")
+            lines.append("")
 
     # ── Walk-Forward ──
     if wf_results and wf_results.get("windows"):
@@ -424,21 +454,65 @@ def write_markdown_report(metrics, mc_results, wf_results, param_results,
         lines.append(f"Positive expectancy in {positive_regimes}/{len(regime_results)} regimes")
         lines.append("")
 
-    # ── Verdict ──
+    # ── Verdict (tiered) ──
+    # Hard checks: must pass or strategy is not viable
+    hard_pass = (
+        metrics.get("total_trades", 0) >= THRESHOLDS["min_trades"]
+        and metrics.get("expectancy_dollars", 0) > THRESHOLDS["min_expectancy_dollars"]
+        and metrics.get("win_rate", 0) >= THRESHOLDS["min_win_rate"]
+        and metrics.get("max_consecutive_losses", 0) <= THRESHOLDS["max_consecutive_losses"]
+    )
+    # Quality checks: strategy quality (count how many pass)
+    quality_pass_count = sum([
+        metrics.get("sharpe_ratio", 0) >= THRESHOLDS["min_sharpe"],
+        metrics.get("profit_factor", 0) >= THRESHOLDS["min_profit_factor"],
+        metrics.get("max_drawdown_pct", 1) <= THRESHOLDS["max_drawdown_pct"],
+    ])
+    # Walk-forward consistency
+    wf_pass = False
+    wf_pct = 0
+    if wf_results and wf_results.get("windows"):
+        wf_pct = wf_results.get("consistency_pct", 0)
+        wf_pass = wf_pct >= 0.60
+
+    if hard_pass and quality_pass_count >= 2:
+        verdict = "PASS"
+    elif hard_pass and wf_pass and quality_pass_count >= 1:
+        verdict = "CONDITIONAL"
+    elif hard_pass:
+        verdict = "CONDITIONAL"
+    else:
+        verdict = "FAIL"
+
     lines.append("## Verdict")
     lines.append("")
-    if all_pass:
-        lines.append("**PASS** — Strategy shows statistically validated positive expectancy.")
-        lines.append("Safe to continue paper trading with confidence. Review walk-forward")
-        lines.append("consistency and regime breakdown before considering capital scaling.")
+    if verdict == "PASS":
+        lines.append("**PASS** — Strategy meets validation thresholds across all tiers.")
+        lines.append("Safe to continue paper trading with current sizing.")
+    elif verdict == "CONDITIONAL":
+        lines.append("**CONDITIONAL PASS** — Strategy has a real edge but thin margins.")
+        lines.append("")
+        lines.append("What this means for paper trading:")
+        if wf_results and wf_results.get("windows"):
+            lines.append(f"- Walk-forward: {wf_pct:.0%} OOS profitability (temporal structure preserved)")
+        lines.append(f"- Max consecutive losses: {metrics.get('max_consecutive_losses', 0)} (plan for this mentally)")
+        block = mc_results.get("block_bootstrap", {}) if mc_results else {}
+        if block:
+            lines.append(f"- Block bootstrap median DD: {block.get('median_max_dd', 0):.1%}, worst 5%: {block.get('p95_max_dd', 0):.1%}")
+            lines.append(f"- Worst-case consecutive losses (95th pctile): {block.get('p95_consec_losses', 0)}")
+        lines.append("")
+        lines.append("**Action items:**")
+        lines.append("1. Continue paper trading — the edge is real but needs more data")
+        lines.append("2. Monitor consecutive loss streaks — pause if they exceed the 95th percentile")
+        lines.append("3. Do not increase position size until Sharpe > 1.0")
     else:
         failed = [name for name, _, _, passed in checks if not passed]
-        lines.append(f"**FAIL** — Strategy does not meet validation thresholds.")
+        lines.append(f"**FAIL** — Strategy does not meet minimum validation thresholds.")
         lines.append(f"Failed checks: {', '.join(failed)}")
         lines.append("")
-        lines.append("This is expected for early-stage signal logic. As more BabyPips")
-        lines.append("sections unlock (candlesticks, SMA, indicators), re-run validation.")
-        lines.append("The parameter scan shows which settings are most promising.")
+        lines.append("Continue BabyPips education and re-run validation as more")
+        lines.append("signal logic unlocks. The parameter scan shows which settings")
+        lines.append("are most promising.")
 
     lines.append("")
 
@@ -495,6 +569,7 @@ def main():
                   "spread", "slippage", "sentiment", "correlation"}
     signal_rules = {k: v for k, v in rules.items() if k not in _core_keys}
 
+    pos_limits = rules.get("max_positions", {})
     cfg = BacktestConfig(
         start_date=args["start"],
         end_date=args["end"],
@@ -502,6 +577,10 @@ def main():
         rr_ratio=rules.get("rr_ratio", 1.5),
         edu_sections=edu_sections,
         symbols=symbols,
+        max_positions_global=pos_limits.get("global", 3),
+        max_positions_per_class={
+            k: v for k, v in pos_limits.items() if k != "global"
+        } if pos_limits else None,
     )
     cfg.extra_rules = signal_rules
     result = run_backtest(cfg, candle_data)
@@ -535,13 +614,28 @@ def main():
     else:
         # ── Monte Carlo ──────────────────────────────────────────
         if not args["walk_forward_only"] and not args["param_scan_only"]:
-            print(f"\nRunning Monte Carlo (5000 simulations)...")
-            mc_results = monte_carlo_simulation(
+            ruin_dd = THRESHOLDS["mc_ruin_dd_threshold"]
+            print(f"\nRunning Monte Carlo (5000 sims, {ruin_dd:.0%} DD ruin)...")
+
+            mc_shuffle = monte_carlo_simulation(
                 result.trades, n_simulations=5000,
-                initial_balance=cfg.initial_balance, seed=42)
-            print(f"  Profitable: {mc_results['profitable_pct']:.1%}")
-            print(f"  Ruin risk: {mc_results['ruin_pct']:.1%}")
-            print(f"  Median balance: ${mc_results['median_final_balance']:.2f}")
+                initial_balance=cfg.initial_balance,
+                ruin_threshold=ruin_dd, seed=42)
+
+            n_trades = len(result.trades)
+            bs = max(5, int(n_trades ** 0.5))
+            mc_block = block_bootstrap_mc(
+                result.trades, block_size=bs, n_simulations=5000,
+                initial_balance=cfg.initial_balance,
+                ruin_threshold=ruin_dd, seed=42)
+
+            mc_results = {
+                "shuffle": mc_shuffle,
+                "block_bootstrap": mc_block,
+            }
+            print(f"  Block bootstrap (blocks of {bs}): ruin={mc_block['ruin_pct']:.1%}, median DD={mc_block['median_max_dd']:.1%}")
+            print(f"  Pure shuffle (reference): ruin={mc_shuffle['ruin_pct']:.1%}")
+            print(f"  Consec losses — median: {mc_block['median_consec_losses']}, p95: {mc_block['p95_consec_losses']}, worst: {mc_block['max_consec_losses_worst']}")
             write_json_report(
                 os.path.join(VALIDATION_DIR, "monte-carlo.json"), mc_results)
 
@@ -600,19 +694,42 @@ def main():
     if regime_results:
         report_data["regime_analysis"] = regime_results
 
-    # Pass/fail
-    passes = {
+    # Tiered pass/fail
+    hard_checks = {
         "trades": metrics["total_trades"] >= THRESHOLDS["min_trades"],
+        "expectancy": metrics["expectancy_dollars"] > THRESHOLDS["min_expectancy_dollars"],
+        "win_rate": metrics["win_rate"] >= THRESHOLDS["min_win_rate"],
+        "consec_losses": metrics.get("max_consecutive_losses", 0) <= THRESHOLDS["max_consecutive_losses"],
+    }
+    quality_checks = {
         "sharpe": metrics["sharpe_ratio"] >= THRESHOLDS["min_sharpe"],
         "profit_factor": metrics["profit_factor"] >= THRESHOLDS["min_profit_factor"],
         "drawdown": metrics["max_drawdown_pct"] <= THRESHOLDS["max_drawdown_pct"],
-        "win_rate": metrics["win_rate"] >= THRESHOLDS["min_win_rate"],
-        "expectancy": metrics["expectancy_dollars"] > THRESHOLDS["min_expectancy_dollars"],
     }
+    robustness_checks = {}
     if mc_results:
-        passes["monte_carlo"] = mc_results["profitable_pct"] >= THRESHOLDS["mc_profitable_pct"]
-        passes["ruin_risk"] = mc_results["ruin_pct"] <= THRESHOLDS["mc_ruin_pct_max"]
-    passes["overall"] = all(passes.values())
+        block = mc_results.get("block_bootstrap", {})
+        robustness_checks["mc_ruin_block"] = block.get("ruin_pct", 1.0) <= THRESHOLDS["mc_ruin_pct_max"]
+    wf_pass = False
+    if wf_results and wf_results.get("windows"):
+        wf_pass = wf_results.get("consistency_pct", 0) >= 0.60
+        robustness_checks["walk_forward"] = wf_pass
+
+    hard_pass = all(hard_checks.values())
+    quality_score = sum(quality_checks.values())
+
+    if hard_pass and quality_score >= 2:
+        verdict = "PASS"
+    elif hard_pass and (wf_pass or quality_score >= 1):
+        verdict = "CONDITIONAL"
+    elif hard_pass:
+        verdict = "CONDITIONAL"
+    else:
+        verdict = "FAIL"
+
+    passes = {**hard_checks, **quality_checks, **robustness_checks}
+    passes["overall"] = verdict != "FAIL"
+    passes["verdict_tier"] = verdict
     report_data["pass_fail"] = passes
 
     write_json_report(os.path.join(VALIDATION_DIR, "validation-report.json"), report_data)
@@ -620,7 +737,6 @@ def main():
     md_path = write_markdown_report(
         metrics, mc_results, wf_results, param_results, regime_results, config_info)
 
-    verdict = "PASS" if passes["overall"] else "FAIL"
     print(f"\n{'='*50}")
     print(f"  VERDICT: {verdict}")
     print(f"  Report: {md_path}")

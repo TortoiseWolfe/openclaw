@@ -42,8 +42,8 @@
     "max_risk": 0.015,
     "rr_ratio": 2.0,
     "max_drawdown": 0.50,
-    "min_trend_count": 3,
-    "ranging_entries": true,
+    "min_trend_count": 4,
+    "ranging_entries": false,
     "sma_confirmation": true,
     "atr_filter": {
       "enabled": true,
@@ -66,10 +66,10 @@
       "atr_multiplier": 2.0
     },
     "max_positions": {
-      "forex": 2,
-      "stocks": 3,
-      "crypto": 1,
-      "global": 6
+      "forex": 3,
+      "stocks": 5,
+      "crypto": 2,
+      "global": 10
     },
     "spread": {
       "forex": 0.00015,

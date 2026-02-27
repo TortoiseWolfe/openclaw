@@ -216,6 +216,7 @@ def monte_carlo_simulation(trades, n_simulations=5000, initial_balance=10000.0,
 
     final_balances = []
     max_drawdowns = []
+    consec_losses_list = []
     ruin_count = 0
 
     for _ in range(n_simulations):
@@ -225,6 +226,8 @@ def monte_carlo_simulation(trades, n_simulations=5000, initial_balance=10000.0,
         balance = initial_balance
         peak = initial_balance
         max_dd = 0.0
+        consec_loss = 0
+        max_consec_loss = 0
 
         for pnl in shuffled:
             balance += pnl
@@ -233,19 +236,27 @@ def monte_carlo_simulation(trades, n_simulations=5000, initial_balance=10000.0,
             dd = (peak - balance) / peak if peak > 0 else 0
             if dd > max_dd:
                 max_dd = dd
+            if pnl <= 0:
+                consec_loss += 1
+                if consec_loss > max_consec_loss:
+                    max_consec_loss = consec_loss
+            else:
+                consec_loss = 0
 
         final_balances.append(balance)
         max_drawdowns.append(max_dd)
+        consec_losses_list.append(max_consec_loss)
         if max_dd >= ruin_threshold:
             ruin_count += 1
 
     final_balances.sort()
     max_drawdowns.sort()
+    consec_losses_list.sort()
     n = len(final_balances)
 
     return {
         "simulations": n_simulations,
-        "profitable_pct": sum(1 for b in final_balances if b > initial_balance) / n,
+        "ruin_threshold": ruin_threshold,
         "median_final_balance": round(final_balances[n // 2], 2),
         "p5_final_balance": round(final_balances[int(n * 0.05)], 2),
         "p95_final_balance": round(final_balances[int(n * 0.95)], 2),
@@ -253,6 +264,114 @@ def monte_carlo_simulation(trades, n_simulations=5000, initial_balance=10000.0,
         "median_max_drawdown": round(max_drawdowns[n // 2], 4),
         "p95_max_drawdown": round(max_drawdowns[int(n * 0.95)], 4),
         "ruin_pct": round(ruin_count / n, 4),
+        "median_consec_losses": consec_losses_list[n // 2],
+        "p95_consec_losses": consec_losses_list[int(n * 0.95)],
+    }
+
+
+def block_bootstrap_mc(trades, block_size=None, n_simulations=5000,
+                       initial_balance=10000.0, ruin_threshold=0.25,
+                       seed=None):
+    """Monte Carlo via block bootstrap — preserves temporal clustering.
+
+    Instead of shuffling individual trades, samples BLOCKS of consecutive
+    trades with replacement. This preserves the autocorrelation within each
+    block (losing streaks stay together, trend runs stay together).
+
+    Args:
+        trades: list of trade dicts with 'pnl' key
+        block_size: consecutive trades per block. Default: sqrt(n_trades).
+        n_simulations: number of bootstrap iterations
+        initial_balance: starting equity
+        ruin_threshold: max drawdown fraction that counts as ruin
+        seed: random seed for reproducibility
+    """
+    if not trades:
+        return {
+            "method": "block_bootstrap", "block_size": 0,
+            "simulations": 0, "ruin_threshold": ruin_threshold,
+            "ruin_pct": 0.0,
+            "median_max_dd": 0.0, "p95_max_dd": 0.0, "p99_max_dd": 0.0,
+            "median_consec_losses": 0, "p95_consec_losses": 0,
+            "max_consec_losses_worst": 0,
+            "median_final_balance": initial_balance,
+            "p5_final_balance": initial_balance,
+            "p95_final_balance": initial_balance,
+            "profitable_pct": 0.0,
+        }
+
+    pnls = [t["pnl"] for t in trades]
+    n_trades = len(pnls)
+    if block_size is None:
+        block_size = max(5, int(math.sqrt(n_trades)))
+    rng = random.Random(seed)
+
+    # Build blocks of consecutive trades
+    blocks = []
+    for i in range(0, n_trades, block_size):
+        blocks.append(pnls[i:i + block_size])
+    n_blocks_needed = math.ceil(n_trades / block_size)
+
+    final_balances = []
+    max_drawdowns = []
+    consec_losses_list = []
+    ruin_count = 0
+
+    for _ in range(n_simulations):
+        # Sample blocks WITH replacement (true bootstrap)
+        sampled = []
+        for _ in range(n_blocks_needed):
+            sampled.extend(rng.choice(blocks))
+        sim_pnls = sampled[:n_trades]
+
+        balance = initial_balance
+        peak = initial_balance
+        max_dd = 0.0
+        consec_loss = 0
+        max_consec_loss = 0
+
+        for pnl in sim_pnls:
+            balance += pnl
+            if balance > peak:
+                peak = balance
+            dd = (peak - balance) / peak if peak > 0 else 0
+            if dd > max_dd:
+                max_dd = dd
+            if pnl <= 0:
+                consec_loss += 1
+                if consec_loss > max_consec_loss:
+                    max_consec_loss = consec_loss
+            else:
+                consec_loss = 0
+
+        final_balances.append(balance)
+        max_drawdowns.append(max_dd)
+        consec_losses_list.append(max_consec_loss)
+        if max_dd >= ruin_threshold:
+            ruin_count += 1
+
+    final_balances.sort()
+    max_drawdowns.sort()
+    consec_losses_list.sort()
+    n = len(final_balances)
+
+    return {
+        "method": "block_bootstrap",
+        "block_size": block_size,
+        "simulations": n_simulations,
+        "ruin_threshold": ruin_threshold,
+        "ruin_pct": round(ruin_count / n, 4),
+        "median_max_dd": round(max_drawdowns[n // 2], 4),
+        "p95_max_dd": round(max_drawdowns[int(n * 0.95)], 4),
+        "p99_max_dd": round(max_drawdowns[int(n * 0.99)], 4),
+        "median_consec_losses": consec_losses_list[n // 2],
+        "p95_consec_losses": consec_losses_list[int(n * 0.95)],
+        "max_consec_losses_worst": consec_losses_list[-1],
+        "median_final_balance": round(final_balances[n // 2], 2),
+        "p5_final_balance": round(final_balances[int(n * 0.05)], 2),
+        "p95_final_balance": round(final_balances[int(n * 0.95)], 2),
+        "profitable_pct": round(
+            sum(1 for b in final_balances if b > initial_balance) / n, 4),
     }
 
 

@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from market_backtest_engine import BacktestConfig, run_backtest
 from market_backtest_stats import (
+    block_bootstrap_mc,
     compute_all_metrics,
     compute_calmar_ratio,
     compute_consecutive_stats,
@@ -182,22 +183,73 @@ class TestMonteCarlo(unittest.TestCase):
         r1 = monte_carlo_simulation(trades, n_simulations=100, seed=42)
         r2 = monte_carlo_simulation(trades, n_simulations=100, seed=42)
         self.assertEqual(r1["median_final_balance"], r2["median_final_balance"])
-        self.assertEqual(r1["profitable_pct"], r2["profitable_pct"])
+        self.assertEqual(r1["ruin_pct"], r2["ruin_pct"])
 
-    def test_all_winners_high_profitability(self):
+    def test_all_winners_no_ruin(self):
         trades = [make_trade(100)] * 20
         result = monte_carlo_simulation(trades, n_simulations=100, seed=42)
-        self.assertEqual(result["profitable_pct"], 1.0)
         self.assertEqual(result["ruin_pct"], 0.0)
 
-    def test_all_losers_zero_profitability(self):
-        trades = [make_trade(-100)] * 20
-        result = monte_carlo_simulation(trades, n_simulations=100, seed=42)
-        self.assertEqual(result["profitable_pct"], 0.0)
+    def test_all_losers_high_ruin(self):
+        trades = [make_trade(-1000)] * 20
+        result = monte_carlo_simulation(trades, n_simulations=100,
+                                        ruin_threshold=0.25, seed=42)
+        self.assertGreater(result["ruin_pct"], 0.9)
 
     def test_empty_trades(self):
         result = monte_carlo_simulation([], n_simulations=100)
         self.assertEqual(result["simulations"], 0)
+
+    def test_has_consecutive_loss_stats(self):
+        trades = [make_trade(50)] * 10 + [make_trade(-30)] * 5
+        result = monte_carlo_simulation(trades, n_simulations=100, seed=42)
+        self.assertIn("median_consec_losses", result)
+        self.assertIn("p95_consec_losses", result)
+
+    def test_ruin_threshold_passed_through(self):
+        trades = [make_trade(-200)] * 20
+        result = monte_carlo_simulation(trades, n_simulations=100,
+                                        ruin_threshold=0.25, seed=42)
+        self.assertEqual(result["ruin_threshold"], 0.25)
+
+
+class TestBlockBootstrapMC(unittest.TestCase):
+    def test_deterministic_with_seed(self):
+        trades = [make_trade(50)] * 10 + [make_trade(-30)] * 5
+        r1 = block_bootstrap_mc(trades, block_size=3, n_simulations=100, seed=42)
+        r2 = block_bootstrap_mc(trades, block_size=3, n_simulations=100, seed=42)
+        self.assertEqual(r1["median_max_dd"], r2["median_max_dd"])
+        self.assertEqual(r1["ruin_pct"], r2["ruin_pct"])
+
+    def test_has_consecutive_loss_stats(self):
+        trades = [make_trade(50)] * 10 + [make_trade(-30)] * 10
+        result = block_bootstrap_mc(trades, block_size=5, n_simulations=100, seed=42)
+        self.assertIn("median_consec_losses", result)
+        self.assertIn("p95_consec_losses", result)
+        self.assertIn("max_consec_losses_worst", result)
+        self.assertGreater(result["max_consec_losses_worst"], 0)
+
+    def test_empty_trades(self):
+        result = block_bootstrap_mc([], block_size=5, n_simulations=100)
+        self.assertEqual(result["simulations"], 0)
+
+    def test_all_losers_high_ruin(self):
+        trades = [make_trade(-200)] * 20
+        result = block_bootstrap_mc(trades, block_size=5, n_simulations=100,
+                                    ruin_threshold=0.25, seed=42)
+        self.assertGreater(result["ruin_pct"], 0.9)
+
+    def test_method_field(self):
+        trades = [make_trade(50)] * 10
+        result = block_bootstrap_mc(trades, block_size=3, n_simulations=50, seed=42)
+        self.assertEqual(result["method"], "block_bootstrap")
+
+    def test_balance_varies_with_replacement(self):
+        """Block bootstrap samples WITH replacement, so balances should vary."""
+        trades = [make_trade(100)] * 5 + [make_trade(-80)] * 5
+        result = block_bootstrap_mc(trades, block_size=3, n_simulations=500, seed=42)
+        # With replacement, P5 and P95 should differ
+        self.assertNotEqual(result["p5_final_balance"], result["p95_final_balance"])
 
 
 class TestRegimeClassification(unittest.TestCase):
