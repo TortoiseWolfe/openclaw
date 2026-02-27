@@ -1,0 +1,539 @@
+{
+  "date": "2026-02-26",
+  "lastUpdated": "2026-02-26T13:50:38.996159+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 105,
+      "articles_matched": 35,
+      "matched": [
+        {
+          "title": "Earnings live: Nvidia stock gains cool premarket, Stellantis wavers, Celsius surges",
+          "url": "https://finance.yahoo.com/news/live/earnings-live-nvidia-stock-gains-cool-premarket-stellantis-wavers-celsius-surges-131349358.html",
+          "source": "yahoo",
+          "published": "2026-02-26T13:13:49Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures waver as Nvidia leaves investors wanting more",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-waver-as-nvidia-leaves-investors-wanting-more-234839338.html",
+          "source": "yahoo",
+          "published": "2026-02-25T23:48:39Z",
+          "matched_symbols": [
+            "NVDA",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Nvidia stock rises as guidance signals AI boom alive and well",
+          "url": "https://finance.yahoo.com/news/live/tech-stocks-today-nvidia-stock-rises-as-guidance-signals-ai-boom-alive-and-well-220259696.html",
+          "source": "yahoo",
+          "published": "2026-02-25T22:02:59Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia Sees 'Hundreds Of Billions' In Future Robotaxi Revenue",
+          "url": "https://www.investors.com/news/nvidia/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-26T13:22:59Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Higher Ahead Of Jobless Claims; Nvidia Rallies On Earnings (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-jobless-claims-nvidia-earnings-nvda-stock/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-26T13:06:11Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Dow Jones Futures Rise; Nvidia Climbs In Buy Zone After Strong Earnings, Guidance",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nvidia-earnings-sp-500/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-26T13:05:42Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Advanced Micro Devices (AMD) Fell as Investors Doubt OpenAI\u2019s Spending Plans Amid Revenue Concerns",
+          "url": "https://finance.yahoo.com/news/advanced-micro-devices-amd-fell-124327063.html",
+          "source": "yahoo",
+          "published": "2026-02-26T12:43:27Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Snowflake Earnings Beat, Guidance Underwhelms Amid AI Product Push",
+          "url": "https://www.investors.com/news/technology/snowflake-stock-snow-snowflake-earnings-q42025/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-26T12:29:01Z",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump brothers-backed American Bitcoin swings to quarterly loss amid crypto selloff",
+          "url": "https://finance.yahoo.com/news/trump-brothers-backed-american-bitcoin-122144114.html",
+          "source": "yahoo",
+          "published": "2026-02-26T12:21:44Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia's stock sees only marginal gains after better-than-expected results. Here's the latest",
+          "url": "https://www.cnbc.com/2026/02/26/nvidia-nvda-stock-price-q4-earnings.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 12:44:06 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Billionaire family offices invested in pro soccer, bitcoin and semiconductors before the new year",
+          "url": "https://www.cnbc.com/2026/02/26/billionaire-family-office-investments.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 12:30:01 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Instagram to start parent alerts for teen suicide, self-harm searches as Meta trials continue",
+          "url": "https://www.cnbc.com/2026/02/26/instagram-parent-alerts-teen-suicide-meta-trial.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce shares are down 4% in premarket on mixed guidance and $50 billion buyback commitment",
+          "url": "https://www.cnbc.com/2026/02/25/salesforce-crm-q4-earnings-report-2026.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 09:51:59 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia keeps the AI party alive with a booming quarter and even better outlook",
+          "url": "https://www.cnbc.com/2026/02/25/nvidia-keeps-the-ai-party-alive-with-a-booming-quarter-and-even-better-outlook.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 00:57:40 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Samsung's S26 gives an advance look at what the Google-powered Apple Siri could do",
+          "url": "https://www.cnbc.com/2026/02/25/samsung-s26-launch-gemini-ai-apple-siri.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 04:21:36 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia still hasn't sold its U.S.-approved China AI chips \u2014 and it\u2019s worried local AI rivals could take over",
+          "url": "https://www.cnbc.com/2026/02/26/nvidia-china-chip-sales-export-controls-ai-competition.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Feb 2026 08:23:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Former Alphabet 'moonshot' robotics company Intrinsic is folding into Google",
+          "url": "https://www.cnbc.com/2026/02/25/alphabet-robotics-software-intrinsic-google-ai.html",
+          "source": "cnbc_top",
+          "published": "Wed, 25 Feb 2026 23:02:38 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Big Tech companies to meet Trump at White House to sign pledge on data center power costs",
+          "url": "https://www.cnbc.com/2026/02/25/trump-tech-ai-data-center-electricity-price-pledge.html",
+          "source": "cnbc_top",
+          "published": "Wed, 25 Feb 2026 20:29:54 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia earnings, Big Tech's White House visit, protein prices and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/02/26/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 13:40:39 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market watchers back Jensen Huang's view that investors are 'wrong' on SaaSpocalypse",
+          "url": "https://www.cnbc.com/2026/02/26/nvidia-ceo-jensen-huang-software-saas-markets-microsoft-salesforce-oracle.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 12:43:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Instagram to start parent alerts for teen suicide, self-harm searches as Meta trials continue",
+          "url": "https://www.cnbc.com/2026/02/26/instagram-parent-alerts-teen-suicide-meta-trial.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's stock sees only marginal gains after better-than-expected results. Here's the latest",
+          "url": "https://www.cnbc.com/2026/02/26/nvidia-nvda-stock-price-q4-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 12:44:06 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia still hasn't sold its U.S.-approved China AI chips \u2014 and it\u2019s worried local AI rivals could take over",
+          "url": "https://www.cnbc.com/2026/02/26/nvidia-china-chip-sales-export-controls-ai-competition.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 08:23:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's forecast points to accelerating growth, as Vera Rubin starts hitting market",
+          "url": "https://www.cnbc.com/2026/02/25/nvidia-forecast-points-to-accelerating-growth-vera-rubin-hits-market.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 01:55:33 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia keeps the AI party alive with a booming quarter and even better outlook",
+          "url": "https://www.cnbc.com/2026/02/25/nvidia-keeps-the-ai-party-alive-with-a-booming-quarter-and-even-better-outlook.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 00:57:40 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI disruption didn't show up in Salesforce results. But the fears are hard to shake",
+          "url": "https://www.cnbc.com/2026/02/25/ai-disruption-didnt-show-up-in-salesforce-results-but-the-fears-are-hard-to-shake.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 00:43:21 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia\u2019s Huang says any Pentagon\u2013Anthropic rift is 'not the end of the world'",
+          "url": "https://www.cnbc.com/2026/02/26/huang-nvidia-anthropic-pentagon-hegseth-ai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 12:56:00 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia\u2019s Jensen Huang says markets \u2018got it wrong\u2019 on AI threat to software companies",
+          "url": "https://www.cnbc.com/2026/02/26/nvidia-jensen-huang-gpu-ai-threat-software-companies-saas-earnings-chips.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 12:54:37 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Former Alphabet 'moonshot' robotics company Intrinsic is folding into Google",
+          "url": "https://www.cnbc.com/2026/02/25/alphabet-robotics-software-intrinsic-google-ai.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Feb 2026 23:02:38 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce shares are down 4% in premarket on mixed guidance and $50 billion buyback commitment",
+          "url": "https://www.cnbc.com/2026/02/25/salesforce-crm-q4-earnings-report-2026.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 09:51:59 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Samsung's S26 gives an advance look at what the Google-powered Apple Siri could do",
+          "url": "https://www.cnbc.com/2026/02/25/samsung-s26-launch-gemini-ai-apple-siri.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 04:21:36 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia reports earnings and guidance beat as AI boom pushes data center revenue up 75%",
+          "url": "https://www.cnbc.com/2026/02/25/nvidia-nvda-earnings-report-q4-2026.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 00:06:54 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia\u2019s new AI system Vera Rubin is 10 times more efficient than its predecessor \u2014 here\u2019s a first look",
+          "url": "https://www.cnbc.com/2026/02/25/first-look-at-nvidias-ai-system-vera-rubin-and-how-it-beats-blackwell.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Feb 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "These are the European tech stocks to watch after Nvidia reports earnings \u2014 and how strong or weak results would affect them",
+          "url": "https://www.cnbc.com/2026/02/25/european-tech-stocks-nvidia-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Feb 2026 07:26:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Head of Amazon\u2019s AGI lab is leaving the company",
+          "url": "https://www.cnbc.com/2026/02/24/head-of-amazons-agi-lab-is-leaving-the-company.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 22:56:50 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "BOJ",
+        "CPI",
+        "ECB",
+        "Fed",
+        "GDP",
+        "Manufacturing",
+        "RBA",
+        "central bank",
+        "employment",
+        "inflation"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: U.S.",
+        "API Crude Oil Stock Change for February 20, 2026: 11.4M (-0.61M previous) Australia CPI Growth Rate for January 2026: 0.4% m/m (0.2% m/m forecast; 1.0% m/m previous); 3.8% y/y (3.7% y/y forecast; 3.8%",
+        "as \u201cback\u201d and \u201cstrong,\u201d touting economic and border policies and a hard line on immigration and crime while largely dismissing ongoing economic concerns Germany GDP Growth Rate Final for December 31, "
+      ],
+      "error": null,
+      "fetch_date": "2026-02-25"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "Google API keys weren't secrets, but then Gemini changed the rules",
+          "url": "https://trufflesecurity.com/blog/google-api-keys-werent-secrets-but-then-gemini-changed-the-rules",
+          "hn_score": 859,
+          "comments": 196,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: Agent Swarm \u2013 Multi-agent self-learning teams (OSS)",
+          "url": "https://github.com/desplega-ai/agent-swarm",
+          "hn_score": 28,
+          "comments": 11,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Anthropic ditches its core safety promise",
+          "url": "https://www.cnn.com/2026/02/25/tech/anthropic-safety-policy-change",
+          "hn_score": 53,
+          "comments": 30,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "How will OpenAI compete?",
+          "url": "https://www.ben-evans.com/benedictevans/2026/2/19/how-will-openai-compete-nkg2x",
+          "hn_score": 313,
+          "comments": 435,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "You Want to Visit the UK? You Better Have a Google Play or App Store Account",
+          "url": "https://www.heltweg.org/posts/you-want-to-visit-the-uk-you-better-have-a-google-play-or-app-store-account/",
+          "hn_score": 137,
+          "comments": 196,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 20,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "META": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "CRM": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 45,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

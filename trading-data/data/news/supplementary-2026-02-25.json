@@ -1,0 +1,455 @@
+{
+  "date": "2026-02-25",
+  "lastUpdated": "2026-02-25T13:50:39.159729+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 106,
+      "articles_matched": 25,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise with Nvidia earnings on deck",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-with-nvidia-earnings-on-deck-131748768.html",
+          "source": "yahoo",
+          "published": "2026-02-25T13:17:48Z",
+          "matched_symbols": [
+            "NVDA",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia to report Q4 earnings ahead of annual GTC event",
+          "url": "https://finance.yahoo.com/news/nvidia-to-report-q4-earnings-ahead-of-annual-gtc-event-191031537.html",
+          "source": "yahoo",
+          "published": "2026-02-23T19:10:31Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Rises Ahead Of Nvidia Earnings; First Solar Plunges On Weak Revenue Outlook (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-nvidia-earnings-nvda-stock-first-solar/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-25T13:13:39Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Dow Jones Futures Rise After Trump Speech; Nvidia Earnings Loom",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-trump-state-of-the-union-speech-nvidia-earnings/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-02-25T13:13:09Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Michael Saylor Hits 100 Bitcoin Buys\u2014And He's Not Stopping Despite A $7 Billion Loss",
+          "url": "https://finance.yahoo.com/news/michael-saylor-hits-100-bitcoin-133058007.html",
+          "source": "yahoo",
+          "published": "2026-02-25T13:30:58Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "What Happens When the S&P 500 Gets Stuck in a Range?",
+          "url": "https://finance.yahoo.com/news/happens-p-500-gets-stuck-130001375.html",
+          "source": "yahoo",
+          "published": "2026-02-25T13:00:01Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia\u2019s new AI system Vera Rubin is 10 times more efficient than its predecessor \u2014 here\u2019s a first look",
+          "url": "https://www.cnbc.com/2026/02/25/first-look-at-nvidias-ai-system-vera-rubin-and-how-it-beats-blackwell.html",
+          "source": "cnbc_top",
+          "published": "Wed, 25 Feb 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why AMD's megadeal with Meta shows Nvidia is still the best game in town",
+          "url": "https://www.cnbc.com/2026/02/24/why-amds-megadeal-with-meta-shows-nvidia-is-still-the-best-game-in-town.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 20:22:29 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia, Microsoft back self-driving firm Wayve as it hits $8.6 billion valuation",
+          "url": "https://www.cnbc.com/2026/02/24/wayve-fundraise-nvidia-microsoft.html",
+          "source": "cnbc_top",
+          "published": "Wed, 25 Feb 2026 09:30:39 GMT",
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Head of Amazon\u2019s AGI lab is leaving the company",
+          "url": "https://www.cnbc.com/2026/02/24/head-of-amazons-agi-lab-is-leaving-the-company.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 22:56:50 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft and SpaceX's Starlink partner on global community internet effort",
+          "url": "https://www.cnbc.com/2026/02/24/microsoft-spacex-starlink-global-internet.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 19:16:18 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple to move some Mac Mini production to U.S. this year as part of effort to boost domestic manufacturing",
+          "url": "https://www.cnbc.com/2026/02/24/apple-to-move-some-mac-mini-production-to-us-in-2026.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 19:44:26 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta strikes AI chip deal with AMD days after committing to deploy millions of Nvidia GPUs",
+          "url": "https://www.cnbc.com/2026/02/24/meta-to-use-6gw-of-amd-gpus-days-after-expanded-nvidia-ai-chip-deal.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Feb 2026 15:26:27 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia\u2019s new AI system Vera Rubin is 10 times more efficient than its predecessor \u2014 here\u2019s a first look",
+          "url": "https://www.cnbc.com/2026/02/25/first-look-at-nvidias-ai-system-vera-rubin-and-how-it-beats-blackwell.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Feb 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "These are the European tech stocks to watch after Nvidia reports earnings \u2014 and how strong or weak results would affect them",
+          "url": "https://www.cnbc.com/2026/02/25/european-tech-stocks-nvidia-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Feb 2026 07:26:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Head of Amazon\u2019s AGI lab is leaving the company",
+          "url": "https://www.cnbc.com/2026/02/24/head-of-amazons-agi-lab-is-leaving-the-company.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 22:56:50 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why AMD's megadeal with Meta shows Nvidia is still the best game in town",
+          "url": "https://www.cnbc.com/2026/02/24/why-amds-megadeal-with-meta-shows-nvidia-is-still-the-best-game-in-town.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 20:22:29 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple to move some Mac Mini production to U.S. this year as part of effort to boost domestic manufacturing",
+          "url": "https://www.cnbc.com/2026/02/24/apple-to-move-some-mac-mini-production-to-us-in-2026.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 19:44:26 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft and SpaceX's Starlink partner on global community internet effort",
+          "url": "https://www.cnbc.com/2026/02/24/microsoft-spacex-starlink-global-internet.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 19:16:18 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic updates Claude Cowork tool built to give the average office worker a productivity boost",
+          "url": "https://www.cnbc.com/2026/02/24/anthropic-claude-cowork-office-worker.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 21:40:05 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google to build data center in Minnesota with new solar, wind power and battery storage",
+          "url": "https://www.cnbc.com/2026/02/24/google-to-build-data-center-in-minnesota-with-solar-wind-and-battery-storage.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 19:06:16 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo opens robotaxi service to 'select riders' in Houston, Dallas, San Antonio and Orlando",
+          "url": "https://www.cnbc.com/2026/02/24/waymo-opens-robotaxi-service-to-select-riders-in-4-more-us-cities.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta-AMD chip deal, Wall Street's AI angst, Trump's State of the Union and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/02/24/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 13:51:59 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia earnings report collides with Wall Street skepticism over AI spending",
+          "url": "https://www.cnbc.com/2026/02/24/nvidia-earnings-collide-with-wall-street-skepticism-over-ai-spending.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 13:00:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta strikes AI chip deal with AMD days after committing to deploy millions of Nvidia GPUs",
+          "url": "https://www.cnbc.com/2026/02/24/meta-to-use-6gw-of-amd-gpus-days-after-expanded-nvidia-ai-chip-deal.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Feb 2026 15:26:27 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "BOE",
+        "BOJ",
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Manufacturing",
+        "Services Index",
+        "central bank",
+        "inflation",
+        "interest rate",
+        "manufacturing"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Japanese Prime Minister Sanae Takaichi voice apprehension to Bank of Japan Governor Kazuo Ueda over more rate hikes France Business Confidence for February 2026: 102.0 (10",
+        "CBI Distributive Trades for February 2026: -43.0 (-17.0 forecast; -17.0 previous) U.S.",
+        "ADP Employment Change Weekly for February 7, 2026: 12.75k (10.25k previous) Canada Manufacturing Sales Prel for January 2026: -3.3% m/m (0.4% m/m forecast; 0.6% m/m previous) U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-02-24"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "Danish government agency to ditch Microsoft software (2025)",
+          "url": "https://therecord.media/denmark-digital-agency-microsoft-digital-independence",
+          "hn_score": 329,
+          "comments": 187,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: A real-time strategy game that AI agents can play",
+          "url": "https://llmskirmish.com/",
+          "hn_score": 94,
+          "comments": 34,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "LLM=True",
+          "url": "https://blog.codemine.be/posts/2026/20260222-be-quiet/",
+          "hn_score": 151,
+          "comments": 99,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Mercury 2: Fast reasoning LLM powered by diffusion",
+          "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-2",
+          "hn_score": 262,
+          "comments": 106,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "LLM"
+          ]
+        },
+        {
+          "title": "Show HN: Moonshine Open-Weights STT models \u2013 higher accuracy than WhisperLargev3",
+          "url": "https://github.com/moonshine-ai/moonshine",
+          "hn_score": 273,
+          "comments": 63,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Mac\u00a0mini will be made at a new facility in Houston",
+          "url": "https://www.apple.com/newsroom/2026/02/apple-accelerates-us-manufacturing-with-mac-mini-production/",
+          "hn_score": 552,
+          "comments": 545,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Amazon accused of widespread scheme to inflate prices across the economy",
+          "url": "https://www.thebignewsletter.com/p/amazon-busted-for-widespread-price",
+          "hn_score": 524,
+          "comments": 187,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Anthropic Drops Flagship Safety Pledge",
+          "url": "https://time.com/7380854/exclusive-anthropic-drops-flagship-safety-pledge/",
+          "hn_score": 432,
+          "comments": 207,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 13,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AMD": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 38,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}
