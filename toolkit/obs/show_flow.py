@@ -566,7 +566,7 @@ def run_series_show(
     except Exception as e:
         print(f"\nERROR during show: {e}", file=sys.stderr)
     finally:
-        # 6. Stop streaming when show is done
+        # 6. Stop streaming and close OBS when show is done
         if stream and not already_live:
             print("\nStopping stream ...")
             try:
@@ -575,6 +575,11 @@ def run_series_show(
                 print("Stream stopped (verified)")
             except Exception as e:
                 print(f"ERROR: stop_streaming failed: {e}", file=sys.stderr)
+            try:
+                obs_client.kill_obs()
+                print("OBS closed")
+            except Exception as e:
+                print(f"ERROR: kill_obs failed: {e}", file=sys.stderr)
         elif stream and already_live:
             print("\n(Stream was already live before show — leaving it running)")
 
@@ -653,7 +658,7 @@ def run_show(
     except Exception as e:
         print(f"\nERROR during show: {e}", file=sys.stderr)
     finally:
-        # 6. Stop streaming
+        # 6. Stop streaming and close OBS
         if stream and not already_live:
             print("\nStopping stream ...")
             try:
@@ -662,6 +667,11 @@ def run_show(
                 print("Stream stopped (verified)")
             except Exception as e:
                 print(f"ERROR: stop_streaming failed: {e}", file=sys.stderr)
+            try:
+                obs_client.kill_obs()
+                print("OBS closed")
+            except Exception as e:
+                print(f"ERROR: kill_obs failed: {e}", file=sys.stderr)
         elif stream and already_live:
             print("\n(Stream was already live before show — leaving it running)")
 

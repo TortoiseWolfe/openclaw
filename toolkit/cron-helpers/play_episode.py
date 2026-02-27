@@ -375,7 +375,7 @@ def play(episode_name: str, stream: bool = True) -> None:
                       file=sys.stderr)
                 break
 
-    # 7. Stop streaming
+    # 7. Stop streaming and close OBS
     if stream:
         print("\nStopping stream ...")
         try:
@@ -383,6 +383,11 @@ def play(episode_name: str, stream: bool = True) -> None:
             print("Stream stopped (verified)")
         except Exception as e:
             print(f"ERROR: stop_streaming failed: {e}", file=sys.stderr)
+        try:
+            obs_client.kill_obs()
+            print("OBS closed")
+        except Exception as e:
+            print(f"ERROR: kill_obs failed: {e}", file=sys.stderr)
 
     print(f"\nDone: {episode_name}")
 

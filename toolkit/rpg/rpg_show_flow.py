@@ -389,7 +389,7 @@ def run_game_night(
                 session_proc.kill()
                 session_proc.wait(timeout=5)
 
-        # 7b. Stop streaming
+        # 7b. Stop streaming and close OBS
         if stream and not already_live:
             print("\nStopping stream ...")
             try:
@@ -398,6 +398,11 @@ def run_game_night(
                 print("Stream stopped (verified)")
             except Exception as e:
                 print(f"ERROR: stop_streaming failed: {e}", file=sys.stderr)
+            try:
+                obs_client.kill_obs()
+                print("OBS closed")
+            except Exception as e:
+                print(f"ERROR: kill_obs failed: {e}", file=sys.stderr)
         elif stream and already_live:
             print("\n(Stream was already live — leaving it running)")
 

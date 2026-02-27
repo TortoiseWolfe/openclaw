@@ -161,6 +161,11 @@ def main():
             print("Stream stopped")
         except Exception as e:
             print(f"Stream stop error: {e}")
+        try:
+            obs_client.kill_obs()
+            print("OBS closed")
+        except Exception as e:
+            print(f"OBS close error: {e}")
 
     sys.exit(returncode or 0)
 

@@ -8,8 +8,10 @@ Usage (inside Docker):
     python3 /app/toolkit/obs/obs_health_check.py
 """
 
+import json
 import os
 import sys
+import urllib.request
 from datetime import datetime, timezone
 
 import obs_client
@@ -55,6 +57,17 @@ def main() -> None:
         print(f"OBS launcher not reachable: {e}", flush=True)
         print("Start obs_launcher.py on the Windows host.", flush=True)
         sys.exit(1)
+
+    # Report launcher uptime if /health endpoint is available
+    try:
+        health_resp = urllib.request.urlopen(
+            f"{obs_client.LAUNCHER_URL}/health", timeout=5)
+        health = json.loads(health_resp.read())
+        uptime_min = health.get("uptime_seconds", 0) // 60
+        print(f"Launcher uptime: {uptime_min}m (PID {health.get('pid')})",
+              flush=True)
+    except Exception:
+        pass  # /health not available (older launcher version)
 
     if running:
         # OBS is running — report status
