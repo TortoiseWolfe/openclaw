@@ -81,12 +81,12 @@ def print_infrastructure():
   │  ┌──────────┐   ┌──────────────┐   ┌────────────────────────────┐   │
   │  │  Ollama  │   │ MCP Gateway  │   │   Moltbot Gateway          │   │
   │  │          │   │              │   │                            │   │
-  │  │ qwen3:14b│◄──│ 139 tools    │◄──│ Cron scheduler             │   │
+  │  │ qwen3:8b │◄──│ 139 tools    │◄──│ Cron scheduler             │   │
   │  │ (local   │   │ (LinkedIn,   │   │ Trade engine               │   │
   │  │  LLM)    │   │  Gmail,      │   │ Agent sessions             │   │
   │  │          │   │  Playwright, │   │                            │   │
   │  │ RTX 3060 │   │  GitHub,     │   │ Python scripts run here    │   │
-  │  │ 12GB GPU │   │  YouTube...) │   │ via: docker compose exec   │   │
+  │  │ Ti 8GB   │   │  YouTube...) │   │ via: docker compose exec   │   │
   │  └──────────┘   └──────────────┘   └─────────────┬──────────────┘   │
   │                                                  │                  │
   │                                   ┌──────────────▼──────────────┐   │
@@ -220,6 +220,27 @@ def print_pipeline():
                   f"entry: {p['entry']:.5f}  P&L: ${pnl:+,.2f}")
     else:
         logger.info("  │   (no trading state yet)")
+
+    logger.info("""  │
+  9:05 AM ── Fractal Fund ───────────────────────────────────────────
+  │          Independent paper fund using Williams Fractal breakouts.
+  │          Separate balance, positions, and trade IDs (F-prefix).
+  │          Same stop/close logic, different entry signals.
+  │""")
+
+    fractal = load_json(os.path.join(PRIVATE, "fractal-state.json"))
+    if fractal:
+        fbal = fractal.get("balance", 0)
+        fn_open = len(fractal.get("open", []))
+        fn_closed = len(fractal.get("closed", []))
+        logger.info(f"  │   Current: ${fbal:,.2f} balance, "
+              f"{fn_open} open, {fn_closed} closed all-time")
+        for p in fractal.get("open", []):
+            pnl = p.get("unrealized_pnl", 0)
+            logger.info(f"  │     {p['symbol']:8s} {p['direction']:5s} "
+                  f"entry: {p['entry']:.5f}  P&L: ${pnl:+,.2f}")
+    else:
+        logger.info("  │   (no fractal fund state yet)")
 
     logger.info("""  │
   9:20 AM ── Post-Mortem Analysis ─────────────────────────────────────
@@ -381,6 +402,24 @@ def print_current_status():
   post-mortem feedback loop accumulates data.
 """)
 
+    fractal = load_json(os.path.join(PRIVATE, "fractal-state.json"))
+    if fractal:
+        fbal = fractal.get("balance", 0)
+        fpeak = fractal.get("peak_balance", 10000)
+        fdd = (fpeak - fbal) / fpeak * 100 if fpeak > 0 else 0
+        fn_open = len(fractal.get("open", []))
+        fn_closed = len(fractal.get("closed", []))
+        funrealized = sum(p.get("unrealized_pnl", 0) for p in fractal.get("open", []))
+
+        logger.info(f"""  Fractal fund (Williams Fractal breakouts — separate $10,000 seed):
+
+    Balance:     ${fbal:,.2f}
+    Unrealized:  ${funrealized:+,.2f}    (from {fn_open} open positions)
+    Peak:        ${fpeak:,.2f}
+    Drawdown:    {fdd:.1f}%
+    Total trades:{fn_closed} closed all-time
+""")
+
 
 def print_whats_next():
     logger.info("""
@@ -392,6 +431,8 @@ def print_whats_next():
   2. Eventually: real money (needs 3+ months profitable paper trading)
 
   Recently completed:
+    + Fractal paper fund — independent Williams Fractal breakout strategy
+      running side by side with the main trend/SMA fund for comparison
     + Correlation guard — prevents doubling up on correlated positions
       (forex: max 1 position per currency side, stocks: max 1 per sector)
     + News sentiment now dampens/vetoes trades that disagree with market mood

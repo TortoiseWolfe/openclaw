@@ -115,6 +115,65 @@ def section_positions(state):
     return "\n".join(lines)
 
 
+# ── Fractal Fund ────────────────────────────────────────────────────
+
+def section_fractal(state):
+    if state is None:
+        return "## Fractal Fund (Williams Fractal Breakout)\nN/A — fractal-state.json not found\n"
+
+    balance = state.get("balance", 0)
+    peak = state.get("peak_balance", 10000.0)
+    dd_pct = (peak - balance) / peak * 100 if peak > 0 else 0
+    open_pos = state.get("open", [])
+    closed = state.get("closed", [])
+    unrealized = sum(p.get("unrealized_pnl", 0) for p in open_pos)
+    equity = balance + unrealized
+
+    lines = [
+        "## Fractal Fund (Williams Fractal Breakout)",
+        f"Balance:      ${balance:,.2f}",
+        f"Equity:       ${equity:,.2f}  (unrealized: ${unrealized:+,.2f})",
+        f"Peak:         ${peak:,.2f}  (drawdown: {dd_pct:.1f}%)",
+        f"Positions:    {len(open_pos)} open, {len(closed)} closed",
+        "",
+    ]
+
+    if open_pos:
+        lines.append(f"{'Symbol':<10} {'Dir':<6} {'Entry':>10} {'Current':>10} {'P&L':>10} {'SL':>10} {'TP':>10}")
+        lines.append(f"{'─'*10} {'─'*6} {'─'*10} {'─'*10} {'─'*10} {'─'*10} {'─'*10}")
+        for p in open_pos:
+            sym = p.get("symbol", "?")
+            d = p.get("direction", "?")[:5]
+            entry = p.get("entry", 0)
+            cur = p.get("current_price", entry)
+            pnl = p.get("unrealized_pnl", 0)
+            sl = p.get("stop_loss", 0)
+            tp = p.get("take_profit", 0)
+            fmt = ".5f" if entry < 10 else ".2f"
+            lines.append(
+                f"{sym:<10} {d:<6} {entry:>10{fmt}} {cur:>10{fmt}} "
+                f"{'${:+,.2f}'.format(pnl):>10} {sl:>10{fmt}} {tp:>12{fmt}}"
+            )
+        lines.append("")
+
+    if closed:
+        recent = closed[-5:]
+        lines.append("Recent Closed:")
+        lines.append(f"{'ID':<6} {'Symbol':<10} {'Dir':<6} {'P&L':>10} {'Reason':<16} {'Date':<12}")
+        lines.append(f"{'─'*6} {'─'*10} {'─'*6} {'─'*10} {'─'*16} {'─'*12}")
+        for t in recent:
+            tid = t.get("id", "?")
+            sym = t.get("symbol", "?")
+            d = t.get("direction", "?")[:5]
+            pnl = t.get("pnl_dollars", 0)
+            reason = t.get("close_reason", "?")[:16]
+            dt = t.get("date_closed", "?")
+            lines.append(f"{tid:<6} {sym:<10} {d:<6} {'${:+,.2f}'.format(pnl):>10} {reason:<16} {dt:<12}")
+        lines.append("")
+
+    return "\n".join(lines)
+
+
 # ── Recent Closed Trades ────────────────────────────────────────────
 
 def section_closed(state):
@@ -332,6 +391,7 @@ def section_backtest(report):
 
 def main():
     state = load_json(os.path.join(PRIVATE, "paper-state.json"))
+    fractal_state = load_json(os.path.join(PRIVATE, "fractal-state.json"))
     lessons = load_json(os.path.join(PRIVATE, "trade-lessons.json"))
     watchlist = load_json(os.path.join(CONFIG, "watchlist.json"))
     curriculum = load_text(os.path.join(EDU, "curriculum-progress.md"))
@@ -343,6 +403,7 @@ def main():
     print(section_portfolio(state))
     print(section_positions(state))
     print(section_closed(state))
+    print(section_fractal(fractal_state))
     print(section_performance(lessons))
     print(section_education(curriculum))
     print(section_gates(state, lessons, curriculum, watchlist))
