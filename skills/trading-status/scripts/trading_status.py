@@ -355,16 +355,14 @@ def section_gates(state, lessons, curriculum_text, watchlist):
 
 # ── Backtest Snapshot ────────────────────────────────────────────────
 
-def section_backtest(report):
-    if report is None:
-        return "## Backtest Snapshot\nN/A — validation-report.json not found\n"
-
+def _format_backtest(report, label):
+    """Format a single backtest report block."""
     m = report.get("metrics", {})
     cfg = report.get("config", {})
     gen = report.get("generated", "?")
 
     lines = [
-        "## Backtest Snapshot",
+        label,
         f"Period:       {cfg.get('start', '?')} to {cfg.get('end', '?')} ({cfg.get('symbol_count', '?')} symbols)",
         f"Generated:    {gen[:10]}",
         f"Trades:       {m.get('total_trades', '?')}",
@@ -376,7 +374,6 @@ def section_backtest(report):
         "",
     ]
 
-    # Monte Carlo
     mc = report.get("monte_carlo", {})
     if mc:
         lines.append(f"Monte Carlo:  {mc.get('profitable_pct', 0)*100:.0f}% profitable, "
@@ -385,6 +382,22 @@ def section_backtest(report):
         lines.append("")
 
     return "\n".join(lines)
+
+
+def section_backtest(report, fractal_report=None):
+    if report is None and fractal_report is None:
+        return "## Backtest Snapshot\nN/A — no validation reports found\n"
+
+    parts = []
+    if report is not None:
+        strategy = report.get("strategy", "default")
+        label = "## Backtest — Main Fund (Trend/SMA)" if strategy != "fractal" else "## Backtest — Fractal Fund"
+        parts.append(_format_backtest(report, label))
+
+    if fractal_report is not None:
+        parts.append(_format_backtest(fractal_report, "## Backtest — Fractal Fund"))
+
+    return "\n".join(parts)
 
 
 # ── Main ─────────────────────────────────────────────────────────────
@@ -396,6 +409,7 @@ def main():
     watchlist = load_json(os.path.join(CONFIG, "watchlist.json"))
     curriculum = load_text(os.path.join(EDU, "curriculum-progress.md"))
     report = load_json(os.path.join(PRIVATE, "validation", "validation-report.json"))
+    fractal_report = load_json(os.path.join(PRIVATE, "validation", "validation-report-fractal.json"))
 
     today = datetime.now(ET).date().isoformat()
     print(f"# Trading System Status — {today}")
@@ -407,7 +421,7 @@ def main():
     print(section_performance(lessons))
     print(section_education(curriculum))
     print(section_gates(state, lessons, curriculum, watchlist))
-    print(section_backtest(report))
+    print(section_backtest(report, fractal_report))
 
 
 if __name__ == "__main__":

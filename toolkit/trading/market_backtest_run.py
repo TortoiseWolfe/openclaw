@@ -741,6 +741,10 @@ def main():
     passes["verdict_tier"] = verdict
     report_data["pass_fail"] = passes
 
+    strategy = args.get("strategy")
+    if strategy:
+        report_data["strategy"] = strategy
+        write_json_report(os.path.join(VALIDATION_DIR, f"validation-report-{strategy}.json"), report_data)
     write_json_report(os.path.join(VALIDATION_DIR, "validation-report.json"), report_data)
 
     md_path = write_markdown_report(
