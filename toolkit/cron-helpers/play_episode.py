@@ -30,10 +30,10 @@ from trading_common import ET
 
 import obs_client
 from path_utils import RENDERS_DIR, to_windows_path
+from parse_episode import parse_schedule as _parse_schedule_raw
 from show_flow import _fuzzy_find_episode_dir
 
 EPISODES_JSON = "/home/node/clawd-twitch/episodes.json"
-SCHEDULE_FILE = "/home/node/clawd-twitch/schedule.md"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 VIDEO_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "video")
@@ -43,29 +43,32 @@ PLAYBACK_SCENE = os.environ.get("OBS_PLAYBACK_SCENE", "Episode Playback")
 STREAM_KEY = os.environ.get("OBS_STREAM_KEY", "")
 
 
+def _get_video_duration(video_path: str) -> int:
+    """Get video duration in seconds via ffprobe. Returns 0 on failure."""
+    try:
+        result = subprocess.run(
+            ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+             "-of", "default=noprint_wrappers=1:nokey=1", video_path],
+            capture_output=True, text=True, timeout=30,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return int(float(result.stdout.strip()))
+    except Exception as e:
+        print(f"WARNING: ffprobe failed for {video_path}: {e}", file=sys.stderr)
+    return 0
+
+
+def _topic_to_slug(topic: str) -> str:
+    """Convert episode topic to filesystem slug."""
+    return re.sub(r"\s+", "-", re.sub(r"[^a-z0-9\s-]", "", topic.lower().replace("&", "and")).strip())
+
+
 def parse_schedule() -> list[dict]:
-    """Parse schedule.md into a list of episode dicts."""
-    if not os.path.isfile(SCHEDULE_FILE):
-        return []
-    rows = []
-    with open(SCHEDULE_FILE) as f:
-        for line in f:
-            if "|" not in line or line.strip().startswith("|--"):
-                continue
-            cells = [c.strip() for c in line.split("|") if c.strip()]
-            if len(cells) < 6:
-                continue
-            date, _time, topic, series, _type, status = cells[:6]
-            # Skip header row
-            if date == "Date":
-                continue
-            rows.append({
-                "date": date,
-                "topic": topic,
-                "series": series,
-                "status": status.lower(),
-                "slug": re.sub(r"\s+", "-", re.sub(r"[^a-z0-9\s-]", "", topic.lower().replace("&", "and")).strip()),
-            })
+    """Parse schedule.md into a list of episode dicts with slugs."""
+    rows = _parse_schedule_raw()
+    for row in rows:
+        row["status"] = row.get("status", "").lower()
+        row["slug"] = _topic_to_slug(row.get("topic", ""))
     return rows
 
 
@@ -105,13 +108,7 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
             matches = sorted(glob.glob(pattern))
             if matches:
                 video_path = matches[-1]
-                result = subprocess.run(
-                    ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-                     "-of", "default=noprint_wrappers=1:nokey=1", video_path],
-                    capture_output=True, text=True, timeout=30,
-                )
-                duration_sec = int(float(result.stdout.strip())) if result.returncode == 0 and result.stdout.strip() else 0
-                return video_path, duration_sec
+                return video_path, _get_video_duration(video_path)
 
     # Check flat episode subdirectory (legacy)
     episode_dir = os.path.join(RENDERS_DIR, slug)
@@ -120,18 +117,7 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
         matches = sorted(glob.glob(pattern))
         if matches:
             video_path = matches[-1]
-            # Get duration from ffprobe
-            result = subprocess.run(
-                ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-                 "-of", "default=noprint_wrappers=1:nokey=1", video_path],
-                capture_output=True, text=True, timeout=30,
-            )
-            if result.returncode != 0 or not result.stdout.strip():
-                print(f"WARNING: ffprobe failed for {video_path}, using duration=0", file=sys.stderr)
-                duration_sec = 0
-            else:
-                duration_sec = int(float(result.stdout.strip()))
-            return video_path, duration_sec
+            return video_path, _get_video_duration(video_path)
 
     # Fuzzy fallback: tolerate 'and'/'the' differences in slug
     for series_base in sorted(glob.glob(os.path.join(RENDERS_DIR, "*"))):
@@ -142,25 +128,13 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
             hits = sorted(glob.glob(os.path.join(match, "content-*.mp4")))
             if hits:
                 video_path = hits[-1]
-                result = subprocess.run(
-                    ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-                     "-of", "default=noprint_wrappers=1:nokey=1", video_path],
-                    capture_output=True, text=True, timeout=30,
-                )
-                duration_sec = int(float(result.stdout.strip())) if result.returncode == 0 and result.stdout.strip() else 0
-                return video_path, duration_sec
+                return video_path, _get_video_duration(video_path)
     match = _fuzzy_find_episode_dir(RENDERS_DIR, slug)
     if match:
         hits = sorted(glob.glob(os.path.join(match, "content-*.mp4")))
         if hits:
             video_path = hits[-1]
-            result = subprocess.run(
-                ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-                 "-of", "default=noprint_wrappers=1:nokey=1", video_path],
-                capture_output=True, text=True, timeout=30,
-            )
-            duration_sec = int(float(result.stdout.strip())) if result.returncode == 0 and result.stdout.strip() else 0
-            return video_path, duration_sec
+            return video_path, _get_video_duration(video_path)
 
     # Fall back to episodes.json registry (legacy)
     if not os.path.isfile(EPISODES_JSON):
@@ -337,8 +311,13 @@ def play(episode_name: str, stream: bool = True) -> None:
                 "key": STREAM_KEY,
             })
         print("Starting Twitch stream ...")
-        obs_client.start_streaming()
-        print("LIVE on Twitch (verified)")
+        try:
+            obs_client.start_streaming()
+            print("LIVE on Twitch (verified)")
+        except RuntimeError as e:
+            print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
+            obs_client.kill_obs()
+            sys.exit(1)
     else:
         print("(--no-stream: skipping Twitch stream)")
 

@@ -904,6 +904,27 @@
         "promptMode": "minimal",
         "timeoutSeconds": 7200
       }
+    },
+    {
+      "id": "twitch-token-refresh",
+      "name": "Twitch token refresh",
+      "description": "Proactively refresh Twitch OAuth token every 3 hours to prevent token death. Twitch rotating refresh tokens go stale if the container is down when the access token expires — this keeps them alive.",
+      "enabled": true,
+      "agentId": "main",
+      "deleteAfterRun": false,
+      "sessionPerRun": true,
+      "sessionTarget": "isolated",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */3 * * *",
+        "tz": "America/New_York"
+      },
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Use the exec tool to run: python3 /app/toolkit/twitch/twitch_token_refresh.py. Report the output. If the refresh token is dead, report the re-authentication instructions.",
+        "deliver": false,
+        "timeoutSeconds": 120
+      }
     }
   ]
 }

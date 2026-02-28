@@ -55,6 +55,11 @@ def _is_obs_running() -> bool:
         return False
 
 
+def _ps_escape(s: str) -> str:
+    """Escape a string for safe use inside PowerShell double quotes."""
+    return s.replace("`", "``").replace('"', '`"').replace("$", "`$")
+
+
 def _launch_obs(obs_path: str) -> bool:
     """Start OBS on Windows via powershell."""
     if _is_obs_running():
@@ -62,9 +67,11 @@ def _launch_obs(obs_path: str) -> bool:
         return True
     try:
         obs_dir = ntpath.dirname(obs_path)
+        safe_path = _ps_escape(obs_path)
+        safe_dir = _ps_escape(obs_dir)
         subprocess.Popen(
             ["/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe", "-Command",
-             f'Start-Process "{obs_path}" -WorkingDirectory "{obs_dir}"'],
+             f'Start-Process "{safe_path}" -WorkingDirectory "{safe_dir}"'],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
         )
         _log.info("OBS launch command sent")

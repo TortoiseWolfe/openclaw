@@ -553,9 +553,14 @@ def run_series_show(
                     "key": stream_key,
                 })
             print("Starting Twitch stream ...")
-            obs_client.start_streaming()
-            _stream_started_by_us = True
-            print("LIVE on Twitch (verified)")
+            try:
+                obs_client.start_streaming()
+                _stream_started_by_us = True
+                print("LIVE on Twitch (verified)")
+            except RuntimeError as e:
+                print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
+                obs_client.kill_obs()
+                return
     else:
         print("\n(--no-stream: skipping Twitch stream)")
 
@@ -645,9 +650,14 @@ def run_show(
                     "key": stream_key,
                 })
             print("Starting Twitch stream ...")
-            obs_client.start_streaming()
-            _stream_started_by_us = True
-            print("LIVE on Twitch (verified)")
+            try:
+                obs_client.start_streaming()
+                _stream_started_by_us = True
+                print("LIVE on Twitch (verified)")
+            except RuntimeError as e:
+                print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
+                obs_client.kill_obs()
+                return
     else:
         print("\n(--no-stream: skipping Twitch stream)")
 

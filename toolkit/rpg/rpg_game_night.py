@@ -114,9 +114,14 @@ def main():
                 "service": "Twitch",
                 "key": stream_key,
             })
-        obs_client.start_streaming()
-        _stream_started = True
-        print("LIVE on Twitch")
+        try:
+            obs_client.start_streaming()
+            _stream_started = True
+            print("LIVE on Twitch")
+        except RuntimeError as e:
+            print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
+            obs_client.kill_obs()
+            sys.exit(1)
     else:
         _stream_started = True  # track existing stream so crash triggers emergency stop
         print("Already streaming — joining existing stream")

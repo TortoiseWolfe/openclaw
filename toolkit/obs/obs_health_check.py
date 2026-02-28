@@ -12,9 +12,12 @@ import json
 import os
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import obs_client
+
+ET = ZoneInfo("America/New_York")
 
 SCHEDULE_FILE = "/home/node/clawd-twitch/schedule.md"
 
@@ -27,7 +30,7 @@ def is_stream_scheduled_today() -> str | None:
     if not os.path.isfile(SCHEDULE_FILE):
         return None
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(ET).strftime("%Y-%m-%d")
     with open(SCHEDULE_FILE) as f:
         for line in f:
             if "|" not in line or line.strip().startswith("|--"):
