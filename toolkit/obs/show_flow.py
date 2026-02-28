@@ -22,6 +22,7 @@ Env vars (all optional, sensible defaults):
 """
 
 import atexit
+import functools
 import glob
 import os
 import re
@@ -55,34 +56,10 @@ def _fuzzy_find_episode_dir(base: str, slug: str) -> str | None:
 
 # ── Emergency stream shutdown on process kill ──────────────────
 # If the cron job timeout kills us (SIGTERM), stop the stream first.
-_stream_started_by_us = False
+_stream_flag = [False]
 
-
-def _emergency_stop_stream(signum=None, frame=None) -> None:
-    """Best-effort stream stop on process termination."""
-    global _stream_started_by_us
-    if not _stream_started_by_us:
-        return
-    try:
-        print(f"\n!! Emergency stream stop (signal={signum}) ...", file=sys.stderr)
-        obs_client.stop_streaming(verify_timeout=5)
-        print("!! Stream stopped", file=sys.stderr)
-    except Exception as e:
-        # Last resort: fire and forget
-        try:
-            cl = obs_client._connect()
-            cl.stop_stream()
-            cl.disconnect()
-        except Exception:
-            pass
-        print(f"!! Emergency stop error: {e}", file=sys.stderr)
-    _stream_started_by_us = False
-    if signum is not None:
-        sys.exit(1)
-
-
-signal.signal(signal.SIGTERM, _emergency_stop_stream)
-atexit.register(_emergency_stop_stream)
+signal.signal(signal.SIGTERM, functools.partial(obs_client.emergency_stop_stream, _stream_flag))
+atexit.register(obs_client.emergency_stop_stream, _stream_flag)
 
 
 @dataclass
@@ -535,7 +512,7 @@ def run_series_show(
     print("All scenes ready")
 
     # 4. Set stream key and go live (or join existing stream)
-    global _stream_started_by_us
+    global _stream_flag
     already_live = False
     if stream:
         try:
@@ -555,7 +532,7 @@ def run_series_show(
             print("Starting Twitch stream ...")
             try:
                 obs_client.start_streaming()
-                _stream_started_by_us = True
+                _stream_flag[0] = True
                 print("LIVE on Twitch (verified)")
             except RuntimeError as e:
                 print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
@@ -576,7 +553,7 @@ def run_series_show(
             print("\nStopping stream ...")
             try:
                 obs_client.stop_streaming()
-                _stream_started_by_us = False
+                _stream_flag[0] = False
                 print("Stream stopped (verified)")
             except Exception as e:
                 print(f"ERROR: stop_streaming failed: {e}", file=sys.stderr)
@@ -632,7 +609,7 @@ def run_show(
     print("All scenes ready")
 
     # 4. Set stream key and go live (or join existing stream)
-    global _stream_started_by_us
+    global _stream_flag
     already_live = False
     if stream:
         try:
@@ -652,7 +629,7 @@ def run_show(
             print("Starting Twitch stream ...")
             try:
                 obs_client.start_streaming()
-                _stream_started_by_us = True
+                _stream_flag[0] = True
                 print("LIVE on Twitch (verified)")
             except RuntimeError as e:
                 print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
@@ -673,7 +650,7 @@ def run_show(
             print("\nStopping stream ...")
             try:
                 obs_client.stop_streaming()
-                _stream_started_by_us = False
+                _stream_flag[0] = False
                 print("Stream stopped (verified)")
             except Exception as e:
                 print(f"ERROR: stop_streaming failed: {e}", file=sys.stderr)

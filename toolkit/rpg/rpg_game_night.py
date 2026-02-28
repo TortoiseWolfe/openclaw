@@ -9,6 +9,7 @@ script with no flags to get wrong.
 """
 
 import atexit
+import functools
 import os
 import signal
 import subprocess
@@ -42,31 +43,11 @@ CRAWL_TEXT = (
 
 # ── Stream safety ────────────────────────────────────────────────
 
-_stream_started = False
+_stream_flag = [False]
 
-
-def _emergency_stop(signum=None, frame=None):
-    """Best-effort stream stop on crash or SIGTERM."""
-    global _stream_started
-    if _stream_started:
-        try:
-            obs_client.stop_streaming(verify_timeout=5)
-        except Exception:
-            try:
-                cl = obs_client._connect()
-                cl.stop_stream()
-                cl.disconnect()
-            except Exception:
-                pass
-        _stream_started = False
-        print("Emergency stream stop", file=sys.stderr)
-    if signum is not None:
-        sys.exit(1)
-
-
-signal.signal(signal.SIGTERM, _emergency_stop)
-signal.signal(signal.SIGINT, _emergency_stop)
-atexit.register(_emergency_stop)
+signal.signal(signal.SIGTERM, functools.partial(obs_client.emergency_stop_stream, _stream_flag))
+signal.signal(signal.SIGINT, functools.partial(obs_client.emergency_stop_stream, _stream_flag))
+atexit.register(obs_client.emergency_stop_stream, _stream_flag)
 
 
 # ── Helpers ──────────────────────────────────────────────────────
@@ -84,7 +65,7 @@ def run(cmd: list[str]) -> None:
 # ── Main ─────────────────────────────────────────────────────────
 
 def main():
-    global _stream_started
+    global _stream_flag
 
     # 0. Launch OBS — hard requirement
     if not obs_client.is_connected():
@@ -116,14 +97,14 @@ def main():
             })
         try:
             obs_client.start_streaming()
-            _stream_started = True
+            _stream_flag[0] = True
             print("LIVE on Twitch")
         except RuntimeError as e:
             print(f"ERROR: Stream failed to go live: {e}", file=sys.stderr)
             obs_client.kill_obs()
             sys.exit(1)
     else:
-        _stream_started = True  # track existing stream so crash triggers emergency stop
+        _stream_flag[0] = True  # track existing stream so crash triggers emergency stop
         print("Already streaming — joining existing stream")
 
     print(f">> Opening Crawl ({CRAWL_DURATION}s)")
@@ -142,7 +123,7 @@ def main():
         if returncode is not None:
             break
         # Monitor stream health while session runs
-        if _stream_started:
+        if _stream_flag[0]:
             try:
                 if not obs_client.is_streaming():
                     print("WARNING: OBS stream dropped mid-session!", file=sys.stderr)
@@ -159,10 +140,10 @@ def main():
     except Exception as e:
         print(f"Post-session scene error: {e}")
 
-    if _stream_started:
+    if _stream_flag[0]:
         try:
             obs_client.stop_streaming()
-            _stream_started = False
+            _stream_flag[0] = False
             print("Stream stopped")
         except Exception as e:
             print(f"Stream stop error: {e}")

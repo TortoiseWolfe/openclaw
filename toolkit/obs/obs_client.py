@@ -208,6 +208,32 @@ def stop_streaming(verify_timeout: int = 15) -> None:
     raise RuntimeError(f"Stream did not stop within {verify_timeout}s")
 
 
+def emergency_stop_stream(started_flag: list[bool], signum=None, frame=None) -> None:
+    """Best-effort stream stop for signal handlers / atexit.
+
+    Args:
+        started_flag: Mutable [bool] ref — only stops if started_flag[0] is True.
+        signum: Signal number (from signal handler) or None (from atexit).
+    """
+    if not started_flag or not started_flag[0]:
+        return
+    try:
+        print(f"\n!! Emergency stream stop (signal={signum}) ...", file=sys.stderr)
+        stop_streaming(verify_timeout=5)
+        print("!! Stream stopped", file=sys.stderr)
+    except Exception as e:
+        try:
+            cl = _connect()
+            cl.stop_stream()
+            cl.disconnect()
+        except Exception:
+            pass
+        print(f"!! Emergency stop error: {e}", file=sys.stderr)
+    started_flag[0] = False
+    if signum is not None:
+        sys.exit(1)
+
+
 def set_stream_service(service_type: str, settings: dict) -> None:
     """Set the stream service (e.g. Twitch RTMP destination and stream key)."""
     cl = _connect()
