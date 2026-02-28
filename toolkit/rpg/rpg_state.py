@@ -698,6 +698,9 @@ def cmd_update_scene(args: argparse.Namespace) -> None:
         existing.setdefault("height", 900)
         state["map"] = existing
 
+    if getattr(args, "focus", None) is not None:
+        state["session"]["focus_character"] = args.focus if args.focus else None
+
     if getattr(args, "closing_crawl", None) is not None:
         try:
             state["closing_crawl"] = json.loads(args.closing_crawl)
@@ -1688,6 +1691,7 @@ def main() -> None:
     p_scene.add_argument("--narration", help="Scene narration text")
     p_scene.add_argument("--map", help="Map filename")
     p_scene.add_argument("--closing-crawl", help="Closing crawl data (JSON string)")
+    p_scene.add_argument("--focus", help="Character to focus overlay on (show their map)")
 
     p_map = sub.add_parser("set-map", help="Set the current map image")
     p_map.add_argument("--image", required=True, help="Map image filename (in rpg/maps/)")

@@ -843,6 +843,17 @@
    * Strategy: follow the majority of PCs.  Ties go to the server-set map.
    */
   function pickActiveMap(state) {
+    // If session runner is focusing on a specific character, show their map
+    const focus = (state.session || {}).focus_character;
+    if (focus) {
+      const slug = focus.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
+      const focusToken = (state.tokens || {})[slug];
+      if (focusToken && focusToken.map_id) {
+        return focusToken.map_id;
+      }
+    }
+
+    // Fallback: show the map with the most PCs
     const tokens = state.tokens || {};
     const mapData = state.map || {};
     const counts = {};
