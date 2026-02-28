@@ -1275,19 +1275,27 @@
     const mapImage = (state.map || {}).image || '';
     if (!mapImage) { label.style.display = 'none'; return; }
 
-    const name = _mapDisplayName(mapImage);
-    // Show rotation dots when cycling between maps
-    let dots = '';
+    // Use textContent for name (XSS-safe), DOM for rotation dots
+    label.textContent = '';
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = _mapDisplayName(mapImage);
+    label.appendChild(nameSpan);
+
     if (_rotationMaps.length > 1) {
-      dots = '<span class="rotation-dots">';
+      const dotsSpan = document.createElement('span');
+      dotsSpan.className = 'rotation-dots';
       for (let i = 0; i < _rotationMaps.length; i++) {
-        dots += i === _rotationIndex
-          ? '<span class="active">\u25CF</span>'
-          : '\u25CB';
+        if (i === _rotationIndex) {
+          const active = document.createElement('span');
+          active.className = 'active';
+          active.textContent = '\u25CF';
+          dotsSpan.appendChild(active);
+        } else {
+          dotsSpan.appendChild(document.createTextNode('\u25CB'));
+        }
       }
-      dots += '</span>';
+      label.appendChild(dotsSpan);
     }
-    label.innerHTML = name + dots;
     label.style.display = '';
   }
 

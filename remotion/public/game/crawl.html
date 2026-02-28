@@ -217,6 +217,13 @@
   }
   requestAnimationFrame(drawStars);
 
+  // -- Helpers ------------------------------------------------
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str || '';
+    return d.innerHTML;
+  }
+
   // -- Parameters ---------------------------------------------
   const params = new URLSearchParams(window.location.search);
 
@@ -247,7 +254,7 @@
   ];
 
   const textToShow = paragraphs.length > 0 ? paragraphs : defaultParagraphs;
-  crawlDiv.innerHTML = textToShow.map(p => `<p>${p.trim()}</p>`).join('');
+  crawlDiv.innerHTML = textToShow.map(p => `<p>${escapeHtml(p.trim())}</p>`).join('');
 
   // Duration (adjust for text length)
   const baseDuration = parseInt(params.get('duration') || '0', 10);
@@ -282,7 +289,7 @@
         if (c.episode) document.getElementById('episode-label').textContent = `Episode ${c.episode}`;
         if (c.episodeTitle) document.getElementById('episode-title').textContent = c.episodeTitle;
         if (c.paragraphs && c.paragraphs.length) {
-          crawlDiv.innerHTML = c.paragraphs.map(p => `<p>${p}</p>`).join('');
+          crawlDiv.innerHTML = c.paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('');
         }
       })
       .catch(() => {});
