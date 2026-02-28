@@ -30,7 +30,7 @@ from market_trade_decision import (
 
 # ── Fund rules ──────────────────────────────────────────────────────
 
-INITIAL_BALANCE = 5000.0
+INITIAL_BALANCE = 10000.0
 
 FRACTAL_RULES = {
     "max_risk": 0.02,
