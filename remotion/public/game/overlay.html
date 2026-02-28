@@ -445,6 +445,28 @@
   }
   .map-switch-indicator.visible { opacity: 1; }
 
+  /* -- Persistent map label (top-left corner) ------------------- */
+  .map-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.7);
+    color: #FFD700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 90;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  }
+  .map-label .rotation-dots {
+    color: #888;
+    margin-left: 6px;
+    font-size: 11px;
+  }
+  .map-label .rotation-dots .active { color: #FFD700; }
+
   /* -- Bottom bar: narration ---------------------------------- */
   .narration-bar {
     grid-column: 1 / -1;
@@ -580,6 +602,7 @@
         </div>
       </div>
       <div class="map-switch-indicator" id="map-switch-indicator"></div>
+      <div class="map-label" id="map-label" style="display:none"></div>
     </div>
 
     <div class="sidebar" id="sidebar">
@@ -838,39 +861,68 @@
   let currentContainerScale = 1;  // for inverse-scaling tokens
   let mapSwitching = false;       // crossfade lock
 
+  // -- Map rotation state (client-side cycling between maps with PCs) --
+  let _rotationMaps = [];          // maps with visible PCs, sorted
+  let _rotationIndex = 0;          // current position in rotation
+  let _rotationTimer = null;       // setInterval handle
+  const _ROTATION_DWELL = 120000;  // 120 seconds (2 min) per map
+
   /**
    * Pick which map to display when tokens are split across maps.
-   * Strategy: follow the majority of PCs.  Ties go to the server-set map.
+   * Strategy: cycle between all maps with PCs (120s per map).
+   * Falls back to single-map display when all PCs are together.
    */
   function pickActiveMap(state) {
-    // If session runner is focusing on a specific character, show their map
+    // Priority 1: focus_character override (manual CLI)
     const focus = (state.session || {}).focus_character;
     if (focus) {
       const slug = focus.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
       const focusToken = (state.tokens || {})[slug];
-      if (focusToken && focusToken.map_id) {
-        return focusToken.map_id;
-      }
+      if (focusToken && focusToken.map_id) return focusToken.map_id;
     }
 
-    // Fallback: show the map with the most PCs
+    // Collect maps with visible PCs
     const tokens = state.tokens || {};
-    const mapData = state.map || {};
-    const counts = {};
-    for (const [, t] of Object.entries(tokens)) {
-      if (t.type === 'pc' && t.map_id && t.visible) {
-        counts[t.map_id] = (counts[t.map_id] || 0) + 1;
-      }
+    const pcMaps = new Set();
+    for (const t of Object.values(tokens)) {
+      if (t.type === 'pc' && t.map_id && t.visible) pcMaps.add(t.map_id);
     }
-    let best = mapData.image || '';
-    let bestCount = 0;
-    for (const [mapId, count] of Object.entries(counts)) {
-      if (count > bestCount) {
-        bestCount = count;
-        best = mapId;
-      }
+    const mapList = [...pcMaps].sort();
+
+    // Single map — no rotation needed
+    if (mapList.length <= 1) {
+      _stopRotation();
+      return mapList[0] || (state.map || {}).image || '';
     }
-    return best;
+
+    // Multi-map — start/update rotation cycle
+    const key = mapList.join(',');
+    const prevKey = _rotationMaps.join(',');
+    if (key !== prevKey) {
+      // Map set changed — preserve current map if still valid
+      const currentMap = _rotationMaps[_rotationIndex];
+      _rotationMaps = mapList;
+      const newIdx = mapList.indexOf(currentMap);
+      _rotationIndex = newIdx >= 0 ? newIdx : 0;
+      _startRotation();
+    }
+    if (_rotationIndex >= _rotationMaps.length) _rotationIndex = 0;
+    return _rotationMaps[_rotationIndex];
+  }
+
+  function _startRotation() {
+    if (_rotationTimer) clearInterval(_rotationTimer);
+    _rotationTimer = setInterval(() => {
+      if (_rotationMaps.length < 2) return;
+      _rotationIndex = (_rotationIndex + 1) % _rotationMaps.length;
+      if (lastState) update(lastState);  // re-render triggers crossfade
+    }, _ROTATION_DWELL);
+  }
+
+  function _stopRotation() {
+    if (_rotationTimer) { clearInterval(_rotationTimer); _rotationTimer = null; }
+    _rotationMaps = [];
+    _rotationIndex = 0;
   }
 
   function renderMap(state) {
@@ -886,7 +938,7 @@
       return;
     }
 
-    // Override displayed map based on PC majority
+    // Override displayed map based on rotation / PC distribution
     const activeMap = pickActiveMap(state);
     if (activeMap && activeMap !== mapData.image) {
       mapData.image = activeMap;  // display the map most PCs are on
@@ -1198,7 +1250,45 @@
       indicator._fadeTimer = setTimeout(() => indicator.classList.remove('visible'), 2500);
     }
 
+    // Persistent map label (always visible when map is shown)
+    _updateMapLabel(state);
+
     lastState = state;
+  }
+
+  /** Convert map filename to readable label */
+  function _mapDisplayName(filename) {
+    if (!filename) return '';
+    const names = {
+      'cantina-expanded.svg': "Chalmun's Cantina",
+      'mos-eisley-streets-1-enhanced.svg': 'Mos Eisley Streets (1)',
+      'mos-eisley-streets-2-enhanced.svg': 'Mos Eisley Streets (2)',
+      'mos-eisley-streets-3-enhanced.svg': 'Mos Eisley Streets (3)',
+      'docking-bay-87.svg': 'Docking Bay 87',
+      'cantina-basement.svg': 'Cantina Basement',
+    };
+    return names[filename] || filename.replace(/\.(svg|png)$/, '').replace(/-/g, ' ');
+  }
+
+  function _updateMapLabel(state) {
+    const label = document.getElementById('map-label');
+    const mapImage = (state.map || {}).image || '';
+    if (!mapImage) { label.style.display = 'none'; return; }
+
+    const name = _mapDisplayName(mapImage);
+    // Show rotation dots when cycling between maps
+    let dots = '';
+    if (_rotationMaps.length > 1) {
+      dots = '<span class="rotation-dots">';
+      for (let i = 0; i < _rotationMaps.length; i++) {
+        dots += i === _rotationIndex
+          ? '<span class="active">\u25CF</span>'
+          : '\u25CB';
+      }
+      dots += '</span>';
+    }
+    label.innerHTML = name + dots;
+    label.style.display = '';
   }
 
   // -- Demo state for preview when no server -------------------

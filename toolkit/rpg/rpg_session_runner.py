@@ -1897,10 +1897,6 @@ def _simulate_npc_actions(act_num: int, turn_num: int,
 
         if result:
             logger.info(f"  [npc-agent] {npc_name} ({npc_type}): {result}")
-            # Focus overlay on this NPC when it attacks
-            if result.get("attack_target"):
-                run_rpg_cmd(["update-scene", "--focus", npc_name])
-                _invalidate_state_cache()
             # Reveal hidden NPC if it attacks or moves to a PC position
             if hidden and (result.get("attack_target") or result.get("move_to")):
                 run_rpg_cmd(["move-token", "--character", npc_name, "--visible"])
@@ -1911,9 +1907,6 @@ def _simulate_npc_actions(act_num: int, turn_num: int,
             if tier == "hostile":
                 _npc_advance_toward_pc(npc_name, act_num)
 
-    # Clear focus after NPC actions — overlay returns to PC-majority
-    run_rpg_cmd(["update-scene", "--focus", ""])
-    _invalidate_state_cache()
     return dice_strings
 
 
@@ -2072,10 +2065,6 @@ def _simulate_player_actions(act_num: int, turn_num: int,
 
     carry_helpers: dict[str, int] = {}  # ally → helper count (cooperative carry)
     for char in chars:
-        # Focus overlay on this character's map during their turn
-        run_rpg_cmd(["update-scene", "--focus", char])
-        _invalidate_state_cache()
-
         recent_texts = {a["text"] for a in _hist_log[-12:]
                         if a.get("character") == char}
         # Priority: heal wounded > carry incapacitated > normal action
@@ -2802,10 +2791,6 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     carry_helpers: dict[str, int] = {}  # ally → helper count (cooperative carry)
     pc_pos_map = {}
     for char in chars:
-        # Focus overlay on this character's map during their turn
-        run_rpg_cmd(["update-scene", "--focus", char])
-        _invalidate_state_cache()
-
         recent_texts = {a["text"] for a in _hist_log[-12:]
                         if a.get("character") == char}
         # Priority: heal wounded > carry incapacitated > normal action
