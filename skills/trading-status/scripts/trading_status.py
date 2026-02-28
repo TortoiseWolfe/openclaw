@@ -371,8 +371,14 @@ def _format_backtest(report, label):
         f"Profit factor: {m.get('profit_factor', 0):.3f}",
         f"Max drawdown: {m.get('max_drawdown_pct', 0)*100:.1f}%",
         f"Final balance:${m.get('final_balance', 0):,.2f}  (from ${m.get('initial_balance', 0):,.2f})",
-        "",
     ]
+
+    cagr = m.get("cagr", 0)
+    if cagr:
+        projected_1y = m.get("initial_balance", 10000) * (1 + cagr)
+        lines.append(f"1yr projection:${projected_1y:,.2f}  ({cagr*100:.1f}% CAGR, based on backtest)")
+
+    lines.append("")
 
     mc = report.get("monte_carlo", {})
     if mc:
