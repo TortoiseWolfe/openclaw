@@ -63,9 +63,13 @@ from rpg_bot_common import (
     DEFAULT_MOVE,
     FORCE_SENSITIVE,
     GM_SYSTEM_PROMPT,
+    NPC_MOVE,
+    NPC_PERSONALITIES,
+    NPC_STATS,
     STARSHIP_MAPS,
     STARSHIP_SKILLS,
     ask_character_agent,
+    ask_npc_agent,
     build_context,
     calc_move_penalty,
     chat,
@@ -876,59 +880,8 @@ NPC_AMBIENT_ROUTES = {
     },
 }
 
-# Hostile NPC advancement — routes hostiles follow each roam interval in combat.
-# Unlike ambient routes (looping), these are one-shot: each step moves the NPC
-# closer to the party.  Once the route is exhausted the NPC holds position.
-NPC_HOSTILE_ADVANCE = {
-    1: {
-        "Stormtrooper 1": [
-            "entrance", "foyer", "near-table-1", "table-2",
-        ],
-        "Stormtrooper 2": [
-            "entrance-right", "foyer", "bar-stool-r3", "near-table-2",
-        ],
-    },
-    3: {
-        "Lt. Hask": [
-            "blast-door-left", "bay-floor-center", "ship-bow", "ship-ramp",
-        ],
-        "Stormtrooper 1": [
-            "blast-door-left", "bay-floor-left", "cargo-left", "ship-port",
-        ],
-        "Stormtrooper 2": [
-            "blast-door-right", "bay-floor-right", "cargo-right", "ship-starboard",
-        ],
-        "Stormtrooper 3": [
-            "blast-door-left", "bay-floor-center", "bay-floor-center", "ship-bow",
-        ],
-        "Stormtrooper 4": [
-            "blast-door-right", "blast-door-right", "bay-floor-right", "ship-stern",
-        ],
-    },
-}
-
-# Reactive positions: where NPCs go when combat starts.
-# "cover" = take cover, "flee" = run off-map, "engage" = join the fight.
-NPC_COMBAT_REACTIONS = {
-    1: {
-        "Patron 1": ("cover", "bar-stool-l4"),            # ducks behind bar
-        "Patron 2": ("cover", "booth-3-center"),            # dives into empty booth
-        "Figrin Dan": ("cover", "band-stage"),             # stays on stage
-    },
-    2: {
-        "Speeder 2": ("flee", "road-west"),               # speeds away toward market
-        "Civilian 1": ("flee", "dwelling-front"),          # runs to dwelling
-        "Civilian 2": ("cover", "shop-front"),             # hides near shop
-    },
-    3: {
-        "Lt. Hask": ("engage", "bay-floor-center"),        # advances into the bay
-        "Stormtrooper 1": ("engage", "bay-floor-left"),    # flanks left
-        "Stormtrooper 2": ("engage", "bay-floor-right"),   # flanks right
-        "Stormtrooper 3": ("engage", "bay-floor-center"),  # center assault
-        "Stormtrooper 4": ("engage", "blast-door-right"),  # holds the exit
-        "Dock Worker": ("flee", "side-entry"),             # civilian runs
-    },
-}
+    # NPC_HOSTILE_ADVANCE and NPC_COMBAT_REACTIONS removed — replaced by
+    # AI-driven NPC agents in _simulate_npc_actions()
 
 # ---------------------------------------------------------------------------
 # Position-based act pacing — acts end when characters reach exits
@@ -1539,6 +1492,25 @@ ACT_OBJECTIVES = {
        "get everyone aboard, and launch before the AT-ST arrives.",
 }
 
+# Per-act NPC objectives by tier (hostile vs neutral)
+NPC_OBJECTIVES = {
+    "hostile": {
+        1: "Secure the cantina. Advance toward suspects. Cut off the exits.",
+        2: "Intercept fugitives heading west. Block their path. Pursue on sight.",
+        3: "Storm the docking bay. Prevent the ship from launching. Advance on the ramp.",
+    },
+    "neutral": {
+        1: "Tend the bar. Duck if shooting starts. Yell at troublemakers.",
+        2: "Go about your business. React to danger. Flee if threatened.",
+        3: "Stay out of the crossfire. Flee if combat erupts.",
+    },
+}
+
+# Color codes from NPC_STARTING_POSITIONS
+_HOSTILE_COLOR = "#f54e4e"
+_NEUTRAL_COLOR = "#e8a030"
+_CIVILIAN_COLOR = "#888888"
+
 
 def _get_reachable_positions_for_agent(char: str) -> list[dict]:
     """Build a list of reachable positions with direction hints for the character agent.
@@ -1625,6 +1597,315 @@ def _is_backtrack_map(current_map: str, target_map: str) -> bool:
         return True  # Target not on the mission path — dead end / side building
     tgt_idx = _MAP_PROGRESSION.index(target_map)
     return tgt_idx < cur_idx
+
+
+# ---------------------------------------------------------------------------
+# NPC AI agent — replaces hardcoded route tables
+# ---------------------------------------------------------------------------
+
+
+def _get_npc_type(npc_name: str) -> str:
+    """Derive the base NPC type from a numbered name (e.g. 'Stormtrooper 1' -> 'Stormtrooper')."""
+    # Strip trailing number: "Checkpoint Trooper 2" -> "Checkpoint Trooper"
+    base = re.sub(r'\s+\d+$', '', npc_name).strip()
+    if base in NPC_STATS:
+        return base
+    # Try without last word (handles "Patrol Trooper" etc.)
+    if base in NPC_PERSONALITIES:
+        return base
+    return base
+
+
+def _get_reachable_positions_for_npc(npc_name: str) -> list[dict]:
+    """Build reachable positions for an NPC, annotated with PC presence."""
+    npc_map = _get_token_map(npc_name)
+    if not npc_map:
+        state = _read_game_state()
+        npc_map = (state.get("map") or {}).get("image", "") if state else ""
+    if not npc_map:
+        return []
+
+    terrain = _load_terrain_for_map(npc_map)
+    if not terrain:
+        return []
+
+    from_xy = _get_token_xy(npc_name)
+    positions = terrain.get("positions", {})
+    connections = terrain.get("connections", {})
+    npc_type = _get_npc_type(npc_name)
+    npc_move_map = _mod("npc_move", NPC_MOVE)
+    move_allowance = npc_move_map.get(npc_type, DEFAULT_MOVE)
+    max_sprint = move_allowance * 4
+
+    # Collect PC positions on this map for [PC HERE] markers
+    pregens = _mod("pregens", PREGENS)
+    pc_positions = {}  # pos_id -> PC name
+    for pc in pregens:
+        pc_map = _get_token_map(pc)
+        if pc_map != npc_map:
+            continue
+        pc_xy = _get_token_xy(pc)
+        if not pc_xy:
+            continue
+        # Find which position the PC is closest to
+        best_pos = None
+        best_dist = float("inf")
+        for pos_id, pos_data in positions.items():
+            px, py = pos_data.get("x", 0), pos_data.get("y", 0)
+            d = ((px - pc_xy[0]) ** 2 + (py - pc_xy[1]) ** 2) ** 0.5
+            if d < best_dist:
+                best_dist = d
+                best_pos = pos_id
+        if best_pos and best_dist < 100:
+            pc_positions[best_pos] = pc
+
+    result = []
+    for pos_id, pos_data in positions.items():
+        px, py = pos_data.get("x", 0), pos_data.get("y", 0)
+        desc = pos_data.get("desc", "")
+
+        if from_xy:
+            dx = px - from_xy[0]
+            dy = py - from_xy[1]
+            dist = (dx * dx + dy * dy) ** 0.5
+            if dist < 30:
+                continue
+            if dist > max_sprint:
+                continue
+
+        direction = ""
+        if from_xy:
+            dx = px - from_xy[0]
+            dy = py - from_xy[1]
+            if abs(dx) > abs(dy):
+                direction = "WEST" if dx < 0 else "EAST"
+            else:
+                direction = "NORTH" if dy < 0 else "SOUTH"
+
+        has_pc = pos_id in pc_positions
+        result.append({
+            "id": pos_id, "desc": desc, "direction": direction,
+            "has_pc": has_pc,
+        })
+
+    return result
+
+
+def _get_pc_targets_for_npc(npc_name: str) -> list[dict]:
+    """Get a list of able PCs on the same map as the NPC with distances."""
+    npc_map = _get_token_map(npc_name)
+    npc_xy = _get_token_xy(npc_name)
+    if not npc_map or not npc_xy:
+        return []
+
+    pregens = _mod("pregens", PREGENS)
+    targets = []
+    for pc in pregens:
+        if _get_wound_level(pc) >= 3:
+            continue  # incapacitated
+        pc_map = _get_token_map(pc)
+        if pc_map != npc_map:
+            continue
+        pc_xy = _get_token_xy(pc)
+        if not pc_xy:
+            continue
+        dx = pc_xy[0] - npc_xy[0]
+        dy = pc_xy[1] - npc_xy[1]
+        dist = (dx * dx + dy * dy) ** 0.5
+
+        # Find PC's closest named position
+        terrain = _load_terrain_for_map(npc_map) or {}
+        best_pos = "unknown"
+        best_d = float("inf")
+        for pos_id, pos_data in terrain.get("positions", {}).items():
+            px, py = pos_data.get("x", 0), pos_data.get("y", 0)
+            d = ((px - pc_xy[0]) ** 2 + (py - pc_xy[1]) ** 2) ** 0.5
+            if d < best_d:
+                best_d = d
+                best_pos = pos_id
+        targets.append({"name": pc, "position": best_pos, "distance": dist})
+
+    targets.sort(key=lambda t: t["distance"])
+    return targets
+
+
+def _execute_npc_action(npc_name: str, action: dict,
+                        dice_strings: list[str],
+                        transcript) -> None:
+    """Process an NPC agent's action: move token, resolve attacks, log."""
+    move_to = action.get("move_to")
+    attack_target = action.get("attack_target")
+    skill = action.get("skill")
+    text = action.get("text", "")
+
+    # Move
+    if move_to:
+        cmd = _build_move_cmd(npc_name, move_to)
+        run_rpg_cmd(cmd)
+        _invalidate_state_cache()
+        logger.info(f"  [npc-agent] {npc_name} moves to {move_to}")
+
+    # Attack
+    npc_type = _get_npc_type(npc_name)
+    # Build a char_stats override so pre_roll_skill_check can find this NPC
+    npc_stats_override = {npc_name: NPC_STATS.get(npc_type, {})}
+
+    if attack_target and skill:
+        npc_attack = pre_roll_skill_check(npc_name, skill,
+                                           char_stats=npc_stats_override)
+        pc_dodge = pre_roll_skill_check(attack_target, "Dodge")
+        if "error" not in npc_attack and "error" not in pc_dodge:
+            hit = npc_attack["total"] > pc_dodge["total"]
+            detail = (
+                f"{npc_name} {text}: "
+                f"{npc_attack['total']} vs dodge {pc_dodge['total']} "
+                f"— {'HIT!' if hit else 'MISS'}"
+            )
+            dice_strings.append(detail)
+            logger.info(f"  [npc-attack] {detail}")
+            if hit:
+                _apply_wound(attack_target, 1)
+    elif attack_target and not skill:
+        # Default to Blaster if agent forgot skill
+        npc_stats = NPC_STATS.get(npc_type, {})
+        fallback_skill = "Blaster" if "Blaster" in npc_stats else None
+        if fallback_skill:
+            npc_attack = pre_roll_skill_check(npc_name, fallback_skill,
+                                               char_stats=npc_stats_override)
+            pc_dodge = pre_roll_skill_check(attack_target, "Dodge")
+            if "error" not in npc_attack and "error" not in pc_dodge:
+                hit = npc_attack["total"] > pc_dodge["total"]
+                detail = (
+                    f"{npc_name} fires at {attack_target}: "
+                    f"{npc_attack['total']} vs dodge {pc_dodge['total']} "
+                    f"— {'HIT!' if hit else 'MISS'}"
+                )
+                dice_strings.append(detail)
+                logger.info(f"  [npc-attack] {detail}")
+                if hit:
+                    _apply_wound(attack_target, 1)
+
+    # Log to transcript
+    if transcript and text:
+        transcript.log_action(npc_name, action.get("action_type", "do"), text)
+
+
+def _npc_advance_toward_pc(npc_name: str, act_num: int) -> None:
+    """Fallback: move NPC toward the nearest PC on the same map."""
+    targets = _get_pc_targets_for_npc(npc_name)
+    if not targets:
+        return
+    nearest = targets[0]
+    # Move toward the PC's position
+    cmd = _build_move_cmd(npc_name, nearest["position"])
+    run_rpg_cmd(cmd)
+    _invalidate_state_cache()
+    logger.info(f"  [npc-fallback] {npc_name} advances toward {nearest['name']} at {nearest['position']}")
+
+
+def _move_civilian_ambient(npc_name: str, act_num: int) -> None:
+    """Move a civilian NPC along its ambient route (scripted, no AI)."""
+    ambient = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
+    roamers = ambient.get(act_num, {})
+    if npc_name not in roamers:
+        return
+    route = roamers[npc_name]
+    idx = _npc_roam_index.get(npc_name, 0)
+    pos = route[idx % len(route)]
+    run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
+    _npc_roam_index[npc_name] = idx + 1
+
+
+# Global roam index for civilian ambient routes
+_npc_roam_index: dict[str, int] = {}
+
+
+def _simulate_npc_actions(act_num: int, turn_num: int,
+                          transcript) -> list[str]:
+    """AI-driven NPC actions. Returns dice strings for GM context."""
+    dice_strings: list[str] = []
+
+    # Collect all NPCs for this act (starting + map-spawned)
+    npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
+    all_npcs: dict[str, tuple] = dict(npc_pos.get(act_num, {}))
+    for map_key in _spawned_map_npcs:
+        for name, data in MAP_NPC_SPAWNS.get(map_key, {}).items():
+            if name not in all_npcs:
+                all_npcs[name] = data
+
+    budget_start = time.time()
+    MAX_NPC_BUDGET = 30  # seconds — remaining NPCs get heuristic fallback
+
+    for npc_name, (_, color, hidden) in all_npcs.items():
+        if _get_wound_level(npc_name) >= 3:
+            continue  # incapacitated
+
+        # Civilians stay on scripted ambient routes
+        if color == _CIVILIAN_COLOR:
+            _move_civilian_ambient(npc_name, act_num)
+            continue
+
+        # Determine tier
+        tier = "hostile" if color == _HOSTILE_COLOR else "neutral"
+        objective = NPC_OBJECTIVES.get(tier, {}).get(act_num, "React to the situation.")
+        npc_type = _get_npc_type(npc_name)
+
+        # Time budget check
+        elapsed = time.time() - budget_start
+        if elapsed > MAX_NPC_BUDGET:
+            if tier == "hostile":
+                _npc_advance_toward_pc(npc_name, act_num)
+            continue
+
+        # Build context
+        reachable = _get_reachable_positions_for_npc(npc_name)
+        pc_targets = _get_pc_targets_for_npc(npc_name)
+
+        # Extra rules for hidden NPCs
+        extra_rules = ""
+        if hidden:
+            extra_rules = ("You are HIDDEN. Stay concealed until a PC is adjacent, "
+                           "then reveal yourself and strike.")
+
+        npc_map = _get_token_map(npc_name) or ""
+        npc_xy = _get_token_xy(npc_name)
+        # Find current position name
+        current_pos = "unknown"
+        if npc_xy:
+            terrain = _load_terrain_for_map(npc_map) or {}
+            best_d = float("inf")
+            for pos_id, pos_data in terrain.get("positions", {}).items():
+                px, py = pos_data.get("x", 0), pos_data.get("y", 0)
+                d = ((px - npc_xy[0]) ** 2 + (py - npc_xy[1]) ** 2) ** 0.5
+                if d < best_d:
+                    best_d = d
+                    current_pos = pos_id
+
+        # Ask the AI agent
+        result = ask_npc_agent(
+            npc_name=npc_name,
+            npc_type=npc_type,
+            objective=objective,
+            current_pos=current_pos,
+            current_map=npc_map,
+            reachable_positions=reachable,
+            pc_targets=pc_targets,
+            extra_rules=extra_rules,
+        )
+
+        if result:
+            logger.info(f"  [npc-agent] {npc_name} ({npc_type}): {result}")
+            # Reveal hidden NPC if it attacks or moves to a PC position
+            if hidden and (result.get("attack_target") or result.get("move_to")):
+                run_rpg_cmd(["move-token", "--character", npc_name, "--visible"])
+                _invalidate_state_cache()
+            _execute_npc_action(npc_name, result, dice_strings, transcript)
+        else:
+            # Fallback: advance toward nearest PC
+            if tier == "hostile":
+                _npc_advance_toward_pc(npc_name, act_num)
+
+    return dice_strings
 
 
 def _get_allies_status(char: str) -> str:
@@ -1917,77 +2198,14 @@ def _simulate_player_actions(act_num: int, turn_num: int,
                     difficulty, result["success"])
                 _log_dice_to_state(char, skill, result)
 
-    # NPC counter-attack: one hostile NPC shoots at a random able PC each turn
-    npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
-    hostile_npcs = npc_pos.get(act_num, {})
-    hostile_names = [n for n, (_, color, _) in hostile_npcs.items()
-                     if color == "#f54e4e" and _get_wound_level(n) < 3]
-    able_targets = [c for c in pregens if _get_wound_level(c) < 3]
-    if hostile_names and able_targets:
-        attacker = random.choice(hostile_names)
-        target = random.choice(able_targets)
-        npc_attack = pre_roll_skill_check(attacker, "Blaster")
-        pc_dodge = pre_roll_skill_check(target, "Dodge")
-        if "error" not in npc_attack and "error" not in pc_dodge:
-            hit = npc_attack["total"] > pc_dodge["total"]
-            detail = (
-                f"{attacker} fires at {target}: "
-                f"{npc_attack['total']} vs dodge {pc_dodge['total']} "
-                f"— {'HIT!' if hit else 'MISS'}"
-            )
-            dice_strings.append(detail)
-            logger.info(f"  [npc-attack] {detail}")
-            if hit:
-                _apply_wound(target, 1)
-
-    # NPC movement: hostile NPCs advance toward nearest PC, civilians react
-    _move_npcs_dry_run(act_num, turn_num)
+    # AI-driven NPC actions (replaces hardcoded counter-attack + movement)
+    npc_dice = _simulate_npc_actions(act_num, turn_num, transcript)
+    dice_strings.extend(npc_dice)
 
     action_class = _classify_actions(logged_actions)
     if action_class == "explore":
         logger.info(f"  [classify] EXPLORE — off-script action detected")
     return dice_strings, positions, pc_position_map, action_class
-
-
-# Track ambient NPC route indices across turns (reset per act in the act loop)
-_npc_roam_index: dict[str, int] = {}
-
-
-def _move_npcs_dry_run(act_num: int, turn_num: int) -> None:
-    """Move NPCs during dry-run: hostiles advance, civilians roam or flee."""
-    # Combat reactions on turn 1 (hostiles engage, civilians flee/cover)
-    combat_reactions = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
-    reactions = combat_reactions.get(act_num, {})
-    if turn_num == 1:
-        for npc_name, (reaction, dest) in reactions.items():
-            if _get_wound_level(npc_name) >= 3:
-                continue
-            run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
-            logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
-
-    # Hostile NPC advancement (one-shot routes toward PCs)
-    hostile_routes = _mod("npc_hostile_advance", NPC_HOSTILE_ADVANCE)
-    advancers = hostile_routes.get(act_num, {})
-    for npc_name, route in advancers.items():
-        if _get_wound_level(npc_name) >= 3:
-            continue
-        idx = _npc_roam_index.get(npc_name, 0)
-        if idx < len(route):
-            pos = route[idx]
-            run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
-            _npc_roam_index[npc_name] = idx + 1
-            logger.info(f"  [npc-advance] {npc_name} -> {pos}")
-
-    # Ambient NPC routes (civilians cycle through positions on non-combat turns)
-    ambient_routes = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
-    roamers = ambient_routes.get(act_num, {})
-    for npc_name, route in roamers.items():
-        if _get_wound_level(npc_name) >= 3:
-            continue
-        idx = _npc_roam_index.get(npc_name, 0)
-        pos = route[idx % len(route)]
-        run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
-        _npc_roam_index[npc_name] = idx + 1
 
 
 def _run_gm_turn(act_num: int, turn_num: int, transcript: TranscriptLogger,
@@ -2685,29 +2903,9 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
                     difficulty, result["success"])
                 _log_dice_to_state(char, skill, result)
 
-    # NPC counter-attack: one hostile NPC shoots at a random able PC each turn
-    npc_pos = _mod("npc_starting_positions", NPC_STARTING_POSITIONS)
-    hostile_npcs = npc_pos.get(act_num, {})
-    hostile_names = [n for n, (_, color, _) in hostile_npcs.items()
-                     if color == "#f54e4e" and _get_wound_level(n) < 3]
-    pregens = _mod("pregens", PREGENS)
-    able_targets = [c for c in pregens if _get_wound_level(c) < 3]
-    if hostile_names and able_targets:
-        attacker = random.choice(hostile_names)
-        target = random.choice(able_targets)
-        npc_attack = pre_roll_skill_check(attacker, "Blaster")
-        pc_dodge = pre_roll_skill_check(target, "Dodge")
-        if "error" not in npc_attack and "error" not in pc_dodge:
-            hit = npc_attack["total"] > pc_dodge["total"]
-            detail = (
-                f"{attacker} fires at {target}: "
-                f"{npc_attack['total']} vs dodge {pc_dodge['total']} "
-                f"— {'HIT!' if hit else 'MISS'}"
-            )
-            dice_strings.append(detail)
-            logger.info(f"  [npc-attack] {detail}")
-            if hit:
-                _apply_wound(target, 1)
+    # AI-driven NPC actions (replaces hardcoded counter-attack)
+    npc_dice = _simulate_npc_actions(act_num, 0, transcript)
+    dice_strings.extend(npc_dice)
 
     if positions:
         pacer.record_turn(positions, pc_position_map=pc_pos_map)
@@ -2734,8 +2932,6 @@ def run_live_session(adventure: str):
     last_gm_time = time.time()
     last_roam_time = time.time()
     roam_interval = int(os.environ.get("RPG_ROAM_INTERVAL", "30"))
-    roam_index = {}  # tracks position in each NPC's route
-    npcs_reacted = False  # True once NPCs have reacted to combat
     min_turn_cooldown = int(os.environ.get("RPG_TURN_COOLDOWN", "120"))
     gm_idle_threshold = int(os.environ.get("RPG_IDLE_THRESHOLD", "180"))
     poll_interval = int(os.environ.get("RPG_POLL_INTERVAL", "10"))
@@ -2780,8 +2976,7 @@ def run_live_session(adventure: str):
                 act_num = current_act
                 pacer = ActPacer(act_num)
                 turn_num = 0
-                roam_index.clear()
-                npcs_reacted = False
+                _npc_roam_index.clear()
                 logger.info(f"\n  ACT CHANGE -> Act {act_num}")
                 _set_act_map(act_num, transcript)
                 _update_scene_for_act(act_num)
@@ -2798,40 +2993,9 @@ def run_live_session(adventure: str):
                 last_action_count = len(state.get("action_log", []))
                 continue
 
-            # NPC behavior — ambient roaming in RP mode, reactive in combat
+            # AI-driven NPC behavior on each roam tick
             if time.time() - last_roam_time >= roam_interval:
-                is_combat = mode == "combat" or state.get("combat_active")
-                if is_combat and not npcs_reacted:
-                    # Combat just started — NPCs react (one-time)
-                    combat_react = _mod("npc_combat_reactions", NPC_COMBAT_REACTIONS)
-                    reactions = combat_react.get(current_act, {})
-                    for npc_name, (reaction, dest) in reactions.items():
-                        run_rpg_cmd(["move-token", "--character", npc_name, "--position", dest])
-                        logger.info(f"  [npc-react] {npc_name} {reaction}s -> {dest}")
-                    npcs_reacted = True
-                if is_combat:
-                    # Hostile NPCs advance along routes every roam interval
-                    hostile_routes = _mod("npc_hostile_advance", NPC_HOSTILE_ADVANCE)
-                    advancers = hostile_routes.get(current_act, {})
-                    for npc_name, route in advancers.items():
-                        if _get_wound_level(npc_name) >= 3:
-                            continue  # incapacitated
-                        idx = roam_index.get(npc_name, 0)
-                        if idx < len(route):
-                            pos = route[idx]
-                            run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
-                            roam_index[npc_name] = idx + 1
-                            logger.info(f"  [npc-advance] {npc_name} -> {pos}")
-                elif not is_combat:
-                    # Peaceful — ambient roaming
-                    npcs_reacted = False
-                    ambient = _mod("npc_ambient_routes", NPC_AMBIENT_ROUTES)
-                    roamers = ambient.get(current_act, {})
-                    for npc_name, route in roamers.items():
-                        idx = roam_index.get(npc_name, 0)
-                        pos = route[idx % len(route)]
-                        run_rpg_cmd(["move-token", "--character", npc_name, "--position", pos])
-                        roam_index[npc_name] = idx + 1
+                _simulate_npc_actions(current_act, turn_num, transcript)
                 last_roam_time = time.time()
 
             # Count new actions

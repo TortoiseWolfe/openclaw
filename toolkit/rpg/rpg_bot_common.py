@@ -171,8 +171,63 @@ CHAR_STATS = {
 
 NPC_STATS = {
     "Stormtrooper": {"Blaster": "4D", "Brawling Parry": "4D"},
-    "Lt. Hask": {"Command": "4D", "Blaster": "4D"},
+    "Lt. Hask": {"Command": "4D", "Blaster": "4D", "Tactics": "3D+2"},
     "Greevak": {"Brawling": "5D", "Blaster": "4D+1"},
+    "Trandoshan Hunter": {"Brawling": "5D", "Blaster": "4D+1", "Sneak": "4D"},
+    "Checkpoint Trooper": {"Blaster": "4D", "Search": "3D+1"},
+    "Patrol Trooper": {"Blaster": "4D", "Search": "3D"},
+    "Bay Guard": {"Blaster": "4D", "Brawling Parry": "4D"},
+    "Wuher": {"Intimidation": "3D+2"},
+    "Speeder Driver": {"Vehicle Operation": "4D"},
+    "Suspicious Rodian": {"Blaster": "3D+2", "Sneak": "3D+1"},
+}
+
+NPC_PERSONALITIES = {
+    "Stormtrooper": (
+        "You are an Imperial Stormtrooper. You follow orders precisely. "
+        "You advance toward suspects, take cover when fired upon, and "
+        "coordinate with fellow troopers. Skills: Blaster 4D, Brawling Parry 4D."
+    ),
+    "Lt. Hask": (
+        "You are Lieutenant Hask, an Imperial officer. You are tactical and "
+        "methodical. You direct troopers to flank and cut off escape routes. "
+        "You prefer cover while coordinating. Skills: Command 4D, Blaster 4D, Tactics 3D+2."
+    ),
+    "Greevak": (
+        "You are Greevak, a Gamorrean enforcer. You are aggressive and direct. "
+        "You charge into melee range and brawl. Skills: Brawling 5D, Blaster 4D+1."
+    ),
+    "Trandoshan Hunter": (
+        "You are a Trandoshan bounty hunter tracking fugitives for the Empire. "
+        "You are patient and predatory. You prefer ambush — hide, wait, strike. "
+        "Skills: Brawling 5D, Blaster 4D+1, Sneak 4D."
+    ),
+    "Checkpoint Trooper": (
+        "You are a Stormtrooper at the checkpoint. You block passage and check IDs. "
+        "If suspects resist, engage and call for backup. Skills: Blaster 4D, Search 3D+1."
+    ),
+    "Patrol Trooper": (
+        "You are a Stormtrooper on patrol. You sweep the area for fugitives. "
+        "Move toward suspicious activity. Skills: Blaster 4D, Search 3D."
+    ),
+    "Bay Guard": (
+        "You are a Stormtrooper guarding the docking bay. Block unauthorized access "
+        "and raise the alarm. Skills: Blaster 4D, Brawling Parry 4D."
+    ),
+    "Wuher": (
+        "You are Wuher, the cantina bartender. You hate droids and keep order. "
+        "You do NOT fight — duck behind the bar when shooting starts. "
+        "You might yell at people. Skills: Intimidation 3D+2."
+    ),
+    "Speeder Driver": (
+        "You are a speeder driver waiting for fares. You can be bribed to give "
+        "someone a ride. You flee if shooting starts. Skills: Vehicle Operation 4D."
+    ),
+    "Suspicious Rodian": (
+        "You are a Rodian informant lurking in the alley. You report fugitive "
+        "movements to the Empire. You avoid direct combat but will shoot if "
+        "cornered. Skills: Blaster 3D+2, Sneak 3D+1."
+    ),
 }
 
 DEFAULT_DICE = "3D"
@@ -189,6 +244,20 @@ CHAR_MOVE = {
     "Renn Darkhollow": 96,   # Human, Move 10
     "Zeph Ando": 96,         # Human, Move 10
 }
+
+NPC_MOVE = {
+    "Stormtrooper": 96,         # Human, Move 10
+    "Lt. Hask": 96,              # Human officer
+    "Greevak": 77,               # Gamorrean, Move 8
+    "Trandoshan Hunter": 96,     # Trandoshan, Move 10
+    "Checkpoint Trooper": 96,
+    "Patrol Trooper": 96,
+    "Bay Guard": 96,
+    "Wuher": 77,                 # Not running anywhere
+    "Speeder Driver": 96,
+    "Suspicious Rodian": 96,
+}
+
 DEFAULT_MOVE = 96
 
 # Movement tiers and dice penalties (Star Wars D6 rules)
@@ -858,9 +927,111 @@ What do you do? Respond with JSON only."""
                                   banned_skills=banned_skills)
 
 
+# ---------------------------------------------------------------------------
+# NPC agent — AI-driven NPC decision making
+# ---------------------------------------------------------------------------
+
+_NPC_AGENT_SYSTEM = """You are an NPC in a Star Wars D6 RPG game.
+{personality}
+
+Your objective: {objective}
+
+Decide your SINGLE next action. Respond with ONLY a JSON object:
+{{
+  "action_type": "do",
+  "text": "short action description (max 60 chars)",
+  "skill": "SkillName from YOUR skills or null",
+  "move_to": "exact-position-id or null",
+  "attack_target": "PC name or null"
+}}
+
+RULES:
+- move_to MUST be from the REACHABLE POSITIONS list. Copy the exact ID.
+- attack_target MUST be from the PC TARGETS list, or null if not attacking.
+- You can BOTH move and attack in one turn (advance, then fire).
+- If no PCs are nearby, move toward the closest one.
+- Positions marked [PC HERE] have a player character — prioritize those.
+- skill MUST be from YOUR skills listed above, or null.
+{extra_rules}- Stay in character. Keep text under 60 characters.
+- Output ONLY the JSON object. No explanation."""
+
+
+def ask_npc_agent(npc_name: str, npc_type: str, objective: str,
+                  current_pos: str, current_map: str,
+                  reachable_positions: list[dict],
+                  pc_targets: list[dict],
+                  extra_rules: str = "") -> dict | None:
+    """Ask an AI agent to decide an NPC's next action.
+
+    Args:
+        npc_name: NPC display name (e.g. "Stormtrooper 1")
+        npc_type: Base type for personality lookup (e.g. "Stormtrooper")
+        objective: What the NPC is trying to achieve this act
+        current_pos: Current position name
+        current_map: Current map filename
+        reachable_positions: List of {id, desc, direction, has_pc} dicts
+        pc_targets: List of {name, position, distance} for nearby PCs
+        extra_rules: Additional prompt rules (e.g. hidden NPC ambush rules)
+
+    Returns:
+        dict with keys: action_type, text, skill, move_to, attack_target
+        or None on failure
+    """
+    personality = NPC_PERSONALITIES.get(npc_type, f"You are {npc_name}.")
+
+    extra_line = f"- {extra_rules}\n" if extra_rules else ""
+
+    system = _NPC_AGENT_SYSTEM.format(
+        personality=personality, objective=objective, extra_rules=extra_line,
+    )
+
+    # Format reachable positions with PC presence markers
+    pos_lines = []
+    for p in reachable_positions:
+        direction = f" [{p['direction']}]" if p.get("direction") else ""
+        pc_marker = " [PC HERE]" if p.get("has_pc") else ""
+        desc = p.get("desc", "")[:60]
+        pos_lines.append(f'  "{p["id"]}"{direction}{pc_marker}: {desc}')
+    positions_text = "\n".join(pos_lines) if pos_lines else "  (none — hold position)"
+
+    # Format PC targets
+    target_lines = []
+    for t in pc_targets:
+        target_lines.append(f'  "{t["name"]}" at {t["position"]} (distance: {t["distance"]:.0f}px)')
+    targets_text = "\n".join(target_lines) if target_lines else "  (no PCs in sight)"
+
+    user_msg = f"""CURRENT MAP: {current_map}
+YOUR POSITION: {current_pos}
+
+PC TARGETS:
+{targets_text}
+
+REACHABLE POSITIONS (pick one for move_to):
+{positions_text}
+
+What do you do? Respond with JSON only."""
+
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user_msg},
+    ]
+
+    try:
+        raw = chat_simple(messages, temperature=0.2, max_tokens=150)
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning(
+            f"  [npc-agent] {npc_name} Ollama call failed: {e}")
+        return None
+
+    return _parse_agent_response(raw, reachable_positions,
+                                  npc_type=npc_type)
+
+
 def _parse_agent_response(raw: str, reachable: list[dict],
                           char: str = "",
-                          banned_skills: list[str] | None = None) -> dict | None:
+                          banned_skills: list[str] | None = None,
+                          npc_type: str = "") -> dict | None:
     """Extract a valid action dict from the agent's raw text response."""
     # Strip markdown fences
     text = raw.strip()
@@ -929,9 +1100,14 @@ def _parse_agent_response(raw: str, reachable: list[dict],
     if skill in (None, "null", "none", "None", ""):
         skill = None
 
-    # Validate skill against character's actual stats
-    if skill and char:
-        valid_skills = set(CHAR_STATS.get(char, {}).keys())
+    # Validate skill against character's or NPC's actual stats
+    stats_dict = None
+    if char:
+        stats_dict = CHAR_STATS.get(char, {})
+    elif npc_type:
+        stats_dict = NPC_STATS.get(npc_type, {})
+    if skill and stats_dict is not None:
+        valid_skills = set(stats_dict.keys())
         if skill not in valid_skills:
             # Try case-insensitive match
             skill_lower = {s.lower(): s for s in valid_skills}
@@ -953,13 +1129,21 @@ def _parse_agent_response(raw: str, reachable: list[dict],
         except ValueError:
             difficulty = None
 
-    return {
+    # Extract attack_target (NPC agents only)
+    attack_target = data.get("attack_target")
+    if attack_target in (None, "null", "none", "None", ""):
+        attack_target = None
+
+    result = {
         "action_type": action_type,
         "text": action_text[:120],
         "skill": skill,
         "difficulty": difficulty,
         "move_to": move_to,
     }
+    if attack_target:
+        result["attack_target"] = attack_target
+    return result
 
 
 # ---------------------------------------------------------------------------
