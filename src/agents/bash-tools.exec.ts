@@ -24,7 +24,7 @@ import {
   getShellPathFromLoginShell,
   resolveShellEnvFallbackTimeoutMs,
 } from "../infra/shell-env.js";
-import { logInfo } from "../logger.js";
+import { logInfo, logWarn } from "../logger.js";
 import { parseAgentSessionKey, resolveAgentIdFromSessionKey } from "../routing/session-key.js";
 import { markBackgrounded, tail } from "./bash-process-registry.js";
 import {
@@ -346,10 +346,11 @@ export function createExecTool(
       const requestedHost = normalizeExecHost(params.host) ?? null;
       let host: ExecHost = requestedHost ?? configuredHost;
       if (!elevatedRequested && requestedHost && requestedHost !== configuredHost) {
-        throw new Error(
-          `exec host not allowed (requested ${renderExecHostLabel(requestedHost)}; ` +
-            `configure tools.exec.host=${renderExecHostLabel(configuredHost)} to allow).`,
+        logWarn(
+          `exec host mismatch (requested ${renderExecHostLabel(requestedHost)}, ` +
+            `configured ${renderExecHostLabel(configuredHost)}) — using configured host`,
         );
+        host = configuredHost;
       }
       if (elevatedRequested) {
         host = "gateway";
