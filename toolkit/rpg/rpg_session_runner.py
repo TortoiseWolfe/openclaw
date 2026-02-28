@@ -1787,7 +1787,9 @@ def _execute_npc_action(npc_name: str, action: dict,
 
     # Log to transcript
     if transcript and text:
-        transcript.log_action(npc_name, action.get("action_type", "do"), text)
+        npc_slug = npc_name.lower().replace(" ", "-").replace("'", "")
+        transcript.log_player_action(f"npc:{npc_slug}", npc_name,
+                                      action.get("action_type", "do"), text)
 
 
 def _npc_advance_toward_pc(npc_name: str, act_num: int) -> None:
