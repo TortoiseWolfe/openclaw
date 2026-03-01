@@ -376,16 +376,20 @@ def _update_twitch_metadata(args: argparse.Namespace) -> None:
     title = getattr(args, "twitch_title", None)
     category = getattr(args, "twitch_category", None)
 
-    # Auto-derive title from schedule when --from-schedule and no explicit --twitch-title
-    if not title and getattr(args, "from_schedule", False):
+    # Auto-derive title and category from schedule when --from-schedule
+    if getattr(args, "from_schedule", False):
         rows = parse_schedule()
         today = datetime.now(ET).strftime("%Y-%m-%d")
         for row in rows:
             if row["date"] == today:
-                title = row["topic"]
+                if not title:
+                    title = row["topic"]
+                if not category:
+                    from sync_twitch_schedule import category_for_series
+                    category = category_for_series(row.get("series", ""))
                 break
 
-    # Default category when any Twitch flag is used
+    # Default category when title is set but no category resolved
     if title and not category:
         category = "Software and Game Development"
 

@@ -21,6 +21,7 @@ from parse_episode import parse_schedule, _normalize_topic
 from twitch_client import (
     _helix_get,
     get_broadcaster_id,
+    get_game_id,
     update_schedule_segment,
 )
 
@@ -55,6 +56,21 @@ SERIES_NAMES = {
     "performance": "Performance",
     "pwa": "Progressive Web Apps",
 }
+
+# Twitch category per series. Anything not listed defaults to
+# "Software and Game Development".  RPG game night is handled
+# separately by rpg_game_night.py / rpg_game_night_setup.py.
+DEFAULT_CATEGORY = "Software and Game Development"
+
+SERIES_CATEGORIES: dict[str, str] = {
+    "career": "Just Chatting",
+    "design": "Art",
+}
+
+
+def category_for_series(series: str) -> str:
+    """Return the Twitch category name for a schedule series key."""
+    return SERIES_CATEGORIES.get(series, DEFAULT_CATEGORY)
 
 
 def _build_title(episodes: list[dict]) -> str:
@@ -92,8 +108,10 @@ def sync_today() -> None:
         return
 
     title = _build_title(today_eps)
+    cat_name = category_for_series(today_eps[0].get("series", ""))
+    cat_id = get_game_id(cat_name)
 
-    print(f"Today's content: {title}")
+    print(f"Today's content: {title}  [category: {cat_name}]")
 
     # Find today's Twitch segments
     bid = get_broadcaster_id()
@@ -115,9 +133,11 @@ def sync_today() -> None:
             continue
 
         slot = "AM" if dt.hour < 12 else "PM"
-        if seg["title"] != title:
+        seg_cat_id = (cat or {}).get("id")
+        needs_update = seg["title"] != title or (cat_id and seg_cat_id != cat_id)
+        if needs_update:
             print(f"  Updating {slot} segment: {seg['title'][:40]} -> {title[:40]}")
-            update_schedule_segment(seg["id"], title=title)
+            update_schedule_segment(seg["id"], title=title, category_id=cat_id)
             updated += 1
             time.sleep(0.3)
         else:
@@ -177,12 +197,16 @@ def sync_week() -> None:
             continue
 
         title = _build_title(eps)
+        cat_name = category_for_series(eps[0].get("series", ""))
+        cat_id = get_game_id(cat_name)
 
         slot = "AM" if dt.hour < 12 else "PM"
-        if seg["title"] != title:
-            print(f"  {seg_date} {slot}: {seg['title'][:40]} -> {title[:40]}")
+        seg_cat_id = (cat or {}).get("id")
+        needs_update = seg["title"] != title or (cat_id and seg_cat_id != cat_id)
+        if needs_update:
+            print(f"  {seg_date} {slot}: {seg['title'][:40]} -> {title[:40]} [{cat_name}]")
             try:
-                update_schedule_segment(seg["id"], title=title)
+                update_schedule_segment(seg["id"], title=title, category_id=cat_id)
                 updated += 1
                 time.sleep(0.3)
             except Exception as e:
