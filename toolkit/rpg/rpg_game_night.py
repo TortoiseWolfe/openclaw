@@ -18,10 +18,14 @@ import time
 
 sys.path.insert(0, "/app/toolkit/cron-helpers")
 sys.path.insert(0, "/app/toolkit/obs")
+sys.path.insert(0, "/app/toolkit/twitch")
 
 import obs_client
+import twitch_client
 
 ADVENTURE = "escape-from-mos-eisley"
+TWITCH_TITLE = "Star Wars RPG Game Night"
+TWITCH_CATEGORY = "Tabletop RPGs"
 STATE = ["python3", "/app/toolkit/rpg/rpg_state.py"]
 RUNNER = ["python3", "/app/toolkit/rpg/rpg_session_runner.py"]
 SHOW_FLOW = ["python3", "/app/toolkit/rpg/rpg_show_flow.py"]
@@ -91,6 +95,13 @@ def main():
                   file=sys.stderr)
             sys.exit(1)
     print("OBS connected")
+
+    # 0b. Set Twitch title + category (redundant with setup script — ensures
+    #     category is correct even if setup failed or token was dead earlier)
+    try:
+        twitch_client.update_channel(title=TWITCH_TITLE, game=TWITCH_CATEGORY)
+    except Exception as e:
+        print(f"WARNING: Failed to set Twitch category: {e}", file=sys.stderr)
 
     # 1. Init game state
     run([*STATE, "init", "--adventure", ADVENTURE, "--auto-join-bots"])
