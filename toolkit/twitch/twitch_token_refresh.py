@@ -29,6 +29,11 @@ DOT_ENV_PATH = os.path.join(
     os.environ.get("HOME", "/home/node"), ".openclaw", ".env",
 )
 
+
+class TokenRefreshError(Exception):
+    """Raised when the Twitch refresh token is dead and manual re-auth is needed."""
+    pass
+
 REQUIRED_KEYS = [
     "OPENCLAW_TWITCH_CLIENT_ID",
     "OPENCLAW_TWITCH_CLIENT_SECRET",
@@ -124,7 +129,8 @@ def refresh_token(client_id: str, client_secret: str, refresh_tok: str) -> dict:
             return json.loads(resp.read())
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")
-        print(f"ERROR: Twitch token refresh failed ({e.code}): {body}", file=sys.stderr)
+        msg = f"Twitch token refresh failed ({e.code}): {body}"
+        print(f"ERROR: {msg}", file=sys.stderr)
         if e.code in (400, 401):
             print(
                 "\nThe refresh token is DEAD. You must re-authenticate:\n"
@@ -137,7 +143,8 @@ def refresh_token(client_id: str, client_secret: str, refresh_tok: str) -> dict:
                 "  5. Restart: docker compose up -d --force-recreate openclaw-gateway\n",
                 file=sys.stderr,
             )
-        sys.exit(1)
+            raise TokenRefreshError(msg) from e
+        raise
 
 
 def main() -> None:
@@ -185,7 +192,10 @@ def main() -> None:
 
     # Refresh
     print(f"Refreshing token with client_id={client_id[:8]}…")
-    result = refresh_token(client_id, client_secret, current_refresh)
+    try:
+        result = refresh_token(client_id, client_secret, current_refresh)
+    except TokenRefreshError:
+        sys.exit(1)
 
     new_access = result["access_token"]
     new_refresh = result.get("refresh_token", current_refresh)

@@ -3,6 +3,7 @@ import { ChatClient, LogLevel } from "@twurple/chat";
 import type { OpenClawConfig } from "openclaw/plugin-sdk";
 import { updateDotEnvFile, resolveGlobalDotEnvPath } from "../../../src/infra/dotenv-write.js";
 import { DEFAULT_ACCOUNT_ID } from "./config.js";
+import { getTwitchRuntime } from "./runtime.js";
 import { resolveTwitchToken } from "./token.js";
 import type { ChannelLogSink, TwitchAccountConfig, TwitchChatMessage } from "./types.js";
 import { normalizeToken } from "./utils/twitch.js";
@@ -23,6 +24,7 @@ export class TwitchClientManager {
     account: TwitchAccountConfig,
     normalizedToken: string,
     accountId?: string,
+    cfg?: OpenClawConfig,
   ): Promise<StaticAuthProvider | RefreshingAuthProvider> {
     if (!account.clientId) {
       throw new Error("Missing Twitch client ID");
@@ -97,12 +99,31 @@ export class TwitchClientManager {
       });
 
       authProvider.onRefreshFailure((userId, error) => {
-        this.logger.error(
+        const msg =
           `TWITCH TOKEN DEAD — refresh failed for user ${userId}: ${error.message}. ` +
-            `Generate new tokens: https://twitchtokengenerator.com — then update ` +
-            `OPENCLAW_TWITCH_ACCESS_TOKEN and OPENCLAW_TWITCH_REFRESH_TOKEN in ` +
-            `~/.openclaw/.env and restart: docker compose up -d --force-recreate openclaw-gateway`,
-        );
+          `Generate new tokens: https://twitchtokengenerator.com — then update ` +
+          `OPENCLAW_TWITCH_ACCESS_TOKEN and OPENCLAW_TWITCH_REFRESH_TOKEN in ` +
+          `~/.openclaw/.env and restart: docker compose up -d --force-recreate openclaw-gateway`;
+        this.logger.error(msg);
+
+        // Alert the user via system event (visible in agent session)
+        try {
+          const rt = getTwitchRuntime();
+          if (cfg) {
+            const route = rt.channel.routing.resolveAgentRoute({
+              cfg,
+              channel: "twitch",
+              accountId,
+              peer: { kind: "group", id: account.channel },
+            });
+            rt.system.enqueueSystemEvent(msg, {
+              sessionKey: route.sessionKey,
+              contextKey: "twitch:token-dead",
+            });
+          }
+        } catch {
+          // Runtime or routing may not be available during early startup
+        }
       });
 
       const refreshStatus = account.refreshToken
@@ -178,7 +199,7 @@ export class TwitchClientManager {
 
     const normalizedToken = normalizeToken(tokenResolution.token);
 
-    const authProvider = await this.createAuthProvider(account, normalizedToken, accountId);
+    const authProvider = await this.createAuthProvider(account, normalizedToken, accountId, cfg);
 
     const client = new ChatClient({
       authProvider,

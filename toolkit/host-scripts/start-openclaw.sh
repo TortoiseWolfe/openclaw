@@ -13,7 +13,7 @@ REPO_DIR="$HOME/repos/openclaw"
 LOG_DIR="$HOME/.openclaw"
 LOG_FILE="$LOG_DIR/startup.log"
 LOCK_FILE="/tmp/openclaw-starting.lock"
-REQUIRED_MODELS=("qwen3:14b")
+REQUIRED_MODELS=("qwen3:8b-ctx16k")
 
 mkdir -p "$LOG_DIR"
 
@@ -95,20 +95,7 @@ else
     fi
   done
 
-  # 6. Create ctx8k Modelfile variants (num_ctx=8192 for VRAM efficiency on RTX 3060)
-  for model in "${REQUIRED_MODELS[@]}"; do
-    variant="${model}-ctx8k"
-    if echo "$existing" | grep -q "^${variant}"; then
-      log "Variant $variant present"
-    else
-      log "Creating $variant (num_ctx=8192)..."
-      docker compose exec -T openclaw-gateway curl -sf http://ollama:11434/api/create \
-        -X POST -H 'Content-Type: application/json' \
-        -d "{\"model\":\"${variant}\",\"from\":\"${model}\",\"params\":{\"num_ctx\":8192}}" \
-        >> "$LOG_FILE" 2>&1
-      log "Variant $variant created"
-    fi
-  done
+  # 6. Models already include 16K context in their Modelfile — no variants needed
 fi
 
 # 7. Summary

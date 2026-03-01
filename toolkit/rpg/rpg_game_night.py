@@ -67,12 +67,28 @@ def run(cmd: list[str]) -> None:
 def main():
     global _stream_flag
 
-    # 0. Launch OBS — hard requirement
+    # 0. Launch OBS — retry with backoff (launcher may be restarting)
     if not obs_client.is_connected():
-        print("Launching OBS via host launcher ...")
-        if not obs_client.launch_obs(wait=True, max_wait=30):
-            print("ERROR: Cannot reach OBS. Start obs_launcher.py on the "
-                  "Windows host, then retry.", file=sys.stderr)
+        max_attempts = 3
+        for attempt in range(1, max_attempts + 1):
+            print(f"Launching OBS via host launcher (attempt {attempt}/{max_attempts}) ...")
+            if obs_client.launch_obs(wait=True, max_wait=45):
+                break
+            if attempt < max_attempts:
+                wait = 15 * attempt
+                status = obs_client.launcher_status()
+                if status.get("error"):
+                    print(f"Launcher unreachable: {status['error']} — "
+                          f"retrying in {wait}s (watchdog may be restarting it)",
+                          file=sys.stderr)
+                else:
+                    print(f"OBS not ready yet — retrying in {wait}s", file=sys.stderr)
+                time.sleep(wait)
+        else:
+            print("ERROR: Cannot reach OBS after 3 attempts. "
+                  "Ensure obs_launcher_watchdog.sh is running on the Windows host:\n"
+                  "  bash ~/repos/openclaw/toolkit/host-scripts/obs_launcher_watchdog.sh",
+                  file=sys.stderr)
             sys.exit(1)
     print("OBS connected")
 

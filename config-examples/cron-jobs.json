@@ -877,7 +877,7 @@
       },
       "payload": {
         "kind": "agentTurn",
-        "message": "Game night starting in 15 minutes!\n\n1. Run: python3 /app/toolkit/rpg/rpg_show_flow.py --setup-only\n2. Use twitch_manage_channel to set title='Star Wars RPG Game Night' and game='Tabletop RPGs'\n3. Send a chat message: 'Game night starts in 15 minutes! Type !rpg for info, !join to claim a character.'\n4. Read the adventure file at /app/rpg/adventures/ to prepare your GM notes.",
+        "message": "Use the exec tool to run: python3 /app/toolkit/rpg/rpg_game_night_setup.py. Report the output.",
         "deliver": false,
         "promptMode": "minimal",
         "timeoutSeconds": 300
@@ -899,7 +899,7 @@
       },
       "payload": {
         "kind": "agentTurn",
-        "message": "It's game time! Start the RPG session:\n\n1. Run: python3 /app/toolkit/rpg/rpg_state.py init --adventure escape-from-mos-eisley --auto-join-bots\n2. Set the opening crawl: python3 /app/toolkit/rpg/rpg_state.py set-crawl --title 'STAR WARS' --episode-title 'Escape from Mos Eisley' --text 'The galaxy is in turmoil. The evil GALACTIC EMPIRE tightens its grip on the Outer Rim, sending patrols to every spaceport.|On the dusty streets of MOS EISLEY, a ragtag group of unlikely heroes finds themselves caught in a web of Imperial intrigue.|With bounty hunters on their trail and Stormtroopers at every corner, they must find a way off this desert world before it is too late...'\n3. Run: python3 /app/toolkit/rpg/rpg_show_flow.py\n\nOnce the crawl finishes and you're on the Game scene, begin the adventure. You are the Game Master \u2014 follow /app/rpg/GM-GUIDE.md for rules and pacing. All 4 pre-gen characters start as bot-controlled. Play them with distinct personalities. When a viewer types !join, hand over control immediately. Read the adventure file and narrate the opening scene in Twitch chat.",
+        "message": "Use the exec tool to run: python3 /app/toolkit/rpg/rpg_game_night.py. Report the output. This script handles all game night orchestration (OBS, stream, crawl, live session).",
         "deliver": false,
         "promptMode": "minimal",
         "timeoutSeconds": 7200
@@ -921,7 +921,7 @@
       },
       "payload": {
         "kind": "agentTurn",
-        "message": "Use the exec tool to run: python3 /app/toolkit/twitch/twitch_token_refresh.py. Report the output. If the refresh token is dead, report the re-authentication instructions.",
+        "message": "Use the exec tool to run: python3 /app/toolkit/twitch/twitch_token_refresh.py --force. Report the output. If the refresh token is dead, report the re-authentication instructions.",
         "deliver": false,
         "timeoutSeconds": 120
       }

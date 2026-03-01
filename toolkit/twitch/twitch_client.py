@@ -111,9 +111,10 @@ def _try_refresh_token() -> bool:
     global _refresh_attempted, _broadcaster_id_cache
     if _refresh_attempted:
         return False
-    _refresh_attempted = True
     try:
-        from twitch_token_refresh import refresh_token, update_env, read_env, DOT_ENV_PATH
+        from twitch_token_refresh import (
+            refresh_token, update_env, read_env, DOT_ENV_PATH, TokenRefreshError,
+        )
         env = read_env(DOT_ENV_PATH)
         client_id = env.get("OPENCLAW_TWITCH_CLIENT_ID", "")
         client_secret = env.get("OPENCLAW_TWITCH_CLIENT_SECRET", "")
@@ -132,9 +133,12 @@ def _try_refresh_token() -> bool:
         _broadcaster_id_cache = None
         print(f"Token auto-refreshed (expires in {result.get('expires_in', '?')}s)", file=sys.stderr)
         return True
-    except SystemExit:
-        raise  # Let sys.exit() propagate (dead refresh token)
+    except TokenRefreshError:
+        # Dead refresh token — block further attempts (manual re-auth needed)
+        _refresh_attempted = True
+        raise
     except Exception as e:
+        # Transient failure (DNS, timeout) — allow retry on next 401
         print(f"Token auto-refresh failed: {e}", file=sys.stderr)
         return False
 
