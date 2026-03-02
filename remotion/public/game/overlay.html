@@ -80,6 +80,38 @@
     font-style: italic;
   }
 
+  /* -- Terrain overlays --------------------------------------- */
+  .terrain-obstacle {
+    position: absolute;
+    border: 3px dashed rgba(255, 68, 68, 0.6);
+    background: rgba(255, 68, 68, 0.08);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .terrain-exit {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #00ffff;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.15);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .terrain-exit-label {
+    position: absolute;
+    transform: translateX(-50%);
+    color: #00ffff;
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 0 4px #000, 0 0 4px #000;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
   /* -- Tokens on map ------------------------------------------ */
   .token {
     position: absolute;
@@ -861,6 +893,62 @@
   let currentContainerScale = 1;  // for inverse-scaling tokens
   let mapSwitching = false;       // crossfade lock
 
+  // -- Terrain overlay state ------------------------------------
+  const _terrainCache = {};
+  let _currentTerrainMap = '';
+
+  async function loadTerrain(mapImage) {
+    if (_terrainCache[mapImage] !== undefined) return _terrainCache[mapImage];
+    const base = mapImage.replace('.svg', '').replace('.png', '');
+    const url = MAPS_BASE + base + '-terrain.json';
+    try {
+      const resp = await fetch(url);
+      if (resp.ok) {
+        const data = await resp.json();
+        _terrainCache[mapImage] = data;
+        return data;
+      }
+    } catch (e) { /* terrain not available */ }
+    _terrainCache[mapImage] = null;
+    return null;
+  }
+
+  function renderTerrain(container, terrain) {
+    container.querySelectorAll('.terrain-obstacle, .terrain-exit, .terrain-exit-label').forEach(el => el.remove());
+    if (!terrain) return;
+
+    const obstacles = terrain.obstacles || [];
+    const positions = terrain.positions || {};
+    const connections = terrain.connections || {};
+
+    for (const obs of obstacles) {
+      const el = document.createElement('div');
+      el.className = 'terrain-obstacle';
+      el.style.left = obs.x1 + 'px';
+      el.style.top = obs.y1 + 'px';
+      el.style.width = (obs.x2 - obs.x1) + 'px';
+      el.style.height = (obs.y2 - obs.y1) + 'px';
+      container.appendChild(el);
+    }
+
+    for (const [name, conn] of Object.entries(connections)) {
+      const pos = positions[name];
+      if (!pos) continue;
+      const el = document.createElement('div');
+      el.className = 'terrain-exit';
+      el.style.left = pos.x + 'px';
+      el.style.top = pos.y + 'px';
+      container.appendChild(el);
+
+      const label = document.createElement('div');
+      label.className = 'terrain-exit-label';
+      label.textContent = name;
+      label.style.left = pos.x + 'px';
+      label.style.top = (pos.y - 28) + 'px';
+      container.appendChild(label);
+    }
+  }
+
   // -- Map rotation state (client-side cycling between maps with PCs) --
   let _rotationMaps = [];          // maps with visible PCs, sorted
   let _rotationIndex = 0;          // current position in rotation
@@ -966,6 +1054,11 @@
         // Reset camera transform for new map (instant, no transition)
         container.style.transition = 'none';
         applyCamera(state, viewport, container, mapW, mapH);
+        // Re-render terrain for new map
+        _currentTerrainMap = mapData.image;
+        loadTerrain(mapData.image).then(terrain => {
+          renderTerrain(container, terrain);
+        });
         // Force reflow then restore transition
         container.offsetHeight;
         container.style.transition = '';
@@ -986,6 +1079,14 @@
 
     // Apply camera transform
     applyCamera(state, viewport, container, mapW, mapH);
+
+    // Render terrain overlay (only when map changes)
+    if (mapData.image !== _currentTerrainMap) {
+      _currentTerrainMap = mapData.image;
+      loadTerrain(mapData.image).then(terrain => {
+        renderTerrain(container, terrain);
+      });
+    }
 
     // Render tokens
     const existing = container.querySelectorAll('.token');

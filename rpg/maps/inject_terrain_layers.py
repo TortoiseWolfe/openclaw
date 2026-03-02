@@ -64,15 +64,6 @@ def generate_layers(terrain: dict) -> str:
                      f'font-weight="bold" stroke="#000" stroke-width="3" '
                      f'paint-order="stroke">{name}</text>')
 
-    # Regular positions — green crosshairs
-    for name, pos in positions.items():
-        if name in connections:
-            continue  # already drawn as connection
-        cx, cy = pos["x"], pos["y"]
-        lines.append(f'    <circle cx="{cx}" cy="{cy}" r="10" stroke="#00cc44" stroke-width="1.5"/>')
-        lines.append(f'    <line x1="{cx-15}" y1="{cy}" x2="{cx+15}" y2="{cy}" stroke="#00cc44" stroke-width="1.2"/>')
-        lines.append(f'    <line x1="{cx}" y1="{cy-15}" x2="{cx}" y2="{cy+15}" stroke="#00cc44" stroke-width="1.2"/>')
-
     lines.append('  </g>')
 
     return "\n".join(lines)
@@ -117,6 +108,16 @@ def inject_into_svg(svg_path: str, layers_svg: str) -> bool:
     return True
 
 
+def copy_terrain_json(slug: str, terrain: dict) -> None:
+    """Copy terrain JSON to public maps dir so overlay.html can fetch it."""
+    svg_name = terrain.get("map", f"{slug}.svg")
+    base = svg_name.replace(".svg", "")
+    dest = os.path.join(SVG_DIR, f"{base}-terrain.json")
+    with open(dest, 'w') as f:
+        json.dump(terrain, f, separators=(',', ':'))
+    print(f"    -> copied terrain JSON to {os.path.basename(dest)}")
+
+
 def process_map(slug: str) -> None:
     terrain = load_terrain(slug)
     if not terrain:
@@ -135,6 +136,8 @@ def process_map(slug: str) -> None:
         n_pos = len(terrain.get("positions", {}))
         n_conn = len(terrain.get("connections", {}))
         print(f"  {svg_name}: {n_obs} obstacles, {n_pos} positions, {n_conn} exits")
+
+    copy_terrain_json(slug, terrain)
 
 
 def main() -> None:
