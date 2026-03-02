@@ -16,22 +16,38 @@ mkdir -p "$LOG_DIR"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG_FILE"; }
 
-# Check if already running via PID file
+# Check if already running via PID file — verify with health check
 if [[ -f "$PID_FILE" ]]; then
     old_pid=$(cat "$PID_FILE")
     if kill -0 "$old_pid" 2>/dev/null; then
-        if grep -q "obs_launcher" /proc/"$old_pid"/cmdline 2>/dev/null; then
-            log "Already running (PID $old_pid)"
+        if curl -sf --max-time 5 "http://localhost:${PORT}/health" >/dev/null 2>&1; then
+            log "Already running (PID $old_pid, healthy)"
             exit 0
         fi
+        # Process alive but unhealthy — kill it
+        log "PID $old_pid alive but /health failed — killing"
+        kill "$old_pid" 2>/dev/null || true
+        sleep 2
+        kill -9 "$old_pid" 2>/dev/null || true
     fi
     rm -f "$PID_FILE"
 fi
 
-# Safety net: check if port is already bound
+# Safety net: if port is bound, health-check before assuming it's alive
 if ss -tlnp 2>/dev/null | grep -q ":${PORT} "; then
-    log "Port $PORT already in use — assuming launcher is running"
-    exit 0
+    if curl -sf --max-time 5 "http://localhost:${PORT}/health" >/dev/null 2>&1; then
+        log "Launcher healthy on port $PORT"
+        exit 0
+    fi
+    # Port bound but unhealthy — kill the stale process
+    stale_pid=$(ss -tlnp 2>/dev/null | grep ":${PORT} " | grep -oP 'pid=\K[0-9]+' | head -1)
+    if [[ -n "$stale_pid" ]]; then
+        log "Killing stale launcher PID $stale_pid (port $PORT bound but /health failed)"
+        kill "$stale_pid" 2>/dev/null || true
+        sleep 2
+        kill -9 "$stale_pid" 2>/dev/null || true
+    fi
+    rm -f "$PID_FILE"
 fi
 
 log "Starting obs_launcher.py on port $PORT"

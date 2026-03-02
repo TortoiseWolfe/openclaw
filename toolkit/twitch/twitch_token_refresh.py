@@ -171,12 +171,18 @@ def main() -> None:
     current_access = env.get("OPENCLAW_TWITCH_ACCESS_TOKEN", "")
 
     # Validate current token
+    alert_dir = os.path.join(os.environ.get("HOME", "/home/node"), ".openclaw", "alerts")
+    alert_file = os.path.join(alert_dir, "twitch-token-dead.txt")
+
     if current_access:
         info = validate_token(current_access, client_id)
         if info:
             expires_in = info.get("expires_in", 0)
             login = info.get("login", "unknown")
             print(f"Current token is VALID — user={login}, expires_in={expires_in}s ({expires_in // 60}m)")
+            # Clear any stale alert
+            if os.path.exists(alert_file):
+                os.remove(alert_file)
             if args.check:
                 sys.exit(0)
             if not args.force:
@@ -185,6 +191,14 @@ def main() -> None:
         else:
             print("Current access token is EXPIRED or INVALID.")
             if args.check:
+                os.makedirs(alert_dir, exist_ok=True)
+                with open(alert_file, "w") as f:
+                    f.write(
+                        f"Twitch token expired at {time.strftime('%Y-%m-%d %H:%M:%S')}.\n"
+                        "Node.js RefreshingAuthProvider should have renewed it.\n"
+                        "Manual re-auth needed: https://twitchtokengenerator.com\n"
+                    )
+                print(f"Alert written to {alert_file}")
                 sys.exit(1)
     elif args.check:
         print("No access token found.")

@@ -60,7 +60,7 @@ log "Starting services..."
 docker compose up -d >> "$LOG_FILE" 2>&1
 log "Compose up done"
 
-# 3b. Start OBS launcher watchdog (HTTP bridge for Docker→OBS communication)
+# 3b. Start OBS launcher watchdog (host-side HTTP bridge — independent of Ollama)
 WATCHDOG="$REPO_DIR/toolkit/host-scripts/obs_launcher_watchdog.sh"
 if [[ -x "$WATCHDOG" ]]; then
     log "Starting OBS launcher watchdog..."

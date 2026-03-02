@@ -908,7 +908,7 @@
     {
       "id": "twitch-token-refresh",
       "name": "Twitch token refresh",
-      "description": "Proactively refresh Twitch OAuth token every 3 hours to prevent token death. Twitch rotating refresh tokens go stale if the container is down when the access token expires — this keeps them alive.",
+      "description": "Validate Twitch OAuth token every 3 hours. Node.js RefreshingAuthProvider is the sole refresher — this cron only checks health. If expired, it means auto-refresh failed and manual re-auth is needed.",
       "enabled": true,
       "agentId": "main",
       "deleteAfterRun": false,
@@ -921,7 +921,7 @@
       },
       "payload": {
         "kind": "agentTurn",
-        "message": "Use the exec tool to run: python3 /app/toolkit/twitch/twitch_token_refresh.py --force. Report the output. If the refresh token is dead, report the re-authentication instructions.",
+        "message": "Use the exec tool to run: python3 /app/toolkit/twitch/twitch_token_refresh.py --check. Report the output. If the token is expired, report that Node.js auto-refresh has failed and manual re-authentication is needed.",
         "deliver": false,
         "timeoutSeconds": 120
       }

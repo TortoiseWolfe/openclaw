@@ -90,7 +90,10 @@ export class TwitchClientManager {
           }
           process.env.OPENCLAW_TWITCH_OBTAINMENT_TIMESTAMP = String(token.obtainmentTimestamp);
 
-          this.logger.info(`Persisted refreshed tokens to ${envPath} for user ${userId}`);
+          this.logger.info(
+            `Persisted refreshed tokens to ${envPath} for user ${userId} ` +
+            `(access=${token.accessToken.slice(0, 8)}…, refresh=${token.refreshToken ? token.refreshToken.slice(0, 8) + "…" : "none"})`,
+          );
         } catch (err) {
           this.logger.error(
             `Failed to persist refreshed tokens: ${err instanceof Error ? err.message : String(err)}`,
