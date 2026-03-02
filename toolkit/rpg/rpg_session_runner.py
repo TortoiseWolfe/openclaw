@@ -1204,7 +1204,7 @@ def _signal_handler(sig, frame):
     _running = False
 
 
-def _init_session(adventure: str, transcript: TranscriptLogger):
+def _init_session(adventure: str, transcript: TranscriptLogger, skip_init: bool = False):
     """Initialize game state with all pre-gen characters as bot-controlled."""
     global _module
     _module = find_module(adventure)
@@ -1213,18 +1213,22 @@ def _init_session(adventure: str, transcript: TranscriptLogger):
     else:
         logger.info("=== NO MODULE JSON FOUND — using hardcoded fallback ===")
 
-    logger.info("=== INITIALIZING SESSION ===")
-    out = run_rpg_cmd(["init", "--adventure", adventure, "--auto-join-bots"])
-    _invalidate_state_cache()          # init rewrites state — flush stale cache
-    logger.info(f"  init: {out}")
+    if skip_init:
+        logger.info("=== SKIPPING INIT — state pre-initialized by launcher ===")
+        _invalidate_state_cache()
+    else:
+        logger.info("=== INITIALIZING SESSION ===")
+        out = run_rpg_cmd(["init", "--adventure", adventure, "--auto-join-bots"])
+        _invalidate_state_cache()          # init rewrites state — flush stale cache
+        logger.info(f"  init: {out}")
     # Log persistent wound state (wounds carry over from last canon session)
     pregens = _mod("pregens", PREGENS)
     for char in pregens:
         wl = _get_wound_level(char)
         if wl > 0:
             logger.info(f"  {char} starts wounded (level {wl})")
-    logger.info("  PCs loaded with persistent state")
-    transcript.log_session_event("init", {"adventure": adventure, "auto_join_bots": True})
+    logger.info("  PCs loaded")
+    transcript.log_session_event("init", {"adventure": adventure, "skip_init": skip_init})
 
 
 def _auto_place_tokens(act_num: int):
@@ -2472,7 +2476,7 @@ def _write_closing_crawl(transcript: TranscriptLogger):
 # Dry-run mode
 # ---------------------------------------------------------------------------
 
-def run_dry_session(adventure: str):
+def run_dry_session(adventure: str, skip_init: bool = False):
     """Full dry-run session: bot plays all characters through 3 acts."""
     session_id = f"session-{datetime.now().strftime('%Y-%m-%d-%H%M%S')}"
     transcript = TranscriptLogger(session_id)
@@ -2483,7 +2487,7 @@ def run_dry_session(adventure: str):
         "adventure": adventure,
     })
 
-    _init_session(adventure, transcript)
+    _init_session(adventure, transcript, skip_init=skip_init)
 
     total_turns = 0
     last_action_idx = 0  # track where GM left off in action_log
@@ -2915,7 +2919,7 @@ def _pre_roll_bot_actions(act_num: int, transcript: TranscriptLogger,
     return dice_strings
 
 
-def run_live_session(adventure: str):
+def run_live_session(adventure: str, skip_init: bool = False):
     """Live session loop — waits for real Twitch input, GM responds."""
     session_id = f"session-{datetime.now().strftime('%Y-%m-%d-%H%M%S')}"
     transcript = TranscriptLogger(session_id)
@@ -2926,7 +2930,7 @@ def run_live_session(adventure: str):
         "adventure": adventure,
     })
 
-    _init_session(adventure, transcript)
+    _init_session(adventure, transcript, skip_init=skip_init)
 
     act_num = 1
     turn_num = 0
@@ -3134,12 +3138,14 @@ def main():
                        help="Run a live session waiting for Twitch input")
     parser.add_argument("--adventure", default="escape-from-mos-eisley",
                         help="Adventure module name (default: escape-from-mos-eisley)")
+    parser.add_argument("--skip-init", action="store_true",
+                        help="Skip init — state already set up by launcher")
     args = parser.parse_args()
 
     if args.dry_run:
-        run_dry_session(args.adventure)
+        run_dry_session(args.adventure, skip_init=args.skip_init)
     elif args.live:
-        run_live_session(args.adventure)
+        run_live_session(args.adventure, skip_init=args.skip_init)
 
 
 if __name__ == "__main__":
