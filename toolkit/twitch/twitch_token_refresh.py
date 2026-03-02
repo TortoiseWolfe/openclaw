@@ -14,7 +14,7 @@ Usage:
     python3 twitch_token_refresh.py --check      # validate current access token only
     python3 twitch_token_refresh.py --force      # force refresh even if token is valid
 
-Env file: ~/.openclaw/.env (auto-detected from $HOME)
+Env file: ~/.openclaw/.env (auto-detected from HOME env var)
 """
 
 import json

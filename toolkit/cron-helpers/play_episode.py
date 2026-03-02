@@ -238,9 +238,59 @@ def _rerender_branding(slug: str, scheduled_date: str) -> None:
         print(f"  WARNING: Branding re-render failed: {e}", file=sys.stderr)
 
 
+def _check_outro_next_date(slug: str) -> bool:
+    """Check if the outro's baked-in next-episode date still matches the schedule.
+    Returns True if stale (needs re-render), False if current or no metadata.
+    """
+    from parse_episode import get_next_episode, is_last_in_series, _normalize_topic, parse_schedule
+
+    # Find the outro metadata sidecar
+    for series_dir in sorted(glob.glob(os.path.join(RENDERS_DIR, "*", slug))):
+        metas = sorted(glob.glob(os.path.join(series_dir, "outro-*.meta.json")))
+        if metas:
+            meta_path = metas[-1]
+            break
+    else:
+        flat_dir = os.path.join(RENDERS_DIR, slug)
+        metas = sorted(glob.glob(os.path.join(flat_dir, "outro-*.meta.json")))
+        meta_path = metas[-1] if metas else None
+
+    if not meta_path:
+        return False  # No sidecar — can't check, let filename check handle it
+
+    try:
+        with open(meta_path) as f:
+            meta = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return False
+
+    # Look up what the next-date SHOULD be now
+    schedule = parse_schedule()
+    topic = None
+    for ep in schedule:
+        ep_slug = re.sub(r"\s+", "-", re.sub(r"[^a-z0-9\s-]", "", ep["topic"].lower().replace("&", "and")).strip())
+        if ep_slug == slug:
+            topic = ep["topic"]
+            break
+    if not topic:
+        return False
+
+    last_in = is_last_in_series(topic)
+    next_ep = get_next_episode(topic)
+
+    expected_next_date = next_ep.get("date", "") if next_ep and last_in else None
+    baked_next_date = meta.get("nextDate")
+
+    if expected_next_date != baked_next_date:
+        print(f"  Stale outro next-date for {slug}: baked={baked_next_date}, need={expected_next_date}")
+        return True
+    return False
+
+
 def ensure_branding_current(slugs: list[str]) -> None:
     """Check all episode slugs have branding with the correct scheduled date.
     Re-renders branding if the date is stale (e.g., episode was rescheduled).
+    Also checks the next-episode date baked into outros via metadata sidecar.
     """
     for slug in slugs:
         sched_date = _get_scheduled_date(slug)
@@ -253,6 +303,8 @@ def ensure_branding_current(slugs: list[str]) -> None:
             _rerender_branding(slug, sched_date)
         elif not actual_date_slug:
             print(f"  No branding found for {slug}, rendering ...")
+            _rerender_branding(slug, sched_date)
+        elif _check_outro_next_date(slug):
             _rerender_branding(slug, sched_date)
 
 

@@ -20,6 +20,49 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  ollama-init:
+    image: ollama/ollama@sha256:76d0c003b27db65170e88ab319ff19c9bcee41ecb8177c52ab06921dfa13abdf
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        set -e
+        ensure_model() {
+          local base="$$1" variant="$$1-ctx16k"
+          if ollama show "$$variant" > /dev/null 2>&1; then
+            echo "[ollama-init] $$variant already present"
+          else
+            echo "[ollama-init] Pulling $$base ..."
+            ollama pull "$$base"
+            echo "[ollama-init] Creating $$variant (16K context) ..."
+            printf 'FROM %s\nPARAMETER num_ctx 16384\n' "$$base" > /tmp/Modelfile
+            ollama create "$$variant" -f /tmp/Modelfile
+            echo "[ollama-init] $$variant ready"
+          fi
+        }
+        ensure_model qwen3:8b
+        ensure_model llama3-groq-tool-use:8b
+        ensure_model llama3.1:8b
+        echo "[ollama-init] All models available"
+    restart: "no"
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
 
   mcp-gateway:
     image: debian:bookworm-slim@sha256:56ff6d36d4eb3db13a741b342ec466f121480b5edded42e4b7ee850ce7a418ee
@@ -54,8 +97,10 @@ services:
   openclaw-gateway:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
     depends_on:
-      - ollama
-      - mcp-gateway
+      ollama-init:
+        condition: service_completed_successfully
+      mcp-gateway:
+        condition: service_started
     security_opt:
       - "no-new-privileges:true"
     extra_hosts:
