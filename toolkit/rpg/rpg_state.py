@@ -352,6 +352,7 @@ def cmd_init(args: argparse.Namespace) -> None:
             slug = _slugify(char_name)
             player_file = os.path.join(PLAYERS_DIR, f"{slug}.json")
             # Preserve progression if player file already exists
+            fresh = getattr(args, "fresh", False)
             if os.path.exists(player_file):
                 with open(player_file) as f:
                     existing = json.load(f)
@@ -360,6 +361,8 @@ def cmd_init(args: argparse.Namespace) -> None:
                 existing["skills"] = char.get("skills", existing.get("skills", {}))
                 existing["gear"] = char.get("gear", existing.get("gear", []))
                 existing["background"] = char.get("background", existing.get("background", ""))
+                if fresh:
+                    existing["wound_level"] = 0
                 _atomic_write(player_file, existing)
                 char_data = existing
             else:
@@ -1654,6 +1657,8 @@ def main() -> None:
     p_init.add_argument("--adventure", required=True, help="Adventure slug (e.g. escape-from-mos-eisley)")
     p_init.add_argument("--auto-join-bots", action="store_true",
                          help="Auto-join pre-gen characters as bot-controlled PCs")
+    p_init.add_argument("--fresh", action="store_true",
+                         help="Fresh adventure start — reset wounds to healthy")
 
     p_join = sub.add_parser("join", help="Add a player to the session")
     p_join.add_argument("--viewer", required=True, help="Twitch viewer username")

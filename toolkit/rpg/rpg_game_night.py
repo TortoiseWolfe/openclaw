@@ -104,7 +104,7 @@ def main():
         print(f"WARNING: Failed to set Twitch category: {e}", file=sys.stderr)
 
     # 1. Init game state
-    run([*STATE, "init", "--adventure", ADVENTURE, "--auto-join-bots"])
+    run([*STATE, "init", "--adventure", ADVENTURE, "--auto-join-bots", "--fresh"])
 
     # 2. Set opening crawl
     run([*STATE, "set-crawl",
