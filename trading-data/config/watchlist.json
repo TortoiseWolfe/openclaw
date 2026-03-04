@@ -111,6 +111,11 @@
       "enabled": true,
       "lookback_trades": 10,
       "reduced_max_positions": 3
+    },
+    "trailing_stop_cooldown": {
+      "enabled": true,
+      "days": 3,
+      "after_reasons": ["trailing stop"]
     }
   }
 }
