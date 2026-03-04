@@ -310,7 +310,7 @@ def section_gates(state, lessons, curriculum_text, watchlist):
     # Check if correlation guard code exists
     gate2 = False
     try:
-        td_path = os.path.join(REPO, "toolkit", "cron-helpers", "market_trade_decision.py")
+        td_path = os.path.join(REPO, "toolkit", "trading", "market_trade_decision.py")
         with open(td_path) as f:
             gate2 = "correlation" in f.read().lower()
     except FileNotFoundError:
