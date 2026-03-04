@@ -118,7 +118,8 @@
     "exec": {
       "host": "gateway",
       "security": "allowlist",
-      "ask": "off"
+      "ask": "off",
+      "pathPrepend": ["/opt/venv/bin"]
     },
     "mcp": {
       "servers": {

@@ -17,13 +17,24 @@ import sys
 import time
 import urllib.request
 
-import obsws_python as obs
-
 WS_HOST = os.environ.get("OBS_WS_HOST", "host.docker.internal")
 WS_PORT = int(os.environ.get("OBS_WS_PORT", "4455"))
 WS_PASSWORD = os.environ.get("OBS_WS_PASSWORD", "")
 LAUNCHER_URL = os.environ.get("OBS_LAUNCHER_URL", "http://host.docker.internal:8100")
 TIMEOUT = 5
+
+# Lazy import: obsws_python is only needed for WebSocket functions, not launcher HTTP calls.
+# Importing at module level caused all scripts that touch obs_client to crash when the
+# venv wasn't on PATH (login shell resets PATH, see tools.exec.pathPrepend fix).
+_obs = None
+
+
+def _get_obs():
+    global _obs
+    if _obs is None:
+        import obsws_python as obs
+        _obs = obs
+    return _obs
 
 
 # ── Launch (via host HTTP launcher) ──────────────────────────────
@@ -71,8 +82,9 @@ def launcher_status() -> dict:
 
 # ── WebSocket control ────────────────────────────────────────────
 
-def _connect() -> obs.ReqClient:
+def _connect():
     """Create a new OBS WebSocket connection."""
+    obs = _get_obs()
     return obs.ReqClient(host=WS_HOST, port=WS_PORT, password=WS_PASSWORD, timeout=TIMEOUT)
 
 
@@ -313,7 +325,7 @@ def create_media_source(scene: str, source: str) -> None:
         cl.disconnect()
 
 
-def _set_fullscreen_transform(cl: obs.ReqClient, scene: str, item_id: int) -> None:
+def _set_fullscreen_transform(cl, scene: str, item_id: int) -> None:
     """Set a scene item to fill the canvas (1920x1080 assumed)."""
     try:
         # Get video settings for base resolution
