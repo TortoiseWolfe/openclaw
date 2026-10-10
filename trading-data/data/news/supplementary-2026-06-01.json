@@ -1,0 +1,471 @@
+{
+  "date": "2026-06-01",
+  "lastUpdated": "2026-06-01T12:50:44.149390+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 26,
+      "matched": [
+        {
+          "title": "Nvidia\u2019s latest product is a game-changer",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-latest-product-game-changer-010300358.html",
+          "source": "yahoo",
+          "published": "2026-05-31T01:03:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Rises Amid Continued U.S.-Iran Deal Hopes; Nvidia Rallies On New Chip (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-deal-nvidia-stock-nvda/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-06-01T12:04:35Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir Eyes Buy Point As Software Stocks Extend Rally On Snowflake, Dell Earnings",
+          "url": "https://www.investors.com/news/technology/palantir-stock-buy-point-software-rally-artificial-intelligence-disruption/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-06-01T11:44:05Z",
+          "matched_symbols": [
+            "PLTR",
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Analyst Report: Salesforce Inc",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_2869_AnalystReport_1780312137000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-06-01T11:08:57Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Nvidia CEO calls AI 'a profit generator' at Computex Taipei, unveils new laptop processor",
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-nvidia-ceo-calls-ai-a-profit-generator-at-computex-taipei-unveils-new-laptop-processor-100000230.html",
+          "source": "yahoo",
+          "published": "2026-06-01T10:00:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Market Digest: CRM, CMI, CPRT, NTAP, IQV",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_47186_MarketSummary_1780311237000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-06-01T10:53:57Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A Google engineer bet $2.7M on Polymarket using secret search data \u2014 and walked away with $1.2M in profit",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/google-engineer-bet-2-7m-113000379.html",
+          "source": "yahoo",
+          "published": "2026-06-01T11:30:00Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures climb after closing May with record highs",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-june-1-flat-225422503.html",
+          "source": "yahoo",
+          "published": "2026-05-31T22:54:22Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Michael Saylor's Bitcoin Treasury Firm Strategy Sells 32 BTC for $2.5M",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/michael-saylors-bitcoin-treasury-firm-122216992.html",
+          "source": "yahoo",
+          "published": "2026-06-01T12:22:16Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia jumps into PCs with new Arm-based chip debuting in laptops from Microsoft, Dell, HP",
+          "url": "https://www.cnbc.com/2026/05/31/nvidias-new-chip-to-power-fresh-line-of-windows-laptops-by-dell-hp.html",
+          "source": "cnbc_top",
+          "published": "Mon, 01 Jun 2026 06:01:37 GMT",
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm, IBM and Hewlett Packard soar as Nvidia chip 'reinvention' extends software rally",
+          "url": "https://www.cnbc.com/2026/06/01/arm-ibm-and-hewlett-packard-nvidia-chip-extends-software-rally.html",
+          "source": "cnbc_top",
+          "published": "Mon, 01 Jun 2026 10:43:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Berkshire trails red-hot S&P 500 by biggest margin so far this year",
+          "url": "https://www.cnbc.com/2026/05/30/berkshire-trails-red-hot-sp-500-by-biggest-margin-so-far-this-year.html",
+          "source": "cnbc_top",
+          "published": "Sat, 30 May 2026 12:47:51 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia, Meta and Schlumberger rank among top companies adopting AI, new study says",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-meta-walmart-among-top-companies-adopting-ai.html",
+          "source": "cnbc_top",
+          "published": "Mon, 01 Jun 2026 11:55:58 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia-backed $5 billion AI company tells CNBC of major London expansion",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-backed-runway-london-expansion.html",
+          "source": "cnbc_top",
+          "published": "Mon, 01 Jun 2026 06:13:44 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Former Barclays CEO Jes Staley agrees to July 23 interview about Jeffrey Epstein by Oversight panel",
+          "url": "https://www.cnbc.com/2026/05/31/jes-staley-jeffrey-epstein-interview-house-jpmorgan-chase-barclays.html",
+          "source": "cnbc_top",
+          "published": "Sun, 31 May 2026 15:53:27 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia, Meta and Schlumberger rank among top companies adopting AI, new study says",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-meta-walmart-among-top-companies-adopting-ai.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 11:55:58 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia picks Unitree for humanoid robot platform as Chinese startup eyes IPO",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-unitree-humanoid-robotics-system-researchers.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 05:45:45 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia-backed $5 billion AI company tells CNBC of major London expansion",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-backed-runway-london-expansion.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 06:13:44 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia jumps into PCs with new Arm-based chip debuting in laptops from Microsoft, Dell, HP",
+          "url": "https://www.cnbc.com/2026/05/31/nvidias-new-chip-to-power-fresh-line-of-windows-laptops-by-dell-hp.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 06:01:37 GMT",
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jim Cramer says Dell\u2019s blowout quarter sets up a crucial week for AI stocks",
+          "url": "https://www.cnbc.com/2026/05/29/jim-cramer-says-dells-blowout-quarter-sets-up-a-crucial-week-for-ai-stocks.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 22:18:08 GMT",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Software stocks wrap up best month since 2001 as talk of 'SaaSpocalypse' subsides",
+          "url": "https://www.cnbc.com/2026/05/29/software-stocks-wrap-best-month-since-2001-as-talk-of-saaspocalypse-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 21:14:04 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer says Nvidia is a clear winner from Dell's monster quarter",
+          "url": "https://www.cnbc.com/2026/05/29/jim-cramer-says-nvidia-is-a-clear-winner-from-dells-monster-quarter.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 16:19:07 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: How chip companies are looking to use light to solve this major AI bottleneck",
+          "url": "https://www.cnbc.com/2026/05/29/tech-download-photonics-nvidia-ai-bottleneck.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 13:49:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia is investing billions into this emerging technology that could change the AI industry",
+          "url": "https://www.cnbc.com/2026/05/29/nvidia-photonics-investment-ai.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 15:39:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "LG Electronics' shares surge 24% after showing automotive innovations using Google tech",
+          "url": "https://www.cnbc.com/2026/05/29/lg-electronics-shares-jump-after-debut-of-google-based-car-products.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 02:29:02 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tesla Robotaxi fleet in Texas less than one-tenth size of Waymo's, filings reveal",
+          "url": "https://www.cnbc.com/2026/05/28/tesla-robotaxi-fleet-texas-one-tenth-size-of-waymos-filings-reveal.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 00:03:40 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 9,
+      "matched": [
+        {
+          "title": "When AI Crosses the Line: The Matplotlib Incident",
+          "url": "https://members.sigmazero.cc/posts/when-ai-crosses-159174096?postId=when-ai-crosses-159174096",
+          "hn_score": 22,
+          "comments": 9,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "LLMs Are Closer to Religion Than They Appear",
+          "url": "https://www.theregister.com/ai-ml/2026/06/01/llms-are-closer-to-religion-than-they-appear-watch-out-for-those-who-like-it-that-way/5248189",
+          "hn_score": 39,
+          "comments": 9,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "ChatGPT for Google Sheets exfiltrates workbooks",
+          "url": "https://www.promptarmor.com/resources/gpt-for-google-sheets-data-exfiltration",
+          "hn_score": 250,
+          "comments": 95,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "MacBook Pro Rival with the Nvidia Powered Surface Laptop Ultra",
+          "url": "https://www.windowslatest.com/2026/06/01/microsoft-builds-its-ultimate-macbook-pro-rival-with-the-nvidia-powered-surface-laptop-ultra/",
+          "hn_score": 11,
+          "comments": 7,
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "NVIDIA"
+          ]
+        },
+        {
+          "title": "Meta launches Instagram, Facebook, and WhatsApp subscriptions",
+          "url": "https://techcrunch.com/2026/05/27/meta-officially-launches-instagram-facebook-and-whatsapp-subscriptions-with-more-to-come-including-ai-plans/",
+          "hn_score": 246,
+          "comments": 396,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "The four programming questions from my 1994 Microsoft internship interview (2023)",
+          "url": "https://www.computerenhance.com/p/the-four-programming-questions-from",
+          "hn_score": 163,
+          "comments": 70,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "What if remote working, not AI, is to blame for weak junior hiring?",
+          "url": "https://www.ft.com/content/2205e2d0-50dc-4e80-9bf7-78d0272276c0",
+          "hn_score": 206,
+          "comments": 273,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Finding success in industry as a chip designer",
+          "url": "https://spectrum.ieee.org/chip-design-academic-vs-industry",
+          "hn_score": 50,
+          "comments": 6,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "chip"
+          ]
+        },
+        {
+          "title": "Unix in East Germany (GDR) (1990)",
+          "url": "https://groups.google.com/g/comp.unix.wizards/c/QX_dxElrVNs",
+          "hn_score": 91,
+          "comments": 22,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 15,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SNOW": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "DELL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 35,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

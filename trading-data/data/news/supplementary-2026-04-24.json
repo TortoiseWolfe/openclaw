@@ -1,0 +1,302 @@
+{
+  "date": "2026-04-24",
+  "lastUpdated": "2026-04-24T12:50:48.435404+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Arm Holdings (ARM) Q1 Earnings Loom, Stock Hits All-Time High",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/arm-holdings-arm-q1-earnings-010736616.html",
+          "source": "yahoo",
+          "published": "2026-04-23T01:07:36Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "POET Technologies (POET) Bags Orders From Marvell, Soars 24%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/poet-technologies-poet-bags-orders-013914450.html",
+          "source": "yahoo",
+          "published": "2026-04-23T01:39:14Z",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Xanadu (XNDU) Soars 52% on Nvidia Quantum Backing",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/xanadu-xndu-soars-52-nvidia-014247029.html",
+          "source": "yahoo",
+          "published": "2026-04-23T01:42:47Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street's 'fear gauge' is doing something unusual. What it means",
+          "url": "https://www.cnbc.com/2026/04/24/wall-streets-fear-gauge-is-doing-something-unusual-what-it-means.html",
+          "source": "cnbc_top",
+          "published": "Fri, 24 Apr 2026 11:44:11 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Meta will adopt hundreds of thousands of AWS Graviton chips in latest AI infrastructure grab",
+          "url": "https://www.cnbc.com/2026/04/24/meta-will-use-hundreds-of-thousands-of-aws-graviton-chips.html",
+          "source": "cnbc_top",
+          "published": "Fri, 24 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC shares jump to record high as Taiwan eases single-stock investment caps for funds",
+          "url": "https://www.cnbc.com/2026/04/24/tsmc-shares-record-high-taiwan-single-stock-investment-cap-for-funds.html",
+          "source": "cnbc_top",
+          "published": "Fri, 24 Apr 2026 11:28:49 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Software stocks plunge on ServiceNow, IBM results as AI fears escalate",
+          "url": "https://www.cnbc.com/2026/04/23/software-stocks-plunge-on-servicenow-ibm-results-ai-fears-escalate.html",
+          "source": "cnbc_top",
+          "published": "Thu, 23 Apr 2026 20:44:50 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Israel-Lebanon ceasefire, Microsoft's first-ever buyouts, Starbucks' loyalty program and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/24/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 12:25:30 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta will adopt hundreds of thousands of AWS Graviton chips in latest AI infrastructure grab",
+          "url": "https://www.cnbc.com/2026/04/24/meta-will-use-hundreds-of-thousands-of-aws-graviton-chips.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC shares jump to record high as Taiwan eases single-stock investment caps for funds",
+          "url": "https://www.cnbc.com/2026/04/24/tsmc-shares-record-high-taiwan-single-stock-investment-cap-for-funds.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 11:28:49 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Software stocks plunge on ServiceNow, IBM results as AI fears escalate",
+          "url": "https://www.cnbc.com/2026/04/23/software-stocks-plunge-on-servicenow-ibm-results-ai-fears-escalate.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 23 Apr 2026 20:44:50 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Microsoft plans first-ever voluntary employee buyout for up to 7% of U.S. workforce",
+          "url": "https://www.cnbc.com/2026/04/23/microsoft-plans-first-voluntary-retirement-program-for-us-employees.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 23 Apr 2026 18:19:50 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft expands AI footprint in Australia with $18 billion investment",
+          "url": "https://www.cnbc.com/2026/04/23/microsoft-expands-ai-footprint-in-australia-with-18-billion-investment.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 23 Apr 2026 14:11:50 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft looked at buying Cursor before SpaceX deal, sources say",
+          "url": "https://www.cnbc.com/2026/04/22/microsoft-looked-at-buying-cursor-before-spacex-deal-sources-say.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 23 Apr 2026 01:12:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta is tracking employee keystrokes on Google, LinkedIn, Wikipedia as part of AI training initiative",
+          "url": "https://www.cnbc.com/2026/04/22/meta-tracks-employee-usage-on-google-linkedin-ai-training-project.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 23 Apr 2026 00:18:18 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "S. Korea police arrest man over AI image of runaway wolf that misled authorities",
+          "url": "https://www.bbc.com/news/articles/c4gx1n0dl9no",
+          "hn_score": 129,
+          "comments": 78,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "An update on recent Claude Code quality reports",
+          "url": "https://www.anthropic.com/engineering/april-23-postmortem",
+          "hn_score": 782,
+          "comments": 605,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "GPT-5.5",
+          "url": "https://openai.com/index/introducing-gpt-5-5/",
+          "hn_score": 1415,
+          "comments": 944,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "MeshCore development team splits over trademark dispute and AI-generated code",
+          "url": "https://blog.meshcore.io/2026/04/23/the-split",
+          "hn_score": 235,
+          "comments": 126,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "TorchTPU: Running PyTorch Natively on TPUs at Google Scale",
+          "url": "https://developers.googleblog.com/torchtpu-running-pytorch-natively-on-tpus-at-google-scale/",
+          "hn_score": 154,
+          "comments": 14,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 20,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "date": "2026-03-30",
+  "lastUpdated": "2026-03-30T12:56:24.506893+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 12,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise entering shortened week featuring jobs data, war uncertainty",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-entering-shortened-week-featuring-jobs-data-war-uncertainty-230645645.html",
+          "source": "yahoo",
+          "published": "2026-03-29T23:06:45Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Monday, March 30, 2026: Values moving up after lower weekend prices",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-monday-march-30-2026-values-moving-up-after-lower-weekend-prices-120045377.html",
+          "source": "yahoo",
+          "published": "2026-03-30T12:00:45Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Apple at 50: What an Investment in the IPO Has Become",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-50-investment-ipo-become-122500917.html",
+          "source": "yahoo",
+          "published": "2026-03-30T12:25:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Logan Paul sold a Pok\u00e9mon card for more than $16 million. Here's why investors are watching",
+          "url": "https://www.cnbc.com/2026/03/29/pokemon-card-values-rise-logan-paul-pikachu-auction.html",
+          "source": "cnbc_top",
+          "published": "Sun, 29 Mar 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The problem for investors: We don't know how Trump wants the Iran war to end",
+          "url": "https://www.cnbc.com/2026/03/29/the-problem-for-investors-we-dont-know-how-trump-wants-the-iran-war-to-end.html",
+          "source": "cnbc_top",
+          "published": "Sun, 29 Mar 2026 21:03:29 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Iran war is defense tech's chance to shine, but few systems and weapons are ready",
+          "url": "https://www.cnbc.com/2026/03/28/iran-war-defense-tech-drones-trump-hegseth.html",
+          "source": "cnbc_top",
+          "published": "Sat, 28 Mar 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Iran war is defense tech's chance to shine, but few systems and weapons are ready",
+          "url": "https://www.cnbc.com/2026/03/28/iran-war-defense-tech-drones-trump-hegseth.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 28 Mar 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "White House launches app touting Trump's record, with some key omissions",
+          "url": "https://www.cnbc.com/2026/03/27/white-house-app-trump-iran-war-oil-gas-ice.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Mar 2026 19:27:18 GMT",
+          "matched_symbols": [
+            "LINK"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Epstein victims sue Google and the Trump administration over alleged disclosure of personal information",
+          "url": "https://www.cnbc.com/2026/03/27/jeffrey-epstein-victims-sue-trump-administration-google.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Mar 2026 19:57:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple expands U.S. manufacturing pledge, putting a third portfolio name under its umbrella",
+          "url": "https://www.cnbc.com/2026/03/26/apple-expands-us-manufacturing-pledge-pulling-in-a-third-portfolio-name.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 20:00:21 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple expands American manufacturing program with four new partners",
+          "url": "https://www.cnbc.com/2026/03/26/apple-american-manufacturing-program-trump.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 16:29:46 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A Google AI breakthrough is pressuring memory chip stocks from Samsung to Micron",
+          "url": "https://www.cnbc.com/2026/03/26/google-ai-turboquant-memory-chip-stocks-samsung-micron.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 12:11:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "How the AI Bubble Bursts",
+          "url": "https://martinvol.pe/blog/2026/03/30/how-the-ai-bubble-bursts/",
+          "hn_score": 45,
+          "comments": 2,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Mathematical methods and human thought in the age of AI",
+          "url": "https://arxiv.org/abs/2603.26524",
+          "hn_score": 35,
+          "comments": 2,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Philly courts will ban all smart eyeglasses starting next week",
+          "url": "https://www.inquirer.com/news/philadelphia/smart-glasses-ai-meta-courts-20260326.html",
+          "hn_score": 299,
+          "comments": 123,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Coding agents could make free software matter again",
+          "url": "https://www.gjlondon.com/blog/ai-agents-could-make-free-software-matter-again/",
+          "hn_score": 217,
+          "comments": 208,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "LINK": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 16,
+    "sources_succeeded": 2,
+    "most_mentioned": "SPY",
+    "headline_sentiment": "Neutral"
+  }
+}

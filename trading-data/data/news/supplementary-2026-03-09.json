@@ -1,0 +1,273 @@
+{
+  "date": "2026-03-09",
+  "lastUpdated": "2026-03-09T12:50:39.746885+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures tumble as oil prices surge to over $100 a barrel",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-tumble-as-oil-prices-surge-to-over-100-a-barrel-224103747.html",
+          "source": "yahoo",
+          "published": "2026-03-08T22:41:03Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia Sold All of Its Applied Digital Stock. Should You Follow Suit?",
+          "url": "https://finance.yahoo.com/news/nvidia-sold-applied-digital-stock-122700245.html",
+          "source": "yahoo",
+          "published": "2026-03-09T12:27:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia backs AI data center startup Nscale as it hits $14.6 billion valuation",
+          "url": "https://www.cnbc.com/2026/03/09/nscale-ai-data-center-nvidia-raise.html",
+          "source": "cnbc_top",
+          "published": "Mon, 09 Mar 2026 12:25:11 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google joins Microsoft in telling users Anthropic is still available outside defense projects",
+          "url": "https://www.cnbc.com/2026/03/06/google-says-anthropic-remains-available-outside-of-defense-projects.html",
+          "source": "cnbc_top",
+          "published": "Fri, 06 Mar 2026 19:53:35 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia backs AI data center startup Nscale as it hits $14.6 billion valuation",
+          "url": "https://www.cnbc.com/2026/03/09/nscale-ai-data-center-nvidia-raise.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 09 Mar 2026 12:25:11 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir rallies 15% for the week as Iran war boosts prospects, muting Anthropic concern",
+          "url": "https://www.cnbc.com/2026/03/06/palantir-stock-jumps-15percent-in-week-on-iran-war-boosts-anthropic-muted.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 07 Mar 2026 00:07:18 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says Anthropic\u2019s Claude still OK for AWS customers to use outside defense work",
+          "url": "https://www.cnbc.com/2026/03/06/amazon-aws-anthropic-claude-pentagon-blacklist.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 07 Mar 2026 00:02:47 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google joins Microsoft in telling users Anthropic is still available outside defense projects",
+          "url": "https://www.cnbc.com/2026/03/06/google-says-anthropic-remains-available-outside-of-defense-projects.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 06 Mar 2026 19:53:35 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell stock surges 18% as CEO points to continuing AI demand: 'Do you see me blinking?'",
+          "url": "https://www.cnbc.com/2026/03/06/marvell-shares-surge-18percent-as-ceo-points-to-continuing-ai-demand.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 06 Mar 2026 21:05:24 GMT",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft says Anthropic\u2019s products remain available to customers after Pentagon blacklist",
+          "url": "https://www.cnbc.com/2026/03/05/microsoft-says-anthropics-products-can-remain-available-to-customers-after-security-risk-designation.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 06 Mar 2026 15:14:10 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says hours-long outage was triggered by 'software code deployment'",
+          "url": "https://www.cnbc.com/2026/03/05/amazon-online-store-suffers-outage-for-some-users.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 06 Mar 2026 01:25:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom CEO's copper commitment tanks Corning shares \u2014 but sellers are mistaken",
+          "url": "https://www.cnbc.com/2026/03/05/broadcom-ceos-copper-commitment-tanks-corning-shares-but-sellers-are-mistaken.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 18:31:34 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom stock rallies as CEO Tan makes strong case for why AI growth will last",
+          "url": "https://www.cnbc.com/2026/03/05/broadcom-stock-rally-ai-chip-growth.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 21:00:26 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Op-ed: What $5 billion humanoid robots taught me about risk, jobs and the future of the economy",
+          "url": "https://www.cnbc.com/2026/03/05/robot-investing-risk-jobs-manufacturing-economy.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 14:48:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom earnings, AI's PR problem, Musk takes the stand and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/05/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 13:26:19 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 2,
+      "matched": [
+        {
+          "title": "Show HN: VS Code Agent Kanban: Task Management for the AI-Assisted Developer",
+          "url": "https://www.appsoftware.com/blog/introducing-vs-code-agent-kanban-task-management-for-the-ai-assisted-developer",
+          "hn_score": 7,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Nvidia backs AI data center startup Nscale as it hits $14.6B valuation",
+          "url": "https://www.cnbc.com/2026/03/09/nscale-ai-data-center-nvidia-raise.html",
+          "hn_score": 18,
+          "comments": 9,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "AI",
+            "NVIDIA",
+            "data center"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AVGO": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 17,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

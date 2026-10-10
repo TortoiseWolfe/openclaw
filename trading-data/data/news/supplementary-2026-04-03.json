@@ -1,0 +1,330 @@
+{
+  "date": "2026-04-03",
+  "lastUpdated": "2026-04-03T13:16:19.667996+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 105,
+      "articles_matched": 17,
+      "matched": [
+        {
+          "title": "Iconic cable channel warns of bankruptcy, survival risk",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/iconic-cable-channel-warns-bankruptcy-011843737.html",
+          "source": "yahoo",
+          "published": "2026-04-02T01:18:43Z",
+          "matched_symbols": [
+            "GBPUSD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "IBM Partners with ETH Zurich on 10-Year AI and Quantum Computing Initiative",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/ibm-partners-eth-zurich-10-014432784.html",
+          "source": "yahoo",
+          "published": "2026-04-02T01:44:32Z",
+          "matched_symbols": [
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia salaries: Executives, engineers & CEO pay ratio",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-salaries-executives-engineers-ceo-014151814.html",
+          "source": "yahoo",
+          "published": "2026-04-02T01:41:51Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google under attack as court cases bypass 30-year-old legal shield",
+          "url": "https://www.cnbc.com/2026/04/03/meta-google-under-attack-court-cases-bypass-30-year-old-legal-shield.html",
+          "source": "cnbc_top",
+          "published": "Fri, 03 Apr 2026 12:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Japan's Sakura Internet jumps 20% as Microsoft plans $10 billion AI push with SoftBank",
+          "url": "https://www.cnbc.com/2026/04/03/sakura-internet-microsoft-ai-japan-softbank-investment.html",
+          "source": "cnbc_top",
+          "published": "Fri, 03 Apr 2026 05:19:48 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft executive touts Copilot sales traction as AI anxiety weighs on stock",
+          "url": "https://www.cnbc.com/2026/04/02/microsoft-executive-touts-copilot-traction-after-analyst-pressure.html",
+          "source": "cnbc_top",
+          "published": "Fri, 03 Apr 2026 00:36:22 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to add 3.5% fuel and logistics surcharge for sellers as Iran war drives up energy prices",
+          "url": "https://www.cnbc.com/2026/04/02/amazon-add-3point5percent-fuel-and-logistics-surcharge-for-sellers-amid-iran-war.html",
+          "source": "cnbc_top",
+          "published": "Thu, 02 Apr 2026 18:59:44 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google under attack as court cases bypass 30-year-old legal shield",
+          "url": "https://www.cnbc.com/2026/04/03/meta-google-under-attack-court-cases-bypass-30-year-old-legal-shield.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 12:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Japan's Sakura Internet jumps 20% as Microsoft plans $10 billion AI push with SoftBank",
+          "url": "https://www.cnbc.com/2026/04/03/sakura-internet-microsoft-ai-japan-softbank-investment.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 05:19:48 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft executive touts Copilot sales traction as AI anxiety weighs on stock",
+          "url": "https://www.cnbc.com/2026/04/02/microsoft-executive-touts-copilot-traction-after-analyst-pressure.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 00:36:22 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to add 3.5% fuel and logistics surcharge for sellers as Iran war drives up energy prices",
+          "url": "https://www.cnbc.com/2026/04/02/amazon-add-3point5percent-fuel-and-logistics-surcharge-for-sellers-amid-iran-war.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Apr 2026 18:59:44 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Globalstar stock surges 15% on report Amazon is weighing an acquisition",
+          "url": "https://www.cnbc.com/2026/04/01/globalstar-stock-pops-15percent-on-report-amazon-is-weighing-an-acquisition.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 23:58:09 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Five key questions Apple faces entering its second half-century",
+          "url": "https://www.cnbc.com/2026/04/01/five-key-questions-apple-faces-entering-its-second-half-century.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 16:40:19 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Iran threatens Nvidia, Apple and other tech giants with attacks",
+          "url": "https://www.cnbc.com/2026/04/01/iran-irgc-nvidia-appple-attack-threat.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 14:37:46 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Column: Apple's crackdown on AI apps puts it on the wrong side of history",
+          "url": "https://www.cnbc.com/2026/03/31/column-apples-crackdown-on-ai-apps-puts-it-wrong-side-of-history.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 31 Mar 2026 21:34:37 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft closes worst quarter on Wall Street since 2008 on AI concerns: 'Redmond is in a pickle'",
+          "url": "https://www.cnbc.com/2026/03/31/microsofts-stock-closes-worst-quarter-since-2008-financial-crisis.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 31 Mar 2026 22:06:16 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon settles Teamsters case alleging it retaliated against striking workers",
+          "url": "https://www.cnbc.com/2026/03/31/amazon-settles-teamsters-warehouse-strike.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 31 Mar 2026 20:55:26 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Show HN: Apfel \u2013 The free AI already on your Mac",
+          "url": "https://apfel.franzai.com",
+          "hn_score": 276,
+          "comments": 46,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Google releases Gemma 4 open models",
+          "url": "https://deepmind.google/models/gemma/gemma-4/",
+          "hn_score": 1583,
+          "comments": 423,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Decisions that eroded trust in Azure \u2013 by a former Azure Core engineer",
+          "url": "https://isolveproblems.substack.com/p/how-microsoft-vaporized-a-trillion",
+          "hn_score": 919,
+          "comments": 404,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "NHS staff refusing to use FDP over Palantir ethical concerns",
+          "url": "https://www.freevacy.com/news/financial-times/nhs-staff-refusing-to-use-fdp-over-palantir-ethical-concerns/7272",
+          "hn_score": 140,
+          "comments": 39,
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Qwen3.6-Plus: Towards real world agents",
+          "url": "https://qwen.ai/blog?id=qwen3.6",
+          "hn_score": 558,
+          "comments": 189,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "New Rowhammer attacks give complete control of machines running Nvidia GPUs",
+          "url": "https://arstechnica.com/security/2026/04/new-rowhammer-attacks-give-complete-control-of-machines-running-nvidia-gpus/",
+          "hn_score": 73,
+          "comments": 5,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "NVIDIA"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 23,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Neutral"
+  }
+}

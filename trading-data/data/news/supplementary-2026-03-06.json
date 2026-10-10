@@ -1,0 +1,363 @@
+{
+  "date": "2026-03-06",
+  "lastUpdated": "2026-03-06T13:53:14.187716+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 106,
+      "articles_matched": 16,
+      "matched": [
+        {
+          "title": "Crypto Bettors Say Sub\u2011$150,000 Bitcoin Is the Base Case for 2026 -- Here's How Investors Can Still Win",
+          "url": "https://finance.yahoo.com/news/crypto-bettors-sub-150-000-015400082.html",
+          "source": "yahoo",
+          "published": "2026-03-05T01:54:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Advanced Micro Devices (AMD) Signs Multi-Year Meta AI Deal",
+          "url": "https://finance.yahoo.com/news/advanced-micro-devices-amd-signs-072640228.html",
+          "source": "yahoo",
+          "published": "2026-03-05T07:26:40Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says hours-long outage was triggered by 'software code deployment'",
+          "url": "https://www.cnbc.com/2026/03/05/amazon-online-store-suffers-outage-for-some-users.html",
+          "source": "cnbc_top",
+          "published": "Fri, 06 Mar 2026 01:25:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft says Anthropic\u2019s products remain available to customers after Pentagon blacklist",
+          "url": "https://www.cnbc.com/2026/03/05/microsoft-says-anthropics-products-can-remain-available-to-customers-after-security-risk-designation.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 06 Mar 2026 01:49:28 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says hours-long outage was triggered by 'software code deployment'",
+          "url": "https://www.cnbc.com/2026/03/05/amazon-online-store-suffers-outage-for-some-users.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 06 Mar 2026 01:25:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom CEO's copper commitment tanks Corning shares \u2014 but sellers are mistaken",
+          "url": "https://www.cnbc.com/2026/03/05/broadcom-ceos-copper-commitment-tanks-corning-shares-but-sellers-are-mistaken.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 18:31:34 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom stock rallies as CEO Tan makes strong case for why AI growth will last",
+          "url": "https://www.cnbc.com/2026/03/05/broadcom-stock-rally-ai-chip-growth.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 21:00:26 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Op-ed: What $5 billion humanoid robots taught me about risk, jobs and the future of the economy",
+          "url": "https://www.cnbc.com/2026/03/05/robot-investing-risk-jobs-manufacturing-economy.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 14:48:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom earnings, AI's PR problem, Musk takes the stand and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/05/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 13:26:19 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom's custom AI chip business stays hot and gives the bulls a much-needed win",
+          "url": "https://www.cnbc.com/2026/03/04/broadcoms-custom-ai-chip-business-stays-hot-and-gives-the-bulls-a-much-needed-win-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 01:54:14 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom CEO Hock Tan sees AI chip revenue 'significantly' above $100 billion next year",
+          "url": "https://www.cnbc.com/2026/03/04/broadcom-sees-ai-chip-sales-significantly-over-100-billion-in-2027.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 01:45:15 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon's Bahrain data center targeted by Iran for support of U.S. military, state media says",
+          "url": "https://www.cnbc.com/2026/03/04/amazon-bahrain-data-centers-targeted-iran-drone-strike.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 05 Mar 2026 16:27:45 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google's AI chatbot allegedly told user to stage 'mass casualty attack,' wrongful death suit claims",
+          "url": "https://www.cnbc.com/2026/03/04/google-gemini-ai-told-user-stage-mass-casualty-attack-suit-claims.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 04 Mar 2026 20:19:30 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia CEO Huang says $30 billion OpenAI investment 'might be the last'",
+          "url": "https://www.cnbc.com/2026/03/04/nvidia-huang-openai-investment.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 04 Mar 2026 21:09:04 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom beats on earnings and guidance as AI revenue doubles",
+          "url": "https://www.cnbc.com/2026/03/04/broadcom-avgo-q1-earnings-report-2026.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 04 Mar 2026 22:53:45 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple announces MacBook Neo, its most affordable laptop ever",
+          "url": "https://www.cnbc.com/2026/03/04/apple-macbook-neo-budget-laptop.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 04 Mar 2026 19:47:34 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {
+        "strongest": "AUD",
+        "weakest": "USD",
+        "detail": {
+          "AUD": 1,
+          "USD": 0,
+          "NZD": 1
+        }
+      },
+      "economic_events": [
+        "Central Bank",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Monetary Policy",
+        "PMI",
+        "RBA",
+        "Retail Sales",
+        "employment",
+        "inflation",
+        "jobs",
+        "retail sales"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "labor market picture that remained resilient heading into Friday\u2019s critical nonfarm payrolls report.",
+        "dollar finished the day as the top performer among major currencies, supported by sticky inflation concerns and hawkish Fed commentary, while equities extended their slide and gold sold off sharply de",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-05"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "Hardening Firefox with Anthropic's Red Team",
+          "url": "https://blog.mozilla.org/en/firefox/hardening-firefox-anthropic-red-team/",
+          "hn_score": 88,
+          "comments": 26,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "GPT-5.4",
+          "url": "https://openai.com/index/introducing-gpt-5-4/",
+          "hn_score": 892,
+          "comments": 705,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "A GitHub Issue Title Compromised 4k Developer Machines",
+          "url": "https://grith.ai/blog/clinejection-when-your-ai-tool-installs-another",
+          "hn_score": 511,
+          "comments": 159,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Labor market impacts of AI: A new measure and early evidence",
+          "url": "https://www.anthropic.com/research/labor-market-impacts",
+          "hn_score": 241,
+          "comments": 376,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Where things stand with the Department of War",
+          "url": "https://www.anthropic.com/news/where-stand-department-war",
+          "hn_score": 519,
+          "comments": 579,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "A standard protocol to handle and discard low-effort, AI-Generated pull requests",
+          "url": "https://406.fail/",
+          "hn_score": 226,
+          "comments": 77,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Stardex (YC S21) is hiring customer success engineers",
+          "url": "https://www.ycombinator.com/companies/stardex/jobs/lag1C1P-customer-success-engineer-ai-data-migration",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AI and the Ship of Theseus",
+          "url": "https://lucumr.pocoo.org/2026/3/5/theseus/",
+          "hn_score": 137,
+          "comments": 144,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 28,
+    "sources_succeeded": 3,
+    "most_mentioned": "AVGO",
+    "headline_sentiment": "Bullish"
+  }
+}

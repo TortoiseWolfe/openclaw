@@ -1,0 +1,354 @@
+{
+  "date": "2026-06-04",
+  "lastUpdated": "2026-06-04T12:50:48.249472+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 17,
+      "matched": [
+        {
+          "title": "Apple's App Store generated $1.4 trillion in sales last year",
+          "url": "https://finance.yahoo.com/news/apples-app-store-generated-14-trillion-in-sales-last-year-123000379.html",
+          "source": "yahoo",
+          "published": "2026-06-04T12:30:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin crash triggers billions in liquidations",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-crash-wipes-billions-market-172226666.html",
+          "source": "yahoo",
+          "published": "2026-06-03T17:22:26Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Google must let UK publishers opt out of AI search under new rules",
+          "url": "https://finance.yahoo.com/economy/policy/articles/uk-regulator-enforces-new-competition-requirements-on-google-search-052853458.html",
+          "source": "yahoo",
+          "published": "2026-06-03T05:28:53Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom stock sinks in pre-market as AI chip forecast disappoints",
+          "url": "https://finance.yahoo.com/markets/article/broadcom-stock-sinks-in-pre-market-as-ai-chip-forecast-disappoints-165602490.html",
+          "source": "yahoo",
+          "published": "2026-06-03T16:56:02Z",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom could be headed for one of the worst 1-day destructions in shareholder value ever",
+          "url": "https://finance.yahoo.com/markets/stocks/article/broadcom-could-be-headed-for-one-of-the-worst-1-day-destructions-in-shareholder-value-ever-121457875.html",
+          "source": "yahoo",
+          "published": "2026-06-04T12:14:57Z",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google vs. Microsoft: Which Cloud Giant Deserves Your Capital Right Now?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/google-vs-microsoft-cloud-giant-123059316.html",
+          "source": "yahoo",
+          "published": "2026-06-04T12:30:59Z",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, June 4, 2026: Bitcoin prices plunge below pre-war levels",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-june-4-2026-bitcoin-prices-plunge-below-pre-war-levels-114549073.html",
+          "source": "yahoo",
+          "published": "2026-06-04T11:45:49Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Micron, Marvell, and Broadcom lead chipmakers' premarket losses",
+          "url": "https://www.cnbc.com/2026/06/04/chipmaker-equities-micron-marvell-broadcom-intel.html",
+          "source": "cnbc_top",
+          "published": "Thu, 04 Jun 2026 12:18:44 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "MRVL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon engineers in Seattle slam employer for building AI data centers while laying off 30,000 staffers",
+          "url": "https://www.cnbc.com/2026/06/03/amazon-engineers-in-seattle-slam-employer-for-ai-data-amid-layoffs.html",
+          "source": "cnbc_top",
+          "published": "Thu, 04 Jun 2026 12:20:09 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin's high-conviction holders are turning into sellers as the crypto's price hits new lows",
+          "url": "https://www.cnbc.com/2026/06/03/bitcoins-high-conviction-holders-are-selling-as-price-hits-new-lows.html",
+          "source": "cnbc_top",
+          "published": "Thu, 04 Jun 2026 06:16:07 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom earnings, SpaceX's IPO price, World Cup worries and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/04/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 12:23:05 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon engineers in Seattle slam employer for building AI data centers while laying off 30,000 staffers",
+          "url": "https://www.cnbc.com/2026/06/03/amazon-engineers-in-seattle-slam-employer-for-ai-data-amid-layoffs.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 12:20:09 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom stock plunges on weak software sales, unchanged AI chip forecast for the year",
+          "url": "https://www.cnbc.com/2026/06/03/broadcom-avgo-earnings-report-q2-2026.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 12:29:48 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia\u2019s big dividend hike could pave the way for higher payouts \u2014 who may be next",
+          "url": "https://www.cnbc.com/2026/06/03/nvidias-big-dividend-hike-could-pave-the-way-for-higher-payouts-who-may-be-next.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 03 Jun 2026 19:28:11 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin's high-conviction holders are turning into sellers as the crypto's price hits new lows",
+          "url": "https://www.cnbc.com/2026/06/03/bitcoins-high-conviction-holders-are-selling-as-price-hits-new-lows.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 06:16:07 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Where Jim Cramer stands on CrowdStrike and Broadcom ahead of earnings",
+          "url": "https://www.cnbc.com/2026/06/03/where-jim-cramer-stands-on-crowdstrike-and-broadcom-ahead-of-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 03 Jun 2026 16:25:01 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet's $80 billion stock sale leaves Wall Street in 'unprecedented territory,' says Goldman's Gutman",
+          "url": "https://www.cnbc.com/2026/06/03/alphabet-stock-sale-goldman-international-gutman.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 03 Jun 2026 13:25:31 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Failing grades soar with AI usage, dwindling math skills in Berkeley CS classes",
+          "url": "https://www.dailycal.org/news/campus/academics/failing-grades-soar-as-professors-see-greater-ai-usage-dwindling-math-skills-in-uc-berkeley/article_16fad0bf-02cb-4b8c-8d88-888ffd9f8608.html",
+          "hn_score": 444,
+          "comments": 358,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AccessOwl (YC S22) is hiring an AI TypeScript Engineer to connect 300 SaaS tools",
+          "url": "https://www.ycombinator.com/companies/accessowl/jobs/hfWAhVp-ai-enabled-senior-software-engineer-typescript-focus",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Gemma 4 12B: A unified, encoder-free multimodal model",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/",
+          "hn_score": 888,
+          "comments": 341,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "thunderbolt-ibverbs: We have InfiniBand at home",
+          "url": "https://blog.hellas.ai/blog/thunderbolt-ibverbs/",
+          "hn_score": 54,
+          "comments": 2,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Ask HN: So what happened to Facebook \"localhost\" tracking?",
+          "url": "https://news.ycombinator.com/item?id=48397731",
+          "hn_score": 5,
+          "comments": 1,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "The ways we contain Claude across products",
+          "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "hn_score": 154,
+          "comments": 74,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Uber's $1,500/month AI limit is a useful signal for AI tool pricing",
+          "url": "https://simonwillison.net/2026/Jun/3/uber-caps-usage/",
+          "hn_score": 523,
+          "comments": 653,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 2,
+    "most_mentioned": "AVGO",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

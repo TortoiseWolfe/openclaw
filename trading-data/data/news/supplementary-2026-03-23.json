@@ -1,0 +1,353 @@
+{
+  "date": "2026-03-23",
+  "lastUpdated": "2026-03-23T12:51:17.698165+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 23,
+      "matched": [
+        {
+          "title": "BlackRock and Fidelity Buy $400M in Bitcoin as Gold Enters Bear Market \u2014 Is Institutional Capital Rotating?",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/blackrock-fidelity-buy-400m-bitcoin-124215189.html",
+          "source": "yahoo",
+          "published": "2026-03-23T12:42:15Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures soar as Trump postpones Iran strike, citing 'very good' talks",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-soar-as-trump-postpones-iran-strike-citing-very-good-talks-230122467.html",
+          "source": "yahoo",
+          "published": "2026-03-22T23:01:22Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon Pay ready to further disrupt India\u2019s motor insurance market",
+          "url": "https://finance.yahoo.com/sectors/healthcare/articles/amazon-pay-ready-further-disrupt-123706166.html",
+          "source": "yahoo",
+          "published": "2026-03-23T12:37:06Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Surges On Trump's Iran Comments; Nvidia, Tesla Rebound (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-trump-iran-nvidia-tesla/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-23T12:10:45Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Pentagon Taps Palantir Maven Battlefield System For Wider Military Use",
+          "url": "https://www.investors.com/news/technology/palantir-stock-pltr-pentagon-letter-maven-battlefield-system/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-23T11:57:10Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Should You Buy the 3 Highest-Paying Dividend Stocks in the S&P 500?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/buy-3-highest-paying-dividend-122800795.html",
+          "source": "yahoo",
+          "published": "2026-03-23T12:28:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Morning Minute: Bitcoin Rips as Iran Strikes Postponed",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/morning-minute-bitcoin-rips-iran-121958166.html",
+          "source": "yahoo",
+          "published": "2026-03-23T12:19:58Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "MicroStrategy Eyes 1 Million BTC: Inside Saylor\u2019s $22.2B Accumulation Plan",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/microstrategy-eyes-1-million-btc-121927086.html",
+          "source": "yahoo",
+          "published": "2026-03-23T12:19:27Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI's data center pivot underscores Wall Street spending concerns ahead of IPO",
+          "url": "https://www.cnbc.com/2026/03/22/openai-data-center-pivot-underscores-wall-street-ipo-concerns.html",
+          "source": "cnbc_top",
+          "published": "Sun, 22 Mar 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "From satellites to space data centers: Why low earth orbit is attracting billions in investment",
+          "url": "https://www.cnbc.com/2026/03/22/why-low-earth-orbit-is-attracting-billions-in-investment.html",
+          "source": "cnbc_top",
+          "published": "Sun, 22 Mar 2026 07:10:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenClaw's ChatGPT moment sparks concern that AI models are becoming commodities",
+          "url": "https://www.cnbc.com/2026/03/21/openclaw-chatgpt-moment-sparks-concern-ai-models-becoming-commodities.html",
+          "source": "cnbc_top",
+          "published": "Sat, 21 Mar 2026 19:01:59 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI's data center pivot underscores Wall Street spending concerns ahead of IPO",
+          "url": "https://www.cnbc.com/2026/03/22/openai-data-center-pivot-underscores-wall-street-ipo-concerns.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 22 Mar 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "From satellites to space data centers: Why low earth orbit is attracting billions in investment",
+          "url": "https://www.cnbc.com/2026/03/22/why-low-earth-orbit-is-attracting-billions-in-investment.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 22 Mar 2026 07:10:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenClaw's ChatGPT moment sparks concern that AI models are becoming commodities",
+          "url": "https://www.cnbc.com/2026/03/21/openclaw-chatgpt-moment-sparks-concern-ai-models-becoming-commodities.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 21 Mar 2026 19:01:59 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro co-founder indicted on Nvidia smuggling charges leaves board",
+          "url": "https://www.cnbc.com/2026/03/20/super-micro-co-founder-leaves-board.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 22:52:55 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro shares plunge on shocking smuggling case. One stock stands to benefit",
+          "url": "https://www.cnbc.com/2026/03/20/super-micro-shares-plunge-on-shocking-smuggling-case-one-stock-stands-to-benefit.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 15:16:16 GMT",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Tim Cook\u2019s China visit reinforces country\u2019s importance to Apple as global frictions rise",
+          "url": "https://www.cnbc.com/2026/03/20/tim-cooks-china-visit-reinforces-countrys-importance-to-apple-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 16:25:14 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's Huang pitches AI tokens on top of salary as agents reshape how humans work",
+          "url": "https://www.cnbc.com/2026/03/20/nvidia-ai-agents-tokens-human-workers-engineer-jobs-unemployment-jensen-huang.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 07:57:45 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Super Micro shares tank 33% after employees charged with smuggling Nvidia chips to China",
+          "url": "https://www.cnbc.com/2026/03/19/us-tech-execs-smuggled-nvidia-chips-to-china-prosecutors-say.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 20:23:56 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon acquires startup Rivr to test robots for 'doorstep delivery'",
+          "url": "https://www.cnbc.com/2026/03/19/amazon-acquires-startup-rivr-to-test-robots-for-doorstep-delivery.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 22:05:39 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple bears are proven wrong yet again as iPhone defies the China slump narrative",
+          "url": "https://www.cnbc.com/2026/03/19/apple-bears-proven-wrong-yet-again-as-iphone-defies-china-slump-narrative.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 20:26:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Figma's stock drops 12% in two days after Google releases 'vibe design' product",
+          "url": "https://www.cnbc.com/2026/03/19/figma-stock-drops-11percent-after-google-releases-vibe-design-product-stitch.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 22:25:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Eli Lilly's new shot shows solid weight loss in study \u2014 plus, a way for Nvidia to perk up",
+          "url": "https://www.cnbc.com/2026/03/19/eli-lillys-new-shot-shows-solid-weight-loss-in-study-plus-a-way-for-nvidia-to-perk-up.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 16:58:32 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 2,
+      "matched": [
+        {
+          "title": "What young workers are doing to AI-proof themselves",
+          "url": "https://www.wsj.com/economy/jobs/ai-jobs-young-people-careers-14282284",
+          "hn_score": 163,
+          "comments": 258,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Five years of running a systems reading group at Microsoft",
+          "url": "https://armaansood.com/posts/systems-reading-group/",
+          "hn_score": 175,
+          "comments": 51,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 11,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SMCI": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 25,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

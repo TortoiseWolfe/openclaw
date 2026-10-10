@@ -1,0 +1,387 @@
+{
+  "date": "2026-04-15",
+  "lastUpdated": "2026-04-15T16:09:47.991026+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 103,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Stock market today: S&P 500, Nasdaq rise, Dow falls amid hopes for US-Iran talks",
+          "url": "https://finance.yahoo.com/markets/article/stock-market-today-sp-500-nasdaq-rise-dow-falls-amid-hopes-for-us-iran-talks-231104387.html",
+          "source": "yahoo",
+          "published": "2026-04-14T23:11:04Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Amazon to acquire satellite company Globalstar, OpenAI memo lashes out at rival Anthropic",
+          "url": "https://finance.yahoo.com/sectors/technology/article/tech-stocks-today-amazon-to-acquire-satellite-company-globalstar-openai-memo-lashes-out-at-rival-anthropic-144220958.html",
+          "source": "yahoo",
+          "published": "2026-03-13T14:42:20Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI Bull Brad Gerstner Likes Snowflake (SNOW) Despite \u2018SaaSpocalypse\u2019 Fears",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ai-bull-brad-gerstner-likes-153537908.html",
+          "source": "yahoo",
+          "published": "2026-04-15T15:35:37Z",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Owning Microsoft Stock Has Cost Steve Ballmer Billions",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/owning-microsoft-stock-cost-steve-155337718.html",
+          "source": "yahoo",
+          "published": "2026-04-15T15:53:37Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Nasdaq Charges Higher As Fed Report Looms; Nvidia On Record Winning Streak (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-trump-us-iran-peace-talks/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-15T15:06:42Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Worried About a Stock Market Crash? These 3 Stocks Beat the S&P 500 by Wide Margins When It Nosedived in 2022, and They Could Do It Again",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/worried-stock-market-crash-3-155000345.html",
+          "source": "yahoo",
+          "published": "2026-04-15T15:50:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Wednesday, April 15, 2026: Prices hold amid geopolitical tensions and ETF demand",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-wednesday-april-15-2026-prices-hold-amid-geopolitical-tensions-and-etf-demand-112532730.html",
+          "source": "yahoo",
+          "published": "2026-04-15T11:25:32Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI pulls back from Stargate Norway data center deal as Microsoft takes over",
+          "url": "https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html",
+          "source": "cnbc_top",
+          "published": "Wed, 15 Apr 2026 12:29:04 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Chip giants AMD, Qualcomm and Arm back driverless car startup Wayve with fresh funds",
+          "url": "https://www.cnbc.com/2026/04/15/wayve-fund-raise-amd-qualcomm-arm.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "OpenAI pulls back from Stargate Norway data center deal as Microsoft takes over",
+          "url": "https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 12:29:04 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta commits to 1 gigawatt of custom chips with Broadcom as Hock Tan decides to leave board",
+          "url": "https://www.cnbc.com/2026/04/14/meta-commits-to-one-gigawatt-of-custom-chips-with-broadcom-as-hock-tan-agrees-to-leave-board.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 01:11:39 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia stock is on a 10-day winning streak and up 18% over that stretch",
+          "url": "https://www.cnbc.com/2026/04/14/nvidia-stock-nvda-ai-streak.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Apr 2026 21:01:37 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon to buy Globalstar to bolster Leo satellite business in deal worth about $11.6 billion",
+          "url": "https://www.cnbc.com/2026/04/14/amazon-globalstar-satellite-leo-internet.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Apr 2026 16:10:22 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Intel's stock on historic 9-day winning streak, up 58% over that run",
+          "url": "https://www.cnbc.com/2026/04/13/intel-stock-historic-winning-streak.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 13 Apr 2026 20:09:04 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "OpenAI touts Amazon alliance in memo, says Microsoft has 'limited our ability' to reach clients",
+          "url": "https://www.cnbc.com/2026/04/13/openai-touts-amazon-alliance-in-memo-microsoft-limited-our-ability.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 13 Apr 2026 15:40:42 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "BoE",
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "Manufacturing",
+        "RBA",
+        "central bank",
+        "inflation"
+      ],
+      "key_headlines": [
+        "Markets surged on Tuesday as renewed optimism around US-Iran peace negotiations drove a broad risk-on wave, sending equities toward record highs and pulling oil prices sharply lower.",
+        "Softer-than-expected U.S.",
+        "producer price data reinforced the positive tone, adding further pressure on the dollar as traders repositioned around the possibility of a diplomatic off-ramp to the more-than-six-week-old conflict.",
+        "At the Tuesday close, the dollar finished as the worst-performing major currency , while equities extended their recovery toward late-January peaks.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!"
+      ],
+      "error": null,
+      "fetch_date": "2026-04-14"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 9,
+      "matched": [
+        {
+          "title": "Gemini Robotics-ER 1.6",
+          "url": "https://deepmind.google/blog/gemini-robotics-er-1-6/",
+          "hn_score": 87,
+          "comments": 17,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Wacli \u2013 WhatsApp CLI",
+          "url": "https://github.com/steipete/wacli",
+          "hn_score": 176,
+          "comments": 124,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Google Gemma 4 Runs Natively on iPhone with Full Offline AI Inference",
+          "url": "https://www.gizmoweek.com/gemma-4-runs-iphone/",
+          "hn_score": 193,
+          "comments": 129,
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI",
+            "inference"
+          ]
+        },
+        {
+          "title": "Allbirds, Inc. Announces Expansion into AI Compute Infrastructure",
+          "url": "https://ir.allbirds.com/news-releases/news-release-details/allbirds-inc-executes-50m-convertible-financing-facility",
+          "hn_score": 41,
+          "comments": 27,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "US v. Heppner (S.D.N.Y. 2026) no attorney-client privilege for AI chats [pdf]",
+          "url": "https://fingfx.thomsonreuters.com/gfx/legaldocs/xmvjyjekkpr/Rakoff%20-%20order%20-%20AI.pdf",
+          "hn_score": 57,
+          "comments": 34,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Elevated errors on Claude.ai, API, Claude Code",
+          "url": "https://claudestatus.com/",
+          "hn_score": 173,
+          "comments": 147,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "MCP as Observability Interface: Connecting AI Agents to Kernel Tracepoints",
+          "url": "https://ingero.io/mcp-observability-interface-ai-agents-kernel-tracepoints/",
+          "hn_score": 32,
+          "comments": 12,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AI ruling prompts warnings from US lawyers: Your chats could be used against you",
+          "url": "https://www.reuters.com/legal/government/ai-ruling-prompts-warnings-us-lawyers-your-chats-could-be-used-against-you-2026-04-15/",
+          "hn_score": 70,
+          "comments": 38,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Study: Back-to-basics approach can match or outperform AI in language analysis",
+          "url": "https://www.manchester.ac.uk/about/news/back-to-basics-approach-can-match-or-outperform-ai/",
+          "hn_score": 12,
+          "comments": 3,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 29,
+    "sources_succeeded": 3,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

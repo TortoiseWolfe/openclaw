@@ -1,0 +1,393 @@
+{
+  "date": "2026-06-25",
+  "lastUpdated": "2026-06-26T02:16:55.713104+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 102,
+      "articles_matched": 20,
+      "matched": [
+        {
+          "title": "Apple\u2019 s AI Upgrade Probably Won\u2019t Be a Game Changer for AAPL Stock",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-ai-upgrade-probably-won-142429359.html",
+          "source": "yahoo",
+          "published": "2026-06-24T14:24:29Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "When Strategy Will Need To Sell Bitcoin; MSTR Stock's Scary Math",
+          "url": "https://www.investors.com/news/mstr-stock-scary-math-when-strategy-will-need-to-sell-bitcoin/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-06-24T14:31:28Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "JPMorgan raises S&P 500 target to 7,800 but warns of 'flash crash'",
+          "url": "https://finance.yahoo.com/markets/article/jpmorgan-raises-sp-500-target-to-7800-but-warns-of-flash-crash-145240724.html",
+          "source": "yahoo",
+          "published": "2026-06-24T14:52:40Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Can Taiwan Semiconductor Shares Hit $500 Before 2026 Ends?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-shares-hit-500-141858626.html",
+          "source": "yahoo",
+          "published": "2026-06-24T14:18:58Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta Platforms Just Took a 20% Stake in Cred. What That Means for META Stock.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-just-took-20-145740932.html",
+          "source": "yahoo",
+          "published": "2026-06-24T14:57:40Z",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street Says AI Is Slowing. Taiwan Semiconductor\u2019s Latest Move Says Otherwise.",
+          "url": "https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html",
+          "source": "yahoo",
+          "published": "2026-06-24T15:22:27Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft lifts price of Xbox consoles due to soaring component costs",
+          "url": "https://www.cnbc.com/2026/06/25/microsoft-lifts-price-of-xbox-consoles-due-to-soaring-component-costs.html",
+          "source": "cnbc_top",
+          "published": "Thu, 25 Jun 2026 20:17:18 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple stock gets slammed on bigger Mac, iPad price hikes. Why it can weather the storm",
+          "url": "https://www.cnbc.com/2026/06/25/apple-stock-gets-slammed-on-bigger-mac-ipad-price-hikes-why-it-can-weather-the-storm.html",
+          "source": "cnbc_top",
+          "published": "Thu, 25 Jun 2026 20:27:58 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin is having a tough year. Traders are betting it's going to get worse",
+          "url": "https://www.cnbc.com/2026/06/25/bitcoin-is-having-a-tough-year-traders-are-betting-its-going-to-get-worse.html",
+          "source": "cnbc_top",
+          "published": "Thu, 25 Jun 2026 13:17:54 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple stock gets slammed on bigger Mac, iPad price hikes. Why it can weather the storm",
+          "url": "https://www.cnbc.com/2026/06/25/apple-stock-gets-slammed-on-bigger-mac-ipad-price-hikes-why-it-can-weather-the-storm.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 25 Jun 2026 20:27:58 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft lifts price of Xbox consoles due to soaring component costs",
+          "url": "https://www.cnbc.com/2026/06/25/microsoft-lifts-price-of-xbox-consoles-due-to-soaring-component-costs.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 25 Jun 2026 20:17:18 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy should halt bitcoin buys and bolster cash reserves, CryptoQuant says",
+          "url": "https://www.cnbc.com/2026/06/25/strategy-should-halt-bitcoin-buys-and-bolster-cash-reserves-cryptoquant-says.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 25 Jun 2026 15:49:12 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple posts worst day in over a year after MacBook and iPad price hikes",
+          "url": "https://www.cnbc.com/2026/06/25/apple-macbook-ipad-price-hike-memory.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 25 Jun 2026 20:06:37 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Micron is tech's new margin king as memory crisis pushes company past Nvidia and Meta",
+          "url": "https://www.cnbc.com/2026/06/24/micron-is-techs-margin-king-memory-crisis-pushes-it-past-nvidia-meta.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 22:33:45 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin falls back under $60,000, hitting its lowest level since October 2024",
+          "url": "https://www.cnbc.com/2026/06/24/bitcoin-falls-back-under-60000-hitting-its-lowest-level-since-october-2024.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 19:09:32 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's Huang calls black market data centers made of smuggled parts a 'dead end'",
+          "url": "https://www.cnbc.com/2026/06/24/nvidia-huang-data-center-smuggled-chips.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 18:22:40 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom stock needs a win. The new OpenAI co-designed Jalapeno chip might do the trick",
+          "url": "https://www.cnbc.com/2026/06/24/broadcom-stock-needs-a-win-the-new-openai-co-designed-jalapeno-chip-might-do-the-trick.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 17:48:20 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Dow inclusion is not a reason to buy Alphabet. But these other reasons may be",
+          "url": "https://www.cnbc.com/2026/06/24/dow-inclusion-is-not-a-reason-to-buy-alphabet-but-these-other-reasons-may-be.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 16:28:19 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon's Zoox unveils redesigned robotaxi ahead of upcoming expansion",
+          "url": "https://www.cnbc.com/2026/06/24/amazons-zoox-unveils-redesigned-robotaxi-ahead-of-upcoming-expansion.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 16:53:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI unveils first chip as part of Broadcom deal in effort to 'build the full stack'",
+          "url": "https://www.cnbc.com/2026/06/24/openai-and-broadcom-reveal-jalapeno-first-ai-chip-in-partnership.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 24 Jun 2026 14:53:26 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "Apple to skip high-end M6 Mac chips in favor of AI-focused M7 line",
+          "url": "https://www.bloomberg.com/news/articles/2026-06-25/apple-to-skip-high-end-m6-mac-chips-to-launch-m7-pro-m7-max-m7-ultra-instead?embedded-checkout=true",
+          "hn_score": 57,
+          "comments": 32,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AI children's books, body horror edition",
+          "url": "https://lcamtuf.substack.com/p/ai-childrens-books-body-horror-edition",
+          "hn_score": 26,
+          "comments": 1,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Un-0: Generating Images with Coupled Oscillators",
+          "url": "https://unconv.ai/blog/introducing-un-0-generating-images-with-coupled-oscillators/",
+          "hn_score": 116,
+          "comments": 28,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "IBM debuts sub-1 nanometer chip technology",
+          "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
+          "hn_score": 267,
+          "comments": 148,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "chip"
+          ]
+        },
+        {
+          "title": "Show HN: OpenKnowledge \u2013 open source AI-first alternative to Obsidian/Notion",
+          "url": "https://github.com/inkeep/open-knowledge",
+          "hn_score": 211,
+          "comments": 99,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Record type inference for dummies",
+          "url": "http://haskellforall.com/2026/06/record-type-inference-for-dummies",
+          "hn_score": 14,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "inference"
+          ]
+        },
+        {
+          "title": "Apple raises prices of MacBooks, iPads",
+          "url": "https://www.reuters.com/world/asia-pacific/apple-raises-prices-macbooks-ipads-memory-costs-skyrocket-2026-06-25/",
+          "hn_score": 633,
+          "comments": 908,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Besimple AI (YC P25) Is Hiring",
+          "url": "https://www.ycombinator.com/companies/besimple-ai/jobs/yWfhhOR-strategic-projects-lead-audio-data",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AAPL": {
+      "total_mentions": 8,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 28,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

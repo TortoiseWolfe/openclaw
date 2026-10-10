@@ -1,0 +1,318 @@
+{
+  "date": "2026-05-07",
+  "lastUpdated": "2026-05-07T12:51:01.653945+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 18,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures tread water while crude oil sinks in wait for Iran-US deal update",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-dow-sp-500-nasdaq-futures-tread-water-while-crude-oil-sinks-in-wait-for-iran-us-deal-update-231446925.html",
+          "source": "yahoo",
+          "published": "2026-05-06T23:14:46Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Arm Holdings stock is sinking",
+          "url": "https://finance.yahoo.com/markets/article/why-arm-holdings-stock-is-sinking-123338028.html",
+          "source": "yahoo",
+          "published": "2026-05-07T12:33:38Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The MacBook Neo Could Be the Best Reason to Buy Apple Stock",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/macbook-neo-could-best-reason-122000317.html",
+          "source": "yahoo",
+          "published": "2026-05-07T12:20:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple Flirts With Adding Intel, Samsung into Main Chip Supply Chain",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/apple-flirts-adding-intel-samsung-040100084.html",
+          "source": "yahoo",
+          "published": "2026-05-06T04:01:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm's quarter shows how it's carving a lucrative path in the crowded CPU resurgence",
+          "url": "https://www.cnbc.com/2026/05/06/arms-quarter-shows-how-its-carving-a-lucrative-path-in-the-crowded-cpu-resurgence.html",
+          "source": "cnbc_top",
+          "published": "Wed, 06 May 2026 23:15:12 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia to invest up to $3.2 billion in Corning as part of massive optical fiber deal with 3 new factories focused on AI",
+          "url": "https://www.cnbc.com/2026/05/06/nvidia-corning-optical-factories-nc-texas-ai.html",
+          "source": "cnbc_top",
+          "published": "Wed, 06 May 2026 20:12:47 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD's big day, Anthropic-SpaceX deal, the jet fuel crisis and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/07/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 07 May 2026 12:34:52 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm's quarter shows how it's carving a lucrative path in the crowded CPU resurgence",
+          "url": "https://www.cnbc.com/2026/05/06/arms-quarter-shows-how-its-carving-a-lucrative-path-in-the-crowded-cpu-resurgence.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 23:15:12 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer: Investors' selling Microsoft stock to fund flashier AI picks won't last forever",
+          "url": "https://www.cnbc.com/2026/05/06/cramer-investors-selling-microsoft-stock-to-fund-flashier-ai-picks-wont-last-forever.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 18:54:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD's Su explains what's behind massive forecast change as stock roars 19% on earnings",
+          "url": "https://www.cnbc.com/2026/05/06/amd-lisa-su-stock-forecast-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 20:01:17 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple's R&D investments top 10% of sales as AI race creates 'sense of urgency'",
+          "url": "https://www.cnbc.com/2026/05/06/apples-rd-spending-climbs-to-10percent-of-revenue-on-ai-investments.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 18:08:53 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia to invest up to $3.2 billion in Corning as part of massive optical fiber deal with 3 new factories focused on AI",
+          "url": "https://www.cnbc.com/2026/05/06/nvidia-corning-optical-factories-nc-texas-ai.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 20:12:47 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin treasury firm Strategy breaks from 'never sell' approach to the flagship crypto",
+          "url": "https://www.cnbc.com/2026/05/05/strategy-breaks-from-never-sell-bitcoin-approach.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 05 May 2026 23:54:03 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Super Micro stock jumps 18% on guidance beat as revenue more than doubles",
+          "url": "https://www.cnbc.com/2026/05/05/super-micro-smci-q3-earnings-report-2026.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 05 May 2026 22:45:25 GMT",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD's stock soars 16% as data center growth pushes revenue and guidance past estimates",
+          "url": "https://www.cnbc.com/2026/05/05/amd-q1-2026-earnings-report.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 14:11:37 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Trump admin moves further into AI oversight, will test Google, Microsoft and xAI models",
+          "url": "https://www.cnbc.com/2026/05/05/ai-oversight-trump-google-microsoft-xai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 05 May 2026 17:06:07 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Xbox CEO overhauls leadership amid sinking sales: 'We need to evolve how we work'",
+          "url": "https://www.cnbc.com/2026/05/05/microsoft-xbox-ceo-asha-sharma-executive-overhaul.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 05 May 2026 16:09:02 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Intel soars 13% on report of Apple chip talks, hits new all-time high",
+          "url": "https://www.cnbc.com/2026/05/05/intel-intc-stock-apple-talks-report.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 05 May 2026 20:02:41 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 3,
+      "matched": [
+        {
+          "title": "RSS feeds send me more traffic than Google",
+          "url": "https://shkspr.mobi/blog/2026/05/rss-feeds-send-me-more-traffic-than-google/",
+          "hn_score": 155,
+          "comments": 36,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Making LLM Training Faster with Unsloth and NVIDIA",
+          "url": "https://unsloth.ai/blog/nvidia-collab",
+          "hn_score": 75,
+          "comments": 10,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "AI",
+            "NVIDIA",
+            "LLM"
+          ]
+        },
+        {
+          "title": "Google Cloud fraud defense, the next evolution of reCAPTCHA",
+          "url": "https://cloud.google.com/blog/products/identity-security/introducing-google-cloud-fraud-defense-the-next-evolution-of-recaptcha/",
+          "hn_score": 335,
+          "comments": 349,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "SMCI": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 21,
+    "sources_succeeded": 2,
+    "most_mentioned": "AMD",
+    "headline_sentiment": "Bullish"
+  }
+}

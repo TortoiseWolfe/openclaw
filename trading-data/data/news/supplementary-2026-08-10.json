@@ -1,0 +1,250 @@
+{
+  "date": "2026-08-10",
+  "lastUpdated": "2026-08-10T18:30:58.642908+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 7,
+      "matched": [
+        {
+          "title": "AMD (AMD) Buys Inference Chip Startup Taalas To Sharpen Its AI Edge",
+          "url": "https://finance.yahoo.com/technology/ai/articles/amd-amd-buys-inference-chip-102614063.html",
+          "source": "yahoo",
+          "published": "2026-08-09T10:26:14Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, August 10, 2026: BTC breaking past $65,000 yet again",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-august-10-2026-btc-breaking-past-65000-yet-again-125722282.html",
+          "source": "yahoo",
+          "published": "2026-08-10T12:57:22Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro Computer Landed $60 Billion in Orders Last Quarter, but Trades at Just $30",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-computer-landed-60-095000547.html",
+          "source": "yahoo",
+          "published": "2026-08-09T09:50:00Z",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Don't let a Wall Street analyst's downgrade of Apple scare you out of the stock",
+          "url": "https://www.cnbc.com/2026/08/10/dont-let-a-wall-street-analysts-downgrade-of-apple-scare-you-out-of-the-stock.html",
+          "source": "cnbc_top",
+          "published": "Mon, 10 Aug 2026 18:06:55 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "World's biggest chipmaker TSMC's sales surge 45% amid buoyant AI demand",
+          "url": "https://www.cnbc.com/2026/08/10/tsmc-revenue-surge-ai-chip-big-tech.html",
+          "source": "cnbc_top",
+          "published": "Mon, 10 Aug 2026 13:39:56 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Don't let a Wall Street analyst's downgrade of Apple scare you out of the stock",
+          "url": "https://www.cnbc.com/2026/08/10/dont-let-a-wall-street-analysts-downgrade-of-apple-scare-you-out-of-the-stock.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 10 Aug 2026 18:06:55 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "World's biggest chipmaker TSMC's sales surge 45% amid buoyant AI demand",
+          "url": "https://www.cnbc.com/2026/08/10/tsmc-revenue-surge-ai-chip-big-tech.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 10 Aug 2026 13:39:56 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "<urlopen error [Errno -2] Name or service not known>"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "Muse Glimmer: 30B-parameter model optimized for always-on local agent workflows",
+          "url": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+          "hn_score": 783,
+          "comments": 440,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Launch HN: Stoa Markets (YC S26) \u2013 A Marketplace for GPUs and AI Servers",
+          "url": "https://www.stoaexchange.com",
+          "hn_score": 31,
+          "comments": 13,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Learning more about Claude's mathematical capabilities",
+          "url": "https://www.anthropic.com/research/riemann-zeta",
+          "hn_score": 38,
+          "comments": 9,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Docker Sandboxes \u2013 Disposable, isolated sandboxes for AI agents",
+          "url": "https://www.docker.com/products/docker-sandboxes/",
+          "hn_score": 528,
+          "comments": 317,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Kinney Drugs pulls back AI phone assistant after hundreds of customer complaints",
+          "url": "https://www.wcax.com/2026/08/07/kinney-drugs-pulls-back-ai-phone-assistant-after-hundreds-customer-complaints/",
+          "hn_score": 98,
+          "comments": 102,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Humanising LLM Outputs Is Dumb",
+          "url": "https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb",
+          "hn_score": 36,
+          "comments": 15,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "AI Fortunes Are Reviving an Old Debate About Private Power",
+          "url": "https://ai-updates.net/ai-fortunes-philanthropy-private-power/",
+          "hn_score": 23,
+          "comments": 15,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Run Android ARM64 VR APKs on Apple Vision Pro",
+          "url": "https://github.com/shinyquagsire23/Klepton",
+          "hn_score": 157,
+          "comments": 51,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SMCI": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 15,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Neutral"
+  }
+}

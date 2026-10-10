@@ -35,10 +35,14 @@ const mockOnMessage = vi.fn((handler: any) => {
 const mockAddUserForToken = vi.fn().mockResolvedValue("123456");
 const mockOnRefresh = vi.fn();
 const mockOnRefreshFailure = vi.fn();
+const mockRefreshAccessToken = vi.fn().mockResolvedValue(undefined);
+
+const mockOnDisconnect = vi.fn();
 
 vi.mock("@twurple/chat", () => ({
   ChatClient: class {
     onMessage = mockOnMessage;
+    onDisconnect = mockOnDisconnect;
     connect = mockConnect;
     join = mockJoin;
     say = mockSay;
@@ -68,6 +72,7 @@ vi.mock("@twurple/auth", () => ({
     addUserForToken = mockAddUserForToken;
     onRefresh = mockOnRefresh;
     onRefreshFailure = mockOnRefreshFailure;
+    refreshAccessTokenForUser = mockRefreshAccessToken;
   },
 }));
 
@@ -235,6 +240,49 @@ describe("TwitchClientManager", () => {
 
       expect(mockOnMessage).toHaveBeenCalled();
       expect(mockLogger.info).toHaveBeenCalledWith(expect.stringContaining("Set up handlers for"));
+    });
+
+    it("should force-refresh token on startup when refreshToken is provided", async () => {
+      const accountWithRefresh: TwitchAccountConfig = {
+        ...testAccount,
+        clientSecret: "test-secret",
+        refreshToken: "test-refresh-token",
+      };
+
+      await manager.getClient(accountWithRefresh);
+
+      expect(mockRefreshAccessToken).toHaveBeenCalledWith("123456");
+      expect(mockLogger.info).toHaveBeenCalledWith(
+        expect.stringContaining("Startup token refresh succeeded"),
+      );
+    });
+
+    it("should throw on startup when force-refresh fails with dead token", async () => {
+      mockRefreshAccessToken.mockRejectedValueOnce(new Error("Invalid refresh token"));
+
+      const accountWithRefresh: TwitchAccountConfig = {
+        ...testAccount,
+        clientSecret: "test-secret",
+        refreshToken: "test-refresh-token",
+      };
+
+      await expect(manager.getClient(accountWithRefresh)).rejects.toThrow(
+        "Twitch refresh token is invalid",
+      );
+    });
+
+    it("should skip startup refresh when no refreshToken is provided", async () => {
+      const accountWithSecret: TwitchAccountConfig = {
+        ...testAccount,
+        clientSecret: "test-secret",
+      };
+
+      await manager.getClient(accountWithSecret);
+
+      expect(mockRefreshAccessToken).not.toHaveBeenCalled();
+      expect(mockLogger.info).toHaveBeenCalledWith(
+        expect.stringContaining("no refresh token — skipping startup refresh"),
+      );
     });
 
     it("should create separate clients for same account with different channels", async () => {

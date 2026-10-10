@@ -1,0 +1,358 @@
+{
+  "date": "2026-04-16",
+  "lastUpdated": "2026-04-16T12:50:53.519056+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 17,
+      "matched": [
+        {
+          "title": "Stock Market Today: Dow Higher After Surprise Jobless Claims; TSMC Slides, Netflix Earnings Next (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-jobless-claims-tsmc-netflix-earnings/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-16T12:38:16Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Stock market today: S&P 500, Nasdaq steady after record high closes amid hopes for renewed Iran truce",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-sp-500-nasdaq-steady-after-record-high-closes-amid-hopes-for-renewed-iran-truce-230116905.html",
+          "source": "yahoo",
+          "published": "2026-04-15T23:01:16Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Goldman Sachs Follows Morgan Stanley as Latest to Prep Bitcoin ETF",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/goldman-sachs-follows-morgan-stanley-040300538.html",
+          "source": "yahoo",
+          "published": "2026-04-15T04:03:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street hits a record as S&P 500 continues its 2-week rally on hopes for an end to the Iran war",
+          "url": "https://finance.yahoo.com/markets/world-indices/articles/asian-shares-mostly-rise-wall-032629601.html",
+          "source": "yahoo",
+          "published": "2026-04-15T03:26:29Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "ether.fi\u2019s ETHGas Deal Backs a Bigger Push to Make Ethereum Execution More Predictable",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/ether-fi-ethgas-deal-backs-012400391.html",
+          "source": "yahoo",
+          "published": "2026-04-15T01:24:00Z",
+          "matched_symbols": [
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "3 AI Stocks That Can Outpace the S&P 500 for the Next 5 Years",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-ai-stocks-outpace-p-021100914.html",
+          "source": "yahoo",
+          "published": "2026-04-15T02:11:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC first-quarter profit rises 58%, beats estimates as AI demand fuels record run",
+          "url": "https://www.cnbc.com/2026/04/16/tsmc-q1-profit-58-percent-ai-chip-demand-record.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Apr 2026 12:23:25 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon sellers boycott ads in policy change revolt: 'We're running out of f---ing margin'",
+          "url": "https://www.cnbc.com/2026/04/15/amazon-sellers-boycott-ads-payment-changes.html",
+          "source": "cnbc_top",
+          "published": "Wed, 15 Apr 2026 20:28:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's long-awaited stock breakout is proof that patience pays off",
+          "url": "https://www.cnbc.com/2026/04/15/nvidias-long-awaited-stock-breakout-is-proof-that-patience-pays-off.html",
+          "source": "cnbc_top",
+          "published": "Wed, 15 Apr 2026 19:01:12 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "S&P 500's all-time high, investigators visit the Fed, Allbirds' rebrand and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/16/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 12:27:44 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC first-quarter profit rises 58%, beats estimates as AI demand fuels record run",
+          "url": "https://www.cnbc.com/2026/04/16/tsmc-q1-profit-58-percent-ai-chip-demand-record.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 12:23:25 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon sellers boycott ads in policy change revolt: 'We're running out of f---ing margin'",
+          "url": "https://www.cnbc.com/2026/04/15/amazon-sellers-boycott-ads-payment-changes.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 20:28:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's long-awaited stock breakout is proof that patience pays off",
+          "url": "https://www.cnbc.com/2026/04/15/nvidias-long-awaited-stock-breakout-is-proof-that-patience-pays-off.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 19:01:12 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Chip giants AMD, Qualcomm and Arm back driverless car startup Wayve with fresh funds",
+          "url": "https://www.cnbc.com/2026/04/15/wayve-fund-raise-amd-qualcomm-arm.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "OpenAI pulls back from Stargate Norway data center deal as Microsoft takes over",
+          "url": "https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 12:29:04 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta commits to 1 gigawatt of custom chips with Broadcom as Hock Tan decides to leave board",
+          "url": "https://www.cnbc.com/2026/04/14/meta-commits-to-one-gigawatt-of-custom-chips-with-broadcom-as-hock-tan-agrees-to-leave-board.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 01:11:39 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia stock is on a 10-day winning streak and up 18% over that stretch",
+          "url": "https://www.cnbc.com/2026/04/14/nvidia-stock-nvda-ai-streak.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Apr 2026 21:01:37 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "\u20ac54k spike in 13h from unrestricted Firebase browser key accessing Gemini APIs",
+          "url": "https://discuss.ai.google.dev/t/unexpected-54k-billing-spike-in-13-hours-firebase-browser-key-without-api-restrictions-used-for-gemini-requests/140262",
+          "hn_score": 92,
+          "comments": 56,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "IPv6 traffic crosses the 50% mark",
+          "url": "https://www.google.com/intl/en/ipv6/statistics.html?yzh=28197",
+          "hn_score": 442,
+          "comments": 266,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Darkbloom \u2013 Private inference on idle Macs",
+          "url": "https://darkbloom.dev",
+          "hn_score": 304,
+          "comments": 159,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "inference"
+          ]
+        },
+        {
+          "title": "FSF trying to contact Google about spammer sending 10k+ mails from Gmail account",
+          "url": "https://daedal.io/@thomzane/116410863009847575",
+          "hn_score": 214,
+          "comments": 120,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Apple accelerates eco progress with highest-ever recycled materials",
+          "url": "https://www.apple.com/newsroom/2026/04/apple-accelerates-progress-with-highest-ever-recycled-material-in-its-products/",
+          "hn_score": 4,
+          "comments": 0,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Google broke its promise to me \u2013 now ICE has my data",
+          "url": "https://www.eff.org/deeplinks/2026/04/google-broke-its-promise-me-now-ice-has-my-data",
+          "hn_score": 1555,
+          "comments": 671,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "AI cybersecurity is not proof of work",
+          "url": "https://antirez.com/news/163",
+          "hn_score": 7,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "TSM": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 2,
+    "most_mentioned": "SPY",
+    "headline_sentiment": "Bullish"
+  }
+}

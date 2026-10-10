@@ -1,0 +1,423 @@
+{
+  "date": "2026-03-31",
+  "lastUpdated": "2026-03-31T12:50:56.028570+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 102,
+      "articles_matched": 21,
+      "matched": [
+        {
+          "title": "Tech stocks today: Big Tech stocks recover, Meta tests a premium Instagram subscription",
+          "url": "https://finance.yahoo.com/news/live/tech-stocks-today-big-tech-stocks-recover-meta-tests-a-premium-instagram-subscription-144220223.html",
+          "source": "yahoo",
+          "published": "2026-03-13T14:42:20Z",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jensen Huang Just Raised Nvidia's Order Outlook to $1 Trillion. Should You Buy the AI Stock -- or Has the Market Already Priced It in?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-just-raised-nvidias-123000939.html",
+          "source": "yahoo",
+          "published": "2026-03-31T12:30:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Crypto News: FTX Is Releasing $2.2 Billion to Creditors \u2014 Here\u2019s What It Could Mean for Bitcoin and XRP",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/crypto-news-ftx-releasing-2-122948241.html",
+          "source": "yahoo",
+          "published": "2026-03-31T12:29:48Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir Stock Looks Oversold, But is a 89% Year-Ahead Gain Realistic?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-looks-oversold-89-122822995.html",
+          "source": "yahoo",
+          "published": "2026-03-31T12:28:22Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Coinbase (COIN) Stock Up Slightly After Jim Cramer Advised Buying Bitcoin Instead",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/coinbase-coin-stock-slightly-jim-115536802.html",
+          "source": "yahoo",
+          "published": "2026-03-31T11:55:36Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Riot Platforms (RIOT) Up Slightly Since Jim Cramer Advised To Own Bitcoin Instead",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/riot-platforms-riot-slightly-since-115527044.html",
+          "source": "yahoo",
+          "published": "2026-03-31T11:55:27Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TeraWulf (WULF) Shares Up Significantly Since Jim Cramer Advised To Own Bitcoin Instead",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/terawulf-wulf-shares-significantly-since-115445289.html",
+          "source": "yahoo",
+          "published": "2026-03-31T11:54:45Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy Inc (MSTR) Shares Down Significantly After Jim Cramer Suggested to Buy Bitcoin Instead",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/strategy-inc-mstr-shares-down-115425802.html",
+          "source": "yahoo",
+          "published": "2026-03-31T11:54:25Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin Whale Is Wall Street's No. 1 Crush And No. 1 Stock Issuer. Coincidence?",
+          "url": "https://www.investors.com/news/mstr-stock-bitcoin-whale-strategy-wall-street-price-targets-stock-issuance/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-31T11:52:11Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Tuesday, March 31, 2026: Performance mixed as traders watch war developments",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-tuesday-march-31-2026-performance-mixed-as-traders-watch-war-developments-120045698.html",
+          "source": "yahoo",
+          "published": "2026-03-30T12:00:45Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell stock pops 11% as Nvidia takes $2 billion stake, continuing run of similar bets",
+          "url": "https://www.cnbc.com/2026/03/31/marvell-nvidia-stock-stake.html",
+          "source": "cnbc_top",
+          "published": "Tue, 31 Mar 2026 12:49:35 GMT",
+          "matched_symbols": [
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Delta Air Lines taps Amazon Leo for in-flight Wi-Fi as streaming wars heat up",
+          "url": "https://www.cnbc.com/2026/03/31/delta-air-lines-amazon-leo-inflight-wi-fi.html",
+          "source": "cnbc_top",
+          "published": "Tue, 31 Mar 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft hit with UK competition regulator probe over software business",
+          "url": "https://www.cnbc.com/2026/03/31/microsoft-cma-investigation-uk-software-business.html",
+          "source": "cnbc_top",
+          "published": "Tue, 31 Mar 2026 11:49:25 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Logan Paul sold a Pok\u00e9mon card for more than $16 million. Here's why investors are watching",
+          "url": "https://www.cnbc.com/2026/03/29/pokemon-card-values-rise-logan-paul-pikachu-auction.html",
+          "source": "cnbc_top",
+          "published": "Sun, 29 Mar 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell stock pops 11% as Nvidia takes $2 billion stake, continuing run of similar bets",
+          "url": "https://www.cnbc.com/2026/03/31/marvell-nvidia-stock-stake.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 31 Mar 2026 12:49:35 GMT",
+          "matched_symbols": [
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft hit with UK competition regulator probe over software business",
+          "url": "https://www.cnbc.com/2026/03/31/microsoft-cma-investigation-uk-software-business.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 31 Mar 2026 11:49:25 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Evercore ISI predicts 'inflection point' is days away, plans to commit capital if S&P 500 drops to this level",
+          "url": "https://www.cnbc.com/2026/03/30/buy-stocks-if-sp-500-falls-to-this-level-evercore-isis-emanuel.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 30 Mar 2026 23:22:19 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Samsung-backed AI chip firm Rebellions raises $400 million ahead of IPO",
+          "url": "https://www.cnbc.com/2026/03/30/ai-chip-startup-rebellions-raises-400-million-ipo.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 31 Mar 2026 07:38:49 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Iran war is defense tech's chance to shine, but few systems and weapons are ready",
+          "url": "https://www.cnbc.com/2026/03/28/iran-war-defense-tech-drones-trump-hegseth.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 30 Mar 2026 13:02:35 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "White House launches app touting Trump's record, with some key omissions",
+          "url": "https://www.cnbc.com/2026/03/27/white-house-app-trump-iran-war-oil-gas-ice.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Mar 2026 19:27:18 GMT",
+          "matched_symbols": [
+            "LINK"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Epstein victims sue Google and the Trump administration over alleged disclosure of personal information",
+          "url": "https://www.cnbc.com/2026/03/27/jeffrey-epstein-victims-sue-trump-administration-google.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Mar 2026 19:57:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "USDJPY"
+      ],
+      "currency_strength": {
+        "strongest": "USD",
+        "weakest": "USD",
+        "detail": {
+          "USD": -1,
+          "JPY": -1
+        }
+      },
+      "economic_events": [
+        "BoE",
+        "CPI",
+        "Fed",
+        "GDP",
+        "Inflation",
+        "Manufacturing",
+        "PMI",
+        "RBA",
+        "Retail Sales",
+        "inflation",
+        "interest rate",
+        "monetary policy",
+        "retail sales"
+      ],
+      "key_headlines": [
+        "Partner Center Monday\u2019s session was defined by the ongoing U.S.-Iran conflict, with WTI crude surging above $101 a barrel as the Strait of Hormuz closure continued to tighten global energy supply whil",
+        "Equities gave back strong overnight gains as chipmaker weakness and geopolitical unease dragged the S&P 500 into negative territory by the close, and the U.S.",
+        "dollar posted a broadly firm performance, finishing as the second-best performing major currency on the day behind only the Japanese yen, which drew support from an escalating verbal intervention camp",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: On Monday, the U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-03-30"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "Ollama is now powered by MLX on Apple Silicon in preview",
+          "url": "https://ollama.com/blog/mlx",
+          "hn_score": 371,
+          "comments": 183,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Google's 200M-parameter time-series foundation model with 16k context",
+          "url": "https://github.com/google-research/timesfm",
+          "hn_score": 168,
+          "comments": 74,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Do your own writing",
+          "url": "https://alexhwoods.com/dont-let-ai-write-for-you/",
+          "hn_score": 608,
+          "comments": 201,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "RamAIn (YC W26) Is Hiring",
+          "url": "https://www.ycombinator.com/companies/ramain/jobs/jezgwo5-ai-ml-research-engineer",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Anthropic: Claude Code users hitting usage limits 'way faster than expected'",
+          "url": "https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/",
+          "hn_score": 15,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "PLTR": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "LINK": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 31,
+    "sources_succeeded": 3,
+    "most_mentioned": "BTC",
+    "headline_sentiment": "Bullish"
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "date": "2026-04-22",
+  "lastUpdated": "2026-04-22T12:50:39.583208+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 38,
+      "matched": [
+        {
+          "title": "Warren Buffett dumped 77% of Amazon to buy surging media stock",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-dumped-77-amazon-003700673.html",
+          "source": "yahoo",
+          "published": "2026-04-22T00:37:00Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Here\u2019s Nightview Fund\u2019s Views on NVIDIA (NVDA)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nightview-fund-views-nvidia-nvda-123946393.html",
+          "source": "yahoo",
+          "published": "2026-04-22T12:39:46Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise after Trump extends US-Iran ceasefire",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-after-trump-extends-us-iran-ceasefire-230429647.html",
+          "source": "yahoo",
+          "published": "2026-04-21T23:04:29Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Cloud: New AI Accelerators, Enterprise Agentic Platform Debut",
+          "url": "https://www.investors.com/news/technology/google-cloud-next-tpu-artificial-intelligence-enterprise-agentic-platform/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-22T12:16:47Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google puts AI agents at heart of its enterprise money-making push",
+          "url": "https://finance.yahoo.com/news/google-puts-ai-agents-heart-120308146.html",
+          "source": "yahoo",
+          "published": "2026-04-22T12:04:49Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "36 S&P 500 Stocks Blew Away Tim Cook's Apple With Less Fanfare",
+          "url": "https://www.investors.com/etfs-and-funds/sectors/sp-500-stocks-blew-away-tim-cooks-apple-with-less-fanfare/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-22T12:00:59Z",
+          "matched_symbols": [
+            "AAPL",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Higher Ahead Of Magnificent Seven Earnings; Is Microsoft A Buy Now?",
+          "url": "https://www.investors.com/research/microsoft-msft-stock-earnings-april-2026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-22T12:00:35Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google announces 2 AI chips as competition with Nvidia heats up",
+          "url": "https://finance.yahoo.com/sectors/technology/article/google-announces-2-ai-chips-as-competition-with-nvidia-heats-up-120011883.html",
+          "source": "yahoo",
+          "published": "2026-04-22T12:00:11Z",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market Digest: AAPL, GPC, UNH, ZION, TRI",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_46808_MarketSummary_1776854867000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-04-22T10:47:47Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Wednesday, April 22, 2026: Prices rising following ceasefire extension",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-april-22-2026-prices-rising-following-ceasefire-extension-114636596.html",
+          "source": "yahoo",
+          "published": "2026-04-22T11:46:36Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Prediction: This AI Chip Stock Will Become the Next Nvidia by 2030",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/prediction-ai-chip-stock-become-122000666.html",
+          "source": "yahoo",
+          "published": "2026-04-22T12:20:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "What Apple's naming of John Ternus as CEO tells us about the future of the company",
+          "url": "https://finance.yahoo.com/sectors/technology/article/what-apples-naming-of-john-ternus-as-ceo-tells-us-about-the-future-of-the-company-113817040.html",
+          "source": "yahoo",
+          "published": "2026-04-22T11:38:17Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here\u2019s Why Mizuho Lowered Price Target on Palantir Technologies (PLTR)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-mizuho-lowered-price-target-113604668.html",
+          "source": "yahoo",
+          "published": "2026-04-22T11:36:04Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google unveils chips for AI training and inference in latest shot at Nvidia",
+          "url": "https://www.cnbc.com/2026/04/22/google-launches-training-and-inference-tpus-in-latest-shot-at-nvidia.html",
+          "source": "cnbc_top",
+          "published": "Wed, 22 Apr 2026 12:28:38 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir inks $300 million deal with USDA to safeguard food supply",
+          "url": "https://www.cnbc.com/2026/04/22/palantir-inks-300-million-deal-with-usda-to-safeguard-food-supply.html",
+          "source": "cnbc_top",
+          "published": "Wed, 22 Apr 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump recounts Tim Cook call to 'kiss my ass,' in stark look at White House dealmaking",
+          "url": "https://www.cnbc.com/2026/04/21/trump-tim-cook-call-white-house-deals.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 22:50:14 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon launches GLP-1 weight loss program, promising 'fast, convenient' access",
+          "url": "https://www.cnbc.com/2026/04/21/amazon-glp-1-weight-loss-program.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 18:27:58 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Apple's elevation of silicon head Johny Srouji signals sprint to build in-house chips for all devices",
+          "url": "https://www.cnbc.com/2026/04/21/apple-promotes-chip-lead-srouji-as-it-corners-silicon-in-iphones-macs.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 22:28:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Ceasefire extension, Best Buy's new CEO, Amazon's GLP-1 push and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/22/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 22 Apr 2026 12:38:10 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google unveils chips for AI training and inference in latest shot at Nvidia",
+          "url": "https://www.cnbc.com/2026/04/22/google-launches-training-and-inference-tpus-in-latest-shot-at-nvidia.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 22 Apr 2026 12:28:38 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir inks $300 million deal with USDA to safeguard food supply",
+          "url": "https://www.cnbc.com/2026/04/22/palantir-inks-300-million-deal-with-usda-to-safeguard-food-supply.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 22 Apr 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jim Cramer says Tim Cook accomplished something 'almost impossible' as Apple CEO",
+          "url": "https://www.cnbc.com/2026/04/21/cramer-tim-cook-accomplished-something-almost-impossible-apple-ceo.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 23:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's elevation of silicon head Johny Srouji signals sprint to build in-house chips for all devices",
+          "url": "https://www.cnbc.com/2026/04/21/apple-promotes-chip-lead-srouji-as-it-corners-silicon-in-iphones-macs.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 22:28:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump recounts Tim Cook call to 'kiss my ass,' in stark look at White House dealmaking",
+          "url": "https://www.cnbc.com/2026/04/21/trump-tim-cook-call-white-house-deals.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 22:50:14 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Tim Cook stepping down as CEO isn't shaking Jim Cramer's faith in Apple",
+          "url": "https://www.cnbc.com/2026/04/21/why-tim-cook-stepping-down-as-ceo-isnt-shaking-cramers-faith-in-apple.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 18:36:31 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon launches GLP-1 weight loss program, promising 'fast, convenient' access",
+          "url": "https://www.cnbc.com/2026/04/21/amazon-glp-1-weight-loss-program.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 18:27:58 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "New Apple CEO John Ternus doubted himself when he started: 'I wasn't sure I belonged'",
+          "url": "https://www.cnbc.com/2026/04/21/john-ternus-apple-ceo.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 22:30:40 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft cuts Game Pass subscription prices after new Xbox CEO promises to 'recommit' to gamers",
+          "url": "https://www.cnbc.com/2026/04/21/microsoft-game-pass-ultimate-subscription-price-cut.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 19:49:17 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tim Cook turned Apple into a $4 trillion juggernaut by not trying to be Steve Jobs",
+          "url": "https://www.cnbc.com/2026/04/21/tim-cook-apple-steve-jobs-legacy.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 17:29:36 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's next CEO, Warsh's confirmation hearing, the psychedelic stock surge and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/21/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 12:22:54 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon adding heavy-duty EV trucks from Einride as it spreads bets on freight decarbonization",
+          "url": "https://www.cnbc.com/2026/04/21/amazon-einride-ev-trucks-freight-electrification.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 12:08:45 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple incoming CEO John Ternus faces a defining challenge: Fixing the company's AI strategy",
+          "url": "https://www.cnbc.com/2026/04/20/apple-new-ceo-john-ternus-faces-defining-challenge-fixing-ai-strategy.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 22:34:27 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia supplier Victory Giant sees shares soar 60% in Hong Kong debut",
+          "url": "https://www.cnbc.com/2026/04/21/nvidia-supplier-victory-giant-sees-shares-soar-60percent-in-hong-kong-debut.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 04:18:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tim Cook reactions: Trump, Altman, Buffett and more on the Apple CEO move",
+          "url": "https://www.cnbc.com/2026/04/20/tim-cook-apple-reactions-ceo.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 20:20:07 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell pops on report it will help Google with custom AI chips. Broadcom shares sink",
+          "url": "https://www.cnbc.com/2026/04/20/marvell-stock-google-custom-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 20:43:47 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL",
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple taps John Ternus\u00a0as CEO to replace Tim Cook, who will become chairman",
+          "url": "https://www.cnbc.com/2026/04/20/apple-names-john-ternus-ceo-replacing-tim-cook-who-becomes-chairman.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 22:26:47 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to invest up to another $25 billion in Anthropic as part of AI infrastructure deal",
+          "url": "https://www.cnbc.com/2026/04/20/amazon-invest-up-to-25-billion-in-anthropic-part-of-ai-infrastructure.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 21:44:47 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon 'strong-armed' Levi's, Hanes to hike prices on rival sites, California AG says",
+          "url": "https://www.cnbc.com/2026/04/20/california-da-amazon-price-fixing-walmart-target.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 13:07:48 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Our eighth generation TPUs: two chips for the agentic era",
+          "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/",
+          "hn_score": 9,
+          "comments": 3,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "ChatGPT Images 2.0",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-0/",
+          "hn_score": 897,
+          "comments": 746,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Kernel code removals driven by LLM-created security reports",
+          "url": "https://lwn.net/Articles/1068928/",
+          "hn_score": 9,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "XOR'ing a register with itself is the idiom for zeroing it out. Why not sub?",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20260421-00/?p=112247",
+          "hn_score": 73,
+          "comments": 78,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "MuJoCo \u2013 Advanced Physics Simulation",
+          "url": "https://github.com/google-deepmind/mujoco",
+          "hn_score": 51,
+          "comments": 9,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Windows Server 2025 Runs Better on ARM",
+          "url": "https://jasoneckert.github.io/myblog/server-2025-arm64/",
+          "hn_score": 143,
+          "comments": 115,
+          "matched_symbols": [
+            "ARM"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Meta to start capturing employee mouse movements, keystrokes for AI training",
+          "url": "https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/",
+          "hn_score": 639,
+          "comments": 434,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AMZN": {
+      "total_mentions": 9,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 10,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 15,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 45,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

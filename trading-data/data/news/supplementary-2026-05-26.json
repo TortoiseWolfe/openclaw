@@ -1,0 +1,299 @@
+{
+  "date": "2026-05-26",
+  "lastUpdated": "2026-05-26T12:50:39.307181+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 13,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise on Iran peace prospects",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-on-iran-peace-prospects-112100894.html",
+          "source": "yahoo",
+          "published": "2026-05-26T11:21:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Dow Jones Futures Rise Amid Mixed Iran News; Marvell, Dell Jump Before Earnings",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-rise-iran-news-marvell-dell-costco/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-26T12:07:24Z",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir Mystery Deepens As Many Software Stocks Claw Back Amid AI Fears",
+          "url": "https://www.investors.com/news/technology/palantir-stock-pltr-software-stocks-igv-etf-2026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-26T12:00:20Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Huawei plans new smartphone chips this fall as rivalry with Nvidia and Apple heats up",
+          "url": "https://www.cnbc.com/2026/05/25/huawei-chip-logicfolding-semiconductor-nvidia-china.html",
+          "source": "cnbc_top",
+          "published": "Mon, 25 May 2026 06:48:16 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Microsoft\u2019s new responsible tech lead on how to humanize high-speed AI development",
+          "url": "https://www.cnbc.com/2026/05/23/microsofts-new-responsible-tech-lead-on-high-speed-ai-development.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 23 May 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Reddit stock drops almost 6% after Meta launches standalone app for online forums",
+          "url": "https://www.cnbc.com/2026/05/22/reddit-stock-drops-after-meta-launches-forum-app.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 20:17:09 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft\u2019s GitHub was positioned to win the AI coding race. Outages got in the way",
+          "url": "https://www.cnbc.com/2026/05/22/microsoft-was-positioned-to-win-in-ai-coding-outages-got-in-the-way.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 15:39:28 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: What you might have missed in Nvidia\u2019s earnings \u2014 a $200 billion opportunity and edge computing",
+          "url": "https://www.cnbc.com/2026/05/22/the-tech-download-what-you-might-have-missed-in-nvidias-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 14:00:52 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Broadcom and others to launch $125 million semiconductor research hub at UCLA",
+          "url": "https://www.cnbc.com/2026/05/21/meta-broadcom-others-to-launch-125-million-semiconductor-research-hub-at-ucla.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 20:30:01 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic, Microsoft in talks for AI chip deal after $5 billion investment",
+          "url": "https://www.cnbc.com/2026/05/21/anthropic-microsoft-maia-200-ai-chip.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 19:53:21 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here we go again with Nvidia falling on earnings. What the sellers are missing",
+          "url": "https://www.cnbc.com/2026/05/21/here-we-go-again-with-nvidia-falling-on-earnings-what-the-sellers-are-missing.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 16:20:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy's Michael Saylor says tokenization will let investors 'shop' for yield",
+          "url": "https://www.cnbc.com/2026/05/21/strategys-michael-saylor-says-tokenization-will-let-investors-shop-for-yield.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 14:51:08 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX's IPO, Nvidia earnings, Bezos on the AI bubble and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/21/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 12:21:16 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Using AI to write better code more slowly",
+          "url": "https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/",
+          "hn_score": 794,
+          "comments": 308,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Eagle 3.1: Collaboration Between the EAGLE Team, vLLM Team, and TorchSpec Team",
+          "url": "https://vllm.ai/blog/2026-05-26-eagle-3-1",
+          "hn_score": 7,
+          "comments": 3,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "How do you build a semiconductor company on something that's free?",
+          "url": "https://www.siliconimist.com/p/the-open-source-silicon-business",
+          "hn_score": 8,
+          "comments": 1,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "semiconductor"
+          ]
+        },
+        {
+          "title": "Motorola phones have started hijacking the Amazon app to insert affiliate codes",
+          "url": "https://9to5google.com/2026/05/25/motorola-amazon-app-hijacking-behavior/",
+          "hn_score": 246,
+          "comments": 121,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Norway's 2 petabytes of Huawei flash storage and LLM training",
+          "url": "https://www.blocksandfiles.com/flash/2026/05/22/norways-2-petabytes-of-huawei-flash-storage-and-llm-training/5244910",
+          "hn_score": 296,
+          "comments": 191,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "A reality check on the AI jobs hysteria",
+          "url": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/",
+          "hn_score": 16,
+          "comments": 6,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 19,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

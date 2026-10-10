@@ -1,0 +1,270 @@
+{
+  "date": "2026-06-20",
+  "lastUpdated": "2026-06-20T21:19:04.137062+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 14,
+      "matched": [
+        {
+          "title": "Bitcoin's future as revolutionary as the smartphone, according to CoinDesk",
+          "url": "https://www.cnbc.com/2026/06/20/bitcoin-as-revolutionary-as-smartphone-according-to-coindesk.html",
+          "source": "cnbc_top",
+          "published": "Sat, 20 Jun 2026 15:00:01 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Memory crisis hits such extremes that 'even Apple can't be safe'",
+          "url": "https://www.cnbc.com/2026/06/19/memory-crisis-hits-such-extremes-that-even-apple-cant-be-safe-.html",
+          "source": "cnbc_top",
+          "published": "Fri, 19 Jun 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Fedspeak vs. war deal: Here are the things that drove this week's stock market",
+          "url": "https://www.cnbc.com/2026/06/19/fedspeak-vs-war-deal-here-are-the-things-that-drove-this-weeks-stock-market.html",
+          "source": "cnbc_top",
+          "published": "Fri, 19 Jun 2026 17:24:10 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Memory crisis hits such extremes that 'even Apple can't be safe'",
+          "url": "https://www.cnbc.com/2026/06/19/memory-crisis-hits-such-extremes-that-even-apple-cant-be-safe-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 19 Jun 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo recalls about 3,900 robotaxis after some drove into 'freeway construction zones'",
+          "url": "https://www.cnbc.com/2026/06/18/waymo-nhtsa-voluntary-recall-robotaxis-entered-freeway-construction-zones.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 21:57:32 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon investigating engineers who criticized AI data center expansion",
+          "url": "https://www.cnbc.com/2026/06/18/amazon-engineers-ai-data-center-opposition.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 19:47:59 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's upcoming price hikes are good for the company not so good for consumers",
+          "url": "https://www.cnbc.com/2026/06/18/apples-upcoming-price-hikes-are-good-for-the-company-not-so-good-for-consumers.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 15:55:50 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Fed decision, JetBlue's Florida plans, Intel's Apple partnership and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/18/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 12:34:48 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Intel gains 10% after Trump says company will partner with Apple on U.S. chip design",
+          "url": "https://www.cnbc.com/2026/06/18/trump-intel-apple-chip-design-deal.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 16:51:44 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SpaceX stock sinks for a second day as company slips below Amazon in market cap",
+          "url": "https://www.cnbc.com/2026/06/18/spacex-stock-elon-musk-rally-cools.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 20:36:50 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Gemini co-lead Noam Shazeer leaves for OpenAI",
+          "url": "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 03:21:21 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon has lagged OpenAI and Anthropic, but AI chief sees path to catch up in 'coming year'",
+          "url": "https://www.cnbc.com/2026/06/17/amazon-ai-frontier-openai-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 17 Jun 2026 17:37:30 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "CEOs of Anthropic and Google DeepMind call for U.S.-led AI coalition in meeting at G7",
+          "url": "https://www.cnbc.com/2026/06/17/anthropic-amodei-google-hassabis-us-ai-coalition-g7.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 17 Jun 2026 20:42:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon AI exec predicts first 'commercially useful' quantum computers in 5-7 years",
+          "url": "https://www.cnbc.com/2026/06/17/amazon-quantum-computing-timeline.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 17 Jun 2026 17:43:22 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "UHF X11: X11 Built for VisionOS and Apple Vision Pro",
+          "url": "https://www.lispm.net/apps/uhf-x11/",
+          "hn_score": 103,
+          "comments": 12,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Temporary Cloudflare accounts for AI agents",
+          "url": "https://blog.cloudflare.com/temporary-accounts/",
+          "hn_score": 117,
+          "comments": 79,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AMD will reinstate memory encryption on Ryzen 9000 CPUs via BIOS update in July",
+          "url": "https://www.tomshardware.com/pc-components/cpus/amd-will-reinstate-memory-encryption-on-ryzen-9000-cpus-through-a-bios-update-in-july-tsme-is-coming-back-after-valuable-community-feedback",
+          "hn_score": 53,
+          "comments": 11,
+          "matched_symbols": [
+            "AMD"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Inference cost at scale with napkin math",
+          "url": "https://injuly.in/blog/napkin-inference-cost/index.html",
+          "hn_score": 5,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "inference"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 18,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

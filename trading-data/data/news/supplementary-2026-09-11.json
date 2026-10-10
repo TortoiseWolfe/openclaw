@@ -1,0 +1,379 @@
+{
+  "date": "2026-09-11",
+  "lastUpdated": "2026-09-11T12:50:39.796923+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 18,
+      "matched": [
+        {
+          "title": "Optical Cable (OCC) Q3 2026 Earnings Call Transcript",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/optical-cable-occ-q3-2026-004307690.html",
+          "source": "yahoo",
+          "published": "2026-09-10T00:43:07Z",
+          "matched_symbols": [
+            "GBPUSD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bit Digital (BTBT) Turns Its Ethereum Stash Into a Lending Machine",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bit-digital-btbt-turns-ethereum-030631658.html",
+          "source": "yahoo",
+          "published": "2026-09-10T03:06:31Z",
+          "matched_symbols": [
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia plans major expansion of data centre capacity in Australia to meet AI demand",
+          "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-plans-major-expansion-data-032949319.html",
+          "source": "yahoo",
+          "published": "2026-09-10T03:29:49Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "What is an adjustable-rate mortgage (ARM), and what are the risks?",
+          "url": "https://finance.yahoo.com/personal-finance/mortgages/article/adjustable-rate-mortgage-155738644.html",
+          "source": "yahoo",
+          "published": "2024-01-26T22:54:47Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, September 10, 2026: Crypto prices slide back with inflation data on tap",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-september-10-2026-crypto-prices-slide-back-with-inflation-data-on-tap-113018195.html",
+          "source": "yahoo",
+          "published": "2026-09-10T11:30:18Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Friday, September 11, 2026: Bitcoin falls below $77,000 with key inflation data on deck",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-friday-september-11-2026-bitcoin-falls-below-77000-with-key-inflation-data-on-deck-113905130.html",
+          "source": "yahoo",
+          "published": "2026-09-11T11:39:05Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jim Cramer's least-favorite tech stock gets a new analyst endorsement \u2014 our take",
+          "url": "https://www.cnbc.com/2026/09/10/cramers-least-favorite-tech-stock-gets-a-new-bullish-analyst-endorsement.html",
+          "source": "cnbc_top",
+          "published": "Thu, 10 Sep 2026 19:33:25 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Chinese Nvidia rival Enflame soars 206% on stock market debut as AI demand stays hot",
+          "url": "https://www.cnbc.com/2026/09/11/chinese-nvidia-rival-enflame-stock-market-debut-ai.html",
+          "source": "cnbc_top",
+          "published": "Fri, 11 Sep 2026 01:53:08 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The iPhone Duo enters China\u2019s crowded foldable market \u2014 and faces a price test",
+          "url": "https://www.cnbc.com/2026/09/11/the-iphone-duo-enters-chinas-crowded-foldable-market.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 11 Sep 2026 02:05:24 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Humans need to 'surf the wave' of AI rather than get swallowed by it, Chesky says at Communacopia",
+          "url": "https://www.cnbc.com/2026/09/10/goldman-sachs-communacopia-technology-conference-ai-tech.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 21:22:39 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple makes biggest change to iPhone release cadence in 7 years in Ternus' first showcase as CEO",
+          "url": "https://www.cnbc.com/2026/09/10/apple-makes-biggest-change-to-iphone-release-cadence-in-7-years.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 14:45:52 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon gives OpenAI's ad business a boost, letting its advertisers into ChatGPT",
+          "url": "https://www.cnbc.com/2026/09/10/amazon-chatgptads-open-ai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 15:25:58 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's foldable phone, Macy's earnings, Treasury buybacks and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/10/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 12:51:36 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "World\u2019s largest contract chipmaker TSMC sees August revenue surge over 53% to record high",
+          "url": "https://www.cnbc.com/2026/09/10/tsmc-august-revenue-chip-ai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 06:45:55 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Samsung works to draw iPhone users to its foldables even as Apple enters the market",
+          "url": "https://www.cnbc.com/2026/09/10/samsung-tries-to-draw-iphone-users-to-its-foldables-amid-apple-entry.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 02:05:32 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon adds cybersecurity veteran Kevin Mandia to board 2 years after he left Google",
+          "url": "https://www.cnbc.com/2026/09/09/amazon-adds-cybersecurity-vet-ex-google-exec-kevin-mandia-to-board.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 09 Sep 2026 21:45:34 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple event 2026: Folding iPhone Duo, iPhone 18 Pro, added AI features and more",
+          "url": "https://www.cnbc.com/2026/09/09/apple-event-today-live-updates.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 00:01:17 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Brent hits $100, Apple's big launch, Trump's energy investments and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/09/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 09 Sep 2026 12:43:48 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "The Waymo effect: how AI is quietly making research less collaborative",
+          "url": "https://www.researchagenda.news/articles/the-waymo-effect.html",
+          "hn_score": 109,
+          "comments": 64,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "RTK reports token savings, but our cost benchmarks disagree",
+          "url": "https://quesma.com/blog/does-rtk-make-ai-coding-cheaper/",
+          "hn_score": 39,
+          "comments": 18,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "OpenAI Agents API",
+          "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          "hn_score": 282,
+          "comments": 157,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "More questions about whether researchers can trust OpenAI with unpublished math",
+          "url": "https://mathstodon.xyz/@andreasthom/117240535270608201",
+          "hn_score": 828,
+          "comments": 763,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Proof of Capture: Apple Reference Image, but open source and using steganography",
+          "url": "https://merybenavente.me/blog/proof-of-capture",
+          "hn_score": 118,
+          "comments": 69,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Instagram's head says engagement falls by half without the algorithm",
+          "url": "https://thenextweb.com/news/mosseri-instagram-algorithm-opt-out-engagement-australia",
+          "hn_score": 45,
+          "comments": 49,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Rust is tier-1 language at Microsoft",
+          "url": "https://rustfoundation.org/media/guest-post-rust-is-tier-1-language-at-microsoft/",
+          "hn_score": 698,
+          "comments": 452,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 25,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

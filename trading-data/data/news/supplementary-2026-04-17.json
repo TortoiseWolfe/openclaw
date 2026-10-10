@@ -1,0 +1,489 @@
+{
+  "date": "2026-04-17",
+  "lastUpdated": "2026-04-17T12:50:36.939708+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 23,
+      "matched": [
+        {
+          "title": "Rigetti (RGTI), Quantum Stocks Climb \u2018Double-Digits\u2019 on Nvidia Support",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/rigetti-rgti-quantum-stocks-climb-010835750.html",
+          "source": "yahoo",
+          "published": "2026-04-16T01:08:35Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market Digest: TSM, PLD, KEY",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_46764_MarketSummary_1776423479000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-04-17T10:57:59Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Quantum Computing (QUBT) Soars 15.9% as Nvidia Unveils Quantum System Solution",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/quantum-computing-qubt-soars-15-012312211.html",
+          "source": "yahoo",
+          "published": "2026-04-16T01:23:12Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "IonQ (IONQ) Soars 21% on Nvidia Quantum Computing Support",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ionq-ionq-soars-21-nvidia-012510417.html",
+          "source": "yahoo",
+          "published": "2026-04-16T01:25:10Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia rival tells CNBC it's seeking at least $100 million in funding as European AI chip market booms",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-rivals-chip-market-funding-ai-asml-euclyd.html",
+          "source": "cnbc_top",
+          "published": "Fri, 17 Apr 2026 07:23:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here's our monthly update on all 31 portfolio stocks, including 3 on the buy list",
+          "url": "https://www.cnbc.com/2026/04/16/heres-our-april-update-on-all-31-portfolio-stocks-including-4-buys.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Apr 2026 19:14:37 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google will let users connect their photos to the Gemini chatbot and Nano Banana",
+          "url": "https://www.cnbc.com/2026/04/16/google-photo-gemini-chatbot-nano-banana.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Apr 2026 19:53:52 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "LINK"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia AI chip rivals attract record funding as competition heats up",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-ai-chip-rivals-funding-euclyd-fractile.html",
+          "source": "cnbc_top",
+          "published": "Fri, 17 Apr 2026 11:22:13 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "TSMC and ASML post-earnings stock moves could be a sign of what's to come from chip companies",
+          "url": "https://www.cnbc.com/2026/04/16/taiwan-semi-tsm-asml-stock-earnings-ai-chips.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Apr 2026 18:03:42 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Quantum stocks on pace for a massive week after Nvidia debuts AI models to boost the tech",
+          "url": "https://www.cnbc.com/2026/04/16/quantum-stocks-nvidia-ai-models.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Apr 2026 20:15:50 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Charles Schwab to launch direct bitcoin, ether trading to compete with Robinhood",
+          "url": "https://www.cnbc.com/2026/04/16/charles-schwab-to-launch-direct-bitcoin-ethereum-trading-to-compete-with-robinhood.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Apr 2026 19:27:23 GMT",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia AI chip rivals attract record funding as competition heats up",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-ai-chip-rivals-funding-euclyd-fractile.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 17 Apr 2026 11:22:13 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia rival tells CNBC it's seeking at least $100 million in funding as European AI chip market booms",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-rivals-chip-market-funding-ai-asml-euclyd.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 17 Apr 2026 07:23:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here's our monthly update on all 31 portfolio stocks, including 3 on the buy list",
+          "url": "https://www.cnbc.com/2026/04/16/heres-our-april-update-on-all-31-portfolio-stocks-including-4-buys.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 19:14:37 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google will let users connect their photos to the Gemini chatbot and Nano Banana",
+          "url": "https://www.cnbc.com/2026/04/16/google-photo-gemini-chatbot-nano-banana.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 19:53:52 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "LINK"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Quantum stocks on pace for a massive week after Nvidia debuts AI models to boost the tech",
+          "url": "https://www.cnbc.com/2026/04/16/quantum-stocks-nvidia-ai-models.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 20:15:50 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC and ASML post-earnings stock moves could be a sign of what's to come from chip companies",
+          "url": "https://www.cnbc.com/2026/04/16/taiwan-semi-tsm-asml-stock-earnings-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 18:03:42 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "S&P 500's all-time high, investigators visit the Fed, Allbirds' rebrand and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/16/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 12:27:44 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC first-quarter profit rises 58%, beats estimates as AI demand fuels record run",
+          "url": "https://www.cnbc.com/2026/04/16/tsmc-q1-profit-58-percent-ai-chip-demand-record.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 17 Apr 2026 04:17:57 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon sellers boycott ads in policy change revolt: 'We're running out of f---ing margin'",
+          "url": "https://www.cnbc.com/2026/04/15/amazon-sellers-boycott-ads-payment-changes.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 20:28:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's long-awaited stock breakout is proof that patience pays off",
+          "url": "https://www.cnbc.com/2026/04/15/nvidias-long-awaited-stock-breakout-is-proof-that-patience-pays-off.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 19:01:12 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Chip giants AMD, Qualcomm and Arm back driverless car startup Wayve with fresh funds",
+          "url": "https://www.cnbc.com/2026/04/15/wayve-fund-raise-amd-qualcomm-arm.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "OpenAI pulls back from Stargate Norway data center deal as Microsoft takes over",
+          "url": "https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Apr 2026 12:29:04 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "USDJPY"
+      ],
+      "currency_strength": {},
+      "economic_events": [
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Inflation",
+        "Manufacturing",
+        "Monetary Policy",
+        "Retail Sales",
+        "SNB",
+        "employment",
+        "inflation",
+        "jobs",
+        "manufacturing",
+        "monetary policy"
+      ],
+      "key_headlines": [
+        "Markets extended their record-breaking run on Thursday as President Trump announced a 10-day Israel-Lebanon ceasefire and TSMC posted a 58% jump in quarterly profit, providing both geopolitical and fu",
+        "The S&P 500 logged another all-time closing high while the U.S.",
+        "dollar finished as one of the session\u2019s better-performing major currencies, gaining against all majors except the Canadian dollar.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Australia Consumer Inflation Expectations for April 2026: 5.9% (5.4% forecast; 5.2% previous) Australia Employment Change for March 2026: 17.9k (34.2k forecast; 48.9k prev"
+      ],
+      "error": null,
+      "fetch_date": "2026-04-16"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 9,
+      "matched": [
+        {
+          "title": "Ada, Its Design, and the Language That Built the Languages",
+          "url": "https://www.iqiipi.com/the-quiet-colossus.html",
+          "hn_score": 130,
+          "comments": 70,
+          "matched_symbols": [
+            "ADA"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Claude Opus 4.7",
+          "url": "https://www.anthropic.com/news/claude-opus-4-7",
+          "hn_score": 1820,
+          "comments": 1313,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Codex for almost everything",
+          "url": "https://openai.com/index/codex-for-almost-everything/",
+          "hn_score": 915,
+          "comments": 483,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "How Silicon Valley Is Turning Scientists into Exploited Gig Workers",
+          "url": "https://www.thenation.com/article/society/ai-silicon-valley-andreesen-thiel-stem/",
+          "hn_score": 38,
+          "comments": 15,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Guy builds AI driven hardware hacker arm from duct tape, old cam and CNC machine",
+          "url": "https://github.com/gainsec/autoprober",
+          "hn_score": 202,
+          "comments": 40,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Substrate AI Is Hiring Harness Engineers",
+          "url": "https://www.ycombinator.com/companies/substrate/jobs/QJU9023-harness-engineer",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Qwen3.6-35B-A3B: Agentic coding power, now open to all",
+          "url": "https://qwen.ai/blog?id=qwen3.6-35b-a3b",
+          "hn_score": 1151,
+          "comments": 484,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Cloudflare's AI Platform: an inference layer designed for agents",
+          "url": "https://blog.cloudflare.com/ai-platform/",
+          "hn_score": 291,
+          "comments": 74,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "inference"
+          ]
+        },
+        {
+          "title": "The beginning of scarcity in AI",
+          "url": "https://tomtunguz.com/ai-compute-crisis-2026/",
+          "hn_score": 113,
+          "comments": 144,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 13,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "LINK": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ADA": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 37,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

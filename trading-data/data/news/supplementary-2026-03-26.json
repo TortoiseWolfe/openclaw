@@ -1,0 +1,310 @@
+{
+  "date": "2026-03-26",
+  "lastUpdated": "2026-03-26T12:51:23.412601+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "These 3 High-Yield Dividend ETFs Are Crushing the S&P 500. Here's the Best Buy for April.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-high-yield-dividend-etfs-123500670.html",
+          "source": "yahoo",
+          "published": "2026-03-26T12:35:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tech stocks today: Meta, Google stocks little changed after social media verdict, OpenAI shuts down Sora",
+          "url": "https://finance.yahoo.com/news/live/tech-stocks-today-meta-google-stocks-little-changed-after-social-media-verdict-openai-shuts-down-sora-144220087.html",
+          "source": "yahoo",
+          "published": "2026-03-13T14:42:20Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Dell Technologies (DELL) Hits All-Time High as Goldman Hikes PT by 10%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/dell-technologies-dell-hits-time-021159973.html",
+          "source": "yahoo",
+          "published": "2026-03-25T02:11:59Z",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Billionaire Seth Klarman Recently Sold 41% of the Baupost Group's Stake in Alphabet and Piled Into an Embattled Fintech Stock Down 75% Over the Past Year",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-seth-klarman-recently-sold-122500170.html",
+          "source": "yahoo",
+          "published": "2026-03-26T12:25:00Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Coherent (COHR) Climbs 6.78% on S&P 500 Addition",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/coherent-cohr-climbs-6-78-015812201.html",
+          "source": "yahoo",
+          "published": "2026-03-25T01:58:12Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "4 ETFs That Beat the S&P 500 by Ignoring Market Cap Entirely",
+          "url": "https://finance.yahoo.com/markets/options/articles/4-etfs-beat-p-500-122029891.html",
+          "source": "yahoo",
+          "published": "2026-03-26T12:20:29Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A Google AI breakthrough is pressuring memory chip stocks from Samsung to Micron",
+          "url": "https://www.cnbc.com/2026/03/26/google-ai-turboquant-memory-chip-stocks-samsung-micron.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Mar 2026 12:11:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta cutting several hundred jobs across Reality Labs, Facebook and other departments",
+          "url": "https://www.cnbc.com/2026/03/25/meta-layoffs-reality-labs-facebook.html",
+          "source": "cnbc_top",
+          "published": "Wed, 25 Mar 2026 17:12:13 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A Google AI breakthrough is pressuring memory chip stocks from Samsung to Micron",
+          "url": "https://www.cnbc.com/2026/03/26/google-ai-turboquant-memory-chip-stocks-samsung-micron.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 12:11:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft's diversity chief is leaving as company continues 'AI-powered transformation'",
+          "url": "https://www.cnbc.com/2026/03/25/microsoft-diversity-chief-ai-hr.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Mar 2026 18:08:08 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "UK government to trial social media ban for hundreds of teens",
+          "url": "https://www.cnbc.com/2026/03/25/uk-trial-social-media-ban-teenagers-online-safety-push.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Mar 2026 15:33:02 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta cutting several hundred jobs across Reality Labs, Facebook and other departments",
+          "url": "https://www.cnbc.com/2026/03/25/meta-layoffs-reality-labs-facebook.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Mar 2026 17:12:13 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon acquires 'approachable' humanoid maker Fauna Robotics",
+          "url": "https://www.cnbc.com/2026/03/24/amazon-humanoid-maker-fauna-robotics-sprout.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 22:38:34 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google partners with Agile Robots, growing its AI robotics footprint",
+          "url": "https://www.cnbc.com/2026/03/24/google-agile-robots-ai-robotics.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 19:45:47 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm releases first in-house chip, with Meta as debut customer",
+          "url": "https://www.cnbc.com/2026/03/24/arm-launches-its-own-cpu-with-meta-as-first-customer.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 18:26:33 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "BOE",
+        "CPI",
+        "ECB",
+        "Fed",
+        "Inflation",
+        "Manufacturing",
+        "Monetary Policy",
+        "RBA",
+        "SNB",
+        "central bank",
+        "inflation",
+        "interest rate",
+        "rate decision"
+      ],
+      "key_headlines": [
+        "Partner Center Geopolitical whiplash defined Wednesday\u2019s trading as markets swung between cautious optimism over reported US-Iran ceasefire dialogue and renewed skepticism over Tehran\u2019s sweeping preco",
+        "dollar emerged as the day\u2019s best-performing major currency, drawing support from safe-haven demand and a pair of sharply higher-than-expected U.S.",
+        "trade price reports that reinforced the case for the Federal Reserve keeping interest rates on hold for the foreseeable future.",
+        "WTI crude oil surged more than 2% to close above $90 per barrel, defying a massive crude inventory build and periodic ceasefire headlines, as the war-risk premium remained stubbornly embedded in energ"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-25"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "Landmark L.A. jury verdict finds Instagram, YouTube were designed to addict kids",
+          "url": "https://www.latimes.com/california/story/2026-03-25/social-media-lawsuit-trial-meta-google-verdict",
+          "hn_score": 21,
+          "comments": 2,
+          "matched_symbols": [
+            "GOOGL",
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: Robust LLM Extractor for Websites in TypeScript",
+          "url": "https://github.com/lightfeed/extractor",
+          "hn_score": 53,
+          "comments": 34,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Show HN: Optio \u2013 Orchestrate AI coding agents in K8s to go from ticket to PR",
+          "url": "https://github.com/jonwiggins/optio",
+          "hn_score": 63,
+          "comments": 36,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Government agencies buy commercial data about Americans in bulk",
+          "url": "https://www.npr.org/2026/03/25/nx-s1-5752369/ice-surveillance-data-brokers-congress-anthropic",
+          "hn_score": 102,
+          "comments": 40,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "DELL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 23,
+    "sources_succeeded": 3,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

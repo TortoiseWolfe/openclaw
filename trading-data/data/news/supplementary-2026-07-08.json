@@ -1,0 +1,414 @@
+{
+  "date": "2026-07-08",
+  "lastUpdated": "2026-07-08T12:50:45.066284+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 106,
+      "articles_matched": 26,
+      "matched": [
+        {
+          "title": "Stock market today: S&P 500, Nasdaq, Dow futures fall as oil surges, Trump declares ceasefire 'over'",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-wednedsay-july-8-230111117.html",
+          "source": "yahoo",
+          "published": "2026-07-07T23:01:11Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Amazon (AMZN) Deepens AWS Security Offering in Europe",
+          "url": "https://finance.yahoo.com/technology/articles/amazon-amzn-deepens-aws-security-120048419.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:00:48Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Advanced Micro Devices (AMD): Top 10 Best Stock to Buy in Glen Kacher\u2019s Portfolio",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-amd-top-120042016.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:00:42Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Here's Why Oracle Stock Slumped in the First Half of 2026 (Hint: Microsoft Was Also Impacted)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-oracle-stock-slumped-122743570.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:27:43Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A New Insider Move Draws Attention at Broadcom (AVGO)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/insider-move-draws-attention-broadcom-120040776.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:00:40Z",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "NVIDIA (NVDA) Opens New Doors for Robotics Developers \u2013 Here\u2019s How",
+          "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-opens-doors-robotics-120038440.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:00:38Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here is why Taiwan Semiconductor (TSM) Is Among the Best Stocks in Glen Kacher\u2019s Portfolio",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-taiwan-semiconductor-tsm-among-120037817.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:00:37Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here\u2019s Why the Fund Increased Microsoft (MSFT) Holdings in Q2",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-fund-increased-microsoft-msft-115930618.html",
+          "source": "yahoo",
+          "published": "2026-07-08T11:59:30Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon.com vs. Shopify: Comparing Revenue Trends and Scale for These E-Commerce Giants",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-vs-shopify-comparing-122701639.html",
+          "source": "yahoo",
+          "published": "2026-07-08T12:27:01Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple commits $30 billion to Broadcom for U.S. chipmaking push",
+          "url": "https://www.cnbc.com/2026/07/08/apple-commits-30-billion-to-broadcom-for-us-chipmaking-push.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 10:36:15 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "This former Apple executive is betting on Shenzhen, not Silicon Valley, to create the 'next Apple'",
+          "url": "https://www.cnbc.com/2026/07/08/apple-shenzhen-silicon-valley-even-realities.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 07:16:47 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The implications of Amazon's $25B bond sale, and Microsoft's evolving AI model strategy",
+          "url": "https://www.cnbc.com/2026/07/07/the-implications-of-amazons-25b-bond-sale-and-microsofts-evolving-ai-model-strategy.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Jul 2026 18:50:31 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SambaNova hits $11 billion valuation as investors back Nvidia chip challengers",
+          "url": "https://www.cnbc.com/2026/07/08/sambanova-ai-chip-funding-valuation.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 09:03:53 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple begins testing CXMT chips for devices sold in China, FT says",
+          "url": "https://www.cnbc.com/2026/07/08/apple-begins-testing-cxmt-chips-for-devices-sold-in-china-ft-says-.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 05:15:12 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple commits $30 billion to Broadcom for U.S. chipmaking push",
+          "url": "https://www.cnbc.com/2026/07/08/apple-commits-30-billion-to-broadcom-for-us-chipmaking-push.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 10:36:15 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SambaNova hits $11 billion valuation as investors back Nvidia chip challengers",
+          "url": "https://www.cnbc.com/2026/07/08/sambanova-ai-chip-funding-valuation.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 09:03:53 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "This former Apple executive is betting on Shenzhen, not Silicon Valley, to create the 'next Apple'",
+          "url": "https://www.cnbc.com/2026/07/08/apple-shenzhen-silicon-valley-even-realities.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 07:16:47 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple begins testing CXMT chips for devices sold in China, FT says",
+          "url": "https://www.cnbc.com/2026/07/08/apple-begins-testing-cxmt-chips-for-devices-sold-in-china-ft-says-.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 05:15:12 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer says 'everything still revolves around Nvidia' despite its lagging stock",
+          "url": "https://www.cnbc.com/2026/07/07/cramer-everything-still-revolves-around-nvidia-even-as-stock-lags.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 16:00:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon raising at least $25 billion in bond sale, won't issue more debt in 2026",
+          "url": "https://www.cnbc.com/2026/07/07/amazon-bond-sale-ai-debt.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 14:43:19 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump Accounts, the Dow's latest record, Microsoft layoffs and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/07/07/trump-accounts-the-dows-latest-record-microsoft-layoffs-and-more-in-morning-squawk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 12:03:12 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Chinese lidar maker with Nvidia ties accused of being cyber risk for U.S.",
+          "url": "https://www.cnbc.com/2026/07/07/hesai-technology-nvidia-cyber-risk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google backs nuclear fusion startup targeting Europe\u2019s first commercial power plant",
+          "url": "https://www.cnbc.com/2026/07/07/google-proxima-fusion-funding.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 06:24:28 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft cuts 4,800 jobs, as Xbox unit downsizes and plans to spin off four gaming studios",
+          "url": "https://www.cnbc.com/2026/07/06/microsoft-cuts-2point1percent-of-employees-as-xbox-unit-plans-to-spin-studios.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 21:37:58 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple veteran's Chinese smart-glasses firm becomes unicorn as Tencent, Meituan fund rival to Meta",
+          "url": "https://www.cnbc.com/2026/07/06/apple-veteran-takes-on-meta-with-1-billion-smart-glasses-maker.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 00:45:52 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta\u2019s woes deepen in India as child abuse ads on Instagram draw government ire",
+          "url": "https://www.cnbc.com/2026/07/06/meta-instagram-india-warning-whatsapp.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 05:24:34 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "Apple to increase spend with Broadcom to produce billions more U.S. chips",
+          "url": "https://www.apple.com/newsroom/2026/07/apple-to-increase-spend-with-broadcom-to-produce-billions-more-us-chips/",
+          "hn_score": 64,
+          "comments": 22,
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "GitLost: We Tricked GitHub's AI Agent into Leaking Private Repos",
+          "url": "https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos/",
+          "hn_score": 290,
+          "comments": 115,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Home made GPU escalated quickly [video]",
+          "url": "https://www.youtube.com/watch?v=qMR3IXF2sWw",
+          "hn_score": 80,
+          "comments": 22,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "Show HN: Davit, a Apple Containers UI",
+          "url": "https://davit.app",
+          "hn_score": 330,
+          "comments": 79,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AMZN": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AVGO": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 9,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 30,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

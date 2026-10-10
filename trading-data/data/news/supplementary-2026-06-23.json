@@ -1,0 +1,360 @@
+{
+  "date": "2026-06-23",
+  "lastUpdated": "2026-06-23T12:50:36.850065+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 22,
+      "matched": [
+        {
+          "title": "Bitcoin 'vulnerable to further weakness' as token tumbles amid tech rout",
+          "url": "https://finance.yahoo.com/markets/article/bitcoin-vulnerable-to-further-weakness-as-token-tumbles-amid-tech-rout-123504444.html",
+          "source": "yahoo",
+          "published": "2026-06-23T12:35:04Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX isn't the only Big Tech stock getting crushed \u2014 check out the destruction in Salesforce",
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-isnt-the-only-big-tech-stock-getting-crushed--check-out-the-destruction-in-salesforce-122756818.html",
+          "source": "yahoo",
+          "published": "2026-06-23T12:27:56Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "UK tribunal gives go ahead for $4 billion lawsuit against Apple over iCloud services",
+          "url": "https://finance.yahoo.com/technology/articles/uk-tribunal-gives-ahead-4-122216032.html",
+          "source": "yahoo",
+          "published": "2026-06-23T12:22:16Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Nasdaq, S&P 500 futures plunge as global chip sell-off spurs AI doubts",
+          "url": "https://finance.yahoo.com/economy/live/stock-market-today-nasdaq-sp-500-futures-plunge-as-global-chip-sell-off-spurs-ai-doubts-230258084.html",
+          "source": "yahoo",
+          "published": "2026-06-22T23:02:58Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Stock Market Today: Tech Futures Plunge As Micron, Nvidia, Sandisk Dive (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-micron-nvidia-sandisk/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-06-23T12:14:21Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Here\u2019s GROW Small Cap Equity Fund\u2018s Discussion on Palantir Technologies (PLTR)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/grow-small-cap-equity-fund-120321115.html",
+          "source": "yahoo",
+          "published": "2026-06-23T12:03:21Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Ex-Trump advisor makes bold case for Bitcoin",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/ex-trump-advisor-makes-bold-201601908.html",
+          "source": "yahoo",
+          "published": "2026-06-22T20:16:01Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, June 22, 2026: Prices moving higher this morning",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-june-22-2026-prices-moving-higher-this-morning-133853515.html",
+          "source": "yahoo",
+          "published": "2026-06-22T13:38:53Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google\u2019s online dominance is showing signs of cracking in AI era",
+          "url": "https://www.cnbc.com/2026/06/23/googles-online-dominance-is-showing-signs-of-cracking-in-ai-era.html",
+          "source": "cnbc_top",
+          "published": "Tue, 23 Jun 2026 12:14:11 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon Prime Day arrives earlier this year. Here's why Wall Street is watching closely",
+          "url": "https://www.cnbc.com/2026/06/22/amazon-prime-day-arrives-earlier-this-year-heres-why-wall-street-is-watching-closely.html",
+          "source": "cnbc_top",
+          "published": "Mon, 22 Jun 2026 20:10:29 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "How a $4 billion Indian startup won Meta's backing but lost its founder to WhatsApp",
+          "url": "https://www.cnbc.com/2026/06/23/4-billion-startup-cred-meta-whatsapp.html",
+          "source": "cnbc_top",
+          "published": "Tue, 23 Jun 2026 09:06:25 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX signs computing power deal with open-source AI startup Reflection worth up to $6.3 billion",
+          "url": "https://www.cnbc.com/2026/06/22/spacex-ai-colossus-data-center-reflection.html",
+          "source": "cnbc_top",
+          "published": "Mon, 22 Jun 2026 15:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet has its worst day in over a year on AI concerns after high-profile exits",
+          "url": "https://www.cnbc.com/2026/06/22/alphabet-goog-stock-ai-departures.html",
+          "source": "cnbc_top",
+          "published": "Mon, 22 Jun 2026 21:04:29 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google\u2019s online dominance is showing signs of cracking in AI era",
+          "url": "https://www.cnbc.com/2026/06/23/googles-online-dominance-is-showing-signs-of-cracking-in-ai-era.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 23 Jun 2026 12:14:11 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet has its worst day in over a year on AI concerns after high-profile exits",
+          "url": "https://www.cnbc.com/2026/06/22/alphabet-goog-stock-ai-departures.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 22 Jun 2026 21:04:29 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta's WhatsApp head to step down, will be replaced by Indian fintech founder Kunal Shah",
+          "url": "https://www.cnbc.com/2026/06/22/meta-kunal-shah-whatsapp-will-cathcart.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 22 Jun 2026 17:11:18 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX signs computing power deal with open-source AI startup Reflection worth up to $6.3 billion",
+          "url": "https://www.cnbc.com/2026/06/22/spacex-ai-colossus-data-center-reflection.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 22 Jun 2026 15:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Memory crisis hits such extremes that 'even Apple can't be safe'",
+          "url": "https://www.cnbc.com/2026/06/19/memory-crisis-hits-such-extremes-that-even-apple-cant-be-safe-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 19 Jun 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo recalls about 3,900 robotaxis after some drove into 'freeway construction zones'",
+          "url": "https://www.cnbc.com/2026/06/18/waymo-nhtsa-voluntary-recall-robotaxis-entered-freeway-construction-zones.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 21:57:32 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon investigating engineers who criticized AI data center expansion",
+          "url": "https://www.cnbc.com/2026/06/18/amazon-engineers-ai-data-center-opposition.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 19:47:59 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's upcoming price hikes are good for the company not so good for consumers",
+          "url": "https://www.cnbc.com/2026/06/18/apples-upcoming-price-hikes-are-good-for-the-company-not-so-good-for-consumers.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 15:55:50 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Fed decision, JetBlue's Florida plans, Intel's Apple partnership and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/18/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 12:34:48 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 3,
+      "matched": [
+        {
+          "title": "GLM-5.2 \u2013 How to Run Locally",
+          "url": "https://unsloth.ai/docs/models/glm-5.2",
+          "hn_score": 443,
+          "comments": 196,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Apple is going to raise device prices, but when?",
+          "url": "https://daringfireball.net/linked/2026/06/22/apple-device-prices-when",
+          "hn_score": 18,
+          "comments": 11,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "OpenAI DayBreak \u2013 GPT-5.5-Cyber",
+          "url": "https://openai.com/index/daybreak-securing-the-world/",
+          "hn_score": 132,
+          "comments": 84,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 25,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

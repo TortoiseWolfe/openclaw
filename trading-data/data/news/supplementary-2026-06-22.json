@@ -1,0 +1,377 @@
+{
+  "date": "2026-06-22",
+  "lastUpdated": "2026-06-22T14:53:35.817559+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 19,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500 rise, Nasdaq wavers with peace talks, AI demand in focus",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-june-22-225817825.html",
+          "source": "yahoo",
+          "published": "2026-06-21T22:58:17Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro Computer (SMCI) A Data Center Stock Cheaper Than the S&P",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-computer-smci-data-141309932.html",
+          "source": "yahoo",
+          "published": "2026-06-22T14:13:09Z",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Dell Technologies (DELL) Has Gained More Than 30% Over the Past Month, Valuation Remains Cheaper Than The S&P",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/dell-technologies-dell-gained-more-141301330.html",
+          "source": "yahoo",
+          "published": "2026-06-22T14:13:01Z",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street Sees More Than 40% Upside for Meta Platforms (META)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-sees-more-40-141240310.html",
+          "source": "yahoo",
+          "published": "2026-06-22T14:12:40Z",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "OpenAI in Talks to Lease 10 GW Data Center in Ohio, Nvidia (NVDA) To Play an Important Role \u2013 Reuters",
+          "url": "https://finance.yahoo.com/technology/ai/articles/openai-talks-lease-10-gw-141233097.html",
+          "source": "yahoo",
+          "published": "2026-06-22T14:12:33Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft (MSFT) Faces Shareholder Lawsuit; TD Cowen Maintains Buy Rating",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-faces-shareholder-lawsuit-141221930.html",
+          "source": "yahoo",
+          "published": "2026-06-22T14:12:21Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Chevron to fuel massive Microsoft data center in Texas using natural gas",
+          "url": "https://www.cnbc.com/2026/06/22/chevron-cvx-microsoft-msft-natural-gas-data-center.html",
+          "source": "cnbc_top",
+          "published": "Mon, 22 Jun 2026 14:06:06 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin's future as revolutionary as the smartphone, according to CoinDesk",
+          "url": "https://www.cnbc.com/2026/06/20/bitcoin-as-revolutionary-as-smartphone-according-to-coindesk.html",
+          "source": "cnbc_top",
+          "published": "Sat, 20 Jun 2026 15:00:01 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Memory crisis hits such extremes that 'even Apple can't be safe'",
+          "url": "https://www.cnbc.com/2026/06/19/memory-crisis-hits-such-extremes-that-even-apple-cant-be-safe-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 19 Jun 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo recalls about 3,900 robotaxis after some drove into 'freeway construction zones'",
+          "url": "https://www.cnbc.com/2026/06/18/waymo-nhtsa-voluntary-recall-robotaxis-entered-freeway-construction-zones.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 21:57:32 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon investigating engineers who criticized AI data center expansion",
+          "url": "https://www.cnbc.com/2026/06/18/amazon-engineers-ai-data-center-opposition.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 19:47:59 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's upcoming price hikes are good for the company not so good for consumers",
+          "url": "https://www.cnbc.com/2026/06/18/apples-upcoming-price-hikes-are-good-for-the-company-not-so-good-for-consumers.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 15:55:50 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Fed decision, JetBlue's Florida plans, Intel's Apple partnership and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/18/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 12:34:48 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Intel gains 10% after Trump says company will partner with Apple on U.S. chip design",
+          "url": "https://www.cnbc.com/2026/06/18/trump-intel-apple-chip-design-deal.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 16:51:44 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SpaceX stock sinks for a second day as company slips below Amazon in market cap",
+          "url": "https://www.cnbc.com/2026/06/18/spacex-stock-elon-musk-rally-cools.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 20:36:50 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Gemini co-lead Noam Shazeer leaves for OpenAI",
+          "url": "https://www.cnbc.com/2026/06/18/google-gemini-co-lead-noam-shazeer-leaves-for-openai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 18 Jun 2026 03:21:21 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon has lagged OpenAI and Anthropic, but AI chief sees path to catch up in 'coming year'",
+          "url": "https://www.cnbc.com/2026/06/17/amazon-ai-frontier-openai-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 17 Jun 2026 17:37:30 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "CEOs of Anthropic and Google DeepMind call for U.S.-led AI coalition in meeting at G7",
+          "url": "https://www.cnbc.com/2026/06/17/anthropic-amodei-google-hassabis-us-ai-coalition-g7.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 17 Jun 2026 20:42:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon AI exec predicts first 'commercially useful' quantum computers in 5-7 years",
+          "url": "https://www.cnbc.com/2026/06/17/amazon-quantum-computing-timeline.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 17 Jun 2026 17:43:22 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Codex logging bug may write TBs to local SSDs",
+          "url": "https://github.com/openai/codex/issues/28224",
+          "hn_score": 272,
+          "comments": 149,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Apertus \u2013 Open Foundation Model for Sovereign AI",
+          "url": "https://apertvs.ai/",
+          "hn_score": 478,
+          "comments": 164,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Munich 1991: The Roots of the Current AI Boom",
+          "url": "https://people.idsia.ch/~juergen/ai-boom-roots-munich-1991.html",
+          "hn_score": 158,
+          "comments": 63,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Chevron signs 20-year power agreement with Microsoft for West Texas data center",
+          "url": "https://www.chevron.com/newsroom/2026/q2/chevron-signs-20-year-power-agreement-with-microsoft-for-west-texas-data-center",
+          "hn_score": 4,
+          "comments": 1,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": [
+            "data center"
+          ]
+        },
+        {
+          "title": "Nvidia Halos",
+          "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/autonomous-vehicles/",
+          "hn_score": 29,
+          "comments": 12,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "AI",
+            "NVIDIA"
+          ]
+        },
+        {
+          "title": "Sakana Fugu",
+          "url": "https://sakana.ai/fugu/",
+          "hn_score": 171,
+          "comments": 99,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Good results fine tuning a local LLM like Qwen 3:0.6B to categorize questions",
+          "url": "https://www.teachmecoolstuff.com/viewarticle/fine-tuning-a-local-llm-to-categorize-questions",
+          "hn_score": 183,
+          "comments": 35,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SMCI": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "DELL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 26,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Bullish"
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "date": "2026-04-06",
+  "lastUpdated": "2026-04-06T13:00:30.520451+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Wedbush\u2019s Ives: Palantir, Oracle, Microsoft to dominate defense AI integration",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/wedbush-ives-palantir-oracle-microsoft-123219061.html",
+          "source": "yahoo",
+          "published": "2026-04-06T12:32:19Z",
+          "matched_symbols": [
+            "MSFT",
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Monday, April 6, 2026: Prices rise amid reports of a proposed Iran war ceasefire",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-monday-april-6-2026-prices-rise-amid-reports-of-a-proposed-iran-war-ceasefire-113813797.html",
+          "source": "yahoo",
+          "published": "2026-04-06T11:38:13Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jeff Bezos Delayed Launching Amazon Because He Realized He'd Probably 'Know Nothing' By The Time He Turned 70: Here's What He Did Instead",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jeff-bezos-delayed-launching-amazon-123108731.html",
+          "source": "yahoo",
+          "published": "2026-04-06T12:31:08Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Forget Nvidia, These Are the 3 Best Stocks for Solving AI\u2019s Bandwidth Bottleneck",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/forget-nvidia-3-best-stocks-122650284.html",
+          "source": "yahoo",
+          "published": "2026-04-06T12:26:50Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple at 50: The iPhone maker 'blew a 5-year lead' on AI, but former insiders say it can still win",
+          "url": "https://www.cnbc.com/2026/04/04/apple-50-anniversary-ai-iphone-siri.html",
+          "source": "cnbc_top",
+          "published": "Sat, 04 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google under attack as court cases bypass 30-year-old legal shield",
+          "url": "https://www.cnbc.com/2026/04/03/meta-google-under-attack-court-cases-bypass-30-year-old-legal-shield.html",
+          "source": "cnbc_top",
+          "published": "Fri, 03 Apr 2026 17:07:55 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Hope for a U.S.-Iran deal, Apple's anniversary, OpenAI's podcast deal and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/06/5-things-to-know-before-the-bell-monday.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Apr 2026 11:43:34 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple at 50: The iPhone maker 'blew a 5-year lead' on AI, but former insiders say it can still win",
+          "url": "https://www.cnbc.com/2026/04/04/apple-50-anniversary-ai-iphone-siri.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 04 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google under attack as court cases bypass 30-year-old legal shield",
+          "url": "https://www.cnbc.com/2026/04/03/meta-google-under-attack-court-cases-bypass-30-year-old-legal-shield.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 17:07:55 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Japan's Sakura Internet jumps 20% as Microsoft plans $10 billion AI push with SoftBank",
+          "url": "https://www.cnbc.com/2026/04/03/sakura-internet-microsoft-ai-japan-softbank-investment.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 05:19:48 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft executive touts Copilot sales traction as AI anxiety weighs on stock",
+          "url": "https://www.cnbc.com/2026/04/02/microsoft-executive-touts-copilot-traction-after-analyst-pressure.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 00:36:22 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to add 3.5% fuel and logistics surcharge for sellers as Iran war drives up energy prices",
+          "url": "https://www.cnbc.com/2026/04/02/amazon-add-3point5percent-fuel-and-logistics-surcharge-for-sellers-amid-iran-war.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Apr 2026 18:59:44 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Globalstar stock surges 15% on report Amazon is weighing an acquisition",
+          "url": "https://www.cnbc.com/2026/04/01/globalstar-stock-pops-15percent-on-report-amazon-is-weighing-an-acquisition.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 23:58:09 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Five key questions Apple faces entering its second half-century",
+          "url": "https://www.cnbc.com/2026/04/01/five-key-questions-apple-faces-entering-its-second-half-century.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 16:40:19 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Iran threatens Nvidia, Apple and other tech giants with attacks",
+          "url": "https://www.cnbc.com/2026/04/01/iran-irgc-nvidia-appple-attack-threat.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 14:37:46 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Show HN: I built a tiny LLM to demystify how language models work",
+          "url": "https://github.com/arman-bd/guppylm",
+          "hn_score": 606,
+          "comments": 78,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Gemma 4 on iPhone",
+          "url": "https://apps.apple.com/nl/app/google-ai-edge-gallery/id6749645337",
+          "hn_score": 702,
+          "comments": 197,
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Microsoft hasn't had a coherent GUI strategy since Petzold",
+          "url": "https://www.jsnover.com/blog/2026/03/13/microsoft-hasnt-had-a-coherent-gui-strategy-since-petzold/",
+          "hn_score": 565,
+          "comments": 367,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: Real-time AI (audio/video in, voice out) on an M3 Pro with Gemma E2B",
+          "url": "https://github.com/fikrikarim/parlor",
+          "hn_score": 142,
+          "comments": 12,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Running Gemma 4 locally with LM Studio's new headless CLI and Claude Code",
+          "url": "https://ai.georgeliu.com/p/running-google-gemma-4-locally-with",
+          "hn_score": 306,
+          "comments": 75,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: Gemma Gem \u2013 AI model embedded in a browser \u2013 no API keys, no cloud",
+          "url": "https://github.com/kessler/gemma-gem",
+          "hn_score": 100,
+          "comments": 16,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Ask HN: How do systems (or people) detect when a text is written by an LLM",
+          "url": "https://news.ycombinator.com/item?id=47659807",
+          "hn_score": 11,
+          "comments": 7,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 22,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Neutral"
+  }
+}

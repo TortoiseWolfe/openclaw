@@ -2481,7 +2481,8 @@ def run_dry_session(adventure: str, skip_init: bool = False):
     session_id = f"session-{datetime.now().strftime('%Y-%m-%d-%H%M%S')}"
     transcript = TranscriptLogger(session_id)
 
-    logger.info(f"=== DRY RUN: {adventure} (objective-based pacing) ===\n")
+    turn_delay = int(os.environ.get("RPG_TURN_DELAY", "20"))
+    logger.info(f"=== DRY RUN: {adventure} (objective-based pacing, {turn_delay}s turn delay) ===\n")
     transcript.log_session_event("start", {
         "mode": "dry-run",
         "adventure": adventure,
@@ -2515,7 +2516,7 @@ def run_dry_session(adventure: str, skip_init: bool = False):
         _st, _ = build_context()
         if _st:
             last_action_idx = len(_st.get("action_log", []))
-        time.sleep(2)
+        time.sleep(turn_delay)
 
         # Switch to RP mode
         run_rpg_cmd(["set-mode", "--mode", "rp"])
@@ -2551,7 +2552,7 @@ def run_dry_session(adventure: str, skip_init: bool = False):
             _st, _ = build_context()
             if _st:
                 last_action_idx = len(_st.get("action_log", []))
-            time.sleep(2)
+            time.sleep(turn_delay)
 
             # Status line
             act3_extra = ""

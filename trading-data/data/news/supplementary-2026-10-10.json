@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-10",
+  "lastUpdated": "2026-10-10T17:42:13.882721+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 2,
+      "articles_found": 60,
+      "articles_matched": 9,
+      "matched": [
+        {
+          "title": "Vance says Microsoft replaced laid-off workers with foreign hires. Here\u2019s what the visa data shows",
+          "url": "https://www.cnbc.com/2026/10/10/vance-microsoft-h1b-layoffs-visa-data.html",
+          "source": "cnbc_top",
+          "published": "Sat, 10 Oct 2026 14:22:23 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia GPUs are everywhere. Here are the ways companies are accessing them",
+          "url": "https://www.cnbc.com/2026/10/10/nvidia-gpus-are-everywhere-heres-how-companies-access-them.html",
+          "source": "cnbc_top",
+          "published": "Sat, 10 Oct 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia GPUs are everywhere. Here are the ways companies are accessing them",
+          "url": "https://www.cnbc.com/2026/10/10/nvidia-gpus-are-everywhere-heres-how-companies-access-them.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 10 Oct 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI agents like Muse can shop for you. Here's what that means for retail stocks",
+          "url": "https://www.cnbc.com/investingclub/2026/10/09/ai-agents-could-soon-shop-for-consumers-what-it-means-for-retail-stocks.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 09 Oct 2026 14:15:38 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia-backed Aussie AI firm Firmus withdraws historic IPO, citing market volatility",
+          "url": "https://www.cnbc.com/2026/10/09/nvidia-ai-firmus-ipo-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 09 Oct 2026 03:51:15 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia, Oracle, CoreWeave and other AI stocks sink on OpenAI revenue report",
+          "url": "https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 08 Oct 2026 21:19:14 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "U.S. suspends Microsoft, Adobe from green card labor program in foreign worker crackdown",
+          "url": "https://www.cnbc.com/2026/10/08/microsoft-adobe-green-card-labor-suspension.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 08 Oct 2026 18:52:59 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon overhauls aging devices lineup with higher-priced Alexa tablet, dumping the budget Fire",
+          "url": "https://www.cnbc.com/2026/10/08/amazon-alexa-tablet-release.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 08 Oct 2026 14:51:27 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "TSMC\u2019s September sales surge year-over-year as AI drives chip demand",
+          "url": "https://www.cnbc.com/2026/10/08/tsmc-september-sales-hit-another-record-as-ai-boom-rolls-on.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 08 Oct 2026 06:50:42 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": [
+        "yahoo: HTTP Error 404: Not Found"
+      ]
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Talorys \u2013 A self-hosted personal AI agent on Cloudflare's free tier",
+          "url": "https://github.com/rociiu/talorys",
+          "hn_score": 155,
+          "comments": 83,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Mxc: Microsoft Execution Containers version 1.0.0",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/",
+          "hn_score": 72,
+          "comments": 9,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Tom Brown used GOP ties to broker a $1.25B/month SpaceX compute deal",
+          "url": "https://wsj.com/tech/ai/tom-brown-athropic-669005ad",
+          "hn_score": 55,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Apple/macOS silently removed from official Unix registry",
+          "url": "https://www.opengroup.org//openbrand/register/",
+          "hn_score": 156,
+          "comments": 155,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: Carrier-Explode: iPhone, Pixel and Galaxy carrier settings decoded",
+          "url": "https://carrierexplode.com/",
+          "hn_score": 386,
+          "comments": 45,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "AI Is Throwing a Roadside Picnic",
+          "url": "https://metedata.substack.com/p/ai-is-throwing-a-roadside-picnic",
+          "hn_score": 18,
+          "comments": 19,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "What mathematicians should know about the Lean Theorem Prover: reliability & AI",
+          "url": "https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai/",
+          "hn_score": 174,
+          "comments": 48,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 16,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

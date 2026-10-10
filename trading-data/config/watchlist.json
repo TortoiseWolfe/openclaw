@@ -58,7 +58,7 @@
     "atr_stops": {
       "enabled": true,
       "period": 14,
-      "multiplier": 1.5
+      "multiplier": 2.0
     },
     "trailing_stop": {
       "enabled": true,

@@ -1,0 +1,347 @@
+{
+  "date": "2026-05-13",
+  "lastUpdated": "2026-05-13T12:50:53.263892+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 22,
+      "matched": [
+        {
+          "title": "Stock market today: S&P 500, Nasdaq futures rise, Dow slips with fresh PPI inflation data on deck",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-sp-500-nasdaq-futures-rise-dow-slips-with-fresh-ppi-inflation-data-on-deck-223045190.html",
+          "source": "yahoo",
+          "published": "2026-05-12T22:30:45Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Dips But Techs Rally As Trump-Xi Summit Looms; Nvidia, Micron, Intel Rise (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/stock-market-today-dow-jones-sp500-nasdaq-trump-xi-summit-nvidia-sandisk-micron-intel-nebius/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-13T12:23:13Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Dow Jones Futures: Nvidia's Huang Joins Trump's China Trip; Sandisk, Micron, Intel Rebound",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-stocks-sandisk-micron-intel/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-13T12:15:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Slides In Bearish Chart; Is Microsoft A Sell Now?",
+          "url": "https://www.investors.com/research/microsoft-msft-stock-buy-now-may-2026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-13T12:00:50Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Wednesday, May 13, 2026: Prices holding as China summit kicks off",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-may-13-2026-prices-holding-as-china-summit-kicks-off-112415535.html",
+          "source": "yahoo",
+          "published": "2026-05-13T11:24:15Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A retiree says he'd have millions if he invested his Social Security in the S&P 500 \u2014 here's what he's missing",
+          "url": "https://finance.yahoo.com/news/retiree-says-hed-millions-invested-112000047.html",
+          "source": "yahoo",
+          "published": "2026-05-13T11:20:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jensen Huang joins Trump's China trip after the U.S. president called the Nvidia CEO",
+          "url": "https://www.cnbc.com/2026/05/13/nvidia-says-ceo-jensen-huang-is-joining-trumps-china-trip.html",
+          "source": "cnbc_top",
+          "published": "Wed, 13 May 2026 04:14:25 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "FedEx CEO brushes off Amazon's new logistics service that recently sent shares tumbling",
+          "url": "https://www.cnbc.com/2026/05/12/fed-ex-ceo-jim-cramer-amazon-logistics.html",
+          "source": "cnbc_top",
+          "published": "Tue, 12 May 2026 22:58:55 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo recalls 3,800 robotaxis after glitch allowed some vehicles to 'drive into standing water'",
+          "url": "https://www.cnbc.com/2026/05/12/waymo-recalls-3800-robotaxis-after-able-drive-into-standing-water.html",
+          "source": "cnbc_top",
+          "published": "Tue, 12 May 2026 21:38:41 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google races to put Gemini at the center of Android before Apple\u2019s AI reboot",
+          "url": "https://www.cnbc.com/2026/05/12/google-races-put-gemini-at-center-of-android-before-apples-ai-reboot.html",
+          "source": "cnbc_top",
+          "published": "Tue, 12 May 2026 19:22:28 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump is taking more than a dozen U.S. executives to China. Jensen Huang isn't one of them",
+          "url": "https://www.cnbc.com/2026/05/12/nvidia-ceo-huang-trump-china-trip-chip-sales.html",
+          "source": "cnbc_top",
+          "published": "Tue, 12 May 2026 11:46:25 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jensen Huang joins Trump's China trip after the U.S. president called the Nvidia CEO",
+          "url": "https://www.cnbc.com/2026/05/13/nvidia-says-ceo-jensen-huang-is-joining-trumps-china-trip.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 13 May 2026 04:14:25 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google races to put Gemini at the center of Android before Apple\u2019s AI reboot",
+          "url": "https://www.cnbc.com/2026/05/12/google-races-put-gemini-at-center-of-android-before-apples-ai-reboot.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 19:22:28 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo recalls 3,800 robotaxis after glitch allowed some vehicles to 'drive into standing water'",
+          "url": "https://www.cnbc.com/2026/05/12/waymo-recalls-3800-robotaxis-after-able-drive-into-standing-water.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 21:38:41 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Qualcomm drops 11% as chip stocks pull back from record AI-driven rally",
+          "url": "https://www.cnbc.com/2026/05/12/qualcomm-chip-stocks-record-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 20:09:17 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon accelerates delivery race with 30-minute drop-offs in dozens of U.S. cities",
+          "url": "https://www.cnbc.com/2026/05/12/amazon-launches-ultrafast-30-minute-delivery-in-dozens-of-us-cities.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 14:01:10 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "EU to crack down on TikTok, Instagram's \u2018addictive design\u2019 targeting kids on social media",
+          "url": "https://www.cnbc.com/2026/05/12/tiktok-instagram-social-media-addictive-eu-crack-down.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 10:05:08 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google says it likely thwarted effort by hacker group to use AI for 'mass exploitation event'",
+          "url": "https://www.cnbc.com/2026/05/11/google-thwarts-effort-hacker-group-use-ai-mass-exploitation-event.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 11 May 2026 21:13:21 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI trial: Nadella says Musk never raised concerns to him about Microsoft investment",
+          "url": "https://www.cnbc.com/2026/05/11/microsoft-ceo-satya-nadella-musk-altman-trial.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 15:37:18 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump invites Elon Musk, Tim Cook, Larry Fink and other CEOs to join China trip for Xi summit",
+          "url": "https://www.cnbc.com/2026/05/11/trump-ceos-elon-musk-tim-cook-larry-fink-xi-china-summit.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 11 May 2026 17:24:05 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Hassett says AI isn't costing anybody their job right now \u2014 but tech layoffs keep coming",
+          "url": "https://www.cnbc.com/2026/05/11/trump-white-house-hassett-ai-jobs.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 11 May 2026 16:17:11 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump rejects Iran's proposal, Alphabet's rally, Target 'baby boutiques' and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/11/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 11 May 2026 12:11:57 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 2,
+      "matched": [
+        {
+          "title": "Googlebook",
+          "url": "https://googlebook.google/",
+          "hn_score": 826,
+          "comments": 1361,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Reimagining the mouse pointer for the AI era",
+          "url": "https://deepmind.google/blog/ai-pointer/",
+          "hn_score": 223,
+          "comments": 187,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 8,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

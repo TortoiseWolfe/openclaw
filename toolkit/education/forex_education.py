@@ -8,11 +8,19 @@ Designed to be called via a single `exec` tool call from the cron job.
 """
 
 import atexit
+import fcntl
 import os
 import re
 import sys
-from datetime import date
+from datetime import datetime
 from urllib.error import HTTPError, URLError
+
+try:
+    from zoneinfo import ZoneInfo
+    ET = ZoneInfo("America/New_York")
+except ImportError:
+    from datetime import timezone, timedelta
+    ET = timezone(timedelta(hours=-5))
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, "/app/toolkit/cron-helpers")
@@ -27,24 +35,33 @@ SUMMARIES_DIR = os.path.join(EDU_DIR, "article-summaries")
 LOCK_FILE = os.path.join(EDU_DIR, "forex_education.lock")
 
 
+_lock_fd = None
+
+
 def acquire_lock():
-    """Acquire lock file. Abort if another instance is running."""
-    if os.path.exists(LOCK_FILE):
-        try:
-            with open(LOCK_FILE) as f:
-                old_pid = int(f.read().strip())
-            os.kill(old_pid, 0)
-            print("Another instance is running — exiting", file=sys.stderr)
-            sys.exit(0)
-        except (ValueError, ProcessLookupError):
-            pass  # stale lock
-    with open(LOCK_FILE, "w") as f:
-        f.write(str(os.getpid()))
+    """Acquire file lock via fcntl. Auto-releases on process exit (even SIGKILL)."""
+    global _lock_fd
+    _lock_fd = open(LOCK_FILE, "w")
+    try:
+        fcntl.flock(_lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        _lock_fd.write(str(os.getpid()))
+        _lock_fd.flush()
+    except BlockingIOError:
+        print("Another instance is running — exiting", file=sys.stderr)
+        sys.exit(0)
     atexit.register(release_lock)
 
 
 def release_lock():
-    """Remove lock file."""
+    """Release file lock and clean up."""
+    global _lock_fd
+    if _lock_fd:
+        try:
+            fcntl.flock(_lock_fd, fcntl.LOCK_UN)
+            _lock_fd.close()
+        except OSError:
+            pass
+        _lock_fd = None
     try:
         os.remove(LOCK_FILE)
     except FileNotFoundError:
@@ -198,7 +215,7 @@ def update_curriculum(lesson_num, new_status, today):
 
 def main():
     acquire_lock()
-    today = date.today()
+    today = datetime.now(ET).date()
 
     # Parse curriculum
     try:

@@ -1,0 +1,330 @@
+{
+  "date": "2026-04-27",
+  "lastUpdated": "2026-04-27T12:50:38.673701+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 17,
+      "matched": [
+        {
+          "title": "Stock market today: S&P 500, Nasdaq, Dow futures mixed to start pivotal week as markets weigh Iran peace odds",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-april-27-232226050.html",
+          "source": "yahoo",
+          "published": "2026-04-26T23:22:26Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Wavers On Iran News; Nvidia Rallies Near Record Highs (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-iran-news-nvidia-stock-nvda/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-27T12:04:32Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Monday, April 27, 2026: Prices hold ahead of potential peace talks and Fed meeting",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-monday-april-27-2026-prices-hold-ahead-of-potential-peace-talks-and-fed-meeting-114927492.html",
+          "source": "yahoo",
+          "published": "2026-04-27T11:49:27Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Qualcomm stock soars, Nvidia tops $5 trillion again, with Big Tech Q1 updates on deck",
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-nvidia-magnificent-seven-113535737.html",
+          "source": "yahoo",
+          "published": "2026-04-27T11:35:35Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Accenture plc (ACN) Announces Expansion of Partnership with Google Cloud",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/accenture-plc-acn-announces-expansion-113253796.html",
+          "source": "yahoo",
+          "published": "2026-04-27T11:32:53Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Cloud and Salesforce\u00a0(CRM) Enter into Expanded Partnership",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/google-cloud-salesforce-crm-enter-113245907.html",
+          "source": "yahoo",
+          "published": "2026-04-27T11:32:45Z",
+          "matched_symbols": [
+            "CRM",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Growth Stock Showdown: Is Amazon or Sea Limited the Better Buy Right Now?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/growth-stock-showdown-amazon-sea-122000774.html",
+          "source": "yahoo",
+          "published": "2026-04-27T12:20:00Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "The bullish signals ahead of this week's Mag-7 earnings",
+          "url": "https://www.cnbc.com/2026/04/27/the-bullish-signals-ahead-of-this-weeks-mag-7-earnings.html",
+          "source": "cnbc_top",
+          "published": "Mon, 27 Apr 2026 11:31:12 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia stock closes at record, pushing market cap past $5 trillion",
+          "url": "https://www.cnbc.com/2026/04/24/nvidia-stock-closes-at-record-pushing-market-cap-past-5-trillion.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 22:40:51 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "How a new Amazon-backed Hollywood production startup deploys AI for speed and cost-cutting",
+          "url": "https://www.cnbc.com/2026/04/24/an-aws-backed-hollywood-startup-deploys-ai-for-speed-and-cost-cutting.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 19:06:39 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon custom chips get a boost from Meta, giving the cloud giant another path to win in AI",
+          "url": "https://www.cnbc.com/2026/04/24/amazon-custom-chips-get-a-boost-from-meta-giving-the-cloud-giant-another-path-to-win-in-ai.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 19:11:46 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google to invest up to $40 billion in Anthropic as search giant spreads its AI bets",
+          "url": "https://www.cnbc.com/2026/04/24/google-to-invest-up-to-40-billion-in-anthropic-as-search-giant-spreads-its-ai-bets.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 18:32:44 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "20,000 job cuts at Meta, Microsoft raise concern that AI-driven labor crisis is here",
+          "url": "https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 18:46:27 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD shares soar 12% on no company news. Here's what has investors so excited",
+          "url": "https://www.cnbc.com/2026/04/24/amd-shares-soar-on-no-company-news-heres-what-has-investors-so-excited.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 15:08:22 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Israel-Lebanon ceasefire, Microsoft's first-ever buyouts, Starbucks' loyalty program and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/24/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 12:25:30 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta will adopt hundreds of thousands of AWS Graviton chips in latest AI infrastructure grab",
+          "url": "https://www.cnbc.com/2026/04/24/meta-will-use-hundreds-of-thousands-of-aws-graviton-chips.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 13:01:54 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC shares jump to record high as Taiwan eases single-stock investment caps for funds",
+          "url": "https://www.cnbc.com/2026/04/24/tsmc-shares-record-high-taiwan-single-stock-investment-cap-for-funds.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 24 Apr 2026 11:28:49 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "AI should elevate your thinking, not replace it",
+          "url": "https://www.koshyjohn.com/blog/ai-should-elevate-your-thinking-not-replace-it/",
+          "hn_score": 600,
+          "comments": 439,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "The Prompt API",
+          "url": "https://developer.chrome.com/docs/ai/prompt-api",
+          "hn_score": 179,
+          "comments": 93,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "France's Mistral Built a $14B AI Empire by Not Being American",
+          "url": "https://www.forbes.com/sites/iainmartin/2026/04/16/how-frances-mistral-built-a-14-billion-ai-empire-by-not-being-american/",
+          "hn_score": 59,
+          "comments": 21,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Moleskine's AI Lord of the Rings collection can only mock",
+          "url": "https://cjleo.com/blog/moleskine-ai-lord-of-the-rings-collection-can-only-mock/",
+          "hn_score": 54,
+          "comments": 48,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "SWE-bench Verified no longer measures frontier coding capabilities",
+          "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+          "hn_score": 323,
+          "comments": 171,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 22,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Bullish"
+  }
+}

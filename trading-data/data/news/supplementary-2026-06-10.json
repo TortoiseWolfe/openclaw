@@ -1,0 +1,427 @@
+{
+  "date": "2026-06-10",
+  "lastUpdated": "2026-06-10T12:50:36.725994+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 22,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures sink as techs slide, US-Iran truce teeters",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-futures-sink-as-techs-slide-us-iran-truce-teeters-215056429.html",
+          "source": "yahoo",
+          "published": "2026-06-09T21:50:56Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro Computer stock sinks on $7 billion equity raise",
+          "url": "https://finance.yahoo.com/markets/article/super-micro-computer-stock-sinks-on-7-billion-equity-raise-124041196.html",
+          "source": "yahoo",
+          "published": "2026-06-10T12:40:41Z",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Taiwan Semiconductor Manufacturing Company Limited\u2019s (TSM) Results Strengthened Its Key Role in the AI Trend",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-120956401.html",
+          "source": "yahoo",
+          "published": "2026-06-10T12:09:56Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A Closer Look at an Unusual S&P 500 Pullback",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/closer-look-unusual-p-500-120011922.html",
+          "source": "yahoo",
+          "published": "2026-06-10T12:00:11Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon opens full-scale, less-than-truckload shipping to all businesses",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-opens-full-scale-less-115329083.html",
+          "source": "yahoo",
+          "published": "2026-06-10T11:53:29Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, June 10, 2026: BTC, ETH open lower and falling further",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-june-10-2026-btc-eth-open-lower-and-falling-further-114713805.html",
+          "source": "yahoo",
+          "published": "2026-06-10T11:47:13Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Jim Cramer on Arm Holdings: \u201cI Wish I Had Kicked It Out Altogether\u201d",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-arm-holdings-wish-113637955.html",
+          "source": "yahoo",
+          "published": "2026-06-10T11:36:37Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Gold, silver and bitcoin fall as traders up Fed rate hike bets",
+          "url": "https://www.cnbc.com/2026/06/10/gold-silver-and-bitcoin-fall-as-interest-rates-hold-investor-focus.html",
+          "source": "cnbc_top",
+          "published": "Wed, 10 Jun 2026 11:35:17 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Super Micro stock tumbles on $7 billion financing plans as company touts AI server orders",
+          "url": "https://www.cnbc.com/2026/06/09/super-micro-stock-tumbles-on-7-billion-financing-plans.html",
+          "source": "cnbc_top",
+          "published": "Tue, 09 Jun 2026 22:29:25 GMT",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple shares slide after big Siri AI reveal",
+          "url": "https://www.cnbc.com/2026/06/09/apple-stock-siri-ai-reaction.html",
+          "source": "cnbc_top",
+          "published": "Tue, 09 Jun 2026 20:35:14 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro stock tumbles on $7 billion financing plans as company touts AI server orders",
+          "url": "https://www.cnbc.com/2026/06/09/super-micro-stock-tumbles-on-7-billion-financing-plans.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 22:29:25 GMT",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "How Jim Cramer views Apple on Day 2 of its post-WWDC keynote pullback",
+          "url": "https://www.cnbc.com/2026/06/09/how-jim-cramer-views-apple-on-day-2-of-its-post-wwdc-keynote-pullback.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 17:13:10 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple shares slide after big Siri AI reveal",
+          "url": "https://www.cnbc.com/2026/06/09/apple-stock-siri-ai-reaction.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 20:35:14 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Upstart chipmakers keep challenging Nvidia. This time it's Microsoft-backed D-Matrix",
+          "url": "https://www.cnbc.com/2026/06/09/nvidia-d-matrix-chip-production-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 13:16:47 GMT",
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI's IPO filing, Apple updates Siri, new screwworm cases and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/09/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 12:21:31 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Asia chip-linked shares recover after U.S. peers bounce back",
+          "url": "https://www.cnbc.com/2026/06/09/asia-tech-stocks-rebound-after-wall-street-chip-shares-recover-.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 14:20:24 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer says sovereign AI is Nvidia's powerful new growth driver",
+          "url": "https://www.cnbc.com/2026/06/08/jim-cramer-says-sovereign-ai-is-nvidias-powerful-new-growth-driver.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 08 Jun 2026 23:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple partnering with Google and Nvidia for most advanced AI model",
+          "url": "https://www.cnbc.com/2026/06/08/apple-google-nvidia-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 09 Jun 2026 21:07:46 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Corning strikes another multibillion-dollar AI deal. What the new Amazon pact means for the stock",
+          "url": "https://www.cnbc.com/2026/06/08/corning-strikes-another-big-ai-deal-what-the-new-amazon-pact-means-for-the-stock.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 08 Jun 2026 20:33:32 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia CEO Jensen Huang declines Senate testimony on AI, China and exports",
+          "url": "https://www.cnbc.com/2026/06/08/nvidia-jensen-huang-senate-elizabeth-warren-ai-china-export-controls.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 08 Jun 2026 20:54:34 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple shares reverse lower after big Siri news. Why we're not bothered",
+          "url": "https://www.cnbc.com/2026/06/08/apple-shares-reverse-lower-after-big-siri-news-why-were-not-bothered.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 08 Jun 2026 19:27:00 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "WWDC 2026: Apple makes its big Siri AI reveal, changes Liquid Glass and more",
+          "url": "https://www.cnbc.com/2026/06/08/apple-wwdc-2026-live-updates.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 08 Jun 2026 20:18:43 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "macOS Container Machines",
+          "url": "https://github.com/apple/container/blob/main/docs/container-machine.md",
+          "hn_score": 892,
+          "comments": 320,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Claude Fable 5",
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "hn_score": 2342,
+          "comments": 1824,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "AWS Bedrock to require sharing data with Anthropic for Mythos and future models",
+          "url": "https://news.ycombinator.com/item?id=48473166",
+          "hn_score": 172,
+          "comments": 104,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Rich Sutton on AI creativity and discovery",
+          "url": "https://twitter.com/RichardSSutton/status/2061216087744946656",
+          "hn_score": 152,
+          "comments": 77,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "German ruling declares Google liable for false answers in AI Overviews",
+          "url": "https://the-decoder.com/landmark-german-ruling-declares-googles-ai-overviews-are-googles-own-words-and-makes-it-liable-for-false-answers/",
+          "hn_score": 703,
+          "comments": 388,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Ultrafast machine learning on FPGAs via Kolmogorov-Arnold Networks",
+          "url": "https://aarushgupta.io/posts/kan-fpga/",
+          "hn_score": 247,
+          "comments": 35,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "machine learning"
+          ]
+        },
+        {
+          "title": "Surprise, Pay $1000",
+          "url": "https://forestwalk.ai/blog/surprise-blacksmith-costs/",
+          "hn_score": 224,
+          "comments": 85,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "CEOs who think AI replaces their employees are just bad CEOs",
+          "url": "https://www.techdirt.com/2026/06/09/ceos-who-think-ai-replaces-their-employees-are-just-bad-ceos/",
+          "hn_score": 738,
+          "comments": 266,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SMCI": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 8,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 30,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

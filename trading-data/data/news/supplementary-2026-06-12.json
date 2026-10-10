@@ -1,0 +1,270 @@
+{
+  "date": "2026-06-12",
+  "lastUpdated": "2026-06-12T12:50:41.543348+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 10,
+      "matched": [
+        {
+          "title": "Here's What History Says to Expect for Ethereum This Summer",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/heres-history-says-expect-ethereum-005000325.html",
+          "source": "yahoo",
+          "published": "2026-06-11T00:50:00Z",
+          "matched_symbols": [
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia Corp (NVDA) Strengthens AI Platform with Micron HBM4",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-corp-nvda-strengthens-ai-005824804.html",
+          "source": "yahoo",
+          "published": "2026-06-11T00:58:24Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Mizuho Raises PT on Arm Holdings (ARM), Here\u2019s What You Should Know",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/mizuho-raises-pt-arm-holdings-011405980.html",
+          "source": "yahoo",
+          "published": "2026-06-11T01:14:05Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Truist Raises DELL Price Target to $360, Keeps Hold Rating",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/truist-raises-dell-price-target-011527717.html",
+          "source": "yahoo",
+          "published": "2026-06-11T01:15:27Z",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell (MRVL) to Join S&P 500 Index",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-mrvl-join-p-500-011535747.html",
+          "source": "yahoo",
+          "published": "2026-06-11T01:15:35Z",
+          "matched_symbols": [
+            "MRVL",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo launches premier subscription tier for $29.99 a month, starting in select cities",
+          "url": "https://www.cnbc.com/2026/06/11/waymo-launches-premier-subscription-tier-for-29point99-a-month.html",
+          "source": "cnbc_top",
+          "published": "Thu, 11 Jun 2026 16:57:05 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The S&P 500 already made a big call on SpaceX stock and index fund investors need to know it",
+          "url": "https://www.cnbc.com/2026/06/12/spacex-ipo-sp-500-index-funds-investors.html",
+          "source": "cnbc_top",
+          "published": "Fri, 12 Jun 2026 12:35:55 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX IPO will test how Wall Street prices \u2018strategic tech\u2019",
+          "url": "https://www.cnbc.com/2026/06/11/spacex-ipo-wall-street-valuation-strategic-tech.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 11 Jun 2026 18:31:17 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo launches premier subscription tier for $29.99 a month, starting in select cities",
+          "url": "https://www.cnbc.com/2026/06/11/waymo-launches-premier-subscription-tier-for-29point99-a-month.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 11 Jun 2026 16:57:05 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "As OpenAI leans into enterprise business, Apple and Google set sights on the masses",
+          "url": "https://www.cnbc.com/2026/06/11/as-openai-leans-into-enterprise-apple-and-google-target-consumer-ai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 11 Jun 2026 12:17:17 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "AI agent bankrupted their operator while trying to scan DN42",
+          "url": "https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/",
+          "hn_score": 831,
+          "comments": 319,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Anthropic apologizes for invisible Claude Fable guardrails",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/948280/anthropic-claude-fable-invisible-distillation-guardrail",
+          "hn_score": 448,
+          "comments": 396,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Making a vintage LLM from scratch",
+          "url": "https://crlf.link/log/entries/260525-1/",
+          "hn_score": 44,
+          "comments": 11,
+          "matched_symbols": [
+            "LINK"
+          ],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "The RCE that AMD wouldn't fix",
+          "url": "https://mrbruh.com/amd2/",
+          "hn_score": 285,
+          "comments": 119,
+          "matched_symbols": [
+            "AMD"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "How Terry Tao became an evangelist for AI in math",
+          "url": "https://www.quantamagazine.org/how-terry-tao-became-an-evangelist-for-ai-in-math-20260608/",
+          "hn_score": 142,
+          "comments": 125,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "DELL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "LINK": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 15,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Neutral"
+  }
+}

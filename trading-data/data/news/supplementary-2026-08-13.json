@@ -1,0 +1,289 @@
+{
+  "date": "2026-08-13",
+  "lastUpdated": "2026-08-13T12:54:07.863405+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 105,
+      "articles_matched": 14,
+      "matched": [
+        {
+          "title": "Bank of America sends blunt message to Nvidia stock investors",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-sends-blunt-message-174700491.html",
+          "source": "yahoo",
+          "published": "2026-08-12T17:47:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-august-13-2026-btc-price-trends-turn-negative-124406250.html",
+          "source": "yahoo",
+          "published": "2026-08-13T12:44:06Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq trending higher on rate hike bets, earnings",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-trending-higher-on-rate-hike-bets-earnings-100145282.html",
+          "source": "yahoo",
+          "published": "2026-08-13T10:01:45Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "CoreWeave counters a key bear case on the AI trade. What it means for our data center stocks",
+          "url": "https://www.cnbc.com/2026/08/12/coreweave-counters-a-key-bear-case-on-the-ai-trade-what-it-means-for-our-data-center-stocks.html",
+          "source": "cnbc_top",
+          "published": "Wed, 12 Aug 2026 20:16:05 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google\u2019s new Pixel 11 puts Gemini at center of AI phone battle with Apple",
+          "url": "https://www.cnbc.com/2026/08/12/google-pixel-11-gemini-ai-phone-apple.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 12 Aug 2026 22:49:44 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta and Nvidia plant 'very firm flag' in open-weight AI race led by Chinese Labs",
+          "url": "https://www.cnbc.com/2026/08/12/meta-nvidia-open-weight-ai-race-china.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 12 Aug 2026 14:20:10 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google\u2019s new AI boss inherits a race to catch OpenAI and Anthropic",
+          "url": "https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 12 Aug 2026 05:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer says ask yourself these 3 questions to figure out what's really happening in the market",
+          "url": "https://www.cnbc.com/2026/08/11/cramer-questions-figure-out-market.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 22:15:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Jensen Huang\u2019s $500 billion AI financing plan faces a big risk from China",
+          "url": "https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 21:01:13 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Riot Platforms strikes deal with Anthropic as bitcoin miners shift focus to AI infrastructure",
+          "url": "https://www.cnbc.com/2026/08/11/riot-platforms-signs-anthropic-deal-as-miners-shift-to-ai-infrastructure-.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 19:08:16 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia unveils first open-source AI model since CEO Jensen Huang entered the chat",
+          "url": "https://www.cnbc.com/2026/08/11/nvidia-releases-nemotron-3point5-lightning-open-source-ai-model-.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's 'investible asset,' U.S. oil reserve shrinks, Trump's vaccine order and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/08/11/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 13:24:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street just endorsed Jensen Huang's 'big concept' for AI. What now?",
+          "url": "https://www.cnbc.com/2026/08/11/wall-street-endorsed-jensen-huangs-big-concept-for-ai-what-now.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 14:11:05 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia lines up $500 billion in financing as CEO Jensen Huang tells CNBC his chips are \u2018investable asset\u2019",
+          "url": "https://www.cnbc.com/2026/08/10/nvidia-wall-street-asset-managers-500-billion-ai-push.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 10 Aug 2026 22:09:00 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "<urlopen error [Errno -2] Name or service not known>"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "ChatGPT Desktop (Codex Desktop) for Linux",
+          "url": "https://openai.com/codex/",
+          "hn_score": 251,
+          "comments": 164,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "DeepSeek V4 Pro 0813",
+          "url": "https://openrouter.ai/deepseek/deepseek-v4-pro-0813",
+          "hn_score": 970,
+          "comments": 419,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "uBlock Origin Is Giving Up the Fight to Keep Ads Off Facebook",
+          "url": "https://digitalescapetools.com/2026/08/ublock-origin-stops-chasing-facebook-ads.html",
+          "hn_score": 596,
+          "comments": 711,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Grok 4.6",
+          "url": "https://x.ai/news/grok-4-6",
+          "hn_score": 586,
+          "comments": 535,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Launch HN: Discovered Materials (YC P26) \u2013 AI agents to discover new materials",
+          "url": "https://discoveredmaterials.com/research/",
+          "hn_score": 149,
+          "comments": 32,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot",
+          "url": "https://knownagents.com/insights",
+          "hn_score": 286,
+          "comments": 217,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 9,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 20,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

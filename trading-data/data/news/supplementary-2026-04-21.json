@@ -1,0 +1,575 @@
+{
+  "date": "2026-04-21",
+  "lastUpdated": "2026-04-21T12:50:42.774771+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 31,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, and Nasdaq futures climb amid Apple CEO change and Iran uncertainty",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-dow-sp-500-and-nasdaq-futures-climb-amid-apple-ceo-change-and-iran-uncertainty-231748375.html",
+          "source": "yahoo",
+          "published": "2026-04-20T23:17:48Z",
+          "matched_symbols": [
+            "AAPL",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Sweden's Einride to deploy 75 electric trucks for Amazon's US freight",
+          "url": "https://finance.yahoo.com/news/swedens-einride-deploy-75-electric-120630987.html",
+          "source": "yahoo",
+          "published": "2026-04-21T12:06:30Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Wall Street reacts to Apple CEO Tim Cook's decision to step down",
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-wall-street-reacts-to-apple-ceo-tim-cooks-decision-to-step-down-144220311.html",
+          "source": "yahoo",
+          "published": "2026-03-13T14:42:20Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Analyst Report: Alphabet Inc",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_3012_AnalystReport_1776769633000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-04-21T11:07:13Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "How Pentagon Budget Reveal Could Boost Palantir Stock Amid AI Wave",
+          "url": "https://www.investors.com/news/technology/palantir-stock-boost-pentagon-2027-budget-reveal-artificial-intelligence-wave/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-21T11:55:38Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Tuesday, April 21, 2026: Prices on the rise this morning",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-april-21-2026-prices-on-the-rise-this-morning-113401602.html",
+          "source": "yahoo",
+          "published": "2026-04-21T11:34:01Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market Digest: GOOGL, RF, STT, VMC",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_46794_MarketSummary_1776768733000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-04-21T10:52:13Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's post-Cook future hinges on whether Ternus can ignite AI growth",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/apples-post-cook-future-hinges-110821646.html",
+          "source": "yahoo",
+          "published": "2026-04-21T11:08:21Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple incoming CEO John Ternus faces a defining challenge: Fixing the company's AI strategy",
+          "url": "https://www.cnbc.com/2026/04/20/apple-new-ceo-john-ternus-faces-defining-challenge-fixing-ai-strategy.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 06:40:39 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon adding heavy-duty EV trucks from Einride as it spreads bets on freight decarbonization",
+          "url": "https://www.cnbc.com/2026/04/21/amazon-einride-ev-trucks-freight-electrification.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 12:08:45 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tim Cook reactions: Trump, Altman, Buffett and more on the Apple CEO move",
+          "url": "https://www.cnbc.com/2026/04/20/tim-cook-apple-reactions-ceo.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 12:16:19 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon 'strong-armed' Levi's, Hanes to hike prices on rival sites, California DA says",
+          "url": "https://www.cnbc.com/2026/04/20/california-da-amazon-price-fixing-walmart-target.html",
+          "source": "cnbc_top",
+          "published": "Mon, 20 Apr 2026 22:54:25 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon to invest up to another $25 billion in Anthropic as part of AI infrastructure deal",
+          "url": "https://www.cnbc.com/2026/04/20/amazon-invest-up-to-25-billion-in-anthropic-part-of-ai-infrastructure.html",
+          "source": "cnbc_top",
+          "published": "Mon, 20 Apr 2026 21:44:47 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell pops on report it will help Google with custom AI chips. Broadcom shares sink",
+          "url": "https://www.cnbc.com/2026/04/20/marvell-stock-google-custom-ai-chips.html",
+          "source": "cnbc_top",
+          "published": "Mon, 20 Apr 2026 20:43:47 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL",
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia supplier Victory Giant sees shares soar 60% in Hong Kong debut",
+          "url": "https://www.cnbc.com/2026/04/21/nvidia-supplier-victory-giant-sees-shares-soar-60percent-in-hong-kong-debut.html",
+          "source": "cnbc_top",
+          "published": "Tue, 21 Apr 2026 04:18:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple's next CEO, Warsh's confirmation hearing, the psychedelic stock surge and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/21/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 12:22:54 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon adding heavy-duty EV trucks from Einride as it spreads bets on freight decarbonization",
+          "url": "https://www.cnbc.com/2026/04/21/amazon-einride-ev-trucks-freight-electrification.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 12:08:45 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple incoming CEO John Ternus faces a defining challenge: Fixing the company's AI strategy",
+          "url": "https://www.cnbc.com/2026/04/20/apple-new-ceo-john-ternus-faces-defining-challenge-fixing-ai-strategy.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 06:40:39 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia supplier Victory Giant sees shares soar 60% in Hong Kong debut",
+          "url": "https://www.cnbc.com/2026/04/21/nvidia-supplier-victory-giant-sees-shares-soar-60percent-in-hong-kong-debut.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 04:18:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tim Cook reactions: Trump, Altman, Buffett and more on the Apple CEO move",
+          "url": "https://www.cnbc.com/2026/04/20/tim-cook-apple-reactions-ceo.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 21 Apr 2026 12:16:19 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Marvell pops on report it will help Google with custom AI chips. Broadcom shares sink",
+          "url": "https://www.cnbc.com/2026/04/20/marvell-stock-google-custom-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 20:43:47 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL",
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple taps John Ternus\u00a0as CEO to replace Tim Cook, who will become chairman",
+          "url": "https://www.cnbc.com/2026/04/20/apple-names-john-ternus-ceo-replacing-tim-cook-who-becomes-chairman.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 22:26:47 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to invest up to another $25 billion in Anthropic as part of AI infrastructure deal",
+          "url": "https://www.cnbc.com/2026/04/20/amazon-invest-up-to-25-billion-in-anthropic-part-of-ai-infrastructure.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 21:44:47 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon 'strong-armed' Levi's, Hanes to hike prices on rival sites, California DA says",
+          "url": "https://www.cnbc.com/2026/04/20/california-da-amazon-price-fixing-walmart-target.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 22:54:25 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SiIicon Valley's AI agent hiccups: Wasted tokens and 'chaotic' systems",
+          "url": "https://www.cnbc.com/2026/04/19/siiicon-valley-ai-agent-openclaw-problems.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 19 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here are 3 forces that drove a remarkable, record-setting week on Wall Street",
+          "url": "https://www.cnbc.com/2026/04/18/the-3-forces-that-drove-a-remarkable-record-setting-week-on-wall-street.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 18 Apr 2026 14:13:04 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's once-tight bond with gamers is cracking over AI",
+          "url": "https://www.cnbc.com/2026/04/18/nvidia-ai-backlash-gamers-geforce-gpu.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 19 Apr 2026 11:37:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD, Oracle, Microsoft and the IGV lead a monster week for tech stocks",
+          "url": "https://www.cnbc.com/2026/04/17/big-tech-stocks-winning-streaks-oracle-amd-microsoft-igv-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 17 Apr 2026 23:15:41 GMT",
+          "matched_symbols": [
+            "AMD",
+            "AVGO",
+            "MRVL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia AI chip rivals attract record funding as competition heats up",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-ai-chip-rivals-funding-euclyd-fractile.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 10:01:58 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia rival tells CNBC it's seeking at least $100 million in funding as European AI chip market booms",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-rivals-chip-market-funding-ai-asml-euclyd.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 10:02:21 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here's our monthly update on all 31 portfolio stocks, including 3 on the buy list",
+          "url": "https://www.cnbc.com/2026/04/16/heres-our-april-update-on-all-31-portfolio-stocks-including-4-buys.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 19:14:37 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "USDCAD",
+        "USDCHF",
+        "USDJPY"
+      ],
+      "currency_strength": {},
+      "economic_events": [
+        "CPI",
+        "Consumer Price",
+        "ECB",
+        "Employment",
+        "Fed",
+        "Retail Sales",
+        "inflation",
+        "monetary policy"
+      ],
+      "key_headlines": [
+        "Monday\u2019s session was dominated by geopolitical risk as escalating U.S.-Iran tensions and mounting doubts over peace talks in Pakistan sent oil sharply higher, snapped a five-day winning streak for U.S",
+        "equities, and contributed to broad-based U.S.",
+        "dollar weakness by the close of trade.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Over the weekend, the U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-04-20"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "John Ternus to become Apple CEO",
+          "url": "https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/",
+          "hn_score": 1951,
+          "comments": 1069,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Anthropic says OpenClaw-style Claude CLI usage is allowed again",
+          "url": "https://docs.openclaw.ai/providers/anthropic",
+          "hn_score": 277,
+          "comments": 173,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Apple ignores DMA interoperability requests and contradicts own documentation",
+          "url": "https://fsfe.org/news/2026/news-20260420-01.html",
+          "hn_score": 85,
+          "comments": 7,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "A Roblox cheat and one AI tool brought down Vercel's platform",
+          "url": "https://webmatrices.com/post/how-a-roblox-cheat-and-one-ai-tool-brought-down-vercel-s-entire-platform",
+          "hn_score": 206,
+          "comments": 105,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Qwen3.6-Max-Preview: Smarter, Sharper, Still Evolving",
+          "url": "https://qwen.ai/blog?id=qwen3.6-max-preview",
+          "hn_score": 642,
+          "comments": 347,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "How a subsea cable is repaired (2021)",
+          "url": "https://www.onesteppower.com/post/subsea-cable-repair",
+          "hn_score": 100,
+          "comments": 29,
+          "matched_symbols": [
+            "GBPUSD"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: Mediator.ai \u2013 Using Nash bargaining and LLMs to systematize fairness",
+          "url": "https://mediator.ai/",
+          "hn_score": 92,
+          "comments": 36,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Kimi vendor verifier \u2013 verify accuracy of inference providers",
+          "url": "https://www.kimi.com/blog/kimi-vendor-verifier",
+          "hn_score": 274,
+          "comments": 25,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "inference"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AAPL": {
+      "total_mentions": 12,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MRVL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 9,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "USDCAD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDCHF": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 44,
+    "sources_succeeded": 3,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

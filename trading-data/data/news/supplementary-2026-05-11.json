@@ -1,0 +1,344 @@
+{
+  "date": "2026-05-11",
+  "lastUpdated": "2026-05-11T12:52:10.189529+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 16,
+      "matched": [
+        {
+          "title": "A surprising thing is happening underneath the S&P 500's record run",
+          "url": "https://finance.yahoo.com/markets/article/a-surprising-thing-is-happening-underneath-the-sp-500s-record-run-115026065.html",
+          "source": "yahoo",
+          "published": "2026-05-11T11:50:26Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, May 11, 2026: Bitcoin's strongest opening in months",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-may-11-2026-bitcoins-strongest-opening-in-months-113216131.html",
+          "source": "yahoo",
+          "published": "2026-05-11T11:32:16Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet considers first yen bond sale to fund AI goals",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/alphabet-considers-first-yen-bond-112732446.html",
+          "source": "yahoo",
+          "published": "2026-05-11T11:27:32Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Got $25,000? Apple vs Microsoft- Only One Tech Titan is Winning The AI Race",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/got-25-000-apple-vs-124135197.html",
+          "source": "yahoo",
+          "published": "2026-05-11T12:41:35Z",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Target is trying to win back busy families from Walmart, starting with the baby aisle",
+          "url": "https://www.cnbc.com/2026/05/10/target.html",
+          "source": "cnbc_top",
+          "published": "Sun, 10 May 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet's 160% rally in a year reflects value of owning 'most of the stack' in AI",
+          "url": "https://www.cnbc.com/2026/05/10/alphabet-160percent-rally-in-year-reflects-value-of-owning-most-of-ai-stack.html",
+          "source": "cnbc_top",
+          "published": "Sun, 10 May 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SEC delay on prediction markets ETFs echoes a long-fought bitcoin fund battle",
+          "url": "https://www.cnbc.com/2026/05/10/sec-prediction-markets-etfs-trading-launch-delay.html",
+          "source": "cnbc_top",
+          "published": "Sun, 10 May 2026 12:22:02 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump rejects Iran's proposal, Alphabet's rally, Target 'baby boutiques' and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/11/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 11 May 2026 12:11:57 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Alphabet's 160% rally in a year reflects value of owning 'most of the stack' in AI",
+          "url": "https://www.cnbc.com/2026/05/10/alphabet-160percent-rally-in-year-reflects-value-of-owning-most-of-ai-stack.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 10 May 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia embraces role of AI investor, pushing past $40 billion in equity bets this year",
+          "url": "https://www.cnbc.com/2026/05/09/nvidia-embraces-ai-investor-topping-40-billion-in-equity-bets-2026.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 10 May 2026 22:57:47 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Intel shares soar on Apple chip deal report. Here's why it signals a total pivot for chipmaking",
+          "url": "https://www.cnbc.com/2026/05/08/intel-stock-apple-chip-deal.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 08 May 2026 22:18:30 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Wall Street sees 'changing of the guard in AI' as Intel, AMD shares soar while Nvidia lags",
+          "url": "https://www.cnbc.com/2026/05/08/wall-street-ai-chip-love-moves-from-nvidia-to-intel-amd-and-micron.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 08 May 2026 20:07:35 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "AWS data center outage hits trading on FanDuel, Coinbase \u2014 recovery to take hours",
+          "url": "https://www.cnbc.com/2026/05/08/aws-outage-data-center-fanduel-coinbase.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 08 May 2026 19:51:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: Meta, Google enter AI agent race as \u2018agentic wars\u2019 heat up",
+          "url": "https://www.cnbc.com/2026/05/08/ai-agent-meta-google-agentic-wars-tech-download.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 08 May 2026 11:05:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia CEO says AI partnership with Corning will 'revitalize American manufacturing'",
+          "url": "https://www.cnbc.com/2026/05/07/nvidia-ceo-ai-partnership-corning-revitalize-american-manufacturing.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 07 May 2026 22:57:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "IREN inks AI infrastructure deal with Nvidia",
+          "url": "https://www.cnbc.com/2026/05/07/iren-stock-ai-infrastructure-nvidia.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 08 May 2026 17:48:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Local AI needs to be the norm",
+          "url": "https://unix.foo/posts/local-ai-needs-to-be-norm/",
+          "hn_score": 1327,
+          "comments": 541,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "An AI coding agent, used to write code, needs to reduce your maintenance costs",
+          "url": "https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs",
+          "hn_score": 218,
+          "comments": 53,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Gmail registration now requires scanning a QR code and sending a text message",
+          "url": "https://discuss.privacyguides.net/t/google-account-registration-now-requires-sending-an-sms-via-phone-instead-of-receiving-an-sms/36082",
+          "hn_score": 43,
+          "comments": 24,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "I Work in Hollywood. Everyone Who Used to Make TV Is Now Training AI",
+          "url": "https://www.wired.com/story/i-work-in-hollywood-everyone-who-used-to-make-tv-now-training-ai/",
+          "hn_score": 38,
+          "comments": 18,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "All Those A.I. Note Takers? They're Making Lawyers Nervous",
+          "url": "https://www.nytimes.com/2026/05/09/business/dealbook/ai-notetakers-legal-risk.html",
+          "hn_score": 37,
+          "comments": 26,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Using AI for just 10 minutes might make you lazy and dumb",
+          "url": "https://www.wired.com/story/using-ai-negative-impact-thinking-problem-solving-study/",
+          "hn_score": 10,
+          "comments": 11,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "I returned to AWS and was reminded why I left",
+          "url": "http://fourlightyears.blogspot.com/2026/05/i-returned-to-aws-and-was-reminded-hard.html",
+          "hn_score": 796,
+          "comments": 563,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 23,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Bullish"
+  }
+}

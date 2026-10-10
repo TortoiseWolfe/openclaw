@@ -1,0 +1,343 @@
+{
+  "date": "2026-04-10",
+  "lastUpdated": "2026-04-10T13:11:26.024929+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 14,
+      "matched": [
+        {
+          "title": "Bank of Montreal Partners with CME Group and Google Cloud on Tokenized Cash Initiative",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bank-montreal-partners-cme-group-022615179.html",
+          "source": "yahoo",
+          "published": "2026-04-09T02:26:15Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC posts 35% jump in revenue to new record high as AI chip demand stays strong",
+          "url": "https://www.cnbc.com/2026/04/10/tsmc-q1-record-revenue-ai-chip-demand-strong.html",
+          "source": "cnbc_top",
+          "published": "Fri, 10 Apr 2026 08:13:07 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer's top 10 things to watch in the stock market Friday",
+          "url": "https://www.cnbc.com/2026/04/10/jim-cramers-top-10-things-to-watch-in-the-stock-market-friday.html",
+          "source": "cnbc_top",
+          "published": "Fri, 10 Apr 2026 12:56:58 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "TSMC posts 35% jump in revenue to new record high as AI chip demand stays strong",
+          "url": "https://www.cnbc.com/2026/04/10/tsmc-q1-record-revenue-ai-chip-demand-strong.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 10 Apr 2026 08:13:07 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Salesforce won't be discarded in the AI boom, but what companies want is changing",
+          "url": "https://www.cnbc.com/2026/04/09/salesforce-wont-be-discarded-in-the-ai-boom-but-what-companies-want-is-changing.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 10 Apr 2026 12:31:51 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Andy Jassy makes it clear giving up on Amazon's stock would be an expensive mistake",
+          "url": "https://www.cnbc.com/2026/04/09/andy-jassy-makes-it-clear-giving-up-on-amazons-stock-would-be-an-expensive-mistake.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 09 Apr 2026 17:22:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon CEO Jassy defends $200 billion AI spend: \"We're not going to be conservative\"",
+          "url": "https://www.cnbc.com/2026/04/09/amazon-ceo-andy-jassy-ai-spending.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 09 Apr 2026 20:08:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google expands partnership with Intel for AI chips",
+          "url": "https://www.cnbc.com/2026/04/09/google-expands-partnership-with-intel-for-ai-chips-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 09 Apr 2026 20:02:32 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI halts UK stargate project amid regulatory and energy price concerns",
+          "url": "https://www.cnbc.com/2026/04/09/openai-halts-uk-stargate-project.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 09 Apr 2026 11:42:23 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Latest investigation into bitcoin founder ties identity to Blockstream CEO Adam Back",
+          "url": "https://www.cnbc.com/2026/04/08/latest-investigation-of-bitcoin-founder-ties-identity-to-blockstream-ceo-adam-back.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 20:02:50 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft developer tools executive Julia Liuson is retiring after 34 years",
+          "url": "https://www.cnbc.com/2026/04/08/microsoft-developer-tools-head-julia-liuson-retires.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 21:45:47 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta debuts new AI model, attempting to catch Google, OpenAI after spending billions",
+          "url": "https://www.cnbc.com/2026/04/08/meta-debuts-first-major-ai-model-since-14-billion-deal-to-bring-in-alexandr-wang.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 23:21:25 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet, Meta, Amazon, Nvidia lead tech rally after Trump announces ceasefire with Iran",
+          "url": "https://www.cnbc.com/2026/04/08/alphabet-nvidia-microsoft-tech-stocks-iran-ceasefire.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 21:28:06 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "AI's next bottleneck: Why even the best chips made in the U.S. take a round trip to Taiwan",
+          "url": "https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 12:41:22 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "USDJPY"
+      ],
+      "currency_strength": {
+        "strongest": "USD",
+        "weakest": "USD",
+        "detail": {
+          "USD": 1,
+          "JPY": 1
+        }
+      },
+      "economic_events": [
+        "BOJ",
+        "CPI",
+        "Consumer Price",
+        "ECB",
+        "Employment",
+        "GDP",
+        "Inflation",
+        "PMI",
+        "employment",
+        "inflation"
+      ],
+      "key_headlines": [
+        "Markets maintained a cautious but broadly risk-on posture on Thursday as the S&P 500 extended its winning streak to seven consecutive sessions, even as mounting doubts about the durability of the U.S.",
+        "morning data slate reinforced stagflationary concerns, with core PCE printing hotter than expected and final Q4 2025 GDP revised sharply lower, weighing on the dollar broadly while gold and equities f",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-04-09"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Microsoft suspends dev accounts for high-profile open source projects",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-suspends-dev-accounts-for-high-profile-open-source-projects/",
+          "hn_score": 259,
+          "comments": 63,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "FBI used iPhone notification data to retrieve deleted Signal messages",
+          "url": "https://9to5mac.com/2026/04/09/fbi-used-iphone-notification-data-to-retrieve-deleted-signal-messages/",
+          "hn_score": 103,
+          "comments": 39,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "ETH Zurich demonstrates 17,000 qubit array with 99.91% fidelity",
+          "url": "https://ethz.ch/en/news-and-events/eth-news/news/2026/04/a-new-trick-brings-stability-to-quantum-operations.html",
+          "hn_score": 161,
+          "comments": 33,
+          "matched_symbols": [
+            "ETH"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "CollectWise (YC F24) Is Hiring",
+          "url": "https://www.ycombinator.com/companies/collectwise/jobs/Ktc6m6o-ai-agent-engineer",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Instant 1.0, a backend for AI-coded apps",
+          "url": "https://www.instantdb.com/essays/architecture",
+          "hn_score": 177,
+          "comments": 89,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "An AI robot in my home",
+          "url": "https://allevato.me/2026/04/07/an-ai-robot-in-my-home",
+          "hn_score": 55,
+          "comments": 20,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

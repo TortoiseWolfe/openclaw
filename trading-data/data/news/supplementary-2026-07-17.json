@@ -1,0 +1,403 @@
+{
+  "date": "2026-07-17",
+  "lastUpdated": "2026-07-17T12:50:39.860313+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 16,
+      "matched": [
+        {
+          "title": "US Dollar Price Forecast: Retail Sales Could Decide DXY What\u2019s Next for GBP/USD and EUR/USD?",
+          "url": "https://finance.yahoo.com/markets/currencies/articles/us-dollar-price-forecast-retail-073019273.html",
+          "source": "yahoo",
+          "published": "2026-07-16T07:30:19Z",
+          "matched_symbols": [
+            "EURUSD",
+            "GBPUSD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Wednesday, July 15, 2026: Prices surge after softer inflation report",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-july-15-2026-prices-surge-after-softer-inflation-report-122602214.html",
+          "source": "yahoo",
+          "published": "2026-07-15T12:26:02Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "TSMC is about to answer Wall Street's biggest AI question",
+          "url": "https://finance.yahoo.com/technology/ai/articles/tsmc-answer-wall-streets-biggest-013700607.html",
+          "source": "yahoo",
+          "published": "2026-07-16T01:37:00Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, July 16, 2026: Prices rise, ethereum becomes 'increasingly compelling'",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-july-16-2026-prices-rise-ethereum-becomes-increasingly-compelling-124218108.html",
+          "source": "yahoo",
+          "published": "2026-07-16T12:42:18Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Obscure volatility measure points to a 'Magnificent Seven\u2019 earnings breakout",
+          "url": "https://www.cnbc.com/2026/07/17/obscure-volatility-measure-points-to-a-magnificent-seven-earnings-breakout-.html",
+          "source": "cnbc_top",
+          "published": "Fri, 17 Jul 2026 11:36:48 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft's Nadella criticizes Anthropic's Fable for being 'editorially controlled'",
+          "url": "https://www.cnbc.com/2026/07/16/microsoft-ceo-says-anthropic-fable-request-policy-doesnt-make-sense.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Jul 2026 23:45:16 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft's Nadella criticizes Anthropic's Fable for being 'editorially controlled'",
+          "url": "https://www.cnbc.com/2026/07/16/microsoft-ceo-says-anthropic-fable-request-policy-doesnt-make-sense.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 23:45:16 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet shares fall on report its most powerful AI model Gemini 3.5 Pro is delayed",
+          "url": "https://www.cnbc.com/2026/07/16/alphabet-stock-gemini-3-5-pro-ai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 19:07:42 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia-backed Fireworks hits $17.5 billion valuation as companies pursue cheaper AI models",
+          "url": "https://www.cnbc.com/2026/07/16/fireworks-nvidia-cloud-ai-startup-value.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 13:00:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia unveils new AI model and expands Japan\u2019s physical AI ecosystem",
+          "url": "https://www.cnbc.com/2026/07/16/nvidia-reveals-new-ai-model-and-expands-japans-physical-ai-ecosystem.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 16:08:29 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC to invest additional $100 billion in Arizona after second-quarter profit soars 77%",
+          "url": "https://www.cnbc.com/2026/07/16/tsmc-second-quarter-profit-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 08:24:49 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Alibaba and Baidu shares jump in Hong Kong on Apple AI partnership",
+          "url": "https://www.cnbc.com/2026/07/16/alibaba-baidu-shares-jump-apple-ai-partnership-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 14:15:44 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon senior cloud executive departs after 18 years",
+          "url": "https://www.cnbc.com/2026/07/15/amazon-dave-brown-treadwell-aws.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 18:23:06 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Jim Cramer is shocked by Citi's against-the-grain praise of Microsoft's Copilot",
+          "url": "https://www.cnbc.com/2026/07/15/why-jim-cramer-is-shocked-by-citis-against-the-grain-praise-of-microsofts-copilot.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 18:23:35 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX stock sinks below $135 IPO price for the first time",
+          "url": "https://www.cnbc.com/2026/07/15/spacex-spcx-stock-ipo-price.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 20:20:10 GMT",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alibaba\u2019s U.S.-listed shares rise 4% after Qwen AI set to be integrated in Apple Intelligence",
+          "url": "https://www.cnbc.com/2026/07/15/alibaba-qwen-ai-apple-intelligence.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 11:55:31 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 10,
+      "matched": [
+        {
+          "title": "Blatant AI slop just won a 25k USD DeepMind Kaggle Grand Prize",
+          "url": "https://www.kaggle.com/competitions/kaggle-measuring-agi/discussion/724918#3498423",
+          "hn_score": 177,
+          "comments": 80,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Ask HN: Any AWS billing issues known? Amazon forecast of 3 billion dollars",
+          "url": "https://news.ycombinator.com/item?id=48945681",
+          "hn_score": 52,
+          "comments": 34,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Microsoft Comic Chat is now open source",
+          "url": "https://opensource.microsoft.com/blog/2026/07/16/microsoft-comic-chat-is-now-open-source/",
+          "hn_score": 721,
+          "comments": 159,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Apple targets dozens of OpenAI employees with legal letters",
+          "url": "https://www.ft.com/content/1b8c9d52-88a9-426b-ba47-f1811f859166",
+          "hn_score": 21,
+          "comments": 8,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "LM Studio Bionic: the AI agent for open models",
+          "url": "https://lmstudio.ai/blog/introducing-lm-studio-bionic",
+          "hn_score": 280,
+          "comments": 101,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "$100 AI Music Video: Claude Fable 5 vs. GPT-5.6 Sol",
+          "url": "https://www.tryai.dev/blog/ai-music-video-arena-claude-vs-gpt-5.6",
+          "hn_score": 308,
+          "comments": 409,
+          "matched_symbols": [
+            "SOL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "NotebookLM is now Gemini Notebook",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/",
+          "hn_score": 330,
+          "comments": 161,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Detecting LLM-Generated Texts with \u201cClassical\u201d Machine Learning",
+          "url": "https://blog.lyc8503.net/en/post/llm-classifier/",
+          "hn_score": 211,
+          "comments": 156,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "machine learning",
+            "LLM"
+          ]
+        },
+        {
+          "title": "The LLM Critics Are Right. I Use LLMs Anyway",
+          "url": "https://www.theocharis.dev/blog/llm-critics-are-right-i-use-llms-anyway/",
+          "hn_score": 254,
+          "comments": 266,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "How to Train a Gen AI Kick Drum Model on Your Old Linux Desktop with 6GB VRAM",
+          "url": "https://www.zhinit.dev/blog/training-a-kick-drum-diffusion-model",
+          "hn_score": 148,
+          "comments": 71,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "EURUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "QQQ": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SOL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 26,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Trading system dashboard — one-shot status summary.
+"""Trading system dashboard — compact two-column status summary.
 
-Reads paper-state.json, trade-lessons.json, curriculum-progress.md,
-watchlist.json, and validation-report.json to produce a formatted dashboard.
+Reads paper-state.json, fractal-state.json, trade-lessons.json,
+curriculum-progress.md, watchlist.json, and validation reports.
 
 All reads are best-effort — missing files produce "N/A" lines, not crashes.
 """
@@ -11,7 +11,7 @@ import json
 import os
 import re
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 
 try:
     from zoneinfo import ZoneInfo
@@ -39,9 +39,10 @@ PRIVATE = os.path.join(REPO, "trading-data", "private")
 CONFIG = os.path.join(REPO, "trading-data", "config")
 EDU = os.path.join(REPO, "trading-data", "education")
 
+COL_W = 38  # column width for side-by-side
+
 
 def load_json(path):
-    """Load JSON file, return None if missing or invalid."""
     try:
         with open(path, encoding="utf-8") as f:
             return json.load(f)
@@ -50,7 +51,6 @@ def load_json(path):
 
 
 def load_text(path):
-    """Load text file, return None if missing."""
     try:
         with open(path, encoding="utf-8") as f:
             return f.read()
@@ -58,11 +58,12 @@ def load_text(path):
         return None
 
 
-# ── Portfolio Overview ───────────────────────────────────────────────
+# ── Fund stats ───────────────────────────────────────────────────────
 
-def section_portfolio(state):
+def _fund_stats(state, lessons=None):
+    """Extract key numbers from a fund's state + optional lessons."""
     if state is None:
-        return "## Portfolio\nN/A — paper-state.json not found\n"
+        return None
 
     balance = state.get("balance", 0)
     peak = state.get("peak_balance", 10000.0)
@@ -72,30 +73,97 @@ def section_portfolio(state):
     unrealized = sum(p.get("unrealized_pnl", 0) for p in open_pos)
     equity = balance + unrealized
 
-    lines = [
-        "## Portfolio Overview",
-        f"Balance:      ${balance:,.2f}",
-        f"Equity:       ${equity:,.2f}  (unrealized: ${unrealized:+,.2f})",
-        f"Peak:         ${peak:,.2f}  (drawdown: {dd_pct:.1f}%)",
-        f"Positions:    {len(open_pos)} open, {len(closed)} closed",
-        "",
+    # Performance from lessons (rich) or closed trades (basic)
+    if lessons and lessons.get("trade_count", 0) > 0:
+        count = lessons["trade_count"]
+        total_wins = sum(d.get("wins", 0) for d in lessons.get("by_signal_type", {}).values())
+        total_losses = sum(d.get("losses", 0) for d in lessons.get("by_signal_type", {}).values())
+        total_pnl = sum(d.get("avg_pnl", 0) * d.get("count", 0)
+                        for d in lessons.get("by_signal_type", {}).values())
+    elif closed:
+        count = len(closed)
+        total_wins = sum(1 for t in closed if t.get("pnl_dollars", 0) > 0)
+        total_losses = count - total_wins
+        total_pnl = sum(t.get("pnl_dollars", 0) for t in closed)
+    else:
+        count = 0
+        total_wins = total_losses = 0
+        total_pnl = 0.0
+
+    wr = total_wins / count * 100 if count > 0 else 0
+
+    return {
+        "balance": balance, "equity": equity, "unrealized": unrealized,
+        "peak": peak, "dd_pct": dd_pct,
+        "n_open": len(open_pos), "n_closed": len(closed),
+        "trades": count, "wins": total_wins, "losses": total_losses,
+        "wr": wr, "total_pnl": total_pnl,
+    }
+
+
+def _fund_column(label, stats):
+    """Return list of formatted lines for one fund column."""
+    if stats is None:
+        return [label, "N/A — state file not found", "", "", "", ""]
+
+    unr = stats["unrealized"]
+    pnl = stats["total_pnl"]
+    return [
+        label,
+        f"Balance:  {_dollar(stats['balance'])}",
+        f"Equity:   {_dollar(stats['equity'])} ({_signed_dollar(unr)})",
+        f"Peak:     {_dollar(stats['peak'])} (DD {stats['dd_pct']:.0f}%)",
+        f"Open: {stats['n_open']}  Closed: {stats['n_closed']}",
+        f"WR: {stats['wr']:.0f}% ({stats['wins']}W/{stats['losses']}L) "
+        f"P&L: {_signed_dollar(pnl)}",
     ]
+
+
+def _dollar(n):
+    """Format dollar amount compactly (no sign prefix)."""
+    if abs(n) >= 1000:
+        return f"${abs(n):,.0f}"
+    return f"${abs(n):,.2f}"
+
+
+def _signed_dollar(n):
+    """Format dollar amount with explicit +/- sign."""
+    sign = "+" if n >= 0 else "-"
+    if abs(n) >= 1000:
+        return f"{sign}${abs(n):,.0f}"
+    return f"{sign}${abs(n):,.2f}"
+
+
+def side_by_side(left, right):
+    """Merge two column lists with │ divider."""
+    lines = []
+    for i in range(max(len(left), len(right))):
+        l = left[i] if i < len(left) else ""
+        r = right[i] if i < len(right) else ""
+        lines.append(f"  {l:<{COL_W}}│ {r}")
     return "\n".join(lines)
 
 
-# ── Open Positions ───────────────────────────────────────────────────
+# ── Compact positions ────────────────────────────────────────────────
 
-def section_positions(state):
+def _fmt_price(p):
+    """Format price compactly based on magnitude."""
+    if p < 1:
+        return f"{p:.5f}"
+    if p < 100:
+        return f"{p:.2f}"
+    return f"{p:.2f}"
+
+
+def _compact_positions(state, label):
+    """One-line-per-position format."""
     if state is None:
         return ""
     open_pos = state.get("open", [])
     if not open_pos:
-        return "## Open Positions\nNone\n"
+        return f"### {label}\nNone\n"
 
-    lines = ["## Open Positions", ""]
-    lines.append(f"{'Symbol':<10} {'Dir':<6} {'Entry':>10} {'Current':>10} {'P&L':>10} {'SL':>10} {'TP':>10}")
-    lines.append(f"{'─'*10} {'─'*6} {'─'*10} {'─'*10} {'─'*10} {'─'*10} {'─'*10}")
-
+    lines = [f"### {label}"]
     for p in open_pos:
         sym = p.get("symbol", "?")
         d = p.get("direction", "?")[:5]
@@ -104,222 +172,92 @@ def section_positions(state):
         pnl = p.get("unrealized_pnl", 0)
         sl = p.get("stop_loss", 0)
         tp = p.get("take_profit", 0)
-        # Format prices based on magnitude
-        fmt = ".5f" if entry < 10 else ".2f"
+        pnl_s = f"+${pnl:,.0f}" if pnl >= 0 else f"-${abs(pnl):,.0f}"
+        arrow = f"{_fmt_price(entry)}→{_fmt_price(cur)}"
         lines.append(
-            f"{sym:<10} {d:<6} {entry:>10{fmt}} {cur:>10{fmt}} "
-            f"{'${:+,.2f}'.format(pnl):>10} {sl:>10{fmt}} {tp:>12{fmt}}"
+            f"  {sym:<7} {d:<5} {arrow:<20} {pnl_s:>7}"
+            f"  SL:{_fmt_price(sl)} TP:{_fmt_price(tp)}"
         )
-
-    lines.append("")
     return "\n".join(lines)
 
 
-# ── Fractal Fund ────────────────────────────────────────────────────
+# ── Compact closes ───────────────────────────────────────────────────
 
-def section_fractal(state):
-    if state is None:
-        return "## Fractal Fund (Williams Fractal Breakout)\nN/A — fractal-state.json not found\n"
-
-    balance = state.get("balance", 0)
-    peak = state.get("peak_balance", 10000.0)
-    dd_pct = (peak - balance) / peak * 100 if peak > 0 else 0
-    open_pos = state.get("open", [])
-    closed = state.get("closed", [])
-    unrealized = sum(p.get("unrealized_pnl", 0) for p in open_pos)
-    equity = balance + unrealized
-
-    lines = [
-        "## Fractal Fund (Williams Fractal Breakout)",
-        f"Balance:      ${balance:,.2f}",
-        f"Equity:       ${equity:,.2f}  (unrealized: ${unrealized:+,.2f})",
-        f"Peak:         ${peak:,.2f}  (drawdown: {dd_pct:.1f}%)",
-        f"Positions:    {len(open_pos)} open, {len(closed)} closed",
-        "",
-    ]
-
-    if open_pos:
-        lines.append(f"{'Symbol':<10} {'Dir':<6} {'Entry':>10} {'Current':>10} {'P&L':>10} {'SL':>10} {'TP':>10}")
-        lines.append(f"{'─'*10} {'─'*6} {'─'*10} {'─'*10} {'─'*10} {'─'*10} {'─'*10}")
-        for p in open_pos:
-            sym = p.get("symbol", "?")
-            d = p.get("direction", "?")[:5]
-            entry = p.get("entry", 0)
-            cur = p.get("current_price", entry)
-            pnl = p.get("unrealized_pnl", 0)
-            sl = p.get("stop_loss", 0)
-            tp = p.get("take_profit", 0)
-            fmt = ".5f" if entry < 10 else ".2f"
-            lines.append(
-                f"{sym:<10} {d:<6} {entry:>10{fmt}} {cur:>10{fmt}} "
-                f"{'${:+,.2f}'.format(pnl):>10} {sl:>10{fmt}} {tp:>12{fmt}}"
-            )
-        lines.append("")
-
-    if closed:
-        recent = closed[-5:]
-        lines.append("Recent Closed:")
-        lines.append(f"{'ID':<6} {'Symbol':<10} {'Dir':<6} {'P&L':>10} {'Reason':<16} {'Date':<12}")
-        lines.append(f"{'─'*6} {'─'*10} {'─'*6} {'─'*10} {'─'*16} {'─'*12}")
-        for t in recent:
-            tid = t.get("id", "?")
-            sym = t.get("symbol", "?")
-            d = t.get("direction", "?")[:5]
-            pnl = t.get("pnl_dollars", 0)
-            reason = t.get("close_reason", "?")[:16]
-            dt = t.get("date_closed", "?")
-            lines.append(f"{tid:<6} {sym:<10} {d:<6} {'${:+,.2f}'.format(pnl):>10} {reason:<16} {dt:<12}")
-        lines.append("")
-
-    return "\n".join(lines)
-
-
-# ── Recent Closed Trades ────────────────────────────────────────────
-
-def section_closed(state):
+def _compact_closes(state, label):
+    """Last 5 closed trades, compact format."""
     if state is None:
         return ""
     closed = state.get("closed", [])
     if not closed:
-        return "## Recent Closed Trades\nNone yet\n"
+        return f"{label}: none"
 
-    recent = closed[-5:]  # last 5
-    lines = ["## Recent Closed Trades", ""]
-    lines.append(f"{'ID':<6} {'Symbol':<10} {'Dir':<6} {'P&L':>10} {'Reason':<16} {'Date':<12}")
-    lines.append(f"{'─'*6} {'─'*10} {'─'*6} {'─'*10} {'─'*16} {'─'*12}")
-
-    for t in recent:
+    lines = [f"{label}:"]
+    for t in closed[-5:]:
         tid = t.get("id", "?")
         sym = t.get("symbol", "?")
         d = t.get("direction", "?")[:5]
         pnl = t.get("pnl_dollars", 0)
-        reason = t.get("close_reason", "?")[:16]
+        reason = t.get("close_reason", "?")
         dt = t.get("date_closed", "?")
-        lines.append(f"{tid:<6} {sym:<10} {d:<6} {'${:+,.2f}'.format(pnl):>10} {reason:<16} {dt:<12}")
-
-    lines.append("")
+        # Shorten date to MM-DD
+        if len(dt) >= 10:
+            dt = dt[5:]
+        pnl_s = f"+${pnl:,.0f}" if pnl >= 0 else f"-${abs(pnl):,.0f}"
+        lines.append(f"  {tid:<5} {sym:<7} {d:<5} {pnl_s:>8}  {reason:<14} {dt}")
     return "\n".join(lines)
 
 
-# ── Trade Performance ────────────────────────────────────────────────
+# ── Compact footer sections ──────────────────────────────────────────
 
-def section_performance(lessons):
-    if lessons is None:
-        return "## Trade Performance\nN/A — trade-lessons.json not found\n"
-
-    count = lessons.get("trade_count", 0)
-    if count == 0:
-        return "## Trade Performance\nNo closed trades yet\n"
-
-    lines = ["## Trade Performance", ""]
-
-    # Overall stats from by_signal_type
-    total_pnl = 0
-    total_wins = 0
-    total_losses = 0
-    for st, data in lessons.get("by_signal_type", {}).items():
-        total_wins += data.get("wins", 0)
-        total_losses += data.get("losses", 0)
-        total_pnl += data.get("avg_pnl", 0) * data.get("count", 0)
-
-    win_rate = total_wins / count * 100 if count > 0 else 0
-    avg_pnl = total_pnl / count if count > 0 else 0
-
-    lines.append(f"Trades:    {count}")
-    lines.append(f"Win rate:  {win_rate:.0f}%  ({total_wins}W / {total_losses}L)")
-    lines.append(f"Avg P&L:   ${avg_pnl:+,.2f}")
-    lines.append(f"Total P&L: ${total_pnl:+,.2f}")
-
-    # By signal type
-    lines.append("")
-    lines.append("By signal type:")
-    for st, data in lessons.get("by_signal_type", {}).items():
-        wr = data.get("win_rate", 0) * 100
-        ap = data.get("avg_pnl", 0)
-        n = data.get("count", 0)
-        lines.append(f"  {st:<12} {n:>3} trades, {wr:>4.0f}% WR, ${ap:+,.2f} avg")
-
-    # By symbol (show worst performers)
-    by_sym = lessons.get("by_symbol", {})
-    if by_sym:
-        sorted_syms = sorted(by_sym.items(), key=lambda x: x[1].get("avg_pnl", 0))
-        skipped = [(s, d) for s, d in sorted_syms if d.get("skip", False)]
-        if skipped:
-            lines.append("")
-            lines.append("Skipped symbols (negative track record):")
-            for sym, data in skipped:
-                lines.append(f"  {sym}: {data.get('count', 0)} trades, ${data.get('avg_pnl', 0):+,.2f} avg")
-
-    lines.append("")
-    return "\n".join(lines)
-
-
-# ── Education Progress ───────────────────────────────────────────────
-
-def section_education(curriculum_text):
+def _education_line(curriculum_text):
     if curriculum_text is None:
-        return "## Education Progress\nN/A — curriculum-progress.md not found\n"
-
-    # Count lessons by parsing the detail table rows
-    done = 0
-    total = 0
+        return "Education: N/A"
+    done = total = 0
     current_section = None
     for line in curriculum_text.split("\n"):
-        # Match lesson rows: | # | Section | Lesson | URL | Status | Date |
         m = re.match(r'\|\s*(\d+)\s*\|([^|]+)\|([^|]+)\|([^|]+)\|\s*(\w[\w-]*)\s*\|', line)
         if m:
             total += 1
-            status = m.group(5).strip()
-            section = m.group(2).strip()
-            if status == "done":
+            if m.group(5).strip() == "done":
                 done += 1
-                current_section = section
-
+                current_section = m.group(2).strip()
     pct = done / total * 100 if total > 0 else 0
-
-    lines = [
-        "## Education Progress",
-        f"Lessons:  {done} / {total}  ({pct:.0f}%)",
-    ]
-    if current_section:
-        lines.append(f"Current:  {current_section}")
-    lines.append("")
-    return "\n".join(lines)
+    sec = f" — {current_section}" if current_section else ""
+    return f"Education: {done}/{total} ({pct:.0f}%){sec}"
 
 
-# ── Position Scaling Gates ───────────────────────────────────────────
-
-def section_gates(state, lessons, curriculum_text, watchlist):
-    lines = ["## Position Scaling Gates", ""]
+def _gates_line(state, lessons, curriculum_text, watchlist):
+    passed = 0
+    blocker = None
 
     # Gate 1: 50+ trades with positive expectancy
-    closed_count = len(state.get("closed", [])) if state else 0
     if lessons:
-        total_pnl = 0
         count = lessons.get("trade_count", 0)
-        for data in lessons.get("by_signal_type", {}).values():
-            total_pnl += data.get("avg_pnl", 0) * data.get("count", 0)
+        total_pnl = sum(d.get("avg_pnl", 0) * d.get("count", 0)
+                        for d in lessons.get("by_signal_type", {}).values())
         avg_pnl = total_pnl / count if count > 0 else 0
-        gate1 = count >= 50 and avg_pnl > 0
-        lines.append(f"{'PASS' if gate1 else 'FAIL'}  Gate 1: 50+ trades w/ positive expectancy "
-                      f"({count} trades, ${avg_pnl:+,.2f} avg)")
+        if count >= 50 and avg_pnl > 0:
+            passed += 1
+        else:
+            blocker = f"need 50+ trades w/ positive exp ({count} trades)"
     else:
-        lines.append(f"FAIL  Gate 1: 50+ trades w/ positive expectancy ({closed_count} trades)")
+        closed_count = len(state.get("closed", [])) if state else 0
+        blocker = f"need 50+ trades ({closed_count} closed)"
 
-    # Gate 2: Correlation guard live
-    # Check if correlation guard code exists
-    gate2 = False
+    # Gate 2: Correlation guard
     try:
         td_path = os.path.join(REPO, "toolkit", "trading", "market_trade_decision.py")
         with open(td_path) as f:
-            gate2 = "correlation" in f.read().lower()
+            if "correlation" in f.read().lower():
+                passed += 1
+            elif not blocker:
+                blocker = "need correlation guard"
     except FileNotFoundError:
-        pass
-    lines.append(f"{'PASS' if gate2 else 'FAIL'}  Gate 2: Correlation guard implemented")
+        if not blocker:
+            blocker = "need correlation guard"
 
     # Gate 3: Education > 50%
-    done = 0
-    total = 0
+    done = total = 0
     if curriculum_text:
         for line in curriculum_text.split("\n"):
             m = re.match(r'\|\s*(\d+)\s*\|([^|]+)\|([^|]+)\|([^|]+)\|\s*(\w[\w-]*)\s*\|', line)
@@ -327,83 +265,34 @@ def section_gates(state, lessons, curriculum_text, watchlist):
                 total += 1
                 if m.group(5).strip() == "done":
                     done += 1
-    pct = done / total * 100 if total > 0 else 0
-    gate3 = pct >= 50
-    lines.append(f"{'PASS' if gate3 else 'FAIL'}  Gate 3: Education > 50% ({done}/{total}, {pct:.0f}%)")
+    if total > 0 and done / total >= 0.5:
+        passed += 1
+    elif not blocker:
+        blocker = "need education > 50%"
 
-    # Gate 4: Spread/slippage modeling live
+    # Gate 4: Spread/slippage
     rules = watchlist.get("rules", {}) if watchlist else {}
-    has_spread = bool(rules.get("spread"))
-    has_slip = bool(rules.get("slippage"))
-    gate4 = has_spread and has_slip
-    lines.append(f"{'PASS' if gate4 else 'FAIL'}  Gate 4: Spread/slippage modeling live")
+    if rules.get("spread") and rules.get("slippage"):
+        passed += 1
+    elif not blocker:
+        blocker = "need spread/slippage modeling"
 
-    all_pass = all([
-        lessons and lessons.get("trade_count", 0) >= 50 and avg_pnl > 0 if lessons else False,
-        gate2, gate3, gate4
-    ])
-    lines.append("")
-    if all_pass:
-        lines.append(">>> MILESTONE: Position expansion eligible — review before changing limits")
-    else:
-        passed = sum([gate1 if lessons else False, gate2, gate3, gate4])
-        lines.append(f"Progress: {passed}/4 gates passed")
-
-    lines.append("")
-    return "\n".join(lines)
+    suffix = f" ({blocker})" if blocker else ""
+    return f"Gates: {passed}/4 passed{suffix}"
 
 
-# ── Backtest Snapshot ────────────────────────────────────────────────
-
-def _format_backtest(report, label):
-    """Format a single backtest report block."""
-    m = report.get("metrics", {})
-    cfg = report.get("config", {})
-    gen = report.get("generated", "?")
-
-    lines = [
-        label,
-        f"Period:       {cfg.get('start', '?')} to {cfg.get('end', '?')} ({cfg.get('symbol_count', '?')} symbols)",
-        f"Generated:    {gen[:10]}",
-        f"Trades:       {m.get('total_trades', '?')}",
-        f"Win rate:     {m.get('win_rate', 0)*100:.1f}%",
-        f"Sharpe:       {m.get('sharpe_ratio', 0):.4f}",
-        f"Profit factor: {m.get('profit_factor', 0):.3f}",
-        f"Max drawdown: {m.get('max_drawdown_pct', 0)*100:.1f}%",
-        f"Final balance:${m.get('final_balance', 0):,.2f}  (from ${m.get('initial_balance', 0):,.2f})",
-    ]
-
-    cagr = m.get("cagr", 0)
-    if cagr:
-        projected_1y = m.get("initial_balance", 10000) * (1 + cagr)
-        lines.append(f"1yr projection:${projected_1y:,.2f}  ({cagr*100:.1f}% CAGR, based on backtest)")
-
-    lines.append("")
-
-    mc = report.get("monte_carlo", {})
-    if mc:
-        lines.append(f"Monte Carlo:  {mc.get('profitable_pct', 0)*100:.0f}% profitable, "
-                      f"{mc.get('ruin_pct', 0)*100:.0f}% ruin "
-                      f"({mc.get('simulations', 0)} sims)")
-        lines.append("")
-
-    return "\n".join(lines)
-
-
-def section_backtest(report, fractal_report=None):
-    if report is None and fractal_report is None:
-        return "## Backtest Snapshot\nN/A — no validation reports found\n"
-
+def _backtest_line(report, fractal_report):
     parts = []
-    if report is not None:
-        strategy = report.get("strategy", "default")
-        label = "## Backtest — Main Fund (Trend/SMA)" if strategy != "fractal" else "## Backtest — Fractal Fund"
-        parts.append(_format_backtest(report, label))
-
-    if fractal_report is not None:
-        parts.append(_format_backtest(fractal_report, "## Backtest — Fractal Fund"))
-
-    return "\n".join(parts)
+    for r, name in [(report, "Main"), (fractal_report, "Fractal")]:
+        if r is None:
+            continue
+        m = r.get("metrics", {})
+        wr = m.get("win_rate", 0) * 100
+        sharpe = m.get("sharpe_ratio", 0)
+        parts.append(f"{name} {wr:.0f}%WR {sharpe:.2f}S")
+    if not parts:
+        return "Backtest: N/A"
+    return f"Backtest: {' │ '.join(parts)}"
 
 
 # ── Main ─────────────────────────────────────────────────────────────
@@ -418,16 +307,43 @@ def main():
     fractal_report = load_json(os.path.join(PRIVATE, "validation", "validation-report-fractal.json"))
 
     today = datetime.now(ET).date().isoformat()
-    print(f"# Trading System Status — {today}")
+    print(f"# Trading Status — {today}")
     print()
-    print(section_portfolio(state))
-    print(section_positions(state))
-    print(section_closed(state))
-    print(section_fractal(fractal_state))
-    print(section_performance(lessons))
-    print(section_education(curriculum))
-    print(section_gates(state, lessons, curriculum, watchlist))
-    print(section_backtest(report, fractal_report))
+
+    # Side-by-side fund summary
+    main_stats = _fund_stats(state, lessons)
+    fractal_stats = _fund_stats(fractal_state)
+    left = _fund_column("Main Fund (Trend/SMA)", main_stats)
+    right = _fund_column("Fractal Fund (Fractal Breakout)", fractal_stats)
+    print(side_by_side(left, right))
+    print(f"  {'─' * COL_W}┴{'─' * COL_W}")
+    print()
+
+    # Open positions (stacked — variable length)
+    main_pos = _compact_positions(state, "Open — Main")
+    frac_pos = _compact_positions(fractal_state, "Open — Fractal")
+    if main_pos:
+        print(main_pos)
+    if frac_pos:
+        if main_pos:
+            print()
+        print(frac_pos)
+    print()
+
+    # Recent closes
+    print("### Recent Closes")
+    main_closes = _compact_closes(state, "Main")
+    frac_closes = _compact_closes(fractal_state, "Fractal")
+    if main_closes:
+        print(main_closes)
+    if frac_closes:
+        print(frac_closes)
+    print()
+
+    # Footer one-liners
+    print(_education_line(curriculum))
+    print(_gates_line(state, lessons, curriculum, watchlist))
+    print(_backtest_line(report, fractal_report))
 
 
 if __name__ == "__main__":

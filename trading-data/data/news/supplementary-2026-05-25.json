@@ -1,0 +1,315 @@
+{
+  "date": "2026-05-25",
+  "lastUpdated": "2026-05-25T12:50:45.565203+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "S&P 500 Other Than AI Infrastructure Is Growing at 0%. Lance Roberts Warns What Happens if the AI Boom Stumbles.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-other-ai-infrastructure-123132096.html",
+          "source": "yahoo",
+          "published": "2026-05-25T12:31:32Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, May 25, 2026: Down from last week, but rising this morning",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-may-25-2026-down-from-last-week-but-rising-this-morning-121507080.html",
+          "source": "yahoo",
+          "published": "2026-05-25T12:15:07Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Vitalik Buterin Defends Ethereum\u2019s \u2018Unreasonable\u2019 Ideals as Samson Mow Claims He 'Feels Sorry For ETH'",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/vitalik-buterin-defends-ethereum-unreasonable-121215718.html",
+          "source": "yahoo",
+          "published": "2026-05-25T12:12:15Z",
+          "matched_symbols": [
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Huawei plans new smartphone chips this fall as rivalry with Nvidia and Apple heats up",
+          "url": "https://www.cnbc.com/2026/05/25/huawei-chip-logicfolding-semiconductor-nvidia-china.html",
+          "source": "cnbc_top",
+          "published": "Mon, 25 May 2026 06:48:16 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bulls push the S&P 500 back near records \u2014 here\u2019s what drove the market last week",
+          "url": "https://www.cnbc.com/2026/05/23/bulls-push-sp-500-back-near-records-what-drove-the-market-last-week.html",
+          "source": "cnbc_top",
+          "published": "Sat, 23 May 2026 17:21:36 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft\u2019s new responsible tech lead on how to humanize high-speed AI development",
+          "url": "https://www.cnbc.com/2026/05/23/microsofts-new-responsible-tech-lead-on-high-speed-ai-development.html",
+          "source": "cnbc_top",
+          "published": "Sat, 23 May 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft\u2019s new responsible tech lead on how to humanize high-speed AI development",
+          "url": "https://www.cnbc.com/2026/05/23/microsofts-new-responsible-tech-lead-on-high-speed-ai-development.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 23 May 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Reddit stock drops almost 6% after Meta launches standalone app for online forums",
+          "url": "https://www.cnbc.com/2026/05/22/reddit-stock-drops-after-meta-launches-forum-app.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 20:17:09 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft\u2019s GitHub was positioned to win the AI coding race. Outages got in the way",
+          "url": "https://www.cnbc.com/2026/05/22/microsoft-was-positioned-to-win-in-ai-coding-outages-got-in-the-way.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 15:39:28 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: What you might have missed in Nvidia\u2019s earnings \u2014 a $200 billion opportunity and edge computing",
+          "url": "https://www.cnbc.com/2026/05/22/the-tech-download-what-you-might-have-missed-in-nvidias-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 14:00:52 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Broadcom and others to launch $125 million semiconductor research hub at UCLA",
+          "url": "https://www.cnbc.com/2026/05/21/meta-broadcom-others-to-launch-125-million-semiconductor-research-hub-at-ucla.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 20:30:01 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic, Microsoft in talks for AI chip deal after $5 billion investment",
+          "url": "https://www.cnbc.com/2026/05/21/anthropic-microsoft-maia-200-ai-chip.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 19:53:21 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here we go again with Nvidia falling on earnings. What the sellers are missing",
+          "url": "https://www.cnbc.com/2026/05/21/here-we-go-again-with-nvidia-falling-on-earnings-what-the-sellers-are-missing.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 16:20:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy's Michael Saylor says tokenization will let investors 'shop' for yield",
+          "url": "https://www.cnbc.com/2026/05/21/strategys-michael-saylor-says-tokenization-will-let-investors-shop-for-yield.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 14:51:08 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX's IPO, Nvidia earnings, Bezos on the AI bubble and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/21/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 12:21:16 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Search engines alternatives now that Google isn't Google anymore",
+          "url": "https://techcrunch.com/2026/05/21/six-search-engines-worth-trying-now-that-google-isnt-really-google-anymore/",
+          "hn_score": 31,
+          "comments": 11,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "IBM Spins Off the First Pure-Play Quantum Chip Foundry",
+          "url": "https://futurumgroup.com/insights/2-billion-chips-act-investment-in-quantum-bets-on-ibms-300mm-superconducting-silicon/",
+          "hn_score": 32,
+          "comments": 4,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "chip"
+          ]
+        },
+        {
+          "title": "AI errno(2) values",
+          "url": "https://www.netmeister.org/blog/ai-errno.html",
+          "hn_score": 28,
+          "comments": 5,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Constraint Decay: The Fragility of LLM Agents in Back End Code Generation",
+          "url": "https://arxiv.org/abs/2605.06445",
+          "hn_score": 255,
+          "comments": 146,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Microsoft open-sources \u201cthe earliest DOS source code discovered to date\u201d",
+          "url": "https://arstechnica.com/gadgets/2026/04/microsoft-open-sources-the-earliest-dos-source-code-discovered-to-date/",
+          "hn_score": 484,
+          "comments": 172,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Memory has grown to nearly two-thirds of AI chip component costs",
+          "url": "https://epoch.ai/data-insights/ai-chip-component-cost-shares",
+          "hn_score": 405,
+          "comments": 430,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "chip"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 21,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

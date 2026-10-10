@@ -1,0 +1,415 @@
+{
+  "date": "2026-05-28",
+  "lastUpdated": "2026-05-28T12:50:38.345209+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 104,
+      "articles_matched": 20,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures drop following US strikes in Hormuz",
+          "url": "https://finance.yahoo.com/economy/live/stock-market-today-dow-sp-500-nasdaq-futures-drop-following-us-strikes-in-hormuz-231358131.html",
+          "source": "yahoo",
+          "published": "2026-05-27T23:13:58Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "PCE Inflation Better Than Feared As Rate Hike Looms; S&P 500 Futures Dip (Live Coverage)",
+          "url": "https://www.investors.com/news/federal-reserve-pce-inflation-gdp-rate-hike-sp-500/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-28T12:37:35Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Snowflake Surges On Earnings, AI Product Growth, New Amazon Deal",
+          "url": "https://www.investors.com/news/technology/snowflake-stock-snow-snowflake-earnings-q12026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-28T12:28:23Z",
+          "matched_symbols": [
+            "AMZN",
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Will Salesforce Buyback Calm Worries As Investors Await Growth Reacceleration?",
+          "url": "https://www.investors.com/news/technology/salesforce-stock-repurchase-program-growth-reaccleration-salesforce-earnings/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-28T12:22:04Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Earnings live updates: Snowflake stock skyrockets on AWS deal, Kohl's pops",
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-snowflake-stock-skyrockets-on-aws-deal-kohls-pops-115127980.html",
+          "source": "yahoo",
+          "published": "2026-05-27T11:51:27Z",
+          "matched_symbols": [
+            "AMZN",
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Wall Street Sees A Much Bigger Market Opportunity For AMD",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-wall-street-sees-much-121802335.html",
+          "source": "yahoo",
+          "published": "2026-05-28T12:18:02Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Snowflake rockets 36% on earnings beat and plan to spend $6 billion on Amazon cloud",
+          "url": "https://www.cnbc.com/2026/05/27/snowflake-amazon-graviton-cloud-chips.html",
+          "source": "cnbc_top",
+          "published": "Wed, 27 May 2026 22:07:15 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce beats on earnings and revenue but full-year guidance comes in light",
+          "url": "https://www.cnbc.com/2026/05/27/salesforce-crm-q1-earnings-report-2027.html",
+          "source": "cnbc_top",
+          "published": "Wed, 27 May 2026 22:22:13 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google employee charged with $1M Polymarket insider trading bet on search term",
+          "url": "https://www.cnbc.com/2026/05/27/google-employee-polymarket-insider-trading.html",
+          "source": "cnbc_top",
+          "published": "Thu, 28 May 2026 00:52:00 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's top health exec is stepping down, will be replaced by Amwell co-founder",
+          "url": "https://www.cnbc.com/2026/05/27/amazons-top-health-exec-is-stepping-down-will-be-replaced-by-amwell-co-founder.html",
+          "source": "cnbc_top",
+          "published": "Wed, 27 May 2026 22:06:35 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce CEO Marc Benioff outlines his plan to turn around his struggling stock",
+          "url": "https://www.cnbc.com/2026/05/27/salesforce-ceo-marc-benioff-outlines-his-plan-to-turn-around-his-struggling-stock.html",
+          "source": "cnbc_top",
+          "published": "Wed, 27 May 2026 22:35:39 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "U.S.-Iran strikes, Snowflake soars, Robinhood's new AI tools and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/28/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 28 May 2026 12:00:29 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce CEO Marc Benioff outlines his plan to turn around his struggling stock",
+          "url": "https://www.cnbc.com/2026/05/27/salesforce-ceo-marc-benioff-outlines-his-plan-to-turn-around-his-struggling-stock.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 22:35:39 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon's top health exec is stepping down, will be replaced by Amwell co-founder",
+          "url": "https://www.cnbc.com/2026/05/27/amazons-top-health-exec-is-stepping-down-will-be-replaced-by-amwell-co-founder.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 22:06:35 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce beats on earnings and revenue but full-year guidance comes in light",
+          "url": "https://www.cnbc.com/2026/05/27/salesforce-crm-q1-earnings-report-2027.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 22:22:13 GMT",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Snowflake rockets 36% on earnings beat and plan to spend $6 billion on Amazon cloud",
+          "url": "https://www.cnbc.com/2026/05/27/snowflake-amazon-graviton-cloud-chips.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 22:07:15 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon starts selling its AI shopping technology to other retailers",
+          "url": "https://www.cnbc.com/2026/05/27/amazon-ai-shopping-alexa-kate-spade.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 13:10:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Taiwan chip stocks climb after Nvidia announces $150 billion spending plans",
+          "url": "https://www.cnbc.com/2026/05/27/nvidia-taiwan-investment-150-billion-spending.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 09:41:14 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's surge to record highs faces a major test next month. What it must do to pass",
+          "url": "https://www.cnbc.com/2026/05/26/apples-surge-to-record-highs-faces-a-major-test-next-month-what-it-must-do-to-pass.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 26 May 2026 20:47:39 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia stock faces a key level that could make or break where it goes next",
+          "url": "https://www.cnbc.com/2026/05/26/nvidia-stock-faces-a-key-level-that-could-make-or-break-where-it-goes-next.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 26 May 2026 15:25:21 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 11,
+      "matched": [
+        {
+          "title": "Five frontier LLMs disagree on 67% of 1k real-world fact-check claims",
+          "url": "https://lenz.io/research/llm-disagreement",
+          "hn_score": 44,
+          "comments": 13,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "YouTube to automatically label AI-generated videos",
+          "url": "https://blog.youtube/news-and-events/improving-ai-labels-viewers-creators/",
+          "hn_score": 1000,
+          "comments": 604,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "A Eureka machine that thinks like nature and explores what AI cannot",
+          "url": "https://iisc.ac.in/a-eureka-machine-that-thinks-like-nature-and-explores-what-ai-cannot/",
+          "hn_score": 109,
+          "comments": 34,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AMD pulls a bait-and-switch on Linux users with Vivado licensing changes",
+          "url": "https://itsfoss.com/news/amd-vivado-bait-and-switch-on-linux-users/",
+          "hn_score": 112,
+          "comments": 50,
+          "matched_symbols": [
+            "AMD"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "I think Anthropic and OpenAI have found product-market fit",
+          "url": "https://simonwillison.net/2026/May/27/product-market-fit/",
+          "hn_score": 933,
+          "comments": 1052,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "AI sticker shock hits corporate America",
+          "url": "https://www.axios.com/2026/05/28/ai-spending-roi-enterprise-costs",
+          "hn_score": 79,
+          "comments": 52,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "What Apple and Google are doing to push notifications",
+          "url": "https://www.jacquescorbytuech.com/writing/what-apple-and-google-are-doing-your-push-notifications",
+          "hn_score": 313,
+          "comments": 319,
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "DuckDuckGo search saw 28% more visits after Google said people love AI mode",
+          "url": "https://www.pcgamer.com/hardware/duckduckgos-ai-free-search-saw-nearly-28-percent-more-visits-in-the-week-following-googles-insistence-that-people-love-ai-mode/",
+          "hn_score": 925,
+          "comments": 439,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Investigating how prompt politeness affects LLM accuracy (2025)",
+          "url": "https://arxiv.org/abs/2510.04950",
+          "hn_score": 89,
+          "comments": 83,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Stress disrupts hippocampal integration of overlapping events, memory inference",
+          "url": "https://www.science.org/doi/10.1126/sciadv.aea5496?user_id=66c4bf745d78644b3aa57b08",
+          "hn_score": 138,
+          "comments": 21,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "inference"
+          ]
+        },
+        {
+          "title": "Google employee charged with $1M Polymarket insider trading bet on search term",
+          "url": "https://www.cnbc.com/2026/05/27/google-employee-polymarket-insider-trading.html",
+          "hn_score": 223,
+          "comments": 130,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AMZN": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SNOW": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 31,
+    "sources_succeeded": 2,
+    "most_mentioned": "AMZN",
+    "headline_sentiment": "Bullish"
+  }
+}

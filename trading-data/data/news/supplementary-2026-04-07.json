@@ -1,0 +1,327 @@
+{
+  "date": "2026-04-07",
+  "lastUpdated": "2026-04-07T13:12:13.669827+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 102,
+      "articles_matched": 16,
+      "matched": [
+        {
+          "title": "Warren Buffett says he sold Apple stock too soon and would like to buy more of it, 'but not in this market'",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-says-sold-apple-120500021.html",
+          "source": "yahoo",
+          "published": "2026-04-07T12:05:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Broadcom Stock Rises On Google AI Chip Deal",
+          "url": "https://www.investors.com/news/technology/broadcom-stock-rises-on-google-ai-chip-deal/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-07T11:58:39Z",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Broadcom expands partnership with Google, Anthropic",
+          "url": "https://finance.yahoo.com/sectors/technology/article/tech-stocks-today-broadcom-expands-partnership-with-google-anthropic-144220880.html",
+          "source": "yahoo",
+          "published": "2026-03-13T14:42:20Z",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Tuesday, April 7, 2026: Prices trend down as traders await war deadline",
+          "url": "https://finance.yahoo.com/news/bitcoin-and-ethereum-price-today-tuesday-april-7-2026-prices-trend-down-as-traders-await-war-deadline-113813294.html",
+          "source": "yahoo",
+          "published": "2026-04-06T11:38:13Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's iPhone sales continue to surge as iPhone 17 outpaces iPhone 16",
+          "url": "https://finance.yahoo.com/sectors/technology/article/apples-iphone-sales-continue-to-surge-as-iphone-17-outpaces-iphone-16-104946177.html",
+          "source": "yahoo",
+          "published": "2026-04-07T10:49:46Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Broadcom agrees to expanded chip deals with Google, Anthropic",
+          "url": "https://www.cnbc.com/2026/04/06/broadcom-agrees-to-expanded-chip-deals-with-google-anthropic.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Apr 2026 00:22:09 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom shares jump before the bell as chipmaker agrees Google and Anthropic deals",
+          "url": "https://www.cnbc.com/2026/04/07/broadcom-shares-jump-before-bell-google-deal.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 12:22:37 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom agrees to expanded chip deals with Google, Anthropic",
+          "url": "https://www.cnbc.com/2026/04/06/broadcom-agrees-to-expanded-chip-deals-with-google-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 00:22:09 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft is the worst performing Mag 7 stock this year. Goldman believes that's about to change",
+          "url": "https://www.cnbc.com/2026/04/06/goldman-expects-a-rebound-for-mag-7-underperformer-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Apr 2026 15:27:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Hope for a U.S.-Iran deal, Apple's anniversary, OpenAI's podcast deal and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/06/5-things-to-know-before-the-bell-monday.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Apr 2026 11:43:34 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple at 50: The iPhone maker 'blew a 5-year lead' on AI, but former insiders say it can still win",
+          "url": "https://www.cnbc.com/2026/04/04/apple-50-anniversary-ai-iphone-siri.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 04 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google under attack as court cases bypass 30-year-old legal shield",
+          "url": "https://www.cnbc.com/2026/04/03/meta-google-under-attack-court-cases-bypass-30-year-old-legal-shield.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 17:07:55 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Japan's Sakura Internet jumps 20% as Microsoft plans $10 billion AI push with SoftBank",
+          "url": "https://www.cnbc.com/2026/04/03/sakura-internet-microsoft-ai-japan-softbank-investment.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 05:19:48 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft executive touts Copilot sales traction as AI anxiety weighs on stock",
+          "url": "https://www.cnbc.com/2026/04/02/microsoft-executive-touts-copilot-traction-after-analyst-pressure.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 00:36:22 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to add 3.5% fuel and logistics surcharge for sellers as Iran war drives up energy prices",
+          "url": "https://www.cnbc.com/2026/04/02/amazon-add-3point5percent-fuel-and-logistics-surcharge-for-sellers-amid-iran-war.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Apr 2026 18:59:44 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Globalstar stock surges 15% on report Amazon is weighing an acquisition",
+          "url": "https://www.cnbc.com/2026/04/01/globalstar-stock-pops-15percent-on-report-amazon-is-weighing-an-acquisition.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Apr 2026 23:58:09 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "Employment",
+        "Fed",
+        "Inflation",
+        "PMI",
+        "employment",
+        "inflation"
+      ],
+      "key_headlines": [
+        "Partner Center Escalating Middle East tensions defined Monday\u2019s session, with Iran formally rejecting a proposed ceasefire and President Trump threatening to destroy Iranian infrastructure ahead of a ",
+        "dollar closed the day as arguably the weakest major currency, pressured primarily by a sharp selloff at the London open correlating with fresh Strait of Hormuz headline risk, while a mixed ISM Service",
+        "Bitcoin stood out as the session\u2019s strongest performer, surging above $70,000 as a wave of short liquidations amplified an intraday squeeze fueled by shifting ceasefire sentiment."
+      ],
+      "error": null,
+      "fetch_date": "2026-04-06"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "AI may be making us think and write more alike",
+          "url": "https://dornsife.usc.edu/news/stories/ai-may-be-making-us-think-and-write-more-alike/",
+          "hn_score": 83,
+          "comments": 61,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Every GPU That Mattered",
+          "url": "https://sheets.works/data-viz/every-gpu",
+          "hn_score": 151,
+          "comments": 76,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "Show HN: Stop paying for Dropbox/Google Drive, use your own S3 bucket instead",
+          "url": "https://locker.dev",
+          "hn_score": 63,
+          "comments": 61,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Wi-Fi That Can Withstand a Nuclear Reactor: This receiver chip can take it",
+          "url": "https://spectrum.ieee.org/robotics-in-nuclear-industry",
+          "hn_score": 11,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "chip"
+          ]
+        },
+        {
+          "title": "AI agents can communicate with each other, and can't be caught",
+          "url": "https://arxiv.org/abs/2604.04757",
+          "hn_score": 5,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "\"The new Copilot app for Windows 11 is really just Microsoft Edge\"",
+          "url": "https://twitter.com/i/status/2041112541909205001",
+          "hn_score": 16,
+          "comments": 3,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AVGO": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 25,
+    "sources_succeeded": 3,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Bullish"
+  }
+}

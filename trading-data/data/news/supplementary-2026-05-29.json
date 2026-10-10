@@ -1,0 +1,314 @@
+{
+  "date": "2026-05-29",
+  "lastUpdated": "2026-05-29T12:50:39.387124+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Salesforce Delivers a SaaSpocalypse Reality Check",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-delivers-saaspocalypse-reality-check-040100305.html",
+          "source": "yahoo",
+          "published": "2026-05-28T04:01:00Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Analyst Report: Dell Technologies Inc",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_5957_AnalystReport_1780053669000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-05-29T11:21:09Z",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market Digest: DECK, ICE, WMB, WSM, DELL, SNOW",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_47175_MarketSummary_1780052769000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-05-29T11:06:09Z",
+          "matched_symbols": [
+            "DELL",
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin prices today, Thursday, May 28, 2026: Down this morning and falling further",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-prices-today-thursday-may-28-2026-down-this-morning-and-falling-further-113406336.html",
+          "source": "yahoo",
+          "published": "2026-05-28T11:34:06Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia is investing billions into this emerging technology that could change the AI industry",
+          "url": "https://www.cnbc.com/2026/05/29/nvidia-photonics-investment-ai.html",
+          "source": "cnbc_top",
+          "published": "Fri, 29 May 2026 05:00:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tesla Robotaxi fleet in Texas less than one-tenth size of Waymo's, filings reveal",
+          "url": "https://www.cnbc.com/2026/05/28/tesla-robotaxi-fleet-texas-one-tenth-size-of-waymos-filings-reveal.html",
+          "source": "cnbc_top",
+          "published": "Fri, 29 May 2026 00:03:40 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "LG Electronics' shares surge 24% after showing automotive innovations using Google tech",
+          "url": "https://www.cnbc.com/2026/05/29/lg-electronics-shares-jump-after-debut-of-google-based-car-products.html",
+          "source": "cnbc_top",
+          "published": "Fri, 29 May 2026 02:29:02 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Snowflake surges 36% for best day ever on AI frenzy, fueling software rally",
+          "url": "https://www.cnbc.com/2026/05/28/snowflake-snow-software-stock-rally.html",
+          "source": "cnbc_top",
+          "published": "Thu, 28 May 2026 20:37:19 GMT",
+          "matched_symbols": [
+            "CRM",
+            "PLTR",
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "The Tech Download: How chip companies are looking to use light to solve this major AI bottleneck",
+          "url": "https://www.cnbc.com/2026/05/29/tech-download-photonics-nvidia-ai-bottleneck.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 11:35:18 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia is investing billions into this emerging technology that could change the AI industry",
+          "url": "https://www.cnbc.com/2026/05/29/nvidia-photonics-investment-ai.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 05:00:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "LG Electronics' shares surge 24% after showing automotive innovations using Google tech",
+          "url": "https://www.cnbc.com/2026/05/29/lg-electronics-shares-jump-after-debut-of-google-based-car-products.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 02:29:02 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tesla Robotaxi fleet in Texas less than one-tenth size of Waymo's, filings reveal",
+          "url": "https://www.cnbc.com/2026/05/28/tesla-robotaxi-fleet-texas-one-tenth-size-of-waymos-filings-reveal.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 00:03:40 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo opens Ojai robotaxis to select riders as company aims to lower cost of fleet expansion",
+          "url": "https://www.cnbc.com/2026/05/28/waymo-opens-ojai-robotaxis-to-some-riders-aims-to-lower-cost-of-fleet.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 28 May 2026 15:57:22 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Snowflake surges 36% for best day ever on AI frenzy, fueling software rally",
+          "url": "https://www.cnbc.com/2026/05/28/snowflake-snow-software-stock-rally.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 28 May 2026 20:37:19 GMT",
+          "matched_symbols": [
+            "CRM",
+            "PLTR",
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "U.S.-Iran strikes, Snowflake soars, Robinhood's new AI tools and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/28/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 28 May 2026 12:00:29 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Is AI causing a repeat of Front end's Lost Decade?",
+          "url": "https://mastrojs.github.io/blog/2026-05-23-is-AI-causing-a-repeat-of-frontends-lost-decade/",
+          "hn_score": 90,
+          "comments": 72,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Claude Opus 4.8",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "hn_score": 1612,
+          "comments": 1256,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Real-time LLM Inference on Standard GPUs: 3k tokens/s per request",
+          "url": "https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/",
+          "hn_score": 60,
+          "comments": 35,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "LLM",
+            "inference"
+          ]
+        },
+        {
+          "title": "Cedana (YC S23) Is Hiring",
+          "url": "https://www.ycombinator.com/companies/cedana/jobs/d1vYocG-forward-deployed-engineer-ai-hpc",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Orchestrating AI code review at scale",
+          "url": "https://blog.cloudflare.com/ai-code-review/",
+          "hn_score": 41,
+          "comments": 16,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "The $500K AI Film That \"Premiered at Cannes\" Was Not in the Official Festival",
+          "url": "https://firethering.com/hell-grind-ai-film-cannes-premiere-higgsfield/",
+          "hn_score": 48,
+          "comments": 61,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue",
+          "url": "https://llmgame.scalex.dev",
+          "hn_score": 345,
+          "comments": 137,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "CRM": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "DELL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SNOW": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "PLTR": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 22,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Bullish"
+  }
+}

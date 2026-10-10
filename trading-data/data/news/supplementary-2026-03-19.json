@@ -1,0 +1,298 @@
+{
+  "date": "2026-03-19",
+  "lastUpdated": "2026-03-19T12:58:50.654703+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 13,
+      "matched": [
+        {
+          "title": "Nvidia gets Beijing's nod for H200 chip sales, adapts Groq chip for China, sources say",
+          "url": "https://finance.yahoo.com/news/chinese-authorities-approve-nvidias-h200-013235915.html",
+          "source": "yahoo",
+          "published": "2026-03-18T04:49:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "1 Magnificent S&P 500 Dividend Stock Down 36% to Buy and Hold Forever",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/1-magnificent-p-500-dividend-122500343.html",
+          "source": "yahoo",
+          "published": "2026-03-19T12:25:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "The Fed decision, Micron earnings, Amazon's USPS contract and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/19/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 12:08:06 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says U.S. Postal Service 'walked away at the eleventh hour' in negotiations",
+          "url": "https://www.cnbc.com/2026/03/18/amazon-usps-shipping-negotiations.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 20:40:08 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer weighs in on 'hack downgrade' of Starbucks \u2014 and what's behind Amazon's dip",
+          "url": "https://www.cnbc.com/2026/03/18/cramer-weighs-in-on-starbucks-hack-downgrade-and-amazons-dip.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 17:05:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Meta will pay Instagram, TikTok and YouTube creators with big followings to post on Facebook",
+          "url": "https://www.cnbc.com/2026/03/18/meta-creator-pay-instagram-tiktok-youtube-facebook.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 16:00:01 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "China\u2019s \u2018AI tigers\u2019 see shares surge after Nvidia CEO touts OpenClaw as \u2018next ChatGPT\u2019",
+          "url": "https://www.cnbc.com/2026/03/18/china-ai-zhipu-minimax-after-nvidia-jensen-huang-openclaw-comments.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 14:07:46 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia CEO Jensen Huang says OpenClaw is 'definitely the next ChatGPT'",
+          "url": "https://www.cnbc.com/2026/03/17/nvidia-ceo-jensen-huang-says-openclaw-is-definitely-the-next-chatgpt.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 22:55:14 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jensen Huang says Nvidia has received orders from China and is 'restarting our manufacturing'",
+          "url": "https://www.cnbc.com/2026/03/17/nvidia-ceo-jensen-huang-says-chipmaker-has-received-orders-from-china.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 23:09:40 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Microsoft shakes up Copilot AI leadership team, freeing up Suleyman to build new models",
+          "url": "https://www.cnbc.com/2026/03/17/microsoft-copilot-ai-suleyman.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 17:29:41 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tim Cook squashes retirement rumors, says he 'can't imagine life without Apple'",
+          "url": "https://www.cnbc.com/2026/03/17/apple-ceo-tim-cook-retire-rumors-gma.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 16:06:57 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's $1T projection, Trump's Cuba threats, 1-hour Amazon deliveries and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/17/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 12:05:38 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon rolls out 1-hour, 3-hour delivery as ultrafast shipping trend grows in the U.S.",
+          "url": "https://www.cnbc.com/2026/03/17/amazon-rolls-out-1-hour-3-hour-delivery-in-latest-fast-shipping-test.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 10:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "USDCAD"
+      ],
+      "currency_strength": {},
+      "economic_events": [
+        "CPI",
+        "Central Bank",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Interest Rate",
+        "Manufacturing",
+        "RBA",
+        "central bank",
+        "employment",
+        "inflation",
+        "interest rate"
+      ],
+      "key_headlines": [
+        "Partner Center Wednesday\u2019s session was dominated by a hotter-than-expected U.S.",
+        "producer price inflation report and a Federal Reserve policy decision that held rates steady while raising its inflation outlook, driving sharp declines in equities, gold, and Bitcoin while pushing th",
+        "dollar to its best performance of the week against major currencies.",
+        "WTI crude oil surged as the ongoing Strait of Hormuz supply disruption continued to keep energy markets on edge, with the geopolitical premium from the Middle East conflict remaining the dominant macr",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-18"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "2% of ICML papers desk rejected because the authors used LLM in their reviews",
+          "url": "https://blog.icml.cc/2026/03/18/on-violations-of-llm-review-policies/",
+          "hn_score": 115,
+          "comments": 96,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Nvidia greenboost: transparently extend GPU VRAM using system RAM/NVMe",
+          "url": "https://gitlab.com/IsolatedOctopi/nvidia_greenboost",
+          "hn_score": 386,
+          "comments": 97,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "GPU",
+            "NVIDIA"
+          ]
+        },
+        {
+          "title": "Show HN: Duplicate 3 layers in a 24B LLM, logical deduction .22\u2192.76. No training",
+          "url": "https://github.com/alainnothere/llm-circuit-finder",
+          "hn_score": 159,
+          "comments": 56,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Nvidia NemoClaw",
+          "url": "https://github.com/NVIDIA/NemoClaw",
+          "hn_score": 336,
+          "comments": 220,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "NVIDIA"
+          ]
+        },
+        {
+          "title": "Ask HN: AWS account restricted 18h despite remediation (Case 177385077300217)",
+          "url": "https://news.ycombinator.com/item?id=47438003",
+          "hn_score": 5,
+          "comments": 0,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDCAD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 23,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Neutral"
+  }
+}

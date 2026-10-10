@@ -1,0 +1,437 @@
+{
+  "date": "2026-04-20",
+  "lastUpdated": "2026-04-20T12:50:58.815221+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 25,
+      "matched": [
+        {
+          "title": "Stock market today: S&P 500, Nasdaq, Dow futures fall as US-Iran tensions flare up again to shutter Hormuz",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-sp-500-nasdaq-dow-futures-fall-as-us-iran-tensions-flare-up-again-to-shutter-hormuz-230354323.html",
+          "source": "yahoo",
+          "published": "2026-04-19T23:03:54Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Is Alphabet (GOOGL) The Best AI Stock to Buy in 2026?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-googl-best-ai-stock-121126680.html",
+          "source": "yahoo",
+          "published": "2026-04-20T12:11:26Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "How Pentagon Budget Reveal Could Boost Palantir Stock Amid AI Wave",
+          "url": "https://www.investors.com/news/technology/palantir-stock-boost-pentagon-2027-budget-reveal-artificial-intelligence-wave/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-20T12:01:46Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Dow Jones Futures Fall; Trump Says Talks, Iran Says No; Marvell Jumps, Tesla Earnings Due",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-fall-trump-iran-talks-iran-marvell-jumps-google-tesla-earnings/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-20T12:00:50Z",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Monday, April 20, 2026: Prices rising this morning despite U.S.-Iranian tensions",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-monday-april-20-2026-prices-rising-this-morning-despite-us-iranian-tensions-115955954.html",
+          "source": "yahoo",
+          "published": "2026-04-20T11:59:55Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI Stocks: Google Makes 'Agentic Cloud' Pitch, Adobe Conference Takes Stage",
+          "url": "https://www.investors.com/news/technology/ai-stocks-artificial-intelligence-stocks-tech-earnings-april202026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-20T11:50:44Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Google, Marvell reportedly developing AI chips together",
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-google-marvell-reportedly-developing-ai-chips-together-144220995.html",
+          "source": "yahoo",
+          "published": "2026-03-13T14:42:20Z",
+          "matched_symbols": [
+            "GOOGL",
+            "MRVL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "9 S&P 500 Stocks Get Green Light To Post Insane Growth This Year",
+          "url": "https://www.investors.com/etfs-and-funds/sectors/sp-500-stocks-get-green-light-to-post-insane-growth-this-year/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-20T11:36:27Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon, USPS and the risk of a widening delivery divide in rural America",
+          "url": "https://www.cnbc.com/2026/04/19/amazon-usps-package-delivery-costs-rural-america.html",
+          "source": "cnbc_top",
+          "published": "Sun, 19 Apr 2026 14:16:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Software stock dogs have joined market rally. There's a classic investing lesson in the rebound",
+          "url": "https://www.cnbc.com/2026/04/19/software-tech-stocks-market-rally-microsoft.html",
+          "source": "cnbc_top",
+          "published": "Sun, 19 Apr 2026 18:38:11 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's once-tight bond with gamers is cracking over AI",
+          "url": "https://www.cnbc.com/2026/04/18/nvidia-ai-backlash-gamers-geforce-gpu.html",
+          "source": "cnbc_top",
+          "published": "Sun, 19 Apr 2026 11:37:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SiIicon Valley's AI agent hiccups: Wasted tokens and 'chaotic' systems",
+          "url": "https://www.cnbc.com/2026/04/19/siiicon-valley-ai-agent-openclaw-problems.html",
+          "source": "cnbc_top",
+          "published": "Sun, 19 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Berkshire shares left behind as S&P 500 rallies to record high",
+          "url": "https://www.cnbc.com/2026/04/18/berkshire-shares-left-behind-as-sp-500-rallies-to-record-high.html",
+          "source": "cnbc_top",
+          "published": "Sat, 18 Apr 2026 12:56:03 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SiIicon Valley's AI agent hiccups: Wasted tokens and 'chaotic' systems",
+          "url": "https://www.cnbc.com/2026/04/19/siiicon-valley-ai-agent-openclaw-problems.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 19 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here are 3 forces that drove a remarkable, record-setting week on Wall Street",
+          "url": "https://www.cnbc.com/2026/04/18/the-3-forces-that-drove-a-remarkable-record-setting-week-on-wall-street.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 18 Apr 2026 14:13:04 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's once-tight bond with gamers is cracking over AI",
+          "url": "https://www.cnbc.com/2026/04/18/nvidia-ai-backlash-gamers-geforce-gpu.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 19 Apr 2026 11:37:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD, Oracle, Microsoft and the IGV lead a monster week for tech stocks",
+          "url": "https://www.cnbc.com/2026/04/17/big-tech-stocks-winning-streaks-oracle-amd-microsoft-igv-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 17 Apr 2026 23:15:41 GMT",
+          "matched_symbols": [
+            "AMD",
+            "AVGO",
+            "MRVL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia AI chip rivals attract record funding as competition heats up",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-ai-chip-rivals-funding-euclyd-fractile.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 10:01:58 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia rival tells CNBC it's seeking at least $100 million in funding as European AI chip market booms",
+          "url": "https://www.cnbc.com/2026/04/17/nvidia-rivals-chip-market-funding-ai-asml-euclyd.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 20 Apr 2026 10:02:21 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here's our monthly update on all 31 portfolio stocks, including 3 on the buy list",
+          "url": "https://www.cnbc.com/2026/04/16/heres-our-april-update-on-all-31-portfolio-stocks-including-4-buys.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 19:14:37 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google will let users connect their photos to the Gemini chatbot and Nano Banana",
+          "url": "https://www.cnbc.com/2026/04/16/google-photo-gemini-chatbot-nano-banana.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 19:53:52 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "LINK"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Quantum stocks on pace for a massive week after Nvidia debuts AI models to boost the tech",
+          "url": "https://www.cnbc.com/2026/04/16/quantum-stocks-nvidia-ai-models.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 20:15:50 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC and ASML post-earnings stock moves could be a sign of what's to come from chip companies",
+          "url": "https://www.cnbc.com/2026/04/16/taiwan-semi-tsm-asml-stock-earnings-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 18:03:42 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "S&P 500's all-time high, investigators visit the Fed, Allbirds' rebrand and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/16/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Apr 2026 12:27:44 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC first-quarter profit rises 58%, beats estimates as AI demand fuels record run",
+          "url": "https://www.cnbc.com/2026/04/16/tsmc-q1-profit-58-percent-ai-chip-demand-record.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 17 Apr 2026 04:17:57 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "GitHub's Fake Star Economy",
+          "url": "https://awesomeagents.ai/news/github-fake-stars-investigation/",
+          "hn_score": 267,
+          "comments": 167,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "NSA is using Anthropic's Mythos despite blacklist",
+          "url": "https://www.reuters.com/business/us-security-agency-is-using-anthropics-mythos-despite-blacklist-axios-reports-2026-04-19/",
+          "hn_score": 132,
+          "comments": 94,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "A Pascal's Wager for AI Doomers",
+          "url": "https://pluralistic.net/2026/04/16/pascals-wager/",
+          "hn_score": 11,
+          "comments": 4,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Swiss AI Initiative (2023)",
+          "url": "https://www.swiss-ai.org",
+          "hn_score": 84,
+          "comments": 25,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "LINK": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 29,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

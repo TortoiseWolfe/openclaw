@@ -1,0 +1,358 @@
+{
+  "date": "2026-07-16",
+  "lastUpdated": "2026-07-16T12:51:06.465854+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 24,
+      "matched": [
+        {
+          "title": "Microsoft CEO adds fuel to Palantir CEO\u2019s AI warning",
+          "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-ceo-adds-fuel-palantir-030700396.html",
+          "source": "yahoo",
+          "published": "2026-07-15T03:07:00Z",
+          "matched_symbols": [
+            "MSFT",
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "$3.2 trillion rotation from chips to the 'Magnificent 7' has left the S&P 500 going nowhere: Chart of the Day",
+          "url": "https://finance.yahoo.com/markets/article/32-trillion-rotation-from-chips-to-the-magnificent-7-has-left-the-sp-500-going-nowhere-chart-of-the-day-100000821.html",
+          "source": "yahoo",
+          "published": "2026-07-16T10:00:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, July 16, 2026: Prices rise, ethereum becomes 'increasingly compelling'",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-july-16-2026-prices-rise-ethereum-becomes-increasingly-compelling-124218108.html",
+          "source": "yahoo",
+          "published": "2026-07-16T12:42:18Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitmine (BMNR) Rockets 11.5%; Big Investors Double Down on its Ethereum Bet",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bitmine-bmnr-rockets-11-5-013603059.html",
+          "source": "yahoo",
+          "published": "2026-07-15T01:36:03Z",
+          "matched_symbols": [
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Tech Futures Slide As Sandisk, SK Hynix Plunge; Nvidia Chipmaker TSMC Falls (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-sandisk-sk-khynix-tsmc-earnings/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-07-16T12:16:06Z",
+          "matched_symbols": [
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Wednesday, July 15, 2026: Prices surge after softer inflation report",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-july-15-2026-prices-surge-after-softer-inflation-report-122602214.html",
+          "source": "yahoo",
+          "published": "2026-07-15T12:26:02Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia unveils new AI model and expands Japan\u2019s physical AI ecosystem",
+          "url": "https://www.cnbc.com/2026/07/16/nvidia-reveals-new-ai-model-and-expands-japans-physical-ai-ecosystem.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Jul 2026 11:21:56 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC to invest additional $100 billion in Arizona after second-quarter profit soars 77%",
+          "url": "https://www.cnbc.com/2026/07/16/tsmc-second-quarter-profit-.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Jul 2026 08:24:49 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer's top 10 things to watch in the stock market Thursday",
+          "url": "https://www.cnbc.com/2026/07/16/jim-cramers-top-10-things-to-watch-in-the-stock-market-thursday.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Jul 2026 12:48:34 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Alibaba and Baidu shares jump in Hong Kong on Apple AI partnership",
+          "url": "https://www.cnbc.com/2026/07/16/alibaba-baidu-shares-jump-apple-ai-partnership-.html",
+          "source": "cnbc_top",
+          "published": "Thu, 16 Jul 2026 03:17:20 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX stock sinks below $135 IPO price for the first time",
+          "url": "https://www.cnbc.com/2026/07/15/spacex-spcx-stock-ipo-price.html",
+          "source": "cnbc_top",
+          "published": "Wed, 15 Jul 2026 20:20:10 GMT",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon senior cloud executive departs after 18 years",
+          "url": "https://www.cnbc.com/2026/07/15/amazon-dave-brown-treadwell-aws.html",
+          "source": "cnbc_top",
+          "published": "Wed, 15 Jul 2026 18:23:06 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia unveils new AI model and expands Japan\u2019s physical AI ecosystem",
+          "url": "https://www.cnbc.com/2026/07/16/nvidia-reveals-new-ai-model-and-expands-japans-physical-ai-ecosystem.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 11:21:56 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC to invest additional $100 billion in Arizona after second-quarter profit soars 77%",
+          "url": "https://www.cnbc.com/2026/07/16/tsmc-second-quarter-profit-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 08:24:49 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Alibaba and Baidu shares jump in Hong Kong on Apple AI partnership",
+          "url": "https://www.cnbc.com/2026/07/16/alibaba-baidu-shares-jump-apple-ai-partnership-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 03:17:20 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon senior cloud executive departs after 18 years",
+          "url": "https://www.cnbc.com/2026/07/15/amazon-dave-brown-treadwell-aws.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 18:23:06 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Jim Cramer is shocked by Citi's against-the-grain praise of Microsoft's Copilot",
+          "url": "https://www.cnbc.com/2026/07/15/why-jim-cramer-is-shocked-by-citis-against-the-grain-praise-of-microsofts-copilot.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 18:23:35 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX stock sinks below $135 IPO price for the first time",
+          "url": "https://www.cnbc.com/2026/07/15/spacex-spcx-stock-ipo-price.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 20:20:10 GMT",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alibaba\u2019s U.S.-listed shares rise 4% after Qwen AI set to be integrated in Apple Intelligence",
+          "url": "https://www.cnbc.com/2026/07/15/alibaba-qwen-ai-apple-intelligence.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 15 Jul 2026 11:55:31 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Zipline adds ex-Tesla, Uber, Waymo execs to make drone delivery mainstream across U.S.",
+          "url": "https://www.cnbc.com/2026/07/14/zipline-drone-delivery-tesla-uber-waymo-executives.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Jul 2026 21:08:03 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple in talks with startup that shrinks AI models to run on an iPhone",
+          "url": "https://www.cnbc.com/2026/07/14/apple-prismml-ai-compression-iphone.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Jul 2026 18:31:08 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "U.S. trade official says 'very few' Nvidia H200 AI chips have been shipped to China",
+          "url": "https://www.cnbc.com/2026/07/14/nvidia-h200-ai-chips-china.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Jul 2026 16:50:28 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer says don't bite on Apple sell call; buy his new chip favorite",
+          "url": "https://www.cnbc.com/2026/07/14/jim-cramer-says-dont-bite-on-apple-sell-call-buy-his-new-chip-favorite.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 14 Jul 2026 15:51:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google DeepMind chief Demis Hassabis calls for U.S. to spearhead AI standards body",
+          "url": "https://www.cnbc.com/2026/07/14/google-deepmind-demis-hassabis-us-led-ai-standards-body.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 16 Jul 2026 07:07:25 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 0,
+      "stories_matched": 0,
+      "matched": [],
+      "error": "Failed to fetch top stories: <urlopen error [Errno -2] Name or service not known>"
+    }
+  },
+  "symbol_mentions": {
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "QQQ": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 1,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

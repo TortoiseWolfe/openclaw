@@ -142,7 +142,7 @@ def main():
 
     # 4. Live session (long-running — monitored via Popen)
     print("\n>> Starting live session ...")
-    proc = subprocess.Popen([*RUNNER, "--live", "--adventure", ADVENTURE, "--skip-init"])
+    proc = subprocess.Popen([*RUNNER, "--dry-run", "--adventure", ADVENTURE, "--skip-init"])
     check_interval = 30  # seconds between health checks
     returncode = None
     while returncode is None:

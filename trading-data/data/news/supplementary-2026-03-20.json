@@ -1,0 +1,406 @@
+{
+  "date": "2026-03-20",
+  "lastUpdated": "2026-03-20T13:07:44.225136+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 19,
+      "matched": [
+        {
+          "title": "American Bitcoin Overtakes Galaxy Digital In Bitcoin Holdings",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/american-bitcoin-overtakes-galaxy-digital-011500773.html",
+          "source": "yahoo",
+          "published": "2026-03-19T01:15:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft (MSFT) Expanding AI Capacity As It Keeps Dividends Flowing",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/microsoft-msft-expanding-ai-capacity-011622548.html",
+          "source": "yahoo",
+          "published": "2026-03-19T01:16:22Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia Corp (NVDA) Sets Sights on a $600 Billion Market With Palantir Pact",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-corp-nvda-sets-sights-011934732.html",
+          "source": "yahoo",
+          "published": "2026-03-19T01:19:34Z",
+          "matched_symbols": [
+            "NVDA",
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's China smartphone sales jump 23% to start 2026, bucking industry trend",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apples-china-smartphone-sales-jump-021833892.html",
+          "source": "yahoo",
+          "published": "2026-03-19T02:18:33Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Three companies scale the new Bitcoin financial system",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/three-companies-scale-bitcoin-financial-011120108.html",
+          "source": "yahoo",
+          "published": "2026-03-19T01:11:20Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon Stock: Buy, Sell, or Hold?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-stock-buy-sell-hold-012300147.html",
+          "source": "yahoo",
+          "published": "2026-03-19T01:23:00Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro shares tank 25% after employees charged with smuggling Nvidia chips to China",
+          "url": "https://www.cnbc.com/2026/03/19/us-tech-execs-smuggled-nvidia-chips-to-china-prosecutors-say.html",
+          "source": "cnbc_top",
+          "published": "Fri, 20 Mar 2026 12:25:27 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's Huang pitches AI tokens on top of salary as agents reshape how humans work",
+          "url": "https://www.cnbc.com/2026/03/20/nvidia-ai-agents-tokens-human-workers-engineer-jobs-unemployment-jensen-huang.html",
+          "source": "cnbc_top",
+          "published": "Fri, 20 Mar 2026 07:57:45 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon acquires startup Rivr to test robots for 'doorstep delivery'",
+          "url": "https://www.cnbc.com/2026/03/19/amazon-acquires-startup-rivr-to-test-robots-for-doorstep-delivery.html",
+          "source": "cnbc_top",
+          "published": "Thu, 19 Mar 2026 22:05:39 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's Huang pitches AI tokens on top of salary as agents reshape how humans work",
+          "url": "https://www.cnbc.com/2026/03/20/nvidia-ai-agents-tokens-human-workers-engineer-jobs-unemployment-jensen-huang.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 07:57:45 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Super Micro shares tank 25% after employees charged with smuggling Nvidia chips to China",
+          "url": "https://www.cnbc.com/2026/03/19/us-tech-execs-smuggled-nvidia-chips-to-china-prosecutors-say.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 20 Mar 2026 12:25:27 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon acquires startup Rivr to test robots for 'doorstep delivery'",
+          "url": "https://www.cnbc.com/2026/03/19/amazon-acquires-startup-rivr-to-test-robots-for-doorstep-delivery.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 22:05:39 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple bears are proven wrong yet again as iPhone defies the China slump narrative",
+          "url": "https://www.cnbc.com/2026/03/19/apple-bears-proven-wrong-yet-again-as-iphone-defies-china-slump-narrative.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 20:26:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Figma's stock drops 12% in two days after Google releases 'vibe design' product",
+          "url": "https://www.cnbc.com/2026/03/19/figma-stock-drops-11percent-after-google-releases-vibe-design-product-stitch.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 22:25:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Eli Lilly's new shot shows solid weight loss in study \u2014 plus, a way for Nvidia to perk up",
+          "url": "https://www.cnbc.com/2026/03/19/eli-lillys-new-shot-shows-solid-weight-loss-in-study-plus-a-way-for-nvidia-to-perk-up.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 16:58:32 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "The Fed decision, Micron earnings, Amazon's USPS contract and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/19/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 19 Mar 2026 12:08:06 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says U.S. Postal Service 'walked away at the eleventh hour' in negotiations",
+          "url": "https://www.cnbc.com/2026/03/18/amazon-usps-shipping-negotiations.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 20:40:08 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer weighs in on 'hack downgrade' of Starbucks \u2014 and what's behind Amazon's dip",
+          "url": "https://www.cnbc.com/2026/03/18/cramer-weighs-in-on-starbucks-hack-downgrade-and-amazons-dip.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 17:05:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Meta will pay Instagram, TikTok and YouTube creators with big followings to post on Facebook",
+          "url": "https://www.cnbc.com/2026/03/18/meta-creator-pay-instagram-tiktok-youtube-facebook.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 18 Mar 2026 16:00:01 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {
+        "strongest": "USD",
+        "weakest": "USD",
+        "detail": {
+          "USD": -2
+        }
+      },
+      "economic_events": [
+        "BOE",
+        "BOJ",
+        "BoE",
+        "BoJ",
+        "Central Bank",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Manufacturing",
+        "Monetary Policy",
+        "Retail Sales",
+        "SNB",
+        "central bank",
+        "employment",
+        "inflation",
+        "interest rate",
+        "jobs",
+        "manufacturing"
+      ],
+      "key_headlines": [
+        "Partner Center Thursday was one of the most volatile sessions of the ongoing Iran war, as fears of central bank rate hikes collided with whipsawing oil prices and a broad unwind of safe-haven flows, l",
+        "dollar as the session\u2019s clear underperformer while gold suffered one of its sharpest single-day losses in weeks.",
+        "A barrage of central bank decisions from the BOJ, SNB, BOE, and ECB all delivered holds on rates, but each carried hawkish undertones warning of inflation risks tied to the Middle East conflict, befor",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: New Zealand GDP Growth Rate for December 2025: 0.2% q/q (0.5% q/q forecast; 1.1% q/q previous); 1.3% y/y (1.3% y/y forecast; 1.3% y/y previous) Japan Machinery Orders for "
+      ],
+      "error": null,
+      "fetch_date": "2026-03-19"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "Google details new 24-hour process to sideload unverified Android apps",
+          "url": "https://arstechnica.com/gadgets/2026/03/google-details-new-24-hour-process-to-sideload-unverified-android-apps/",
+          "hn_score": 947,
+          "comments": 1014,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Full Disclosure: A Third (and Fourth) Azure Sign-In Log Bypass Found",
+          "url": "https://trustedsec.com/blog/full-disclosure-a-third-and-fourth-azure-sign-in-log-bypass-found",
+          "hn_score": 195,
+          "comments": 55,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "FSF statement on copyright infringement lawsuit Bartz v. Anthropic",
+          "url": "https://www.fsf.org/blogs/licensing/2026-anthropic-settlement",
+          "hn_score": 145,
+          "comments": 69,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Astral to Join OpenAI",
+          "url": "https://astral.sh/blog/openai",
+          "hn_score": 1399,
+          "comments": 854,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Scaling Karpathy's Autoresearch: What Happens When the Agent Gets a GPU Cluster",
+          "url": "https://blog.skypilot.co/scaling-autoresearch/",
+          "hn_score": 199,
+          "comments": 83,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "Be intentional about how AI changes your codebase",
+          "url": "https://aicode.swerdlow.dev",
+          "hn_score": 143,
+          "comments": 67,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Clockwise acquired by Salesforce",
+          "url": "https://www.getclockwise.com",
+          "hn_score": 128,
+          "comments": 64,
+          "matched_symbols": [
+            "CRM"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AMZN": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "SMCI": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 31,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

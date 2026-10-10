@@ -1,0 +1,318 @@
+{
+  "date": "2026-03-13",
+  "lastUpdated": "2026-03-13T13:00:25.058961+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 106,
+      "articles_matched": 13,
+      "matched": [
+        {
+          "title": "Why Bitcoin Is Dropping Right Now (and What I'm Watching Next)",
+          "url": "https://finance.yahoo.com/news/why-bitcoin-dropping-now-im-011740273.html",
+          "source": "yahoo",
+          "published": "2026-03-12T01:17:40Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "UiPath Q4 Earnings Call Highlights",
+          "url": "https://finance.yahoo.com/news/uipath-q4-earnings-call-highlights-011831884.html",
+          "source": "yahoo",
+          "published": "2026-03-12T01:18:31Z",
+          "matched_symbols": [
+            "PATH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir's technology gives the West a critical edge in Middle East, CEO Alex Karp says",
+          "url": "https://www.cnbc.com/2026/03/12/palantir-tech-gives-west-critical-edge-in-middle-east-ceo-alex-karp.html",
+          "source": "cnbc_top",
+          "published": "Fri, 13 Mar 2026 12:10:58 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir's technology gives the West a critical edge in Middle East, CEO Alex Karp says",
+          "url": "https://www.cnbc.com/2026/03/12/palantir-tech-gives-west-critical-edge-in-middle-east-ceo-alex-karp.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Mar 2026 12:10:58 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft top Office executive Rajesh Jha retiring after more than 35 years",
+          "url": "https://www.cnbc.com/2026/03/12/microsofts-top-office-executive-rajesh-jha-retiring-after-35-years.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 12 Mar 2026 17:00:35 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir is still using Anthropic's Claude as Pentagon blacklist plays out, CEO Karp says",
+          "url": "https://www.cnbc.com/2026/03/12/karp-palantir-anthropic-claude-pentagon-blacklist.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 12 Mar 2026 15:16:30 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google brings more AI to navigation with 'Ask Maps' feature that lets users ask complex questions",
+          "url": "https://www.cnbc.com/2026/03/12/google-brings-more-gemini-ai-to-navigation-with-ask-maps-feature.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 12 Mar 2026 15:49:58 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google sells partial stake in fiber business, becomes minority owner of new venture",
+          "url": "https://www.cnbc.com/2026/03/11/google-sells-partial-stake-in-fiber-becomes-minority-owner-in-venture-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 12 Mar 2026 03:19:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "FCC chair slams Amazon for slow satellite launches after it opposed SpaceX data center plan",
+          "url": "https://www.cnbc.com/2026/03/11/fcc-chair-amazon-spacex-data-center-space.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 22:28:13 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft plans to ship prototype of next Xbox console to developers in 2027",
+          "url": "https://www.cnbc.com/2026/03/11/microsoft-plans-to-ship-prototype-of-next-xbox-to-developers-in-2027.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 20:31:05 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta rolls out in-house AI chips weeks after massive Nvidia, AMD deals",
+          "url": "https://www.cnbc.com/2026/03/11/meta-ai-mtia-chip-data-center.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nebius stock pops 16% on Nvidia $2 billion investment announcement",
+          "url": "https://www.cnbc.com/2026/03/11/nebius-nvidia-ai-cloud.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 20:03:00 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's Zoox partners with Uber to reach more robotaxi riders \u2014 first in Las Vegas, then LA",
+          "url": "https://www.cnbc.com/2026/03/11/uber-amazon-zoox-partnership-robotaxi-demand.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "Employment",
+        "Fed",
+        "GDP",
+        "Inflation",
+        "Manufacturing",
+        "PMI",
+        "employment",
+        "inflation",
+        "manufacturing"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "The dollar rallied to near two-month highs as traders pared back Federal Reserve rate cut expectations amid rising inflation concerns tied to the energy shock.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: New Zealand Manufacturing Sales for December 31, 2025: -0.7% y/y (1.2% y/y forecast; 0.9% y/y previous) Japan BSI Large Manufacturing for March 31, 2026: 3.8% q/q (2.8% q/",
+        "RICS House Price Balance for February 2026: -12.0% (-8.0% forecast; -10.0% previous) Canada Balance of Trade for January 2026: -3.65B (-0.9B forecast; -1.31B previous) Canada Building Permits for Janu"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-12"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Prompt-caching \u2013 auto-injects Anthropic cache breakpoints (90% token savings)",
+          "url": "https://prompt-caching.ai/",
+          "hn_score": 29,
+          "comments": 14,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Executing programs inside transformers with exponentially faster inference",
+          "url": "https://www.percepta.ai/blog/can-llms-be-computers",
+          "hn_score": 160,
+          "comments": 40,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "inference"
+          ]
+        },
+        {
+          "title": "ATMs didn\u2019t kill bank teller jobs, but the iPhone did",
+          "url": "https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller",
+          "hn_score": 451,
+          "comments": 465,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Prefix sums at gigabytes per second with ARM NEON",
+          "url": "https://lemire.me/blog/2026/03/08/prefix-sums-at-tens-of-gigabytes-per-second-with-arm-neon/",
+          "hn_score": 52,
+          "comments": 8,
+          "matched_symbols": [
+            "ARM"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Document poisoning in RAG systems: How attackers corrupt AI's sources",
+          "url": "https://aminrj.com/posts/rag-document-poisoning/",
+          "hn_score": 130,
+          "comments": 53,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Grief and the AI split",
+          "url": "https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/",
+          "hn_score": 173,
+          "comments": 280,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PATH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 3,
+    "most_mentioned": "PLTR",
+    "headline_sentiment": "Neutral"
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "date": "2026-03-27",
+  "lastUpdated": "2026-03-27T12:56:58.721541+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 10,
+      "matched": [
+        {
+          "title": "Arm Holdings (ARM) Climbs 16% on AI Chip Foray, Earns Meta Backing",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/arm-holdings-arm-climbs-16-005905440.html",
+          "source": "yahoo",
+          "published": "2026-03-26T00:59:05Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia vs. Alphabet: Both Are Down Big in 2026 -- but Only 1 Is a Buy Right Now",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-vs-alphabet-both-down-010600390.html",
+          "source": "yahoo",
+          "published": "2026-03-26T01:06:00Z",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon Is Entering the Humanoid Robot Market. 3 Important Things to Know About the Fauna Robotics Acquisition.",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/amazon-entering-humanoid-robot-market-012315042.html",
+          "source": "yahoo",
+          "published": "2026-03-26T01:23:15Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple expands U.S. manufacturing pledge, putting a third portfolio name under its umbrella",
+          "url": "https://www.cnbc.com/2026/03/26/apple-expands-us-manufacturing-pledge-pulling-in-a-third-portfolio-name.html",
+          "source": "cnbc_top",
+          "published": "Thu, 26 Mar 2026 20:00:21 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple expands U.S. manufacturing pledge, putting a third portfolio name under its umbrella",
+          "url": "https://www.cnbc.com/2026/03/26/apple-expands-us-manufacturing-pledge-pulling-in-a-third-portfolio-name.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 20:00:21 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple expands American manufacturing program with four new partners",
+          "url": "https://www.cnbc.com/2026/03/26/apple-american-manufacturing-program-trump.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 16:29:46 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A Google AI breakthrough is pressuring memory chip stocks from Samsung to Micron",
+          "url": "https://www.cnbc.com/2026/03/26/google-ai-turboquant-memory-chip-stocks-samsung-micron.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Mar 2026 12:11:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft's diversity chief is leaving as company continues 'AI-powered transformation'",
+          "url": "https://www.cnbc.com/2026/03/25/microsoft-diversity-chief-ai-hr.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Mar 2026 18:08:08 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "UK government to trial social media ban for hundreds of teens",
+          "url": "https://www.cnbc.com/2026/03/25/uk-trial-social-media-ban-teenagers-online-safety-push.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Mar 2026 15:33:02 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta cutting several hundred jobs across Reality Labs, Facebook and other departments",
+          "url": "https://www.cnbc.com/2026/03/25/meta-layoffs-reality-labs-facebook.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 25 Mar 2026 17:12:13 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "BoE",
+        "ECB",
+        "Fed",
+        "Inflation",
+        "Manufacturing",
+        "Retail Sales",
+        "inflation"
+      ],
+      "key_headlines": [
+        "Partner Center Risk-off sentiment deepened on Thursday as mounting skepticism over a near-term US-Iran ceasefire drove oil sharply higher while equities, gold, and Bitcoin fell across the board.",
+        "With Trump\u2019s end-of-week deadline approaching and no meaningful progress from either side, the US dollar finished as the best-performing major currency of the session, supported by safe-haven flows an",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Germany GfK Consumer Confidence for April 2026: -28.0 (-27.0 forecast; -24.7 previous) France Business Confidence for March 2026: 99.0 (98.0 forecast; 102.0 previous) Fran",
+        "Initial Jobless Claims for March 21, 2026: 210.0k (209.0k forecast; 205.0k previous) U.S."
+      ],
+      "error": null,
+      "fetch_date": "2026-03-26"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Apple discontinues the Mac Pro",
+          "url": "https://9to5mac.com/2026/03/26/apple-discontinues-the-mac-pro/",
+          "hn_score": 455,
+          "comments": 364,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: I put an AI agent on a $7/month VPS with IRC as its transport layer",
+          "url": "https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/",
+          "hn_score": 278,
+          "comments": 78,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "$500 GPU outperforms Claude Sonnet on coding benchmarks",
+          "url": "https://github.com/itigges22/ATLAS",
+          "hn_score": 336,
+          "comments": 191,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "We rewrote JSONata with AI in a day, saved $500k/year",
+          "url": "https://www.reco.ai/blog/we-rewrote-jsonata-with-ai",
+          "hn_score": 195,
+          "comments": 184,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "My minute-by-minute response to the LiteLLM malware attack",
+          "url": "https://futuresearch.ai/blog/litellm-attack-transcript/",
+          "hn_score": 389,
+          "comments": 148,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Anthropic Subprocessor Changes",
+          "url": "https://trust.anthropic.com",
+          "hn_score": 89,
+          "comments": 43,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 21,
+    "sources_succeeded": 3,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}
