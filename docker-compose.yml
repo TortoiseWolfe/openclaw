@@ -160,12 +160,13 @@ services:
         limits:
           cpus: "4"
           memory: 6G
+    # Upstream's own check (docker-compose.yml at v2026.9.9). The official image has no /health route.
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://localhost:18789/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      test: ["CMD", "node", "dist/docker-healthcheck.js"]
       interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     command:
       [
         "node",
