@@ -20,7 +20,9 @@ Env file: ~/.openclaw/.env (auto-detected from HOME env var)
 import json
 import os
 import re
+import stat
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -91,10 +93,22 @@ def update_env(path: str, updates: dict[str, str]) -> None:
     if not output.endswith("\n"):
         output += "\n"
 
-    tmp = f"{path}.{os.getpid()}.tmp"
-    with open(tmp, "w") as f:
-        f.write(output)
-    os.replace(tmp, path)
+    # Same directory (atomic replace), unpredictable name, and never wider than the original's mode
+    # (0600 for a new file): the file holds tokens.
+    try:
+        mode = stat.S_IMODE(os.stat(path).st_mode) & 0o600 or 0o600
+    except FileNotFoundError:
+        mode = 0o600
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(os.path.abspath(path)), prefix=".env.", suffix=".tmp")
+    try:
+        os.fchmod(fd, mode)
+        with os.fdopen(fd, "w") as f:
+            f.write(output)
+        os.replace(tmp, path)
+    except BaseException:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+        raise
 
 
 def validate_token(access_token: str, client_id: str) -> dict | None:
@@ -205,7 +219,7 @@ def main() -> None:
         sys.exit(1)
 
     # Refresh
-    print(f"Refreshing token with client_id={client_id[:8]}…")
+    print("Refreshing token…")
     try:
         result = refresh_token(client_id, client_secret, current_refresh)
     except TokenRefreshError:
@@ -226,7 +240,7 @@ def main() -> None:
     update_env(args.env_file, updates)
 
     rotated = "YES (rotated)" if new_refresh != current_refresh else "NO (same)"
-    print(f"SUCCESS — new access token: {new_access[:8]}…{new_access[-4:]}")
+    print(f"SUCCESS — new access token saved ({len(new_access)} chars)")
     print(f"  expires_in: {new_expires}s ({new_expires // 3600}h)")
     print(f"  refresh token changed: {rotated}")
     print(f"  written to: {args.env_file}")
