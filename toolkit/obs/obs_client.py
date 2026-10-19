@@ -548,6 +548,7 @@ COMMANDS = {
     "launch": "Launch OBS via host launcher",
     "kill": "Kill OBS via host launcher",
     "launcher-status": "Check host launcher status",
+    "set-twitch-key": "Point OBS at Twitch using OBS_STREAM_KEY from the environment",
 }
 
 
@@ -664,6 +665,15 @@ def main() -> None:
     elif cmd == "launcher-status":
         s = launcher_status()
         print(json.dumps(s, indent=2))
+
+    elif cmd == "set-twitch-key":
+        # Reads the key from the environment so it never appears in argv or output.
+        key = os.environ.get("OBS_STREAM_KEY", "")
+        if not key:
+            print("OBS_STREAM_KEY is not set", file=sys.stderr)
+            sys.exit(1)
+        set_stream_service("rtmp_common", {"service": "Twitch", "key": key})
+        print(f"Stream key set ({len(key)} chars)")
 
 
 if __name__ == "__main__":

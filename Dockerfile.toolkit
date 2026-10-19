@@ -1,0 +1,13 @@
+# The official OpenClaw image plus what toolkit/ needs at runtime: a Python venv at /opt/venv
+# (edge-tts, obsws-python, Pillow) and ffmpeg. Upgrading OpenClaw = bumping OPENCLAW_BASE.
+#   docker build -f Dockerfile.toolkit -t openclaw-toolkit:2026.9.9 .
+ARG OPENCLAW_BASE=openclaw/openclaw:2026.9.9
+FROM ${OPENCLAW_BASE}
+
+USER root
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-venv ffmpeg \
+ && rm -rf /var/lib/apt/lists/* \
+ && python3 -m venv /opt/venv \
+ && /opt/venv/bin/pip install --no-cache-dir edge-tts==7.2.7 obsws-python==1.8.0 pillow==12.1.1
+USER node

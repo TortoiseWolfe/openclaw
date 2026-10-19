@@ -115,13 +115,10 @@ services:
       HOME: /home/node
       TERM: xterm-256color
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
       OLLAMA_HOST: http://ollama:11434
       # Twitch tokens loaded from ~/.openclaw/.env via loadDotEnv() — not passed here
       # so the onRefresh callback can update them at runtime.
-      CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}
-      CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}
-      CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}
+      # No Anthropic/Claude keys: every model is local Ollama (agents.defaults.modelPolicy.allow).
       ALPHA_VANTAGE_API_KEY: ${ALPHA_VANTAGE_API_KEY}
       OBS_WS_HOST: ${OBS_WS_HOST:-host.docker.internal}
       OBS_WS_PORT: ${OBS_WS_PORT:-4455}
@@ -217,10 +214,6 @@ services:
       TERM: xterm-256color
       BROWSER: echo
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
-      CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}
-      CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}
-      CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}
     volumes:
       - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
       - ${OPENCLAW_WORKSPACE_DIR}:/home/node/clawd
