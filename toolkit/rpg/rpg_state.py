@@ -179,20 +179,26 @@ def _slugify(name: str) -> str:
 
 
 _SAFE_SLUG = re.compile(r'^[a-zA-Z0-9_\-]+$')
+_MAP_FILENAME = re.compile(r'[a-zA-Z0-9_\-]+\.(?:svg|png|jpg|jpeg|webp)')
 
 
 def _validate_slug(value: str, label: str) -> str:
     """Reject path traversal and special characters in path-forming inputs."""
-    if not _SAFE_SLUG.match(value):
+    if not isinstance(value, str) or not _SAFE_SLUG.fullmatch(value):
         logger.error(f"ERROR: Invalid {label}: {value!r}")
         sys.exit(1)
     return value
 
 
 def _validate_map_filename(value: str, label: str) -> str:
-    """Validate a map filename like 'mos-eisley-streets.svg'."""
-    base = value.rsplit(".", 1)[0] if "." in value else value
-    _validate_slug(base, label)
+    """Validate a map filename like 'mos-eisley-streets.svg'.
+
+    The whole name is checked, extension included: checking only the part before the last dot
+    let 'map.svg/../../x' through.
+    """
+    if not isinstance(value, str) or not _MAP_FILENAME.fullmatch(value):
+        logger.error(f"ERROR: Invalid {label}: {value!r}")
+        sys.exit(1)
     return value
 
 

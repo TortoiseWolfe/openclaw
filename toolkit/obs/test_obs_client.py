@@ -47,6 +47,37 @@ class TestMediaPathCheck(unittest.TestCase):
                 obs_client._cli_check_media_path("C:\\other\\x.mp4")
 
 
+class TestParserDifferentials(unittest.TestCase):
+    """Values OBS (Chromium / Win32) would read differently from Python must be refused."""
+
+    def test_browser_url_authority_tricks(self):
+        for url in ("http://evil.example\\@localhost/", "http://evil.example\\.localhost/",
+                    "http://localhost@evil.example/", "http://local host/", "http://localhost\t/",
+                    "http://localhost:3100/\\..\\x", " http://localhost/", "http://localhost/\n"):
+            with self.assertRaises(SystemExit, msg=repr(url)):
+                obs_client._cli_check_browser_url(url)
+
+    def test_windows_prefix_lookalike_and_trailing_dots(self):
+        prefix = "C:\\Users\\x\\renders"
+        bad = (prefix + "-evil\\a.mp4", prefix + "\\.. \\a.mp4", prefix + "\\...\\a.mp4",
+               prefix + "\\a.mp4:stream", prefix + "\\..\\a.mp4", prefix + "\\ep.\\a.mp4",
+               prefix + "/../a.mp4")
+        with mock.patch.dict(os.environ, {"OBS_RENDERS_WIN_PREFIX": prefix}):
+            obs_client._cli_check_media_path(prefix + "\\docker\\ep\\content-1.mp4")
+            for p in bad:
+                with self.assertRaises(SystemExit, msg=repr(p)):
+                    obs_client._cli_check_media_path(p)
+
+    def test_container_path_with_backslashes(self):
+        with mock.patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("OBS_RENDERS_WIN_PREFIX", None)
+            for p in (obs_client.RENDERS_DIR + "/..\\..\\Windows\\x.mp4",
+                      obs_client.RENDERS_DIR + "/ep/a b.mp4", obs_client.RENDERS_DIR + "/ep/:x.mp4", obs_client.RENDERS_DIR + "/ep/a.mp4\n",
+                      obs_client.RENDERS_DIR + "-evil/a.mp4"):
+                with self.assertRaises(SystemExit, msg=repr(p)):
+                    obs_client._cli_check_media_path(p)
+
+
 class TestLauncherAuth(unittest.TestCase):
     def _call(self, fn, env):
         resp = mock.Mock()

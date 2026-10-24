@@ -93,5 +93,20 @@ class TestSetCrawl(_StateCase):
         self.assertIn("crawl", self.read())
 
 
+class TestNameValidators(unittest.TestCase):
+    def test_slug_rejects_trailing_newline_and_separators(self):
+        self.assertEqual(rpg_state._validate_slug("mos-eisley", "x"), "mos-eisley")
+        for bad in ("mos-eisley\n", "../x", "a/b", "", "a b"):
+            with self.assertRaises(SystemExit, msg=repr(bad)):
+                rpg_state._validate_slug(bad, "x")
+
+    def test_map_filename_checks_extension_too(self):
+        for ok in ("mos-eisley-streets.svg", "cantina.png", "mos-eisley-streets-1.png"):
+            self.assertEqual(rpg_state._validate_map_filename(ok, "map"), ok)
+        for bad in ("map.svg/../../x", "map.svg\n", "../map.svg", "map", "map.exe", "a.b.svg"):
+            with self.assertRaises(SystemExit, msg=repr(bad)):
+                rpg_state._validate_map_filename(bad, "map")
+
+
 if __name__ == "__main__":
     unittest.main()

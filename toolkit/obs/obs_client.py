@@ -14,10 +14,10 @@ Env vars:
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
-from urllib.parse import urlparse
 
 sys.path.insert(0, "/app/toolkit/cron-helpers")
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
@@ -567,35 +567,50 @@ COMMANDS = {
 }
 
 
-# CLI-only argument checks (library functions are called by trusted scripts)
+# CLI-only argument checks (library functions are called by trusted scripts).
+# OBS on Windows (Chromium for browser sources, Win32 for media paths) parses these values, not
+# Python, so each check accepts only a strict shape that both sides read the same way.
 BROWSER_URL_HOSTS = {"localhost", "127.0.0.1", "remotion-renderer", "host.docker.internal"}
+# No userinfo, backslashes, whitespace or control characters: those are where urlparse and
+# Chromium's URL parser disagree about the host.
+_BROWSER_URL_RE = re.compile(
+    r"^https?://(?P<host>[A-Za-z0-9.-]+)(?::\d{1,5})?(?:[/?#][^\\\s\x00-\x1f\x7f@]*)?$")
+# One path segment: what render file names actually look like. Rejects "..", trailing dots or
+# spaces (Windows strips them, so ".. " would become ".."), ":" (drives, streams) and backslashes.
+_MEDIA_SEGMENT_RE = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$")
 
 
 def _cli_check_browser_url(url: str) -> None:
-    """Exit 2 unless url is http(s) on an allowed host."""
-    try:
-        parsed = urlparse(url)
-        host = parsed.hostname
-    except ValueError:
-        parsed, host = None, None
-    if not parsed or parsed.scheme not in ("http", "https") or host not in BROWSER_URL_HOSTS:
+    """Exit 2 unless url is http(s) on an allowed host, in a form Chromium parses identically."""
+    m = _BROWSER_URL_RE.fullmatch(url)
+    if not m or m.group("host").lower() not in BROWSER_URL_HOSTS:
         print(f"ERROR: browser URL must be http(s) on one of {sorted(BROWSER_URL_HOSTS)}: {url}",
               file=sys.stderr)
         sys.exit(2)
 
 
+def _media_segments_ok(segments: list[str]) -> bool:
+    return bool(segments) and all(_MEDIA_SEGMENT_RE.fullmatch(s) and not s.endswith(".") for s in segments)
+
+
 def _cli_check_media_path(path: str) -> None:
-    """Exit 2 unless path is under the renders dir or OBS_RENDERS_WIN_PREFIX."""
-    win_prefix = os.environ.get("OBS_RENDERS_WIN_PREFIX", "")
-    if win_prefix and path.startswith(win_prefix) and ".." not in path.replace("\\", "/").split("/"):
-        return
-    try:
-        rel = os.path.relpath(os.path.realpath(path), os.path.realpath(RENDERS_DIR))
-        safe_join(RENDERS_DIR, rel)
-    except ValueError:
-        print(f"ERROR: media path must be under {RENDERS_DIR}"
-              + (f" or {win_prefix}" if win_prefix else "") + f": {path}", file=sys.stderr)
-        sys.exit(2)
+    """Exit 2 unless path is under the renders dir or OBS_RENDERS_WIN_PREFIX, made only of
+    plain file-name segments."""
+    win_prefix = os.environ.get("OBS_RENDERS_WIN_PREFIX", "").rstrip("\\")
+    if win_prefix and path.startswith(win_prefix + "\\"):
+        if _media_segments_ok(path[len(win_prefix) + 1:].split("\\")):
+            return
+    elif path.startswith(RENDERS_DIR.rstrip("/") + "/") and "\\" not in path:
+        rel = path[len(RENDERS_DIR.rstrip("/")) + 1:]
+        if _media_segments_ok(rel.split("/")):
+            try:
+                safe_join(RENDERS_DIR, rel)  # also refuses a symlink that leaves the renders dir
+                return
+            except ValueError:
+                pass
+    print(f"ERROR: media path must be under {RENDERS_DIR}"
+          + (f" or {win_prefix}" if win_prefix else "") + f": {path}", file=sys.stderr)
+    sys.exit(2)
 
 
 def main() -> None:
