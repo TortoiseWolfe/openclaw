@@ -28,7 +28,10 @@ import sys
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
 import remotion_client
+from path_utils import require_date, require_slug, safe_join
 
 RENDERS_DIR = os.environ.get("RENDERS_DIR", "/home/node/clawd-twitch/renders")
 # Path prefix as seen by the remotion-renderer container
@@ -87,15 +90,24 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Show what would be rendered")
     args = parser.parse_args()
 
+    try:
+        require_slug(args.episode, "--episode")
+        if args.series:
+            require_slug(args.series, "--series")
+        require_date(args.date)
+    except ValueError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+
     # Use brand-specific composition prefix
     prefix = "SH-" if args.brand == "scripthammer" else ""
     date_slug = args.date.replace("-", "")
 
     # Create episode subdirectory under series folder
     if args.series:
-        episode_dir = os.path.join(RENDERS_DIR, args.series, args.episode)
+        episode_dir = safe_join(RENDERS_DIR, args.series, args.episode)
     else:
-        episode_dir = os.path.join(RENDERS_DIR, args.episode)
+        episode_dir = safe_join(RENDERS_DIR, args.episode)
     os.makedirs(episode_dir, exist_ok=True)
 
     rendered_files = []

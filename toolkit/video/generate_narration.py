@@ -7,6 +7,7 @@ Optionally emits word-boundary timing JSON for per-bullet sync.
 import argparse
 import asyncio
 import json
+import os
 import sys
 
 import edge_tts
@@ -65,6 +66,17 @@ def main() -> None:
     parser.add_argument("--subtitles", action="store_true", help="Also generate .vtt subtitle file")
     parser.add_argument("--timing-output", help="Write word boundary timing JSON to this path")
     args = parser.parse_args()
+
+    # --output / --timing-output must stay under the renders dir or /tmp
+    allowed = [os.path.realpath(d) for d in ("/home/node/clawd-twitch/renders", "/tmp")]
+    for flag, value in (("--output", args.output), ("--timing-output", args.timing_output)):
+        if not value:
+            continue
+        out_real = os.path.realpath(value)
+        if not any(os.path.commonpath([d, out_real]) == d for d in allowed):
+            print(f"ERROR: {flag} must be under /home/node/clawd-twitch/renders or /tmp: {value}",
+                  file=sys.stderr)
+            sys.exit(2)
 
     asyncio.run(generate(args.text, args.output, args.voice, args.subtitles, args.timing_output))
     print(f"Audio: {args.output}")
