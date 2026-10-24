@@ -46,13 +46,14 @@ fi
 
 cd "$REPO_DIR"
 
-# 2. Build image if missing
-if ! docker image inspect openclaw:local &>/dev/null; then
-  log "Building openclaw:local image..."
-  docker build -t openclaw:local . >> "$LOG_FILE" 2>&1
+# 2. Build toolkit image (FROM the official openclaw image) if missing
+TOOLKIT_IMAGE="openclaw-toolkit:2026.9.9"
+if ! docker image inspect "$TOOLKIT_IMAGE" &>/dev/null; then
+  log "Building $TOOLKIT_IMAGE image from Dockerfile.toolkit..."
+  docker build -f Dockerfile.toolkit -t "$TOOLKIT_IMAGE" . >> "$LOG_FILE" 2>&1
   log "Image built"
 else
-  log "Image openclaw:local exists"
+  log "Image $TOOLKIT_IMAGE exists"
 fi
 
 # 3. Start services
