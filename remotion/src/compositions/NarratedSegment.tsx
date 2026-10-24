@@ -265,6 +265,14 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 	const { fps } = useVideoConfig();
 	const { colors, fonts, effects, branding } = getTheme(brand);
 
+	// Only plain audio filenames reach staticFile(); anything else renders silent.
+	const safeAudioFileName =
+		audioFileName &&
+		/^[A-Za-z0-9_][A-Za-z0-9_.-]{0,120}\.(mp3|wav|m4a|ogg)$/.test(audioFileName) &&
+		!audioFileName.includes("..")
+			? audioFileName
+			: null;
+
 	// ── Adaptive sizing: fill available space ────────────────────────
 	const hasSidebar = Boolean(codeBlock);
 	const availableWidth = 1920 - 2 * layout.padding;
@@ -374,9 +382,9 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 			style={{ background: effects.bgGradient, opacity: fadeOut }}
 		>
 			{/* Audio narration */}
-			{audioFileName && (
+			{safeAudioFileName && (
 				<Sequence from={30}>
-					<Audio src={staticFile(audioFileName)} />
+					<Audio src={staticFile(safeAudioFileName)} />
 				</Sequence>
 			)}
 
