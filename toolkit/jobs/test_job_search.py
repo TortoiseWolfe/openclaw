@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 """Tests for job_search.py — pure functions only (location_gate, score_job, is_duplicate)."""
 
+import datetime
+import os
+import tempfile
 import unittest
+from unittest import mock
 
-from job_search import location_gate, score_job, is_duplicate
+import job_search
+from job_search import location_gate, score_job, is_duplicate, append_to_tracker
 
 
 class TestLocationGate(unittest.TestCase):
@@ -134,6 +139,29 @@ class TestIsDuplicate(unittest.TestCase):
         job = {"company": None, "job_title": "React Developer"}
         tracked = {("acme corp", "react developer")}
         self.assertFalse(is_duplicate(job, tracked))
+
+
+class TestAppendToTracker(unittest.TestCase):
+    def test_external_fields_cannot_break_table_row(self):
+        with tempfile.TemporaryDirectory() as d:
+            tracker = os.path.join(d, "tracker.md")
+            with open(tracker, "w") as f:
+                f.write("| Date | Company |\n")
+            job = {
+                "job_title": "Dev | Evil",
+                "company": "Acme | Co",
+                "location": "Remote | x\r\n| 2099-01-01 | fake | row |",
+                "linkedin_url": "http://x/a|b\nnew line",
+                "_score": 50,
+            }
+            with mock.patch.object(job_search, "TRACKER", tracker):
+                append_to_tracker([job], datetime.date(2026, 10, 24))
+            with open(tracker) as f:
+                lines = f.read().strip().split("\n")
+            self.assertEqual(len(lines), 2)  # header + exactly one new row
+            # 10 cells => 11 pipes, none injected by external values
+            self.assertEqual(lines[1].count("|"), 11)
+            self.assertNotIn("\r", lines[1])
 
 
 if __name__ == "__main__":

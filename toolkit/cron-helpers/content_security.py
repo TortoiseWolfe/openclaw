@@ -66,6 +66,12 @@ def sanitize_field(text: str, max_len: int = 200) -> str:
     return cleaned[:max_len]
 
 
+def _neutralize_markers(text: str) -> str:
+    """Alter any boundary marker inside untrusted text so it cannot close the block early."""
+    text = text.replace(BOUNDARY_START, "[[[EXTERNAL_UNTRUSTED_CONTENT]]]")
+    return text.replace(BOUNDARY_END, "[[[END_EXTERNAL_UNTRUSTED_CONTENT]]]")
+
+
 def wrap_external(content: str, source: str = "external",
                   sender: str | None = None) -> str:
     """Wrap untrusted content with security boundaries.
@@ -75,9 +81,10 @@ def wrap_external(content: str, source: str = "external",
         source: Source label (e.g. "linkedin", "email", "web", "youtube")
         sender: Optional sender/origin info
     """
-    meta_lines = [f"Source: {source}"]
+    content = _neutralize_markers(content)
+    meta_lines = [f"Source: {_neutralize_markers(source)}"]
     if sender:
-        meta_lines.append(f"From: {sender}")
+        meta_lines.append(f"From: {_neutralize_markers(sender)}")
 
     return "\n".join([
         BOUNDARY_START,
