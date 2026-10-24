@@ -186,7 +186,6 @@ services:
       - "no-new-privileges:true"
     cap_drop:
       - ALL
-    pids_limit: 512
     environment:
       REMOTION_DIR: /app
       RENDERS_DIR: /renders
@@ -206,6 +205,7 @@ services:
         limits:
           cpus: "4"
           memory: 4G
+          pids: 512   # compose refuses a top-level pids_limit next to deploy limits
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3100/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
