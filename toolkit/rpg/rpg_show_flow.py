@@ -258,8 +258,9 @@ def wait_for_session_end(
                           file=sys.stderr)
                     obs_client.start_streaming()
                     print("  Stream restarted")
-            except Exception:
-                pass
+            except Exception as e:
+                # Keep the show loop running, but never hide a failed health check or restart.
+                print(f"  WARNING: stream health check/restart failed: {e}", file=sys.stderr)
 
     print(f"  Session timeout ({timeout}s) — ending show")
 
