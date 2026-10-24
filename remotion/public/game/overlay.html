@@ -803,6 +803,17 @@
     return div.innerHTML;
   }
 
+  /** Accept only #rgb..#rrggbbaa; anything else gets the fallback. */
+  function safeColor(c, fallback) {
+    return (typeof c === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(c)) ? c : fallback;
+  }
+
+  /** Coerce to a finite number; NaN/Infinity become 0. */
+  function num(v) {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : 0;
+  }
+
   function renderPlayers(state) {
     const list = document.getElementById('player-list');
     const players = state.players || {};
@@ -810,7 +821,7 @@
 
     list.innerHTML = '';
     for (const [viewer, p] of Object.entries(players)) {
-      const wl = p.wound_level || 0;
+      const wl = Math.min(5, Math.max(0, Math.trunc(num(p.wound_level))));
       const isBot = p.bot_controlled || viewer.startsWith('bot:');
       const isTurn = p.character === currentTurn && state.combat_active;
 
@@ -822,14 +833,14 @@
       // Look up token color for swatch
       const charSlug = (p.character || '').toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
       const charToken = (state.tokens || {})[charSlug];
-      const tokenColor = charToken ? charToken.color : '#4e9af5';
+      const tokenColor = safeColor(charToken ? charToken.color : null, '#4e9af5');
 
       // Off-map indicator: show when PC is on a different map than displayed
       const activeMap = pickActiveMap(state);
       const tokenMapId = charToken ? (charToken.map_id || '') : '';
       const isOffMap = tokenMapId && activeMap && tokenMapId !== activeMap;
       const offMapLabel = isOffMap
-        ? ` <span style="color:#ffd700;font-size:10px">(${tokenMapId.replace(/\.(svg|png)$/, '').split('-').slice(-1)[0]})</span>`
+        ? ` <span style="color:#ffd700;font-size:10px">(${escapeHtml(String(tokenMapId).replace(/\.(svg|png)$/, '').split('-').slice(-1)[0])})</span>`
         : '';
 
       card.innerHTML = `
@@ -843,8 +854,8 @@
         </div>
         <div class="stats">
           <span>${WOUND_NAMES[wl]}</span>
-          <span class="cp">${p.character_points || 0} CP</span>
-          <span class="fp">${p.force_points || 0} FP</span>
+          <span class="cp">${num(p.character_points)} CP</span>
+          <span class="fp">${num(p.force_points)} FP</span>
         </div>`;
       list.appendChild(card);
     }
@@ -865,7 +876,7 @@
     list.innerHTML = '';
 
     const turnStarted = state.session?.turn_started_at;
-    const timeout = state.session?.turn_timeout_secs || 120;
+    const timeout = num(state.session?.turn_timeout_secs) || 120;
 
     for (let i = 0; i < order.length; i++) {
       const name = order[i];
@@ -873,7 +884,7 @@
       // Find token color
       const slug = name.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
       const token = (state.tokens || {})[slug];
-      const color = token ? token.color : '#888';
+      const color = safeColor(token ? token.color : null, '#888');
 
       const entry = document.createElement('div');
       entry.className = 'init-entry' + (isCurrent ? ' current' : '');
@@ -881,7 +892,7 @@
       let timerHtml = '';
       if (isCurrent && turnStarted) {
         const elapsed = (Date.now() - new Date(turnStarted).getTime()) / 1000;
-        const remaining = Math.max(0, Math.ceil(timeout - elapsed));
+        const remaining = num(Math.max(0, Math.ceil(timeout - elapsed)));
         const timerColor = remaining > 60 ? '#4CAF50' : remaining > 20 ? '#FFC107' : '#F44336';
         timerHtml = `<span class="turn-timer" style="color:${timerColor}">${remaining}s</span>`;
       }
@@ -1168,8 +1179,8 @@
       el.style.left = t.drawX + 'px';
       el.style.top = t.drawY + 'px';
       el.style.transform = `translate(-50%, -50%) scale(${invScale})`;
-      el.style.backgroundColor = t.color || '#4e9af5';
-      if (isPC) el.style.setProperty('--tk-glow', (t.color || '#4e9af5') + '80');
+      el.style.backgroundColor = safeColor(t.color, '#4e9af5');
+      if (isPC) el.style.setProperty('--tk-glow', safeColor(t.color, '#4e9af5') + '80');
       el.textContent = isVehicle ? t.name : getInitials(t.name);
 
       const label = document.createElement('div');
@@ -1214,7 +1225,7 @@
     feed.innerHTML = '';
     for (const a of recent) {
       const entry = document.createElement('div');
-      entry.className = 'action-entry ' + a.type;
+      entry.className = 'action-entry ' + (a.type === 'say' ? 'say' : 'do');
       const safeType = a.type === 'say' ? 'say' : 'do';
       entry.innerHTML = `
         <span class="action-char">${escapeHtml(a.character)}</span>
@@ -1327,7 +1338,7 @@
     // Check for wound changes (play punch impact SFX)
     const players = state.players || {};
     for (const [key, p] of Object.entries(players)) {
-      const wl = p.wound_level || 0;
+      const wl = Math.min(5, Math.max(0, Math.trunc(num(p.wound_level))));
       if (lastWounds[key] !== undefined && wl > lastWounds[key]) {
         playRandom(punchPool);
       }
