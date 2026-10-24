@@ -8,7 +8,7 @@ import re
 import sys
 from html.parser import HTMLParser
 from urllib.parse import urlparse
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 from urllib.robotparser import RobotFileParser
 
 _robots_cache = {}
@@ -17,6 +17,36 @@ _USER_AGENT = (
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/131.0.0.0 Safari/537.36"
 )
+
+
+# Hosts the education scrapers legitimately fetch (URLs come from markdown files
+# an agent can edit, so anything else is refused). Add a host here to extend.
+ALLOWED_HOSTS = frozenset({
+    "babypips.com", "www.babypips.com",
+    "investopedia.com", "www.investopedia.com",
+    "tradingview.com", "www.tradingview.com",
+})
+
+
+def validate_url(url):
+    """Raise ValueError unless url is https on an allowlisted host."""
+    parsed = urlparse(url)
+    if parsed.scheme != "https":
+        raise ValueError(f"only https URLs are allowed: {url}")
+    if (parsed.hostname or "").lower() not in ALLOWED_HOSTS:
+        raise ValueError(f"host not in education allowlist: {parsed.hostname}")
+    return url
+
+
+class _AllowlistRedirect(HTTPRedirectHandler):
+    """Follow redirects only while they stay on https allowlisted hosts."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        validate_url(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+_opener = build_opener(_AllowlistRedirect)
 
 
 def _check_robots(url):
@@ -40,7 +70,11 @@ def _check_robots(url):
 
 
 def fetch_page(url, respect_robots=True):
-    """Fetch a web page and return its HTML content."""
+    """Fetch a web page and return its HTML content.
+
+    Raises ValueError for non-https or non-allowlisted URLs (including redirects).
+    """
+    validate_url(url)
     if respect_robots and not _check_robots(url):
         print(f"  SKIP (robots.txt disallows): {url}", file=sys.stderr)
         raise RuntimeError(f"robots.txt disallows fetching {url}")
@@ -49,7 +83,7 @@ def fetch_page(url, respect_robots=True):
         "Accept": "text/html,application/xhtml+xml",
         "Accept-Language": "en-US,en;q=0.9",
     })
-    with urlopen(req, timeout=30) as resp:
+    with _opener.open(req, timeout=30) as resp:
         charset = resp.headers.get_content_charset() or "utf-8"
         return resp.read().decode(charset)
 

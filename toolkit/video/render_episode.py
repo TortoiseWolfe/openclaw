@@ -63,6 +63,10 @@ atexit.register(_cleanup_audio)
 
 import remotion_client
 
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
+from path_utils import require_date, require_slug, safe_join
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 EPISODES_DIR = os.environ.get("EPISODES_DIR", "/home/node/clawd-twitch/episodes")
 SCHEDULE_FILE = os.environ.get("SCHEDULE_FILE", "/home/node/clawd-twitch/schedule.md")
@@ -180,15 +184,24 @@ def _map_bullet_timings(
 
 
 def resolve_episode_path(name_or_path: str) -> str:
-    """Resolve episode name to file path."""
-    if os.path.isfile(name_or_path):
-        return name_or_path
-    # Try as name in episodes dir
-    path = os.path.join(EPISODES_DIR, f"{name_or_path}.md")
-    if os.path.isfile(path):
-        return path
+    """Resolve episode name to file path, restricted to EPISODES_DIR."""
+    episodes_real = os.path.realpath(EPISODES_DIR)
+    try:
+        if os.path.isabs(name_or_path):
+            # Accept an absolute path only if it resolves inside EPISODES_DIR
+            rel = os.path.relpath(os.path.realpath(name_or_path), episodes_real)
+            candidates = [safe_join(EPISODES_DIR, rel)]
+        else:
+            candidates = [safe_join(EPISODES_DIR, name_or_path),
+                          safe_join(EPISODES_DIR, f"{name_or_path}.md")]
+    except ValueError as e:
+        logger.error(f"ERROR: Episode must be inside {EPISODES_DIR}: {e}")
+        sys.exit(1)
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
     logger.error(f"ERROR: Episode not found: {name_or_path}")
-    logger.error(f"  Checked: {name_or_path}, {path}")
+    logger.error(f"  Checked: {', '.join(candidates)}")
     sys.exit(1)
 
 
@@ -326,6 +339,14 @@ def main():
     from parse_episode import _normalize_topic
     current_sched = next((ep for ep in schedule if _normalize_topic(ep["topic"]) == _normalize_topic(episode.title)), None)
     series = current_sched["series"] if current_sched and current_sched.get("series") else ""
+    try:
+        if series:
+            require_slug(series, "series (from schedule.md)")
+        if current_sched:
+            require_date(current_sched["date"])
+    except ValueError as e:
+        logger.error(f"ERROR: {e}")
+        sys.exit(1)
 
     # Create audio directory for TTS files (accessible to remotion-renderer)
     os.makedirs(AUDIO_DIR, exist_ok=True)
@@ -337,9 +358,9 @@ def main():
 
     # Create episode subdirectory under series folder
     if series:
-        episode_dir = os.path.join(args.output_dir, series, slug)
+        episode_dir = safe_join(args.output_dir, series, slug)
     else:
-        episode_dir = os.path.join(args.output_dir, slug)
+        episode_dir = safe_join(args.output_dir, slug)
     os.makedirs(episode_dir, exist_ok=True)
 
     with tempfile.TemporaryDirectory() as tmpdir:

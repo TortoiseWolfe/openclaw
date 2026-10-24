@@ -29,7 +29,7 @@ sys.path.insert(0, "/app/toolkit/trading")
 from trading_common import ET
 
 import obs_client
-from path_utils import RENDERS_DIR, to_windows_path
+from path_utils import RENDERS_DIR, safe_join, to_windows_path
 from parse_episode import parse_schedule as _parse_schedule_raw
 from show_flow import _fuzzy_find_episode_dir
 
@@ -157,7 +157,16 @@ def find_episode_video(episode_name: str) -> tuple[str, int]:
     # Pick most recent render
     best = max(matches, key=lambda e: e.get("renderedAt", ""))
     video_rel = best["videoFile"]
-    video_path = os.path.join("/home/node/clawd-twitch", video_rel)
+    # videoFile comes from episodes.json: it must resolve under the renders dir
+    try:
+        rel_to_renders = os.path.relpath(
+            os.path.normpath(os.path.join("/home/node/clawd-twitch", str(video_rel))), RENDERS_DIR
+        )
+        video_path = safe_join(RENDERS_DIR, rel_to_renders)
+    except ValueError:
+        print(f"ERROR: Refusing episode '{episode_name}': videoFile {video_rel!r} is outside {RENDERS_DIR}",
+              file=sys.stderr)
+        sys.exit(1)
     return video_path, best.get("durationSec", 0)
 
 

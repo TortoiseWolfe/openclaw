@@ -201,6 +201,8 @@ _MAX_TEXT = 500
 _MAX_NARRATION = 300
 _MAX_CHARACTER = 50
 _MAX_VIEWER = 25
+_MAX_CP_CHANGE = 50   # per award-cp / spend-cp call (characters start with 5 CP)
+_MAX_CRAWL_CHARS = 2000  # total across all set-crawl text fields
 
 
 # ── Commands ─────────────────────────────────────────────────────────────────
@@ -618,8 +620,16 @@ def cmd_end_combat(args: argparse.Namespace) -> None:
     logger.info("Combat ended.")
 
 
+def _check_cp_amount(points: int) -> None:
+    """Exit unless 1 <= points <= _MAX_CP_CHANGE."""
+    if points <= 0 or points > _MAX_CP_CHANGE:
+        logger.error(f"ERROR: points must be between 1 and {_MAX_CP_CHANGE} (got {points})")
+        sys.exit(1)
+
+
 def cmd_award_cp(args: argparse.Namespace) -> None:
     """Award Character Points to a player character."""
+    _check_cp_amount(args.points)
     state = _load_state()
     character = args.character
     points = args.points
@@ -637,6 +647,7 @@ def cmd_award_cp(args: argparse.Namespace) -> None:
 
 def cmd_spend_cp(args: argparse.Namespace) -> None:
     """Spend Character Points for a player character."""
+    _check_cp_amount(args.points)
     state = _load_state()
     character = args.character
     cost = args.points
@@ -1110,6 +1121,11 @@ def cmd_map_legend(args: argparse.Namespace) -> None:
 
 def cmd_set_crawl(args: argparse.Namespace) -> None:
     """Set the opening crawl text for the Star Wars D6 (West End Games) intro."""
+    total = sum(len(v) for v in (args.title, args.subtitle, args.episode,
+                                 args.episode_title, args.text) if v is not None)
+    if total > _MAX_CRAWL_CHARS:
+        logger.error(f"ERROR: crawl text too long ({total} chars, max {_MAX_CRAWL_CHARS})")
+        sys.exit(1)
     state = _load_state()
     if not state.get("session"):
         logger.error("ERROR: No active session.")

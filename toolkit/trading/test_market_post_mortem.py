@@ -2,7 +2,9 @@
 """Tests for market_post_mortem.py — signal classification, confidence, and aggregates."""
 
 import unittest
+from datetime import datetime, timedelta
 
+from trading_common import ET
 from market_post_mortem import (
     classify_signal,
     compute_confidence_multiplier,
@@ -126,7 +128,11 @@ class TestComputeConfidenceMultiplier(unittest.TestCase):
 
 
 class TestBuildSymbolStats(unittest.TestCase):
-    def _make_detail(self, symbol, pnl, close_date="2026-02-13"):
+    def _make_detail(self, symbol, pnl, close_date=None):
+        # build_symbol_stats clears skip flags once the last loss is older than
+        # SKIP_DECAY_DAYS relative to today, so default to a recent close date.
+        if close_date is None:
+            close_date = (datetime.now(ET).date() - timedelta(days=1)).isoformat()
         return {
             "id": f"T{id(symbol)}",
             "signal_type": "trend",
