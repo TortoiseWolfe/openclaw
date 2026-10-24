@@ -10,19 +10,31 @@ OpenClaw inside Docker calls this to start/stop OBS on the Windows host.
 """
 
 import argparse
+import hmac
 import json
 import logging
 import logging.handlers
 import ntpath
 import os
+import re
 import subprocess
+import threading
 import time
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 
 DEFAULT_PORT = 8100
 DEFAULT_OBS_PATH = r"C:\Program Files\obs-studio\bin\64bit\obs64.exe"
 
+ALLOWED_HOSTS = frozenset({"localhost", "127.0.0.1", "::1", "host.docker.internal"})
+STATUS_CACHE_TTL = 5.0
+
+# Bearer token, loaded from OBS_LAUNCHER_TOKEN at startup. Empty = fail closed.
+_TOKEN = ""
+
 _START_TIME = time.time()
+_cache_lock = threading.Lock()
+_cache_value = False
+_cache_time = None  # monotonic timestamp of last real check, None = invalid
 _log = logging.getLogger("obs-launcher")
 
 
@@ -53,6 +65,41 @@ def _is_obs_running() -> bool:
     except Exception as e:
         _log.warning("Failed to check OBS process: %s", e)
         return False
+
+
+def _obs_running_cached() -> bool:
+    """_is_obs_running() cached for STATUS_CACHE_TTL seconds (thread-safe)."""
+    global _cache_value, _cache_time
+    with _cache_lock:
+        now = time.monotonic()
+        if _cache_time is not None and now - _cache_time < STATUS_CACHE_TTL:
+            return _cache_value
+        _cache_value = _is_obs_running()
+        _cache_time = time.monotonic()
+        return _cache_value
+
+
+def _invalidate_cache() -> None:
+    global _cache_time
+    with _cache_lock:
+        _cache_time = None
+
+
+def _host_allowed(host_header: str | None) -> bool:
+    """True if the Host header's hostname (port stripped) is on the allowlist."""
+    if not host_header:
+        return False
+    host = host_header.strip().lower()
+    if host.startswith("["):
+        end = host.find("]")
+        if end == -1:
+            return False
+        name = host[1:end]
+    elif host.count(":") == 1:
+        name = host.split(":", 1)[0]
+    else:
+        name = host
+    return name in ALLOWED_HOSTS
 
 
 def _ps_escape(s: str) -> str:
@@ -97,6 +144,7 @@ def _kill_obs() -> bool:
 
 class Handler(BaseHTTPRequestHandler):
     obs_path = DEFAULT_OBS_PATH
+    timeout = 15  # per-connection socket timeout; stops stalled clients holding a thread
 
     def _respond(self, data: dict, status: int = 200) -> None:
         self.send_response(status)
@@ -104,9 +152,36 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(data).encode())
 
+    def _precheck(self) -> bool:
+        """Host and Origin checks for every request. Responds and returns False on reject."""
+        if not _host_allowed(self.headers.get("Host")):
+            self._respond({"error": "forbidden host"}, 403)
+            return False
+        if self.headers.get("Origin") is not None:
+            self._respond({"error": "forbidden origin"}, 403)
+            return False
+        return True
+
+    def _authorized(self) -> bool:
+        """Bearer-token check. Responds and returns False on failure."""
+        if not _TOKEN:
+            self._respond({"error": "launcher auth not configured"}, 503)
+            return False
+        header = self.headers.get("Authorization") or ""
+        prefix = "Bearer "
+        supplied = header[len(prefix):] if header.startswith(prefix) else ""
+        if not hmac.compare_digest(supplied.encode(), _TOKEN.encode()):
+            self._respond({"error": "unauthorized"}, 401)
+            return False
+        return True
+
     def do_GET(self) -> None:
+        if not self._precheck():
+            return
         if self.path == "/status":
-            self._respond({"running": _is_obs_running()})
+            if not self._authorized():
+                return
+            self._respond({"running": _obs_running_cached()})
         elif self.path == "/health":
             self._respond({
                 "status": "ok",
@@ -117,17 +192,27 @@ class Handler(BaseHTTPRequestHandler):
             self._respond({"error": "not found"}, 404)
 
     def do_POST(self) -> None:
-        if self.path == "/launch":
-            ok = _launch_obs(self.obs_path)
-            self._respond({"launched": ok, "running": _is_obs_running()})
-        elif self.path == "/kill":
-            _kill_obs()
-            self._respond({"running": _is_obs_running()})
+        if not self._precheck():
+            return
+        if self.path in ("/launch", "/kill"):
+            if not self._authorized():
+                return
+            _invalidate_cache()
+            try:
+                if self.path == "/launch":
+                    ok = _launch_obs(self.obs_path)
+                    self._respond({"launched": ok, "running": _is_obs_running()})
+                else:
+                    _kill_obs()
+                    self._respond({"running": _is_obs_running()})
+            finally:
+                _invalidate_cache()
         else:
             self._respond({"error": "not found"}, 404)
 
     def log_message(self, fmt, *args) -> None:
-        _log.info("%s", args[0])
+        line = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", str(args[0]) if args else "")
+        _log.info("%s", line[:200])
 
 
 def main() -> None:
@@ -140,8 +225,15 @@ def main() -> None:
 
     _setup_logging(args.log_file)
 
+    global _TOKEN
+    _TOKEN = os.environ.get("OBS_LAUNCHER_TOKEN", "")
+    if not _TOKEN:
+        _log.warning("OBS_LAUNCHER_TOKEN not set: /status, /launch, /kill will return 503")
+
     Handler.obs_path = args.obs_path
-    server = HTTPServer(("0.0.0.0", args.port), Handler)
+    ThreadingHTTPServer.daemon_threads = True
+    # 0.0.0.0 on purpose: Docker Desktop (WSL2 NAT) containers reach us via host.docker.internal.
+    server = ThreadingHTTPServer(("0.0.0.0", args.port), Handler)
     _log.info("OBS launcher listening on :%d (PID %d)", args.port, os.getpid())
     _log.info("OBS path: %s", args.obs_path)
     _log.info("Log file: %s", args.log_file)
