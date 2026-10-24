@@ -9,6 +9,7 @@ Env vars:
   OBS_WS_PORT      - WebSocket port (default: 4455)
   OBS_WS_PASSWORD   - WebSocket password (default: empty)
   OBS_LAUNCHER_URL  - Host launcher base URL (default: http://host.docker.internal:8100)
+  OBS_LAUNCHER_TOKEN - Bearer token sent to the launcher (read at call time)
 """
 
 import json
@@ -16,6 +17,11 @@ import os
 import sys
 import time
 import urllib.request
+from urllib.parse import urlparse
+
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
+from path_utils import RENDERS_DIR, safe_join
 
 WS_HOST = os.environ.get("OBS_WS_HOST", "host.docker.internal")
 WS_PORT = int(os.environ.get("OBS_WS_PORT", "4455"))
@@ -39,10 +45,17 @@ def _get_obs():
 
 # ── Launch (via host HTTP launcher) ──────────────────────────────
 
+def _launcher_headers() -> dict:
+    """Authorization header for the host launcher, if OBS_LAUNCHER_TOKEN is set."""
+    token = os.environ.get("OBS_LAUNCHER_TOKEN", "")
+    return {"Authorization": f"Bearer {token}"} if token else {}
+
+
 def launch_obs(wait: bool = True, max_wait: int = 30) -> bool:
     """Ask host launcher to start OBS. Returns True if OBS is running."""
     try:
-        req = urllib.request.Request(f"{LAUNCHER_URL}/launch", method="POST")
+        req = urllib.request.Request(f"{LAUNCHER_URL}/launch", method="POST",
+                                     headers=_launcher_headers())
         resp = urllib.request.urlopen(req, timeout=TIMEOUT)
         data = json.loads(resp.read())
         if not wait:
@@ -62,7 +75,8 @@ def launch_obs(wait: bool = True, max_wait: int = 30) -> bool:
 def kill_obs() -> bool:
     """Ask host launcher to stop OBS."""
     try:
-        req = urllib.request.Request(f"{LAUNCHER_URL}/kill", method="POST")
+        req = urllib.request.Request(f"{LAUNCHER_URL}/kill", method="POST",
+                                     headers=_launcher_headers())
         resp = urllib.request.urlopen(req, timeout=TIMEOUT)
         data = json.loads(resp.read())
         return not data.get("running", True)
@@ -74,7 +88,8 @@ def kill_obs() -> bool:
 def launcher_status() -> dict:
     """Check OBS process status via host launcher."""
     try:
-        resp = urllib.request.urlopen(f"{LAUNCHER_URL}/status", timeout=TIMEOUT)
+        req = urllib.request.Request(f"{LAUNCHER_URL}/status", headers=_launcher_headers())
+        resp = urllib.request.urlopen(req, timeout=TIMEOUT)
         return json.loads(resp.read())
     except Exception as e:
         return {"running": False, "error": str(e)}
@@ -552,6 +567,37 @@ COMMANDS = {
 }
 
 
+# CLI-only argument checks (library functions are called by trusted scripts)
+BROWSER_URL_HOSTS = {"localhost", "127.0.0.1", "remotion-renderer", "host.docker.internal"}
+
+
+def _cli_check_browser_url(url: str) -> None:
+    """Exit 2 unless url is http(s) on an allowed host."""
+    try:
+        parsed = urlparse(url)
+        host = parsed.hostname
+    except ValueError:
+        parsed, host = None, None
+    if not parsed or parsed.scheme not in ("http", "https") or host not in BROWSER_URL_HOSTS:
+        print(f"ERROR: browser URL must be http(s) on one of {sorted(BROWSER_URL_HOSTS)}: {url}",
+              file=sys.stderr)
+        sys.exit(2)
+
+
+def _cli_check_media_path(path: str) -> None:
+    """Exit 2 unless path is under the renders dir or OBS_RENDERS_WIN_PREFIX."""
+    win_prefix = os.environ.get("OBS_RENDERS_WIN_PREFIX", "")
+    if win_prefix and path.startswith(win_prefix) and ".." not in path.replace("\\", "/").split("/"):
+        return
+    try:
+        rel = os.path.relpath(os.path.realpath(path), os.path.realpath(RENDERS_DIR))
+        safe_join(RENDERS_DIR, rel)
+    except ValueError:
+        print(f"ERROR: media path must be under {RENDERS_DIR}"
+              + (f" or {win_prefix}" if win_prefix else "") + f": {path}", file=sys.stderr)
+        sys.exit(2)
+
+
 def main() -> None:
     if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:
         print("Usage: obs_client.py <command>")
@@ -598,6 +644,7 @@ def main() -> None:
         if len(sys.argv) < 4:
             print("Usage: obs_client.py set-media <source> <path>", file=sys.stderr)
             sys.exit(1)
+        _cli_check_media_path(sys.argv[3])
         set_media_source(sys.argv[2], sys.argv[3])
         print(f"Set {sys.argv[2]} → {sys.argv[3]}")
 
@@ -621,6 +668,7 @@ def main() -> None:
         if len(sys.argv) < 5:
             print("Usage: obs_client.py add-browser <scene> <source> <url>", file=sys.stderr)
             sys.exit(1)
+        _cli_check_browser_url(sys.argv[4])
         create_browser_source(sys.argv[2], sys.argv[3], sys.argv[4])
         print(f"Browser source '{sys.argv[3]}' added to '{sys.argv[2]}'")
 
@@ -628,6 +676,7 @@ def main() -> None:
         if len(sys.argv) < 4:
             print("Usage: obs_client.py set-browser-url <source> <url>", file=sys.stderr)
             sys.exit(1)
+        _cli_check_browser_url(sys.argv[3])
         set_browser_source_url(sys.argv[2], sys.argv[3])
         print(f"Updated browser URL: {sys.argv[3]}")
 
