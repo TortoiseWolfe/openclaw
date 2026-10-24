@@ -123,6 +123,8 @@ services:
       OBS_WS_HOST: ${OBS_WS_HOST:-host.docker.internal}
       OBS_WS_PORT: ${OBS_WS_PORT:-4455}
       OBS_WS_PASSWORD: ${OBS_WS_PASSWORD}
+      OBS_LAUNCHER_TOKEN: ${OBS_LAUNCHER_TOKEN}
+      RENDERER_TOKEN: ${RENDERER_TOKEN}
       OBS_LAUNCHER_URL: ${OBS_LAUNCHER_URL:-http://host.docker.internal:8100}
       OBS_MEDIA_SOURCE: ${OBS_MEDIA_SOURCE:-EpisodeVideo}
       OBS_PLAYBACK_SCENE: ${OBS_PLAYBACK_SCENE:-Episode Playback}
@@ -182,9 +184,13 @@ services:
     init: true
     security_opt:
       - "no-new-privileges:true"
+    cap_drop:
+      - ALL
+    pids_limit: 512
     environment:
       REMOTION_DIR: /app
       RENDERS_DIR: /renders
+      RENDERER_TOKEN: ${RENDERER_TOKEN}
     volumes:
       - ${TWITCH_WORKSPACE_DIR}/renders:/renders
       - ${TWITCH_WORKSPACE_DIR}/renders/_audio:/app/public/_audio
