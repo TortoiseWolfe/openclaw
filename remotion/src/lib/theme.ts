@@ -102,7 +102,7 @@ const scripthammer: Theme = {
 		accent: "#c8883c",
 		accentDim: "#a06a28",
 		text: "#ede0c8",
-		textMuted: "#8a7a5a",
+		textMuted: "#b8a780",
 		codeGreen: "#dcc89a",
 		codeBlue: "#3a4850",
 		codeBg: "#141010",
