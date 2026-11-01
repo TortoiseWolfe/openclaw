@@ -131,7 +131,11 @@ const Bullet: React.FC<{
 									padding: "2px 8px",
 									borderRadius: 4,
 									fontSize: inlineCodeSize,
-									whiteSpace: "nowrap" as const,
+									// wrap inside the text column; a nowrap chip ran past it and was cut mid-character
+									whiteSpace: "normal" as const,
+									overflowWrap: "anywhere" as const,
+									boxDecorationBreak: "clone" as const,
+									WebkitBoxDecorationBreak: "clone" as const,
 									boxShadow: codeBorderGlow,
 								}}
 							>
@@ -146,9 +150,66 @@ const Bullet: React.FC<{
 	);
 };
 
+/** Most code lines the panel shows. A longer listing is cut at a top-level statement and says how many lines are left out. */
+const MAX_CODE_LINES = 25;
+/** Never cut a listing shorter than this just to land on a statement boundary. */
+const MIN_CODE_LINES = 12;
+/** Pixels of height the code lines may use: 1080 - 100 (header) - 64 (footer) - title block - panel badge and padding. */
+const CODE_LINES_HEIGHT = 740;
+const CODE_MIN_FONT = 18;
+
+/** The lines the panel shows and how many were left out (cut at a blank or unindented line, so no object is stopped halfway when avoidable). */
+export const visibleCode = (code: string): { lines: string[]; hidden: number } => {
+	const all = code.replace(/\s+$/, "").split("\n");
+	if (all.length <= MAX_CODE_LINES) return { lines: all, hidden: 0 };
+	let cut = MAX_CODE_LINES;
+	for (let k = MAX_CODE_LINES; k >= MIN_CODE_LINES; k--) {
+		const next = all[k];
+		if (next !== undefined && (next.trim() === "" || !/^\s/.test(next))) {
+			cut = k;
+			break;
+		}
+	}
+	const lines = all.slice(0, cut);
+	while (lines.length > 1 && lines[lines.length - 1].trim() === "") lines.pop();
+	return { lines, hidden: all.length - lines.length };
+};
+
+/** Largest code font (wanted down to CODE_MIN_FONT) at which every line fits the column without wrapping and the panel fits the height.
+ * At the minimum font, long lines wrap inside the panel, and if the panel is then too tall, lines are left out from the bottom. */
+export const fitCode = (
+	code: string,
+	colWidth: number,
+	wanted: number,
+): { lines: string[]; hidden: number; fontSize: number } => {
+	const { lines: first, hidden: hidden0 } = visibleCode(code);
+	const gutter = gutterChars(first.length);
+	const inner = colWidth - CODE_PANEL_PAD - CODE_SAFETY;
+	const rows = (ls: string[], fs: number) => {
+		const perRow = Math.max(8, Math.floor(inner / fs / 0.6) - Math.ceil(gutter));
+		return ls.reduce((n, l) => n + Math.max(1, Math.ceil(l.length / perRow)), 0);
+	};
+	const marker = (h: number) => (h > 0 ? 1 : 0);
+	for (let fs = Math.max(wanted, CODE_MIN_FONT); fs >= CODE_MIN_FONT; fs--) {
+		const longest = first.reduce((m, l) => Math.max(m, l.length), 0);
+		const noWrap = (longest + gutter) * fs * 0.6 <= inner;
+		if (noWrap && (first.length + marker(hidden0)) * fs * 1.5 <= CODE_LINES_HEIGHT) {
+			return { lines: first, hidden: hidden0, fontSize: fs };
+		}
+	}
+	const lines = [...first];
+	let hidden = hidden0;
+	while (lines.length > 8 && (rows(lines, CODE_MIN_FONT) + marker(hidden)) * CODE_MIN_FONT * 1.5 > CODE_LINES_HEIGHT) {
+		lines.pop();
+		hidden += 1;
+	}
+	return { lines, hidden, fontSize: CODE_MIN_FONT };
+};
+
 /** Code block with language badge and refined styling. */
 const CodeBlock: React.FC<{
-	code: string;
+	lines: string[];
+	hidden: number;
 	language: string | null;
 	appearFrame: number;
 	codeBg: string;
@@ -160,7 +221,8 @@ const CodeBlock: React.FC<{
 	cardShadow: string;
 	codeBorderGlow: string;
 }> = ({
-	code,
+	lines,
+	hidden,
 	language,
 	appearFrame,
 	codeBg,
@@ -178,7 +240,6 @@ const CodeBlock: React.FC<{
 		extrapolateRight: "clamp",
 	});
 
-	const lines = code.split("\n").slice(0, 14);
 	const gutterWidth = String(lines.length).length;
 
 	return (
@@ -190,7 +251,8 @@ const CodeBlock: React.FC<{
 				padding: "0 24px 16px 24px",
 				border: `1px solid ${borderColor}`,
 				overflow: "hidden",
-				width: "fit-content",
+				width: "100%",
+				boxSizing: "border-box" as const,
 				minWidth: 300,
 				minHeight: 0,
 				maxHeight: 900,
@@ -202,7 +264,7 @@ const CodeBlock: React.FC<{
 				<div
 					style={{
 						fontFamily: font,
-						fontSize: 13,
+						fontSize: 18,
 						color: accentColor,
 						letterSpacing: 1.5,
 						textTransform: "uppercase",
@@ -223,7 +285,8 @@ const CodeBlock: React.FC<{
 						fontFamily: font,
 						fontSize,
 						lineHeight: 1.5,
-						whiteSpace: "pre",
+						whiteSpace: "pre-wrap",
+						overflowWrap: "anywhere",
 						display: "flex",
 					}}
 				>
@@ -236,7 +299,7 @@ const CodeBlock: React.FC<{
 							marginRight: "1.5ch",
 							flexShrink: 0,
 							userSelect: "none",
-							opacity: 0.6,
+							opacity: 1,
 						}}
 					>
 						{i + 1}
@@ -244,9 +307,34 @@ const CodeBlock: React.FC<{
 					<span style={{ color: codeColor }}>{line || "\u00A0"}</span>
 				</div>
 			))}
+			{hidden > 0 && (
+				<div
+					style={{
+						fontFamily: font,
+						fontSize,
+						lineHeight: 1.5,
+						color: codeColor,
+						fontStyle: "italic",
+						paddingLeft: `${gutterWidth + 1 + 1.5}ch`,
+					}}
+				>
+					{`\u2026 ${hidden} more line${hidden === 1 ? "" : "s"}`}
+				</div>
+			)}
 		</div>
 	);
 };
+
+/** Code column may take at most this share of the width (was 0.45, which cut long lines; 0.5 forced the font down to 16px). */
+const CODE_COL_MAX = 0.56;
+/** Body area ends 84px above the frame bottom (text stops by y 996) so it stays clear of the footer band (y 1020+); 64 let a nine-bullet slide end at y 1013. */
+const BODY_BOTTOM = 84;
+/** 24px x 2 padding plus 1px x 2 border of the code panel. */
+const CODE_PANEL_PAD = 50;
+/** Spare pixels kept between the longest code line and the panel padding, so a line never touches the border. */
+const CODE_SAFETY = 30;
+/** Width of the line-number gutter in characters: the digits, a space, and the 1.5ch margin CodeBlock gives it. */
+const gutterChars = (lines: number) => String(lines).length + 1 + 1.5;
 
 export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 	brand = "turtlewolfe",
@@ -276,24 +364,22 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 	// ── Adaptive sizing: fill available space ────────────────────────
 	const hasSidebar = Boolean(codeBlock);
 	const availableWidth = 1920 - 2 * layout.padding;
-	const availableHeight = 1080 - 100 - 48 - 80;
+	const availableHeight = 1080 - 100 - BODY_BOTTOM - 80;
 
-	// Code column width: use pipeline-calculated value, fall back to estimation for Studio preview
+	// Code column width: wide enough for the longest line, its line-number gutter and the panel padding at 22px,
+	// never wider than CODE_COL_MAX. The pipeline's own figure (no gutter) is a floor, so older props still work.
 	let codeColumnWidth = 0;
 	if (codeBlock) {
-		if (pipelineCodeWidth && pipelineCodeWidth > 0) {
-			codeColumnWidth = Math.min(pipelineCodeWidth, availableWidth * 0.45);
-		} else {
-			const maxLineLen = codeBlock
-				.split("\n")
-				.slice(0, 14)
-				.reduce((max, line) => Math.max(max, line.length), 0);
-			const estCharWidth = 22 * 0.6;
-			codeColumnWidth = Math.min(
-				maxLineLen * estCharWidth + 50,
-				availableWidth * 0.45,
-			);
-		}
+		const shownLines = visibleCode(codeBlock).lines;
+		const maxLineLen = shownLines.reduce((max, line) => Math.max(max, line.length), 0);
+		const neededWidth =
+			(maxLineLen + gutterChars(shownLines.length)) * 22 * 0.6 +
+			CODE_PANEL_PAD +
+			CODE_SAFETY;
+		codeColumnWidth = Math.min(
+			Math.max(pipelineCodeWidth && pipelineCodeWidth > 0 ? pipelineCodeWidth : 0, neededWidth),
+			availableWidth * CODE_COL_MAX,
+		);
 	}
 	const bulletColumnWidth =
 		availableWidth - (hasSidebar ? codeColumnWidth + 32 : 0);
@@ -334,7 +420,15 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 	const bulletMargin = bulletFontSize < 26 ? 6 : 10;
 	const inlineCodeSize = bulletFontSize - 2;
 	const titleSize = 44;
-	const codeFontSize = Math.min(Math.max(bulletFontSize - 4, 16), 22);
+	const codeFontSizeWanted = Math.min(Math.max(bulletFontSize - 4, 16), 22);
+	// Fit-to-box: the largest font (not below 18px) at which the longest line, its line-number gutter and the
+	// panel padding fit the column and the panel fits the height; otherwise long lines wrap and, if still too
+	// tall, lines are left out from the bottom with a visible "more lines" row.
+	const shownCode =
+		codeBlock && codeColumnWidth > 0
+			? fitCode(codeBlock, codeColumnWidth, codeFontSizeWanted)
+			: { lines: [] as string[], hidden: 0, fontSize: codeFontSizeWanted };
+	const codeFontSize = shownCode.fontSize;
 
 	// ── Timing ────────────────────────────────────────────────────────
 	const timings =
@@ -347,8 +441,8 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 					);
 				});
 
-	const lastBulletFrame = timings.length > 0 ? timings[timings.length - 1] : 30;
-	const codeAppearFrame = lastBulletFrame + 30;
+	// The panel appears with the first bullet, so the right side is not empty while the bullets are read.
+	const codeAppearFrame = timings.length > 0 ? timings[0] : 30;
 
 	// ── Animations ────────────────────────────────────────────────────
 	const headerProgress = spring({
@@ -439,7 +533,7 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 					top: 100,
 					left: layout.padding,
 					right: layout.padding,
-					bottom: 48,
+					bottom: BODY_BOTTOM,
 					display: "flex",
 					flexDirection: "column",
 					minHeight: 0,
@@ -524,14 +618,13 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 						<div
 							style={{
 								flex: `0 0 ${codeColumnWidth}px`,
-								maxWidth: "45%",
 								display: "flex",
 								alignItems: "flex-start",
-								overflow: "hidden",
 							}}
 						>
 							<CodeBlock
-								code={codeBlock}
+								lines={shownCode.lines}
+								hidden={shownCode.hidden}
 								language={codeLanguage}
 								appearFrame={codeAppearFrame}
 								codeBg={colors.codeBg}
@@ -557,7 +650,7 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 					fontSize: 20,
 					fontFamily: fonts.mono,
 					color: colors.textMuted,
-					opacity: 0.5,
+					opacity: 1,
 					letterSpacing: 1,
 				}}
 			>
