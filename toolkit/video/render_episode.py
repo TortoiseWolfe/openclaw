@@ -36,7 +36,7 @@ _audio_cleanup_list: list[str] = []
 _AVAILABLE_WIDTH = 1920 - 2 * 60  # 1800px
 _MAX_CODE_COL = int(_AVAILABLE_WIDTH * 0.56)  # 1008px, matches CODE_COL_MAX in NarratedSegment.tsx
 _CODE_PADDING = 50  # 24px×2 padding + 1px×2 border
-_CODE_SAFETY = 30  # spare pixels so the longest line never touches the panel padding
+_CODE_SAFETY = 50  # spare pixels so the longest line never touches the panel padding
 _MAX_CODE_FONT = 22
 _MONO_CHAR_RATIO = 0.6  # Liberation Mono / Courier New exact ratio
 

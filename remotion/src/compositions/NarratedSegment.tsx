@@ -332,7 +332,8 @@ const BODY_BOTTOM = 84;
 /** 24px x 2 padding plus 1px x 2 border of the code panel. */
 const CODE_PANEL_PAD = 50;
 /** Spare pixels kept between the longest code line and the panel padding, so a line never touches the border. */
-const CODE_SAFETY = 30;
+const CODE_SAFETY = 50;
+const WRAP_EFFICIENCY = 0.9;
 /** Width of the line-number gutter in characters: the digits, a space, and the 1.5ch margin CodeBlock gives it. */
 const gutterChars = (lines: number) => String(lines).length + 1 + 1.5;
 
@@ -393,7 +394,8 @@ export const NarratedSegment: React.FC<NarratedSegmentProps> = ({
 
 	let bulletFontSize = 22;
 	for (let fs = 36; fs >= 22; fs--) {
-		const textWidth = bulletColumnWidth - DOT_GAP;
+		// A wrapped line never fills its row (words and code chips break at the edge), so plan for about 10% waste.
+		const textWidth = (bulletColumnWidth - DOT_GAP) * WRAP_EFFICIENCY;
 		const codeFs = Math.min(Math.max(fs - 2, 16), 22);
 		const lines = bullets.reduce((sum, b) => {
 			let px: number;
