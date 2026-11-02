@@ -288,6 +288,8 @@ const CodeBlock: React.FC<{
 						whiteSpace: "pre-wrap",
 						overflowWrap: "anywhere",
 						display: "flex",
+						// Keep the clearance fitCode() plans for: a long line wraps before it reaches the last CODE_SAFETY px of the panel.
+						paddingRight: CODE_SAFETY,
 					}}
 				>
 					{/* Line number */}
