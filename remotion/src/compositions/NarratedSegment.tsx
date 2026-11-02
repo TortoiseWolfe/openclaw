@@ -332,7 +332,7 @@ const BODY_BOTTOM = 84;
 /** 24px x 2 padding plus 1px x 2 border of the code panel. */
 const CODE_PANEL_PAD = 50;
 /** Spare pixels kept between the longest code line and the panel padding, so a line never touches the border. */
-const CODE_SAFETY = 30;
+const CODE_SAFETY = 50;
 /** Width of the line-number gutter in characters: the digits, a space, and the 1.5ch margin CodeBlock gives it. */
 const gutterChars = (lines: number) => String(lines).length + 1 + 1.5;
 
