@@ -50,6 +50,22 @@ docker compose run --rm openclaw-cli
 docker compose logs openclaw-gateway --tail 50
 ```
 
+## NX-01 (main PC): the lean gateway
+
+NX-01 runs only the "Receptionist" gateway, not the full stack above. It uses `docker-compose.nx01.yml`
+(project name `openclaw`, so the container is still `openclaw-openclaw-gateway-1`, port `127.0.0.1:18789`).
+The state folder is `~/.openclaw` (owned by uid 52100, the same uid the old WSL distro used), mounted as
+`/home/node/.openclaw`. Nothing from the home folder is mounted besides it and the shared drop folder
+`/mnt/wsl/ocstage`.
+
+```bash
+docker build -f Dockerfile.toolkit -t openclaw-toolkit:2026.9.9 .
+OPENCLAW_CONFIG_DIR=$HOME/.openclaw docker compose -p openclaw -f docker-compose.nx01.yml up -d
+OPENCLAW_CONFIG_DIR=$HOME/.openclaw docker compose -p openclaw -f docker-compose.nx01.yml stop   # rollback half
+```
+
+The old `OpenClawGateway` WSL distro is kept stopped (not deleted) as the rollback.
+
 ## Workspace Layout
 
 ```
