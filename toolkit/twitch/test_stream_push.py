@@ -31,6 +31,13 @@ def test_texts_match_the_draft_word_for_word():
     assert quoted == [sp.PIN_TEXT, *sp.TIMER_TEXTS, sp.VOTE_TEXT]
 
 
+def test_signup_credits_sentence_is_separate_from_the_vote_ask():
+    for text in (sp.PIN_TEXT, sp.VOTE_TEXT):
+        sentences = re.split(r"(?<=[.!?)])\s+", text)
+        credit = [s for s in sentences if "30 bonus credits" in s]
+        assert len(credit) == 1 and "vote" not in credit[0].lower()
+
+
 def test_every_text_fits_twitch():
     assert all(len(t) <= 500 for t in (sp.PIN_TEXT, sp.VOTE_TEXT, *sp.TIMER_TEXTS))
 
