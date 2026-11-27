@@ -14,11 +14,12 @@ services:
       resources:
         limits:
           cpus: "4"
-          memory: 8G
+          memory: 10G
         # No GPU on purpose (27 Nov 2026): the 7.9 GB qwen3 model only ever got
         # 18% of itself onto the 8 GB card, but that was enough to leave the
         # music studio (ACE-Step) 0.6 GB free, and its audio decode hung.
         # Do not add a `devices:` reservation back without checking the studio.
+        # Memory limit is 10G (was 8G) because the ~1.3 GB that sat on the card now lives in RAM.
     healthcheck:
       test: ["CMD", "ollama", "list"]
       interval: 5s
