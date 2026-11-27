@@ -318,6 +318,8 @@ def run(out=print):
     if not load_config().get("enabled"):
         out("OFF: stream_push.json has enabled false. Nothing runs. Use dry-run to see what would post.")
         return 3
+    # TurtleWolfe's own token file (made by twitch_device_auth.py); the scripthammer token file is left alone.
+    os.environ.setdefault("OPENCLAW_TWITCH_ENV_FILE", str(Path(os.environ.get("HOME", "/home/node")) / ".openclaw" / "turtlewolfe.env"))
     import twitch_client as tc
     state = load_state()
     live = guarded_live(tc.get_login, tc.is_channel_live)

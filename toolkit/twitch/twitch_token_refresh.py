@@ -27,7 +27,7 @@ import time
 import urllib.error
 import urllib.request
 
-DOT_ENV_PATH = os.path.join(
+DOT_ENV_PATH = os.environ.get("OPENCLAW_TWITCH_ENV_FILE") or os.path.join(
     os.environ.get("HOME", "/home/node"), ".openclaw", ".env",
 )
 
