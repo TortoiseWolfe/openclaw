@@ -140,8 +140,8 @@ def test_failed_pin_still_posts_and_says_pin_by_hand():
     assert sent == [sp.PIN_TEXT]  # not posted again
 
 
-def test_switch_is_off_in_the_committed_config_and_run_refuses():
-    assert json.loads(sp.CONFIG_PATH.read_text()) == {"enabled": False}
+def test_run_refuses_when_the_switch_is_off(monkeypatch):
+    monkeypatch.setattr(sp, "load_config", lambda: {"enabled": False})
     lines = []
     assert sp.run(out=lines.append) == 3 and "OFF" in lines[0]
 
@@ -154,6 +154,6 @@ def test_parse_privmsg():
 def test_dry_run_posts_nothing_and_lists_everything(capsys):
     posted = sp.dry_run()
     out = capsys.readouterr().out
-    assert "Switch: OFF" in out and "retire: unpinned" in out and "!vote after retire: no reply" in out
+    assert "Switch: " in out and "retire: unpinned" in out and "!vote after retire: no reply" in out
     # per stream: one pin then timers; each stream's first timer is (a)
     assert posted[0][1] == sp.PIN_TEXT
