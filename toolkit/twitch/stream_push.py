@@ -321,6 +321,7 @@ def run(out=print):
     live = guarded_live(tc.get_login, tc.is_channel_live)
     pusher = Pusher(tc.send_chat_message_get_id, tc.pin_chat_message, tc.unpin_chat_message, live,
                     state=state, save=save_state)
+    out(f"{datetime.now(ET).isoformat(timespec='seconds')} started: enabled, posts as {tc.get_login()}, silent until the channel is live")
     stop = threading.Event()
     threading.Thread(target=read_chat, args=(CHANNEL, lambda u, t: pusher.on_chat(u, t, datetime.now(ET)), stop),
                      daemon=True).start()
