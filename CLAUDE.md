@@ -142,6 +142,10 @@ Auth: `MCP_GATEWAY_AUTH_TOKEN` in `.env`
 - **Primary**: `ollama/qwen3:8b-ctx16k` — Qwen3 8B with 16K context, fits in 8GB GPU (RTX 3060 Ti)
 - **Fallback 1**: `ollama/llama3-groq-tool-use:8b-ctx16k` — tool-calling specialist (89% BFCL), 16K context
 - **Fallback 2**: `ollama/llama3.1:8b-ctx16k` — general reasoning fallback, 16K context
+- **GPU (tower, since 27 Nov 2026)**: the `ollama` service runs on CPU only (no `nvidia` device
+  in `docker-compose.yml`). The card is shared with the music studio (ACE-Step), whose audio
+  decode hung when the model held card memory. Don't add the GPU reservation back without
+  asking; the model was already about 82% on CPU.
 - **Note**: RTX 3060 Ti has 8GB VRAM (not 12GB). 14B models don't fit — they spill to CPU RAM and timeout. All production models are 8B with 16K context (~7GB VRAM).
 - Model scout cron job runs monthly (1st Saturday) to research upgrades
 - Cognitive load split: local model handles mechanical tool work (file reads, API calls,
