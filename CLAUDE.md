@@ -139,10 +139,14 @@ Auth: `MCP_GATEWAY_AUTH_TOKEN` in `.env`
 
 ## Local Models (Ollama)
 
-- **Primary**: `ollama/qwen3:8b-ctx16k` — Qwen3 8B with 16K context, fits in 8GB GPU (RTX 3060 Ti)
+- **Primary**: `ollama/qwen3:8b-ctx16k` — Qwen3 8B with 16K context (runs on CPU, ~7.3 GB in RAM; see the GPU note below)
 - **Fallback 1**: `ollama/llama3-groq-tool-use:8b-ctx16k` — tool-calling specialist (89% BFCL), 16K context
 - **Fallback 2**: `ollama/llama3.1:8b-ctx16k` — general reasoning fallback, 16K context
-- **Note**: RTX 3060 Ti has 8GB VRAM (not 12GB). 14B models don't fit — they spill to CPU RAM and timeout. All production models are 8B with 16K context (~7GB VRAM).
+- **GPU (tower, since 27 Nov 2026)**: the `ollama` service runs on CPU only (no `nvidia` device
+  in `docker-compose.yml`). The card is shared with the music studio (ACE-Step), whose audio
+  decode hung when the model held card memory. Don't add the GPU reservation back without
+  asking; the model was already about 82% on CPU.
+- **Note**: RTX 3060 Ti has 8GB VRAM (not 12GB). 14B models don't fit — they spill to CPU RAM and timeout. All production models are 8B with 16K context (~7GB; CPU RAM on the tower since 27 Nov).
 - Model scout cron job runs monthly (1st Saturday) to research upgrades
 - Cognitive load split: local model handles mechanical tool work (file reads, API calls,
   data writes); judgment/analysis gets queued for user + Claude Code sessions
@@ -167,7 +171,7 @@ Denied for Ollama: GitHub (40 tools), Postman (39 tools), Git (12 tools), Cloudf
 automation (cron/gateway), session management — all unreachable via byProvider anyway.
 
 Known issues: Previous qwen3:14b (9.3GB) exceeded RTX 3060 Ti 8GB VRAM — spilled to CPU
-and timed out. Switched to qwen3:8b-ctx16k (~7.2GB VRAM) which fits with headroom.
+and timed out. Switched to qwen3:8b-ctx16k (~7.3GB) which loads reliably.
 OpenClaw requires minimum 16K context window (CONTEXT_WINDOW_HARD_MIN_TOKENS in
 src/agents/context-window-guard.ts).
 
