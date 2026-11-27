@@ -31,6 +31,25 @@ def test_texts_match_the_draft_word_for_word():
     assert quoted == [sp.PIN_TEXT, *sp.TIMER_TEXTS, sp.VOTE_TEXT]
 
 
+def test_push_channel_is_turtlewolfe():
+    assert sp.CHANNEL == "turtlewolfe"
+
+
+def test_live_guard_needs_turtlewolfe_token_and_a_live_channel():
+    assert sp.guarded_live(lambda: "TurtleWolfe", lambda: True)() is True
+    assert sp.guarded_live(lambda: "TurtleWolfe", lambda: False)() is False
+    # a scripthammer token never counts as live, even while scripthammer streams
+    assert sp.guarded_live(lambda: "scripthammer", lambda: True)() is False
+
+
+def test_wrong_account_token_posts_nothing():
+    sent, pinned = [], []
+    p = sp.Pusher(lambda t: sent.append(t) or "m", pinned.append, lambda m: None,
+                  sp.guarded_live(lambda: "scripthammer", lambda: True))
+    p.tick(at(27, 19, 0))
+    assert sent == [] and pinned == []
+
+
 def test_signup_credits_sentence_is_separate_from_the_vote_ask():
     for text in (sp.PIN_TEXT, sp.VOTE_TEXT):
         sentences = re.split(r"(?<=[.!?)])\s+", text)

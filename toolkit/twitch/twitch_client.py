@@ -251,6 +251,12 @@ def get_broadcaster_id() -> str:
     return _broadcaster_id_cache
 
 
+def get_login() -> str:
+    """Login name of the account the token belongs to (Helix GET /users; not cached, so a token swap shows at once)."""
+    users = _helix_get("/users").get("data", [])
+    return users[0]["login"] if users else ""
+
+
 def get_game_id(game_name: str) -> str | None:
     """Resolve a game/category name to its Twitch ID."""
     encoded = urllib.request.quote(game_name)

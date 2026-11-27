@@ -13,7 +13,7 @@ usage:
   stream_push.py status                               switch, windows and saved state; posts nothing
   stream_push.py run                                  refuses while the switch is off
 
-Posts as the account whose token is in ~/.openclaw/.env (twitch_client.py). Reads chat anonymously (justinfan login).
+Posts as the account whose token is in ~/.openclaw/.env (twitch_client.py), and only when that account is CHANNEL (turtlewolfe) and live. Reads chat anonymously (justinfan login).
 The texts are Hatch's, word for word; do not edit them here without the same change in the hub's copy.
 """
 import argparse
@@ -35,7 +35,7 @@ HERE = Path(__file__).parent
 CONFIG_PATH = HERE / "stream_push.json"
 STATE_PATH = Path(os.environ.get("HOME", "/home/node")) / ".openclaw" / "stream-push-state.json"
 
-CHANNEL = "scripthammer"
+CHANNEL = "turtlewolfe"  # the push posts and pins in TurtleWolfe's chat (Jonathan, 26 Nov 2026)
 TIMER_MINUTES = 20
 VOTE_COOLDOWN_SECONDS = 60
 TICK_SECONDS = 30
@@ -106,6 +106,16 @@ def timer_text(index):
 
 def is_vote_command(text):
     return text.strip().lower() == "!vote"
+
+
+def guarded_live(get_login, is_live, channel=None):
+    """The live guard: True only when the token belongs to the push's channel AND that channel is streaming.
+    A token for any other account (for example scripthammer) is never live, so nothing posts."""
+    channel = channel or CHANNEL
+
+    def live():
+        return get_login().lower() == channel.lower() and bool(is_live())
+    return live
 
 
 def load_config(path=CONFIG_PATH):
@@ -255,7 +265,7 @@ def dry_run(start_now=None, out=print):
     for text in (PIN_TEXT, VOTE_TEXT, *TIMER_TEXTS):
         if len(text) > 500:
             raise SystemExit(f"a text is {len(text)} characters; Twitch allows 500")
-    out(f"Account: the token's own account (config says {CHANNEL}); channel twitch.tv/{CHANNEL}")
+    out(f"Account: posts as the token's own account, and only if that account is {CHANNEL} (live guard); channel twitch.tv/{CHANNEL}")
     out(f"Switch: {'ON' if load_config().get('enabled') else 'OFF'} (stream_push.json)")
     out(f"Retire: after {RETIRE_AT.strftime('%a %-d %b %Y %-I:%M %p')} Eastern (acts from {(RETIRE_AT + timedelta(minutes=1)).strftime('%-I:%M %p')})")
     out("")
@@ -310,7 +320,8 @@ def run(out=print):
         return 3
     import twitch_client as tc
     state = load_state()
-    pusher = Pusher(tc.send_chat_message_get_id, tc.pin_chat_message, tc.unpin_chat_message, tc.is_channel_live,
+    live = guarded_live(tc.get_login, tc.is_channel_live)
+    pusher = Pusher(tc.send_chat_message_get_id, tc.pin_chat_message, tc.unpin_chat_message, live,
                     state=state, save=save_state)
     stop = threading.Event()
     threading.Thread(target=read_chat, args=(CHANNEL, lambda u, t: pusher.on_chat(u, t, datetime.now(ET)), stop),
