@@ -46,9 +46,7 @@ RETIRE_AT = datetime(2026, 12, 3, 18, 59, tzinfo=ET)
 PIN_TEXT = (
     "ScriptHammer — the robot-band concert game built on this channel — is in the Base44 × Nitro contest, "
     "and voting closes Dec 3. Play it free: scripthammer.base44.app — then vote: "
-    "app.base44.com/launchpad/scripthammer (a free Base44 account is needed to vote). Joining through this link "
-    "gets you 30 bonus credits from Base44: "
-    "app.base44.com/register?ref=PMMKTZ923JRZUKLG&source=referral_program"
+    "app.base44.com/launchpad/scripthammer (a free Base44 account is needed to vote)."
 )
 TIMER_TEXTS = (
     "Enjoying the build? ScriptHammer is live and free to play: scripthammer.base44.app — and it's in the "
@@ -56,13 +54,11 @@ TIMER_TEXTS = (
     "Eight robot musicians, one soundboard, and the player runs the show. Play ScriptHammer free: "
     "scripthammer.base44.app | Contest vote (free account needed): app.base44.com/launchpad/scripthammer",
     "Voting for the Base44 × Nitro contest closes Dec 3 at 6:59 PM ET. ScriptHammer's page: "
-    "app.base44.com/launchpad/scripthammer — new to Base44? Join free and get 30 bonus credits: "
-    "app.base44.com/register?ref=PMMKTZ923JRZUKLG&source=referral_program",
+    "app.base44.com/launchpad/scripthammer (a free Base44 account is needed to vote).",
 )
 VOTE_TEXT = (
     "Vote for ScriptHammer in the Base44 × Nitro contest (closes Dec 3): app.base44.com/launchpad/scripthammer — "
-    "you'll need a free Base44 account. Joining here gets you 30 bonus credits from Base44: "
-    "app.base44.com/register?ref=PMMKTZ923JRZUKLG&source=referral_program — and the game itself is free to play: "
+    "you'll need a free Base44 account. The game itself is free to play: "
     "scripthammer.base44.app"
 )
 TIMER_LABELS = ("a", "b", "c")

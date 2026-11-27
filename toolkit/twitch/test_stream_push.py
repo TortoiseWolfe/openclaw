@@ -50,11 +50,14 @@ def test_wrong_account_token_posts_nothing():
     assert sent == [] and pinned == []
 
 
-def test_signup_credits_sentence_is_separate_from_the_vote_ask():
-    for text in (sp.PIN_TEXT, sp.VOTE_TEXT):
-        sentences = re.split(r"(?<=[.!?)])\s+", text)
-        credit = [s for s in sentences if "30 bonus credits" in s]
-        assert len(credit) == 1 and "vote" not in credit[0].lower()
+def test_no_text_mentions_credits_or_the_referral_link():
+    # Jonathan, 27 Nov 2026: "switch it on, without the credits"
+    for text in (sp.PIN_TEXT, sp.VOTE_TEXT, *sp.TIMER_TEXTS):
+        low = text.lower()
+        assert "credit" not in low and "ref=" not in low and "register" not in low and "referral" not in low
+        assert text.rstrip(".").count("app.base44.com") == 1
+    for text in (sp.PIN_TEXT, sp.VOTE_TEXT, sp.TIMER_TEXTS[1], sp.TIMER_TEXTS[2]):
+        assert "free" in text and "account" in text
 
 
 def test_every_text_fits_twitch():
