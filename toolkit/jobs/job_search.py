@@ -206,6 +206,11 @@ def is_duplicate(job, tracked):
 
 # ── Results persistence ──────────────────────────────────────────────
 
+def _table_cell(value):
+    """Make an external value safe for a markdown table cell."""
+    return re.sub(r"[\r\n|]", " ", str(value))
+
+
 def append_to_tracker(jobs, today):
     """Append new job leads to tracker.md."""
     if not jobs:
@@ -213,12 +218,12 @@ def append_to_tracker(jobs, today):
 
     lines = []
     for job in jobs:
-        title = sanitize_field(job.get("job_title") or "Unknown", 100)
-        company = sanitize_field(job.get("company") or "Unknown", 80)
+        title = _table_cell(sanitize_field(job.get("job_title") or "Unknown", 100))
+        company = _table_cell(sanitize_field(job.get("company") or "Unknown", 80))
         score = job.get("_score", 0)
-        url = job.get("linkedin_url") or "--"
+        url = _table_cell(job.get("linkedin_url") or "--")
         loc_status, _ = location_gate(job.get("location"))
-        note = f"LEAD — {job.get('location', '?')}"
+        note = _table_cell(f"LEAD — {job.get('location', '?')}")
         if loc_status == "check":
             note += ", needs location review"
         status = "lead"

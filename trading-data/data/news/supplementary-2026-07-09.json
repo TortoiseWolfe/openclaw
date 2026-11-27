@@ -1,0 +1,318 @@
+{
+  "date": "2026-07-09",
+  "lastUpdated": "2026-07-09T12:50:55.672765+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 17,
+      "matched": [
+        {
+          "title": "Salesforce Downgraded On Views 'Agentforce, As A Product, Just Isn't There'",
+          "url": "https://www.investors.com/news/technology/salesforce-stock-crm-downgraded-keybanc-agentforce/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-07-09T12:38:20Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's nearly $1 trillion wipeout could prompt this bullish action",
+          "url": "https://finance.yahoo.com/markets/stocks/article/nvidias-nearly-1-trillion-wipeout-could-prompt-this-bullish-action-122707475.html",
+          "source": "yahoo",
+          "published": "2026-07-09T12:27:07Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer Highlights One of the Major Reasons for Sticking With NVIDIA Stock",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-highlights-one-major-121859361.html",
+          "source": "yahoo",
+          "published": "2026-07-09T12:18:59Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo to start driverless rides in 4 more U.S. markets as expansion accelerates",
+          "url": "https://www.cnbc.com/2026/07/08/waymo-starts-driverless-rides-in-san-diego-las-vegas-tampa-denver.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 15:51:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Few bright spots in Wednesday's tough market \u2014 why Nvidia stock is one of them",
+          "url": "https://www.cnbc.com/2026/07/08/few-bright-spots-in-wednesdays-tough-market-why-nvidia-stock-is-one-of-them.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 18:22:39 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "World Cup drives Google Search to record queries per second",
+          "url": "https://www.cnbc.com/2026/07/08/world-cup-drives-google-search-to-record-queries-per-second.html",
+          "source": "cnbc_top",
+          "published": "Thu, 09 Jul 2026 00:34:21 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SpaceX stock closes below debut price at $148 in two-day slide after Nasdaq-100 inclusion",
+          "url": "https://www.cnbc.com/2026/07/08/spacex-stock-nasdaq-100-ipo.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Jul 2026 21:10:47 GMT",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "World Cup drives Google Search to record queries per second",
+          "url": "https://www.cnbc.com/2026/07/08/world-cup-drives-google-search-to-record-queries-per-second.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 09 Jul 2026 00:34:21 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "SpaceX stock closes below debut price at $148 in two-day slide after Nasdaq-100 inclusion",
+          "url": "https://www.cnbc.com/2026/07/08/spacex-stock-nasdaq-100-ipo.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 21:10:47 GMT",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Waymo to start driverless rides in 4 more U.S. markets as expansion accelerates",
+          "url": "https://www.cnbc.com/2026/07/08/waymo-starts-driverless-rides-in-san-diego-las-vegas-tampa-denver.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 15:51:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple commits $30 billion to Broadcom for U.S. chipmaking push",
+          "url": "https://www.cnbc.com/2026/07/08/apple-commits-30-billion-to-broadcom-for-us-chipmaking-push.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 20:03:53 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SambaNova hits $11 billion valuation as investors back Nvidia chip challengers",
+          "url": "https://www.cnbc.com/2026/07/08/sambanova-ai-chip-funding-valuation.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 09:03:53 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "This former Apple executive is betting on Shenzhen, not Silicon Valley, to create the 'next Apple'",
+          "url": "https://www.cnbc.com/2026/07/08/apple-shenzhen-silicon-valley-even-realities.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 07:16:47 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple begins testing CXMT chips for devices sold in China, FT says",
+          "url": "https://www.cnbc.com/2026/07/08/apple-begins-testing-cxmt-chips-for-devices-sold-in-china-ft-says-.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Jul 2026 05:15:12 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer says 'everything still revolves around Nvidia' despite its lagging stock",
+          "url": "https://www.cnbc.com/2026/07/07/cramer-everything-still-revolves-around-nvidia-even-as-stock-lags.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 16:00:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon raising at least $25 billion in bond sale, won't issue more debt in 2026",
+          "url": "https://www.cnbc.com/2026/07/07/amazon-bond-sale-ai-debt.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 14:43:19 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump Accounts, the Dow's latest record, Microsoft layoffs and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/07/07/trump-accounts-the-dows-latest-record-microsoft-layoffs-and-more-in-morning-squawk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 12:03:12 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "Meta reuses old RAM in new servers with custom bridge chip",
+          "url": "https://www.networkworld.com/article/4192827/meta-reuses-old-ram-in-new-servers-with-custom-bridge-chip.html",
+          "hn_score": 112,
+          "comments": 42,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "chip"
+          ]
+        },
+        {
+          "title": "Grok 4.5",
+          "url": "https://x.ai/news/grok-4-5",
+          "hn_score": 688,
+          "comments": 1139,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Separating signal from noise in coding evaluations",
+          "url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations/",
+          "hn_score": 227,
+          "comments": 82,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Show HN: Microsoft releases Flint, a visualization language for AI agents",
+          "url": "https://microsoft.github.io/flint-chart/#/",
+          "hn_score": 314,
+          "comments": 115,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "TypeScript 7",
+          "url": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/",
+          "hn_score": 660,
+          "comments": 265,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "QQQ": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 22,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

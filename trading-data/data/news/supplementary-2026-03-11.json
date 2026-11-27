@@ -1,0 +1,430 @@
+{
+  "date": "2026-03-11",
+  "lastUpdated": "2026-03-11T14:16:38.438276+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 105,
+      "articles_matched": 25,
+      "matched": [
+        {
+          "title": "Nvidia Invests $2 Billion In Nebius To Fund AI Data Center Buildout",
+          "url": "https://www.investors.com/news/technology/nvidia-stock-nebius-investment-partnership/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-11T14:01:22Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Anthropic says Pentagon ban could cost it billions, Nebius stock rises on Nvidia investment",
+          "url": "https://finance.yahoo.com/news/live/tech-stocks-today-anthropic-says-pentagon-ban-could-cost-it-billions-nebius-stock-rises-on-nvidia-investment-134456628.html",
+          "source": "yahoo",
+          "published": "2026-03-11T13:44:56Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: S&P 500 and Nasdaq rise, Dow slips amid fresh inflation data, continued Iran fallout",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-sp-500-and-nasdaq-rise-dow-slips-amid-fresh-inflation-data-continued-iran-fallout-133543921.html",
+          "source": "yahoo",
+          "published": "2026-03-11T13:35:43Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "UPS navigates Amazon draw down in hard pivot to premium services",
+          "url": "https://finance.yahoo.com/news/ups-navigates-amazon-draw-down-133445533.html",
+          "source": "yahoo",
+          "published": "2026-03-11T13:34:45Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "CPI Inflation In Line As Rent Slows, Energy Heats Up; S&P 500 Futures Slip (Live Coverage)",
+          "url": "https://www.investors.com/news/economy/cpi-inflation-oil-prices-tariffs-federal-reserve-sp-500/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-11T13:06:12Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Look! Up In the Sky! It\u2019s Amazon\u2019s Flywheel in Action",
+          "url": "https://finance.yahoo.com/news/look-sky-amazon-flywheel-action-135033629.html",
+          "source": "yahoo",
+          "published": "2026-03-11T13:50:33Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta rolls out in-house AI chips weeks after massive Nvidia, AMD deals",
+          "url": "https://www.cnbc.com/2026/03/11/meta-ai-mtia-chip-data-center.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nebius stock pops 14% on Nvidia $2 billion investment announcement",
+          "url": "https://www.cnbc.com/2026/03/11/nebius-nvidia-ai-cloud.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 13:43:23 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's Zoox partners with Uber to reach more robotaxi riders \u2014 first in Las Vegas, then LA",
+          "url": "https://www.cnbc.com/2026/03/11/uber-amazon-zoox-partnership-robotaxi-demand.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon wins court order to block Perplexity's AI shopping agent",
+          "url": "https://www.cnbc.com/2026/03/10/amazon-wins-court-order-to-block-perplexitys-ai-shopping-agent.html",
+          "source": "cnbc_top",
+          "published": "Tue, 10 Mar 2026 20:39:33 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI chipmaker Cerebras namedropped by Oracle, alongside Nvidia and AMD",
+          "url": "https://www.cnbc.com/2026/03/10/ai-chipmaker-cerebras-namedropped-by-oracle-alongside-nvidia-and-amd-.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 00:48:14 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft backs Anthropic in Pentagon blacklist battle, urges temporary restraining order",
+          "url": "https://www.cnbc.com/2026/03/10/microsoft-says-court-should-temporarily-block-pentagon-ban-anthropic.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 10:53:52 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta rolls out in-house AI chips weeks after massive Nvidia, AMD deals",
+          "url": "https://www.cnbc.com/2026/03/11/meta-ai-mtia-chip-data-center.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nebius stock pops 14% on Nvidia $2 billion investment announcement",
+          "url": "https://www.cnbc.com/2026/03/11/nebius-nvidia-ai-cloud.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 13:43:23 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's Zoox partners with Uber to reach more robotaxi riders \u2014 first in Las Vegas, then LA",
+          "url": "https://www.cnbc.com/2026/03/11/uber-amazon-zoox-partnership-robotaxi-demand.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI chipmaker Cerebras namedropped by Oracle, alongside Nvidia and AMD",
+          "url": "https://www.cnbc.com/2026/03/10/ai-chipmaker-cerebras-namedropped-by-oracle-alongside-nvidia-and-amd-.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 00:48:14 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft backs Anthropic in Pentagon blacklist battle, urges temporary restraining order",
+          "url": "https://www.cnbc.com/2026/03/10/microsoft-says-court-should-temporarily-block-pentagon-ban-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 10:53:52 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon wins court order to block Perplexity's AI shopping agent",
+          "url": "https://www.cnbc.com/2026/03/10/amazon-wins-court-order-to-block-perplexitys-ai-shopping-agent.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 20:39:33 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google deepens Pentagon AI push after Anthropic sues Trump administration",
+          "url": "https://www.cnbc.com/2026/03/10/google-deepens-pentagon-ai-push-after-anthropic-sues-trump-admin.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 17:08:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia makes 'significant investment' in Mira Murati's Thinking Machines Lab",
+          "url": "https://www.cnbc.com/2026/03/10/nvidia-mira-murati-thinking-machines-lab-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 19:04:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon convenes 'deep dive' internal meeting to address outages",
+          "url": "https://www.cnbc.com/2026/03/10/amazon-plans-deep-dive-internal-meeting-address-ai-related-outages.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 22:56:29 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Oracle earnings will show whether its expensive AI bet is starting to pay off",
+          "url": "https://www.cnbc.com/2026/03/10/oracle-orcl-stock-earnings-ai-data-center.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 13:01:52 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Kevin Mandia sold his cybersecurity company to Google in 2022. He has a fresh $190 million for a new venture",
+          "url": "https://www.cnbc.com/2026/03/10/kevin-mandia-raised-190-million-armadin-after-prior-sale-to-google.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 13:36:12 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia plans open-source AI agent platform \u2018NemoClaw\u2019 for enterprises: Wired",
+          "url": "https://www.cnbc.com/2026/03/10/nvidia-open-source-ai-agent-platform-nemoclaw-wired-agentic-tools-openclaw-clawdbot-moltbot.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 07:09:24 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic was the Pentagon's choice for AI. Now it's banned and experts are worried",
+          "url": "https://www.cnbc.com/2026/03/09/anthropic-was-the-pentagons-choice-for-ai-now-its-banned-and-experts-are-worried.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 09 Mar 2026 22:01:05 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Retail Sales",
+        "inflation"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "session amid reports of potential strategic petroleum reserve releases even as President Trump warned Iran against mining the Strait of Hormuz.",
+        "Equities struggled to find direction amid the energy market turbulence, while the U.S.",
+        "dollar traded choppy before closing mixed but arguably net higher against most major currencies as geopolitical risk appetite fluctuated throughout the session.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-10"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Microsoft BitNet: 100B Param 1-Bit model for local CPUs",
+          "url": "https://github.com/microsoft/BitNet",
+          "hn_score": 99,
+          "comments": 60,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "AI Agent Hacks McKinsey",
+          "url": "https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform",
+          "hn_score": 38,
+          "comments": 11,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "TADA: Fast, Reliable Speech Generation Through Text-Acoustic Synchronization",
+          "url": "https://www.hume.ai/blog/opensource-tada",
+          "hn_score": 73,
+          "comments": 19,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Yann LeCun raises $1B to build AI that understands the physical world",
+          "url": "https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/",
+          "hn_score": 527,
+          "comments": 441,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Debian decides not to decide on AI-generated contributions",
+          "url": "https://lwn.net/SubscriberLink/1061544/125f911834966dd0/",
+          "hn_score": 353,
+          "comments": 266,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Launch HN: RunAnywhere (YC W26) \u2013 Faster AI Inference on Apple Silicon",
+          "url": "https://github.com/RunanywhereAI/rcli",
+          "hn_score": 227,
+          "comments": 133,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": [
+            "AI",
+            "inference"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 10,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 9,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 36,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Neutral"
+  }
+}

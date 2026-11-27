@@ -250,7 +250,7 @@ def main():
     try:
         base_url, auth_header = load_config()
         print(f"Config loaded. Gateway: {base_url}")
-        print(f"Auth: {auth_header[:20]}...")
+        print(f"Authorization header set ({len(auth_header)} chars)")
     except Exception as e:
         print(f"ERROR loading config: {e}", file=sys.stderr)
         sys.exit(1)

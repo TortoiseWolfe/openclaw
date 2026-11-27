@@ -1,0 +1,334 @@
+{
+  "date": "2026-05-18",
+  "lastUpdated": "2026-05-18T12:50:37.620192+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 18,
+      "matched": [
+        {
+          "title": "Amazon's Big Rally Takes A Breather Just Short Of $3 Trillion Club. What To Watch Next.",
+          "url": "https://www.investors.com/news/technology/amazon-stock-3-trillion-market-cap-milestone-nvidia-earnings/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-18T12:00:32Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Billionaire Michael Saylor said he would never sell bitcoin. After 3 straight quarterly losses, he's changing his mind",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/billionaire-michael-saylor-said-never-120000186.html",
+          "source": "yahoo",
+          "published": "2026-05-18T12:00:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Earnings live updates: Nvidia and Walmart, 2 important bellwethers for the US economy, report results this week",
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-nvidia-and-walmart-2-important-bellwethers-for-the-us-economy-report-results-this-week-115413665.html",
+          "source": "yahoo",
+          "published": "2026-05-18T11:54:13Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures slide as oil jumps amid US-Iran tensions",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-may-18-earnings-nvidia-232705005.html",
+          "source": "yahoo",
+          "published": "2026-05-17T23:27:05Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, May 18, 2026: Prices are down and moving lower this morning",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-may-18-2026-prices-are-down-and-moving-lower-this-morning-114100108.html",
+          "source": "yahoo",
+          "published": "2026-05-18T11:41:00Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "The S&P 500 is blowing minds and defying the odds: Stat of the day",
+          "url": "https://finance.yahoo.com/markets/article/the-sp-500-is-blowing-minds-and-defying-the-odds-stat-of-the-day-113406834.html",
+          "source": "yahoo",
+          "published": "2026-05-18T11:34:06Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tech stocks today: Investors gear up for Nvidia earnings, OpenAI v. Elon Musk trial decision",
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-investors-gear-up-for-nvidia-earnings-openai-v-elon-musk-trial-decision-111103917.html",
+          "source": "yahoo",
+          "published": "2026-05-18T11:11:03Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Prediction: Wall Street May Be Sleeping on Google\u2019s Next Big Move",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/prediction-wall-street-may-sleeping-120935268.html",
+          "source": "yahoo",
+          "published": "2026-05-18T12:09:35Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin\u2019s $100,000 Target Hits a Wall as Market Reality Undercuts 3 Key Bullish Catalysts",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-100-000-target-hits-120812484.html",
+          "source": "yahoo",
+          "published": "2026-05-18T12:08:12Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Berkshire has revamped its portfolio \u2014 here's how the new stocks are trading",
+          "url": "https://www.cnbc.com/2026/05/18/berkshire-portfolio-revamp-delta-airlines-macys-unitedhealth.html",
+          "source": "cnbc_top",
+          "published": "Mon, 18 May 2026 12:41:24 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump touted Palantir on Truth Social after buying the company's stock, records show",
+          "url": "https://www.cnbc.com/2026/05/15/trump-palantir-stock-truth-social.html",
+          "source": "cnbc_top",
+          "published": "Fri, 15 May 2026 20:28:29 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "S&P 500 manages to extend weekly win streak despite anticlimactic Trump-Xi summit",
+          "url": "https://www.cnbc.com/2026/05/16/sp-500-manages-to-extend-weekly-win-streak-despite-anticlimactic-trump-xi-summit.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 16 May 2026 21:35:43 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump touted Palantir on Truth Social after buying the company's stock, records show",
+          "url": "https://www.cnbc.com/2026/05/15/trump-palantir-stock-truth-social.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 20:28:29 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "What you need to know about Nvidia competitor Cerebras after wild IPO",
+          "url": "https://www.cnbc.com/2026/05/15/nvidia-cerebras-stock-price-ipo.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 20:05:55 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bill Ackman gets into Microsoft for reasons similar to Cramer's arguments to hold it",
+          "url": "https://www.cnbc.com/2026/05/15/bill-ackman-gets-into-microsoft-for-reasons-similar-to-cramers-arguments-to-hold-it.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 18:26:23 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump went big on tech stocks in first quarter of 2026, new filings show",
+          "url": "https://www.cnbc.com/2026/05/15/trump-stock-trade-tech-oge.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 19:34:05 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer backs Nvidia selling AI chips in China \u2014 but says the stock can thrive either way",
+          "url": "https://www.cnbc.com/2026/05/14/cramer-backs-nvidia-selling-ai-chips-in-china.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 14 May 2026 23:15:07 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Where Cerebras' monster debut puts it among tech's biggest IPOs",
+          "url": "https://www.cnbc.com/2026/05/14/cerebras-cbrs-ipo-stock-meta-facebook-alibaba.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 16:36:50 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "Eric Schmidt speech about AI booed during graduation",
+          "url": "https://www.nbcnews.com/tech/tech-news/former-google-ceo-booed-graduation-speech-ai-rcna345585",
+          "hn_score": 136,
+          "comments": 82,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Linux security mailing list 'almost unmanageable'",
+          "url": "https://www.theregister.com/security/2026/05/18/linus-torvalds-says-ai-powered-bug-hunters-have-made-linux-security-mailing-list-almost-entirely-unmanageable/5241633",
+          "hn_score": 13,
+          "comments": 2,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "CUDA Books",
+          "url": "https://github.com/alternbits/awesome-cuda-books",
+          "hn_score": 207,
+          "comments": 52,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Why is Google Maps back to showing old satellite images of Altadena?",
+          "url": "https://www.reddit.com/r/pasadena/s/94BHlkE84r",
+          "hn_score": 44,
+          "comments": 21,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "SPY": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 22,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

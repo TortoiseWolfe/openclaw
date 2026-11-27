@@ -1,0 +1,293 @@
+{
+  "date": "2026-05-27",
+  "lastUpdated": "2026-05-27T12:54:07.976387+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 104,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Stock market today: S&P 500, Nasdaq futures rise as tech rally continues, oil falls amid US-Iran talks",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-sp-500-nasdaq-futures-rise-as-tech-rally-continues-oil-falls-amid-us-iran-talks-222255942.html",
+          "source": "yahoo",
+          "published": "2026-05-26T22:22:55Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Dow Jones Futures Rise After S&P 500, Nasdaq Hit Highs; 5 AI Stocks In Buy Areas",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp-500-nasdaq-micron-1-trillion/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-27T12:06:27Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Price Prediction: Nvidia Stock Will Hit $300 On This Date",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/price-prediction-nvidia-stock-hit-122930636.html",
+          "source": "yahoo",
+          "published": "2026-05-27T12:29:30Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Goldman Sachs Moves Away From Apple Card And Into Buy Range",
+          "url": "https://www.investors.com/research/breakout-stocks-technical-analysis/goldman-stock-goldman-sachs-transitions-apple-card-chase-bank-markets/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-27T12:00:32Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Tuesday, May 26, 2026: Prices hold despite U.S.-Israel airstrikes",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-may-26-2026-prices-hold-despite-us-israel-airstrikes-133728864.html",
+          "source": "yahoo",
+          "published": "2026-05-26T13:37:28Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Taiwan chip stocks climb after Nvidia announces $150 billion spending plans",
+          "url": "https://www.cnbc.com/2026/05/27/nvidia-taiwan-investment-150-billion-spending.html",
+          "source": "cnbc_top",
+          "published": "Wed, 27 May 2026 09:41:14 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's surge to record highs faces a major test next month. What it must do to pass",
+          "url": "https://www.cnbc.com/2026/05/26/apples-surge-to-record-highs-faces-a-major-test-next-month-what-it-must-do-to-pass.html",
+          "source": "cnbc_top",
+          "published": "Tue, 26 May 2026 20:47:39 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Chip stocks continue to surge. Here's how to buy into the trend for less",
+          "url": "https://www.cnbc.com/2026/05/26/chip-stocks-continue-to-surge-heres-how-to-buy-into-the-trend-for-less.html",
+          "source": "cnbc_top",
+          "published": "Tue, 26 May 2026 16:30:03 GMT",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Taiwan chip stocks climb after Nvidia announces $150 billion spending plans",
+          "url": "https://www.cnbc.com/2026/05/27/nvidia-taiwan-investment-150-billion-spending.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 27 May 2026 09:41:14 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's surge to record highs faces a major test next month. What it must do to pass",
+          "url": "https://www.cnbc.com/2026/05/26/apples-surge-to-record-highs-faces-a-major-test-next-month-what-it-must-do-to-pass.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 26 May 2026 20:47:39 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia stock faces a key level that could make or break where it goes next",
+          "url": "https://www.cnbc.com/2026/05/26/nvidia-stock-faces-a-key-level-that-could-make-or-break-where-it-goes-next.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 26 May 2026 15:25:21 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft\u2019s new responsible tech lead on how to humanize high-speed AI development",
+          "url": "https://www.cnbc.com/2026/05/23/microsofts-new-responsible-tech-lead-on-high-speed-ai-development.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 23 May 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Reddit stock drops almost 6% after Meta launches standalone app for online forums",
+          "url": "https://www.cnbc.com/2026/05/22/reddit-stock-drops-after-meta-launches-forum-app.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 20:17:09 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft\u2019s GitHub was positioned to win the AI coding race. Outages got in the way",
+          "url": "https://www.cnbc.com/2026/05/22/microsoft-was-positioned-to-win-in-ai-coding-outages-got-in-the-way.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 15:39:28 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: What you might have missed in Nvidia\u2019s earnings \u2014 a $200 billion opportunity and edge computing",
+          "url": "https://www.cnbc.com/2026/05/22/the-tech-download-what-you-might-have-missed-in-nvidias-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 14:00:52 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "I'm Tired of Talking to AI",
+          "url": "https://orchidfiles.com/im-tired-of-ai-generated-answers/",
+          "hn_score": 453,
+          "comments": 269,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "What Is a Direct Attach Copper (DAC) Cable",
+          "url": "https://www.servethehome.com/what-is-a-direct-attach-copper-dac-cable/",
+          "hn_score": 37,
+          "comments": 16,
+          "matched_symbols": [
+            "GBPUSD"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Matrix Multiplications on GPUs Run Faster When Given \"Predictable\" Data",
+          "url": "https://www.thonking.ai/p/strangely-matrix-multiplications",
+          "hn_score": 3,
+          "comments": 1,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "I built a Git-tracked book production pipeline",
+          "url": "https://www.djspeckhals.com/posts/2026-05-22-how-i-bypassed-adobe-and-microsoft-to-build-a-git-tracked-book-production-pipeline/",
+          "hn_score": 257,
+          "comments": 64,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 19,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

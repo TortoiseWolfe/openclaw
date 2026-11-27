@@ -1,0 +1,340 @@
+{
+  "date": "2026-03-02",
+  "lastUpdated": "2026-03-02T13:50:42.450188+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 19,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures sink while oil prices jump as Iran attacks jolt markets",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-sink-while-oil-prices-jump-as-iran-attacks-jolt-markets-235000604.html",
+          "source": "yahoo",
+          "published": "2026-03-01T23:50:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon\u2019s Extreme AI Spending Sends Stock to Worst Month in Years",
+          "url": "https://finance.yahoo.com/news/amazon-extreme-ai-spending-sends-123002260.html",
+          "source": "yahoo",
+          "published": "2026-03-02T12:30:02Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Tumbles 500 Points On U.S.-Iran Attacks; Shares Of Nvidia, Tesla Sell Off (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-attacks-nvidia-tesla/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-02T13:01:31Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "2 S&P 500 Stocks Turn $10,000 Into $36,541 In Two Months",
+          "url": "https://www.investors.com/etfs-and-funds/sectors/sp500-stocks-turn-10000-into-in-two-months-2026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-02T12:26:41Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Analyst Report: Dell Technologies Inc",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_5957_AnalystReport_1772454439000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-03-02T12:27:19Z",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market Digest: ENB, AEP, EFX, LOW, PFE, BCE, PINS, DELL",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_46293_MarketSummary_1772454439000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-03-02T12:27:19Z",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia to invest $4 billion in two photonics companies",
+          "url": "https://www.cnbc.com/2026/03/02/nvidia-investment-coherent-lumentum.html",
+          "source": "cnbc_top",
+          "published": "Mon, 02 Mar 2026 13:43:26 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic's Claude hits No. 1 on Apple's top free apps list after Pentagon rejection",
+          "url": "https://www.cnbc.com/2026/02/28/anthropics-claude-apple-apps.html",
+          "source": "cnbc_top",
+          "published": "Sat, 28 Feb 2026 23:37:56 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "China's Honor shows off smartphone with robotic camera arm and teases a humanoid robot",
+          "url": "https://www.cnbc.com/2026/03/01/honor-robot-phone-magic-v6-foldable-launch-mwc.html",
+          "source": "cnbc_top",
+          "published": "Sun, 01 Mar 2026 14:15:41 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google wants Intrinsic to be 'Android of robotics' as it pushes into physical AI",
+          "url": "https://www.cnbc.com/2026/02/28/google-wants-intrinsic-to-be-android-for-robots-moves-into-physical-ai.html",
+          "source": "cnbc_top",
+          "published": "Sat, 28 Feb 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia to invest $4 billion in two photonics companies",
+          "url": "https://www.cnbc.com/2026/03/02/nvidia-investment-coherent-lumentum.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 02 Mar 2026 13:43:26 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "China's Honor shows off smartphone with robotic camera arm and teases a humanoid robot",
+          "url": "https://www.cnbc.com/2026/03/01/honor-robot-phone-magic-v6-foldable-launch-mwc.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 01 Mar 2026 14:15:41 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic's Claude hits No. 1 on Apple's top free apps list after Pentagon rejection",
+          "url": "https://www.cnbc.com/2026/02/28/anthropics-claude-apple-apps.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 28 Feb 2026 23:37:56 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google wants Intrinsic to be 'Android of robotics' as it pushes into physical AI",
+          "url": "https://www.cnbc.com/2026/02/28/google-wants-intrinsic-to-be-android-for-robots-moves-into-physical-ai.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 28 Feb 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "How Amazon's massive stake in OpenAI could boost its AI and cloud businesses",
+          "url": "https://www.cnbc.com/2026/02/27/amazon-open-ai-cloud-jassy-altman.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Feb 2026 22:38:27 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia's stock wraps up tough week as Wall Street focuses more on competition than growth",
+          "url": "https://www.cnbc.com/2026/02/27/nvidia-wraps-tough-week-as-investors-focus-on-competition-over-growth.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Feb 2026 22:27:29 GMT",
+          "matched_symbols": [
+            "AMD",
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple appears to be sitting out the AI arms race. Will the strategy work?",
+          "url": "https://www.cnbc.com/2026/02/27/apple-appears-to-be-sitting-out-the-ai-arms-race-will-the-strategy-work.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Feb 2026 15:15:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI announces $110 billion funding round with backing from Amazon, Nvidia, SoftBank",
+          "url": "https://www.cnbc.com/2026/02/27/open-ai-funding-round-amazon.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 27 Feb 2026 15:24:28 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer isn't fretting Nvidia's post-earnings sell-off. Here's how he would respond",
+          "url": "https://www.cnbc.com/2026/02/26/how-jim-cramer-would-respond-to-nvidias-earnings-sell-off.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 26 Feb 2026 23:38:55 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "Microsoft bans the word \"Microslop\" on its Discord, then locks the server",
+          "url": "https://www.windowslatest.com/2026/03/02/microsoft-gets-tired-of-microslop-bans-the-word-on-its-discord-then-locks-the-server-after-backlash/",
+          "hn_score": 294,
+          "comments": 112,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "If AI writes code, should the session be part of the commit?",
+          "url": "https://github.com/mandel-macaque/memento",
+          "hn_score": 334,
+          "comments": 306,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Right-sizes LLM models to your system's RAM, CPU, and GPU",
+          "url": "https://github.com/AlexsJones/llmfit",
+          "hn_score": 195,
+          "comments": 40,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU",
+            "LLM"
+          ]
+        },
+        {
+          "title": "Inside the M4 Apple Neural Engine, Part 1: Reverse Engineering",
+          "url": "https://maderix.substack.com/p/inside-the-m4-apple-neural-engine",
+          "hn_score": 11,
+          "comments": 0,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Evolving descriptive text of mental content from human brain activity",
+          "url": "https://www.bbc.com/future/article/20260226-how-ai-can-read-your-thoughts",
+          "hn_score": 31,
+          "comments": 29,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "DELL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

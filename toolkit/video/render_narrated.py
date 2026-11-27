@@ -50,7 +50,10 @@ def main():
     elif args.narration_file:
         narration_path = os.path.realpath(args.narration_file)
         allowed_dirs = ["/home/node/clawd-twitch", "/app/toolkit", "/tmp"]
-        if not any(narration_path.startswith(d) for d in allowed_dirs):
+        if not any(
+            os.path.commonpath([os.path.realpath(d), narration_path]) == os.path.realpath(d)
+            for d in allowed_dirs
+        ):
             print(f"ERROR: narration file must be within allowed directories: {allowed_dirs}", file=sys.stderr)
             sys.exit(1)
         with open(narration_path) as f:

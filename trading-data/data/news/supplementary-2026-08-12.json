@@ -1,0 +1,319 @@
+{
+  "date": "2026-08-12",
+  "lastUpdated": "2026-08-12T12:50:36.528859+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 2,
+      "articles_found": 60,
+      "articles_matched": 16,
+      "matched": [
+        {
+          "title": "Meta and Nvidia plant 'very firm flag' in open-weight AI race led by Chinese Labs",
+          "url": "https://www.cnbc.com/2026/08/12/meta-nvidia-open-weight-ai-race-china.html",
+          "source": "cnbc_top",
+          "published": "Wed, 12 Aug 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Jensen Huang\u2019s $500 billion AI financing plan faces a big risk from China",
+          "url": "https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html",
+          "source": "cnbc_top",
+          "published": "Tue, 11 Aug 2026 21:01:13 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google\u2019s new AI boss inherits a race to catch OpenAI and Anthropic",
+          "url": "https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html",
+          "source": "cnbc_top",
+          "published": "Wed, 12 Aug 2026 05:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer says ask yourself these 3 questions to figure out what's really happening in the market",
+          "url": "https://www.cnbc.com/2026/08/11/cramer-questions-figure-out-market.html",
+          "source": "cnbc_top",
+          "published": "Tue, 11 Aug 2026 22:15:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street just endorsed Jensen Huang's 'big concept' for AI. What now?",
+          "url": "https://www.cnbc.com/2026/08/11/wall-street-endorsed-jensen-huangs-big-concept-for-ai-what-now.html",
+          "source": "cnbc_top",
+          "published": "Tue, 11 Aug 2026 14:11:05 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Riot Platforms strikes deal with Anthropic as bitcoin miners shift focus to AI infrastructure",
+          "url": "https://www.cnbc.com/2026/08/11/riot-platforms-signs-anthropic-deal-as-miners-shift-to-ai-infrastructure-.html",
+          "source": "cnbc_top",
+          "published": "Tue, 11 Aug 2026 19:08:16 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta and Nvidia plant 'very firm flag' in open-weight AI race led by Chinese Labs",
+          "url": "https://www.cnbc.com/2026/08/12/meta-nvidia-open-weight-ai-race-china.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 12 Aug 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google\u2019s new AI boss inherits a race to catch OpenAI and Anthropic",
+          "url": "https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 12 Aug 2026 05:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer says ask yourself these 3 questions to figure out what's really happening in the market",
+          "url": "https://www.cnbc.com/2026/08/11/cramer-questions-figure-out-market.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 22:15:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Jensen Huang\u2019s $500 billion AI financing plan faces a big risk from China",
+          "url": "https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 21:01:13 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Riot Platforms strikes deal with Anthropic as bitcoin miners shift focus to AI infrastructure",
+          "url": "https://www.cnbc.com/2026/08/11/riot-platforms-signs-anthropic-deal-as-miners-shift-to-ai-infrastructure-.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 19:08:16 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia unveils first open-source AI model since CEO Jensen Huang entered the chat",
+          "url": "https://www.cnbc.com/2026/08/11/nvidia-releases-nemotron-3point5-lightning-open-source-ai-model-.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's 'investible asset,' U.S. oil reserve shrinks, Trump's vaccine order and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/08/11/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 13:24:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street just endorsed Jensen Huang's 'big concept' for AI. What now?",
+          "url": "https://www.cnbc.com/2026/08/11/wall-street-endorsed-jensen-huangs-big-concept-for-ai-what-now.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 11 Aug 2026 14:11:05 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia lines up $500 billion in financing as CEO Jensen Huang tells CNBC his chips are \u2018investable asset\u2019",
+          "url": "https://www.cnbc.com/2026/08/10/nvidia-wall-street-asset-managers-500-billion-ai-push.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 10 Aug 2026 22:09:00 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Don't let a Wall Street analyst's downgrade of Apple scare you out of the stock",
+          "url": "https://www.cnbc.com/2026/08/10/dont-let-a-wall-street-analysts-downgrade-of-apple-scare-you-out-of-the-stock.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 10 Aug 2026 18:06:55 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        }
+      ],
+      "errors": [
+        "yahoo: <urlopen error [Errno -2] Name or service not known>"
+      ]
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "<urlopen error [Errno -2] Name or service not known>"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 8,
+      "matched": [
+        {
+          "title": "Facebook is paying controversial creators to produce rage-bait content",
+          "url": "https://www.abc.net.au/news/2026-08-06/ragebait-how-facebook-is-paying-controversial-creators/106940696",
+          "hn_score": 232,
+          "comments": 126,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Facebook ads are so hard to block that uBlock Origin stopped filtering them",
+          "url": "https://www.neowin.net/news/facebook-ads-are-so-hard-to-block-that-ublock-origin-stopped-filtering-them/",
+          "hn_score": 41,
+          "comments": 14,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Launch HN: Discovered Materials (YC P26) \u2013 AI agents to discover new materials",
+          "url": "https://discoveredmaterials.com/research/",
+          "hn_score": 31,
+          "comments": 8,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "OpenAI\u2019s head of ethics leaves less than a year after joining",
+          "url": "https://www.ft.com/content/e49dfb75-f841-4466-a577-f7aaff8779a0",
+          "hn_score": 465,
+          "comments": 441,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Stealing Reasoning Traces from Proprietary LLM APIs",
+          "url": "https://stolen-thoughts.com/",
+          "hn_score": 646,
+          "comments": 290,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Nvidia Nemotron 3.5 Lightning and NeMo Switchyard",
+          "url": "https://blogs.nvidia.com/blog/nemotron-lightning-switchyard-rtx-dgx/",
+          "hn_score": 241,
+          "comments": 123,
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "NVIDIA"
+          ]
+        },
+        {
+          "title": "Grok Bot",
+          "url": "https://x.ai/bot",
+          "hn_score": 310,
+          "comments": 285,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: iPhone app takes simultaneous images from 2 lenses, fuses into 1 photo",
+          "url": "https://photosynthesis.camera",
+          "hn_score": 301,
+          "comments": 282,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 12,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "META": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

@@ -1,0 +1,498 @@
+{
+  "date": "2026-06-02",
+  "lastUpdated": "2026-06-02T12:56:46.748881+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 26,
+      "matched": [
+        {
+          "title": "Tech stocks today: Google stock falls on plans to raise $80 billion, Nvidia CEO blesses Marvell stock",
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-google-stock-falls-on-plans-to-raise-80-billion-nvidia-ceo-blesses-marvell-stock-100000832.html",
+          "source": "yahoo",
+          "published": "2026-06-01T10:00:00Z",
+          "matched_symbols": [
+            "GOOGL",
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google $80 Billion Equity Offering Comes Amid Rising Debt, Slowed Buybacks",
+          "url": "https://www.investors.com/news/technology/google-stock-alphabet-artificial-intelligence-80-billion-capital-raise/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-06-02T12:23:29Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Falls With U.S.-Iran Talks 'Continuing'; AI Name Marvell Tech Soars By 19% (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-talks-marvell-stock-mrvl/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-06-02T12:18:49Z",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Analysis-How a nudge from Nvidia propelled frugal Micron into the AI boom and a $1 trillion market cap",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/analysis-nudge-nvidia-propelled-frugal-120200713.html",
+          "source": "yahoo",
+          "published": "2026-06-02T12:02:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
+          "url": "https://finance.yahoo.com/economy/live/stock-market-today-tuesday-june-2-ai-231755175.html",
+          "source": "yahoo",
+          "published": "2026-06-01T23:17:55Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, June 1, 2026: Prices falling this morning",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-june-1-2026-prices-falling-this-morning-141555512.html",
+          "source": "yahoo",
+          "published": "2026-06-01T14:15:55Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's new PC chips represent CEO Huang's bid to win at every layer of AI stack",
+          "url": "https://www.cnbc.com/2026/06/02/nvidias-new-pc-chips-are-ceos-bid-to-own-every-part-of-ai-stack.html",
+          "source": "cnbc_top",
+          "published": "Tue, 02 Jun 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Alphabet plans to raise $80 billion from stock sales to fund AI build-out",
+          "url": "https://www.cnbc.com/2026/06/01/alphabet-to-raise-80-billion-from-stock-sales-to-fund-ai-buildout.html",
+          "source": "cnbc_top",
+          "published": "Tue, 02 Jun 2026 11:38:51 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Berkshire Hathaway invests extra $10 billion in Alphabet, deepening bet on AI",
+          "url": "https://www.cnbc.com/2026/06/01/berkshire-hathaway-alphabet-investment.html",
+          "source": "cnbc_top",
+          "published": "Mon, 01 Jun 2026 21:18:47 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft and Google are late to AI coding, but 'absolutely critical' they compete for growth",
+          "url": "https://www.cnbc.com/2026/06/01/microsoft-and-google-take-on-anthropic-and-openai-in-ai-coding-models.html",
+          "source": "cnbc_top",
+          "published": "Mon, 01 Jun 2026 21:47:01 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon's four-day Prime Day event starts June 23, as shoppers battle inflation",
+          "url": "https://www.cnbc.com/2026/06/02/amazon-prime-day-shopping-inflation.html",
+          "source": "cnbc_top",
+          "published": "Tue, 02 Jun 2026 05:34:07 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Alphabet's stock sale, Iran negotiations, Anthropic's IPO plans and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/02/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 02 Jun 2026 12:09:05 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's new PC chips represent CEO Huang's bid to win at every layer of AI stack",
+          "url": "https://www.cnbc.com/2026/06/02/nvidias-new-pc-chips-are-ceos-bid-to-own-every-part-of-ai-stack.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 02 Jun 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia's Jensen Huang says Marvell could be the next trillion-dollar company; stock jumps 18%",
+          "url": "https://www.cnbc.com/2026/06/02/jensen-huang-nvidia-marvell-technology-trillion-dollar-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 02 Jun 2026 12:55:39 GMT",
+          "matched_symbols": [
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's four-day Prime Day event starts June 23, as shoppers battle inflation",
+          "url": "https://www.cnbc.com/2026/06/02/amazon-prime-day-shopping-inflation.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 02 Jun 2026 05:34:07 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer says Jensen Huang\u2019s Computex keynote revealed more winners in the AI boom",
+          "url": "https://www.cnbc.com/2026/06/01/jim-cramer-jensen-huang-computex-keynote-revealed-winners-ai-boom.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 22:20:04 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Alphabet plans to raise $80 billion from stock sales to fund AI build-out",
+          "url": "https://www.cnbc.com/2026/06/01/alphabet-to-raise-80-billion-from-stock-sales-to-fund-ai-buildout.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 02 Jun 2026 11:38:51 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Microsoft and Google are late to AI coding, but 'absolutely critical' they compete for growth",
+          "url": "https://www.cnbc.com/2026/06/01/microsoft-and-google-take-on-anthropic-and-openai-in-ai-coding-models.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 21:47:01 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's entrance into the PC market gives investors another reason to own the stock",
+          "url": "https://www.cnbc.com/2026/06/01/nvidias-entrance-into-the-pc-market-gives-investors-another-reason-to-own-the-stock.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 16:25:12 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy shares fall after selling $2.5 million in bitcoin, its first sale since 2022",
+          "url": "https://www.cnbc.com/2026/06/01/strategy-shares-fall-after-selling-2point5-million-in-bitcoin-its-first-sale-since-2022.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 21:10:20 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia, Meta and SLB rank among top companies in adopting AI, new study says",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-meta-walmart-among-top-companies-adopting-ai.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 17:58:25 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia picks Unitree for humanoid robot platform as Chinese startup eyes IPO",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-unitree-humanoid-robotics-system-researchers.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 05:45:45 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia-backed $5 billion AI company tells CNBC of major London expansion",
+          "url": "https://www.cnbc.com/2026/06/01/nvidia-backed-runway-london-expansion.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 06:13:44 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia jumps into PCs with new Arm-based chip debuting in laptops from Microsoft, Dell, HP",
+          "url": "https://www.cnbc.com/2026/05/31/nvidias-new-chip-to-power-fresh-line-of-windows-laptops-by-dell-hp.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 01 Jun 2026 16:09:43 GMT",
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jim Cramer says Dell\u2019s blowout quarter sets up a crucial week for AI stocks",
+          "url": "https://www.cnbc.com/2026/05/29/jim-cramer-says-dells-blowout-quarter-sets-up-a-crucial-week-for-ai-stocks.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 22:18:08 GMT",
+          "matched_symbols": [
+            "DELL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Software stocks wrap up best month since 2001 as talk of 'SaaSpocalypse' subsides",
+          "url": "https://www.cnbc.com/2026/05/29/software-stocks-wrap-best-month-since-2001-as-talk-of-saaspocalypse-.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 29 May 2026 21:14:04 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 9,
+      "matched": [
+        {
+          "title": "Apple rejected my dictation app for using the accessibility API",
+          "url": "https://www.mitmllc.com/blog/apple-rejected-my-dictation-app/",
+          "hn_score": 43,
+          "comments": 24,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Adafruit Receives Demand Letter from Fenwick Legal Counsel on Behalf of Flux.ai",
+          "url": "https://blog.adafruit.com/",
+          "hn_score": 171,
+          "comments": 53,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "The newest Instagram \u201cexploit\u201d is the goofiest I've seen",
+          "url": "https://www.0xsid.com/blog/meta-account-takeover-fiasco",
+          "hn_score": 1922,
+          "comments": 437,
+          "matched_symbols": [
+            "META"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Can the stockmarket swallow Anthropic, SpaceX and OpenAI?",
+          "url": "https://www.economist.com/finance-and-economics/2026/06/01/can-the-stockmarket-swallow-anthropic-spacex-and-openai",
+          "hn_score": 447,
+          "comments": 794,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Great Question (YC W21) Is Hiring Applied AI Interns",
+          "url": "https://www.ycombinator.com/companies/great-question/jobs/J5TNvQH-ai-engineer-intern",
+          "hn_score": 1,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "OpenAI frontier models and Codex are now available on AWS",
+          "url": "https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws/",
+          "hn_score": 298,
+          "comments": 106,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "AI Agent Guidelines for CS336 at Stanford",
+          "url": "https://github.com/stanford-cs336/assignment1-basics/blob/main/CLAUDE.md",
+          "hn_score": 438,
+          "comments": 140,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Microsoft builds MacBook Pro rival with NVIDIA-powered Surface Laptop Ultra",
+          "url": "https://www.windowslatest.com/2026/06/01/microsoft-builds-its-ultimate-macbook-pro-rival-with-the-nvidia-powered-surface-laptop-ultra/",
+          "hn_score": 238,
+          "comments": 497,
+          "matched_symbols": [
+            "MSFT",
+            "NVDA"
+          ],
+          "relevance_keywords": [
+            "NVIDIA"
+          ]
+        },
+        {
+          "title": "Launch HN: Expanse (YC P26) \u2013 Unlock Wasted GPU Capacity",
+          "url": "https://news.ycombinator.com/item?id=48356312",
+          "hn_score": 88,
+          "comments": 25,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "GOOGL": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MRVL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 12,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "DELL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 35,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

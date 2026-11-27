@@ -1,0 +1,374 @@
+{
+  "date": "2026-07-06",
+  "lastUpdated": "2026-07-06T12:50:44.552040+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 21,
+      "matched": [
+        {
+          "title": "Stock market today: Nasdaq leads S&P 500, Dow futures higher as tech jitters ease, oil slips",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-july-6-225645420.html",
+          "source": "yahoo",
+          "published": "2026-07-05T22:56:45Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Dow Jones Futures: Nasdaq Set To Reclaim Key Level; Apple, SpaceX, Sandisk, Robinhood In Focus",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-apple-spacex-sandisk-robinhood/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-07-06T12:13:03Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom, Apple extend chip supply deal through 2031",
+          "url": "https://finance.yahoo.com/technology/articles/broadcom-apple-extend-chip-partnership-120712484.html",
+          "source": "yahoo",
+          "published": "2026-07-06T12:07:12Z",
+          "matched_symbols": [
+            "AAPL",
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy Sells $216M in Bitcoin for Dividends Under 'BTC Monetization Program'",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/strategy-sells-216m-bitcoin-dividends-122800355.html",
+          "source": "yahoo",
+          "published": "2026-07-06T12:28:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Better Chip Stock: Intel Versus Taiwan Semiconductor",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/better-chip-stock-intel-versus-122000698.html",
+          "source": "yahoo",
+          "published": "2026-07-06T12:20:00Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "MicroStrategy Sold 7x More Bitcoin Than Reports Suggested",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/microstrategy-sold-7x-more-bitcoin-120834375.html",
+          "source": "yahoo",
+          "published": "2026-07-06T12:08:34Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Musk Calls It \u2018Utterly False,\u2019 But This SpaceX Rumor Should Terrify Every Apple Investor",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/musk-calls-utterly-false-spacex-120523743.html",
+          "source": "yahoo",
+          "published": "2026-07-06T12:05:23Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Versant agrees to buy golf simulator company Full Swing for $530 million",
+          "url": "https://www.cnbc.com/2026/07/06/versant-to-buy-golf-simulator-company-full-swing.html",
+          "source": "cnbc_top",
+          "published": "Mon, 06 Jul 2026 12:00:08 GMT",
+          "matched_symbols": [
+            "GBPUSD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's next-gen AI rack system delayed to 2028 on manufacturing snags, SemiAnalysis says",
+          "url": "https://www.cnbc.com/2026/07/06/nvidia-kyber-rack-system-delays-manufacturing-taiwan-rubin-chips-.html",
+          "source": "cnbc_top",
+          "published": "Mon, 06 Jul 2026 03:21:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta\u2019s woes deepen in India as child abuse ads on Instagram draw government ire",
+          "url": "https://www.cnbc.com/2026/07/06/meta-instagram-india-warning-whatsapp.html",
+          "source": "cnbc_top",
+          "published": "Mon, 06 Jul 2026 05:24:34 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple veteran's Chinese smart-glasses firm becomes unicorn as Tencent, Meituan fund rival to Meta",
+          "url": "https://www.cnbc.com/2026/07/06/apple-veteran-takes-on-meta-with-1-billion-smart-glasses-maker.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 10:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta\u2019s woes deepen in India as child abuse ads on Instagram draw government ire",
+          "url": "https://www.cnbc.com/2026/07/06/meta-instagram-india-warning-whatsapp.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 05:24:34 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's next-gen AI rack system delayed to 2028 on manufacturing snags, SemiAnalysis says",
+          "url": "https://www.cnbc.com/2026/07/06/nvidia-kyber-rack-system-delays-manufacturing-taiwan-rubin-chips-.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 03:21:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: Amazon\u2019s devices chief Panos Panay on tech giant's AI gadget push",
+          "url": "https://www.cnbc.com/2026/07/03/the-tech-download-amazon-devices-chief-panos-panay.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Jul 2026 12:41:22 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump bought Apple, Nvidia and other tech giants before tariff reversal fueled rebound",
+          "url": "https://www.cnbc.com/2026/07/02/trump-aapl-nvda-tariffs-disclosures.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 21:03:39 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon has deployed enough satellites to launch Leo service later this year",
+          "url": "https://www.cnbc.com/2026/07/02/amazon-has-deployed-enough-satellites-to-launch-leo-service-this-year.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 18:28:35 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft commits $2.5 billion and 6,000 employees to new AI implementation unit",
+          "url": "https://www.cnbc.com/2026/07/02/microsoft-commits-2point5-billion-6000-employees-ai-implementation-unit.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 13:00:02 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google loses fight over record $4.7 billion EU antitrust fine",
+          "url": "https://www.cnbc.com/2026/07/02/alphabet-google-android-eu-antitrust-fine-4-1-billion-euro-appeal.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 11:13:36 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple plans five new iPhones through 2027, eyes Chinese-made chips amid foldable push, reports say",
+          "url": "https://www.cnbc.com/2026/07/02/apple-foldable-iphone-production-memory-shortage-china-chipmakers-cxmt-ymtc.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 07:07:46 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon is designing its own AI chips for Echo, Fire TV and future devices, exec tells CNBC",
+          "url": "https://www.cnbc.com/2026/07/02/amazon-ai-chips-devices.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 05:10:51 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "We thought these 5 stocks could make a 2026 comeback. Here\u2019s our midyear scorecard",
+          "url": "https://www.cnbc.com/2026/07/01/we-thought-these-5-stocks-could-make-a-2026-comeback-heres-our-midyear-scorecard.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 01 Jul 2026 17:15:51 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "GPT-5.6 Sol Ultra will be in Codex",
+          "url": "https://twitter.com/thsottiaux/status/2073933490513752151",
+          "hn_score": 333,
+          "comments": 287,
+          "matched_symbols": [
+            "SOL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Zuckerberg says AI agent development going slower than expected",
+          "url": "https://www.reuters.com/business/zuckerberg-says-ai-agent-development-going-slower-than-expected-2026-07-02/",
+          "hn_score": 278,
+          "comments": 472,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "The Hitchhiker's Guide to Agentic AI",
+          "url": "https://arxiv.org/abs/2606.24937",
+          "hn_score": 11,
+          "comments": 1,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "New AI tutor achieves 0.71-1.30 SD effect size in Dartmouth course [pdf]",
+          "url": "https://intextbooks.science.uu.nl/workshop2026/files/itb26_s1s2.pdf",
+          "hn_score": 170,
+          "comments": 106,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SOL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 25,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

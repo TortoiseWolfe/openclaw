@@ -15,14 +15,38 @@ Usage:
 import json
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 # Default config path inside Docker container
 DEFAULT_CONFIG = "/home/node/.openclaw/config/mcporter.json"
 
 
+# MCP tools the toolkit actually calls. call_tool() refuses anything else so a
+# prompt-injected agent cannot use this client to reach arbitrary gateway tools.
+# Add a name here when a new toolkit script needs another tool.
+ALLOWED_TOOLS = frozenset({
+    "search_jobs",       # jobs/job_search.py
+    "browser_navigate",  # jobs/triage_saved_jobs.py
+})
+
+
 class MCPError(Exception):
     """Raised when an MCP protocol operation fails."""
+
+
+class _NoRedirect(HTTPRedirectHandler):
+    """Refuse every redirect: our requests carry a bearer token."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise MCPError(f"Refusing HTTP {code} redirect to {newurl} (Authorization header set)")
+
+
+_opener = build_opener(_NoRedirect)
+
+
+def urlopen(req, timeout=None):
+    """Open a request without ever following redirects."""
+    return _opener.open(req, timeout=timeout)
 
 
 class MCPClient:
@@ -70,6 +94,10 @@ class MCPClient:
         Returns the text content from the tool response.
         Raises MCPError if the tool returns an error or times out.
         """
+        if name not in ALLOWED_TOOLS:
+            raise ValueError(
+                f"MCP tool {name!r} is not allowed; permitted: {sorted(ALLOWED_TOOLS)}"
+            )
         self._req_id += 1
         req_id = self._req_id
 
@@ -159,6 +187,11 @@ class MCPClient:
                 except json.JSONDecodeError:
                     endpoint = data.strip()
                 endpoint = self._resolve_url(base_url, endpoint)
+                try:
+                    self._check_same_origin(base_url, endpoint)
+                except MCPError:
+                    resp.close()
+                    raise
                 return resp, endpoint
 
         resp.close()
@@ -195,32 +228,17 @@ class MCPClient:
         headers = {"Content-Type": "application/json", "Authorization": self._auth}
         self._post(self._endpoint, payload, headers)
 
-    def _post(self, url, payload, headers, max_redirects=3):
-        """POST with manual redirect following.
-
-        Auth headers are only forwarded to redirects on the same origin
-        to prevent bearer token leakage to third-party hosts.
-        """
-        original_origin = urlparse(url).netloc
-        for _ in range(max_redirects):
-            req = Request(url, data=payload, headers=headers)
-            try:
-                urlopen(req, timeout=30).read()
-                return
-            except HTTPError as e:
-                if e.code in (301, 302, 307, 308):
-                    location = e.headers.get("Location", "")
-                    if location:
-                        url = self._resolve_url(url, location)
-                        # Strip auth header if redirected to a different origin
-                        if urlparse(url).netloc != original_origin:
-                            headers = {k: v for k, v in headers.items()
-                                       if k.lower() != "authorization"}
-                        continue
-                if 200 <= e.code < 300:
-                    return  # 202 Accepted etc.
-                raise
-        raise MCPError("Too many redirects")
+    def _post(self, url, payload, headers):
+        """POST without following redirects (the request carries the auth header)."""
+        req = Request(url, data=payload, headers=headers)
+        try:
+            urlopen(req, timeout=30).read()
+        except HTTPError as e:
+            if 300 <= e.code < 400:
+                raise MCPError(f"Refusing HTTP {e.code} redirect from MCP gateway")
+            if 200 <= e.code < 300:
+                return  # 202 Accepted etc.
+            raise
 
     def _read_response(self, expected_id, max_lines=200):
         """Read SSE stream until we get a matching JSON-RPC response."""
@@ -240,6 +258,18 @@ class MCPClient:
                 except json.JSONDecodeError:
                     pass
         return None
+
+    @staticmethod
+    def _check_same_origin(base_url, endpoint):
+        """Raise MCPError unless endpoint has base_url's scheme, host and port."""
+        def origin(u):
+            p = urlparse(u)
+            default = {"http": 80, "https": 443}.get(p.scheme)
+            return (p.scheme, (p.hostname or "").lower(), p.port or default)
+        if origin(base_url) != origin(endpoint):
+            raise MCPError(
+                f"SSE endpoint {endpoint!r} does not match gateway origin {base_url!r}"
+            )
 
     @staticmethod
     def _resolve_url(base, url):

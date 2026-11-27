@@ -9,7 +9,7 @@ Usage:
     --date "2026-02-07" \
     --time "2:00 PM ET" \
     --next-title "React Hooks 101" \
-    --next-date "Feb 10, 2026" \
+    --next-date "2026-02-10" \
     --next-topic "Modern React state management" \
     --brand scripthammer
 
@@ -22,11 +22,16 @@ Renders via HTTP API to the remotion-renderer service (not npx directly).
 """
 
 import argparse
+import json
 import os
 import sys
+from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
 import remotion_client
+from path_utils import require_date, require_slug, safe_join
 
 RENDERS_DIR = os.environ.get("RENDERS_DIR", "/home/node/clawd-twitch/renders")
 # Path prefix as seen by the remotion-renderer container
@@ -85,15 +90,24 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Show what would be rendered")
     args = parser.parse_args()
 
+    try:
+        require_slug(args.episode, "--episode")
+        if args.series:
+            require_slug(args.series, "--series")
+        require_date(args.date)
+    except ValueError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+
     # Use brand-specific composition prefix
     prefix = "SH-" if args.brand == "scripthammer" else ""
     date_slug = args.date.replace("-", "")
 
     # Create episode subdirectory under series folder
     if args.series:
-        episode_dir = os.path.join(RENDERS_DIR, args.series, args.episode)
+        episode_dir = safe_join(RENDERS_DIR, args.series, args.episode)
     else:
-        episode_dir = os.path.join(RENDERS_DIR, args.episode)
+        episode_dir = safe_join(RENDERS_DIR, args.episode)
     os.makedirs(episode_dir, exist_ok=True)
 
     rendered_files = []
@@ -137,8 +151,13 @@ def main():
     if args.next_title:
         outro_props["nextEpisodeTitle"] = args.next_title
     if args.next_date:
-        # Format: "Feb 10, 2026 • 2:00 PM ET"
-        outro_props["nextEpisodeDate"] = f"{args.next_date} • {args.time}"
+        # Format ISO date "2026-03-04" → "Mar 4, 2026"
+        try:
+            dt = datetime.strptime(args.next_date, "%Y-%m-%d")
+            formatted_date = dt.strftime("%b %-d, %Y")
+        except ValueError:
+            formatted_date = args.next_date
+        outro_props["nextEpisodeDate"] = f"{formatted_date} • {args.time}"
     if args.next_topic:
         outro_props["nextEpisodeTopic"] = args.next_topic
 
@@ -150,6 +169,19 @@ def main():
     )
     if outro_output:
         rendered_files.append(("outro", outro_output))
+
+    # Write metadata sidecar for stale-date detection at playback time
+    meta_path = os.path.join(episode_dir, f"outro-{date_slug}.meta.json")
+    meta = {
+        "renderedAt": datetime.utcnow().isoformat() + "Z",
+        "episodeDate": args.date,
+        "nextDate": args.next_date or None,
+        "nextTitle": args.next_title or None,
+    }
+    if not args.dry_run:
+        with open(meta_path, "w") as f:
+            json.dump(meta, f, indent=2)
+            f.write("\n")
 
     # Summary
     print()

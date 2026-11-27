@@ -129,26 +129,19 @@ export class TwitchClientManager {
         }
       });
 
-      const refreshStatus = account.refreshToken
-        ? "automatic token refresh enabled"
-        : "token refresh disabled (no refresh token)";
-      this.logger.info(`Using RefreshingAuthProvider for ${account.username} (${refreshStatus})`);
-
-      // Proactively validate token at startup: if the access token is expired,
-      // attempt a refresh immediately so we fail fast with a clear error instead
-      // of letting the ChatClient retry forever with a dead token.
-      const isExpired =
-        account.expiresIn != null &&
-        account.obtainmentTimestamp != null &&
-        Date.now() > account.obtainmentTimestamp + account.expiresIn * 1000;
-
-      if (isExpired) {
+      // Force-refresh on every startup to ensure a fresh token pair.
+      // During container shutdown, twurple may fire a proactive refresh that
+      // rotates the refresh token, but the async .env write can be lost if the
+      // process is killed before it completes. The new container then loads a
+      // stale refresh token that silently dies hours later. Refreshing
+      // unconditionally on startup guarantees we have a valid pair immediately.
+      if (account.refreshToken) {
         this.logger.info(
-          `Access token for ${account.username} is expired — attempting proactive refresh…`,
+          `Force-refreshing token for ${account.username} on startup to ensure fresh token pair…`,
         );
         try {
           await authProvider.refreshAccessTokenForUser(userId);
-          this.logger.info(`Proactive token refresh succeeded for ${account.username}`);
+          this.logger.info(`Startup token refresh succeeded for ${account.username}`);
         } catch (err) {
           const msg = err instanceof Error ? err.message : String(err);
           throw new Error(
@@ -158,6 +151,10 @@ export class TwitchClientManager {
               `~/.openclaw/.env and restart: docker compose up -d --force-recreate openclaw-gateway`,
           );
         }
+      } else {
+        this.logger.info(
+          `Using RefreshingAuthProvider for ${account.username} (no refresh token — skipping startup refresh)`,
+        );
       }
 
       return authProvider;

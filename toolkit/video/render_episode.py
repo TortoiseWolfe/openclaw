@@ -34,22 +34,42 @@ _audio_cleanup_list: list[str] = []
 
 # Layout constants matching remotion/src/lib/theme.ts
 _AVAILABLE_WIDTH = 1920 - 2 * 60  # 1800px
-_MAX_CODE_COL = int(_AVAILABLE_WIDTH * 0.45)  # 810px
+_MAX_CODE_COL = int(_AVAILABLE_WIDTH * 0.56)  # 1008px, matches CODE_COL_MAX in NarratedSegment.tsx
 _CODE_PADDING = 50  # 24px×2 padding + 1px×2 border
+_CODE_SAFETY = 50  # spare pixels so the longest line never touches the panel padding
 _MAX_CODE_FONT = 22
 _MONO_CHAR_RATIO = 0.6  # Liberation Mono / Courier New exact ratio
+
+
+_MAX_CODE_LINES = 25  # matches MAX_CODE_LINES in NarratedSegment.tsx
+_MIN_CODE_LINES = 12  # matches MIN_CODE_LINES
+
+
+def visible_code_lines(code_block: str) -> list[str]:
+    """The lines the code panel shows: all of them up to 25, else cut at a blank or unindented line (same rule as visibleCode in NarratedSegment.tsx)."""
+    lines = code_block.rstrip().split('\n')
+    if len(lines) <= _MAX_CODE_LINES:
+        return lines
+    cut = _MAX_CODE_LINES
+    for k in range(_MAX_CODE_LINES, _MIN_CODE_LINES - 1, -1):
+        if lines[k].strip() == '' or not lines[k][0].isspace():
+            cut = k
+            break
+    shown = lines[:cut]
+    while len(shown) > 1 and not shown[-1].strip():
+        shown.pop()
+    return shown
 
 
 def _calc_code_column_width(code_block: str | None) -> int:
     """Calculate code sidebar pixel width from content using known font metrics."""
     if not code_block:
         return 0
-    max_line_len = max(
-        (len(line) for line in code_block.split('\n')[:14]),
-        default=0,
-    )
+    shown = visible_code_lines(code_block)
+    max_line_len = max((len(line) for line in shown), default=0)
+    gutter_chars = len(str(len(shown))) + 1 + 1.5  # digits, a space, the 1.5ch margin of the line number
     char_px = _MAX_CODE_FONT * _MONO_CHAR_RATIO
-    return min(int(max_line_len * char_px) + _CODE_PADDING, _MAX_CODE_COL)
+    return min(int((max_line_len + gutter_chars) * char_px) + _CODE_PADDING + _CODE_SAFETY, _MAX_CODE_COL)
 
 def _cleanup_audio():
     for f in _audio_cleanup_list:
@@ -62,6 +82,10 @@ def _cleanup_audio():
 atexit.register(_cleanup_audio)
 
 import remotion_client
+
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
+from path_utils import require_date, require_slug, safe_join
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 EPISODES_DIR = os.environ.get("EPISODES_DIR", "/home/node/clawd-twitch/episodes")
@@ -180,15 +204,24 @@ def _map_bullet_timings(
 
 
 def resolve_episode_path(name_or_path: str) -> str:
-    """Resolve episode name to file path."""
-    if os.path.isfile(name_or_path):
-        return name_or_path
-    # Try as name in episodes dir
-    path = os.path.join(EPISODES_DIR, f"{name_or_path}.md")
-    if os.path.isfile(path):
-        return path
+    """Resolve episode name to file path, restricted to EPISODES_DIR."""
+    episodes_real = os.path.realpath(EPISODES_DIR)
+    try:
+        if os.path.isabs(name_or_path):
+            # Accept an absolute path only if it resolves inside EPISODES_DIR
+            rel = os.path.relpath(os.path.realpath(name_or_path), episodes_real)
+            candidates = [safe_join(EPISODES_DIR, rel)]
+        else:
+            candidates = [safe_join(EPISODES_DIR, name_or_path),
+                          safe_join(EPISODES_DIR, f"{name_or_path}.md")]
+    except ValueError as e:
+        logger.error(f"ERROR: Episode must be inside {EPISODES_DIR}: {e}")
+        sys.exit(1)
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
     logger.error(f"ERROR: Episode not found: {name_or_path}")
-    logger.error(f"  Checked: {name_or_path}, {path}")
+    logger.error(f"  Checked: {', '.join(candidates)}")
     sys.exit(1)
 
 
@@ -326,6 +359,14 @@ def main():
     from parse_episode import _normalize_topic
     current_sched = next((ep for ep in schedule if _normalize_topic(ep["topic"]) == _normalize_topic(episode.title)), None)
     series = current_sched["series"] if current_sched and current_sched.get("series") else ""
+    try:
+        if series:
+            require_slug(series, "series (from schedule.md)")
+        if current_sched:
+            require_date(current_sched["date"])
+    except ValueError as e:
+        logger.error(f"ERROR: {e}")
+        sys.exit(1)
 
     # Create audio directory for TTS files (accessible to remotion-renderer)
     os.makedirs(AUDIO_DIR, exist_ok=True)
@@ -337,9 +378,9 @@ def main():
 
     # Create episode subdirectory under series folder
     if series:
-        episode_dir = os.path.join(args.output_dir, series, slug)
+        episode_dir = safe_join(args.output_dir, series, slug)
     else:
-        episode_dir = os.path.join(args.output_dir, slug)
+        episode_dir = safe_join(args.output_dir, slug)
     os.makedirs(episode_dir, exist_ok=True)
 
     with tempfile.TemporaryDirectory() as tmpdir:

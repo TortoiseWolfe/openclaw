@@ -58,7 +58,7 @@
     "atr_stops": {
       "enabled": true,
       "period": 14,
-      "multiplier": 1.5
+      "multiplier": 2.0
     },
     "trailing_stop": {
       "enabled": true,
@@ -111,6 +111,11 @@
       "enabled": true,
       "lookback_trades": 10,
       "reduced_max_positions": 3
+    },
+    "trailing_stop_cooldown": {
+      "enabled": true,
+      "days": 3,
+      "after_reasons": ["trailing stop"]
     }
   }
 }

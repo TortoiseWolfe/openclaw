@@ -16,6 +16,7 @@ Use the remotion-renderer container directly for stills.
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 
@@ -31,14 +32,31 @@ def main():
     parser = argparse.ArgumentParser(description="Render Remotion composition")
     parser.add_argument("--composition", required=True, help="Composition ID (e.g. EpisodeCard)")
     parser.add_argument("--props", default="{}", help="JSON props string")
+    parser.add_argument("--props-file", help="Path to a JSON props file (under /tmp or the twitch workspace);"
+                        " avoids quoting model-written text on a command line")
     parser.add_argument("--format", default="mp4", choices=["mp4", "webm"])
     args = parser.parse_args()
 
+    if not re.fullmatch(r"[A-Za-z][A-Za-z0-9-]{0,63}", args.composition):
+        print(f"ERROR: Invalid composition id: {args.composition!r}", file=sys.stderr)
+        sys.exit(2)
+
+    props_text = args.props
+    if args.props_file:
+        props_path = os.path.realpath(args.props_file)
+        allowed_dirs = ["/tmp", "/home/node/clawd-twitch"]
+        if not any(os.path.commonpath([os.path.realpath(d), props_path]) == os.path.realpath(d)
+                   for d in allowed_dirs):
+            print(f"ERROR: --props-file must be under {' or '.join(allowed_dirs)}", file=sys.stderr)
+            sys.exit(2)
+        with open(props_path, encoding="utf-8") as f:
+            props_text = f.read()
+
     # Validate props JSON
     try:
-        props = json.loads(args.props)
+        props = json.loads(props_text)
     except json.JSONDecodeError as e:
-        print(f"ERROR: Invalid JSON in --props: {e}", file=sys.stderr)
+        print(f"ERROR: Invalid JSON in props: {e}", file=sys.stderr)
         sys.exit(1)
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)

@@ -1,0 +1,238 @@
+{
+  "date": "2026-08-17",
+  "lastUpdated": "2026-08-17T12:50:45.390349+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 2,
+      "articles_found": 60,
+      "articles_matched": 10,
+      "matched": [
+        {
+          "title": "Santoli: Earnings bonanza that lifted market to record may not be all that it appears to be",
+          "url": "https://www.cnbc.com/2026/08/17/santoli-earnings-bonanza-that-lifted-market-to-record-may-not-be-all-that-it-appears-to-be.html",
+          "source": "cnbc_top",
+          "published": "Mon, 17 Aug 2026 10:31:33 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia discloses $21 billion stake in SpaceX at end of second quarter",
+          "url": "https://www.cnbc.com/2026/08/14/nvidia-discloses-21-billion-stake-in-spacex-at-end-of-second-quarter.html",
+          "source": "cnbc_top",
+          "published": "Fri, 14 Aug 2026 21:45:19 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Berkshire adds $17 billion to Alphabet stake",
+          "url": "https://www.cnbc.com/2026/08/15/berkshire-adds-17-billion-to-alphabet-stake.html",
+          "source": "cnbc_top",
+          "published": "Sat, 15 Aug 2026 12:50:41 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Berkshire's Alphabet stake, Meta goes back to court, Europe's champagne problems and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/08/17/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 17 Aug 2026 12:35:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Inflation moderated as Intel and Nvidia fueled the AI trade in last week's market",
+          "url": "https://www.cnbc.com/2026/08/15/inflation-moderated-as-intel-and-nvidia-fueled-the-ai-trade-in-last-week-market.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 15 Aug 2026 14:22:54 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia discloses $21 billion stake in SpaceX at end of second quarter",
+          "url": "https://www.cnbc.com/2026/08/14/nvidia-discloses-21-billion-stake-in-spacex-at-end-of-second-quarter.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 14 Aug 2026 21:45:19 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic's investor talks, Workday's stock surge, Apple's new facility and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/08/14/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 14 Aug 2026 12:17:42 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "From Apple to Ford: How Chinese tech is becoming harder for global companies to ignore",
+          "url": "https://www.cnbc.com/2026/08/14/china-tech-global-appeal-apple-ford-catl-deepseek.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 14 Aug 2026 00:09:11 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Reddit stock jumps on inclusion in S&P 500",
+          "url": "https://www.cnbc.com/2026/08/13/reddit-shares-jump-11percent-on-inclusion-in-sp-500.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 13 Aug 2026 23:04:21 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple's Tim Cook joined by Howard Lutnick in opening Houston manufacturing plant",
+          "url": "https://www.cnbc.com/2026/08/13/apples-tim-cook-and-howard-lutnick-open-houston-manufacturing-plant.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 13 Aug 2026 21:23:35 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": [
+        "yahoo: <urlopen error [Errno -2] Name or service not known>"
+      ]
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "<urlopen error [Errno -2] Name or service not known>"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "GPT 5.6 Sol is the best \"vision\" model OpenAI ever released",
+          "url": "https://blog.roboflow.com/openai-gpt-5-6/",
+          "hn_score": 5,
+          "comments": 1,
+          "matched_symbols": [
+            "SOL"
+          ],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Anthropic's 'watermark' text adulteration in Claude is a perversion of writing",
+          "url": "https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing",
+          "hn_score": 407,
+          "comments": 393,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "How do I permanently disable random Google Photos popup to backup photos? (2024)",
+          "url": "https://support.google.com/photos/thread/256212140/how-do-i-permanently-disable-google-photos-pop-up-prompt-to-backup-my-photos-i?hl=en",
+          "hn_score": 157,
+          "comments": 105,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "The AI Credit Resale Economy",
+          "url": "https://vectoral.com/blog/who-are-the-token-brokers",
+          "hn_score": 303,
+          "comments": 123,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "MathCode, Mathematical Coding Agent",
+          "url": "https://math-ai-org.github.io/mathcode/",
+          "hn_score": 107,
+          "comments": 29,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Stripe will reportedly acquire OpenRouter for $7B+",
+          "url": "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/",
+          "hn_score": 399,
+          "comments": 246,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SOL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 16,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

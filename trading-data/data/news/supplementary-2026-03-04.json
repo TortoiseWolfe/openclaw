@@ -1,0 +1,317 @@
+{
+  "date": "2026-03-04",
+  "lastUpdated": "2026-03-04T13:50:47.570208+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 106,
+      "articles_matched": 17,
+      "matched": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise as Iran reportedly calls for talks to end conflict",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-as-iran-reportedly-calls-for-talks-to-end-conflict-234948851.html",
+          "source": "yahoo",
+          "published": "2026-03-03T23:49:48Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock Market Today: Dow Rises Amid Iran, Tariff News; Nvidia, Tesla Rebound (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-jobs-data-nvidia-tesla-rebound/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-04T13:29:16Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple raises MacBook prices across the board as M5 chips, new displays signal AI-first strategy",
+          "url": "https://www.cnbc.com/2026/03/03/apple-macbook-prices-m5-ai.html",
+          "source": "cnbc_top",
+          "published": "Tue, 03 Mar 2026 18:49:45 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia, Amazon temporarily close Dubai offices, Google employees stranded amid U.S.-Iran war",
+          "url": "https://www.cnbc.com/2026/03/03/nvidia-amazon-offices-google-dubai-iran-war.html",
+          "source": "cnbc_top",
+          "published": "Wed, 04 Mar 2026 00:48:44 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Banking, payments services disrupted after Amazon UAE data centers hit in drone strikes",
+          "url": "https://www.cnbc.com/2026/03/03/iran-war-uae-drone-strikes-aws-data-centers.html",
+          "source": "cnbc_top",
+          "published": "Tue, 03 Mar 2026 16:51:37 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia, Amazon temporarily close Dubai offices, Google employees stranded amid U.S.-Iran war",
+          "url": "https://www.cnbc.com/2026/03/03/nvidia-amazon-offices-google-dubai-iran-war.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 04 Mar 2026 00:48:44 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple raises MacBook prices across the board as M5 chips, new displays signal AI-first strategy",
+          "url": "https://www.cnbc.com/2026/03/03/apple-macbook-prices-m5-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 18:49:45 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Banking, payments services disrupted after Amazon UAE data centers hit in drone strikes",
+          "url": "https://www.cnbc.com/2026/03/03/iran-war-uae-drone-strikes-aws-data-centers.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 16:51:37 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google employees call for military limits on AI amid Iran strikes, Anthropic fallout",
+          "url": "https://www.cnbc.com/2026/03/03/anthropic-fallout-iran-war-tech-military-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 17:30:31 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Oil prices, Target earnings, the new iPhone and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/03/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 13:36:25 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon says drone strikes damaged 3 facilities in UAE and Bahrain",
+          "url": "https://www.cnbc.com/2026/03/02/amazon-says-drone-strikes-damaged-3-facilities-in-uae-and-bahrain.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 02:04:02 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple launches lower cost iPhone 17e and a new iPad Air powered by its M4 chip",
+          "url": "https://www.cnbc.com/2026/03/02/apple-iphone-17e-ipad-air-m4-chip.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 02 Mar 2026 17:11:03 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Anthropic's Claude sees 'elevated errors' as it tops Apple's free apps after Pentagon clash",
+          "url": "https://www.cnbc.com/2026/03/02/anthropic-claude-ai-outage-apple-pentagon.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 01:14:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia to invest $4 billion into photonics companies Coherent and Lumentum",
+          "url": "https://www.cnbc.com/2026/03/02/nvidia-investment-coherent-lumentum.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 03 Mar 2026 14:47:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "China's Honor shows off smartphone with robotic camera arm and teases a humanoid robot",
+          "url": "https://www.cnbc.com/2026/03/01/honor-robot-phone-magic-v6-foldable-launch-mwc.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 01 Mar 2026 14:15:41 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic's Claude hits No. 1 on Apple's top free apps list after Pentagon rejection",
+          "url": "https://www.cnbc.com/2026/02/28/anthropics-claude-apple-apps.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 28 Feb 2026 23:37:56 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google wants Intrinsic to be 'Android of robotics' as it pushes into physical AI",
+          "url": "https://www.cnbc.com/2026/02/28/google-wants-intrinsic-to-be-android-for-robots-moves-into-physical-ai.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 28 Feb 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "CPI",
+        "Central Bank",
+        "ECB",
+        "Employment",
+        "Fed",
+        "GDP",
+        "Inflation",
+        "Manufacturing",
+        "PMI",
+        "inflation",
+        "interest rate",
+        "monetary policy"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "The US dollar emerged as one of the session\u2019s top performers, likely benefiting from safe-haven flows, while gold suffered a historic liquidation despite the geopolitical turmoil.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: New Zealand Building Permits for January 2026: 1.9% m/m (2.0% m/m forecast; -4.6% m/m previous) Japan Unemployment Rate for January 2026: 2.7% (2.6% forecast; 2.6% previou",
+        "BRC Shop Price Inflation for February 2026: 1.1% (1.7% forecast; 1.5% previous) Australia Building Permits Prel for January 2026: -7.2% m/m (12.0% m/m forecast; -14.9% m/m previous); -15.7% y/y (2.8% "
+      ],
+      "error": null,
+      "fetch_date": "2026-03-03"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "A CPU that runs entirely on GPU",
+          "url": "https://github.com/robertcprice/nCPU",
+          "hn_score": 145,
+          "comments": 73,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "Did Alibaba just kneecap its powerful Qwen AI team?",
+          "url": "https://venturebeat.com/technology/did-alibaba-just-kneecap-its-powerful-qwen-ai-team-key-figures-depart-in",
+          "hn_score": 15,
+          "comments": 3,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "When AI writes the software, who verifies it?",
+          "url": "https://leodemoura.github.io/blog/2026/02/28/when-ai-writes-the-worlds-software.html",
+          "hn_score": 267,
+          "comments": 269,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Nuclear War: An LLM Scenario",
+          "url": "https://chrisclapham.com/blog/nuclear-war-an-llm-scenario",
+          "hn_score": 11,
+          "comments": 5,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Launch HN: Cekura (YC F24) \u2013 Testing and monitoring for voice and chat AI agents",
+          "url": "https://news.ycombinator.com/item?id=47232903",
+          "hn_score": 89,
+          "comments": 21,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 27,
+    "sources_succeeded": 3,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

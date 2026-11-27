@@ -1,0 +1,514 @@
+{
+  "date": "2026-03-17",
+  "lastUpdated": "2026-03-17T13:04:18.951160+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 33,
+      "matched": [
+        {
+          "title": "Uber Stock Climbs After Expanded Robotaxi Partnership With Nvidia",
+          "url": "https://www.investors.com/news/technology/uber-stock-nvidia-partnership-robotaxis-san-francisco/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-17T12:48:56Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom (AVGO) AI Chip Revenue Could Exceed $100 Billion by 2027, Rosenblatt Maintains Buy",
+          "url": "https://finance.yahoo.com/news/broadcom-avgo-ai-chip-revenue-124218654.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:42:18Z",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Uber (UBER) Partners with Amazon\u2019s Zoox for Autonomous Ride Expansion",
+          "url": "https://finance.yahoo.com/news/uber-uber-partners-amazon-zoox-124216392.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:42:16Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Salesforce (CRM) Gets Buy Rating on Capital Allocation Strategy",
+          "url": "https://finance.yahoo.com/news/salesforce-crm-gets-buy-rating-124215260.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:42:15Z",
+          "matched_symbols": [
+            "CRM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple (AAPL) Launches New MacBook Lineup with M5 Chips, Evercore Reaffirms Outperform",
+          "url": "https://finance.yahoo.com/news/apple-aapl-launches-macbook-lineup-124213795.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:42:13Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures stall as oil tops $100 again, dispelling hopes for market reprieve",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-stall-as-oil-tops-100-again-dispelling-hopes-for-market-reprieve-225045655.html",
+          "source": "yahoo",
+          "published": "2026-03-16T22:50:45Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet\u2019s (GOOGL) YouTube Growth Drives MoffettNathanson\u2019s Buy Rating",
+          "url": "https://finance.yahoo.com/news/alphabet-googl-youtube-growth-drives-120814770.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:08:14Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Meta (META) Sees 17% Surge in User Engagement Across Platforms",
+          "url": "https://finance.yahoo.com/news/meta-meta-sees-17-surge-120812813.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:08:12Z",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Wolfe Research Raises Amazon (AMZN) Price Target as AWS Business Gains from AI and Data Center Investments",
+          "url": "https://finance.yahoo.com/news/wolfe-research-raises-amazon-amzn-120810426.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:08:10Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "BofA Highlights NVIDIA\u2019s (NVDA) AI Chip Leadership and Pipeline",
+          "url": "https://finance.yahoo.com/news/bofa-highlights-nvidia-nvda-ai-120808266.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:08:08Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Expands AI Strategy with Copilot and Agent 365 Updates",
+          "url": "https://finance.yahoo.com/news/microsoft-expands-ai-strategy-copilot-120806519.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:08:06Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Snowflake (SNOW) Revenue Beats Expectations with 30% Year-Over-Year Growth, Macquarie Maintains Neutral",
+          "url": "https://finance.yahoo.com/news/snowflake-snow-revenue-beats-expectations-120748822.html",
+          "source": "yahoo",
+          "published": "2026-03-17T12:07:48Z",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon rolls out 1-hour, 3-hour delivery as ultrafast shipping trend grows in the U.S.",
+          "url": "https://www.cnbc.com/2026/03/17/amazon-rolls-out-1-hour-3-hour-delivery-in-latest-fast-shipping-test.html",
+          "source": "cnbc_top",
+          "published": "Tue, 17 Mar 2026 10:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia GTC 2026: CEO Jensen Huang sees $1 trillion in orders for Blackwell and Vera Rubin through '27",
+          "url": "https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-ceo-jensen-huang-keynote-blackwell-vera-rubin.html",
+          "source": "cnbc_top",
+          "published": "Mon, 16 Mar 2026 20:51:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "2 of our biggest takeaways from Nvidia CEO Jensen Huang's GTC keynote speech",
+          "url": "https://www.cnbc.com/2026/03/16/2-of-our-biggest-takeaways-from-nvidia-ceo-jensen-huangs-gtc-keynote-speech.html",
+          "source": "cnbc_top",
+          "published": "Tue, 17 Mar 2026 00:20:03 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Oil relief sparks a stock rally, but Cramer says Nvidia\u2019s AI boom is the real story",
+          "url": "https://www.cnbc.com/2026/03/16/oil-relief-sparks-a-stock-rally-but-cramer-says-nvidias-ai-boom-is-the-real-story.html",
+          "source": "cnbc_top",
+          "published": "Mon, 16 Mar 2026 23:09:57 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple acquires video editing company MotionVFX to boost subscribers",
+          "url": "https://www.cnbc.com/2026/03/16/apple-acquires-video-editing-company-motionvfx-to-boost-subscribers.html",
+          "source": "cnbc_top",
+          "published": "Mon, 16 Mar 2026 21:40:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia adds Hyundai, BYD and other automakers to self-driving tech business",
+          "url": "https://www.cnbc.com/2026/03/16/nvidia-hyundai-byd-nissan-self-driving-tech.html",
+          "source": "cnbc_top",
+          "published": "Mon, 16 Mar 2026 22:06:38 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia's $1T projection, Trump's Cuba threats, 1-hour Amazon deliveries and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/17/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 12:05:38 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon rolls out 1-hour, 3-hour delivery as ultrafast shipping trend grows in the U.S.",
+          "url": "https://www.cnbc.com/2026/03/17/amazon-rolls-out-1-hour-3-hour-delivery-in-latest-fast-shipping-test.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 17 Mar 2026 10:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Oil relief sparks a stock rally, but Cramer says Nvidia\u2019s AI boom is the real story",
+          "url": "https://www.cnbc.com/2026/03/16/oil-relief-sparks-a-stock-rally-but-cramer-says-nvidias-ai-boom-is-the-real-story.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 23:09:57 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia adds Hyundai, BYD and other automakers to self-driving tech business",
+          "url": "https://www.cnbc.com/2026/03/16/nvidia-hyundai-byd-nissan-self-driving-tech.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 22:06:38 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia announces Vera Rubin Space-1 chip system for orbital AI data centers",
+          "url": "https://www.cnbc.com/2026/03/16/nvidia-chips-orbital-data-centers-space-ai.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 20:24:43 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia GTC 2026: CEO Jensen Huang sees $1 trillion in orders for Blackwell and Vera Rubin through '27",
+          "url": "https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-ceo-jensen-huang-keynote-blackwell-vera-rubin.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 20:51:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple acquires video editing company MotionVFX to boost subscribers",
+          "url": "https://www.cnbc.com/2026/03/16/apple-acquires-video-editing-company-motionvfx-to-boost-subscribers.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 21:40:30 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Watch live: Nvidia CEO Jensen Huang gives GTC 2026 keynote",
+          "url": "https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-jensen-huang-keynote.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 18:54:41 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Oil continues to rise, the Federal Reserve, Nvidia's big week and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/03/16/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 14:59:08 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Big Tech purchases of carbon credits explode amid AI race, with Microsoft leading the way",
+          "url": "https://www.cnbc.com/2026/03/16/microsoft-carbon-credits-ai-tech-google-meta.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 08:39:38 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "JD.com takes on Amazon in Europe as China's e-commerce titans expand globally",
+          "url": "https://www.cnbc.com/2026/03/16/jd-launches-joybuy-in-europe-amazon-rival.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 00:18:14 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's GTC will mark an AI chip pivot. Here's why the CPU is taking center stage",
+          "url": "https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 16 Mar 2026 16:27:05 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia may soon unveil a brand-new AI chip. A closer look at the $20 billion bet to make it happen",
+          "url": "https://www.cnbc.com/2026/03/13/a-closer-look-at-nvidias-20-billion-bet-on-tech-for-a-new-ai-chip.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Mar 2026 22:00:20 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon to hike price of ad-free Prime Video tier by $2 a month",
+          "url": "https://www.cnbc.com/2026/03/13/amazon-to-hike-price-of-ad-free-prime-video-tier-by-2-a-month.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Mar 2026 16:23:23 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir's technology gives the West a critical edge in Middle East, CEO Alex Karp says",
+          "url": "https://www.cnbc.com/2026/03/12/palantir-tech-gives-west-critical-edge-in-middle-east-ceo-alex-karp.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 13 Mar 2026 12:10:58 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {
+        "strongest": "CAD",
+        "weakest": "USD",
+        "detail": {
+          "CAD": 1,
+          "USD": -1
+        }
+      },
+      "economic_events": [
+        "CPI",
+        "Employment",
+        "Fed",
+        "Interest Rate",
+        "Manufacturing",
+        "RBA",
+        "Retail Sales",
+        "employment",
+        "inflation",
+        "interest rate",
+        "retail sales"
+      ],
+      "key_headlines": [
+        "Partner Center A sharp reversal in crude oil prices drove a broad risk-on shift on Monday, with equities rallying, Treasury yields declining, and the US dollar sliding to its worst daily performance a",
+        "Sentiment was potentially further supported by stronger-than-expected Chinese activity data and by US officials signaling that Iranian oil shipments remain permitted and that energy prices are expecte",
+        "With the Federal Reserve widely expected to hold rates unchanged at its meeting this week, traders appeared willing to pare down some of their most defensive positioning heading into the policy decisi",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: US President Donald Trump stated that Washington is pressing other nations to help secure the Strait of Hormuz and is in discussions with several countries about policing "
+      ],
+      "error": null,
+      "fetch_date": "2026-03-16"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 3,
+      "matched": [
+        {
+          "title": "Leanstral: Open-source agent for trustworthy coding and formal proof engineering",
+          "url": "https://mistral.ai/news/leanstral",
+          "hn_score": 616,
+          "comments": 133,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Font Smuggler \u2013 copy hidden brand fonts into Google Docs",
+          "url": "https://brianmoore.com/fontsmuggler/",
+          "hn_score": 31,
+          "comments": 7,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "AirPods Max 2",
+          "url": "https://www.apple.com/airpods-max/",
+          "hn_score": 295,
+          "comments": 487,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 15,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 41,
+    "sources_succeeded": 3,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

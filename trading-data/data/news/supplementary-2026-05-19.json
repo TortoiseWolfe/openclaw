@@ -1,0 +1,295 @@
+{
+  "date": "2026-05-19",
+  "lastUpdated": "2026-05-19T12:50:37.764778+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 104,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "Stock Market Today: Dow Futures Fall As Micron, Sandisk Extend Slide; Home Depot, Google I/O In Focus",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-micron-sandisk-home-depot-google-io/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-19T12:27:05Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "What Makes Alphabet (GOOG) a Compelling Long-Term Opportunity?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/makes-alphabet-goog-compelling-long-122220601.html",
+          "source": "yahoo",
+          "published": "2026-05-19T12:22:20Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia Earnings on May 20: What History Tells Us About Nvidia Stock's Post-Earnings-Release Moves",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-earnings-may-20-history-123500534.html",
+          "source": "yahoo",
+          "published": "2026-05-19T12:35:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures slide as rising yields keep up pressure",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-futures-slide-as-rising-yields-keep-up-pressure-222343175.html",
+          "source": "yahoo",
+          "published": "2026-05-18T22:23:43Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Tuesday, May 19, 2026: Prices slide lower after Trump calls off attacks",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-may-19-2026-prices-slide-lower-after-trump-calls-off-attacks-113905955.html",
+          "source": "yahoo",
+          "published": "2026-05-19T11:39:05Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Yahoo Finance unleashes AlphaSpace: Here's how you can use it to prepare for Nvidia earnings day",
+          "url": "https://finance.yahoo.com/markets/article/yahoo-finance-unleashes-alphaspace-heres-how-you-can-use-it-to-prepare-for-nvidia-earnings-day-100500232.html",
+          "source": "yahoo",
+          "published": "2026-05-19T10:05:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google I/O primer: Alphabet's AI showcase is its chance to wow Wall Street",
+          "url": "https://www.cnbc.com/2026/05/18/google-i-o-alphabet-ai-wall-street.html",
+          "source": "cnbc_top",
+          "published": "Tue, 19 May 2026 01:04:19 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Blackstone to invest $5 billion in AI infrastructure venture with Google, powered by TPU chips",
+          "url": "https://www.cnbc.com/2026/05/19/blackstone-google-ai-data-center-joint-venture-tpu.html",
+          "source": "cnbc_top",
+          "published": "Tue, 19 May 2026 08:53:36 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Blackstone to invest $5 billion in AI infrastructure venture with Google, powered by TPU chips",
+          "url": "https://www.cnbc.com/2026/05/19/blackstone-google-ai-data-center-joint-venture-tpu.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 19 May 2026 08:53:36 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google I/O primer: Alphabet's AI showcase is its chance to wow Wall Street",
+          "url": "https://www.cnbc.com/2026/05/18/google-i-o-alphabet-ai-wall-street.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 19 May 2026 01:04:19 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "It's not too late to buy Nvidia. Here are the reasons we say 'own it, don't trade it'",
+          "url": "https://www.cnbc.com/2026/05/18/its-not-too-late-to-buy-nvidia-here-are-the-reasons-we-say-own-it-dont-trade-it.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 18 May 2026 17:56:50 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "S&P 500 manages to extend weekly win streak despite anticlimactic Trump-Xi summit",
+          "url": "https://www.cnbc.com/2026/05/16/sp-500-manages-to-extend-weekly-win-streak-despite-anticlimactic-trump-xi-summit.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 16 May 2026 21:35:43 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump touted Palantir on Truth Social after buying the company's stock, records show",
+          "url": "https://www.cnbc.com/2026/05/15/trump-palantir-stock-truth-social.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 20:28:29 GMT",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "What you need to know about Nvidia competitor Cerebras after wild IPO",
+          "url": "https://www.cnbc.com/2026/05/15/nvidia-cerebras-stock-price-ipo.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 20:05:55 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bill Ackman gets into Microsoft for reasons similar to Cramer's arguments to hold it",
+          "url": "https://www.cnbc.com/2026/05/15/bill-ackman-gets-into-microsoft-for-reasons-similar-to-cramers-arguments-to-hold-it.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 15 May 2026 18:26:23 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "New accessibility features powered by Apple Intelligence",
+          "url": "https://www.apple.com/newsroom/2026/05/apple-unveils-new-accessibility-features-and-updates-with-apple-intelligence/",
+          "hn_score": 69,
+          "comments": 14,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Show HN: Id-agent \u2013 Token efficient UUID alternative for AI agents",
+          "url": "https://github.com/vostride/id-agent",
+          "hn_score": 19,
+          "comments": 32,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Anthropic acquires Stainless",
+          "url": "https://www.anthropic.com/news/anthropic-acquires-stainless",
+          "hn_score": 476,
+          "comments": 335,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "AI eats the world (Spring 26) [pdf]",
+          "url": "https://static1.squarespace.com/static/50363cf324ac8e905e7df861/t/6a0af5d0484fbf5fe9a7743e/1779103184855/2026-Spring-AI.pdf",
+          "hn_score": 260,
+          "comments": 140,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
+          "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+          "hn_score": 1001,
+          "comments": 503,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "GOOGL": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 20,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

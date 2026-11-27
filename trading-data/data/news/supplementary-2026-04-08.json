@@ -1,0 +1,428 @@
+{
+  "date": "2026-04-08",
+  "lastUpdated": "2026-04-08T13:11:37.233412+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 23,
+      "matched": [
+        {
+          "title": "Bitcoin Is Down 45% From Its All-Time High -- Here's What History Says Happens Next",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-down-45-time-high-124800292.html",
+          "source": "yahoo",
+          "published": "2026-04-08T12:48:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum price today, Wednesday, April 8, 2026: Prices rise after U.S.-Iran ceasefire announcement",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-price-today-wednesday-april-8-2026-prices-rise-after-us-iran-ceasefire-announcement-113837833.html",
+          "source": "yahoo",
+          "published": "2026-04-08T11:38:37Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "S&P 500 Sell-Off: 1 Vanguard ETF I'm Loading Up On Right Now",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-sell-off-1-123500755.html",
+          "source": "yahoo",
+          "published": "2026-04-08T12:35:00Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia Price Prediction: 1 Year Bull and Bear Case",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-price-prediction-1-bull-123214941.html",
+          "source": "yahoo",
+          "published": "2026-04-08T12:32:14Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why the U.S. Navy\u2019s retail business is fighting Walmart and Amazon to fund its own future",
+          "url": "https://www.cnbc.com/2026/04/08/navy-exchange-stores-compete-walmart-amazon-to-fund-future.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Apr 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI's next bottleneck: Why even the best chips made in the U.S. take a round trip to Taiwan",
+          "url": "https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html",
+          "source": "cnbc_top",
+          "published": "Wed, 08 Apr 2026 12:41:22 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic limits Mythos AI rollout over fears hackers could use model for cyberattacks",
+          "url": "https://www.cnbc.com/2026/04/07/anthropic-claude-mythos-ai-hackers-cyberattacks.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Apr 2026 19:52:22 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "AWS teams working around the clock to keep Middle East services up after drone strikes, CEO says",
+          "url": "https://www.cnbc.com/2026/04/07/aws-iran-threats-us-tech-data-centers.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Apr 2026 20:16:18 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google CEO Sundar Pichai says 'AI shift' opens opportunities to invest in startups",
+          "url": "https://www.cnbc.com/2026/04/07/google-ceo-pichai-says-ai-shift-opens-opportunities-invest-startups.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Apr 2026 23:37:42 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple shares sink on report of foldable iPhone delays",
+          "url": "https://www.cnbc.com/2026/04/07/apple-stock-foldable-iphone-report.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Apr 2026 21:28:17 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI's next bottleneck: Why even the best chips made in the U.S. take a round trip to Taiwan",
+          "url": "https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 12:41:22 GMT",
+          "matched_symbols": [
+            "NVDA",
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google CEO Sundar Pichai says 'AI shift' opens opportunities to invest in startups",
+          "url": "https://www.cnbc.com/2026/04/07/google-ceo-pichai-says-ai-shift-opens-opportunities-invest-startups.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 23:37:42 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Is it time to buy tech, again? A flurry of good news from Broadcom may hold the answer",
+          "url": "https://www.cnbc.com/2026/04/07/is-it-time-to-buy-tech-again-a-flurry-of-good-news-from-broadcom-may-hold-the-answer.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 19:35:41 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Anthropic limits Mythos AI rollout over fears hackers could use model for cyberattacks",
+          "url": "https://www.cnbc.com/2026/04/07/anthropic-claude-mythos-ai-hackers-cyberattacks.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 19:52:22 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "AWS teams working around the clock to keep Middle East services up after drone strikes, CEO says",
+          "url": "https://www.cnbc.com/2026/04/07/aws-iran-threats-us-tech-data-centers.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 20:16:18 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple shares sink on report of foldable iPhone delays",
+          "url": "https://www.cnbc.com/2026/04/07/apple-stock-foldable-iphone-report.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 21:28:17 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom's stock jumps 6% after chipmaker expands Google, Anthropic deals",
+          "url": "https://www.cnbc.com/2026/04/07/broadcom-shares-jump-before-bell-google-deal.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 08 Apr 2026 06:43:20 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom agrees to expanded chip deals with Google, Anthropic",
+          "url": "https://www.cnbc.com/2026/04/06/broadcom-agrees-to-expanded-chip-deals-with-google-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Apr 2026 00:22:09 GMT",
+          "matched_symbols": [
+            "AVGO",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft is the worst performing Mag 7 stock this year. Goldman believes that's about to change",
+          "url": "https://www.cnbc.com/2026/04/06/goldman-expects-a-rebound-for-mag-7-underperformer-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Apr 2026 15:27:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Hope for a U.S.-Iran deal, Apple's anniversary, OpenAI's podcast deal and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/04/06/5-things-to-know-before-the-bell-monday.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Apr 2026 11:43:34 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple at 50: The iPhone maker 'blew a 5-year lead' on AI, but former insiders say it can still win",
+          "url": "https://www.cnbc.com/2026/04/04/apple-50-anniversary-ai-iphone-siri.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 04 Apr 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google under attack as court cases bypass 30-year-old legal shield",
+          "url": "https://www.cnbc.com/2026/04/03/meta-google-under-attack-court-cases-bypass-30-year-old-legal-shield.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 17:07:55 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Japan's Sakura Internet jumps 20% as Microsoft plans $10 billion AI push with SoftBank",
+          "url": "https://www.cnbc.com/2026/04/03/sakura-internet-microsoft-ai-japan-softbank-investment.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Apr 2026 05:19:48 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "Employment",
+        "Fed",
+        "Inflation",
+        "Interest Rate",
+        "PMI",
+        "RBNZ",
+        "Retail Sales",
+        "inflation",
+        "interest rate",
+        "monetary policy"
+      ],
+      "key_headlines": [
+        "Partner Center Markets navigated a tense and headline-driven Tuesday as the U.S.-Iran conflict entered a potentially decisive phase, with American forces striking targets on Iran\u2019s Kharg Island and Pr",
+        "ET ceasefire deadline rattling nerves across asset classes.",
+        "A sharp late-session reversal in risk sentiment , driven by reports of Iran positively reviewing a peace proposal and Pakistan urging a two-week extension, allowed equities to claw back steep intraday",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Australia S&P Global Services PMI Final for March 2026: 46.3 (46.6 forecast; 52.8 previous) Japan Household Spending for February 2026: 1.5% m/m (3.0% m/m forecast; -2.5% "
+      ],
+      "error": null,
+      "fetch_date": "2026-04-07"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "MegaTrain: Full Precision Training of 100B+ Parameter LLMs on a Single GPU",
+          "url": "https://arxiv.org/abs/2604.05091",
+          "hn_score": 19,
+          "comments": 2,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "Project Glasswing: Securing critical software for the AI era",
+          "url": "https://www.anthropic.com/glasswing",
+          "hn_score": 1357,
+          "comments": 688,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Explore union types in C# 15",
+          "url": "https://devblogs.microsoft.com/dotnet/csharp-15-union-types/",
+          "hn_score": 48,
+          "comments": 19,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "System Card: Claude Mythos Preview [pdf]",
+          "url": "https://www-cdn.anthropic.com/53566bf5440a10affd749724787c8913a2ae0841.pdf",
+          "hn_score": 750,
+          "comments": 546,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "GLM-5.1: Towards Long-Horizon Tasks",
+          "url": "https://z.ai/blog/glm-5.1",
+          "hn_score": 561,
+          "comments": 229,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Show HN: Gemma 4 Multimodal Fine-Tuner for Apple Silicon",
+          "url": "https://github.com/mattmireles/gemma-tuner-multimodal",
+          "hn_score": 197,
+          "comments": 25,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 34,
+    "sources_succeeded": 3,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}

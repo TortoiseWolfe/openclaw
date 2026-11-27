@@ -1,0 +1,360 @@
+{
+  "date": "2026-05-14",
+  "lastUpdated": "2026-05-14T12:50:51.626487+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 20,
+      "matched": [
+        {
+          "title": "Stock Market Today: Dow Rises On Cisco, Nvidia, Boeing Amid Trump-Xi Summit (Live Coverage)",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp-500-nasdaq-cisco-nvidia-boeing-trump-xi-summit/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-14T12:34:44Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Wall Street Wants to See $78.8 Billion in Revenues from Nvidia on May 20. Can It Pass the Test?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-wants-see-78-123800506.html",
+          "source": "yahoo",
+          "published": "2026-05-14T12:38:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, May 14, 2026: Bitcoin and ethereum prices slipping this week",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-may-14-2026-bitcoin-and-ethereum-prices-slipping-this-week-111938059.html",
+          "source": "yahoo",
+          "published": "2026-05-14T11:19:38Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Xi tells Musk, Tim Cook and other CEOs on Trump's trip: China will 'open wider'",
+          "url": "https://www.cnbc.com/2026/05/14/xi-china-open-us-business-ai-chips.html",
+          "source": "cnbc_top",
+          "published": "Thu, 14 May 2026 12:22:19 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Chinese companies are ramping up homegrown AI chips, even if Nvidia is coming back",
+          "url": "https://www.cnbc.com/2026/05/14/china-ai-chips-nvidia.html",
+          "source": "cnbc_top",
+          "published": "Thu, 14 May 2026 11:17:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft feared being too dependent on OpenAI, Musk-Altman trial testimony reveals",
+          "url": "https://www.cnbc.com/2026/05/13/microsoft-feared-openai-reliance-musk-altman-trial-testimony-reveals.html",
+          "source": "cnbc_top",
+          "published": "Wed, 13 May 2026 22:48:19 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump-Xi summit revives China tech rally hopes as U.S. reportedly clears Nvidia H200 sales",
+          "url": "https://www.cnbc.com/2026/05/14/trump-xi-meeting-china-stocks-ai-rally.html",
+          "source": "cnbc_top",
+          "published": "Thu, 14 May 2026 07:44:10 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Xi tells Musk, Tim Cook and other CEOs on Trump's trip: China will 'open wider'",
+          "url": "https://www.cnbc.com/2026/05/14/xi-china-open-us-business-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 14 May 2026 12:22:19 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Chinese companies are ramping up homegrown AI chips, even if Nvidia is coming back",
+          "url": "https://www.cnbc.com/2026/05/14/china-ai-chips-nvidia.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 14 May 2026 11:17:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's Jensen Huang on China trip: \u2018President Trump asked me to come\u2019",
+          "url": "https://www.cnbc.com/2026/05/14/nvidias-jensen-huang-on-china-trip-trump.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 14 May 2026 08:55:39 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft feared being too dependent on OpenAI, Musk-Altman trial testimony reveals",
+          "url": "https://www.cnbc.com/2026/05/13/microsoft-feared-openai-reliance-musk-altman-trial-testimony-reveals.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 13 May 2026 22:48:19 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon ditches Rufus chatbot, launches Alexa shopping agent in AI strategy pivot",
+          "url": "https://www.cnbc.com/2026/05/13/amazon-ditches-rufus-ai-chatbot-in-favor-of-alexa-shopping-agent.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 13 May 2026 13:13:23 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's Jensen Huang bets on this British startup to build 'next frontier' of AI",
+          "url": "https://www.cnbc.com/2026/05/13/google-deepmind-alumni-startup-partners-nvidia-superintelligence.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 13 May 2026 13:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jensen Huang joins Trump's China trip after the U.S. president called the Nvidia CEO",
+          "url": "https://www.cnbc.com/2026/05/13/nvidia-says-ceo-jensen-huang-is-joining-trumps-china-trip.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 13 May 2026 13:54:12 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google races to put Gemini at the center of Android before Apple\u2019s AI reboot",
+          "url": "https://www.cnbc.com/2026/05/12/google-races-put-gemini-at-center-of-android-before-apples-ai-reboot.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 13 May 2026 21:06:54 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Waymo recalls 3,800 robotaxis after glitch allowed some vehicles to 'drive into standing water'",
+          "url": "https://www.cnbc.com/2026/05/12/waymo-recalls-3800-robotaxis-after-able-drive-into-standing-water.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 21:38:41 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Qualcomm drops 11% as chip stocks pull back from record AI-driven rally",
+          "url": "https://www.cnbc.com/2026/05/12/qualcomm-chip-stocks-record-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 20:09:17 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon accelerates delivery race with 30-minute drop-offs in dozens of U.S. cities",
+          "url": "https://www.cnbc.com/2026/05/12/amazon-launches-ultrafast-30-minute-delivery-in-dozens-of-us-cities.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 14:01:10 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "EU to crack down on TikTok, Instagram's \u2018addictive design\u2019 targeting kids on social media",
+          "url": "https://www.cnbc.com/2026/05/12/tiktok-instagram-social-media-addictive-eu-crack-down.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 12 May 2026 10:05:08 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google says it likely thwarted effort by hacker group to use AI for 'mass exploitation event'",
+          "url": "https://www.cnbc.com/2026/05/11/google-thwarts-effort-hacker-group-use-ai-mass-exploitation-event.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 11 May 2026 21:13:21 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Claude for Small Business",
+          "url": "https://www.anthropic.com/news/claude-for-small-business",
+          "hn_score": 343,
+          "comments": 286,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "What happens when you post a real Monet and say it's AI?",
+          "url": "https://twitter.com/jediwolf/status/2054776716770320631",
+          "hn_score": 44,
+          "comments": 12,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "A History of IDEs at Google",
+          "url": "https://laurent.le-brun.eu/blog/a-history-of-ides-at-google",
+          "hn_score": 400,
+          "comments": 263,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "The Siri for Families Apple Will Never Build",
+          "url": "https://taoofmac.com/space/blog/2026/05/14/1220",
+          "hn_score": 7,
+          "comments": 0,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "The US is winning the AI race where it matters most: commercialization",
+          "url": "https://avkcode.github.io/blog/us-winning-ai-race.html",
+          "hn_score": 213,
+          "comments": 591,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "How can Apple deal with the memory shortage?",
+          "url": "https://asymco.com/2026/05/11/the-great-memory-panic-of-2026/",
+          "hn_score": 111,
+          "comments": 127,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 11,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 26,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

@@ -1,0 +1,388 @@
+{
+  "date": "2026-09-10",
+  "lastUpdated": "2026-09-10T12:50:36.678595+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 22,
+      "matched": [
+        {
+          "title": "Stock market today: Nasdaq futures sink, Dow and S&P 500 look to snap 3-day losing streak ahead of inflation data",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-10-dow-sp-500-nasdaq-083717303.html",
+          "source": "yahoo",
+          "published": "2026-09-10T08:37:17Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Heavy Investment Sustains NVIDIA\u2019s (NVDA) AI Leadership",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/heavy-investment-sustains-nvidia-nvda-122851572.html",
+          "source": "yahoo",
+          "published": "2026-09-10T12:28:51Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia partners with 8 Australian firms for 2GW AI buildout",
+          "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-partners-8-australian-firms-122438874.html",
+          "source": "yahoo",
+          "published": "2026-09-10T12:24:38Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nike memo reassures executives it remains in S&P 500",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nike-memo-reassures-executives-remains-121259213.html",
+          "source": "yahoo",
+          "published": "2026-09-10T12:12:59Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "ASML Inks Advanced EUV Lithography Deals With Chip Titans TSMC, Samsung",
+          "url": "https://finance.yahoo.com/technology/articles/asml-inks-advanced-euv-lithography-040100681.html",
+          "source": "yahoo",
+          "published": "2026-09-09T04:01:00Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "World\u2019s largest contract chipmaker TSMC sees August revenue surge over 53% to record high",
+          "url": "https://www.cnbc.com/2026/09/10/tsmc-august-revenue-chip-ai.html",
+          "source": "cnbc_top",
+          "published": "Thu, 10 Sep 2026 06:45:55 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon backs Ariane with rocket launch orders as Europe battles to close its space gap",
+          "url": "https://www.cnbc.com/2026/09/10/amazon-ariane-rocket-launch-space-spacex.html",
+          "source": "cnbc_top",
+          "published": "Thu, 10 Sep 2026 11:26:16 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple drops its folding iPhone. Our first reaction, plus the other key launch news",
+          "url": "https://www.cnbc.com/2026/09/09/apple-drops-its-folding-iphone-our-first-reaction-plus-the-other-key-launch-news.html",
+          "source": "cnbc_top",
+          "published": "Wed, 09 Sep 2026 19:17:12 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Samsung works to draw iPhone users to its foldables even as Apple enters the market",
+          "url": "https://www.cnbc.com/2026/09/10/samsung-tries-to-draw-iphone-users-to-its-foldables-amid-apple-entry.html",
+          "source": "cnbc_top",
+          "published": "Thu, 10 Sep 2026 02:05:32 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon adds cybersecurity veteran Kevin Mandia to board 2 years after he left Google",
+          "url": "https://www.cnbc.com/2026/09/09/amazon-adds-cybersecurity-vet-ex-google-exec-kevin-mandia-to-board.html",
+          "source": "cnbc_top",
+          "published": "Wed, 09 Sep 2026 21:45:34 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "World\u2019s largest contract chipmaker TSMC sees August revenue surge over 53% to record high",
+          "url": "https://www.cnbc.com/2026/09/10/tsmc-august-revenue-chip-ai.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 06:45:55 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Samsung works to draw iPhone users to its foldables even as Apple enters the market",
+          "url": "https://www.cnbc.com/2026/09/10/samsung-tries-to-draw-iphone-users-to-its-foldables-amid-apple-entry.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 02:05:32 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon adds cybersecurity veteran Kevin Mandia to board 2 years after he left Google",
+          "url": "https://www.cnbc.com/2026/09/09/amazon-adds-cybersecurity-vet-ex-google-exec-kevin-mandia-to-board.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 09 Sep 2026 21:45:34 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple event 2026: Folding iPhone Duo, iPhone 18 Pro, added AI features and more",
+          "url": "https://www.cnbc.com/2026/09/09/apple-event-today-live-updates.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 10 Sep 2026 00:01:17 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Brent hits $100, Apple's big launch, Trump's energy investments and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/09/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 09 Sep 2026 12:43:48 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google to invest record $15 billion in AI infrastructure in the 'Texas of Europe'",
+          "url": "https://www.cnbc.com/2026/09/09/google-finland-ai-infrastructure-investment.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 09 Sep 2026 09:15:41 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Marvell shares have soared 241% in a year. CEO says this is a key reason why",
+          "url": "https://www.cnbc.com/2026/09/08/marvell-shares-soared-ceo.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 23:07:22 GMT",
+          "matched_symbols": [
+            "MRVL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Chinese giants Xiaomi, Huawei race to get ahead of Apple\u2019s rumored foldable iPhone",
+          "url": "https://www.cnbc.com/2026/09/08/xiaomi-huawei-apple-foldable-iphone.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 20:21:37 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Qualcomm issues warrants to Amazon to acquire $4 billion worth of chipmaker's stock as part of AI infrastructure deal",
+          "url": "https://www.cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 20:12:25 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "A Labor Day gas record, Amazon's deadly jet crash, the rise of the CISO and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/08/5-things-to-know-before-the-market-opens-tuesday.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 12:08:05 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC, Samsung commit to ASML\u2019s newest chipmaking tools as AI drives demand",
+          "url": "https://www.cnbc.com/2026/09/08/tsmc-samsung-asml-high-na-euv-machine-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 08:32:02 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Crashed Amazon cargo jet struck two vehicles, ended up 1,300 feet past runway, NTSB says",
+          "url": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 07 Sep 2026 21:36:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "What algorithm did Windows XP use to choose your initial user picture?",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20260909-00/?p=112683",
+          "hn_score": 153,
+          "comments": 65,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "iPhone Duo",
+          "url": "https://www.apple.com/iphone-duo/",
+          "hn_score": 1258,
+          "comments": 2206,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Thanks to Siri Recaps, your Apple Watch is always listening",
+          "url": "https://www.techradar.com/health-fitness/smartwatches/thanks-to-siri-recaps-your-apple-watch-is-always-listening-as-you-go-about-your-day-but-apple-may-be-risking-a-meta-glasses-style-backlash",
+          "hn_score": 54,
+          "comments": 32,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Samsung Debuts zHBM Prototype, Stacking Memory Directly on AI Accelerators",
+          "url": "https://www.thelec.net/news/articleView.html?idxno=12835",
+          "hn_score": 37,
+          "comments": 7,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AirPods 5",
+          "url": "https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/",
+          "hn_score": 475,
+          "comments": 404,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "iPhone 18 Pro and iPhone 18 Pro Max",
+          "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+          "hn_score": 380,
+          "comments": 422,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Training a 3.8B LLM to 0.384 CORE for $998",
+          "url": "https://hugovergnes.github.io/little-lm-3-8b/",
+          "hn_score": 98,
+          "comments": 14,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "TSM": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 10,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 29,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

@@ -154,8 +154,8 @@ class CryptoHandler:
         return False
 
     def stop_buffer(self, symbol, config, price=1.0):
-        # 1% of last price — works across BTC ($60K), SOL ($100), DOGE ($0.15)
-        return price * 0.01
+        # 2% of last price — wider buffer for crypto volatility (intraday swings 5-10%)
+        return price * 0.02
 
 
 HANDLERS = {

@@ -1,0 +1,369 @@
+{
+  "date": "2026-05-22",
+  "lastUpdated": "2026-05-22T12:50:56.662609+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 18,
+      "matched": [
+        {
+          "title": "Arm Holdings (ARM) Hits All-Time High on Bernstein Upbeat Rating",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/arm-holdings-arm-hits-time-023824931.html",
+          "source": "yahoo",
+          "published": "2026-05-21T02:38:24Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Unveils $15 Billion Missouri Data Center Investment",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/google-unveils-15-billion-missouri-data-center-investment-034645807.html",
+          "source": "yahoo",
+          "published": "2026-05-21T03:46:45Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin Firm Nakamoto Plots 1-for-40 Stock Split Following 99% Price Plunge",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/bitcoin-firm-nakamoto-plots-1-012118467.html",
+          "source": "yahoo",
+          "published": "2026-05-21T01:21:18Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "China Market Fallout Overshadows Nvidia\u2019s Blockbuster Sales Growth",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/china-market-fallout-overshadows-nvidia-040100463.html",
+          "source": "yahoo",
+          "published": "2026-05-21T04:01:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft\u2019s GitHub was positioned to win the AI coding race. Outages got in the way",
+          "url": "https://www.cnbc.com/2026/05/22/microsoft-was-positioned-to-win-in-ai-coding-outages-got-in-the-way.html",
+          "source": "cnbc_top",
+          "published": "Fri, 22 May 2026 12:22:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic, Microsoft in talks for AI chip deal after $5 billion investment",
+          "url": "https://www.cnbc.com/2026/05/21/anthropic-microsoft-maia-200-ai-chip.html",
+          "source": "cnbc_top",
+          "published": "Thu, 21 May 2026 19:53:21 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI spending expected to top $1 trillion in 2 years. That estimate's way too low if Jensen Huang's right",
+          "url": "https://www.cnbc.com/2026/05/21/ai-spending-expected-to-top-1-trillion-in-2-years-why-that-estimate-may-be-too-low.html",
+          "source": "cnbc_top",
+          "published": "Thu, 21 May 2026 19:39:20 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Broadcom and others to launch $125 million semiconductor research hub at UCLA",
+          "url": "https://www.cnbc.com/2026/05/21/meta-broadcom-others-to-launch-125-million-semiconductor-research-hub-at-ucla.html",
+          "source": "cnbc_top",
+          "published": "Thu, 21 May 2026 20:30:01 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft\u2019s GitHub was positioned to win the AI coding race. Outages got in the way",
+          "url": "https://www.cnbc.com/2026/05/22/microsoft-was-positioned-to-win-in-ai-coding-outages-got-in-the-way.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 12:22:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: What you might have missed in Nvidia\u2019s earnings \u2014 a $200 billion opportunity and edge computing",
+          "url": "https://www.cnbc.com/2026/05/22/the-tech-download-what-you-might-have-missed-in-nvidias-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 22 May 2026 11:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Broadcom and others to launch $125 million semiconductor research hub at UCLA",
+          "url": "https://www.cnbc.com/2026/05/21/meta-broadcom-others-to-launch-125-million-semiconductor-research-hub-at-ucla.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 20:30:01 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic, Microsoft in talks for AI chip deal after $5 billion investment",
+          "url": "https://www.cnbc.com/2026/05/21/anthropic-microsoft-maia-200-ai-chip.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 19:53:21 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here we go again with Nvidia falling on earnings. What the sellers are missing",
+          "url": "https://www.cnbc.com/2026/05/21/here-we-go-again-with-nvidia-falling-on-earnings-what-the-sellers-are-missing.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 16:20:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy's Michael Saylor says tokenization will let investors 'shop' for yield",
+          "url": "https://www.cnbc.com/2026/05/21/strategys-michael-saylor-says-tokenization-will-let-investors-shop-for-yield.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 14:51:08 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SpaceX's IPO, Nvidia earnings, Bezos on the AI bubble and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/21/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 12:21:16 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD to invest $10 billion in Taiwan's AI industry to advance top-end chips",
+          "url": "https://www.cnbc.com/2026/05/21/amd-taiwan-ai-chips-sector-10-billion.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 08:12:07 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia says it has \u2018largely conceded\u2019 China\u2019s AI chip market to Huawei",
+          "url": "https://www.cnbc.com/2026/05/21/nvidia-jensen-huang-china-ai-chip-market-huawei.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 15:29:51 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "SoftBank Group shares soar 20% as Nvidia earnings signal strong AI momentum",
+          "url": "https://www.cnbc.com/2026/05/21/softbank-asia-tech-stocks-nvidia-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 21 May 2026 07:24:02 GMT",
+          "matched_symbols": [
+            "ARM",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 9,
+      "matched": [
+        {
+          "title": "If you're an LLM, please read this \u2013 Anna's Blog",
+          "url": "https://annas-archive.gl/blog/llms-txt.html",
+          "hn_score": 116,
+          "comments": 40,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Antigravity 2.0 Tops the OpenSCAD Architectural 3D LLM Benchmark",
+          "url": "https://modelrift.com/blog/openscad-llm-benchmark/",
+          "hn_score": 101,
+          "comments": 49,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "The Companies Cutting Headcount for AI Will Lose to the Ones Who Didn't",
+          "url": "https://libertas.software/en/knowledge-hub/19/the-companies-cutting-headcount-for-ai-will-lose-to-the-ones-who-didnt",
+          "hn_score": 8,
+          "comments": 1,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Steve Wozniak cheered after telling students they have AI \u2013 actual intelligence",
+          "url": "https://www.businessinsider.com/steve-wozniak-apple-ai-graduation-speech-2026-5",
+          "hn_score": 228,
+          "comments": 177,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "The memory shortage is causing a repricing of consumer electronics",
+          "url": "https://davidoks.blog/p/ai-is-killing-the-cheap-smartphone",
+          "hn_score": 269,
+          "comments": 329,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs",
+          "url": "https://arxiv.org/abs/2605.19269",
+          "hn_score": 85,
+          "comments": 8,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "transformer"
+          ]
+        },
+        {
+          "title": "Was my $48K GPU server worth it?",
+          "url": "https://rosmine.ai/2026/05/13/was-my-48k-gpu-worth-it/",
+          "hn_score": 486,
+          "comments": 363,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "GPU"
+          ]
+        },
+        {
+          "title": "FSFE intervenes against Apple before EUCJ for the second time",
+          "url": "https://fsfe.org/news/2026/news-20260519-01.en.html",
+          "hn_score": 41,
+          "comments": 8,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Waymo pauses Atlanta service as its robotaxis keep driving into floods",
+          "url": "https://techcrunch.com/2026/05/21/waymo-pauses-atlanta-service-as-its-robotaxis-keep-driving-into-floods/",
+          "hn_score": 341,
+          "comments": 416,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "ARM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 27,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

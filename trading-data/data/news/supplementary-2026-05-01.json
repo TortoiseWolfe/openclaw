@@ -1,0 +1,427 @@
+{
+  "date": "2026-05-01",
+  "lastUpdated": "2026-05-01T12:50:48.314486+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 21,
+      "matched": [
+        {
+          "title": "Saylor Declares Bitcoin's Next Big Bang is Close",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/saylor-declares-bitcoins-next-big-012803362.html",
+          "source": "yahoo",
+          "published": "2026-04-30T01:28:03Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bank of America resets Microsoft stock forecast after earnings",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-resets-microsoft-stock-010300179.html",
+          "source": "yahoo",
+          "published": "2026-05-01T01:03:00Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Market Digest: AAPL, AMT, CAKE, FE, KLAC, MGM, MSFT, QCOM, YUM, V, MA",
+          "url": "https://finance.yahoo.com/research/reports/ARGUS_46904_MarketSummary_1777633552000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei",
+          "source": "yahoo",
+          "published": "2026-05-01T11:05:52Z",
+          "matched_symbols": [
+            "AAPL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft, Meta, and Google just announced billions more in AI spending. Only Google convinced investors it\u2019s paying off",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/microsoft-meta-google-just-announced-011712139.html",
+          "source": "yahoo",
+          "published": "2026-04-30T01:17:12Z",
+          "matched_symbols": [
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, April 30, 2026: Values moving lower each morning this week",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-thursday-april-30-2026-values-moving-lower-each-morning-this-week-113359674.html",
+          "source": "yahoo",
+          "published": "2026-04-30T11:33:59Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Friday, May 1, 2026: Prices moving higher this morning",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-friday-may-1-2026-prices-moving-higher-this-morning-113211522.html",
+          "source": "yahoo",
+          "published": "2026-05-01T11:32:11Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "A major shift could soon happen in the Mag 7",
+          "url": "https://www.cnbc.com/2026/05/01/a-major-mag-7-shift-with-alphabets-market-cap-set-to-pass-nvidias.html",
+          "source": "cnbc_top",
+          "published": "Fri, 01 May 2026 12:39:17 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple CEO Tim Cook warns of extended memory crunch. 'We'll look at a range of options'",
+          "url": "https://www.cnbc.com/2026/05/01/apple-ceo-warns-of-memory-crunch-well-look-at-a-range-of-options.html",
+          "source": "cnbc_top",
+          "published": "Fri, 01 May 2026 07:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple delivers a nearly perfect quarter, with a CEO change and an AI update ahead",
+          "url": "https://www.cnbc.com/2026/04/30/apple-delivers-a-nearly-perfect-quarter-with-a-ceo-change-and-an-ai-update-ahead.html",
+          "source": "cnbc_top",
+          "published": "Thu, 30 Apr 2026 23:43:06 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Veeva Systems to join S&P 500 index, replacing Coterra Energy",
+          "url": "https://www.cnbc.com/2026/04/30/veeva-systems-will-join-sp-500-index-replacing-coterra-energy.html",
+          "source": "cnbc_top",
+          "published": "Thu, 30 Apr 2026 22:40:57 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple revenue guidance tops estimates on booming iPhone, Mac demand",
+          "url": "https://www.cnbc.com/2026/04/30/apple-aapl-q2-2026-earnings-report.html",
+          "source": "cnbc_top",
+          "published": "Thu, 30 Apr 2026 23:06:23 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple earnings, DHS shutdown, 'Ozempic breath' and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/01/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 01 May 2026 12:09:15 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple CEO Tim Cook warns of extended memory crunch. 'We'll look at a range of options'",
+          "url": "https://www.cnbc.com/2026/05/01/apple-ceo-warns-of-memory-crunch-well-look-at-a-range-of-options.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 01 May 2026 07:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple delivers a nearly perfect quarter, with a CEO change and an AI update ahead",
+          "url": "https://www.cnbc.com/2026/04/30/apple-delivers-a-nearly-perfect-quarter-with-a-ceo-change-and-an-ai-update-ahead.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 23:43:06 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Veeva Systems to join S&P 500 index, replacing Coterra Energy",
+          "url": "https://www.cnbc.com/2026/04/30/veeva-systems-will-join-sp-500-index-replacing-coterra-energy.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 22:40:57 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Jim Cramer is far from impressed with Microsoft earnings. Here's why",
+          "url": "https://www.cnbc.com/2026/04/30/jim-cramer-is-far-from-impressed-with-microsoft-earnings-heres-why.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 16:14:39 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple revenue guidance tops estimates on booming iPhone, Mac demand",
+          "url": "https://www.cnbc.com/2026/04/30/apple-aapl-q2-2026-earnings-report.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 23:06:23 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google cloud growth tops Microsoft and Amazon as all three beat estimates on AI demand",
+          "url": "https://www.cnbc.com/2026/04/30/google-microsoft-and-amazon-all-report-cloud-beats-in-earnings.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 20:00:59 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer says Amazon going up another 15% and 'not stopping' there",
+          "url": "https://www.cnbc.com/2026/04/30/jim-cramer-says-amazon-going-up-another-15percent-and-not-stopping-there.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 15:37:56 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Jim Cramer crowns Alphabet the hyperscale earnings winner, sees more upside ahead",
+          "url": "https://www.cnbc.com/2026/04/30/jim-cramer-crowns-alphabet-the-hyperscale-earnings-winner-sees-more-upside-ahead.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 16:21:39 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Google wraps up best month since 2004 as earnings push\u00a0Alphabet stock up 34% in April",
+          "url": "https://www.cnbc.com/2026/04/30/alphabet-meta-stock-ai-capex-spend.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 20:11:11 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "EURUSD",
+        "GBPUSD",
+        "USDJPY"
+      ],
+      "currency_strength": {
+        "strongest": "EUR",
+        "weakest": "USD",
+        "detail": {
+          "EUR": 1,
+          "USD": 0
+        }
+      },
+      "economic_events": [
+        "BoE",
+        "CPI",
+        "Central Bank",
+        "ECB",
+        "GDP",
+        "Interest Rate",
+        "Manufacturing",
+        "PMI",
+        "Retail Sales",
+        "central bank",
+        "inflation",
+        "manufacturing",
+        "monetary policy",
+        "retail sales"
+      ],
+      "key_headlines": [
+        "dollar ended April as the session\u2019s worst-performing major currency, likely pressured by Japanese yen intervention warnings, central bank holds from both the Bank of England and European Central Bank,",
+        "Q1 GDP print that weighed on greenback sentiment into the close.",
+        "Equities and gold both gained ground, with the S&P 500 capping its best monthly performance since late 2020 at fresh record highs, while WTI crude retreated despite an elevated geopolitical backdrop c",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!"
+      ],
+      "error": null,
+      "fetch_date": "2026-04-30"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "Apple accidentally left Claude.md files Apple Support app",
+          "url": "https://xcancel.com/aaronp613/status/2049986504617820551",
+          "hn_score": 61,
+          "comments": 26,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Grok 4.3",
+          "url": "https://docs.x.ai/developers/models/grok-4.3",
+          "hn_score": 154,
+          "comments": 209,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Shai-Hulud Themed Malware Found in the PyTorch Lightning AI Training Library",
+          "url": "https://semgrep.dev/blog/2026/malicious-dependency-in-pytorch-lightning-used-for-ai-training/",
+          "hn_score": 409,
+          "comments": 150,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Opus 4.7 knows the real Kelsey",
+          "url": "https://www.theargumentmag.com/p/i-can-never-talk-to-an-ai-anonymously",
+          "hn_score": 378,
+          "comments": 199,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "After dissing Anthropic for limiting Mythos, OpenAI restricts access to Cyber",
+          "url": "https://techcrunch.com/2026/04/30/after-dissing-anthropic-for-limiting-mythos-openai-restricts-access-to-cyber-too/",
+          "hn_score": 74,
+          "comments": 47,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Our agent found a bug with WireGuard in Google Kubernetes Engine",
+          "url": "https://lovable.dev/blog/hunting-networking-bugs-in-kubernetes",
+          "hn_score": 29,
+          "comments": 2,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 9,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "EURUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 31,
+    "sources_succeeded": 3,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

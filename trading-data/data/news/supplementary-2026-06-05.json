@@ -1,0 +1,343 @@
+{
+  "date": "2026-06-05",
+  "lastUpdated": "2026-06-05T12:50:39.700152+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 20,
+      "matched": [
+        {
+          "title": "Is Cintas Stock Underperforming the S&P 500?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/cintas-stock-underperforming-p-500-011514876.html",
+          "source": "yahoo",
+          "published": "2026-06-04T01:15:14Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC working hard to meet chip demand, would 'like' to hike prices",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/tsmc-boss-upbeat-outlook-ai-014601576.html",
+          "source": "yahoo",
+          "published": "2026-06-04T01:46:01Z",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom (AVGO) Q2 2026 Earnings Transcript",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-q2-2026-earnings-005344486.html",
+          "source": "yahoo",
+          "published": "2026-06-04T00:53:44Z",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Navitas (NVTS) Hits All-Time High \u2014 Nvidia May Hold the Reason",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/navitas-nvts-hits-time-high-025256489.html",
+          "source": "yahoo",
+          "published": "2026-06-04T02:52:56Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia Wants to Reinvent the PC. Here's What That Means for Intel, AMD, and Qualcomm.",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-wants-reinvent-pc-heres-012300419.html",
+          "source": "yahoo",
+          "published": "2026-06-04T01:23:00Z",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Super Micro Computer Stock Jumped 68% in May",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-super-micro-computer-stock-012549071.html",
+          "source": "yahoo",
+          "published": "2026-06-04T01:25:49Z",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet is seeking fresh capital as stock's 4-week losing streak tests investor appetite",
+          "url": "https://www.cnbc.com/2026/06/05/alphabet-ai-data-center-financing.html",
+          "source": "cnbc_top",
+          "published": "Fri, 05 Jun 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin caps a dismal week as price wallows 50% below its all-time high",
+          "url": "https://www.cnbc.com/2026/06/05/bitcoin-dismal-week-price-below-all-time-high-crypto-investors.html",
+          "source": "cnbc_top",
+          "published": "Fri, 05 Jun 2026 12:43:19 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Warren invites Nvidia CEO Jensen Huang to Senate hearing on China AI chip sales",
+          "url": "https://www.cnbc.com/2026/06/04/nvidia-ceo-jensen-huang-warren-senate-hearing-china-ai-chips.html",
+          "source": "cnbc_top",
+          "published": "Fri, 05 Jun 2026 00:58:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Tracking website, food watch: South Korea is obsessing over Nvidia CEO Jensen Huang's visit",
+          "url": "https://www.cnbc.com/2026/06/05/south-korea-is-obsessing-over-nvidia-ceo-jensen-huangs-visit.html",
+          "source": "cnbc_top",
+          "published": "Fri, 05 Jun 2026 04:40:31 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alphabet is seeking fresh capital as stock's 4-week losing streak tests investor appetite",
+          "url": "https://www.cnbc.com/2026/06/05/alphabet-ai-data-center-financing.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 05 Jun 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Tracking website, food watch: South Korea is obsessing over Nvidia CEO Jensen Huang's visit",
+          "url": "https://www.cnbc.com/2026/06/05/south-korea-is-obsessing-over-nvidia-ceo-jensen-huangs-visit.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 05 Jun 2026 04:40:31 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Warren invites Nvidia CEO Jensen Huang to Senate hearing on China AI chip sales",
+          "url": "https://www.cnbc.com/2026/06/04/nvidia-ceo-jensen-huang-warren-senate-hearing-china-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 05 Jun 2026 00:58:02 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin is weathering its ugliest week in months as narrative fades and liquidity rotates",
+          "url": "https://www.cnbc.com/2026/06/04/bitcoin-is-weathering-its-ugliest-week-in-months-as-narrative-fades-and-liquidity-rotates.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 20:35:21 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why we're not discouraged by CrowdStrike and Broadcom selling. Context is everything",
+          "url": "https://www.cnbc.com/2026/06/04/why-were-not-discouraged-by-crowdstrike-and-broadcom-selling-context-is-everything.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 16:14:42 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom earnings, SpaceX's IPO price, World Cup worries and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/06/04/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 12:23:05 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon engineers in Seattle slam employer for building AI data centers while laying off 30,000 staffers",
+          "url": "https://www.cnbc.com/2026/06/03/amazon-engineers-in-seattle-slam-employer-for-ai-data-amid-layoffs.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 12:20:09 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Broadcom stock plunges on weak software sales, unchanged AI chip forecast for the year",
+          "url": "https://www.cnbc.com/2026/06/03/broadcom-avgo-earnings-report-q2-2026.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 12:29:48 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia\u2019s big dividend hike could pave the way for higher payouts \u2014 who may be next",
+          "url": "https://www.cnbc.com/2026/06/03/nvidias-big-dividend-hike-could-pave-the-way-for-higher-payouts-who-may-be-next.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 03 Jun 2026 19:28:11 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Bitcoin's high-conviction holders are turning into sellers as the crypto's price hits new lows",
+          "url": "https://www.cnbc.com/2026/06/03/bitcoins-high-conviction-holders-are-selling-as-price-hits-new-lows.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 04 Jun 2026 06:16:07 GMT",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "Fine-tuning an LLM to write docs like it's 1995",
+          "url": "https://passo.uno/fine-tuning-docs-llm/",
+          "hn_score": 100,
+          "comments": 41,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Anthropic's open-source framework for AI-powered vulnerability discovery",
+          "url": "https://github.com/anthropics/defending-code-reference-harness",
+          "hn_score": 458,
+          "comments": 127,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Show HN: Lowfat \u2013 pluggable CLI filter that saved 91.8% of my LLM tokens",
+          "url": "https://github.com/zdk/lowfat",
+          "hn_score": 12,
+          "comments": 4,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Open Code Review \u2013 An AI-powered code review CLI tool",
+          "url": "https://github.com/alibaba/open-code-review",
+          "hn_score": 209,
+          "comments": 60,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "NVDA": {
+      "total_mentions": 7,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SMCI": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 24,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

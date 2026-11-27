@@ -18,7 +18,7 @@ import urllib.request
 HELIX_BASE = "https://api.twitch.tv/helix"
 
 
-_DOT_ENV_PATH = os.path.join(
+_DOT_ENV_PATH = os.environ.get("OPENCLAW_TWITCH_ENV_FILE") or os.path.join(
     os.environ.get("HOME", "/home/node"), ".openclaw", ".env",
 )
 
@@ -99,6 +99,19 @@ def _raw_helix_patch(path: str, body: dict) -> None:
     except urllib.error.HTTPError as e:
         resp_body = e.read().decode("utf-8", errors="replace")
         print(f"Helix PATCH {path} failed ({e.code}): {resp_body}", file=sys.stderr)
+        raise
+
+
+def _raw_helix_put(path: str) -> None:
+    """PUT with the parameters in the query string and no body (Pin Chat Message)."""
+    url = f"{HELIX_BASE}{path}"
+    req = urllib.request.Request(url, headers=_headers(), method="PUT")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            _ = resp.read()
+    except urllib.error.HTTPError as e:
+        resp_body = e.read().decode("utf-8", errors="replace")
+        print(f"Helix PUT {path} failed ({e.code}): {resp_body}", file=sys.stderr)
         raise
 
 
@@ -198,6 +211,19 @@ def _helix_patch(path: str, body: dict) -> None:
         _refresh_attempted = False
 
 
+def _helix_put(path: str) -> None:
+    """Helix PUT with auto-refresh on 401 and DNS retry."""
+    global _refresh_attempted
+    try:
+        _retry_on_dns(_raw_helix_put, path)
+        _refresh_attempted = False
+    except urllib.error.HTTPError as e:
+        if e.code != 401 or not _try_refresh_token():
+            raise
+        _raw_helix_put(path)
+        _refresh_attempted = False
+
+
 def _helix_delete(path: str) -> None:
     """Helix DELETE with auto-refresh on 401 and DNS retry."""
     global _refresh_attempted
@@ -223,6 +249,12 @@ def get_broadcaster_id() -> str:
         sys.exit(1)
     _broadcaster_id_cache = users[0]["id"]
     return _broadcaster_id_cache
+
+
+def get_login() -> str:
+    """Login name of the account the token belongs to (Helix GET /users; not cached, so a token swap shows at once)."""
+    users = _helix_get("/users").get("data", [])
+    return users[0]["login"] if users else ""
 
 
 def get_game_id(game_name: str) -> str | None:
@@ -284,6 +316,46 @@ def send_chat_message(message: str) -> None:
         "sender_id": broadcaster_id,
         "message": truncated,
     })
+
+
+def send_chat_message_get_id(message: str) -> str:
+    """Send a chat message as the token's own account and return Twitch's message id.
+
+    Same call as send_chat_message, but raises when Twitch refuses or drops the message,
+    so a caller that must know it posted (the stream push) is never told yes by mistake.
+    """
+    broadcaster_id = get_broadcaster_id()
+    data = _helix_post("/chat/messages", {
+        "broadcaster_id": broadcaster_id,
+        "sender_id": broadcaster_id,
+        "message": message[:500],
+    })
+    sent = (data.get("data") or [{}])[0]
+    if not sent.get("is_sent"):
+        reason = (sent.get("drop_reason") or {}).get("message", "no reason given")
+        raise RuntimeError(f"Twitch did not send the message: {reason}")
+    return sent["message_id"]
+
+
+def pin_chat_message(message_id: str) -> None:
+    """Pin a chat message until the stream ends (Helix PUT /chat/pins).
+
+    Needs the moderator:manage:chat_messages scope; the broadcaster is their own moderator.
+    """
+    broadcaster_id = get_broadcaster_id()
+    _helix_put(f"/chat/pins?broadcaster_id={broadcaster_id}&moderator_id={broadcaster_id}&message_id={message_id}")
+
+
+def unpin_chat_message(message_id: str) -> None:
+    """Remove a pin (Helix DELETE /chat/pins). Same scope as pinning."""
+    broadcaster_id = get_broadcaster_id()
+    _helix_delete(f"/chat/pins?broadcaster_id={broadcaster_id}&moderator_id={broadcaster_id}&message_id={message_id}")
+
+
+def is_channel_live() -> bool:
+    """True while the token's own channel is streaming (Helix GET /streams)."""
+    data = _helix_get(f"/streams?user_id={get_broadcaster_id()}")
+    return bool(data.get("data"))
 
 
 def get_schedule(first: int = 25) -> list[dict]:

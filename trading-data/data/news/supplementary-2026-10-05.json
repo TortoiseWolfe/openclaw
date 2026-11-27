@@ -1,0 +1,359 @@
+{
+  "date": "2026-10-05",
+  "lastUpdated": "2026-10-05T12:23:47.437828+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 109,
+      "articles_matched": 20,
+      "matched": [
+        {
+          "title": "Strive CEO: Bitcoin Could \u2018Go to Infinity' as Dollar Debt Crisis Breaks",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/strive-ceo-bitcoin-could-infinity-015100441.html",
+          "source": "yahoo",
+          "published": "2026-09-23T01:51:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Pat Gelsinger Just Backed a $100 Million Challenge to Nvidia\u2019s AI Networking Moat. AMD Could Benefit",
+          "url": "https://finance.yahoo.com/technology/ai/articles/pat-gelsinger-just-backed-100-042433352.html",
+          "source": "yahoo",
+          "published": "2026-09-23T04:24:33Z",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Intel (INTC) Could Get a Fresh Valuation for Altera. AMD (AMD) Is the Rival to Watch",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intel-intc-could-fresh-valuation-041710849.html",
+          "source": "yahoo",
+          "published": "2026-09-23T04:17:10Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "\u201cThe New Clippy\u201d: Benioff Uses Salesforce\u2019s Biggest Product Launch in Years to Challenge Microsoft",
+          "url": "https://finance.yahoo.com/technology/ai/articles/clippy-benioff-uses-salesforce-biggest-044653952.html",
+          "source": "yahoo",
+          "published": "2026-09-23T04:46:53Z",
+          "matched_symbols": [
+            "CRM",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia doubles down on selling to both sides of the AI race",
+          "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-doubles-down-selling-both-020300627.html",
+          "source": "yahoo",
+          "published": "2026-09-23T02:03:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir Reveals Its AI Sovereignty Strategy And Wall Street Is Starting to Believe It",
+          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-reveals-ai-sovereignty-strategy-054053859.html",
+          "source": "yahoo",
+          "published": "2026-09-23T05:40:53Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's $6-trillion milestone looms. Here's when options traders see it happening",
+          "url": "https://www.cnbc.com/2026/10/05/nvidias-6-trillion-milestone-looms-heres-when-options-traders-see-it-happening.html",
+          "source": "cnbc_top",
+          "published": "Mon, 05 Oct 2026 11:57:23 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Satya Nadella reinvented Microsoft once. Can he do it again in the AI era?",
+          "url": "https://www.cnbc.com/2026/10/05/satya-nadella-reinvented-microsoft-once-can-he-do-it-in-the-ai-era.html",
+          "source": "cnbc_top",
+          "published": "Mon, 05 Oct 2026 11:52:08 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic, OpenAI, Google and Meta execs set to testify at NYC Council hearing on AI risks",
+          "url": "https://www.cnbc.com/2026/10/05/anthropic-openai-google-meta-execs-testify-nyc-council-ai-hearing.html",
+          "source": "cnbc_top",
+          "published": "Mon, 05 Oct 2026 12:19:26 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Satya Nadella reinvented Microsoft once. Can he do it again in the AI era?",
+          "url": "https://www.cnbc.com/2026/10/05/satya-nadella-reinvented-microsoft-once-can-he-do-it-in-the-ai-era.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 05 Oct 2026 11:52:08 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Anthropic, OpenAI, Google and Meta execs set to testify at NYC Council hearing on AI risks",
+          "url": "https://www.cnbc.com/2026/10/05/anthropic-openai-google-meta-execs-testify-nyc-council-ai-hearing.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 05 Oct 2026 12:19:26 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "A 'weird' IPO pull, a tainted reputation and the stalled breakout moment for AI wearables",
+          "url": "https://www.cnbc.com/2026/10/04/ai-wearables-oura-ipo-privacy.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 04 Oct 2026 13:22:39 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "How Nvidia, Micron and a surprising jobs report drove last week's stock action",
+          "url": "https://www.cnbc.com/2026/10/03/how-nvidia-micron-and-a-surprising-jobs-report-drove-last-weeks-stock-action.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 03 Oct 2026 15:06:10 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cerebras stock hits post-IPO low, tumbling 20% for the week on Nvidia pressure and lockup expiration",
+          "url": "https://www.cnbc.com/2026/10/02/cerebras-stock-hits-post-ipo-low-on-nvidia-pressure-lockup-expiration.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 02 Oct 2026 22:38:49 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia just hit a record high. Here\u2019s why the stock still looks cheap to me",
+          "url": "https://www.cnbc.com/2026/10/02/nvidia-is-a-best-in-breed-stock-on-sale-heres-why-im-buying.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 02 Oct 2026 16:55:39 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Facebook whistleblower Frances Haugen questions whether AI companies can police themselves",
+          "url": "https://www.cnbc.com/2026/10/02/frances-haugen-ai-self-regulation.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 02 Oct 2026 14:22:39 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Can Google's new model really catch up to OpenAI and Anthropic at the frontier?",
+          "url": "https://www.cnbc.com/2026/10/02/tech-download-google-argon-frontier-openai-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 02 Oct 2026 15:16:24 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google unveils latest AI model, but Wall Street wants a breakout personal agent",
+          "url": "https://www.cnbc.com/2026/10/01/google-gemini-4-arrives-as-wall-street-shifts-to-personal-agents.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 01 Oct 2026 19:43:04 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Former LinkedIn chief Roslansky to leave Microsoft, following other exec departures",
+          "url": "https://www.cnbc.com/2026/10/01/linkedin-chief-roslansky-microsoft-exit.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 01 Oct 2026 19:36:42 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Dow's rough month, Micron's revenue surge, Google launches Gemini 4 and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/10/01/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 01 Oct 2026 12:45:07 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "Apple and a Hacker's Future",
+          "url": "https://stratechery.com/2026/apple-and-a-hackers-future/",
+          "hn_score": 66,
+          "comments": 31,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Turn off Apple Intelligence on macOS 27 and get its disk space back",
+          "url": "https://github.com/omlahore/RemoveMacAI",
+          "hn_score": 628,
+          "comments": 422,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Decision models like Jev don't beat LLM-as-a-judge or traditional classifiers",
+          "url": "https://developers.redhat.com/articles/2026/10/02/benchmarking-ai-decision-models-against-traditional-guardrails",
+          "hn_score": 93,
+          "comments": 32,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "LLM"
+          ]
+        },
+        {
+          "title": "Improper redaction reveals Google Data Center water and electricity usage",
+          "url": "https://www.1011now.com/2026/09/30/more-questions-than-answers-about-lincolns-google-data-center-water-electricity-usage/",
+          "hn_score": 423,
+          "comments": 558,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "data center"
+          ]
+        },
+        {
+          "title": "The Philadelphia Inquirer built Scrape, an AI tool to surface hyperlocal news",
+          "url": "https://www.lenfestinstitute.org/solutions-resources/philadelphia-inquirer-scrape-ai-hyperlocal-news/",
+          "hn_score": 21,
+          "comments": 9,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "CRM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 7,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 25,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Bullish"
+  }
+}

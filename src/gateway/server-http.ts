@@ -479,6 +479,14 @@ export function createGatewayHttpServer(opts: {
       return;
     }
 
+    // Docker health check probe — unauthenticated, no config loading.
+    if (new URL(req.url ?? "/", "http://localhost").pathname === "/health") {
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.end('{"ok":true}');
+      return;
+    }
+
     try {
       const configSnapshot = loadConfig();
       const trustedProxies = configSnapshot.gateway?.trustedProxies ?? [];

@@ -1,0 +1,284 @@
+{
+  "date": "2026-05-04",
+  "lastUpdated": "2026-05-04T12:52:56.380787+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 15,
+      "matched": [
+        {
+          "title": "These Eight S&P 500 Stocks Have Doubled In 2026. No. 3 Reports On Tuesday.",
+          "url": "https://www.investors.com/news/sp-500-stocks-doubled-in-2026-sandisk-intel-lumentum/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-04T12:08:49Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI Stocks: Winners Shift As Google Leads. Palantir, Arista, CoreWeave Earnings On Deck",
+          "url": "https://www.investors.com/news/technology/ai-stocks-artificial-intelligence-stocks-2026-leaders-laggards-may42026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-04T11:59:14Z",
+          "matched_symbols": [
+            "GOOGL",
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Palantir Stock: Will AI Commercial Revenue Drive Up Software Stocks?",
+          "url": "https://www.investors.com/news/technology/palantir-stock-pltr-software-stocks-q12026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-04T11:47:40Z",
+          "matched_symbols": [
+            "PLTR"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, May 4, 2026: Bitcoin tops $80,000, then pulls back",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-may-4-2026-bitcoin-tops-80000-then-pulls-back-114547251.html",
+          "source": "yahoo",
+          "published": "2026-05-04T11:45:47Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow sags, S&P 500 and Nasdaq waver as Hormuz tensions increase",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-may-4-231452685.html",
+          "source": "yahoo",
+          "published": "2026-05-03T23:14:52Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon opens up its logistics network to other businesses in new growth push",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-opens-logistics-network-other-100922260.html",
+          "source": "yahoo",
+          "published": "2026-05-04T10:09:22Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia Is Up 7% in 2026 While Marvell Technology Has Nearly Doubled. Here's Why.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-7-2026-while-marvell-122500481.html",
+          "source": "yahoo",
+          "published": "2026-05-04T12:25:00Z",
+          "matched_symbols": [
+            "MRVL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin Price Broke $80,000. Why the Crypto Rally Is Set to Disappoint.",
+          "url": "https://www.barrons.com/articles/bitcoin-price-crypto-80000-xrp-ether-45573414?siteid=yhoof2&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-04T12:20:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "These Stocks Are Today\u2019s Movers: eBay, GameStop, TSMC, Norwegian, Palantir, Berkshire Hathaway, and More",
+          "url": "https://www.barrons.com/articles/stock-movers-923a2173?siteid=yhoof2&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-05-04T12:20:00Z",
+          "matched_symbols": [
+            "PLTR",
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The S&P 500 and Nasdaq kept their record rallies going. Here are 3 key takeaways",
+          "url": "https://www.cnbc.com/2026/05/02/the-sp-500-and-nasdaq-kept-their-record-rallies-going-here-are-3-key-takeaways-.html",
+          "source": "cnbc_tech",
+          "published": "Sat, 02 May 2026 15:13:09 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple's stock gains as company execs cite iPhone, Mac demand in boosting guidance",
+          "url": "https://www.cnbc.com/2026/05/01/apple-stock-rallies-on-q2-earnings-and-q3-guidance.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 01 May 2026 20:11:58 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Apple earnings, DHS shutdown, 'Ozempic breath' and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/01/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 01 May 2026 12:09:15 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple CEO Tim Cook warns of extended memory crunch. 'We'll look at a range of options'",
+          "url": "https://www.cnbc.com/2026/05/01/apple-ceo-warns-of-memory-crunch-well-look-at-a-range-of-options.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 01 May 2026 07:00:01 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple delivers a nearly perfect quarter, with a CEO change and an AI update ahead",
+          "url": "https://www.cnbc.com/2026/04/30/apple-delivers-a-nearly-perfect-quarter-with-a-ceo-change-and-an-ai-update-ahead.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 23:43:06 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Veeva Systems to join S&P 500 index, replacing Coterra Energy",
+          "url": "https://www.cnbc.com/2026/04/30/veeva-systems-will-join-sp-500-index-replacing-coterra-energy.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 30 Apr 2026 22:40:57 GMT",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 2,
+      "matched": [
+        {
+          "title": "OpenAI\u2019s o1 correctly diagnosed 67% of ER patients vs. 50-55% by triage doctors",
+          "url": "https://www.theguardian.com/technology/2026/apr/30/ai-outperforms-doctors-in-harvard-trial-of-emergency-triage-diagnoses",
+          "hn_score": 423,
+          "comments": 371,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "I recreated the Apple Lisa computer inside an FPGA [video]",
+          "url": "https://www.youtube.com/watch?v=8jNQDcpHc68",
+          "hn_score": 110,
+          "comments": 29,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PLTR": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "BTC": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MRVL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 5,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    }
+  },
+  "summary": {
+    "total_articles": 17,
+    "sources_succeeded": 2,
+    "most_mentioned": "AAPL",
+    "headline_sentiment": "Bullish"
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "date": "2026-07-07",
+  "lastUpdated": "2026-07-07T12:50:46.336979+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 23,
+      "matched": [
+        {
+          "title": "Best Buy and Apple flag a price shock for shoppers",
+          "url": "https://finance.yahoo.com/economy/articles/best-buy-apple-flag-price-203300039.html",
+          "source": "yahoo",
+          "published": "2026-07-06T20:33:00Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Stock market today: S&P 500, Nasdaq futures slip after Samsung results spark chip sell-off",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-sp-500-nasdaq-futures-slip-after-samsung-results-spark-chip-sell-off-223015294.html",
+          "source": "yahoo",
+          "published": "2026-07-06T22:30:15Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Tuesday, July 7, 2026: Another strong opening for BTC and ETH prices",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-july-7-2026-another-strong-opening-for-btc-and-eth-prices-120355126.html",
+          "source": "yahoo",
+          "published": "2026-07-07T12:03:55Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "As SpaceX joins the Nasdaq-100, its stock could show up in your 401(k). Here's what to know.",
+          "url": "https://finance.yahoo.com/news/as-spacex-joins-the-nasdaq-100-its-stock-could-show-up-in-your-401k-heres-what-to-know-110835130.html",
+          "source": "yahoo",
+          "published": "2026-06-27T11:08:35Z",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, July 6, 2026: Prices falling after last week's rebound",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-july-6-2026-prices-falling-after-last-weeks-rebound-131307981.html",
+          "source": "yahoo",
+          "published": "2026-07-06T13:13:07Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "VanEck vs. Fidelity: Bitcoin ETF Showdown",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/vaneck-vs-fidelity-bitcoin-etf-121901133.html",
+          "source": "yahoo",
+          "published": "2026-07-07T12:19:01Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Chinese lidar maker with Nvidia ties accused of being cyber risk for U.S.",
+          "url": "https://www.cnbc.com/2026/07/07/hesai-technology-nvidia-cyber-risk.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Jul 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google backs nuclear fusion startup targeting Europe\u2019s first commercial power plant",
+          "url": "https://www.cnbc.com/2026/07/07/google-proxima-fusion-funding.html",
+          "source": "cnbc_top",
+          "published": "Tue, 07 Jul 2026 06:24:28 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here's how SpaceX's Nasdaq-100 inclusion might affect options pricing",
+          "url": "https://www.cnbc.com/2026/07/06/heres-how-spacexs-nasdaq-100-inclusion-might-affect-options-pricing.html",
+          "source": "cnbc_top",
+          "published": "Mon, 06 Jul 2026 18:27:06 GMT",
+          "matched_symbols": [
+            "QQQ"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft cuts 4,800 jobs, as Xbox unit downsizes and plans to spin off four gaming studios",
+          "url": "https://www.cnbc.com/2026/07/06/microsoft-cuts-2point1percent-of-employees-as-xbox-unit-plans-to-spin-studios.html",
+          "source": "cnbc_top",
+          "published": "Mon, 06 Jul 2026 21:37:58 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Versant agrees to buy golf simulator company Full Swing for $530 million",
+          "url": "https://www.cnbc.com/2026/07/06/versant-to-buy-golf-simulator-company-full-swing.html",
+          "source": "cnbc_top",
+          "published": "Mon, 06 Jul 2026 12:53:00 GMT",
+          "matched_symbols": [
+            "GBPUSD"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Trump Accounts, the Dow's latest record, Microsoft layoffs and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/07/07/trump-accounts-the-dows-latest-record-microsoft-layoffs-and-more-in-morning-squawk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 12:03:12 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Chinese lidar maker with Nvidia ties accused of being cyber risk for U.S.",
+          "url": "https://www.cnbc.com/2026/07/07/hesai-technology-nvidia-cyber-risk.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 12:00:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google backs nuclear fusion startup targeting Europe\u2019s first commercial power plant",
+          "url": "https://www.cnbc.com/2026/07/07/google-proxima-fusion-funding.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 06:24:28 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft cuts 4,800 jobs, as Xbox unit downsizes and plans to spin off four gaming studios",
+          "url": "https://www.cnbc.com/2026/07/06/microsoft-cuts-2point1percent-of-employees-as-xbox-unit-plans-to-spin-studios.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 21:37:58 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple veteran's Chinese smart-glasses firm becomes unicorn as Tencent, Meituan fund rival to Meta",
+          "url": "https://www.cnbc.com/2026/07/06/apple-veteran-takes-on-meta-with-1-billion-smart-glasses-maker.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 07 Jul 2026 00:45:52 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta\u2019s woes deepen in India as child abuse ads on Instagram draw government ire",
+          "url": "https://www.cnbc.com/2026/07/06/meta-instagram-india-warning-whatsapp.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 05:24:34 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's next-gen AI rack system delayed to 2028 on manufacturing snags, SemiAnalysis says",
+          "url": "https://www.cnbc.com/2026/07/06/nvidia-kyber-rack-system-delays-manufacturing-taiwan-rubin-chips-.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 06 Jul 2026 17:26:34 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: Amazon\u2019s devices chief Panos Panay on tech giant's AI gadget push",
+          "url": "https://www.cnbc.com/2026/07/03/the-tech-download-amazon-devices-chief-panos-panay.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 03 Jul 2026 12:41:22 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Trump bought Apple, Nvidia and other tech giants before tariff reversal fueled rebound",
+          "url": "https://www.cnbc.com/2026/07/02/trump-aapl-nvda-tariffs-disclosures.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 21:03:39 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon has deployed enough satellites to launch Leo service later this year",
+          "url": "https://www.cnbc.com/2026/07/02/amazon-has-deployed-enough-satellites-to-launch-leo-service-this-year.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 18:28:35 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft commits $2.5 billion and 6,000 employees to new AI implementation unit",
+          "url": "https://www.cnbc.com/2026/07/02/microsoft-commits-2point5-billion-6000-employees-ai-implementation-unit.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 13:00:02 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google loses fight over record $4.7 billion EU antitrust fine",
+          "url": "https://www.cnbc.com/2026/07/02/alphabet-google-android-eu-antitrust-fine-4-1-billion-euro-appeal.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 02 Jul 2026 11:13:36 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "GLM 5.2 and the coming AI margin collapse",
+          "url": "https://martinalderson.com/posts/the-upcoming-ai-margin-collapse-part-1-glm-5-2/",
+          "hn_score": 524,
+          "comments": 321,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Small AI Models Gain Traction In places with unreliable networks",
+          "url": "https://spectrum.ieee.org/small-language-models-ai-pharmaceuticals",
+          "hn_score": 181,
+          "comments": 61,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Microsoft Can Track Users via a Windows Device ID",
+          "url": "https://www.pcmag.com/news/a-hackers-arrest-reveals-microsoft-can-track-users-via-a-windows-device",
+          "hn_score": 149,
+          "comments": 69,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "A global workspace in language models",
+          "url": "https://www.anthropic.com/research/global-workspace",
+          "hn_score": 402,
+          "comments": 152,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "AMD Ryzen AI Halo \u2013 $4k AI Dev Kit",
+          "url": "https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo",
+          "hn_score": 347,
+          "comments": 232,
+          "matched_symbols": [
+            "AMD"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Pruning RAG context down to what the answer actually needs",
+          "url": "https://www.kapa.ai/blog/how-we-prune-rag-context",
+          "hn_score": 119,
+          "comments": 32,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "OfficeCLI: Office suite for AI agents to read and edit Microsoft Office files",
+          "url": "https://github.com/iOfficeAI/OfficeCLI",
+          "hn_score": 195,
+          "comments": 57,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AAPL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "ETH": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "QQQ": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GBPUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "META": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 30,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Bullish"
+  }
+}

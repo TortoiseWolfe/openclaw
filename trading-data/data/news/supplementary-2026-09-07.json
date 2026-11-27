@@ -1,0 +1,339 @@
+{
+  "date": "2026-09-07",
+  "lastUpdated": "2026-09-07T18:58:19.705942+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 18,
+      "matched": [
+        {
+          "title": "Nvidia\u2019s Hugging Face Deal Is a Hedge against Broadcom\u2019s Custom Silicon Threat",
+          "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-hugging-face-deal-hedge-105111039.html",
+          "source": "yahoo",
+          "published": "2026-09-06T10:51:11Z",
+          "matched_symbols": [
+            "AVGO",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitwise CIO Calls 0% Bitcoin a \u2018Misallocation\u2019 \u2014 Sees $100K This Year, $1.3M by 2035",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/bitwise-cio-calls-0-bitcoin-101324103.html",
+          "source": "yahoo",
+          "published": "2026-09-06T10:13:24Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Apple Stock: September Surprise Could Be Bigger Than a New iPhone",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-stock-september-surprise-could-130002154.html",
+          "source": "yahoo",
+          "published": "2026-09-06T13:00:02Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Mortgage and refinance interest rates today, Saturday, September 5, 2026: Rates roll back across the board; ARM volatility continues",
+          "url": "https://finance.yahoo.com/personal-finance/mortgages/article/mortgage-and-refinance-interest-rates-today-saturday-september-5-2026-rates-roll-back-across-the-board-arm-volatility-continues-100000745.html",
+          "source": "yahoo",
+          "published": "2026-09-05T10:00:00Z",
+          "matched_symbols": [
+            "ARM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "\u2018Model fatigue\u2019 sets in as AI labs race to roll out new versions at frenetic pace",
+          "url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
+          "source": "cnbc_top",
+          "published": "Sun, 06 Sep 2026 12:13:49 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "\u2018Model fatigue\u2019 sets in as AI labs race to roll out new versions at frenetic pace",
+          "url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 06 Sep 2026 12:13:49 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Back-to-school shopping brought to you by AI \u2014 how Amazon, Google are positioned to win",
+          "url": "https://www.cnbc.com/2026/09/04/back-to-school-shopping-brought-to-you-by-ai-how-amazon-google-are-positioned-to-win.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 04 Sep 2026 14:47:15 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Nvidia's 'defensive move' to acquire Hugging Face is about much more than chips",
+          "url": "https://www.cnbc.com/2026/09/04/nvidia-hugging-face-deal-chips.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 04 Sep 2026 11:31:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's investments grow to $99 billion as chip giant becomes major backer of AI companies",
+          "url": "https://www.cnbc.com/2026/09/04/nvidia-ai-investments-99-billion.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 04 Sep 2026 09:32:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Revenge of the 'Magnificent Seven' \u2014 Jim Cramer says it\u2019s time to buy",
+          "url": "https://www.cnbc.com/2026/09/03/magnificent-seven-jim-cramer-says-time-to-buy.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 22:31:01 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft to impose time limits on Xbox cloud gaming subscribers as costs continue to climb",
+          "url": "https://www.cnbc.com/2026/09/03/microsoft-xbox-game-pass-cloud-limits.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 19:03:56 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "G20 on AI policy, Snowflake earnings, Ford's production push and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/03/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 12:28:37 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Hugging Face approached Nvidia\u2019s Huang weeks ahead of $12.9B acquisition, CEO tells CNBC",
+          "url": "https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 16:43:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google starts September with AI momentum after longest monthly losing streak in over a decade",
+          "url": "https://www.cnbc.com/2026/09/02/google-starts-september-with-ai-momentum-after-long-losing-streak.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 12:31:15 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "How Equinix has found a niche in the multitrillion-dollar AI data center boom",
+          "url": "https://www.cnbc.com/2026/09/02/equinix-partners-with-nvidia-carves-niche-in-ai-data-center-boom.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 02 Sep 2026 22:49:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft to start disclosing Azure quarterly revenue as company consolidates business units",
+          "url": "https://www.cnbc.com/2026/09/02/microsoft-to-disclose-azure-revenue-as-part-of-segment-changes.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 02 Sep 2026 22:37:13 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Snowflake spikes 22% on healthy results and AI coding momentum",
+          "url": "https://www.cnbc.com/2026/09/02/snowflake-snow-q2-earnings-report-2027.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 02 Sep 2026 20:28:39 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Broadcom delivers strong earnings view as CEO touts growth with AI labs",
+          "url": "https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 02:39:48 GMT",
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 4,
+      "matched": [
+        {
+          "title": "AI models ran real businesses: They sent $12,431 in fake invoices, lost $3,200",
+          "url": "https://www.bottlenecklabs.com/blog/benchmarking-7-autonomous-businesses",
+          "hn_score": 48,
+          "comments": 44,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Speculative Decoding in vLLM on AMD GPUs",
+          "url": "https://vllm.ai/blog/2026-08-23-speculative-decoding-amd-gpus",
+          "hn_score": 109,
+          "comments": 39,
+          "matched_symbols": [
+            "AMD"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Tell HN: OpenAI brings back 5 hour limit for plus and business standard users",
+          "url": "https://news.ycombinator.com/item?id=49600233",
+          "hn_score": 101,
+          "comments": 96,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        },
+        {
+          "title": "Bing Wallpaper showing Ad for Harry Potter and Fantastic beasts box set",
+          "url": "https://www.thurrott.com/forums/microsoft/windows/thread/bing-wallpaper-showing-ad-for-harry-potter-and-fantastic-beasts-box-set",
+          "hn_score": 80,
+          "comments": 52,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AVGO": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ARM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SNOW": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 22,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Bullish"
+  }
+}

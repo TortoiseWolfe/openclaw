@@ -1,0 +1,332 @@
+{
+  "date": "2026-03-25",
+  "lastUpdated": "2026-03-25T12:50:38.524529+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 16,
+      "matched": [
+        {
+          "title": "The 3 ETFs Beating the Market in 2026 Have Almost Nothing in Common With the S&P 500",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-etfs-beating-market-2026-123813954.html",
+          "source": "yahoo",
+          "published": "2026-03-25T12:38:13Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures jump amid reports US sent ceasefire plan to Iran",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-futures-jump-amid-reports-us-sent-ceasefire-plan-to-iran-230359776.html",
+          "source": "yahoo",
+          "published": "2026-03-24T23:03:59Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Stock: How To Find & Own America's Greatest Opportunities",
+          "url": "https://www.investors.com/how-to-invest/microsoft-msft-stock-americas-greatest-opportunities/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-25T12:00:53Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here\u2019s What May Trigger a Short Squeeze for New S&P 500 Member EchoStar",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/may-trigger-short-squeeze-p-123544323.html",
+          "source": "yahoo",
+          "published": "2026-03-25T12:35:44Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Alphabet (GOOGL) Became the Largest Contributor to Renaissance Investment on Strong AI and Cloud Growth",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-alphabet-googl-became-largest-114059220.html",
+          "source": "yahoo",
+          "published": "2026-03-25T11:40:59Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Arm releases first in-house chip, with Meta as debut customer",
+          "url": "https://www.cnbc.com/2026/03/24/arm-launches-its-own-cpu-with-meta-as-first-customer.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Mar 2026 18:26:33 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon acquires 'approachable' humanoid maker Fauna Robotics",
+          "url": "https://www.cnbc.com/2026/03/24/amazon-humanoid-maker-fauna-robotics-sprout.html",
+          "source": "cnbc_top",
+          "published": "Tue, 24 Mar 2026 22:38:34 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon acquires 'approachable' humanoid maker Fauna Robotics",
+          "url": "https://www.cnbc.com/2026/03/24/amazon-humanoid-maker-fauna-robotics-sprout.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 22:38:34 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google partners with Agile Robots, growing its AI robotics footprint",
+          "url": "https://www.cnbc.com/2026/03/24/google-agile-robots-ai-robotics.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 19:45:47 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm releases first in-house chip, with Meta as debut customer",
+          "url": "https://www.cnbc.com/2026/03/24/arm-launches-its-own-cpu-with-meta-as-first-customer.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 18:26:33 GMT",
+          "matched_symbols": [
+            "AAPL",
+            "AMZN",
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's Zoox to debut robotaxis in Austin, Miami later this year as it awaits paid ride approval",
+          "url": "https://www.cnbc.com/2026/03/24/amazon-zoox-robotaxi-rides-austin-miami.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 13:23:11 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Alibaba reveals new AI chip designed for 'agents'",
+          "url": "https://www.cnbc.com/2026/03/24/alibaba-ai-chip-cpu-agents.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 12:37:37 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Gap says it will launch checkout within Google's Gemini, in an AI first from a major fashion company",
+          "url": "https://www.cnbc.com/2026/03/24/gap-google-gemini-checkout-ai-platform.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 15:32:05 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon faces further AWS disruption in the Middle East from Iran conflict",
+          "url": "https://www.cnbc.com/2026/03/24/amazon-aws-disruption-in-bahrain-iran.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 24 Mar 2026 11:42:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI calls out Microsoft reliance as risk in investor document ahead of expected IPO",
+          "url": "https://www.cnbc.com/2026/03/23/openai-risk-factors-microsoft-reliance-elon-musk-and-xai-lawsuits.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 23 Mar 2026 23:36:42 GMT",
+          "matched_symbols": [
+            "MSFT",
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft stock may be in a slump. But here\u2019s why it is wrong to give up now",
+          "url": "https://www.cnbc.com/2026/03/23/microsoft-may-be-in-a-slump-but-heres-why-it-is-wrong-to-give-up-now.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 23 Mar 2026 21:19:11 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bearish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [
+        "BoJ",
+        "CPI",
+        "ECB",
+        "Employment",
+        "Fed",
+        "Inflation",
+        "Manufacturing",
+        "Monetary Policy",
+        "PMI",
+        "RBA",
+        "SNB",
+        "inflation",
+        "manufacturing"
+      ],
+      "key_headlines": [
+        "Partner Center Markets spent Tuesday navigating three conflicting narratives around the US-Iran conflict: Trump\u2019s ongoing claims of productive peace negotiations, Iran\u2019s publicly combative online mess",
+        "Equities pared a drop that earlier approached 1% as reports surfaced of possible high-level peace talks as soon as Thursday, though Tehran had yet to respond, keeping sentiment fragile and overall ton",
+        "WTI crude surged on persistent Strait of Hormuz supply fears, Treasury yields climbed, and the US dollar emerged as the day\u2019s best-performing major currency.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!",
+        "Forex News Headlines & Data: Australia S&P Global Manufacturing PMI Flash for March 2026: 50.1 (51.6 forecast; 51.0 previous) Australia S&P Global Services PMI Flash for March 2026: 46.6 (54.7 forecas"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-24"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 5,
+      "matched": [
+        {
+          "title": "TurboQuant: Redefining AI efficiency with extreme compression",
+          "url": "https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/",
+          "hn_score": 239,
+          "comments": 57,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "I tried to prove I'm not AI. My aunt wasn't convinced",
+          "url": "https://www.bbc.com/future/article/20260324-i-tried-to-prove-im-not-an-ai-deepfake",
+          "hn_score": 81,
+          "comments": 73,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Apple Business",
+          "url": "https://www.apple.com/newsroom/2026/03/introducing-apple-business-a-new-all-in-one-platform-for-businesses-of-all-sizes/",
+          "hn_score": 659,
+          "comments": 372,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Fun with CSF firmware (RK3588 GPU firmware)",
+          "url": "https://icecream95.gitlab.io/fun-with-csf-firmware.html",
+          "hn_score": 42,
+          "comments": 0,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "GPU"
+          ]
+        },
+        {
+          "title": "Hypura \u2013 A storage-tier-aware LLM inference scheduler for Apple Silicon",
+          "url": "https://github.com/t8/hypura",
+          "hn_score": 210,
+          "comments": 80,
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "relevance_keywords": [
+            "LLM",
+            "inference"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "GOOGL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AAPL": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMZN": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 26,
+    "sources_succeeded": 3,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Neutral"
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "date": "2026-04-29",
+  "lastUpdated": "2026-04-29T12:51:06.641981+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 110,
+      "articles_matched": 24,
+      "matched": [
+        {
+          "title": "Are Investors Losing Faith in NVIDIA\u2019s (NVDA) AI Promises?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/investors-losing-faith-nvidia-nvda-123240311.html",
+          "source": "yahoo",
+          "published": "2026-04-29T12:32:40Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stock market today: S&P 500, Nasdaq, Dow futures muted ahead of Mag 7 earnings, Powell's final policy decision",
+          "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-wednesday-april-29-dow-nasdaq-sp-futures-powell-mag7-231405065.html",
+          "source": "yahoo",
+          "published": "2026-04-28T23:14:05Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft Stock Shrugs Off OpenAI Shock As Earnings Loom; Is Microsoft A Buy Now?",
+          "url": "https://www.investors.com/research/microsoft-msft-stock-buy-now-april-2026/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-29T12:00:48Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Is MSFT a \u201cBaby Thrown Out with the Bath Water\u201d Stock?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/msft-baby-thrown-bath-water-115149308.html",
+          "source": "yahoo",
+          "published": "2026-04-29T11:51:49Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google Earnings: Can Cloud Growth Clear A Sky-High 'Bogey'?",
+          "url": "https://www.investors.com/news/technology/google-stock-googl-earnings-wiz-acquisition-cloud-growth/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-04-29T11:50:31Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "What Makes Meta Platforms (META) a Lucrative Investment?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/makes-meta-platforms-meta-lucrative-114953494.html",
+          "source": "yahoo",
+          "published": "2026-04-29T11:49:53Z",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta Platforms\u2019 (META) Earnings Multiple Reflects Slower Growth Expectations",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-meta-earnings-multiple-114201522.html",
+          "source": "yahoo",
+          "published": "2026-04-29T11:42:01Z",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "What Makes Alphabet (GOOG) a Long-Term Holding?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/makes-alphabet-goog-long-term-114041147.html",
+          "source": "yahoo",
+          "published": "2026-04-29T11:40:41Z",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Wednesday, April 29, 2026: Values continue to fall this week",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-wednesday-april-29-2026-values-continue-to-fall-this-week-113845501.html",
+          "source": "yahoo",
+          "published": "2026-04-29T11:38:45Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Microsoft (MSFT) Slipped in Q1 Despite Revenue Growth of 15%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-slipped-q1-despite-113506364.html",
+          "source": "yahoo",
+          "published": "2026-04-29T11:35:06Z",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "OpenAI looms over earnings from tech hyperscalers",
+          "url": "https://www.cnbc.com/2026/04/29/openai-looms-over-earnings-from-tech-hyperscalers.html",
+          "source": "cnbc_top",
+          "published": "Wed, 29 Apr 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "James Comey charged with threatening Trump's life in \u20188647\u2019 seashell post",
+          "url": "https://www.cnbc.com/2026/04/28/james-comey-indicted-trump-seashell-8647.html",
+          "source": "cnbc_top",
+          "published": "Wed, 29 Apr 2026 12:37:23 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Pentagon AI chief confirms DOD's expanded use of Google, says reliance on one model 'never a good thing'",
+          "url": "https://www.cnbc.com/2026/04/28/pentagon-ai-chief-confirms-work-with-google-after-anthropic-blacklist.html",
+          "source": "cnbc_top",
+          "published": "Wed, 29 Apr 2026 03:17:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta told it's violating EU law by not doing enough to keep children off Facebook and Instagram",
+          "url": "https://www.cnbc.com/2026/04/29/meta-eu-law-minors-facebook-instagram-child-safety.html",
+          "source": "cnbc_top",
+          "published": "Wed, 29 Apr 2026 10:55:58 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Traders bet Nvidia's stock will return to record highs soon",
+          "url": "https://www.cnbc.com/2026/04/28/traders-bet-nvidias-stock-will-return-to-record-highs-soon.html",
+          "source": "cnbc_top",
+          "published": "Tue, 28 Apr 2026 19:16:18 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "OpenAI brings its models to Amazon's cloud after ending exclusivity with Microsoft",
+          "url": "https://www.cnbc.com/2026/04/28/openai-brings-models-to-aws-after-ending-exclusivity-with-microsoft.html",
+          "source": "cnbc_top",
+          "published": "Tue, 28 Apr 2026 17:47:39 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI looms over earnings from tech hyperscalers",
+          "url": "https://www.cnbc.com/2026/04/29/openai-looms-over-earnings-from-tech-hyperscalers.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 29 Apr 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta told it's violating EU law by not doing enough to keep children off Facebook and Instagram",
+          "url": "https://www.cnbc.com/2026/04/29/meta-eu-law-minors-facebook-instagram-child-safety.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 29 Apr 2026 10:55:58 GMT",
+          "matched_symbols": [
+            "META"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Pentagon AI chief confirms DOD's expanded use of Google, says reliance on one model 'never a good thing'",
+          "url": "https://www.cnbc.com/2026/04/28/pentagon-ai-chief-confirms-work-with-google-after-anthropic-blacklist.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 29 Apr 2026 03:17:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI brings its models to Amazon's cloud after ending exclusivity with Microsoft",
+          "url": "https://www.cnbc.com/2026/04/28/openai-brings-models-to-aws-after-ending-exclusivity-with-microsoft.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 28 Apr 2026 17:47:39 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta, Google, OpenAI among Big Tech firms seeing top staff leaving to launch AI startups",
+          "url": "https://www.cnbc.com/2026/04/28/meta-google-big-tech-staff-ai-labs-investors.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 28 Apr 2026 07:14:19 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Former Google DeepMind researcher's AI startup raises record $1.1 billion seed funding to pursue superintelligence",
+          "url": "https://www.cnbc.com/2026/04/27/deepmind-ineffable-intelligence-record-seed-funding-nvidia-google.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 27 Apr 2026 17:33:24 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Amazon\u2019s bet on satellites is expensive and faces fierce competition. It also just might work",
+          "url": "https://www.cnbc.com/2026/04/27/amazon-spacex-satellites-jim-cramer-investing-club.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 27 Apr 2026 14:51:32 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "OpenAI shakes up partnership with Microsoft, capping revenue share payments",
+          "url": "https://www.cnbc.com/2026/04/27/openai-microsoft-partnership-revenue-cap.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 27 Apr 2026 23:09:30 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 2,
+      "matched": [
+        {
+          "title": "He asked AI to count carbs 27000 times. It couldn't give the same answer twice",
+          "url": "https://www.diabettech.com/i-asked-ai-to-count-my-carbs-27000-times-it-couldnt-give-me-the-same-answer-twice/",
+          "hn_score": 24,
+          "comments": 6,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "OpenAI models coming to Amazon Bedrock: Interview with OpenAI and AWS CEOs",
+          "url": "https://stratechery.com/2026/an-interview-with-openai-ceo-sam-altman-and-aws-ceo-matt-garman-about-bedrock-managed-agents/",
+          "hn_score": 288,
+          "comments": 96,
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "relevance_keywords": [
+            "OpenAI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "NVDA": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SPY": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "GOOGL": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "META": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "ETH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "AMZN": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 26,
+    "sources_succeeded": 2,
+    "most_mentioned": "MSFT",
+    "headline_sentiment": "Bullish"
+  }
+}

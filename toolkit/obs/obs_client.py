@@ -9,15 +9,19 @@ Env vars:
   OBS_WS_PORT      - WebSocket port (default: 4455)
   OBS_WS_PASSWORD   - WebSocket password (default: empty)
   OBS_LAUNCHER_URL  - Host launcher base URL (default: http://host.docker.internal:8100)
+  OBS_LAUNCHER_TOKEN - Bearer token sent to the launcher (read at call time)
 """
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
 
-import obsws_python as obs
+sys.path.insert(0, "/app/toolkit/cron-helpers")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cron-helpers"))
+from path_utils import RENDERS_DIR, safe_join
 
 WS_HOST = os.environ.get("OBS_WS_HOST", "host.docker.internal")
 WS_PORT = int(os.environ.get("OBS_WS_PORT", "4455"))
@@ -25,13 +29,33 @@ WS_PASSWORD = os.environ.get("OBS_WS_PASSWORD", "")
 LAUNCHER_URL = os.environ.get("OBS_LAUNCHER_URL", "http://host.docker.internal:8100")
 TIMEOUT = 5
 
+# Lazy import: obsws_python is only needed for WebSocket functions, not launcher HTTP calls.
+# Importing at module level caused all scripts that touch obs_client to crash when the
+# venv wasn't on PATH (login shell resets PATH, see tools.exec.pathPrepend fix).
+_obs = None
+
+
+def _get_obs():
+    global _obs
+    if _obs is None:
+        import obsws_python as obs
+        _obs = obs
+    return _obs
+
 
 # ── Launch (via host HTTP launcher) ──────────────────────────────
+
+def _launcher_headers() -> dict:
+    """Authorization header for the host launcher, if OBS_LAUNCHER_TOKEN is set."""
+    token = os.environ.get("OBS_LAUNCHER_TOKEN", "")
+    return {"Authorization": f"Bearer {token}"} if token else {}
+
 
 def launch_obs(wait: bool = True, max_wait: int = 30) -> bool:
     """Ask host launcher to start OBS. Returns True if OBS is running."""
     try:
-        req = urllib.request.Request(f"{LAUNCHER_URL}/launch", method="POST")
+        req = urllib.request.Request(f"{LAUNCHER_URL}/launch", method="POST",
+                                     headers=_launcher_headers())
         resp = urllib.request.urlopen(req, timeout=TIMEOUT)
         data = json.loads(resp.read())
         if not wait:
@@ -51,7 +75,8 @@ def launch_obs(wait: bool = True, max_wait: int = 30) -> bool:
 def kill_obs() -> bool:
     """Ask host launcher to stop OBS."""
     try:
-        req = urllib.request.Request(f"{LAUNCHER_URL}/kill", method="POST")
+        req = urllib.request.Request(f"{LAUNCHER_URL}/kill", method="POST",
+                                     headers=_launcher_headers())
         resp = urllib.request.urlopen(req, timeout=TIMEOUT)
         data = json.loads(resp.read())
         return not data.get("running", True)
@@ -63,7 +88,8 @@ def kill_obs() -> bool:
 def launcher_status() -> dict:
     """Check OBS process status via host launcher."""
     try:
-        resp = urllib.request.urlopen(f"{LAUNCHER_URL}/status", timeout=TIMEOUT)
+        req = urllib.request.Request(f"{LAUNCHER_URL}/status", headers=_launcher_headers())
+        resp = urllib.request.urlopen(req, timeout=TIMEOUT)
         return json.loads(resp.read())
     except Exception as e:
         return {"running": False, "error": str(e)}
@@ -71,8 +97,9 @@ def launcher_status() -> dict:
 
 # ── WebSocket control ────────────────────────────────────────────
 
-def _connect() -> obs.ReqClient:
+def _connect():
     """Create a new OBS WebSocket connection."""
+    obs = _get_obs()
     return obs.ReqClient(host=WS_HOST, port=WS_PORT, password=WS_PASSWORD, timeout=TIMEOUT)
 
 
@@ -313,7 +340,7 @@ def create_media_source(scene: str, source: str) -> None:
         cl.disconnect()
 
 
-def _set_fullscreen_transform(cl: obs.ReqClient, scene: str, item_id: int) -> None:
+def _set_fullscreen_transform(cl, scene: str, item_id: int) -> None:
     """Set a scene item to fill the canvas (1920x1080 assumed)."""
     try:
         # Get video settings for base resolution
@@ -536,7 +563,54 @@ COMMANDS = {
     "launch": "Launch OBS via host launcher",
     "kill": "Kill OBS via host launcher",
     "launcher-status": "Check host launcher status",
+    "set-twitch-key": "Point OBS at Twitch using OBS_STREAM_KEY from the environment",
 }
+
+
+# CLI-only argument checks (library functions are called by trusted scripts).
+# OBS on Windows (Chromium for browser sources, Win32 for media paths) parses these values, not
+# Python, so each check accepts only a strict shape that both sides read the same way.
+BROWSER_URL_HOSTS = {"localhost", "127.0.0.1", "remotion-renderer", "host.docker.internal"}
+# No userinfo, backslashes, whitespace or control characters: those are where urlparse and
+# Chromium's URL parser disagree about the host.
+_BROWSER_URL_RE = re.compile(
+    r"^https?://(?P<host>[A-Za-z0-9.-]+)(?::\d{1,5})?(?:[/?#][^\\\s\x00-\x1f\x7f@]*)?$")
+# One path segment: what render file names actually look like. Rejects "..", trailing dots or
+# spaces (Windows strips them, so ".. " would become ".."), ":" (drives, streams) and backslashes.
+_MEDIA_SEGMENT_RE = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$")
+
+
+def _cli_check_browser_url(url: str) -> None:
+    """Exit 2 unless url is http(s) on an allowed host, in a form Chromium parses identically."""
+    m = _BROWSER_URL_RE.fullmatch(url)
+    if not m or m.group("host").lower() not in BROWSER_URL_HOSTS:
+        print(f"ERROR: browser URL must be http(s) on one of {sorted(BROWSER_URL_HOSTS)}: {url}",
+              file=sys.stderr)
+        sys.exit(2)
+
+
+def _media_segments_ok(segments: list[str]) -> bool:
+    return bool(segments) and all(_MEDIA_SEGMENT_RE.fullmatch(s) and not s.endswith(".") for s in segments)
+
+
+def _cli_check_media_path(path: str) -> None:
+    """Exit 2 unless path is under the renders dir or OBS_RENDERS_WIN_PREFIX, made only of
+    plain file-name segments."""
+    win_prefix = os.environ.get("OBS_RENDERS_WIN_PREFIX", "").rstrip("\\")
+    if win_prefix and path.startswith(win_prefix + "\\"):
+        if _media_segments_ok(path[len(win_prefix) + 1:].split("\\")):
+            return
+    elif path.startswith(RENDERS_DIR.rstrip("/") + "/") and "\\" not in path:
+        rel = path[len(RENDERS_DIR.rstrip("/")) + 1:]
+        if _media_segments_ok(rel.split("/")):
+            try:
+                safe_join(RENDERS_DIR, rel)  # also refuses a symlink that leaves the renders dir
+                return
+            except ValueError:
+                pass
+    print(f"ERROR: media path must be under {RENDERS_DIR}"
+          + (f" or {win_prefix}" if win_prefix else "") + f": {path}", file=sys.stderr)
+    sys.exit(2)
 
 
 def main() -> None:
@@ -585,6 +659,7 @@ def main() -> None:
         if len(sys.argv) < 4:
             print("Usage: obs_client.py set-media <source> <path>", file=sys.stderr)
             sys.exit(1)
+        _cli_check_media_path(sys.argv[3])
         set_media_source(sys.argv[2], sys.argv[3])
         print(f"Set {sys.argv[2]} → {sys.argv[3]}")
 
@@ -608,6 +683,7 @@ def main() -> None:
         if len(sys.argv) < 5:
             print("Usage: obs_client.py add-browser <scene> <source> <url>", file=sys.stderr)
             sys.exit(1)
+        _cli_check_browser_url(sys.argv[4])
         create_browser_source(sys.argv[2], sys.argv[3], sys.argv[4])
         print(f"Browser source '{sys.argv[3]}' added to '{sys.argv[2]}'")
 
@@ -615,6 +691,7 @@ def main() -> None:
         if len(sys.argv) < 4:
             print("Usage: obs_client.py set-browser-url <source> <url>", file=sys.stderr)
             sys.exit(1)
+        _cli_check_browser_url(sys.argv[3])
         set_browser_source_url(sys.argv[2], sys.argv[3])
         print(f"Updated browser URL: {sys.argv[3]}")
 
@@ -652,6 +729,15 @@ def main() -> None:
     elif cmd == "launcher-status":
         s = launcher_status()
         print(json.dumps(s, indent=2))
+
+    elif cmd == "set-twitch-key":
+        # Reads the key from the environment so it never appears in argv or output.
+        key = os.environ.get("OBS_STREAM_KEY", "")
+        if not key:
+            print("OBS_STREAM_KEY is not set", file=sys.stderr)
+            sys.exit(1)
+        set_stream_service("rtmp_common", {"service": "Twitch", "key": key})
+        print(f"Stream key set ({len(key)} chars)")
 
 
 if __name__ == "__main__":

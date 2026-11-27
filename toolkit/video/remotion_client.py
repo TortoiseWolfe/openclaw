@@ -5,6 +5,7 @@ Calls the remotion-renderer container to render video compositions.
 
 Env vars:
   REMOTION_URL - Renderer base URL (default: http://remotion-renderer:3100)
+  RENDERER_TOKEN - Bearer token for POST /render (read at call time, when set)
 """
 
 import json
@@ -34,10 +35,15 @@ def render(composition_id: str, props: dict, output_path: str) -> dict:
         "outputPath": output_path,
     }).encode("utf-8")
 
+    headers = {"Content-Type": "application/json"}
+    token = os.environ.get("RENDERER_TOKEN", "")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
     req = urllib.request.Request(
         url,
         data=data,
-        headers={"Content-Type": "application/json"},
+        headers=headers,
         method="POST",
     )
 

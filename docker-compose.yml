@@ -20,6 +20,49 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  ollama-init:
+    image: ollama/ollama@sha256:76d0c003b27db65170e88ab319ff19c9bcee41ecb8177c52ab06921dfa13abdf
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        set -e
+        ensure_model() {
+          local base="$$1" variant="$$1-ctx16k"
+          if ollama show "$$variant" > /dev/null 2>&1; then
+            echo "[ollama-init] $$variant already present"
+          else
+            echo "[ollama-init] Pulling $$base ..."
+            ollama pull "$$base"
+            echo "[ollama-init] Creating $$variant (16K context) ..."
+            printf 'FROM %s\nPARAMETER num_ctx 16384\n' "$$base" > /tmp/Modelfile
+            ollama create "$$variant" -f /tmp/Modelfile
+            echo "[ollama-init] $$variant ready"
+          fi
+        }
+        ensure_model qwen3:8b
+        ensure_model llama3-groq-tool-use:8b
+        ensure_model llama3.1:8b
+        echo "[ollama-init] All models available"
+    restart: "no"
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
 
   mcp-gateway:
     image: debian:bookworm-slim@sha256:56ff6d36d4eb3db13a741b342ec466f121480b5edded42e4b7ee850ce7a418ee
@@ -45,6 +88,12 @@ services:
       - backend
     security_opt:
       - "no-new-privileges:true"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/localhost/8808'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     deploy:
       resources:
         limits:
@@ -54,8 +103,10 @@ services:
   openclaw-gateway:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
     depends_on:
-      - ollama
-      - mcp-gateway
+      ollama-init:
+        condition: service_completed_successfully
+      mcp-gateway:
+        condition: service_healthy
     security_opt:
       - "no-new-privileges:true"
     extra_hosts:
@@ -64,17 +115,16 @@ services:
       HOME: /home/node
       TERM: xterm-256color
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
       OLLAMA_HOST: http://ollama:11434
       # Twitch tokens loaded from ~/.openclaw/.env via loadDotEnv() — not passed here
       # so the onRefresh callback can update them at runtime.
-      CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}
-      CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}
-      CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}
+      # No Anthropic/Claude keys: every model is local Ollama (agents.defaults.modelPolicy.allow).
       ALPHA_VANTAGE_API_KEY: ${ALPHA_VANTAGE_API_KEY}
       OBS_WS_HOST: ${OBS_WS_HOST:-host.docker.internal}
       OBS_WS_PORT: ${OBS_WS_PORT:-4455}
       OBS_WS_PASSWORD: ${OBS_WS_PASSWORD}
+      OBS_LAUNCHER_TOKEN: ${OBS_LAUNCHER_TOKEN}
+      RENDERER_TOKEN: ${RENDERER_TOKEN}
       OBS_LAUNCHER_URL: ${OBS_LAUNCHER_URL:-http://host.docker.internal:8100}
       OBS_MEDIA_SOURCE: ${OBS_MEDIA_SOURCE:-EpisodeVideo}
       OBS_PLAYBACK_SCENE: ${OBS_PLAYBACK_SCENE:-Episode Playback}
@@ -100,6 +150,7 @@ services:
       - "127.0.0.1:${OPENCLAW_BRIDGE_PORT:-18790}:18790"
     init: true
     restart: unless-stopped
+    stop_grace_period: 30s
     networks:
       - backend
       - default
@@ -108,12 +159,13 @@ services:
         limits:
           cpus: "4"
           memory: 6G
+    # Upstream's own check (docker-compose.yml at v2026.9.9). The official image has no /health route.
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://localhost:18789/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      test: ["CMD", "node", "dist/docker-healthcheck.js"]
       interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     command:
       [
         "node",
@@ -132,9 +184,12 @@ services:
     init: true
     security_opt:
       - "no-new-privileges:true"
+    cap_drop:
+      - ALL
     environment:
       REMOTION_DIR: /app
       RENDERS_DIR: /renders
+      RENDERER_TOKEN: ${RENDERER_TOKEN}
     volumes:
       - ${TWITCH_WORKSPACE_DIR}/renders:/renders
       - ${TWITCH_WORKSPACE_DIR}/renders/_audio:/app/public/_audio
@@ -150,6 +205,7 @@ services:
         limits:
           cpus: "4"
           memory: 4G
+          pids: 512   # compose refuses a top-level pids_limit next to deploy limits
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3100/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
@@ -164,10 +220,6 @@ services:
       TERM: xterm-256color
       BROWSER: echo
       OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
-      CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}
-      CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}
-      CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}
     volumes:
       - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
       - ${OPENCLAW_WORKSPACE_DIR}:/home/node/clawd

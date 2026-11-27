@@ -1,0 +1,54 @@
+# NX-01's lean OpenClaw gateway: the "Receptionist" only (no Ollama, no MCP gateway, no renderer).
+# The full stack lives in docker-compose.yml (the tower runs that). This file keeps the same container name,
+# openclaw-openclaw-gateway-1, and the same port, 127.0.0.1:18789, so the Windows tray and
+# ~/.claude/scripts/openclaw_gateway.py find it the same way on both machines.
+#
+#   docker build -f Dockerfile.toolkit -t openclaw-toolkit:2026.9.9 .
+#   OPENCLAW_CONFIG_DIR=$HOME/.openclaw docker compose -p openclaw -f docker-compose.nx01.yml up -d
+#   docker compose -p openclaw -f docker-compose.nx01.yml stop      # the stop half of the rollback
+#
+# Protections kept from the WSL distro install (user openclaw uid 52100, NoNewPrivileges, no Docker mounts):
+#   - published on 127.0.0.1 only; the gateway's own token auth stays on (gateway.auth.mode token in openclaw.json)
+#   - runs as uid 52100, never root; every Linux capability dropped; no-new-privileges
+#   - only the state folder, the drop folder and nothing of the home folder is mounted
+#   - the tool deny list, the exec policy and the models come from the state folder's openclaw.json
+name: openclaw
+
+services:
+  openclaw-gateway:
+    image: ${OPENCLAW_IMAGE:-openclaw-toolkit:2026.9.9}
+    user: "52100:52100"
+    group_add:
+      - "52101"   # ocdrop: write access to the shared drop folder
+    security_opt:
+      - "no-new-privileges:true"
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /home/node:uid=52100,gid=52100,mode=0755
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+    volumes:
+      - ${OPENCLAW_CONFIG_DIR:?set OPENCLAW_CONFIG_DIR to the state folder}:/home/node/.openclaw
+      - ${OC_DROP_DIR:-/mnt/wsl/ocstage}:/mnt/wsl/ocstage
+    ports:
+      - "127.0.0.1:${OPENCLAW_GATEWAY_PORT:-18789}:18789"
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 3G
+          pids: 512   # compose refuses a top-level pids_limit next to deploy limits
+    healthcheck:
+      test: ["CMD", "node", "dist/docker-healthcheck.js"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    command: ["node", "dist/index.js", "gateway", "--bind", "lan", "--port", "18789"]

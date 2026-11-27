@@ -237,6 +237,29 @@ def friday_close(state, prices, today, today_date, rules=None, cross_rates=None)
     return closed
 
 
+def _check_trailing_stop_cooldown(symbol, direction, state, today_date, rules):
+    """Block same-direction re-entry for N days after a trailing stop exit.
+
+    Prevents the system from immediately re-entering a position in the same
+    direction after a trailing stop takes profit. The trailing stop signals
+    that momentum was fading; re-entering risks catching the reversal.
+    """
+    cfg = rules.get("trailing_stop_cooldown", {})
+    if not cfg.get("enabled", False):
+        return False, ""
+    cooldown_days = cfg.get("days", 3)
+    target_reasons = cfg.get("after_reasons", ["trailing stop"])
+    for trade in reversed(state["closed"]):
+        if trade["symbol"] != symbol or trade["direction"] != direction:
+            continue
+        if trade.get("close_reason") not in target_reasons:
+            continue
+        days_since = (today_date - date.fromisoformat(trade["date_closed"])).days
+        if days_since <= cooldown_days:
+            return True, f"{trade['close_reason']} {days_since}d ago (cooldown {cooldown_days}d)"
+    return False, ""
+
+
 def _get_slippage(rules, asset_class, price):
     """Return absolute slippage amount for the asset class."""
     slip_cfg = rules.get("slippage", {})
@@ -487,6 +510,13 @@ def main():
                 continue
 
             if any(p["symbol"] == sym for p in state["open"]):
+                continue
+
+            # Trailing stop cooldown: prevent same-direction re-entry after recent exit
+            skip_cd, cd_reason = _check_trailing_stop_cooldown(
+                sym, a["signal"]["direction"], state, today_date, rules)
+            if skip_cd:
+                print(f"SKIP {ac}/{sym}: trailing stop cooldown ({cd_reason})")
                 continue
 
             # Correlation guard: prevent doubling up on correlated positions

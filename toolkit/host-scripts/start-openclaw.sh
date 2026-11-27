@@ -13,7 +13,7 @@ REPO_DIR="$HOME/repos/openclaw"
 LOG_DIR="$HOME/.openclaw"
 LOG_FILE="$LOG_DIR/startup.log"
 LOCK_FILE="/tmp/openclaw-starting.lock"
-REQUIRED_MODELS=("qwen3:8b-ctx16k")
+REQUIRED_MODELS=("qwen3:8b" "llama3-groq-tool-use:8b" "llama3.1:8b")
 
 mkdir -p "$LOG_DIR"
 
@@ -46,13 +46,14 @@ fi
 
 cd "$REPO_DIR"
 
-# 2. Build image if missing
-if ! docker image inspect openclaw:local &>/dev/null; then
-  log "Building openclaw:local image..."
-  docker build -t openclaw:local . >> "$LOG_FILE" 2>&1
+# 2. Build toolkit image (FROM the official openclaw image) if missing
+TOOLKIT_IMAGE="openclaw-toolkit:2026.9.9"
+if ! docker image inspect "$TOOLKIT_IMAGE" &>/dev/null; then
+  log "Building $TOOLKIT_IMAGE image from Dockerfile.toolkit..."
+  docker build -f Dockerfile.toolkit -t "$TOOLKIT_IMAGE" . >> "$LOG_FILE" 2>&1
   log "Image built"
 else
-  log "Image openclaw:local exists"
+  log "Image $TOOLKIT_IMAGE exists"
 fi
 
 # 3. Start services
@@ -73,29 +74,29 @@ fi
 # 4. Wait for Ollama to be responsive (longer wait for fresh containers)
 log "Waiting for Ollama..."
 for i in $(seq 1 300); do
-  if docker compose exec -T ollama curl -sf http://localhost:11434/api/tags &>/dev/null; then
+  if docker compose exec -T ollama ollama list &>/dev/null; then
     break
   fi
   sleep 2
 done
-if ! docker compose exec -T ollama curl -sf http://localhost:11434/api/tags &>/dev/null; then
+if ! docker compose exec -T ollama ollama list &>/dev/null; then
   log "WARNING: Ollama not responding after 10 min — models may not be available"
 else
   log "Ollama ready"
 
-  # 5. Pull missing models
-  existing=$(docker compose exec -T ollama ollama list 2>/dev/null | tail -n +2 | awk '{print $1}' || true)
-  for model in "${REQUIRED_MODELS[@]}"; do
-    if echo "$existing" | grep -q "^${model}"; then
-      log "Model $model present"
+  # 5. Pull base models and create 16K context variants
+  for base in "${REQUIRED_MODELS[@]}"; do
+    variant="${base}-ctx16k"
+    if docker compose exec -T ollama ollama show "$variant" &>/dev/null; then
+      log "Model $variant present"
     else
-      log "Pulling $model (this may take several minutes)..."
-      docker compose exec -T ollama ollama pull "$model" >> "$LOG_FILE" 2>&1
-      log "Model $model pulled"
+      log "Pulling $base (this may take several minutes)..."
+      docker compose exec -T ollama ollama pull "$base" >> "$LOG_FILE" 2>&1
+      log "Creating $variant (16K context)..."
+      docker compose exec -T ollama bash -c "printf 'FROM %s\nPARAMETER num_ctx 16384\n' '$base' > /tmp/Modelfile && ollama create '$variant' -f /tmp/Modelfile" >> "$LOG_FILE" 2>&1
+      log "Model $variant ready"
     fi
   done
-
-  # 6. Models already include 16K context in their Modelfile — no variants needed
 fi
 
 # 7. Summary

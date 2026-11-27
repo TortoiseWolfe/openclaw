@@ -1,0 +1,386 @@
+{
+  "date": "2026-03-12",
+  "lastUpdated": "2026-03-12T12:50:40.303810+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 108,
+      "articles_matched": 20,
+      "matched": [
+        {
+          "title": "Amazon partner airline ATI, pilots agree on provisional 4-year contract",
+          "url": "https://finance.yahoo.com/news/amazon-partner-airline-ati-pilots-122948910.html",
+          "source": "yahoo",
+          "published": "2026-03-12T12:29:48Z",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia Partnership Hints at Big Ambitions for Former OpenAI Tech Chief\u2019s Startup",
+          "url": "https://finance.yahoo.com/news/nvidia-partnership-hints-big-ambitions-040100243.html",
+          "source": "yahoo",
+          "published": "2026-03-11T04:01:00Z",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Stocks to Watch Thursday: UiPath, Dollar General, Atlassian",
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-03-12-2026/card/stocks-to-watch-thursday-uipath-atlassian-honda-6kV8Z3la9iMNai545xwV?siteid=yhoof2&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-03-12T12:33:00Z",
+          "matched_symbols": [
+            "PATH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google brings more AI to navigation with 'Ask Maps' feature that lets users ask complex questions",
+          "url": "https://www.cnbc.com/2026/03/12/google-brings-more-gemini-ai-to-navigation-with-ask-maps-feature.html",
+          "source": "cnbc_top",
+          "published": "Thu, 12 Mar 2026 12:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "FCC chair slams Amazon for slow satellite launches after it opposed SpaceX data center plan",
+          "url": "https://www.cnbc.com/2026/03/11/fcc-chair-amazon-spacex-data-center-space.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 22:28:13 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google sells partial stake in fiber business, becomes minority owner of new venture",
+          "url": "https://www.cnbc.com/2026/03/11/google-sells-partial-stake-in-fiber-becomes-minority-owner-in-venture-.html",
+          "source": "cnbc_top",
+          "published": "Thu, 12 Mar 2026 03:19:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft plans to ship prototype of next Xbox console to developers in 2027",
+          "url": "https://www.cnbc.com/2026/03/11/microsoft-plans-to-ship-prototype-of-next-xbox-to-developers-in-2027.html",
+          "source": "cnbc_top",
+          "published": "Wed, 11 Mar 2026 20:31:05 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google brings more AI to navigation with 'Ask Maps' feature that lets users ask complex questions",
+          "url": "https://www.cnbc.com/2026/03/12/google-brings-more-gemini-ai-to-navigation-with-ask-maps-feature.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 12 Mar 2026 12:30:01 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google sells partial stake in fiber business, becomes minority owner of new venture",
+          "url": "https://www.cnbc.com/2026/03/11/google-sells-partial-stake-in-fiber-becomes-minority-owner-in-venture-.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 12 Mar 2026 03:19:27 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "FCC chair slams Amazon for slow satellite launches after it opposed SpaceX data center plan",
+          "url": "https://www.cnbc.com/2026/03/11/fcc-chair-amazon-spacex-data-center-space.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 22:28:13 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft plans to ship prototype of next Xbox console to developers in 2027",
+          "url": "https://www.cnbc.com/2026/03/11/microsoft-plans-to-ship-prototype-of-next-xbox-to-developers-in-2027.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 20:31:05 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Meta rolls out in-house AI chips weeks after massive Nvidia, AMD deals",
+          "url": "https://www.cnbc.com/2026/03/11/meta-ai-mtia-chip-data-center.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 14:00:01 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nebius stock pops 16% on Nvidia $2 billion investment announcement",
+          "url": "https://www.cnbc.com/2026/03/11/nebius-nvidia-ai-cloud.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 20:03:00 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon's Zoox partners with Uber to reach more robotaxi riders \u2014 first in Las Vegas, then LA",
+          "url": "https://www.cnbc.com/2026/03/11/uber-amazon-zoox-partnership-robotaxi-demand.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 12:00:02 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AI chipmaker Cerebras namedropped by Oracle, alongside Nvidia and AMD",
+          "url": "https://www.cnbc.com/2026/03/10/ai-chipmaker-cerebras-namedropped-by-oracle-alongside-nvidia-and-amd-.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 00:48:14 GMT",
+          "matched_symbols": [
+            "AMD",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Microsoft backs Anthropic in Pentagon blacklist battle, urges temporary restraining order",
+          "url": "https://www.cnbc.com/2026/03/10/microsoft-says-court-should-temporarily-block-pentagon-ban-anthropic.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 11 Mar 2026 10:53:52 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon wins court order to block Perplexity's AI shopping agent",
+          "url": "https://www.cnbc.com/2026/03/10/amazon-wins-court-order-to-block-perplexitys-ai-shopping-agent.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 20:39:33 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google deepens Pentagon AI push after Anthropic sues Trump administration",
+          "url": "https://www.cnbc.com/2026/03/10/google-deepens-pentagon-ai-push-after-anthropic-sues-trump-admin.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 17:08:06 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia makes 'significant investment' in Mira Murati's Thinking Machines Lab",
+          "url": "https://www.cnbc.com/2026/03/10/nvidia-mira-murati-thinking-machines-lab-ai.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 19:04:27 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Amazon convenes 'deep dive' internal meeting to address outages",
+          "url": "https://www.cnbc.com/2026/03/10/amazon-plans-deep-dive-internal-meeting-address-ai-related-outages.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 10 Mar 2026 22:56:29 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": true,
+      "pairs_mentioned": [
+        "AUDUSD",
+        "USDJPY"
+      ],
+      "currency_strength": {
+        "strongest": "USD",
+        "weakest": "CAD",
+        "detail": {
+          "CAD": -1,
+          "GBP": -1,
+          "USD": 0
+        }
+      },
+      "economic_events": [
+        "BoE",
+        "CPI",
+        "ECB",
+        "Fed",
+        "Inflation",
+        "Manufacturing",
+        "RBA",
+        "inflation"
+      ],
+      "key_headlines": [
+        "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 (Arabic) Deutsch (German) Espa\u00f1ol (Spanish) Fran\u00e7ais (French) Bahasa Indonesia (Indonesian) Italiano (Italian) \u65e5\u672c\u8a9e (Japanese) \ud55c\uad6d\uc5b4 (Korean) Bahasa Melayu (Malay) Portugu\u00eas (Portuguese) ",
+        "equities churned but closed negative as rising energy costs and bond market pressure offset a broadly in-line February CPI report, while the U.S.",
+        "dollar closed as one of the day\u2019s best-performing major currencies, gaining against all counterparts except the Australian dollar.",
+        "Check out the forex news and economic updates you may have missed in the latest trading session!"
+      ],
+      "error": null,
+      "fetch_date": "2026-03-11"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 6,
+      "matched": [
+        {
+          "title": "I was interviewed by an AI bot for a job",
+          "url": "https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job",
+          "hn_score": 350,
+          "comments": 325,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Don't post generated/AI-edited comments. HN is for conversation between humans",
+          "url": "https://news.ycombinator.com/newsguidelines.html#generated",
+          "hn_score": 3739,
+          "comments": 1397,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Reliable Software in the LLM Era",
+          "url": "https://quint-lang.org/posts/llm_era",
+          "hn_score": 29,
+          "comments": 8,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "Google closes deal to acquire Wiz",
+          "url": "https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz",
+          "hn_score": 305,
+          "comments": 181,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "BitNet: Inference framework for 1-bit LLMs",
+          "url": "https://github.com/microsoft/BitNet",
+          "hn_score": 354,
+          "comments": 163,
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "relevance_keywords": [
+            "inference"
+          ]
+        },
+        {
+          "title": "Personal Computer by Perplexity",
+          "url": "https://www.perplexity.ai/personal-computer-waitlist",
+          "hn_score": 176,
+          "comments": 137,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "AMZN": {
+      "total_mentions": 6,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "NVDA": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "PATH": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 6,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 4,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AUDUSD": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "USDJPY": {
+      "total_mentions": 1,
+      "sources": [
+        "babypips"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 30,
+    "sources_succeeded": 3,
+    "most_mentioned": "AMZN",
+    "headline_sentiment": "Neutral"
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "date": "2026-05-08",
+  "lastUpdated": "2026-05-08T12:50:55.827362+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 102,
+      "articles_matched": 14,
+      "matched": [
+        {
+          "title": "American Bitcoin Reports Record Q1 Production as BTC Reserve Climbs 30%",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/american-bitcoin-reports-record-q1-004900570.html",
+          "source": "yahoo",
+          "published": "2026-05-07T00:49:00Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Advanced Micro (AMD) Soars to All-Time High as AI Bolsters Profits by Nearly Double",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-amd-soars-time-012354542.html",
+          "source": "yahoo",
+          "published": "2026-05-07T01:23:54Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Super Micro (SMCI) Profits Skyrocket 343%, Shares Soar",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-profits-skyrocket-020544587.html",
+          "source": "yahoo",
+          "published": "2026-05-07T02:05:44Z",
+          "matched_symbols": [
+            "SMCI"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Nvidia CEO says AI partnership with Corning will 'revitalize American manufacturing'",
+          "url": "https://www.cnbc.com/2026/05/07/nvidia-ceo-ai-partnership-corning-revitalize-american-manufacturing.html",
+          "source": "cnbc_top",
+          "published": "Thu, 07 May 2026 22:57:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "IREN inks AI infrastructure deal with Nvidia",
+          "url": "https://www.cnbc.com/2026/05/07/iren-stock-ai-infrastructure-nvidia.html",
+          "source": "cnbc_top",
+          "published": "Thu, 07 May 2026 23:27:56 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: Meta, Google enter AI agent race as \u2018agentic wars\u2019 heat up",
+          "url": "https://www.cnbc.com/2026/05/08/ai-agent-meta-google-agentic-wars-tech-download.html",
+          "source": "cnbc_top",
+          "published": "Fri, 08 May 2026 11:05:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Datadog stock soars 31% on blockbuster earnings as AI winners emerge in software",
+          "url": "https://www.cnbc.com/2026/05/07/ai-winners-software-datadog-stock.html",
+          "source": "cnbc_top",
+          "published": "Thu, 07 May 2026 22:10:16 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "The Tech Download: Meta, Google enter AI agent race as \u2018agentic wars\u2019 heat up",
+          "url": "https://www.cnbc.com/2026/05/08/ai-agent-meta-google-agentic-wars-tech-download.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 08 May 2026 11:05:35 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia CEO says AI partnership with Corning will 'revitalize American manufacturing'",
+          "url": "https://www.cnbc.com/2026/05/07/nvidia-ceo-ai-partnership-corning-revitalize-american-manufacturing.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 07 May 2026 22:57:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "IREN inks AI infrastructure deal with Nvidia",
+          "url": "https://www.cnbc.com/2026/05/07/iren-stock-ai-infrastructure-nvidia.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 07 May 2026 23:27:56 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Datadog stock soars 31% on blockbuster earnings as AI winners emerge in software",
+          "url": "https://www.cnbc.com/2026/05/07/ai-winners-software-datadog-stock.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 07 May 2026 22:10:16 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD's big day, Anthropic-SpaceX deal, the jet fuel crisis and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/05/07/5-things-to-know-before-the-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 07 May 2026 12:34:52 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Arm's quarter shows how it's carving a lucrative path in the crowded CPU resurgence",
+          "url": "https://www.cnbc.com/2026/05/06/arms-quarter-shows-how-its-carving-a-lucrative-path-in-the-crowded-cpu-resurgence.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 23:15:12 GMT",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Cramer: Investors' selling Microsoft stock to fund flashier AI picks won't last forever",
+          "url": "https://www.cnbc.com/2026/05/06/cramer-investors-selling-microsoft-stock-to-fund-flashier-ai-picks-wont-last-forever.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 06 May 2026 18:54:20 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "A polynomial autoencoder beats PCA on transformer embeddings",
+          "url": "https://ivanpleshkov.dev/blog/polynomial-autoencoder/",
+          "hn_score": 57,
+          "comments": 15,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "transformer"
+          ]
+        },
+        {
+          "title": "DeepSeek 4 Flash local inference engine for Metal",
+          "url": "https://github.com/antirez/ds4",
+          "hn_score": 423,
+          "comments": 119,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "inference"
+          ]
+        },
+        {
+          "title": "Natural Language Autoencoders: Turning Claude's Thoughts into Text",
+          "url": "https://www.anthropic.com/research/natural-language-autoencoders",
+          "hn_score": 307,
+          "comments": 100,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "AlphaEvolve: Gemini-powered coding agent scaling impact across fields",
+          "url": "https://deepmind.google/blog/alphaevolve-impact/",
+          "hn_score": 305,
+          "comments": 129,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "GPT-5.5 Price Increase: What It Costs",
+          "url": "https://openrouter.ai/announcements/gpt55-cost-analysis",
+          "hn_score": 87,
+          "comments": 20,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "AI slop is killing online communities",
+          "url": "https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/",
+          "hn_score": 712,
+          "comments": 611,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Two Home Affairs officials suspended after AI 'hallucinations' found",
+          "url": "https://www.citizen.co.za/news/home-affairs-officials-suspended-ai-hallucinations/",
+          "hn_score": 114,
+          "comments": 25,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "BTC": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMD": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SMCI": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 4,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 3,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "SNOW": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "MSFT": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 21,
+    "sources_succeeded": 2,
+    "most_mentioned": "NVDA",
+    "headline_sentiment": "Somewhat_Bullish"
+  }
+}

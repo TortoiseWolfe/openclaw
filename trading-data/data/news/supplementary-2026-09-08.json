@@ -1,0 +1,452 @@
+{
+  "date": "2026-09-08",
+  "lastUpdated": "2026-09-08T12:50:48.394316+00:00",
+  "sources": {
+    "rss": {
+      "feeds_attempted": 3,
+      "feeds_succeeded": 3,
+      "articles_found": 107,
+      "articles_matched": 25,
+      "matched": [
+        {
+          "title": "Stock market today: Dow leads S&P 500, Nasdaq futures lower amid rising oil prices",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-8-dow-sp-500-nasdaq-080440338.html",
+          "source": "yahoo",
+          "published": "2026-09-08T08:04:40Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "4 Stocks Whup The S&P 500 \u2014 And Yield More Than 30-Year Treasurys",
+          "url": "https://www.investors.com/etfs-and-funds/sectors/sp500-stocks-whup-the-market-and-yield-more-than-30-year-treasurys/?src=A00220&yptr=yahoo",
+          "source": "yahoo",
+          "published": "2026-09-08T11:36:38Z",
+          "matched_symbols": [
+            "SPY"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Tuesday, September 8, 2026: Crypto prices sliding as U.S.-Iran fighting continues",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-september-8-2026-crypto-prices-sliding-as-us-iran-fighting-continues-113441984.html",
+          "source": "yahoo",
+          "published": "2026-09-08T11:34:41Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "I Think Apple is Getting Re-Rated to $400 So I\u2019m Buying Again and Again",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/think-apple-getting-rated-400-124151148.html",
+          "source": "yahoo",
+          "published": "2026-09-08T12:41:51Z",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Strategy Now Owns 845,050 Bitcoin After Paying $80,300 a Coin for the Latest 4,603. Is Saylor Back?",
+          "url": "https://finance.yahoo.com/markets/crypto/articles/strategy-now-owns-845-050-123903548.html",
+          "source": "yahoo",
+          "published": "2026-09-08T12:39:03Z",
+          "matched_symbols": [
+            "BTC"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Bitcoin and ethereum prices today, Monday, September 7, 2026: Crypto investors on rate watch",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-september-7-2026-crypto-investors-on-rate-watch-140242204.html",
+          "source": "yahoo",
+          "published": "2026-09-07T14:02:42Z",
+          "matched_symbols": [
+            "BTC",
+            "ETH"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "AMD Just Put 300 Billion-Parameter AI Models on a Desktop",
+          "url": "https://finance.yahoo.com/technology/ai/articles/amd-just-put-300-billion-121641272.html",
+          "source": "yahoo",
+          "published": "2026-09-08T12:16:41Z",
+          "matched_symbols": [
+            "AMD"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC, Samsung commit to ASML\u2019s newest chipmaking tools as AI drives demand",
+          "url": "https://www.cnbc.com/2026/09/08/tsmc-samsung-asml-high-na-euv-machine-ai-chips.html",
+          "source": "cnbc_top",
+          "published": "Tue, 08 Sep 2026 08:32:02 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Here are the 3 big things we're watching in this holiday-shortened trading week",
+          "url": "https://www.cnbc.com/2026/09/07/here-are-the-3-big-things-were-watching-in-this-holiday-shortened-trading-week.html",
+          "source": "cnbc_top",
+          "published": "Mon, 07 Sep 2026 23:31:25 GMT",
+          "matched_symbols": [
+            "AAPL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "\u2018Model fatigue\u2019 sets in as AI labs race to roll out new versions at frenetic pace",
+          "url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
+          "source": "cnbc_top",
+          "published": "Sun, 06 Sep 2026 12:13:49 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Crashed Amazon cargo jet struck two vehicles, ended up 1,300 feet past runway, NTSB says",
+          "url": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html",
+          "source": "cnbc_top",
+          "published": "Mon, 07 Sep 2026 21:36:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "Nvidia supplier Wistron's shares drop after it announces $1.5 billion global stock sale",
+          "url": "https://www.cnbc.com/2026/09/08/nvidia-supplier-wistron-share-sale.html",
+          "source": "cnbc_top",
+          "published": "Tue, 08 Sep 2026 03:54:54 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "A Labor Day gas record, Amazon's deadly jet crash, the rise of the CISO and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/08/5-things-to-know-before-the-market-opens-tuesday.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 12:08:05 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "TSMC, Samsung commit to ASML\u2019s newest chipmaking tools as AI drives demand",
+          "url": "https://www.cnbc.com/2026/09/08/tsmc-samsung-asml-high-na-euv-machine-ai-chips.html",
+          "source": "cnbc_tech",
+          "published": "Tue, 08 Sep 2026 08:32:02 GMT",
+          "matched_symbols": [
+            "TSM"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Crashed Amazon cargo jet struck two vehicles, ended up 1,300 feet past runway, NTSB says",
+          "url": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html",
+          "source": "cnbc_tech",
+          "published": "Mon, 07 Sep 2026 21:36:12 GMT",
+          "matched_symbols": [
+            "AMZN"
+          ],
+          "headline_sentiment": "bearish"
+        },
+        {
+          "title": "\u2018Model fatigue\u2019 sets in as AI labs race to roll out new versions at frenetic pace",
+          "url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
+          "source": "cnbc_tech",
+          "published": "Sun, 06 Sep 2026 12:13:49 GMT",
+          "matched_symbols": [
+            "GOOGL",
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Back-to-school shopping brought to you by AI \u2014 how Amazon, Google are positioned to win",
+          "url": "https://www.cnbc.com/2026/09/04/back-to-school-shopping-brought-to-you-by-ai-how-amazon-google-are-positioned-to-win.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 04 Sep 2026 14:47:15 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Why Nvidia's 'defensive move' to acquire Hugging Face is about much more than chips",
+          "url": "https://www.cnbc.com/2026/09/04/nvidia-hugging-face-deal-chips.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 04 Sep 2026 11:31:30 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Nvidia's investments grow to $99 billion as chip giant becomes major backer of AI companies",
+          "url": "https://www.cnbc.com/2026/09/04/nvidia-ai-investments-99-billion.html",
+          "source": "cnbc_tech",
+          "published": "Fri, 04 Sep 2026 09:32:09 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Revenge of the 'Magnificent Seven' \u2014 Jim Cramer says it\u2019s time to buy",
+          "url": "https://www.cnbc.com/2026/09/03/magnificent-seven-jim-cramer-says-time-to-buy.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 22:31:01 GMT",
+          "matched_symbols": [
+            "AMZN",
+            "GOOGL",
+            "MSFT",
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "Microsoft to impose time limits on Xbox cloud gaming subscribers as costs continue to climb",
+          "url": "https://www.cnbc.com/2026/09/03/microsoft-xbox-game-pass-cloud-limits.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 19:03:56 GMT",
+          "matched_symbols": [
+            "MSFT"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "G20 on AI policy, Snowflake earnings, Ford's production push and more in Morning Squawk",
+          "url": "https://www.cnbc.com/2026/09/03/5-things-to-know-before-the-stock-market-opens.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 12:28:37 GMT",
+          "matched_symbols": [
+            "SNOW"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Hugging Face approached Nvidia\u2019s Huang weeks ahead of $12.9B acquisition, CEO tells CNBC",
+          "url": "https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 16:43:22 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "neutral"
+        },
+        {
+          "title": "Google starts September with AI momentum after longest monthly losing streak in over a decade",
+          "url": "https://www.cnbc.com/2026/09/02/google-starts-september-with-ai-momentum-after-long-losing-streak.html",
+          "source": "cnbc_tech",
+          "published": "Thu, 03 Sep 2026 12:31:15 GMT",
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "headline_sentiment": "bullish"
+        },
+        {
+          "title": "How Equinix has found a niche in the multitrillion-dollar AI data center boom",
+          "url": "https://www.cnbc.com/2026/09/02/equinix-partners-with-nvidia-carves-niche-in-ai-data-center-boom.html",
+          "source": "cnbc_tech",
+          "published": "Wed, 02 Sep 2026 22:49:01 GMT",
+          "matched_symbols": [
+            "NVDA"
+          ],
+          "headline_sentiment": "bullish"
+        }
+      ],
+      "errors": []
+    },
+    "babypips": {
+      "fetched": false,
+      "pairs_mentioned": [],
+      "currency_strength": {},
+      "economic_events": [],
+      "key_headlines": [],
+      "error": "HTTP Error 404: Not Found"
+    },
+    "hackernews": {
+      "stories_checked": 30,
+      "stories_matched": 7,
+      "matched": [
+        {
+          "title": "There's a new \"Google Jail\" for independent wikis",
+          "url": "https://weirdgloop.org/blog/google-jail",
+          "hn_score": 255,
+          "comments": 91,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Mistral raises \u20ac3B",
+          "url": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/",
+          "hn_score": 602,
+          "comments": 423,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI"
+          ]
+        },
+        {
+          "title": "Arm Mali G2-Ultra NX GPU: desktop-class mobile gameplay with AI-native graphics",
+          "url": "https://newsroom.arm.com/blog/arm-mali-g2-ultra-nx-ai-native-mobile-graphics",
+          "hn_score": 58,
+          "comments": 42,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "AI",
+            "GPU"
+          ]
+        },
+        {
+          "title": "Leaving VMware just got harder after Broadcom pulled VDDK downloads",
+          "url": "https://www.virtualizationhowto.com/2026/09/leaving-vmware-just-got-harder-after-broadcom-pulled-vddk-downloads/",
+          "hn_score": 220,
+          "comments": 108,
+          "matched_symbols": [
+            "AVGO"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Ask HN: Are others seeing Google's reCAPTCHA rejecting Firefox users?",
+          "url": "https://news.ycombinator.com/item?id=49555592",
+          "hn_score": 73,
+          "comments": 24,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        },
+        {
+          "title": "Multi-Agents LLM Financial Trading Framework",
+          "url": "https://github.com/TauricResearch/TradingAgents",
+          "hn_score": 75,
+          "comments": 51,
+          "matched_symbols": [],
+          "relevance_keywords": [
+            "LLM"
+          ]
+        },
+        {
+          "title": "WeatherNext 3",
+          "url": "https://deepmind.google/science/weathernext/",
+          "hn_score": 359,
+          "comments": 90,
+          "matched_symbols": [
+            "GOOGL"
+          ],
+          "relevance_keywords": []
+        }
+      ],
+      "error": null
+    }
+  },
+  "symbol_mentions": {
+    "SPY": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "BTC": {
+      "total_mentions": 3,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "ETH": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AAPL": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AMD": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "TSM": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "GOOGL": {
+      "total_mentions": 8,
+      "sources": [
+        "hackernews",
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "NVDA": {
+      "total_mentions": 8,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "AMZN": {
+      "total_mentions": 5,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bearish"
+    },
+    "MSFT": {
+      "total_mentions": 2,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "bullish"
+    },
+    "SNOW": {
+      "total_mentions": 1,
+      "sources": [
+        "rss"
+      ],
+      "net_sentiment": "neutral"
+    },
+    "AVGO": {
+      "total_mentions": 1,
+      "sources": [
+        "hackernews"
+      ],
+      "net_sentiment": "neutral"
+    }
+  },
+  "summary": {
+    "total_articles": 32,
+    "sources_succeeded": 2,
+    "most_mentioned": "GOOGL",
+    "headline_sentiment": "Somewhat_Bearish"
+  }
+}
